@@ -133,6 +133,8 @@ class GHSRCrossingRegistrationTests(unittest.TestCase):
         self.assertTrue(all((value & 0xFFFFF000) == base for value in reserved))
         self.assertTrue(all(row['cast_shadow'] for row in model_shadows.bindings(piece)))
         self.assertEqual(piece['model_shadows']['sun_profile'], 'sc4-default-67p5-45')
+        self.assertFalse(model_shadows.enabled(piece))
+        self.assertEqual(model_shadows.resource_keys(piece), set())
         self.assertEqual(len(native_approaches.approaches(piece)), 4)
         self.assertNotIn('native_dd_approaches', piece)
 
@@ -158,7 +160,7 @@ class GHSRCrossingRegistrationTests(unittest.TestCase):
         self.assertIn(self.piece['recipe'], service.implemented_recipes_by_domain()['highway'])
         self.assertIn(IDENTIFIER, service.all_implemented_ids(ROOT))
         self.assertEqual(set(self.piece['dependencies']),
-                         {'controller', 'dd_rhw', 'rhw_core', 'hsr', 'model_shadow_lighting'})
+                         {'controller', 'dd_rhw', 'rhw_core', 'hsr'})
         self.assertTrue(set(self.piece['dependencies']) <= self.catalog['_profile']['files'].keys())
         self.assertEqual(self.catalog['piece_sets']['ddrhw-diagonal-ghsr-crossing'], [IDENTIFIER])
 

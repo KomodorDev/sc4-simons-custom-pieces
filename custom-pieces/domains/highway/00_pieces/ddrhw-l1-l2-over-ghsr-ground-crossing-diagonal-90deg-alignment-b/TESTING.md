@@ -96,11 +96,13 @@ Review the test checklist for the exact tested cases and environments.
 
 ## 2. Test setup
 
-Use Windows SimCity 4 1.1.641, the audited NAM 50 right-hand-traffic files, and the existing native-lighting capture. Record Windows, Wine, or CrossOver as actually used. Read the [shared input and installation guide](../../../../docs/BUILD_AND_INSTALL.md), then prepare a flat disposable city with working native GHSR and DD control lines.
+Use Windows SimCity 4 1.1.641 and the audited NAM 50 right-hand-traffic files. The original shadow-carrier candidate also used the native-lighting capture; the selected no-shadow source no longer requires it. Record Windows, Wine, or CrossOver as actually used. Read the [shared input and installation guide](../../../../docs/BUILD_AND_INSTALL.md), then prepare a flat disposable city with working native GHSR and DD control lines.
 
-Use the [README table and exact menu/tool steps](README.md#23-place-and-extend-alignment-b). The final combined candidate contains both A and B under the original crossing button, plus the unchanged existing pieces. A B-only development build instead has its own Alignment B button. Installing a candidate requires a closed game. Place B fresh after starting the game so its native helper markers and shadow attachments are created; existing A placements retain their resources.
+Use the [README table and exact menu/tool steps](README.md#23-place-and-extend-alignment-b). The final combined candidate contains both A and B under the original crossing button, plus the unchanged existing pieces. A B-only development build instead has its own Alignment B button. Installing a candidate requires a closed game. The current revision intentionally supplies no cast shadows and removes the shadow-only T21 attachments; a T21 is a network-tile record that places attached objects. Restart, and place B fresh so its native helper markers are created without relying on older saved shadow attachments being removed by reload alone. Existing-city cleanup remains a separate unverified check; A retains its identifiers and geometry.
 
 ## 3. Software checks
+
+The [2026-11-01 compiled shadow-removal audit](../../evidence/ddrhw-shadow-removal-20261101.jsonc) covers both GHSR/DD alignments and all fifteen existing parallel components in a 37-type selection. It records 287 removed shadow resources, three adaptive T21 changes, unchanged remaining selected resource payloads, and twenty unaffected DATs preserved byte for byte. Traffic PATHs, visible models, native helpers, adaptive sidewalk resources, and the allocation ledger are preserved. This is exact saved-resource evidence for its recorded candidate and manifest; it records no installation, fresh render, or game observation.
 
 Run these commands from the repository root. The source build below is the actual saved Alignment B evidence build; a later delivery package must also pass its own verification.
 
@@ -111,11 +113,11 @@ python3 -B custom-pieces/scp.py docs-check --piece ddrhw-l1-l2-over-ghsr-ground-
 python3 -B tools/run_tests.py
 ```
 
-The [authoring recipe](../../implementation/scp_highway/ghsr_crossing.py), [independent verifier](../../implementation/scp_highway/ghsr_crossing_verify.py), and [native approach adapter](../../implementation/scp_highway/ghsr_approaches.py) own this implementation. The [native contract](evidence/native-contract.jsonc) binds exact saved DAT/resources, independently inspected native model streams, rail transitions, helper rules, and shadows. The [paired alignment audit](evidence/diagonal-alignment-coverage.jsonc) checks actual saved A and B traffic paths against a fixed directed highway, including both spatial positions and four rotations. It does not certify a diamond layout.
+The [authoring recipe](../../implementation/scp_highway/ghsr_crossing.py), [independent verifier](../../implementation/scp_highway/ghsr_crossing_verify.py), and [native approach adapter](../../implementation/scp_highway/ghsr_approaches.py) own this implementation. The [frozen original native contract](evidence/native-contract.jsonc) binds that earlier saved DAT/resources, independently inspected native model streams, rail transitions, helper rules, and historical shadow carriers. Preserve its exact earlier scope; its carrier results do not establish the current no-shadow revision. The [paired alignment audit](evidence/diagonal-alignment-coverage.jsonc) checks actual saved A and B traffic paths against a fixed directed highway, including both spatial positions and four rotations. It does not certify a diamond layout.
 
 B retains native DD routes and visible native rail geometry. The original rail chord is asymmetric: each B exterior joining coordinate needs a 0.1 m correction to meet its actual unmodified native helper. Four-node rail paths use a 3 m exterior collar along that helper's travel heading, a short blend, and a 1 m exact-diagonal internal collar. Internal rail endpoints already meet and remain unchanged. The measured maximum sideways deviation from the original core chord is approximately 0.099835519095 m. Check this B-specific transition independently of A's different internal correction.
 
-The PATH header explicitly retains authored elevations with UseElevation=1. The 5 m-wide, 5 m-high reviewed train envelope rises from the 1 m railway to a 6 m roof; the selected DD underside is at least 6.5 m, giving 0.5 m geometric clearance. This declared envelope is not a measured collision box for every custom train. Two fixed T21 shadow hosts carry native shadow properties, with independent checks for all sixteen object/camera combinations. Native RUL2 remains unchanged; the existing narrow native-helper RUL1 solutions are shared by both alignments without adding conflicting rules.
+The PATH header explicitly retains authored elevations with UseElevation=1. The 5 m-wide, 5 m-high reviewed train envelope rises from the 1 m railway to a 6 m roof; the selected DD underside is at least 6.5 m, giving 0.5 m geometric clearance. This declared envelope is not a measured collision box for every custom train. The current revision removes both shadow-only T21 attachments and their carrier resources, while retaining their reserved source inventory. Check the saved no-shadow result independently, including the absence of carrier props, carrier models, mask textures, and fixed network-shadow mappings; keep visible models and native approaches intact. Native RUL2 remains unchanged; the existing narrow native-helper RUL1 solutions are shared by both alignments without adding conflicting rules.
 
 ## 4. Game checks
 
@@ -132,7 +134,7 @@ The PATH header explicitly retains authored elevations with UseElevation=1. The 
 ### 4.2 Shadows and object lifetime
 
 1. Inspect the ground railway and both decks at every zoom and all four city-camera views. The railway must remain beneath the lower deck, and both road directions must remain at their own heights.
-2. Set shadows to Medium, inspect for clipped or detached shadows, and repeat with High. Native prop shadows are not established by Low-quality appearance.
+2. Set shadows to Medium, inspect every zoom and all four city-camera views, and repeat with High. B intentionally supplies no cast shadows: look for any remaining deck-shaped shadow, detached triangle, or phantom neighbouring structure. Distinguish other objects’ shadows from this crossing, and record any Low-quality comparison separately; absence at Low alone does not establish removal at Medium or High.
 3. Save the test city, quit the game completely, reload it, and repeat actual vehicle travel, heights, and shadow checks.
 4. Demolish B in the disposable area. Inspect both former owned tiles and the four native approaches separately for leftover models or shadows. Redraw the native lines, place a fresh crossing, and repeat the connection check.
 
@@ -140,7 +142,7 @@ Record only explicit matching observations through [the shared testing procedure
 
 ## 5. Results and known issues
 
-Alignment B is experimental. Actual placement, native dragging, Tab selection, moving cars, moving trains, shadows, demolition, and save/reload require matching human observations. All generated game cases start unverified; software checks cannot create manual passes.
+Alignment B is experimental. The current appearance policy is no cast shadows for both GHSR/DD alignments, following the user’s report about the adjoining draggable DD highway. That report does not independently establish every native resource’s behavior. Actual placement, native dragging, Tab selection, moving cars, moving trains, absence of unwanted shadows, demolition, and save/reload require matching human observations. All generated game cases start unverified; software checks cannot create manual passes.
 
 Native ground track-bed faces extend approximately 0.989332 m below ground and 1.989332 m above it. Isolated model previews can expose below-ground sides because their grid does not hide geometry like game terrain. Inspect actual terrain occlusion and train appearance separately. The exact geometric train clearance is not a guarantee for every replacement train.
 
@@ -230,6 +232,65 @@ No observation recorded.
 Verify the declared directed journeys and forbidden transfers.
 
 Scope: Whole subject.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:canonical-southeast | <a href="#case-preview_review-d6abcd7b012b2ae96004">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:canonical-top | <a href="#case-preview_review-89a492ae15085813a0a3">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:connection-overview | <a href="#case-preview_review-3c9fb283b1e20dd90df3">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:canonical-southeast</summary>
+
+<a id="case-preview_review-d6abcd7b012b2ae96004"></a>
+
+**General: unverified** — `preview_review-d6abcd7b012b2ae96004`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:canonical-top</summary>
+
+<a id="case-preview_review-89a492ae15085813a0a3"></a>
+
+**General: unverified** — `preview_review-89a492ae15085813a0a3`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:connection-overview</summary>
+
+<a id="case-preview_review-3c9fb283b1e20dd90df3"></a>
+
+**General: unverified** — `preview_review-3c9fb283b1e20dd90df3`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:connection-overview.
 
 No observation recorded.
 
@@ -2495,67 +2556,10 @@ No observation recorded.
 
 </details>
 
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:canonical-southeast | <a href="#case-preview_review-d6abcd7b012b2ae96004">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:canonical-top | <a href="#case-preview_review-89a492ae15085813a0a3">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:connection-overview | <a href="#case-preview_review-3c9fb283b1e20dd90df3">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:canonical-southeast</summary>
-
-<a id="case-preview_review-d6abcd7b012b2ae96004"></a>
-
-**General: unverified** — `preview_review-d6abcd7b012b2ae96004`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:canonical-top</summary>
-
-<a id="case-preview_review-89a492ae15085813a0a3"></a>
-
-**General: unverified** — `preview_review-89a492ae15085813a0a3`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:connection-overview</summary>
-
-<a id="case-preview_review-3c9fb283b1e20dd90df3"></a>
-
-**General: unverified** — `preview_review-3c9fb283b1e20dd90df3`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b:connection-overview.
-
-No observation recorded.
-
-</details>
-
-</details>
-
 <!-- END MANUAL CHECKS -->
 
 ## 6. Design history
 
 The original crossing supplied one spatial alignment with four proper rotations repeated. A user report showed that the next adjacent diagonal ground-network position could not meet the same directed highway. Native rule inspection and independent grid measurements established two alignment classes. B adds the complementary horizontal two-tile arrangement, retains the native DD deck directions, and corrects the different native GHSR exterior chord joins. The general lesson is recorded in the [piece workflow](../../../../docs/WORKFLOW_PIECE_CREATION.md#56-cover-diagonal-grid-alignments) and [highway specification](../../NETWORK_SPEC.md#155-two-diagonal-grid-alignments). Existing A IDs, geometry, and frozen evidence are preserved.
+
+The initial B candidate used independent shadow carriers, recorded in the [original native contract](evidence/native-contract.jsonc). The later user request removes those shadows from both crossing alignments and the parallel diamond. The earlier audit remains historical evidence for its own resources, and supplies no game pass for the new no-shadow revision.

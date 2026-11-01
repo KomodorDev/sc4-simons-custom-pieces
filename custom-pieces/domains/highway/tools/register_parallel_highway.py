@@ -12,6 +12,7 @@ sys.path[:0] = [str(ROOT / 'framework'), str(ROOT / 'domains/highway/implementat
                 str(Path(__file__).parent)]
 from scp import jsonc
 from scp.adaptive_network import allocation_fields, expected_solutions
+from scp.model_shadows import allocation_fields as shadow_allocation_fields
 from scp.catalog import load_catalog
 from scp.registration import apply_registration
 from scp.subject_sources import new_subject_document
@@ -70,8 +71,12 @@ def register(root=ROOT):
                  'orientation_count': 8, 'dependencies': ['controller', 'dd_rhw', 'rhw_core', 'mis'],
                  'menu': {'id': f'{0x6a470000 | puzzle:08x}',
                           'order': f'{0xffffff00 | (puzzle & 0xff):08x}', 'style': 'ddrhw-ramp'},
-                 'engineering': engineering, 'shadow_mode': 'generated',
-                 'shadow_mappings': [{'tile': tile, 'source': tile, 'rotation': 0} for tile in tile_ids],
+                 'engineering': engineering, 'shadow_mode': 'model-carrier', 'shadow_mappings': [],
+                 'model_shadows': {'schema_version': 1, 'sun_profile': 'sc4-default-67p5-45', 'enabled': False,
+                    'cells': [{'cell': cell, 'cast_shadow': declaration['function'] != 'terminal',
+                               **({'resource_base': f'{block + 0x800 + index * 0x100:08x}'}
+                                  if declaration['function'] != 'terminal' else {})}
+                              for index, cell in enumerate(declaration['cells'])]},
                  'provenance': {'geometry': 'Approved parallel inward-upper layout with exact source coordinates, finite right turns, and fixed levels.',
                                 'construction': 'Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.',
                                 'redistribution': 'permission-pending'},
@@ -79,7 +84,8 @@ def register(root=ROOT):
         record = {'puzzle_id': piece['puzzle_id'], 'tile_ids': tile_ids,
                   'preview_id': piece['preview_id'], 'menu_id': piece['menu']['id'],
                   'state': 'reserved-locally', 'cells': piece['cells'],
-                  'tile_base': f'{block:08x}', 'resource_blocks': [f'{block:08x}']}
+                  'tile_base': f'{block:08x}', 'resource_blocks': [f'{block:08x}'],
+                  **shadow_allocation_fields(piece)}
         ledger['pieces'][identifier] = record
         if adaptive_cells:
             origin = declaration['world_origin_cell']

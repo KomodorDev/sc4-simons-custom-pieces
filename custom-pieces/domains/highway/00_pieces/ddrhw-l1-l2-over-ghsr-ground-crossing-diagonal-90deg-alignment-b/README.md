@@ -20,6 +20,8 @@ The clean angled view shows both highway decks above GHSR, meaning Ground High S
 
 ## 2. Piece and placement
 
+**Current shadow policy:** this alignment intentionally supplies no cast shadows. Both GHSR/DD RHW alignments follow the same policy, chosen after the user reported that the adjoining draggable DD highway has no visible shadow. That report is the reason for this appearance choice, not an independent measurement of every native DD resource. Restart after installing the checked revision, and test a fresh crossing so an older saved shadow attachment cannot be mistaken for the new result. See [the current shadow checks](TESTING.md#4-game-checks).
+
 **DD RHW-4** is the double-decker RealHighway with two lanes on each opposing deck. This crossing carries both railway directions at 1 m, two highway lanes at 7.5 m, and the opposing two lanes at 15 m. At 0°, the upper deck travels northeast → southwest, and the lower deck travels southwest → northeast. There are no transfers between railway and highway, or between highway decks.
 
 ### 2.1 Choose Alignment A or B
@@ -46,7 +48,7 @@ The railway and highway share both fixed core tiles, so they form one coordinate
 
 1. Install the checked combined A/B candidate through the [installation procedure](../../../../docs/BUILD_AND_INSTALL.md#7-install-remove-or-roll-back-a-test-build), and start SimCity 4 after installation. Begin in a disposable flat test city.
 2. Open **Transportation → Highways**, select the original crossing button, press **Tab** until the placement query ends with **Alignment B**, and use **Home** or **End** to match the highway's direction and deck markings.
-3. Place a **fresh** B crossing in the arrangement above. New native approach markers and shadow attachments require this new placement; existing A crossings keep their IDs and geometry.
+3. Place a **fresh** B crossing in the arrangement above. Fresh placement creates the native approach markers and avoids retaining an older saved shadow attachment; existing A crossings keep their IDs and geometry.
 4. Press **Esc**. Select **Transportation → Highways → RealHighway (RHW-2)**. Drag from the northeast DD approach diagonally outward for at least three tiles. Repeat from the southwest DD approach.
 5. Select **Transportation → Rail → Monorail**. Drag from the northwest railway approach diagonally outward for at least three tiles. Repeat from the southeast approach. NAM's ground high-speed railway uses the Monorail drawing tool.
 6. Join these arms to working control lines, and follow actual cars across both decks and trains through both railway directions. Route Query lines and moving vehicles are separate checks. Follow [TESTING](TESTING.md#4-game-checks) for both railway positions, every rotation, shadows, and save/reload.

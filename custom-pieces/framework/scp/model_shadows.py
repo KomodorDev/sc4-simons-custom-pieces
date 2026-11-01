@@ -41,9 +41,13 @@ def bindings(piece):
         return []
     require(piece.get('shadow_mappings') == [], 'Model carriers must not retain clipped network shadow mappings')
     metadata = piece.get('model_shadows')
-    require(isinstance(metadata, dict) and set(metadata) == {'schema_version', 'sun_profile', 'cells'}
+    require(isinstance(metadata, dict) and set(metadata) in (
+                {'schema_version', 'sun_profile', 'cells'},
+                {'schema_version', 'sun_profile', 'cells', 'enabled'})
             and type(metadata['schema_version']) is int and metadata['schema_version'] == 1,
             'Unsupported model-shadow metadata')
+    require(type(metadata.get('enabled', True)) is bool,
+            'Model-shadow enabled setting must be a boolean')
     require(metadata['sun_profile'] == SUN_PROFILE, 'Unsupported model-shadow sunlight profile')
     width, depth = piece['footprint']
     cells = piece.get('cells', [[x, y] for y in range(depth) for x in range(width)])
@@ -80,6 +84,11 @@ def bindings(piece):
     return result
 
 
+def enabled(piece):
+    """Keep permanent carrier reservations separate from current generation."""
+    return bool(bindings(piece)) and piece['model_shadows'].get('enabled', True)
+
+
 def allocation_fields(piece):
     return {'shadow_resource_families': [row['resource_base'] for row in bindings(piece)
                                          if row['cast_shadow']]}
@@ -99,6 +108,8 @@ def reservation_ids(record):
 
 def resource_keys(piece):
     keys = set()
+    if not enabled(piece):
+        return keys
     for row in bindings(piece):
         if row['cast_shadow']:
             keys.update((*S3D, iid) for iid in row['model_ids'])
@@ -109,7 +120,7 @@ def resource_keys(piece):
 
 def audit_lighting_dependency(context, installed, pieces):
     """Reject a different captured light or a competing installed override."""
-    selected = [piece for piece in pieces if piece.get('shadow_mode') == MODE]
+    selected = [piece for piece in pieces if enabled(piece)]
     if not selected:
         return {'model_shadow_lighting_required': False}
     for piece in selected:
@@ -230,6 +241,11 @@ def _t21(row, title, existing=None):
 
 def add_resources(resources, piece, carriers_by_cell):
     """Add actual domain-compiled carriers after ordinary active layers exist."""
+    if not enabled(piece):
+        require(not carriers_by_cell, 'Disabled model shadows must not compile carriers')
+        if piece.get('shadow_mode') == MODE:
+            validate_resources(resources, piece)
+        return resources
     rows = [row for row in bindings(piece) if row['cast_shadow']]
     require(set(carriers_by_cell) == {tuple(row['cell']) for row in rows},
             'Compiled shadow carriers must cover exactly the declared elevated hosts')
@@ -256,6 +272,27 @@ def validate_resources(resources, piece):
     rows = bindings(piece)
     if not rows:
         return {'carrier_hosts_checked': 0, 'game_shadow_selection_tested': False}
+    if not enabled(piece):
+        reserved = set(reservation_ids(allocation_fields(piece)))
+        require(not any(key[2] in reserved for key in resources),
+                'Disabled model shadows retain a reserved carrier resource')
+        require(not {(*SHADOW, int(tile, 16) + zoom) for tile in piece['tile_ids']
+                     for zoom in range(5)} & resources.keys(),
+                'Disabled model shadows retain clipped network shadow FSH resources')
+        for row in rows:
+            key = (*T21, int(row['t21_id'], 16))
+            if key not in resources:
+                continue
+            lotprops = exemplar(resources[key])['properties']
+            require(not any(type(value) is int and value in reserved
+                            for prop in lotprops for value in prop.get('values', [])),
+                    'Disabled model shadows retain a T21 carrier reference')
+        return {'carrier_hosts_checked': 0, 'model_resources_checked': 0,
+                'owned_alpha_textures_checked': 0, 'texture_ids': [],
+                'shadow_generation_disabled': True,
+                'permanent_reserved_resource_ids_checked': len(reserved),
+                'retained_shadow_resources': 0, 'retained_t21_carrier_references': 0,
+                'game_shadow_selection_tested': False}
     require(resource_keys(piece) <= resources.keys(), 'Model carrier has missing model, texture, prop, or T21 resources')
     require(not {(*SHADOW, int(tile, 16) + zoom) for tile in piece['tile_ids'] for zoom in range(5)} & resources.keys(),
             'Model carriers must not retain their clipped network shadow FSH resources')

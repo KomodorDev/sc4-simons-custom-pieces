@@ -20,6 +20,8 @@ The canonical angled and north-up pictures show the saved model in its authored 
 
 ## 2. Piece and placement
 
+**Current shadow policy:** this component intentionally supplies no cast shadow, as do all fifteen parallel-kit components. After installing the checked revision and restarting, use a fresh placement to avoid confusing older saved attachments with the current result. Follow the assembly’s [no-shadow and cleanup checks](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/TESTING.md#44-independent-module-shadow-test); the earlier carrier repair remains historical evidence.
+
 This is the central crossing of both straight highway decks over the diagonal ground Avenue. L0 means the ground pavement at 0 m, L1 is the lower deck at 7.5 m, and L2 is the upper deck at 15 m. The three occupied tiles preserve the native Avenue car and pedestrian routes and the four highway through lanes. The outside-deck upper-ramp turns also cross these city tiles, so their required traffic fragments stay with this owner.
 
 Its sparse 2 × 2 footprint has three occupied corners and an empty local [1,1] corner. That empty corner supplies a temporary placement handle, which the supported NAM DLL removes. It is not a fourth permanent road tile. The highway model stays straight; curved high departures belong to the separate ramp modules.

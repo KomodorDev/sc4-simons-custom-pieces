@@ -13,7 +13,7 @@ from scp.model_shadow_geometry import encode_mask_fsh, generate_shadow_carriers
 from scp.models import pack_s3d, parse_s3d
 from scp.preview import decode_fsh
 from scp.test_support import plane
-from scp_highway.model_shadows import elevated_triangles
+from scp_highway.model_shadows import add_shadows, elevated_triangles
 from scp_highway import shadow_verify
 from scp_highway.shadow_verify import check_resources
 
@@ -47,6 +47,22 @@ def source_model(triangles, unused=False):
 
 
 class HighwaySavedShadowTests(unittest.TestCase):
+    def test_explicit_disable_keeps_elevated_models_and_paths_without_a_lighting_input(self):
+        spec = specification()
+        allocated = model_shadows.allocation_fields(spec)
+        spec['model_shadows']['enabled'] = False
+        elevated = source_model([((-8., 15., -8.), (8., 15., -8.), (8., 15., 8.))])
+        original = {(*S3D, 0x7F500000): elevated,
+                    (0x296678F7, 0xA966883F, 0x7F500000): b'protected traffic'}
+        with patch('scp_highway.model_shadows.generate_shadow_carriers',
+                   side_effect=AssertionError('Disabled shadows must not be generated')):
+            actual = add_shadows(spec, {}, [((0, 0), elevated, b'protected traffic')], dict(original))
+        self.assertEqual(actual, original)
+        self.assertEqual(model_shadows.allocation_fields(spec), allocated)
+        report = check_resources(actual, spec)['model_shadow_geometry']
+        self.assertTrue(report['shadow_generation_disabled'])
+        self.assertEqual(report['retained_shadow_resources'], 0)
+
     def setUp(self):
         self.piece = specification()
         self.row = model_shadows.bindings(self.piece)[0]

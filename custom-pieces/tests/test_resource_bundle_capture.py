@@ -278,12 +278,13 @@ class ModelShadowLightingInstallerTests(unittest.TestCase):
 class ModelShadowLightingEvidenceTests(unittest.TestCase):
     def test_carrier_dependencies_and_public_evidence_bind_the_exact_supported_light(self):
         from scp.catalog import load_catalog, select_pieces
-        from scp.model_shadows import LIGHTING_EXEMPLAR, LIGHTING_SHA256
+        from scp.model_shadows import LIGHTING_EXEMPLAR, LIGHTING_SHA256, enabled
         catalog = load_catalog(ROOT)
         selected = select_pieces(catalog, service.all_implemented_ids(ROOT))
         carriers = [piece for piece in selected if piece.get('shadow_mode') == 'model-carrier']
         self.assertTrue(carriers)
-        self.assertTrue(all('model_shadow_lighting' in piece['dependencies'] for piece in carriers))
+        self.assertTrue(all(('model_shadow_lighting' in piece['dependencies']) == enabled(piece)
+                            for piece in carriers))
         record = catalog['_profile']['files']['model_shadow_lighting']
         evidence = json.loads((ROOT / record['audit']).read_text())
         self.assertEqual(record['capture_kind'], 'resource-bundle')

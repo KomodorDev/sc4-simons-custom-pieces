@@ -22,6 +22,8 @@ The native GHSR model includes track-bed geometry from approximately −0.989332
 
 ## 2. Piece and placement
 
+**Current shadow policy:** this alignment intentionally supplies no cast shadows. Both GHSR/DD RHW alignments follow the same policy, chosen after the user reported that the adjoining draggable DD highway has no visible shadow. That report is the reason for this appearance choice, not an independent measurement of every native DD resource. Restart after installing the checked revision, and test a fresh crossing so an older saved shadow attachment cannot be mistaken for the new result. See [the current shadow checks](TESTING.md#4-game-checks).
+
 **GHSR** means Ground High Speed Rail, and **DD RHW-4** means the double-decker RealHighway with two lanes on each opposing deck. This one reusable piece carries both railway directions at 1 m, two highway lanes at 7.5 m, and the opposing two highway lanes at 15 m. It is a crossing with independent through routes. The authored 0° layout carries upper-deck traffic northeast → southwest and lower-deck traffic southwest → northeast; rotating the whole piece rotates those directions together.
 
 The exact identifier is `ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg`. Its standalone button is under **Transportation → Highways**, titled **SCP | [HW] DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over GHSR Ground (1 m) — Mixed Crossing — Both Diagonal 90°**. It uses the audited NAM 50 right-hand-traffic setup for Windows SimCity 4, including through Wine or CrossOver. Native approach markers for both draggable networks are implemented; their placement, extension, and actual traffic still need the focused game checks.

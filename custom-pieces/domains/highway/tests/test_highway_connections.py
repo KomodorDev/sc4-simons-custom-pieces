@@ -1,16 +1,26 @@
 """Road extraction keeps shared-engine channels and reviewed directions exact."""
 from copy import deepcopy
+import json
 from pathlib import Path
 import sys
+import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path[:0] = [str(ROOT/'framework'),str(ROOT/'domains/highway/implementation')]
 
 from scp.connectivity import piece_connectivity
+from scp import jsonc,piece_menu_families
+from scp.build import RUL0
+from scp.dbpf import pack_dbpf
+from scp.rul0 import compose_rul0
 from scp.track_paths import PATH
+from scp_highway import connections
 from scp_highway.connections import CORE,reviewed_contract,service_classifier
 from scp_highway.verify import CELLS,expected_paths
+import test_ghsr_crossing_verify as alignment_a
+import test_ghsr_crossing_phase_b_verify as alignment_b
 
 
 def fixture():
@@ -80,6 +90,90 @@ class HighwayConnectionTests(unittest.TestCase):
         record = piece_connectivity(piece,self.resources,contract=None,service_classifier=service_classifier)
         self.assertFalse(record['source']['reviewed_contract_available'])
         self.assertEqual(record['software_status']['contract_consistency'],'unverified')
+
+
+class HighwayMenuFamilyExtractionTests(unittest.TestCase):
+    def saved_pair(self,root):
+        """Save two literal PATH fixtures behind an actual reversible menu family."""
+        pieces = [jsonc.load(ROOT/'domains/highway/00_pieces'/identifier/'piece.jsonc') for identifier in
+            ('ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg',
+             'ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b')]
+        fragments = []
+        for piece in pieces:
+            puzzle = int(piece['puzzle_id'],16)
+            states = [puzzle+slot*0x10000 for slot in range(8)]
+            lines = ['RotationRing = '+', '.join(f'{state:X}' for state in states),
+                     f'[HighwayIntersectionInfo_0x{puzzle:08X}]','Costs = 1000']
+            for slot,state in enumerate(states[1:],1):
+                lines += [f'[HighwayIntersectionInfo_0x{state:08X}]',f'CopyFrom = 0x{puzzle:08X}',
+                          f'Rotate = {slot%4}']
+            fragments.append('\r\n'.join(lines)+'\r\n')
+        native = b'[Ordering]\r\nRotationRing = 100, 10100\r\nAddTypes = 101, 10101\r\n'
+        controller,composition = compose_rul0(native,fragments)
+        menus = {(*prefix,int(piece['menu']['id'],16)): b'fixture presentation'
+                 for piece in pieces for prefix in piece_menu_families.PREFIXES}
+        controller,composition,_menus,record = piece_menu_families.apply(controller,composition,menus,pieces)
+        folder = 'zzz_Simons_Custom_Pieces'
+        build = root/'dist/family-pair'
+        (build/folder/'20_Pieces').mkdir(parents=True)
+        (build/folder/'00_SCP_Controller_NAM50.dat').write_bytes(pack_dbpf({RUL0:controller}))
+        built = []
+        for piece,fixture in zip(pieces,(alignment_a,alignment_b)):
+            asset = folder+'/20_Pieces/SCP_'+piece['id']+'.dat'
+            routes = fixture.fixture_routes()
+            payload = {(*PATH,int(tile,16)):fixture.encode(records)
+                       for tile,records in zip(piece['tile_ids'],routes)}
+            (build/asset).write_bytes(pack_dbpf(payload))
+            built.append({**piece,'asset_file':asset})
+        manifest = {'plugin_folder':folder,'pieces':built,'overlay':{'rul0':composition},
+                    piece_menu_families.KEY:record}
+        (build/'manifest.json').write_text(json.dumps(manifest))
+        return pieces,build,manifest,controller
+
+    def extract(self,root,pieces,build):
+        # The fixture isolates extraction after the normal build's independent
+        # verification gate; the reversible menu and actual PATH readers run.
+        with patch.object(connections,'load_catalog',return_value={'pieces':pieces}), \
+             patch.object(connections,'verify_build',return_value={'status':'passed'}), \
+             patch.object(connections,'reviewed_contract',return_value=None), \
+             patch.object(connections,'_reviewed_facts',return_value=None), \
+             patch.object(connections,'refresh_catalog_content',return_value={}) as refresh:
+            result = connections.materialize(root,build=build,piece_ids=[piece['id'] for piece in pieces])
+        return result,refresh.call_args.kwargs['records']
+
+    def test_both_alignments_extract_their_own_paths_and_eight_construction_states_from_one_button(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            pieces,build,manifest,_controller = self.saved_pair(root)
+            self.assertIn('AddTypes = F86F',manifest['overlay']['rul0']['ordering_insertion'])
+            result,records = self.extract(root,pieces,build)
+            self.assertEqual(result['extracted_piece_ids'],[piece['id'] for piece in pieces])
+            for piece in pieces:
+                record = records[piece['id']]
+                self.assertEqual(len(record['journeys']),6)
+                self.assertEqual(len(record['ports']),12)
+                self.assertEqual([state['rotation_ccw_degrees'] for state in record['supported_orientations']],
+                                 [0,90,180,270])
+                actual = [section for state in record['supported_orientations']
+                          for section in state['construction_section_ids']]
+                expected = [f'{int(piece["puzzle_id"],16)+slot*0x10000:08x}' for slot in range(8)]
+                self.assertEqual(sorted(actual),sorted(expected))
+                self.assertIn('construction:'+piece['id'],record['source']['resource_fingerprints'])
+
+    def test_a_foreign_addtypes_row_cannot_supply_extraction_orientation_evidence(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            pieces,build,manifest,controller = self.saved_pair(root)
+            overlay = manifest['overlay']['rul0']
+            original = overlay['ordering_insertion']
+            forged = original.replace('AddTypes = F86F','AddTypes = FFFF')
+            self.assertNotEqual(original,forged)
+            overlay['ordering_insertion'] = forged
+            (build/'manifest.json').write_text(json.dumps(manifest))
+            path = build/manifest['plugin_folder']/'00_SCP_Controller_NAM50.dat'
+            path.write_bytes(pack_dbpf({RUL0:controller.replace(original.encode(),forged.encode(),1)}))
+            with self.assertRaisesRegex(ValueError,'unrelated rows, order, states, or keywords'):
+                self.extract(root,pieces,build)
 
 
 if __name__ == '__main__':

@@ -85,6 +85,68 @@ def change_property(resources, key, pid, value=None, *, remove=False, kind=None)
 
 
 class ModelShadowResourceTests(unittest.TestCase):
+    def test_explicit_disable_preserves_reservations_and_omits_generation_and_lighting(self):
+        spec = piece()
+        allocated = shadows.allocation_fields(spec)
+        spec['model_shadows']['enabled'] = False
+        spec['dependencies'].remove('model_shadow_lighting')
+        original = {(0x296678F7, 0xA966883F, 0x7F580000): b'protected traffic'}
+        actual = shadows.add_resources(dict(original), spec, {})
+        actual = strict_dbpf(pack_dbpf(actual))
+        self.assertEqual(actual, original)
+        self.assertEqual(shadows.allocation_fields(spec), allocated)
+        self.assertEqual(shadows.resource_keys(spec), set())
+        self.assertFalse(shadows.enabled(spec))
+        self.assertEqual(shadows.audit_lighting_dependency({}, {}, [spec]),
+                         {'model_shadow_lighting_required': False})
+        report = shadows.validate_resources(actual, spec)
+        self.assertTrue(report['shadow_generation_disabled'])
+        self.assertEqual(report['permanent_reserved_resource_ids_checked'], 256)
+        self.assertFalse(report['game_shadow_selection_tested'])
+        with self.assertRaisesRegex(ValueError, 'must not compile'):
+            shadows.add_resources(dict(original), spec, compiled(spec))
+
+    def test_disabled_generation_rejects_saved_carrier_models_masks_props_and_clipped_shadows(self):
+        spec = piece()
+        original = resources(spec)
+        reserved_keys = shadows.resource_keys(spec) - {(*shadows.T21, 0x7F580000)}
+        spec['model_shadows']['enabled'] = False
+        for key in reserved_keys:
+            with self.subTest(resource=key), self.assertRaisesRegex(ValueError, 'reserved carrier resource'):
+                shadows.validate_resources({key: original[key]}, spec)
+        with self.assertRaisesRegex(ValueError, 'clipped network shadow'):
+            shadows.validate_resources({(*shadows.SHADOW, 0x7F580004): b'stale clipped mask'}, spec)
+
+    def test_disabled_generation_rejects_dangling_saved_t21_references(self):
+        spec = piece()
+        original = resources(spec)
+        key = (*shadows.T21, 0x7F580000)
+        spec['model_shadows']['enabled'] = False
+        with self.assertRaisesRegex(ValueError, 'T21 carrier reference'):
+            shadows.validate_resources({key: original[key]}, spec)
+
+    def test_disabled_generation_preserves_every_adaptive_resource_byte(self):
+        from test_adaptive_network import assets as adaptive_assets
+        spec = piece(adaptive=True)
+        spec['model_shadows']['enabled'] = False
+        original = adaptive_assets(spec)
+        actual = shadows.add_resources(dict(original), spec, {})
+        actual = strict_dbpf(pack_dbpf(actual))
+        self.assertEqual(actual, original)
+        validate_active_resources(actual, spec)
+        self.assertTrue(shadows.validate_resources(actual, spec)['shadow_generation_disabled'])
+
+    def test_generation_enabled_setting_is_strict_and_defaults_to_existing_behavior(self):
+        spec = piece()
+        self.assertTrue(shadows.enabled(spec))
+        expected = shadows.resource_keys(spec)
+        spec['model_shadows']['enabled'] = True
+        self.assertEqual(shadows.resource_keys(spec), expected)
+        for value in (0, 1, None, 'false'):
+            spec['model_shadows']['enabled'] = value
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, 'enabled setting must be a boolean'):
+                shadows.bindings(spec)
+
     def test_existing_modes_do_not_create_resources_or_require_a_light_capture(self):
         spec = piece(); spec.pop('model_shadows'); spec['shadow_mode'] = 'generated'
         original = {(1, 2, 3): b'legacy bytes'}

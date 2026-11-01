@@ -799,7 +799,7 @@ def verify_build(output, write_report=True):
         asset_keys.update(adaptive_keys)
         carrier_keys = model_shadows.resource_keys(piece)
         asset_keys.update(carrier_keys)
-        if carrier_keys:
+        if piece.get('shadow_mode') == model_shadows.MODE:
             shadow_report = model_shadows.validate_resources(resources, piece)
         if adaptive_rows:
             validate_active_resources(resources, piece)

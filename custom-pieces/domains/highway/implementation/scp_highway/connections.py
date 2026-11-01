@@ -14,7 +14,8 @@ import json
 import math
 from pathlib import Path
 
-from scp import jsonc
+from scp import jsonc,piece_menu_families
+from scp.build import RUL0
 from scp.catalog import load_catalog,safe_relative
 from scp.connectivity import piece_connectivity,orientation_states_from_rules
 from scp.content import fingerprint,refresh_catalog_content
@@ -235,6 +236,10 @@ def materialize(root,*,build,piece_ids=None,include_assemblies=False):
     verify_build(build,write_report=False)
     overlay = manifest.get('overlay',{}).get('rul0',{})
     require(overlay.get('suffix'),'Highway extraction requires actual saved construction rules')
+    controller = strict_dbpf(safe_relative(build,
+        manifest['plugin_folder']+'/00_SCP_Controller_NAM50.dat').read_bytes())
+    _plain,overlay,_family_report = piece_menu_families.verify(
+        controller[RUL0],overlay,manifest['pieces'],manifest.get(piece_menu_families.KEY))
     rings,sections = parse_rules(overlay.get('ordering_insertion','')+overlay['suffix'])
     records = {}
     for identifier in selected:

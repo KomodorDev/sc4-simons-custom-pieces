@@ -13,6 +13,8 @@ document_type: "reference"
 
 ## 1. Test scope
 
+The current policy is **no cast shadow from this component**. Verify that appearance on a fresh placement after restarting with the checked no-shadow revision; older saved-attachment cleanup is a separate pending observation. The assembly’s [current no-shadow test](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/TESTING.md#44-independent-module-shadow-test) owns the detailed camera, quality, zoom, and lifecycle procedure.
+
 This record covers **ddrhw-parallel-upper-exit-grade**, used once as **P14** in the [parallel diamond](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/README.md). It has 3 occupied tiles in a 2 × 2 rectangle, the exact authored 0° reference at X3, Y3, and the functional levels described in the [piece guide](README.md#2-piece-and-placement). Saved native through routes, added access fragments, actual model support, material flags, physical joins, rotations, and adaptive resources where present have distinct software checks. Human appearance and travel observations remain separate.
 
 <!-- BEGIN CONNECTIONS -->
@@ -108,7 +110,7 @@ The earlier narrow ground mouths are retained: each terminal keeps its 6 m grade
 3. Repeat fresh placement in the four distinct proper rotations. Rotate the camera separately after placement, because camera movement and a newly rotated piece test different things.
 4. For an adaptive Avenue cell, connect ordinary Avenue outside the core, add nearby development, and compare its pavement variant with the neighbouring Avenue. Connecting the Avenue alone does not select the developed pavement appearance. Inspect both narrow driveway crossings, then check pedestrian Route Query and visible walking separately; a sidewalk image does not create a pedestrian PATH, and the crossing remains road asphalt. For a component without Avenue cells, inspect the neighbouring adaptive owners instead of expecting this piece to change pavement itself.
 5. Run every required car and pedestrian journey listed by the exact matrix. Record Route Query and visible travel separately. Also confirm that every declared forbidden transfer stays unavailable; a visually clear road surface is not traffic evidence.
-6. Inspect shadows, demolish the component, replace it, save the city, quit completely, and reload. Check that no temporary placement handle remains and that the component and its traffic neighbours remain correct.
+6. Inspect for unwanted cast shadows at Medium and High quality; this component intentionally supplies none. Demolish the component, replace it, save the city, quit completely, and reload. Check that no temporary placement handle or old shadow attachment remains and that the component and its traffic neighbours remain correct.
 
 Record only explicit observations through [the shared observation workflow](../../../../docs/TESTING.md), selecting **ddrhw-parallel-upper-exit-grade** and its exact current cases. No observation of the older adaptive probe, R40 diamond, or another rotation automatically approves this new component.
 

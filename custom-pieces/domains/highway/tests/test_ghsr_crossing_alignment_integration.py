@@ -100,6 +100,8 @@ class GHSRCrossingAlignmentRegistrationTests(unittest.TestCase):
         shadow_hosts = model_shadows.bindings(piece)
         self.assertEqual([row['cell'] for row in shadow_hosts], [[0, 0], [1, 0]])
         self.assertTrue(all(row['cast_shadow'] for row in shadow_hosts))
+        self.assertFalse(model_shadows.enabled(piece))
+        self.assertEqual(model_shadows.resource_keys(piece), set())
         self.assertEqual(len(set(model_shadows.reservation_ids(allocations))), 512)
         self.assertTrue(set(model_shadows.reservation_ids(allocations)).isdisjoint(
             model_shadows.reservation_ids(self.catalog['_allocations']['pieces'][ANCHOR])))

@@ -20,6 +20,8 @@ The canonical angled and north-up pictures show the saved model in its authored 
 
 ## 2. Piece and placement
 
+**Current shadow policy:** this component intentionally supplies no cast shadow, as do all fifteen parallel-kit components. After installing the checked revision and restarting, use a fresh placement to avoid confusing older saved attachments with the current result. Follow the assembly’s [no-shadow and cleanup checks](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/TESTING.md#44-independent-module-shadow-test); the earlier carrier repair remains historical evidence.
+
 This separately placed upper L2 on-ramp contains the curved sideways departure beside the straight highway. Its pavement, 1 m underside, native Jersey barrier profiles, and connecting barrier strips belong to this ramp. The complete lateral transition stays at 15 m and changes position over 17 m measured along the highway axis. It becomes fully parallel before the adjoining grade starts to descend.
 
 One city tile owns this component, but its curved model extends over adjacent slip-lane tiles. That model overhang does not add another traffic owner. Because traffic is stored by complete city tile, this owner also retains the beginning of the neighbouring straight grade route. Its saved traffic edge and its physical flat joining section therefore occur at different places.

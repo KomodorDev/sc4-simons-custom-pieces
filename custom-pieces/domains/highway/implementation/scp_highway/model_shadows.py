@@ -60,6 +60,9 @@ def add_shadows(spec, context, compiled, resources):
     rows = model_shadows.bindings(spec)
     if not rows:
         return resources
+    if not model_shadows.enabled(spec):
+        model_shadows.validate_resources(resources, spec)
+        return resources
     capture = context.get('model_shadow_lighting', {})
     raw = capture.get(model_shadows.LIGHTING_EXEMPLAR)
     require(raw is not None and hashlib.sha256(raw).hexdigest() == model_shadows.LIGHTING_SHA256,

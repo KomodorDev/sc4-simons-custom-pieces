@@ -217,6 +217,9 @@ def _check_host(source_raw, model_raws, texture_raws):
 
 def check_resources(resources, piece):
     """Check actual saved canonical geometry and four saved model/texture pairs."""
+    from scp import model_shadows
+    if not model_shadows.enabled(piece):
+        return {'model_shadow_geometry': model_shadows.validate_resources(resources, piece)}
     # Reuse repeated canonical zoom bytes only within this verification call.
     # The enclosing model audit tracks live validator identities and constants;
     # an older inner cache must not bypass a changed clipping or light check.

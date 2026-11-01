@@ -98,15 +98,17 @@ Review the test checklist for the exact tested cases and environments.
 
 ## 2. Test setup
 
-Use Windows SimCity 4 1.1.641 with the project's audited NAM 50 right-hand-traffic inputs. Wine or CrossOver may run that Windows game; record which environment was actually used. The source dependencies are `NetworkAddonMod_Controller.dat`, `RealHighway_DD_RHW-4.dat`, `RealHighway_Core.dat`, `High Speed Rail.dat`, and the audited native-lighting capture. The [shared build guide](../../../../docs/BUILD_AND_INSTALL.md) owns private input settings, exact dependency auditing, installation, and backups. A completed build does not install itself.
+Use Windows SimCity 4 1.1.641 with the project's audited NAM 50 right-hand-traffic inputs. Wine or CrossOver may run that Windows game; record which environment was actually used. The current source dependencies are `NetworkAddonMod_Controller.dat`, `RealHighway_DD_RHW-4.dat`, `RealHighway_Core.dat`, and `High Speed Rail.dat`. The original shadow-carrier candidate additionally used the audited native-lighting capture; the selected no-shadow source no longer requires that dependency. The [shared build guide](../../../../docs/BUILD_AND_INSTALL.md) owns private input settings, exact dependency auditing, installation, and backups. A completed build does not install itself.
 
-Install with the game fully closed, restart it, and place fresh crossing instances in a disposable flat test city. Fresh placement creates the crossing's new shadow attachments and its native approach markers. Use Medium or High shadow quality for the shadow cases. Retain a screenshot before placement, the exact selected build's manifest, and the game version, NAM version, traffic side, active Plugins selection, and shadow setting used for each observation.
+Install with the game fully closed, restart it, and place fresh crossing instances in a disposable flat test city. The current revision intentionally removes this crossing's cast-shadow resources and shadow-only T21 attachments; a T21 is a network-tile record that places attached objects. Fresh placement creates the native approach markers without relying on an older saved attachment being removed by reload alone. Test the absence of unwanted shadows at Medium and High quality, and retain a screenshot before placement, the exact selected build's manifest, and the game version, NAM version, traffic side, active Plugins selection, and shadow setting used for each observation. Existing-city cleanup remains a separate unverified check.
 
 One city tile is 16 m. Technical construction coordinates use column east/right and row south/down. The two owned cells are `(0,0)` and `(0,1)`. The outside helpers are GHSR at `(-1,0)` and `(1,1)`, and DD RHW-4 at `(1,0)` and `(-1,1)`. Thus the construction check reaches columns −1 through 1 and rows 0 through 1, while only the central column belongs to the fixed piece. The canonical preview's southwest-based display labels instead place the north core tile at `(X0,Y1)` and the south core tile at `(X0,Y0)`; its X/Y labels do not change the technical ownership coordinates.
 
 Use the exact native starter selections listed in [README placement](README.md#22-place-a-fresh-crossing-and-extend-both-networks). Before judging this crossing's traffic, establish a control: the surrounding native DD line must already carry moving cars on both decks, and the surrounding GHSR passenger line must already carry moving trains in both directions. Stations, access routes, and travel demand are required for that control; a disconnected line or a city without passengers cannot establish a train-path failure. Keep alternate bypasses away from the crossing so an observed trip must traverse the tested route.
 
 ## 3. Software checks
+
+The [2026-11-01 compiled shadow-removal audit](../../evidence/ddrhw-shadow-removal-20261101.jsonc) covers both GHSR/DD alignments and all fifteen existing parallel components in a 37-type selection. It records 287 removed shadow resources, three adaptive T21 changes, unchanged remaining selected resource payloads, and twenty unaffected DATs preserved byte for byte. Traffic PATHs, visible models, native helpers, adaptive sidewalk resources, and the allocation ledger are preserved. This is exact saved-resource evidence for its recorded candidate and manifest; it records no installation, fresh render, or game observation.
 
 Run these commands from the repository directory containing `custom-pieces/`, after preparing the Python environment and private inputs described in the build guide. The checked source build is `dist/ghsr-under-ddrhw-diagonal-source-01`, relative to the library. The first command audits the native inputs; the remaining commands inspect that build, its source-bound records, and the repository tests. They do not install files or create human game observations.
 
@@ -118,9 +120,9 @@ python3 -B custom-pieces/scp.py docs-check --piece ddrhw-l1-and-l2-over-ghsr-gro
 python3 -B tools/run_tests.py
 ```
 
-The owning recipe is [ghsr_crossing.py](../../implementation/scp_highway/ghsr_crossing.py), and the independent saved-resource contract is [ghsr_crossing_verify.py](../../implementation/scp_highway/ghsr_crossing_verify.py). The native approaches are declared in [ghsr_approaches.py](../../implementation/scp_highway/ghsr_approaches.py). Check the current build report for complete directed lane seams, exact native-helper endpoints and headings, preserved model buffers and textures, packed vertex format `80004001`, explicit PATH height retention, and correct construction selection in every proper rotation. Independent shadow checks must also cover the two hosts, all four relative-pose masks per host, and all sixteen object/camera combinations.
+The owning recipe is [ghsr_crossing.py](../../implementation/scp_highway/ghsr_crossing.py), and the independent saved-resource contract is [ghsr_crossing_verify.py](../../implementation/scp_highway/ghsr_crossing_verify.py). The native approaches are declared in [ghsr_approaches.py](../../implementation/scp_highway/ghsr_approaches.py). Check the current build report for complete directed lane seams, exact native-helper endpoints and headings, preserved model buffers and textures, packed vertex format `80004001`, explicit PATH height retention, and correct construction selection in every proper rotation. For the current no-shadow revision, inspect the saved resources for the absence of shadow-only T21 attachments, carrier props, carrier models, mask textures, and fixed network-shadow mappings; retain the ordinary visible models and native approaches. An older projection audit does not establish this removal.
 
-The [frozen native contract](evidence/native-contract.jsonc) identifies the actual source build and DAT fingerprints, independently checked mesh streams and routes, native helper resources and rules, measured rail transition, and shadow reports. Its targeted independent-verifier run passed 24 tests with no skips, including original-native integration. That recorded run is separate from any later full-suite result and from all pending game observations.
+The [frozen original native contract](evidence/native-contract.jsonc) identifies that earlier source build and DAT fingerprints, independently checked mesh streams and routes, native helper resources and rules, measured rail transition, and historical shadow reports. Its targeted independent-verifier run passed 24 tests with no skips, including original-native integration. Preserve that result for its exact resources; the historical carrier reports do not establish the current no-shadow build, any later full-suite result, or any pending game observation.
 
 The measured train corridor is 5 m wide and 5 m high above the 1 m GHSR route. Its roof is therefore 6 m above ground. The lowest DD structure is 6.5 m above ground, leaving 0.5 m geometrically. The selected DD meshes have no ground-reaching pillars. This is a project geometry envelope; it is not a measured collision box for every replacement train. Check actual moving vehicles separately.
 
@@ -150,16 +152,16 @@ This original crossing is Alignment A. Also follow the [paired A/B alignment pro
 ### 4.3 Heights, shadows, and object lifetime
 
 1. Rotate the city camera through all four views around a fresh crossing. Check that GHSR stays below the lower deck, the lower and upper highway lanes stay at their own levels, and the highway and rail models rotate together. Inspect native ground-bed overhangs and the seam between the two fixed tiles.
-2. Set shadows to **Medium**, inspect the crossing from all camera views and zoom levels, and repeat with **High**. Check for shadows cut at tile boundaries, detached triangles, missing deck shadows, or a phantom neighbouring structure. Low shadow quality does not use this native prop-shadow path.
+2. Set shadows to **Medium**, inspect the crossing from all four camera views and every zoom level, and repeat with **High**. The current crossing intentionally supplies no cast shadows: look for any remaining deck-shaped shadow, detached triangle, or phantom neighbouring structure. Distinguish shadows belonging to nearby native networks or other objects from this crossing. Record a Low-quality comparison separately; absence at Low alone does not establish removal at Medium or High.
 3. Save the city, quit the game completely, reopen that saved city, and repeat the visible-height, approach, shadow, and travel checks. Save/reload is a separate observation from successful first placement.
 4. In the disposable area, demolish the crossing, inspect both former fixed squares for leftover model or shadow objects, and inspect the four native approaches separately. Record which native approach tiles remain and whether each remaining line can still be redrawn. Rebuild a fresh crossing, and repeat the connection check.
-5. Test a small terrain edit beside the real road and rail geometry, beyond the fixed tiles. Record whether an invisible shadow carrier unexpectedly prevents the edit; the carrier's terrain-filter exemption does not establish every possible terrain behaviour.
+5. Test a small terrain edit beside the real road and rail geometry, beyond the fixed tiles. The current build should contain no shadow carrier, so record any unexpected invisible restriction separately from ordinary road and rail protections. Do not treat the historical carrier's terrain-filter audit as evidence for this revision.
 
 Use [the shared observation workflow](../../../../docs/TESTING.md) to record the exact current cases for `ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg`. Preserve build fingerprints, screenshots, and failures. A software check or a report about an earlier Avenue crossing cannot approve this mixed crossing's manual cases.
 
 ## 5. Results and known issues
 
-This is a new experimental piece. All human game checks remain open until an explicit matching observation is recorded. The native source measurements, encoded journeys, model preservation, and projected shadow checks have their own software evidence; they do not establish live placement, draggable continuation, moving cars, moving trains, shadows, terrain behaviour, demolition, or save/reload.
+This is a new experimental piece. All human game checks remain open until an explicit matching observation is recorded. The native source measurements, encoded journeys, model preservation, and current shadow-resource removal have their own software checks. Historical projected-shadow results remain bound to their earlier resources. Neither scope establishes live placement, draggable continuation, moving cars, moving trains, absence of unwanted shadows, terrain behaviour, demolition, or save/reload.
 
 The native GHSR track bed extends approximately 0.989332 m below the ground datum and 1.989332 m above it. The isolated software view can expose below-ground side faces, while the track's long horizontal projection can also look steep in the angled camera. Its saved vertices do not contain a tall vertical track curtain. Actual terrain occlusion and train appearance remain part of the game rendering check. The exact 0.5 m geometric roof margin is also not a promise that every custom train model fits.
 
@@ -247,6 +249,65 @@ No observation recorded.
 Verify the declared directed journeys and forbidden transfers.
 
 Scope: Whole subject.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 3 cases; unverified: 3</summary>
+
+| Check / exact scope | General | 0° | 90° | 180° | 270° |
+| --- | --- | --- | --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-southeast | <a href="#case-preview_review-91a46f707ca45c1febca">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-top | <a href="#case-preview_review-e762595d65419106b3cc">[ ] unverified</a> | — | — | — | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:connection-overview | <a href="#case-preview_review-ec3d14e5b6f5c6cc8104">[ ] unverified</a> | — | — | — | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-southeast</summary>
+
+<a id="case-preview_review-91a46f707ca45c1febca"></a>
+
+**General: unverified** — `preview_review-91a46f707ca45c1febca`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-top</summary>
+
+<a id="case-preview_review-e762595d65419106b3cc"></a>
+
+**General: unverified** — `preview_review-e762595d65419106b3cc`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:connection-overview</summary>
+
+<a id="case-preview_review-ec3d14e5b6f5c6cc8104"></a>
+
+**General: unverified** — `preview_review-ec3d14e5b6f5c6cc8104`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:connection-overview.
 
 No observation recorded.
 
@@ -2512,69 +2573,10 @@ No observation recorded.
 
 </details>
 
-<details>
-<summary>Preview review — Images — 3 cases; unverified: 3</summary>
-
-| Check / exact scope | General | 0° | 90° | 180° | 270° |
-| --- | --- | --- | --- | --- | --- |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-southeast | <a href="#case-preview_review-91a46f707ca45c1febca">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-top | <a href="#case-preview_review-e762595d65419106b3cc">[ ] unverified</a> | — | — | — | — |
-| **Preview review**<br>Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:connection-overview | <a href="#case-preview_review-ec3d14e5b6f5c6cc8104">[ ] unverified</a> | — | — | — | — |
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-southeast</summary>
-
-<a id="case-preview_review-91a46f707ca45c1febca"></a>
-
-**General: unverified** — `preview_review-91a46f707ca45c1febca`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-top</summary>
-
-<a id="case-preview_review-e762595d65419106b3cc"></a>
-
-**General: unverified** — `preview_review-e762595d65419106b3cc`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:canonical-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:connection-overview</summary>
-
-<a id="case-preview_review-ec3d14e5b6f5c6cc8104"></a>
-
-**General: unverified** — `preview_review-ec3d14e5b6f5c6cc8104`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg:connection-overview.
-
-No observation recorded.
-
-</details>
-
-</details>
-
 <!-- END MANUAL CHECKS -->
 
 ## 6. Design history
 
 The requested function is a diagonal ground railway crossing beneath a diagonal double-decker highway, with native draggable connections on all four arms. It is delivered as one reusable two-tile crossing because both networks occupy both central tiles. Splitting those two services into separate fixed pieces would give the same city squares two owners. The neighbouring native approaches provide expansion without adding custom curves, ramps, or filler types.
 
-The design reuses the six DD meshes from the native `5753A905` and `5753A985` crossing halves and the one valid rendered mesh from ordinary diagonal GHSR `5DC01A00`. It preserves the native visible track and highway surfaces, rather than changing their appearance to hide the measured 0.1 m internal PATH discrepancy. Two complementary DD phases and the separate Rail/Monorail GHSR markers were selected from the actual native continuation resources. Three-metre exterior collars and one-metre internal collars remove heading steps at the independently checked boundaries. The new crossing also reuses the independently checked native shadow-carrier mechanism introduced for the parallel diamond; that earlier subject's human observations are not transferred here.
+The design reuses the six DD meshes from the native `5753A905` and `5753A985` crossing halves and the one valid rendered mesh from ordinary diagonal GHSR `5DC01A00`. It preserves the native visible track and highway surfaces, rather than changing their appearance to hide the measured 0.1 m internal PATH discrepancy. Two complementary DD phases and the separate Rail/Monorail GHSR markers were selected from the actual native continuation resources. Three-metre exterior collars and one-metre internal collars remove heading steps at the independently checked boundaries. The initial crossing also reused the independently checked native shadow-carrier mechanism introduced for the parallel diamond. That mechanism is historical for this subject: the user later requested no cast shadows for both GHSR/DD alignments and the parallel diamond to match the reported appearance of the adjoining draggable highway. The [original native contract](evidence/native-contract.jsonc) retains the earlier resource evidence; no shadow or traffic observation is transferred from that earlier revision.
