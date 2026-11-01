@@ -1,0 +1,348 @@
+// title: "Assembly definition: DD RHW-4 — Parallel Diagonal Avenue Diamond — Alignment B"
+// summary: "Define the placed reusable components and construction plan for this assembly."
+//
+// Used when: Contributors author this assembly, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: Contributors following custom-pieces/docs/WORKFLOW_ASSEMBLY_CREATION.md; scp.subject_sources.write_subject() preserves later edits.
+// Affects: Placed component positions and rotations, generated documentation, and the assembly’s component-cycle menu.
+{
+  "title": "DD RHW-4 \u2014 Parallel Diagonal Avenue Diamond \u2014 Alignment B",
+  "purpose": "Close parallel graded ramps beside a straight double-decker highway, with perpendicular right-turn-only Avenue approaches and independently placed functional components.",
+  "geometry_status": "Experimental native resource implementation; software and human observations retain separate scope.",
+  "coordinate_units": "metres east,north,height; rotations counterclockwise",
+  "coordinate_system": {
+    "origin_world_m": [
+      0.0,
+      -160.0
+    ],
+    "origin_name": "southwest tile-centre reference for the Alignment B rebuilding grid",
+    "tile_size_m": 16,
+    "tile_boundaries_offset_m": 8,
+    "axes": [
+      "east",
+      "north",
+      "height"
+    ]
+  },
+  "construction_rectangle_tiles": [
+    9,
+    9
+  ],
+  "reference_grid_rectangle_tiles": [
+    11,
+    11
+  ],
+  "grid_alignment": "B",
+  "alignment_a_translation_en_m": [
+    8.0,
+    8.0
+  ],
+  "source_layout_translation_en_m": [
+    64.0,
+    -80.0
+  ],
+  "occupied_tiles": 34,
+  "module_placements": 15,
+  "component_types_used": 15,
+  "separately_available_component_types": 15,
+  "traffic_policy": {
+    "ramp_access": "adjacent-carriageway right turns only",
+    "required_movements": [
+      "SW->NE",
+      "NE->SW",
+      "NW->SE",
+      "SE->NW",
+      "NE->NW",
+      "NW->SW",
+      "SW->SE",
+      "SE->NE"
+    ],
+    "forbidden_cross_avenue_turns": [
+      "NE->SE",
+      "SE->SW",
+      "SW->NW",
+      "NW->NE"
+    ]
+  },
+  "placements": [
+    {
+      "instance_id": "P01",
+      "label": "P01",
+      "piece_id": "ddrhw-parallel-b-crossing",
+      "origin_m": [
+        64.0,
+        -64.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        4,
+        6
+      ],
+      "name": "DD RHW-4 \u2014 L1/L2 over Avenue L0 \u2014 Diagonal 90\u00b0 \u2014 Parallel \u2014 Alignment B at P01",
+      "menu_name": "DD RHW-4 \u2014 L1/L2 over Avenue L0 \u2014 Diagonal 90\u00b0 \u2014 Parallel \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_crossing"
+    },
+    {
+      "instance_id": "P02",
+      "label": "P02",
+      "piece_id": "ddrhw-parallel-b-northwest-terminal",
+      "origin_m": [
+        48.0,
+        -48.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        3,
+        7
+      ],
+      "name": "Avenue \u2014 Northwest Avenue Right-Turn Terminal \u2014 Parallel DD RHW \u2014 Alignment B at P02",
+      "menu_name": "Avenue \u2014 Northwest Avenue Right-Turn Terminal \u2014 Parallel DD RHW \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_northwest_terminal"
+    },
+    {
+      "instance_id": "P03",
+      "label": "P03",
+      "piece_id": "ddrhw-parallel-b-southeast-terminal",
+      "origin_m": [
+        80.0,
+        -80.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        5,
+        5
+      ],
+      "name": "Avenue \u2014 Southeast Avenue Right-Turn Terminal \u2014 Parallel DD RHW \u2014 Alignment B at P03",
+      "menu_name": "Avenue \u2014 Southeast Avenue Right-Turn Terminal \u2014 Parallel DD RHW \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_southeast_terminal"
+    },
+    {
+      "instance_id": "P04",
+      "label": "P04",
+      "piece_id": "ddrhw-parallel-b-lower-exit-slip",
+      "origin_m": [
+        112.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        7,
+        9
+      ],
+      "name": "DD RHW-4 \u2014 L1 Exit Slip Lanes \u2014 Parallel \u2014 Alignment B at P04",
+      "menu_name": "DD RHW-4 \u2014 L1 Exit Slip Lanes \u2014 Parallel \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_lower_exit_slip"
+    },
+    {
+      "instance_id": "P05",
+      "label": "P05",
+      "piece_id": "ddrhw-parallel-b-lower-entry-slip",
+      "origin_m": [
+        16.0,
+        -112.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        1,
+        3
+      ],
+      "name": "DD RHW-4 \u2014 L1 Entry Slip Lanes \u2014 Parallel \u2014 Alignment B at P05",
+      "menu_name": "DD RHW-4 \u2014 L1 Entry Slip Lanes \u2014 Parallel \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_lower_entry_slip"
+    },
+    {
+      "instance_id": "P06",
+      "label": "P06",
+      "piece_id": "ddrhw-parallel-b-upper-exit-slip",
+      "origin_m": [
+        16.0,
+        -112.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        1,
+        3
+      ],
+      "name": "DD RHW-4 \u2014 L2 Exit Slip Lanes \u2014 Parallel \u2014 Alignment B at P06",
+      "menu_name": "DD RHW-4 \u2014 L2 Exit Slip Lanes \u2014 Parallel \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_upper_exit_slip"
+    },
+    {
+      "instance_id": "P07",
+      "label": "P07",
+      "piece_id": "ddrhw-parallel-b-upper-entry-slip",
+      "origin_m": [
+        112.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        7,
+        9
+      ],
+      "name": "DD RHW-4 \u2014 L2 Entry Slip Lanes \u2014 Parallel \u2014 Alignment B at P07",
+      "menu_name": "DD RHW-4 \u2014 L2 Entry Slip Lanes \u2014 Parallel \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_upper_entry_slip"
+    },
+    {
+      "instance_id": "P08",
+      "label": "P08",
+      "piece_id": "ddrhw-parallel-b-lower-exit-departure",
+      "origin_m": [
+        112.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        7,
+        9
+      ],
+      "name": "RHW Ramp \u2014 L1 Exit Lateral Departure \u2014 Parallel \u2014 Alignment B at P08",
+      "menu_name": "RHW Ramp \u2014 L1 Exit Lateral Departure \u2014 Parallel \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_lower_exit_departure"
+    },
+    {
+      "instance_id": "P09",
+      "label": "P09",
+      "piece_id": "ddrhw-parallel-b-lower-entry-departure",
+      "origin_m": [
+        16.0,
+        -112.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        1,
+        3
+      ],
+      "name": "RHW Ramp \u2014 L1 Entry Lateral Departure \u2014 Parallel \u2014 Alignment B at P09",
+      "menu_name": "RHW Ramp \u2014 L1 Entry Lateral Departure \u2014 Parallel \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_lower_entry_departure"
+    },
+    {
+      "instance_id": "P10",
+      "label": "P10",
+      "piece_id": "ddrhw-parallel-b-upper-exit-departure",
+      "origin_m": [
+        32.0,
+        -144.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        2,
+        1
+      ],
+      "name": "RHW Ramp \u2014 L2 Exit Lateral Departure \u2014 Parallel \u2014 Alignment B at P10",
+      "menu_name": "RHW Ramp \u2014 L2 Exit Lateral Departure \u2014 Parallel \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_upper_exit_departure"
+    },
+    {
+      "instance_id": "P11",
+      "label": "P11",
+      "piece_id": "ddrhw-parallel-b-upper-entry-departure",
+      "origin_m": [
+        144.0,
+        -32.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        9,
+        8
+      ],
+      "name": "RHW Ramp \u2014 L2 Entry Lateral Departure \u2014 Parallel \u2014 Alignment B at P11",
+      "menu_name": "RHW Ramp \u2014 L2 Entry Lateral Departure \u2014 Parallel \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_upper_entry_departure"
+    },
+    {
+      "instance_id": "P12",
+      "label": "P12",
+      "piece_id": "ddrhw-parallel-b-lower-exit-grade",
+      "origin_m": [
+        80.0,
+        -32.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        5,
+        8
+      ],
+      "name": "RHW Ramp \u2014 L1 Exit Parallel Grade \u2014 Parallel \u2014 Alignment B at P12",
+      "menu_name": "RHW Ramp \u2014 L1 Exit Parallel Grade \u2014 Parallel \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_lower_exit_grade"
+    },
+    {
+      "instance_id": "P13",
+      "label": "P13",
+      "piece_id": "ddrhw-parallel-b-lower-entry-grade",
+      "origin_m": [
+        32.0,
+        -80.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        2,
+        5
+      ],
+      "name": "RHW Ramp \u2014 L1 Entry Parallel Grade \u2014 Parallel \u2014 Alignment B at P13",
+      "menu_name": "RHW Ramp \u2014 L1 Entry Parallel Grade \u2014 Parallel \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_lower_entry_grade"
+    },
+    {
+      "instance_id": "P14",
+      "label": "P14",
+      "piece_id": "ddrhw-parallel-b-upper-exit-grade",
+      "origin_m": [
+        48.0,
+        -96.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        3,
+        4
+      ],
+      "name": "RHW Ramp \u2014 L2 Exit Parallel Grade \u2014 Parallel \u2014 Alignment B at P14",
+      "menu_name": "RHW Ramp \u2014 L2 Exit Parallel Grade \u2014 Parallel \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_upper_exit_grade"
+    },
+    {
+      "instance_id": "P15",
+      "label": "P15",
+      "piece_id": "ddrhw-parallel-b-upper-entry-grade",
+      "origin_m": [
+        96.0,
+        -48.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        6,
+        7
+      ],
+      "name": "RHW Ramp \u2014 L2 Entry Parallel Grade \u2014 Parallel \u2014 Alignment B at P15",
+      "menu_name": "RHW Ramp \u2014 L2 Entry Parallel Grade \u2014 Parallel \u2014 Alignment B",
+      "recipe": "highway_ddrhw_parallel_b_upper_entry_grade"
+    }
+  ],
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}

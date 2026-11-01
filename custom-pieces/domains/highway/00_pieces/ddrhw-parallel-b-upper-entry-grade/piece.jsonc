@@ -1,0 +1,145 @@
+// title: "Piece definition: RHW Ramp — L2 Entry Parallel Grade — Parallel — Alignment B"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 L2 Entry Parallel Grade \u2014 Parallel \u2014 Alignment B.",
+  "schema_version": 1,
+  "id": "ddrhw-parallel-b-upper-entry-grade",
+  "domain": "highway",
+  "name": "RHW Ramp \u2014 L2 Entry Parallel Grade \u2014 Parallel \u2014 Alignment B",
+  "description": "Place one l2 entry parallel grade for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+  "recipe": "highway_ddrhw_parallel_b_upper_entry_grade",
+  "geometry_key": "parallel-b-upper-entry-grade",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f87e",
+  "tile_ids": [
+    "7f5d0200",
+    "7f5d0010",
+    "7f5d0110"
+  ],
+  "preview_id": "7f5d0ff5",
+  "effect_name": "preview_scp_hw_f87e_____001",
+  "footprint": [
+    3,
+    2
+  ],
+  "cells": [
+    [
+      2,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "mis"
+  ],
+  "menu": {
+    "id": "6a47f87e",
+    "order": "ffffff7e",
+    "style": "ddrhw-ramp"
+  },
+  "engineering": {
+    "grid_alignment": "B",
+    "alignment_a_translation_en_m": [
+      8.0,
+      8.0
+    ],
+    "avenue_phase_offset": 1,
+    "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+    "max_grade_percent": 30.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "pavement_path_offset_m": 0.0,
+    "model_only_cells": [],
+    "path_ownership": "Every full native and ramp fragment in each owned city cell",
+    "physical_model_function": "grade",
+    "model_overhang": true,
+    "authored_model_overhang": true,
+    "pure_ramp_model": true,
+    "native_model_transfers": [
+      {
+        "source_city_cell": [
+          2,
+          -1
+        ],
+        "model_host_city_cell": [
+          3,
+          -2
+        ],
+        "native_path_owner": "upper-entry-grade",
+        "native_model_owner": "upper-entry-slip"
+      }
+    ],
+    "native_avenue_cells": [],
+    "native_highway_cells": [
+      [
+        2,
+        -1
+      ]
+    ],
+    "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+  },
+  "shadow_mode": "model-carrier",
+  "shadow_mappings": [],
+  "model_shadows": {
+    "schema_version": 1,
+    "sun_profile": "sc4-default-67p5-45",
+    "enabled": false,
+    "cells": [
+      {
+        "cell": [
+          2,
+          0
+        ],
+        "cast_shadow": true,
+        "resource_base": "7f5d0800"
+      },
+      {
+        "cell": [
+          0,
+          1
+        ],
+        "cast_shadow": true,
+        "resource_base": "7f5d0900"
+      },
+      {
+        "cell": [
+          1,
+          1
+        ],
+        "cast_shadow": true,
+        "resource_base": "7f5d0a00"
+      }
+    ]
+  },
+  "provenance": {
+    "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+    "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}

@@ -21,6 +21,27 @@ from scp.dbpf import pack_dbpf
 from scp.install import FOLDER, _owned
 
 
+# A new prefix is not an implementation claim. Keep this reviewed B roster
+# finite so another registered or misspelled recipe still stops selection.
+PARALLEL_ALIGNMENT_B_RECIPES = frozenset({
+    "highway_ddrhw_parallel_b_crossing",
+    "highway_ddrhw_parallel_b_northwest_terminal",
+    "highway_ddrhw_parallel_b_southeast_terminal",
+    "highway_ddrhw_parallel_b_lower_exit_slip",
+    "highway_ddrhw_parallel_b_lower_entry_slip",
+    "highway_ddrhw_parallel_b_upper_exit_slip",
+    "highway_ddrhw_parallel_b_upper_entry_slip",
+    "highway_ddrhw_parallel_b_lower_exit_departure",
+    "highway_ddrhw_parallel_b_lower_entry_departure",
+    "highway_ddrhw_parallel_b_upper_exit_departure",
+    "highway_ddrhw_parallel_b_upper_entry_departure",
+    "highway_ddrhw_parallel_b_lower_exit_grade",
+    "highway_ddrhw_parallel_b_lower_entry_grade",
+    "highway_ddrhw_parallel_b_upper_exit_grade",
+    "highway_ddrhw_parallel_b_upper_entry_grade",
+})
+
+
 class InstallationCancelled(ValueError):
     """Cancellation before the final owned-folder transaction."""
 
@@ -238,6 +259,7 @@ def implemented_recipes_by_domain():
     highway_recipes.add(modular_stamp.RECIPE)
     highway_recipes.update(item["recipe"] for item in modular_ramps.module_catalog()["types"])
     highway_recipes.update(item["recipe"] for item in parallel_layout.module_catalog()["types"])
+    highway_recipes.update(PARALLEL_ALIGNMENT_B_RECIPES)
     return {"high-speed-rail": frozenset(hsr_recipes),
             "highway": frozenset(highway_recipes)}
 

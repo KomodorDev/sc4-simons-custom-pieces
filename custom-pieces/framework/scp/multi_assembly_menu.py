@@ -41,6 +41,9 @@ def _groups(base, bundle):
                 'Invalid or repeated assembly menu layout')
         identifiers.add(row['layout_id'])
         layout = single._layout(row['layout'], domain)
+        if 'variant_label' in layout['cycle_button']:
+            from .assembly_presentation import validate_cycle_title
+            validate_cycle_title(row['scene'], layout['cycle_button'])
         require('submenu' not in layout, 'Disjoint assembly menus do not accept submenu layouts')
         require(layout['assembly_id'] not in assemblies, 'Repeated assembly in menu selection')
         assemblies.add(layout['assembly_id'])
@@ -57,6 +60,29 @@ def _groups(base, bundle):
             members.add(piece['id']); menu_ids.add(menu_id); states.update(rotations)
         result.append((layout, row['scene'], pieces))
     require(not buttons & menu_ids, 'Assembly presentation identifier overlaps a member button')
+    submenus = _submenus(result)
+    submenu_ids = {number(row['definition']['id']) for row in submenus}
+    require(not submenu_ids & (buttons | menu_ids),
+            'Assembly submenu presentation overlaps a member or assembly button')
+    return result
+
+
+def _submenus(groups):
+    """Coalesce identical explicit parent definitions in first-use order."""
+    definitions, result = {}, []
+    for layout, _scene, _pieces in groups:
+        if 'cycle_submenu' not in layout:
+            continue
+        definition = layout['cycle_submenu']
+        iid = number(definition['id'])
+        normalized = {**definition, 'id': f'{iid:08x}',
+                      'order': f'{number(definition["order"]):08x}'}
+        if iid not in definitions:
+            definitions[iid] = {'definition': normalized, 'cycle_ids': []}
+            result.append(definitions[iid])
+        require(definitions[iid]['definition'] == normalized,
+                'Repeated assembly submenu identifier has conflicting definitions')
+        definitions[iid]['cycle_ids'].append(layout['cycle_button']['id'])
     return result
 
 
@@ -95,6 +121,10 @@ def _transform(base, controller, menu, bundle, icons):
         resources, audit = build_menu_experiment_resources(resources, pieces, cycle_button=cycle,
                                                           cycle_icon=icon, expected_cycle_icon=icon)
         audits.append(audit)
+    if submenus := _submenus(groups):
+        from .assembly_submenus import build_resources
+        resources, audit = build_resources(resources, submenus, domain=bundle['domain_id'])
+        audits.append(audit)
     return pack_dbpf({**original, RUL0: changed}), pack_dbpf(resources), composition, audits
 
 
@@ -102,6 +132,7 @@ def _documents(groups):
     from .content import markdown_metadata
     from .menu_experiment_resources import member_domain
     network_menu = 'Highways' if member_domain(groups[0][2]) == 'highway' else 'Rail'
+    submenus = _submenus(groups)
     chapters = [('Placement', '1-placement')]
     chapters += [(layout['cycle_button']['title'], f'{index}-{layout["assembly_id"]}')
                  for index, (layout, _, _) in enumerate(groups, 2)]
@@ -118,19 +149,31 @@ def _documents(groups):
         '3. Press **Tab** for the next component, or **Shift+Tab** for the previous component. Cycling stays within the selected assembly.',
         '4. Press **Home** or **End** to rotate the current component, then click clear terrain to place it.',
         '5. Press **Escape** to cancel. Select another assembly button to begin its separate component cycle.', '']
+    if submenus:
+        lines += ['Assemblies assigned to a submenu appear inside the named submenu below. Open that submenu, then choose its assembly button. The Submenus DLL, SC4ResourceLoadingHooks DLL, and `submenu-essentials.dat` must be installed and active for this nested presentation. Software verification does not establish runtime DLL loading.', '']
     cases = []
     for index, (layout, _scene, pieces) in enumerate(groups, 2):
         lines += [f'<a id="{index}-{layout["assembly_id"]}"></a>', '',
                   f'## {index}. ' + layout['cycle_button']['title'], '',
                   'Assembly: `' + layout['assembly_id'] + '`. The cycle follows this component order:', '']
+        if 'cycle_submenu' in layout:
+            lines += [f'Open **Transportation → {network_menu} → {layout["cycle_submenu"]["title"]}**, then click **{layout["cycle_button"]["title"]}**. Tab and Shift+Tab stay inside this assembly’s component cycle.', '']
         lines += [f'{index}. {piece["name"]} (`{piece["id"]}`).' for index, piece in enumerate(pieces, 1)]
         lines += ['']
         for case in single._game_checks(pieces, single_button=True)['cases']:
+            if 'cycle_submenu' in layout and case['id'] == 'single-assembly-entry':
+                case = {**case, 'description': f'Transportation > {network_menu} > {layout["cycle_submenu"]["title"]} has exactly one button named {layout["cycle_button"]["title"]} for this assembly; no individual member buttons appear. Selecting this button and using Tab or Shift+Tab stays within its listed component cycle.'}
             cases.append({**case, 'id': layout['assembly_id'] + ':' + case['id'],
                           'assembly_id': layout['assembly_id']})
+    for row in submenus:
+        cases.append({'id': 'submenu:' + row['definition']['id'],
+                      'description': f'Transportation > {network_menu} shows {row["definition"]["title"]}; it opens and contains exactly the selected {len(row["cycle_ids"])} assembly buttons, each starting its own isolated component cycle.',
+                      'status': 'unverified', 'observations': []})
+    dependency = ('This candidate requires the Submenus DLL, SC4ResourceLoadingHooks DLL, and `submenu-essentials.dat` for its nested assembly menus.'
+                  if submenus else 'This candidate does not require Submenus DLL.')
     lines += [f'<a id="{len(groups) + 2}-verification"></a>', '',
               f'## {len(groups) + 2}. Verification and observations', '',
-              'The original source documents and archives are frozen under `../assembly-menus-source/`. All piece DATs are unchanged. This candidate does not require Submenus DLL. Building and packaging do not install anything.', '',
+              'The original source documents and archives are frozen under `../assembly-menus-source/`. All piece DATs are unchanged. ' + dependency + ' Building and packaging do not install anything.', '',
               'The [game-checks.json](game-checks.json) template lists pending checks separately for each assembly. Record explicit observations against the candidate manifest fingerprint, platform, game version, and NAM profile. Software checks do not approve menu activation, visible traffic, or save/reload behavior.', '']
     guide = '\n'.join(lines).encode('utf8')
     checks = single._json_bytes({'schema_version': 1, 'purpose': 'Frozen pending checks; no human observations.',
@@ -212,6 +255,8 @@ def _actual(base, bundle, old_controller, old_menu, controller, menu, compositio
     prefixes = (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)
     removed = {(*prefix, number(piece['menu']['id'])) for _, _, pieces in groups for piece in pieces for prefix in prefixes}
     added = {(*prefix, number(layout['cycle_button']['id'])) for layout, _, _ in groups for prefix in prefixes}
+    submenus = _submenus(groups)
+    added |= {(*prefix, number(row['definition']['id'])) for row in submenus for prefix in prefixes}
     require(not set(before) & added and set(after) == (set(before) - removed) | added,
             'Multiple assembly menu resource closure differs')
     require(all(before[key] == after[key] for key in set(before) - removed), 'An unrelated menu resource changed')
@@ -220,11 +265,33 @@ def _actual(base, bundle, old_controller, old_menu, controller, menu, compositio
         properties = {number(prop['id'].removeprefix('0x')): prop['values']
                       for prop in exemplar(after[*MENU_EXEMPLAR, iid])['properties']}
         require(properties[0x8A2602BB] == [number(pieces[0]['menu']['id'])]
-                and properties[0x8A2602B8] == [iid] and properties[0x8A2602B9] == [number(layout['cycle_button']['order'])]
-                and 0x8A2602CA not in properties and 0x8A2602CC not in properties,
+                and properties[0x8A2602B8] == [iid] and properties[0x8A2602B9] == [number(layout['cycle_button']['order'])],
                 'Assembly button has a wrong target, order, or submenu property')
+        if 'cycle_submenu' in layout:
+            require(properties.get(0x8A2602CA) == [number(layout['cycle_submenu']['id'])]
+                    and properties.get(0x8A2602CC) == [2],
+                    'Assembly cycle has the wrong parent submenu or network class')
+        else:
+            require(0x8A2602CA not in properties and 0x8A2602CC not in properties,
+                    'Ungrouped assembly button unexpectedly belongs to a submenu')
         if bundle['domain_id'] == 'highway':
             require(properties.get(0x4005) == [0] and 0x4001 not in properties, 'Assembly button left the Highways menu')
+    if submenus:
+        # Strip only the inspected additions from actual bytes, then use the
+        # separate saved-resource validator against that original cycle map.
+        from .assembly_submenus import validate_resources
+        from .dbpf import encode_exemplar
+        unnested = {key: value for key, value in after.items()
+                    if key not in {(*prefix, number(row['definition']['id']))
+                                   for row in submenus for prefix in prefixes}}
+        for layout, _scene, _pieces in groups:
+            if 'cycle_submenu' in layout:
+                key = (*MENU_EXEMPLAR, number(layout['cycle_button']['id']))
+                record = exemplar(unnested[key])
+                record['properties'] = [prop for prop in record['properties']
+                                        if number(prop['id'].removeprefix('0x')) not in (0x8A2602CA, 0x8A2602CC)]
+                unnested[key] = encode_exemplar(record)
+        validate_resources(after, unnested, submenus, domain=bundle['domain_id'])
 
 
 def verify(output, write_report=True):
@@ -288,20 +355,23 @@ def verify(output, write_report=True):
             single._BASELINE_REPORTS.clear()
         single._BASELINE_REPORTS[key] = deepcopy(baseline)
     count = sum(len(pieces) for _, _, pieces in groups)
+    submenus = _submenus(groups)
     report = {'schema_version': 1, 'static_checks_passed': True, 'files_checked': len(manifest['files']),
         'documentation_files_checked': len(manifest['documentation']), 'source_build_verification': baseline,
         'source_build_verification_reused_in_process': reused,
         'menu_experiment': {'kind': KIND, 'assembly_menu_buttons': len(groups), 'member_buttons_hidden': count,
             'piece_types_preserved': len(base['pieces']), 'all_piece_assets_preserved': True,
-            'new_presentation_resources': 4 * len(groups), 'removed_member_presentation_resources': 4 * count,
+            'new_presentation_resources': 4 * (len(groups) + len(submenus)), 'removed_member_presentation_resources': 4 * count,
             'custom_type_families': len(base['pieces']) - count + len(groups) - len(hidden_members(base['pieces'])),
             'add_types_rows': count - len(groups) + len(hidden_members(base['pieces'])),
             'unrelated_piece_buttons_preserved': len(base['pieces']) - count - len(hidden_members(base['pieces'])),
-            'submenus_dll_required': False,
+            'submenus_dll_required': bool(submenus),
             'construction_definitions_preserved': True, 'network_ini_preserved': True,
             'assemblies': manifest['menu_experiment']['assemblies']},
         'in_game_menu_tested': False,
         'verification_limit': 'Strict frozen source-build validation and independent disjoint menu/Ordering checks; activation, Tab behavior, appearance, traffic, and save/reload remain unverified.'}
+    if submenus:
+        report['menu_experiment']['assembly_submenus'] = audits[-1]['submenus']
     if write_report:
         (output / 'verification.json').write_bytes(single._json_bytes(report))
     return report
@@ -354,6 +424,7 @@ def build(project_root, source, output, *, layout_ids, domain_id='high-speed-rai
                     'Assembly member differs from current authoring metadata')
     _, installed, donors, _ = audit_inputs(catalog, plugins, base['pieces'], extra_roots)
     proposed = {number(layout['cycle_button']['id']) for layout, _, _ in groups}
+    proposed |= {number(row['definition']['id']) for row in _submenus(groups)}
     used = {key[2] for key in installed} | {number(piece['menu']['id']) for piece in catalog['pieces']}
     require(not proposed & used, 'Assembly presentation identifier collides with existing content')
     folder = base['plugin_folder']
@@ -390,4 +461,4 @@ def build(project_root, source, output, *, layout_ids, domain_id='high-speed-rai
         'assembly_menu_buttons': len(groups), 'member_buttons_hidden': sum(len(p) for _, _, p in groups),
         'piece_types_preserved': len(base['pieces']), 'assembly_ids': [layout['assembly_id'] for layout, _, _ in groups],
         'presentation_identifier_conflicts': 0, 'dependency_donors_checked': len(donors),
-        'installed': False, 'in_game_menu_tested': False, 'submenus_dll_required': False}
+        'installed': False, 'in_game_menu_tested': False, 'submenus_dll_required': bool(_submenus(groups))}

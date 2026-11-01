@@ -1,0 +1,4023 @@
+{
+  "schema_version": 1,
+  "purpose": "Encoded-route reachability at saved assembly poses; complete boundary compatibility is not evaluated.",
+  "subject_id": "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b",
+  "subject_kind": "assembly",
+  "coordinate_units": "metres east,north,height; saved assembly poses",
+  "ports": [
+    {
+      "id": "external-1",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l1",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        8.0,
+        -147.2,
+        7.5
+      ],
+      "tangent": [
+        -0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "sampled_tangent": [
+        -0.7071067811865475,
+        -0.7071067811865477
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865475,
+        -0.7071067811865477
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7020",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7021",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7022",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7023",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7024",
+        "path:ddrhw-parallel-b-upper-exit-slip:296678f7-a966883f-7f5c7020",
+        "construction:ddrhw-parallel-b-upper-exit-slip"
+      ],
+      "source_route_ids": [
+        "path-7f5c7020-route-002"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            2
+          ],
+          "edge": 0,
+          "tile_id": "7f5c7020"
+        }
+      ],
+      "connection_class": "path-interface-f9c18bdf77622a5e27b2",
+      "source_piece_id": "ddrhw-parallel-b-upper-exit-slip",
+      "source_port_id": "channel-15-out",
+      "source_placement": "P06",
+      "source_origin_m": [
+        16.0,
+        -112.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-2",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l2",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        8.0,
+        -147.2,
+        15.0
+      ],
+      "tangent": [
+        0.7071067811865476,
+        0.7071067811865476
+      ],
+      "sampled_tangent": [
+        0.7071067811865475,
+        0.7071067811865477
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865475,
+        0.7071067811865477
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7020",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7021",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7022",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7023",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7024",
+        "path:ddrhw-parallel-b-upper-exit-slip:296678f7-a966883f-7f5c7020",
+        "construction:ddrhw-parallel-b-upper-exit-slip"
+      ],
+      "source_route_ids": [
+        "path-7f5c7020-route-000",
+        "path-7f5c7020-route-004"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            2
+          ],
+          "edge": 0,
+          "tile_id": "7f5c7020"
+        }
+      ],
+      "connection_class": "path-interface-3ed34d9a11bb64d98604",
+      "source_piece_id": "ddrhw-parallel-b-upper-exit-slip",
+      "source_port_id": "channel-01-in",
+      "source_placement": "P06",
+      "source_origin_m": [
+        16.0,
+        -112.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-3",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l1",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        8.0,
+        -140.8,
+        7.5
+      ],
+      "tangent": [
+        -0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "sampled_tangent": [
+        -0.7071067811865475,
+        -0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865475,
+        -0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7020",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7021",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7022",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7023",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7024",
+        "path:ddrhw-parallel-b-upper-exit-slip:296678f7-a966883f-7f5c7020",
+        "construction:ddrhw-parallel-b-upper-exit-slip"
+      ],
+      "source_route_ids": [
+        "path-7f5c7020-route-003"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            2
+          ],
+          "edge": 0,
+          "tile_id": "7f5c7020"
+        }
+      ],
+      "connection_class": "path-interface-207fc37bf71ddd9e9cc7",
+      "source_piece_id": "ddrhw-parallel-b-upper-exit-slip",
+      "source_port_id": "channel-16-out",
+      "source_placement": "P06",
+      "source_origin_m": [
+        16.0,
+        -112.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-4",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l2",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        8.0,
+        -140.8,
+        15.0
+      ],
+      "tangent": [
+        0.7071067811865476,
+        0.7071067811865476
+      ],
+      "sampled_tangent": [
+        0.7071067811865475,
+        0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865475,
+        0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7020",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7021",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7022",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7023",
+        "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7024",
+        "path:ddrhw-parallel-b-upper-exit-slip:296678f7-a966883f-7f5c7020",
+        "construction:ddrhw-parallel-b-upper-exit-slip"
+      ],
+      "source_route_ids": [
+        "path-7f5c7020-route-001"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            2
+          ],
+          "edge": 0,
+          "tile_id": "7f5c7020"
+        }
+      ],
+      "connection_class": "path-interface-3e8c9380dd7fc6c63cb8",
+      "source_piece_id": "ddrhw-parallel-b-upper-exit-slip",
+      "source_port_id": "channel-02-in",
+      "source_placement": "P06",
+      "source_origin_m": [
+        16.0,
+        -112.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-5",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "avenue-ground",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 1,
+      "endpoint_m": [
+        44.8,
+        -56.0,
+        0.0
+      ],
+      "tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "sampled_tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1010",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1011",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1012",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1013",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1014",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-a966883f-7f5c1010",
+        "construction:ddrhw-parallel-b-northwest-terminal",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2000",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2100",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2200",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1010",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1100",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1110",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1015",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1105",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1115",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2000",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2100",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2200"
+      ],
+      "source_route_ids": [
+        "path-7f5c1010-route-001",
+        "path-7f5c1010-route-003"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            1
+          ],
+          "edge": 1,
+          "tile_id": "7f5c1010"
+        }
+      ],
+      "connection_class": "path-interface-668896c488171c19873d",
+      "source_piece_id": "ddrhw-parallel-b-northwest-terminal",
+      "source_port_id": "channel-01-in",
+      "source_placement": "P02",
+      "source_origin_m": [
+        48.0,
+        -48.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-6",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "avenue-ground",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 1,
+      "endpoint_m": [
+        51.2,
+        -56.0,
+        0.0
+      ],
+      "tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "sampled_tangent": [
+        0.7071067811865475,
+        -0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865475,
+        -0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1010",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1011",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1012",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1013",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1014",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-a966883f-7f5c1010",
+        "construction:ddrhw-parallel-b-northwest-terminal",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2000",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2100",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2200",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1010",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1100",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1110",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1015",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1105",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1115",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2000",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2100",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2200"
+      ],
+      "source_route_ids": [
+        "path-7f5c1010-route-000"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            1
+          ],
+          "edge": 1,
+          "tile_id": "7f5c1010"
+        }
+      ],
+      "connection_class": "path-interface-1d22b25ce4745f800f2c",
+      "source_piece_id": "ddrhw-parallel-b-northwest-terminal",
+      "source_port_id": "channel-02-in",
+      "source_placement": "P02",
+      "source_origin_m": [
+        48.0,
+        -48.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-7",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "avenue-ground",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        56.0,
+        -51.2,
+        0.0
+      ],
+      "tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "sampled_tangent": [
+        -0.7071067811865476,
+        0.7071067811865475
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865476,
+        0.7071067811865475
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1100",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1101",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1102",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1103",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1104",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-a966883f-7f5c1100",
+        "construction:ddrhw-parallel-b-northwest-terminal",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2000",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2100",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2200",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1010",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1100",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1110",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1015",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1105",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1115",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2000",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2100",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2200"
+      ],
+      "source_route_ids": [
+        "path-7f5c1100-route-000"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            0
+          ],
+          "edge": 0,
+          "tile_id": "7f5c1100"
+        }
+      ],
+      "connection_class": "path-interface-c97bb85824c6523bf652",
+      "source_piece_id": "ddrhw-parallel-b-northwest-terminal",
+      "source_port_id": "channel-06-out",
+      "source_placement": "P02",
+      "source_origin_m": [
+        48.0,
+        -48.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-8",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "avenue-ground",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        56.0,
+        -44.8,
+        0.0
+      ],
+      "tangent": [
+        -0.7071067811865475,
+        0.7071067811865477
+      ],
+      "sampled_tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1100",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1101",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1102",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1103",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1104",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-a966883f-7f5c1100",
+        "construction:ddrhw-parallel-b-northwest-terminal",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2000",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2100",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2200",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1010",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1100",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1110",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1015",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1105",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1115",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2000",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2100",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2200"
+      ],
+      "source_route_ids": [
+        "path-7f5c1100-route-001",
+        "path-7f5c1100-route-003"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            0
+          ],
+          "edge": 0,
+          "tile_id": "7f5c1100"
+        }
+      ],
+      "connection_class": "path-interface-7c732cbad30c1a957476",
+      "source_piece_id": "ddrhw-parallel-b-northwest-terminal",
+      "source_port_id": "channel-07-out",
+      "source_placement": "P02",
+      "source_origin_m": [
+        48.0,
+        -48.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-9",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "avenue-ground",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 2,
+      "endpoint_m": [
+        88.0,
+        -99.2,
+        0.0
+      ],
+      "tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "sampled_tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3010",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3011",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3012",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3013",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3014",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-a966883f-7f5c3010",
+        "construction:ddrhw-parallel-b-southeast-terminal",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4000",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4100",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3010",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3100",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3015",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3105",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4000",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4100"
+      ],
+      "source_route_ids": [
+        "path-7f5c3010-route-001",
+        "path-7f5c3010-route-003"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            1
+          ],
+          "edge": 2,
+          "tile_id": "7f5c3010"
+        }
+      ],
+      "connection_class": "path-interface-7c732cbad30c1a957476",
+      "source_piece_id": "ddrhw-parallel-b-southeast-terminal",
+      "source_port_id": "channel-06-out",
+      "source_placement": "P03",
+      "source_origin_m": [
+        80.0,
+        -80.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-10",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "avenue-ground",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 2,
+      "endpoint_m": [
+        88.0,
+        -92.8,
+        0.0
+      ],
+      "tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "sampled_tangent": [
+        0.7071067811865475,
+        -0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865475,
+        -0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3010",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3011",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3012",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3013",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3014",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-a966883f-7f5c3010",
+        "construction:ddrhw-parallel-b-southeast-terminal",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4000",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4100",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3010",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3100",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3015",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3105",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4000",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4100"
+      ],
+      "source_route_ids": [
+        "path-7f5c3010-route-000"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            1
+          ],
+          "edge": 2,
+          "tile_id": "7f5c3010"
+        }
+      ],
+      "connection_class": "path-interface-c97bb85824c6523bf652",
+      "source_piece_id": "ddrhw-parallel-b-southeast-terminal",
+      "source_port_id": "channel-07-out",
+      "source_placement": "P03",
+      "source_origin_m": [
+        80.0,
+        -80.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-11",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "avenue-ground",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 3,
+      "endpoint_m": [
+        92.8,
+        -88.0,
+        0.0
+      ],
+      "tangent": [
+        -0.7071067811865476,
+        0.7071067811865475
+      ],
+      "sampled_tangent": [
+        -0.7071067811865476,
+        0.7071067811865475
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865476,
+        0.7071067811865475
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3100",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3101",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3102",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3103",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3104",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-a966883f-7f5c3100",
+        "construction:ddrhw-parallel-b-southeast-terminal",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4000",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4100",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3010",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3100",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3015",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3105",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4000",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4100"
+      ],
+      "source_route_ids": [
+        "path-7f5c3100-route-000"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            0
+          ],
+          "edge": 3,
+          "tile_id": "7f5c3100"
+        }
+      ],
+      "connection_class": "path-interface-1d22b25ce4745f800f2c",
+      "source_piece_id": "ddrhw-parallel-b-southeast-terminal",
+      "source_port_id": "channel-04-in",
+      "source_placement": "P03",
+      "source_origin_m": [
+        80.0,
+        -80.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-12",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "avenue-ground",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 3,
+      "endpoint_m": [
+        99.2,
+        -88.0,
+        0.0
+      ],
+      "tangent": [
+        -0.7071067811865477,
+        0.7071067811865475
+      ],
+      "sampled_tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3100",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3101",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3102",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3103",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3104",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-a966883f-7f5c3100",
+        "construction:ddrhw-parallel-b-southeast-terminal",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4000",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4100",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3010",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3100",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3015",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3105",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4000",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4100"
+      ],
+      "source_route_ids": [
+        "path-7f5c3100-route-001",
+        "path-7f5c3100-route-003"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            0
+          ],
+          "edge": 3,
+          "tile_id": "7f5c3100"
+        }
+      ],
+      "connection_class": "path-interface-668896c488171c19873d",
+      "source_piece_id": "ddrhw-parallel-b-southeast-terminal",
+      "source_port_id": "channel-05-in",
+      "source_placement": "P03",
+      "source_origin_m": [
+        80.0,
+        -80.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-13",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l1",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 1,
+      "endpoint_m": [
+        140.8,
+        -8.0,
+        7.5
+      ],
+      "tangent": [
+        -0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "sampled_tangent": [
+        -0.7071067811865476,
+        -0.7071067811865475
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865476,
+        -0.7071067811865475
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8200",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8201",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8202",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8203",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8204",
+        "path:ddrhw-parallel-b-upper-entry-slip:296678f7-a966883f-7f5c8200",
+        "construction:ddrhw-parallel-b-upper-entry-slip"
+      ],
+      "source_route_ids": [
+        "path-7f5c8200-route-003"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            2,
+            0
+          ],
+          "edge": 1,
+          "tile_id": "7f5c8200"
+        }
+      ],
+      "connection_class": "path-interface-aad60a85e4675eaba5de",
+      "source_piece_id": "ddrhw-parallel-b-upper-entry-slip",
+      "source_port_id": "channel-14-in",
+      "source_placement": "P07",
+      "source_origin_m": [
+        112.0,
+        -16.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-14",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l2",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 1,
+      "endpoint_m": [
+        140.8,
+        -8.0,
+        15.0
+      ],
+      "tangent": [
+        0.7071067811865476,
+        0.7071067811865476
+      ],
+      "sampled_tangent": [
+        0.7071067811865476,
+        0.7071067811865475
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865476,
+        0.7071067811865475
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8200",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8201",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8202",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8203",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8204",
+        "path:ddrhw-parallel-b-upper-entry-slip:296678f7-a966883f-7f5c8200",
+        "construction:ddrhw-parallel-b-upper-entry-slip"
+      ],
+      "source_route_ids": [
+        "path-7f5c8200-route-001"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            2,
+            0
+          ],
+          "edge": 1,
+          "tile_id": "7f5c8200"
+        }
+      ],
+      "connection_class": "path-interface-50bfaaffb0d43ee83a9b",
+      "source_piece_id": "ddrhw-parallel-b-upper-entry-slip",
+      "source_port_id": "channel-28-out",
+      "source_placement": "P07",
+      "source_origin_m": [
+        112.0,
+        -16.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-15",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l1",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 1,
+      "endpoint_m": [
+        147.2,
+        -8.0,
+        7.5
+      ],
+      "tangent": [
+        -0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "sampled_tangent": [
+        -0.7071067811865477,
+        -0.7071067811865475
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865477,
+        -0.7071067811865475
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8200",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8201",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8202",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8203",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8204",
+        "path:ddrhw-parallel-b-upper-entry-slip:296678f7-a966883f-7f5c8200",
+        "construction:ddrhw-parallel-b-upper-entry-slip"
+      ],
+      "source_route_ids": [
+        "path-7f5c8200-route-002"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            2,
+            0
+          ],
+          "edge": 1,
+          "tile_id": "7f5c8200"
+        }
+      ],
+      "connection_class": "path-interface-3ecbd7f665c425929ca6",
+      "source_piece_id": "ddrhw-parallel-b-upper-entry-slip",
+      "source_port_id": "channel-15-in",
+      "source_placement": "P07",
+      "source_origin_m": [
+        112.0,
+        -16.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-16",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l2",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 1,
+      "endpoint_m": [
+        147.2,
+        -8.0,
+        15.0
+      ],
+      "tangent": [
+        0.7071067811865476,
+        0.7071067811865476
+      ],
+      "sampled_tangent": [
+        0.7071067811865477,
+        0.7071067811865475
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865477,
+        0.7071067811865475
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8200",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8201",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8202",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8203",
+        "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8204",
+        "path:ddrhw-parallel-b-upper-entry-slip:296678f7-a966883f-7f5c8200",
+        "construction:ddrhw-parallel-b-upper-entry-slip"
+      ],
+      "source_route_ids": [
+        "path-7f5c8200-route-000",
+        "path-7f5c8200-route-004"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            2,
+            0
+          ],
+          "edge": 1,
+          "tile_id": "7f5c8200"
+        }
+      ],
+      "connection_class": "path-interface-55ad67244a3a7bbd6c4b",
+      "source_piece_id": "ddrhw-parallel-b-upper-entry-slip",
+      "source_port_id": "channel-29-out",
+      "source_placement": "P07",
+      "source_origin_m": [
+        112.0,
+        -16.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-17",
+      "direction": "in",
+      "service_network": "pedestrian",
+      "service_family": "pedestrian",
+      "variant": "avenue-sidewalk",
+      "role": "primary",
+      "channel_kind": "walkway",
+      "traffic_modes": [
+        "pedestrian"
+      ],
+      "classification_status": "Actual pedestrian engine 2; no car channel is inferred from coincident coordinates.",
+      "engine_transport": 2,
+      "edge": 1,
+      "endpoint_m": [
+        40.7,
+        -56.0,
+        0.0
+      ],
+      "tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "sampled_tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1010",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1011",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1012",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1013",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1014",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-a966883f-7f5c1010",
+        "construction:ddrhw-parallel-b-northwest-terminal",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2000",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2100",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2200",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1010",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1100",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1110",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1015",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1105",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1115",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2000",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2100",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2200"
+      ],
+      "source_route_ids": [
+        "path-7f5c1010-route-002"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            1
+          ],
+          "edge": 1,
+          "tile_id": "7f5c1010"
+        }
+      ],
+      "connection_class": "path-interface-2ec6b824afff9b450810",
+      "source_piece_id": "ddrhw-parallel-b-northwest-terminal",
+      "source_port_id": "channel-11-in",
+      "source_placement": "P02",
+      "source_origin_m": [
+        48.0,
+        -48.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-18",
+      "direction": "out",
+      "service_network": "pedestrian",
+      "service_family": "pedestrian",
+      "variant": "avenue-sidewalk",
+      "role": "primary",
+      "channel_kind": "walkway",
+      "traffic_modes": [
+        "pedestrian"
+      ],
+      "classification_status": "Actual pedestrian engine 2; no car channel is inferred from coincident coordinates.",
+      "engine_transport": 2,
+      "edge": 0,
+      "endpoint_m": [
+        56.0,
+        -40.7,
+        0.0
+      ],
+      "tangent": [
+        -0.7071067811865477,
+        0.7071067811865475
+      ],
+      "sampled_tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1100",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1101",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1102",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1103",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1104",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-a966883f-7f5c1100",
+        "construction:ddrhw-parallel-b-northwest-terminal",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2000",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2100",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2200",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1010",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1100",
+        "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1110",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1015",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1105",
+        "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1115",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2000",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2100",
+        "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2200"
+      ],
+      "source_route_ids": [
+        "path-7f5c1100-route-002"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            0
+          ],
+          "edge": 0,
+          "tile_id": "7f5c1100"
+        }
+      ],
+      "connection_class": "path-interface-ef45fb4474012bf121a0",
+      "source_piece_id": "ddrhw-parallel-b-northwest-terminal",
+      "source_port_id": "channel-13-out",
+      "source_placement": "P02",
+      "source_origin_m": [
+        48.0,
+        -48.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-19",
+      "direction": "out",
+      "service_network": "pedestrian",
+      "service_family": "pedestrian",
+      "variant": "avenue-sidewalk",
+      "role": "primary",
+      "channel_kind": "walkway",
+      "traffic_modes": [
+        "pedestrian"
+      ],
+      "classification_status": "Actual pedestrian engine 2; no car channel is inferred from coincident coordinates.",
+      "engine_transport": 2,
+      "edge": 2,
+      "endpoint_m": [
+        88.0,
+        -103.3,
+        0.0
+      ],
+      "tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "sampled_tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3010",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3011",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3012",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3013",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3014",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-a966883f-7f5c3010",
+        "construction:ddrhw-parallel-b-southeast-terminal",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4000",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4100",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3010",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3100",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3015",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3105",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4000",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4100"
+      ],
+      "source_route_ids": [
+        "path-7f5c3010-route-002"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            1
+          ],
+          "edge": 2,
+          "tile_id": "7f5c3010"
+        }
+      ],
+      "connection_class": "path-interface-ef45fb4474012bf121a0",
+      "source_piece_id": "ddrhw-parallel-b-southeast-terminal",
+      "source_port_id": "channel-13-out",
+      "source_placement": "P03",
+      "source_origin_m": [
+        80.0,
+        -80.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-20",
+      "direction": "in",
+      "service_network": "pedestrian",
+      "service_family": "pedestrian",
+      "variant": "avenue-sidewalk",
+      "role": "primary",
+      "channel_kind": "walkway",
+      "traffic_modes": [
+        "pedestrian"
+      ],
+      "classification_status": "Actual pedestrian engine 2; no car channel is inferred from coincident coordinates.",
+      "engine_transport": 2,
+      "edge": 3,
+      "endpoint_m": [
+        103.3,
+        -88.0,
+        0.0
+      ],
+      "tangent": [
+        -0.7071067811865475,
+        0.7071067811865477
+      ],
+      "sampled_tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3100",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3101",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3102",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3103",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3104",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-a966883f-7f5c3100",
+        "construction:ddrhw-parallel-b-southeast-terminal",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4000",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4100",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3010",
+        "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3100",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3015",
+        "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3105",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4000",
+        "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4100"
+      ],
+      "source_route_ids": [
+        "path-7f5c3100-route-002"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            0
+          ],
+          "edge": 3,
+          "tile_id": "7f5c3100"
+        }
+      ],
+      "connection_class": "path-interface-2ec6b824afff9b450810",
+      "source_piece_id": "ddrhw-parallel-b-southeast-terminal",
+      "source_port_id": "channel-12-in",
+      "source_placement": "P03",
+      "source_origin_m": [
+        80.0,
+        -80.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    }
+  ],
+  "journeys": [
+    {
+      "id": "external-11>external-7",
+      "entry_port": "external-11",
+      "exit_port": "external-7",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-12>external-16",
+      "entry_port": "external-12",
+      "exit_port": "external-16",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-12>external-8",
+      "entry_port": "external-12",
+      "exit_port": "external-8",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-13>external-3",
+      "entry_port": "external-13",
+      "exit_port": "external-3",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-13>external-8",
+      "entry_port": "external-13",
+      "exit_port": "external-8",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-15>external-1",
+      "entry_port": "external-15",
+      "exit_port": "external-1",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-17>external-19",
+      "entry_port": "external-17",
+      "exit_port": "external-19",
+      "service_network": "pedestrian",
+      "role": "primary",
+      "engine_transport_classes": [
+        2
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-20>external-18",
+      "entry_port": "external-20",
+      "exit_port": "external-18",
+      "service_network": "pedestrian",
+      "role": "primary",
+      "engine_transport_classes": [
+        2
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-2>external-16",
+      "entry_port": "external-2",
+      "exit_port": "external-16",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-2>external-9",
+      "entry_port": "external-2",
+      "exit_port": "external-9",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-4>external-14",
+      "entry_port": "external-4",
+      "exit_port": "external-14",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-5>external-3",
+      "entry_port": "external-5",
+      "exit_port": "external-3",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-5>external-9",
+      "entry_port": "external-5",
+      "exit_port": "external-9",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-6>external-10",
+      "entry_port": "external-6",
+      "exit_port": "external-10",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    }
+  ],
+  "forbidden_transfers": [
+    {
+      "from_port": "external-2",
+      "to_port": "external-1",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-2",
+      "to_port": "external-3",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-2",
+      "to_port": "external-7",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-2",
+      "to_port": "external-8",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-2",
+      "to_port": "external-10",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-2",
+      "to_port": "external-14",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-2",
+      "to_port": "external-18",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-2",
+      "to_port": "external-19",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-4",
+      "to_port": "external-1",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-4",
+      "to_port": "external-3",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-4",
+      "to_port": "external-7",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-4",
+      "to_port": "external-8",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-4",
+      "to_port": "external-9",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-4",
+      "to_port": "external-10",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-4",
+      "to_port": "external-16",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-4",
+      "to_port": "external-18",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-4",
+      "to_port": "external-19",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-5",
+      "to_port": "external-1",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-5",
+      "to_port": "external-7",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-5",
+      "to_port": "external-8",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-5",
+      "to_port": "external-10",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-5",
+      "to_port": "external-14",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-5",
+      "to_port": "external-16",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-5",
+      "to_port": "external-18",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-5",
+      "to_port": "external-19",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-1",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-3",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-7",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-8",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-9",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-14",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-16",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-18",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-19",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-11",
+      "to_port": "external-1",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-11",
+      "to_port": "external-3",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-11",
+      "to_port": "external-8",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-11",
+      "to_port": "external-9",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-11",
+      "to_port": "external-10",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-11",
+      "to_port": "external-14",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-11",
+      "to_port": "external-16",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-11",
+      "to_port": "external-18",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-11",
+      "to_port": "external-19",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-12",
+      "to_port": "external-1",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-12",
+      "to_port": "external-3",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-12",
+      "to_port": "external-7",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-12",
+      "to_port": "external-9",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-12",
+      "to_port": "external-10",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-12",
+      "to_port": "external-14",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-12",
+      "to_port": "external-18",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-12",
+      "to_port": "external-19",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-13",
+      "to_port": "external-1",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-13",
+      "to_port": "external-7",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-13",
+      "to_port": "external-9",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-13",
+      "to_port": "external-10",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-13",
+      "to_port": "external-14",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-13",
+      "to_port": "external-16",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-13",
+      "to_port": "external-18",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-13",
+      "to_port": "external-19",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-15",
+      "to_port": "external-3",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-15",
+      "to_port": "external-7",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-15",
+      "to_port": "external-8",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-15",
+      "to_port": "external-9",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-15",
+      "to_port": "external-10",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-15",
+      "to_port": "external-14",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-15",
+      "to_port": "external-16",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-15",
+      "to_port": "external-18",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-15",
+      "to_port": "external-19",
+      "from_service": "road",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-17",
+      "to_port": "external-1",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-17",
+      "to_port": "external-3",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-17",
+      "to_port": "external-7",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-17",
+      "to_port": "external-8",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-17",
+      "to_port": "external-9",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-17",
+      "to_port": "external-10",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-17",
+      "to_port": "external-14",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-17",
+      "to_port": "external-16",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-17",
+      "to_port": "external-18",
+      "from_service": "pedestrian",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-20",
+      "to_port": "external-1",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-20",
+      "to_port": "external-3",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-20",
+      "to_port": "external-7",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-20",
+      "to_port": "external-8",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-20",
+      "to_port": "external-9",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-20",
+      "to_port": "external-10",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-20",
+      "to_port": "external-14",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-20",
+      "to_port": "external-16",
+      "from_service": "pedestrian",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-20",
+      "to_port": "external-19",
+      "from_service": "pedestrian",
+      "to_service": "pedestrian",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    }
+  ],
+  "encoded_route_joins": [
+    {
+      "from_piece": "ddrhw-parallel-b-crossing",
+      "from_placement": "P01",
+      "from_port": "channel-11-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-grade",
+      "to_placement": "P13",
+      "to_port": "channel-05-in",
+      "endpoint_m": [
+        56.0,
+        -79.029437,
+        0.083612
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-crossing",
+      "from_placement": "P01",
+      "from_port": "channel-12-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-grade",
+      "to_placement": "P14",
+      "to_port": "channel-05-in",
+      "endpoint_m": [
+        60.8,
+        -88.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-crossing",
+      "from_placement": "P01",
+      "from_port": "channel-13-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-grade",
+      "to_placement": "P14",
+      "to_port": "channel-06-in",
+      "endpoint_m": [
+        67.2,
+        -88.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-crossing",
+      "from_placement": "P01",
+      "from_port": "channel-14-out",
+      "to_piece": "ddrhw-parallel-b-northwest-terminal",
+      "to_placement": "P02",
+      "to_port": "channel-03-in",
+      "endpoint_m": [
+        72.0,
+        -67.2,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-crossing",
+      "from_placement": "P01",
+      "from_port": "channel-15-out",
+      "to_piece": "ddrhw-parallel-b-northwest-terminal",
+      "to_placement": "P02",
+      "to_port": "channel-04-in",
+      "endpoint_m": [
+        72.0,
+        -60.8,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-crossing",
+      "from_placement": "P01",
+      "from_port": "channel-16-out",
+      "to_piece": "ddrhw-parallel-b-northwest-terminal",
+      "to_placement": "P02",
+      "to_port": "channel-05-in",
+      "endpoint_m": [
+        72.0,
+        -59.324846,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-crossing",
+      "from_placement": "P01",
+      "from_port": "channel-17-out",
+      "to_piece": "ddrhw-parallel-b-southeast-terminal",
+      "to_placement": "P03",
+      "to_port": "channel-02-in",
+      "endpoint_m": [
+        76.8,
+        -88.0,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-crossing",
+      "from_placement": "P01",
+      "from_port": "channel-18-out",
+      "to_piece": "ddrhw-parallel-b-southeast-terminal",
+      "to_placement": "P03",
+      "to_port": "channel-03-in",
+      "endpoint_m": [
+        83.2,
+        -88.0,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-crossing",
+      "from_placement": "P01",
+      "from_port": "channel-19-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-grade",
+      "to_placement": "P15",
+      "to_port": "channel-01-in",
+      "endpoint_m": [
+        88.0,
+        -67.2,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-crossing",
+      "from_placement": "P01",
+      "from_port": "channel-20-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-grade",
+      "to_placement": "P15",
+      "to_port": "channel-02-in",
+      "endpoint_m": [
+        88.0,
+        -60.8,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-crossing",
+      "from_placement": "P01",
+      "from_port": "channel-23-out",
+      "to_piece": "ddrhw-parallel-b-northwest-terminal",
+      "to_placement": "P02",
+      "to_port": "channel-12-in",
+      "endpoint_m": [
+        72.0,
+        -56.7,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-crossing",
+      "from_placement": "P01",
+      "from_port": "channel-24-out",
+      "to_piece": "ddrhw-parallel-b-southeast-terminal",
+      "to_placement": "P03",
+      "to_port": "channel-11-in",
+      "endpoint_m": [
+        72.7,
+        -88.0,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-departure",
+      "from_placement": "P09",
+      "from_port": "channel-02-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "to_placement": "P05",
+      "to_port": "channel-03-in",
+      "endpoint_m": [
+        23.155817,
+        -120.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-grade",
+      "from_placement": "P13",
+      "from_port": "channel-06-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "to_placement": "P05",
+      "to_port": "channel-07-in",
+      "endpoint_m": [
+        31.029437,
+        -104.0,
+        6.390578
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-grade",
+      "from_placement": "P13",
+      "from_port": "channel-07-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "to_placement": "P06",
+      "to_port": "channel-12-in",
+      "endpoint_m": [
+        44.8,
+        -104.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-grade",
+      "from_placement": "P13",
+      "from_port": "channel-08-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "to_placement": "P06",
+      "to_port": "channel-14-in",
+      "endpoint_m": [
+        51.2,
+        -104.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-grade",
+      "from_placement": "P13",
+      "from_port": "channel-09-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-grade",
+      "to_placement": "P14",
+      "to_port": "channel-03-in",
+      "endpoint_m": [
+        56.0,
+        -99.2,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-grade",
+      "from_placement": "P13",
+      "from_port": "channel-10-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-grade",
+      "to_placement": "P14",
+      "to_port": "channel-04-in",
+      "endpoint_m": [
+        56.0,
+        -92.8,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "from_placement": "P05",
+      "from_port": "channel-11-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "to_placement": "P06",
+      "to_port": "channel-03-in",
+      "endpoint_m": [
+        12.8,
+        -136.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "from_placement": "P05",
+      "from_port": "channel-12-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "to_placement": "P06",
+      "to_port": "channel-04-in",
+      "endpoint_m": [
+        19.2,
+        -136.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "from_placement": "P05",
+      "from_port": "channel-13-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "to_placement": "P06",
+      "to_port": "channel-05-in",
+      "endpoint_m": [
+        24.0,
+        -131.2,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "from_placement": "P05",
+      "from_port": "channel-14-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "to_placement": "P06",
+      "to_port": "channel-06-in",
+      "endpoint_m": [
+        24.0,
+        -124.8,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "from_placement": "P05",
+      "from_port": "channel-15-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-departure",
+      "to_placement": "P09",
+      "to_port": "channel-01-in",
+      "endpoint_m": [
+        24.0,
+        -111.734846,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "from_placement": "P05",
+      "from_port": "channel-16-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "to_placement": "P06",
+      "to_port": "channel-07-in",
+      "endpoint_m": [
+        28.8,
+        -120.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "from_placement": "P05",
+      "from_port": "channel-17-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "to_placement": "P06",
+      "to_port": "channel-09-in",
+      "endpoint_m": [
+        35.2,
+        -120.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "from_placement": "P05",
+      "from_port": "channel-18-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "to_placement": "P06",
+      "to_port": "channel-10-in",
+      "endpoint_m": [
+        40.0,
+        -115.2,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "from_placement": "P05",
+      "from_port": "channel-19-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "to_placement": "P06",
+      "to_port": "channel-11-in",
+      "endpoint_m": [
+        40.0,
+        -108.8,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-departure",
+      "from_placement": "P08",
+      "from_port": "channel-02-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "to_placement": "P04",
+      "to_port": "channel-02-in",
+      "endpoint_m": [
+        111.734846,
+        -24.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-grade",
+      "from_placement": "P12",
+      "from_port": "channel-06-out",
+      "to_piece": "ddrhw-parallel-b-crossing",
+      "to_placement": "P01",
+      "to_port": "channel-06-in",
+      "endpoint_m": [
+        79.029437,
+        -56.0,
+        0.083612
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-grade",
+      "from_placement": "P12",
+      "from_port": "channel-07-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-grade",
+      "to_placement": "P15",
+      "to_port": "channel-03-in",
+      "endpoint_m": [
+        92.8,
+        -56.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-grade",
+      "from_placement": "P12",
+      "from_port": "channel-08-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-grade",
+      "to_placement": "P15",
+      "to_port": "channel-05-in",
+      "endpoint_m": [
+        99.2,
+        -56.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-grade",
+      "from_placement": "P12",
+      "from_port": "channel-09-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "to_placement": "P07",
+      "to_port": "channel-01-in",
+      "endpoint_m": [
+        104.0,
+        -51.2,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-grade",
+      "from_placement": "P12",
+      "from_port": "channel-10-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "to_placement": "P07",
+      "to_port": "channel-02-in",
+      "endpoint_m": [
+        104.0,
+        -44.8,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "from_placement": "P04",
+      "from_port": "channel-10-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-grade",
+      "to_placement": "P12",
+      "to_port": "channel-05-in",
+      "endpoint_m": [
+        104.0,
+        -31.029437,
+        6.390578
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "from_placement": "P04",
+      "from_port": "channel-11-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "to_placement": "P07",
+      "to_port": "channel-03-in",
+      "endpoint_m": [
+        108.8,
+        -40.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "from_placement": "P04",
+      "from_port": "channel-12-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "to_placement": "P07",
+      "to_port": "channel-05-in",
+      "endpoint_m": [
+        115.2,
+        -40.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "from_placement": "P04",
+      "from_port": "channel-13-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "to_placement": "P07",
+      "to_port": "channel-06-in",
+      "endpoint_m": [
+        120.0,
+        -35.2,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "from_placement": "P04",
+      "from_port": "channel-14-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "to_placement": "P07",
+      "to_port": "channel-07-in",
+      "endpoint_m": [
+        120.0,
+        -28.8,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "from_placement": "P04",
+      "from_port": "channel-15-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-departure",
+      "to_placement": "P08",
+      "to_port": "channel-01-in",
+      "endpoint_m": [
+        120.0,
+        -23.155817,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "from_placement": "P04",
+      "from_port": "channel-16-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "to_placement": "P07",
+      "to_port": "channel-08-in",
+      "endpoint_m": [
+        124.8,
+        -24.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "from_placement": "P04",
+      "from_port": "channel-17-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "to_placement": "P07",
+      "to_port": "channel-10-in",
+      "endpoint_m": [
+        131.2,
+        -24.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "from_placement": "P04",
+      "from_port": "channel-18-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "to_placement": "P07",
+      "to_port": "channel-11-in",
+      "endpoint_m": [
+        136.0,
+        -19.2,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "from_placement": "P04",
+      "from_port": "channel-19-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "to_placement": "P07",
+      "to_port": "channel-12-in",
+      "endpoint_m": [
+        136.0,
+        -12.8,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-northwest-terminal",
+      "from_placement": "P02",
+      "from_port": "channel-08-out",
+      "to_piece": "ddrhw-parallel-b-crossing",
+      "to_placement": "P01",
+      "to_port": "channel-01-in",
+      "endpoint_m": [
+        59.324846,
+        -72.0,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-northwest-terminal",
+      "from_placement": "P02",
+      "from_port": "channel-09-out",
+      "to_piece": "ddrhw-parallel-b-crossing",
+      "to_placement": "P01",
+      "to_port": "channel-03-in",
+      "endpoint_m": [
+        60.8,
+        -72.0,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-northwest-terminal",
+      "from_placement": "P02",
+      "from_port": "channel-10-out",
+      "to_piece": "ddrhw-parallel-b-crossing",
+      "to_placement": "P01",
+      "to_port": "channel-05-in",
+      "endpoint_m": [
+        67.2,
+        -72.0,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-northwest-terminal",
+      "from_placement": "P02",
+      "from_port": "channel-14-out",
+      "to_piece": "ddrhw-parallel-b-crossing",
+      "to_placement": "P01",
+      "to_port": "channel-21-in",
+      "endpoint_m": [
+        56.7,
+        -72.0,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-southeast-terminal",
+      "from_placement": "P03",
+      "from_port": "channel-08-out",
+      "to_piece": "ddrhw-parallel-b-crossing",
+      "to_placement": "P01",
+      "to_port": "channel-07-in",
+      "endpoint_m": [
+        88.0,
+        -83.2,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-southeast-terminal",
+      "from_placement": "P03",
+      "from_port": "channel-09-out",
+      "to_piece": "ddrhw-parallel-b-crossing",
+      "to_placement": "P01",
+      "to_port": "channel-08-in",
+      "endpoint_m": [
+        88.0,
+        -76.8,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-southeast-terminal",
+      "from_placement": "P03",
+      "from_port": "channel-10-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-grade",
+      "to_placement": "P15",
+      "to_port": "channel-04-in",
+      "endpoint_m": [
+        96.970563,
+        -72.0,
+        0.489958
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-southeast-terminal",
+      "from_placement": "P03",
+      "from_port": "channel-14-out",
+      "to_piece": "ddrhw-parallel-b-crossing",
+      "to_placement": "P01",
+      "to_port": "channel-22-in",
+      "endpoint_m": [
+        88.0,
+        -72.7,
+        0.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-departure",
+      "from_placement": "P11",
+      "from_port": "channel-02-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "to_placement": "P07",
+      "to_port": "channel-13-in",
+      "endpoint_m": [
+        136.671746,
+        -24.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-grade",
+      "from_placement": "P15",
+      "from_port": "channel-07-out",
+      "to_piece": "ddrhw-parallel-b-crossing",
+      "to_placement": "P01",
+      "to_port": "channel-09-in",
+      "endpoint_m": [
+        88.0,
+        -67.2,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-grade",
+      "from_placement": "P15",
+      "from_port": "channel-08-out",
+      "to_piece": "ddrhw-parallel-b-crossing",
+      "to_placement": "P01",
+      "to_port": "channel-10-in",
+      "endpoint_m": [
+        88.0,
+        -60.8,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-grade",
+      "from_placement": "P15",
+      "from_port": "channel-09-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-grade",
+      "to_placement": "P12",
+      "to_port": "channel-01-in",
+      "endpoint_m": [
+        92.8,
+        -56.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-grade",
+      "from_placement": "P15",
+      "from_port": "channel-10-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-grade",
+      "to_placement": "P12",
+      "to_port": "channel-02-in",
+      "endpoint_m": [
+        99.2,
+        -56.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-grade",
+      "from_placement": "P15",
+      "from_port": "channel-11-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "to_placement": "P07",
+      "to_port": "channel-04-in",
+      "endpoint_m": [
+        112.970563,
+        -56.0,
+        6.871553
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-grade",
+      "from_placement": "P15",
+      "from_port": "channel-12-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "to_placement": "P07",
+      "to_port": "channel-09-in",
+      "endpoint_m": [
+        128.970563,
+        -40.0,
+        13.253148
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "from_placement": "P07",
+      "from_port": "channel-16-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-grade",
+      "to_placement": "P12",
+      "to_port": "channel-03-in",
+      "endpoint_m": [
+        104.0,
+        -51.2,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "from_placement": "P07",
+      "from_port": "channel-17-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-grade",
+      "to_placement": "P12",
+      "to_port": "channel-04-in",
+      "endpoint_m": [
+        104.0,
+        -44.8,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "from_placement": "P07",
+      "from_port": "channel-18-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "to_placement": "P04",
+      "to_port": "channel-01-in",
+      "endpoint_m": [
+        108.8,
+        -40.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "from_placement": "P07",
+      "from_port": "channel-19-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "to_placement": "P04",
+      "to_port": "channel-03-in",
+      "endpoint_m": [
+        115.2,
+        -40.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "from_placement": "P07",
+      "from_port": "channel-20-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-grade",
+      "to_placement": "P15",
+      "to_port": "channel-06-in",
+      "endpoint_m": [
+        120.0,
+        -48.970563,
+        9.675242
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "from_placement": "P07",
+      "from_port": "channel-21-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "to_placement": "P04",
+      "to_port": "channel-04-in",
+      "endpoint_m": [
+        120.0,
+        -35.2,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "from_placement": "P07",
+      "from_port": "channel-22-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "to_placement": "P04",
+      "to_port": "channel-05-in",
+      "endpoint_m": [
+        120.0,
+        -28.8,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "from_placement": "P07",
+      "from_port": "channel-23-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "to_placement": "P04",
+      "to_port": "channel-06-in",
+      "endpoint_m": [
+        124.8,
+        -24.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "from_placement": "P07",
+      "from_port": "channel-24-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "to_placement": "P04",
+      "to_port": "channel-07-in",
+      "endpoint_m": [
+        131.2,
+        -24.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "from_placement": "P07",
+      "from_port": "channel-25-out",
+      "to_piece": "ddrhw-parallel-b-upper-entry-departure",
+      "to_placement": "P11",
+      "to_port": "channel-01-in",
+      "endpoint_m": [
+        136.0,
+        -32.265153999999995,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "from_placement": "P07",
+      "from_port": "channel-26-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "to_placement": "P04",
+      "to_port": "channel-08-in",
+      "endpoint_m": [
+        136.0,
+        -19.2,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-entry-slip",
+      "from_placement": "P07",
+      "from_port": "channel-27-out",
+      "to_piece": "ddrhw-parallel-b-lower-exit-slip",
+      "to_placement": "P04",
+      "to_port": "channel-09-in",
+      "endpoint_m": [
+        136.0,
+        -12.8,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-departure",
+      "from_placement": "P10",
+      "from_port": "channel-02-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "to_placement": "P06",
+      "to_port": "channel-08-in",
+      "endpoint_m": [
+        32.265154,
+        -136.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-grade",
+      "from_placement": "P14",
+      "from_port": "channel-07-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "to_placement": "P06",
+      "to_port": "channel-13-in",
+      "endpoint_m": [
+        48.970563,
+        -120.0,
+        9.675242
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-grade",
+      "from_placement": "P14",
+      "from_port": "channel-08-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-grade",
+      "to_placement": "P13",
+      "to_port": "channel-03-in",
+      "endpoint_m": [
+        56.0,
+        -99.2,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-grade",
+      "from_placement": "P14",
+      "from_port": "channel-09-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-grade",
+      "to_placement": "P13",
+      "to_port": "channel-04-in",
+      "endpoint_m": [
+        56.0,
+        -92.8,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-grade",
+      "from_placement": "P14",
+      "from_port": "channel-10-out",
+      "to_piece": "ddrhw-parallel-b-crossing",
+      "to_placement": "P01",
+      "to_port": "channel-02-in",
+      "endpoint_m": [
+        60.8,
+        -88.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-grade",
+      "from_placement": "P14",
+      "from_port": "channel-11-out",
+      "to_piece": "ddrhw-parallel-b-crossing",
+      "to_placement": "P01",
+      "to_port": "channel-04-in",
+      "endpoint_m": [
+        67.2,
+        -88.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-grade",
+      "from_placement": "P14",
+      "from_port": "channel-12-out",
+      "to_piece": "ddrhw-parallel-b-southeast-terminal",
+      "to_placement": "P03",
+      "to_port": "channel-01-in",
+      "endpoint_m": [
+        72.0,
+        -96.970563,
+        0.489958
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "from_placement": "P06",
+      "from_port": "channel-17-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "to_placement": "P05",
+      "to_port": "channel-01-in",
+      "endpoint_m": [
+        12.8,
+        -136.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "from_placement": "P06",
+      "from_port": "channel-18-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "to_placement": "P05",
+      "to_port": "channel-02-in",
+      "endpoint_m": [
+        19.2,
+        -136.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "from_placement": "P06",
+      "from_port": "channel-19-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-departure",
+      "to_placement": "P10",
+      "to_port": "channel-01-in",
+      "endpoint_m": [
+        24.0,
+        -136.67174599999998,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "from_placement": "P06",
+      "from_port": "channel-20-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "to_placement": "P05",
+      "to_port": "channel-04-in",
+      "endpoint_m": [
+        24.0,
+        -131.2,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "from_placement": "P06",
+      "from_port": "channel-21-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "to_placement": "P05",
+      "to_port": "channel-05-in",
+      "endpoint_m": [
+        24.0,
+        -124.8,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "from_placement": "P06",
+      "from_port": "channel-22-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "to_placement": "P05",
+      "to_port": "channel-06-in",
+      "endpoint_m": [
+        28.8,
+        -120.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "from_placement": "P06",
+      "from_port": "channel-23-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "to_placement": "P05",
+      "to_port": "channel-08-in",
+      "endpoint_m": [
+        35.2,
+        -120.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "from_placement": "P06",
+      "from_port": "channel-24-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-grade",
+      "to_placement": "P14",
+      "to_port": "channel-01-in",
+      "endpoint_m": [
+        40.0,
+        -128.970563,
+        13.253148
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "from_placement": "P06",
+      "from_port": "channel-25-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "to_placement": "P05",
+      "to_port": "channel-09-in",
+      "endpoint_m": [
+        40.0,
+        -115.2,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "from_placement": "P06",
+      "from_port": "channel-26-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-slip",
+      "to_placement": "P05",
+      "to_port": "channel-10-in",
+      "endpoint_m": [
+        40.0,
+        -108.8,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "from_placement": "P06",
+      "from_port": "channel-27-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-grade",
+      "to_placement": "P13",
+      "to_port": "channel-01-in",
+      "endpoint_m": [
+        44.8,
+        -104.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "from_placement": "P06",
+      "from_port": "channel-28-out",
+      "to_piece": "ddrhw-parallel-b-lower-entry-grade",
+      "to_placement": "P13",
+      "to_port": "channel-02-in",
+      "endpoint_m": [
+        51.2,
+        -104.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-parallel-b-upper-exit-slip",
+      "from_placement": "P06",
+      "from_port": "channel-29-out",
+      "to_piece": "ddrhw-parallel-b-upper-exit-grade",
+      "to_placement": "P14",
+      "to_port": "channel-02-in",
+      "endpoint_m": [
+        56.0,
+        -112.970563,
+        6.871553
+      ]
+    }
+  ],
+  "source": {
+    "basis": "intrinsic graphs measured from saved PATH resources and explicit saved assembly poses",
+    "scope": "encoded_route_graph_only",
+    "resource_fingerprints": {
+      "effect:ddrhw-parallel-b-crossing:ea5118b0-ea5118b1-7f5bfff5": "2ad357e44cc914b0351b8ff79218cd1eb146da734008275e19ec68462aa81e93",
+      "exemplar:ddrhw-parallel-b-crossing:6534284a-89ac5643-7f5c0000": "672819434bc89b60c18c9d6121a57e09ff00f160c535f621bcd549aad8231de8",
+      "exemplar:ddrhw-parallel-b-crossing:6534284a-89ac5643-7f5c0100": "90802078ed5d9c820bf508491575e25be9514ef61f02e3f2c597a6f9470acffb",
+      "exemplar:ddrhw-parallel-b-crossing:6534284a-89ac5643-7f5c0200": "20a0c153b095d93d2a667adc0e33347472a5da9e9d71bc3cb01180acb5e6e2af",
+      "exemplar:ddrhw-parallel-b-crossing:6534284a-c977c536-7f5bf010": "0191b7d8909545110b4dc15192ebcad15c340d76d4256b26081ab22138b398d8",
+      "exemplar:ddrhw-parallel-b-crossing:6534284a-c977c536-7f5bf100": "321e1ff5116f2cc102b7d108693c46a2e5fbc43fa13268cdb365ccef93dc0c3e",
+      "exemplar:ddrhw-parallel-b-crossing:6534284a-c977c536-7f5bf110": "ce0805650f12ffddb666835c71cfa2ceb8773a4f5c85c3a2128501f8bf41a102",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf010": "797c6e05abc5a4576a7973fcbcc753e1743472c8927997658783f350ce1f3dc5",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf011": "797c6e05abc5a4576a7973fcbcc753e1743472c8927997658783f350ce1f3dc5",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf012": "797c6e05abc5a4576a7973fcbcc753e1743472c8927997658783f350ce1f3dc5",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf013": "797c6e05abc5a4576a7973fcbcc753e1743472c8927997658783f350ce1f3dc5",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf014": "797c6e05abc5a4576a7973fcbcc753e1743472c8927997658783f350ce1f3dc5",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf015": "2218a548aadf8adabc8b46a772b7c44f99802f45c38baf5de6531c2c3a31565a",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf100": "fcc47e3e26dcf1a21e8028d059077f6569ed64edf40efbb569cbf7cdc6190a41",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf101": "fcc47e3e26dcf1a21e8028d059077f6569ed64edf40efbb569cbf7cdc6190a41",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf102": "fcc47e3e26dcf1a21e8028d059077f6569ed64edf40efbb569cbf7cdc6190a41",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf103": "fcc47e3e26dcf1a21e8028d059077f6569ed64edf40efbb569cbf7cdc6190a41",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf104": "fcc47e3e26dcf1a21e8028d059077f6569ed64edf40efbb569cbf7cdc6190a41",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf105": "2218a548aadf8adabc8b46a772b7c44f99802f45c38baf5de6531c2c3a31565a",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf110": "a868109f394d3801c963d2b34ced5ee894d452bbbbca0c15e81c4054b8451aaf",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf111": "a868109f394d3801c963d2b34ced5ee894d452bbbbca0c15e81c4054b8451aaf",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf112": "a868109f394d3801c963d2b34ced5ee894d452bbbbca0c15e81c4054b8451aaf",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf113": "a868109f394d3801c963d2b34ced5ee894d452bbbbca0c15e81c4054b8451aaf",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf114": "a868109f394d3801c963d2b34ced5ee894d452bbbbca0c15e81c4054b8451aaf",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bf115": "86ac145602339bcaf5bc1828ca3b24b0a239fbd28e39af1fbdb80651505deb93",
+      "model:ddrhw-parallel-b-crossing:5ad0e817-badb57f1-7f5bfff5": "d008e311b7f6a6a6e0d6d9d2c76968a781711ce044b70140d49a5297ba491e85",
+      "path:ddrhw-parallel-b-crossing:296678f7-69668828-7f5c0000": "da1fefc83de9ad03ffb4de87699f2fb581286418b63b41a2e64329989c949277",
+      "path:ddrhw-parallel-b-crossing:296678f7-69668828-7f5c0100": "46061b66b84bd9fcafe968216fe1483b7b7f12bca7dc0e0866f4f1e391e77b94",
+      "path:ddrhw-parallel-b-crossing:296678f7-69668828-7f5c0200": "bb657d8112093cc28153ad1e75cb2787a98286802fa6c5a426370e6d89f40309",
+      "path:ddrhw-parallel-b-crossing:296678f7-a966883f-7f5bf010": "37366174d5bfedfe92973691ebfd82ac9d0cd3655557407a4b23bcf26e2526d5",
+      "path:ddrhw-parallel-b-crossing:296678f7-a966883f-7f5bf100": "d9792a8fd301da0db6e46492f4b82d787c2da04637dd619be27e5e23f3226cfc",
+      "path:ddrhw-parallel-b-crossing:296678f7-a966883f-7f5bf110": "d3e0168bec3baf79caa9a6a8e686e3c4a8f3e6d515080d8c9c7f0355defbaebb",
+      "text:ddrhw-parallel-b-crossing:2026960b-2a592fd1-7f5bf010": "8fa104d849c21b0f541794db27e662d51ea178fbe583b8340cf8084c93876f95",
+      "text:ddrhw-parallel-b-crossing:2026960b-2a592fd1-7f5bf100": "8fa104d849c21b0f541794db27e662d51ea178fbe583b8340cf8084c93876f95",
+      "text:ddrhw-parallel-b-crossing:2026960b-2a592fd1-7f5bf110": "8fa104d849c21b0f541794db27e662d51ea178fbe583b8340cf8084c93876f95",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0000": "11aba619ac455424ed4235fd09dd5381336e36cb44ad478c7692a402c0999fe7",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0001": "0b73960046dec3553e63f174ef7f5c66c83b3bfb5e95ed3853ccf4904a899471",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0002": "3385b26cf4d3f87d7a3fda3c94317b1eefcad3bff0087406aa690236942ab2f7",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0003": "cba69c6bbbf283296b4ee762fcbd543770dea9cbbdc4b2f21f56e5d1db804a11",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0004": "25143f1f4b9ed7be009dcddf717c6dd497b4bff7bfb319160f5b33dcf5030174",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0010": "e59ffa5ac81443ca33c8cd04e4b45d0c493dc4e46cd89c52eb133ae159073bde",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0011": "ff59a4b7b1003d1e52272521ab3ded308a67ec9fca1a3ac6468fb34dad139a96",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0012": "3f4600604b00df4a5e744602ec2ef430beecbea527479f68ab8b4924e7c438be",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0013": "365e96d5cec98b9dae11ff70d879b20893eab73584aaf239efd22f27d641c28b",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0014": "81d2cccc861521958d2c2e0e1fb960d874d3541ebac48f37fe8aa6dda4d5c887",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0020": "592a4c5082eaa173b3a20f02aa0c8bfbde4da3ea2c29097707218bb2550e126d",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0021": "dcf8d47dc99126819e8ab9f5a14fd22a4453826032c5a3afd71abc877059effc",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0022": "74804873619d277d0ea3fed814876a9eab5fd16ea829971546b99f049b9da5d0",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0023": "253b5d4e121bf49f3631c067354a487ae9db77b39b7e84f2083d5c4a2741c115",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0024": "d8c76dcb800a3b20f866ce14cb859ffdba0acfd24a5d21276bd3edb0b004e731",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0030": "7e79d78b5831a10333a7daea6497fd0b24bdcaac49c86104a02e0e08441c224b",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0031": "229e839ed577344b07f55e9a0767d219632a4283be05b93ba5e69fdf6c1702c9",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0032": "33157d16e6200b2809a1cf1826502c3825ea62425b155a980bb889d180e23687",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0033": "f3118bce68714e52e107bd9e93b6a75fd751cd54bc23251781c275ed65e95480",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0034": "738219d848c8b4d15c7e104d0ed27b485d5baaaadb577d4440080a00345804b8",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0100": "11aba619ac455424ed4235fd09dd5381336e36cb44ad478c7692a402c0999fe7",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0101": "0b73960046dec3553e63f174ef7f5c66c83b3bfb5e95ed3853ccf4904a899471",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0102": "3385b26cf4d3f87d7a3fda3c94317b1eefcad3bff0087406aa690236942ab2f7",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0103": "cba69c6bbbf283296b4ee762fcbd543770dea9cbbdc4b2f21f56e5d1db804a11",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0104": "25143f1f4b9ed7be009dcddf717c6dd497b4bff7bfb319160f5b33dcf5030174",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0110": "e59ffa5ac81443ca33c8cd04e4b45d0c493dc4e46cd89c52eb133ae159073bde",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0111": "ff59a4b7b1003d1e52272521ab3ded308a67ec9fca1a3ac6468fb34dad139a96",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0112": "3f4600604b00df4a5e744602ec2ef430beecbea527479f68ab8b4924e7c438be",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0113": "365e96d5cec98b9dae11ff70d879b20893eab73584aaf239efd22f27d641c28b",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0114": "81d2cccc861521958d2c2e0e1fb960d874d3541ebac48f37fe8aa6dda4d5c887",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0120": "592a4c5082eaa173b3a20f02aa0c8bfbde4da3ea2c29097707218bb2550e126d",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0121": "dcf8d47dc99126819e8ab9f5a14fd22a4453826032c5a3afd71abc877059effc",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0122": "74804873619d277d0ea3fed814876a9eab5fd16ea829971546b99f049b9da5d0",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0123": "253b5d4e121bf49f3631c067354a487ae9db77b39b7e84f2083d5c4a2741c115",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0124": "d8c76dcb800a3b20f866ce14cb859ffdba0acfd24a5d21276bd3edb0b004e731",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0130": "7e79d78b5831a10333a7daea6497fd0b24bdcaac49c86104a02e0e08441c224b",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0131": "229e839ed577344b07f55e9a0767d219632a4283be05b93ba5e69fdf6c1702c9",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0132": "33157d16e6200b2809a1cf1826502c3825ea62425b155a980bb889d180e23687",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0133": "f3118bce68714e52e107bd9e93b6a75fd751cd54bc23251781c275ed65e95480",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0134": "738219d848c8b4d15c7e104d0ed27b485d5baaaadb577d4440080a00345804b8",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0200": "e47e03f3647162440a51c5785811a541071f7f224686740acca2a5e32209e017",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0201": "98117d4275d6bb5754cf63cbeaf2175cad015926625460826372a3ce652e3a57",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0202": "f7779d9a532920639ba8976255bd438986abc8768f7531adf94148fe532d673c",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0203": "2bf9131a7ec4be0976ab9204d3758c2da11a09fa0abdacde3faf49a994e605b9",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0204": "e9c4d034efb532096ebaf75d3f9e0ef2b2eb934e1560fbd5a741915d093fe960",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0210": "dbf35f6e8b0a1a6e3fd9b1849d672c7471cca7c5c5e41a84d27956815c003cf5",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0211": "1d67573480980b0c5fa651f019473d2bf2d64e41d8d05cb27e6ff1cc3bca51af",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0212": "c4d3aaf94ddb3402dae6001a85ff3683c45110f0a616173d96cf50b902345442",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0213": "7d5e12364738ebff8f3181d09c3d0ea518768749811bda562529c569521a3ae9",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0214": "d79e2a931f0dfc234f073d7cde4602883e45a53c780e0ffca16fbc26d973fd88",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0220": "8612cf1b38604543d46e56932a33652c559db4e22ac30f546dffb91afd4285d3",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0221": "a3ada23ee95ac75fbe6f352c3d28fc6cdb2dd9952b88e6ba0f76097bb5db4eb6",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0222": "b6d38bc689237fac1415014d728f9606e00411d8c9a45264bd7337c45bcb75fa",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0223": "9a7bbe58789e7591d70ca1736865844270bb2382632faae06cf74335de64fa76",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0224": "08be4c82b27a9f69a593e69ed5d884d18eb64fd157e4a2d5686ed7c3020fdee8",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0230": "03993fc5bf22d7914ec98d0716e365834fad99382a736ac655b4d26803ec8c22",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0231": "96dbc92f020ddc1117da26a0e6732b3cfe48146c8f1770d39134ed71bed204cb",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0232": "7a59096c44094018865ac25449d5b008572016eb958cf424f4372b42e03732cd",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0233": "a58fc05d3999b3d9699fe4dbcd787251d73a1cd8882615413e29fdedf271b840",
+      "texture:ddrhw-parallel-b-crossing:7ab50e44-1abe787d-7f5c0234": "a8414b5ea2e4863eb02e9ee6d403fb03fbbf5c2cf12e540fb6f10978dddaba92",
+      "construction:ddrhw-parallel-b-crossing": "be7d7b0dac17d661b0f1867eda3a6f3fda705c85a6bcb4b00aed0da616bd39ad",
+      "effect:ddrhw-parallel-b-northwest-terminal:ea5118b0-ea5118b1-7f5c1ff5": "64d01e240cdfeb56e5cb9abd75e1c6a7cc232b6b465b06b5a01af4350dd100ec",
+      "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2000": "0e299b989ba423de73010543bd176ba47c6bd0ec31ecafbe3ed7717183a5e984",
+      "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2100": "d0948a14e253c185026f4936366516f174de1c04caf95367b79b4f5f06c66029",
+      "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-89ac5643-7f5c2200": "78fe50d6abb4335360210b1a8543d5e5b65d19505137ba4ad30286098c8cd115",
+      "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1010": "1322272a36c1778f40bcac087376907ba6a1fb034561c7b1e41f36948a30a104",
+      "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1100": "4bb2688312f3f94ead50426b9e789281087b526e6030ce0ca19eec9916a23c7b",
+      "exemplar:ddrhw-parallel-b-northwest-terminal:6534284a-c977c536-7f5c1110": "28c810f2380ea03d2d92ea327da1690c962abe3752369868c43443ad0131be73",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1010": "474ffcf400c445091b9cd49977fec6959d8a762592e80481d1a7facf07021c08",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1011": "474ffcf400c445091b9cd49977fec6959d8a762592e80481d1a7facf07021c08",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1012": "474ffcf400c445091b9cd49977fec6959d8a762592e80481d1a7facf07021c08",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1013": "474ffcf400c445091b9cd49977fec6959d8a762592e80481d1a7facf07021c08",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1014": "474ffcf400c445091b9cd49977fec6959d8a762592e80481d1a7facf07021c08",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1015": "465c1e7b44a2aa925999f3901d5324a91b41390cc0b4f559253f772b0a587d7f",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1100": "9a8c82067745cad135e93c37e13c5b55f98f9c27a75804d50b57a18891bb19a4",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1101": "9a8c82067745cad135e93c37e13c5b55f98f9c27a75804d50b57a18891bb19a4",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1102": "9a8c82067745cad135e93c37e13c5b55f98f9c27a75804d50b57a18891bb19a4",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1103": "9a8c82067745cad135e93c37e13c5b55f98f9c27a75804d50b57a18891bb19a4",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1104": "9a8c82067745cad135e93c37e13c5b55f98f9c27a75804d50b57a18891bb19a4",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1105": "d22c8f2daaaaadae08fe2a88b3946d73dd820c029efe02ea7ae71863af46dbe8",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1110": "6d5c0b988d94d69636ce59f8149d115cddf6fd8cd66f162f57bcf6efe2c1fc7f",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1111": "6d5c0b988d94d69636ce59f8149d115cddf6fd8cd66f162f57bcf6efe2c1fc7f",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1112": "6d5c0b988d94d69636ce59f8149d115cddf6fd8cd66f162f57bcf6efe2c1fc7f",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1113": "6d5c0b988d94d69636ce59f8149d115cddf6fd8cd66f162f57bcf6efe2c1fc7f",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1114": "6d5c0b988d94d69636ce59f8149d115cddf6fd8cd66f162f57bcf6efe2c1fc7f",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1115": "4f6544b19c7233c86d8348b6acef612646b45751f5a518c0efe843c309c6a3e5",
+      "model:ddrhw-parallel-b-northwest-terminal:5ad0e817-badb57f1-7f5c1ff5": "741aa97f7e2a8dddb16ea36b7e5e50020614ff0050bbdaa24dd9210c70f0caad",
+      "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2000": "ca7fcca1862be565c516374a1a8ac7e6d278c5ea47b176307fcf5b1f381c8848",
+      "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2100": "1e6c0b97cf37b45157e5a22cbbb6ac6dbad1d402dff3b0ded014179512da416f",
+      "path:ddrhw-parallel-b-northwest-terminal:296678f7-69668828-7f5c2200": "fd3bc7a64bf517ee9582cc4162ce8afe9fad107c08fe1c67df319c0422f8de88",
+      "path:ddrhw-parallel-b-northwest-terminal:296678f7-a966883f-7f5c1010": "aa4eff0d5d07e1c0aa9c378ed7da8eda8bd05e5b9ea30e243759f4b8c1d6d2f5",
+      "path:ddrhw-parallel-b-northwest-terminal:296678f7-a966883f-7f5c1100": "0a796d0fbdb9e48062940fe254fb61415f9a431f1330cf08ea932f6a2f6be313",
+      "path:ddrhw-parallel-b-northwest-terminal:296678f7-a966883f-7f5c1110": "315d660118724bb9258f2fc4e61becb91de1d00735d8dd5be130ea1f6c394434",
+      "text:ddrhw-parallel-b-northwest-terminal:2026960b-2a592fd1-7f5c1010": "7fc3d0a4c17c974d642304c7b5d92027f4f8937d0a8ccd40586f681ca761aa6a",
+      "text:ddrhw-parallel-b-northwest-terminal:2026960b-2a592fd1-7f5c1100": "7fc3d0a4c17c974d642304c7b5d92027f4f8937d0a8ccd40586f681ca761aa6a",
+      "text:ddrhw-parallel-b-northwest-terminal:2026960b-2a592fd1-7f5c1110": "7fc3d0a4c17c974d642304c7b5d92027f4f8937d0a8ccd40586f681ca761aa6a",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2000": "11aba619ac455424ed4235fd09dd5381336e36cb44ad478c7692a402c0999fe7",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2001": "0b73960046dec3553e63f174ef7f5c66c83b3bfb5e95ed3853ccf4904a899471",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2002": "3385b26cf4d3f87d7a3fda3c94317b1eefcad3bff0087406aa690236942ab2f7",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2003": "cba69c6bbbf283296b4ee762fcbd543770dea9cbbdc4b2f21f56e5d1db804a11",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2004": "25143f1f4b9ed7be009dcddf717c6dd497b4bff7bfb319160f5b33dcf5030174",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2010": "e59ffa5ac81443ca33c8cd04e4b45d0c493dc4e46cd89c52eb133ae159073bde",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2011": "ff59a4b7b1003d1e52272521ab3ded308a67ec9fca1a3ac6468fb34dad139a96",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2012": "3f4600604b00df4a5e744602ec2ef430beecbea527479f68ab8b4924e7c438be",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2013": "365e96d5cec98b9dae11ff70d879b20893eab73584aaf239efd22f27d641c28b",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2014": "81d2cccc861521958d2c2e0e1fb960d874d3541ebac48f37fe8aa6dda4d5c887",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2020": "592a4c5082eaa173b3a20f02aa0c8bfbde4da3ea2c29097707218bb2550e126d",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2021": "dcf8d47dc99126819e8ab9f5a14fd22a4453826032c5a3afd71abc877059effc",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2022": "74804873619d277d0ea3fed814876a9eab5fd16ea829971546b99f049b9da5d0",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2023": "253b5d4e121bf49f3631c067354a487ae9db77b39b7e84f2083d5c4a2741c115",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2024": "d8c76dcb800a3b20f866ce14cb859ffdba0acfd24a5d21276bd3edb0b004e731",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2030": "7e79d78b5831a10333a7daea6497fd0b24bdcaac49c86104a02e0e08441c224b",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2031": "229e839ed577344b07f55e9a0767d219632a4283be05b93ba5e69fdf6c1702c9",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2032": "33157d16e6200b2809a1cf1826502c3825ea62425b155a980bb889d180e23687",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2033": "f3118bce68714e52e107bd9e93b6a75fd751cd54bc23251781c275ed65e95480",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2034": "738219d848c8b4d15c7e104d0ed27b485d5baaaadb577d4440080a00345804b8",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2100": "11aba619ac455424ed4235fd09dd5381336e36cb44ad478c7692a402c0999fe7",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2101": "0b73960046dec3553e63f174ef7f5c66c83b3bfb5e95ed3853ccf4904a899471",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2102": "3385b26cf4d3f87d7a3fda3c94317b1eefcad3bff0087406aa690236942ab2f7",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2103": "cba69c6bbbf283296b4ee762fcbd543770dea9cbbdc4b2f21f56e5d1db804a11",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2104": "25143f1f4b9ed7be009dcddf717c6dd497b4bff7bfb319160f5b33dcf5030174",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2110": "e59ffa5ac81443ca33c8cd04e4b45d0c493dc4e46cd89c52eb133ae159073bde",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2111": "ff59a4b7b1003d1e52272521ab3ded308a67ec9fca1a3ac6468fb34dad139a96",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2112": "3f4600604b00df4a5e744602ec2ef430beecbea527479f68ab8b4924e7c438be",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2113": "365e96d5cec98b9dae11ff70d879b20893eab73584aaf239efd22f27d641c28b",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2114": "81d2cccc861521958d2c2e0e1fb960d874d3541ebac48f37fe8aa6dda4d5c887",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2120": "592a4c5082eaa173b3a20f02aa0c8bfbde4da3ea2c29097707218bb2550e126d",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2121": "dcf8d47dc99126819e8ab9f5a14fd22a4453826032c5a3afd71abc877059effc",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2122": "74804873619d277d0ea3fed814876a9eab5fd16ea829971546b99f049b9da5d0",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2123": "253b5d4e121bf49f3631c067354a487ae9db77b39b7e84f2083d5c4a2741c115",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2124": "d8c76dcb800a3b20f866ce14cb859ffdba0acfd24a5d21276bd3edb0b004e731",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2130": "7e79d78b5831a10333a7daea6497fd0b24bdcaac49c86104a02e0e08441c224b",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2131": "229e839ed577344b07f55e9a0767d219632a4283be05b93ba5e69fdf6c1702c9",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2132": "33157d16e6200b2809a1cf1826502c3825ea62425b155a980bb889d180e23687",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2133": "f3118bce68714e52e107bd9e93b6a75fd751cd54bc23251781c275ed65e95480",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2134": "738219d848c8b4d15c7e104d0ed27b485d5baaaadb577d4440080a00345804b8",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2200": "e47e03f3647162440a51c5785811a541071f7f224686740acca2a5e32209e017",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2201": "98117d4275d6bb5754cf63cbeaf2175cad015926625460826372a3ce652e3a57",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2202": "f7779d9a532920639ba8976255bd438986abc8768f7531adf94148fe532d673c",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2203": "2bf9131a7ec4be0976ab9204d3758c2da11a09fa0abdacde3faf49a994e605b9",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2204": "e9c4d034efb532096ebaf75d3f9e0ef2b2eb934e1560fbd5a741915d093fe960",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2210": "dbf35f6e8b0a1a6e3fd9b1849d672c7471cca7c5c5e41a84d27956815c003cf5",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2211": "1d67573480980b0c5fa651f019473d2bf2d64e41d8d05cb27e6ff1cc3bca51af",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2212": "c4d3aaf94ddb3402dae6001a85ff3683c45110f0a616173d96cf50b902345442",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2213": "7d5e12364738ebff8f3181d09c3d0ea518768749811bda562529c569521a3ae9",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2214": "d79e2a931f0dfc234f073d7cde4602883e45a53c780e0ffca16fbc26d973fd88",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2220": "8612cf1b38604543d46e56932a33652c559db4e22ac30f546dffb91afd4285d3",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2221": "a3ada23ee95ac75fbe6f352c3d28fc6cdb2dd9952b88e6ba0f76097bb5db4eb6",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2222": "b6d38bc689237fac1415014d728f9606e00411d8c9a45264bd7337c45bcb75fa",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2223": "9a7bbe58789e7591d70ca1736865844270bb2382632faae06cf74335de64fa76",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2224": "08be4c82b27a9f69a593e69ed5d884d18eb64fd157e4a2d5686ed7c3020fdee8",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2230": "03993fc5bf22d7914ec98d0716e365834fad99382a736ac655b4d26803ec8c22",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2231": "96dbc92f020ddc1117da26a0e6732b3cfe48146c8f1770d39134ed71bed204cb",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2232": "7a59096c44094018865ac25449d5b008572016eb958cf424f4372b42e03732cd",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2233": "a58fc05d3999b3d9699fe4dbcd787251d73a1cd8882615413e29fdedf271b840",
+      "texture:ddrhw-parallel-b-northwest-terminal:7ab50e44-1abe787d-7f5c2234": "a8414b5ea2e4863eb02e9ee6d403fb03fbbf5c2cf12e540fb6f10978dddaba92",
+      "construction:ddrhw-parallel-b-northwest-terminal": "1fc6a734f31f53df87fdcebb6a9011d6e0ac9650304e3f1205b31adf72b08afd",
+      "effect:ddrhw-parallel-b-southeast-terminal:ea5118b0-ea5118b1-7f5c3ff5": "c06ff3cb6f4b9113390942760a5aa843a85815576f511954c72e7b5a89f8613a",
+      "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4000": "e7205cd745887b4a52dcd7f0cdbdbc6626e3af5046f045bf02d869ead2377f16",
+      "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-89ac5643-7f5c4100": "a3cef8cb41d47c8d670f24ea9a679990964d4c8d1ae757f6d90a752528cd6d59",
+      "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3010": "20d695ca9439967ad266617e4f552c6dfbaef61b94a4558a0092d95ca746b192",
+      "exemplar:ddrhw-parallel-b-southeast-terminal:6534284a-c977c536-7f5c3100": "c8c4e49a588e7a4660a9a77bbf76b1aed2f77317e82d33d7cff8a7b2fc3bc296",
+      "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3010": "55797b9e0e086da39619e3407e15675695e4afc95e8a0103d1b69a00e9f0f54e",
+      "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3011": "55797b9e0e086da39619e3407e15675695e4afc95e8a0103d1b69a00e9f0f54e",
+      "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3012": "55797b9e0e086da39619e3407e15675695e4afc95e8a0103d1b69a00e9f0f54e",
+      "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3013": "55797b9e0e086da39619e3407e15675695e4afc95e8a0103d1b69a00e9f0f54e",
+      "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3014": "55797b9e0e086da39619e3407e15675695e4afc95e8a0103d1b69a00e9f0f54e",
+      "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3015": "ab4610316b7f8b0a9562f814df05db0025d09c5bcfad206f2730805a38f7774d",
+      "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3100": "f0277582558b4334aee409ee3616a8bf818e2f62d49d28c46e84a6f7137d6279",
+      "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3101": "f0277582558b4334aee409ee3616a8bf818e2f62d49d28c46e84a6f7137d6279",
+      "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3102": "f0277582558b4334aee409ee3616a8bf818e2f62d49d28c46e84a6f7137d6279",
+      "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3103": "f0277582558b4334aee409ee3616a8bf818e2f62d49d28c46e84a6f7137d6279",
+      "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3104": "f0277582558b4334aee409ee3616a8bf818e2f62d49d28c46e84a6f7137d6279",
+      "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3105": "aacbe5223c2d8a055f336895317d92595f5a8c88763a6bb8102c432effc8ecb4",
+      "model:ddrhw-parallel-b-southeast-terminal:5ad0e817-badb57f1-7f5c3ff5": "c01ea910a4506004cc9915192a383aada60f5f67a172322de2cb5386aa59ce9c",
+      "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4000": "9793a20d858057d725ce2d41dc819e94bb329e734c6874a4ed98dad918c48bd2",
+      "path:ddrhw-parallel-b-southeast-terminal:296678f7-69668828-7f5c4100": "7d41f67ff3ff51bc1cc96449fe32ea81fdc773ac73e192e916f7290af66f2f03",
+      "path:ddrhw-parallel-b-southeast-terminal:296678f7-a966883f-7f5c3010": "3f9bba025065fbae2466ca5d0ba14b3ddff789d8432e8a8077627ca4362ed9c0",
+      "path:ddrhw-parallel-b-southeast-terminal:296678f7-a966883f-7f5c3100": "9b389d9669b2bd8dd0bf60744d402e5f8d84437dc2a30b9e7956b25a13c6d681",
+      "text:ddrhw-parallel-b-southeast-terminal:2026960b-2a592fd1-7f5c3010": "90fc2a386064141480cf13caadba56017de10d95a899e1c3c54b4974cda92680",
+      "text:ddrhw-parallel-b-southeast-terminal:2026960b-2a592fd1-7f5c3100": "90fc2a386064141480cf13caadba56017de10d95a899e1c3c54b4974cda92680",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4000": "11aba619ac455424ed4235fd09dd5381336e36cb44ad478c7692a402c0999fe7",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4001": "0b73960046dec3553e63f174ef7f5c66c83b3bfb5e95ed3853ccf4904a899471",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4002": "3385b26cf4d3f87d7a3fda3c94317b1eefcad3bff0087406aa690236942ab2f7",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4003": "cba69c6bbbf283296b4ee762fcbd543770dea9cbbdc4b2f21f56e5d1db804a11",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4004": "25143f1f4b9ed7be009dcddf717c6dd497b4bff7bfb319160f5b33dcf5030174",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4010": "e59ffa5ac81443ca33c8cd04e4b45d0c493dc4e46cd89c52eb133ae159073bde",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4011": "ff59a4b7b1003d1e52272521ab3ded308a67ec9fca1a3ac6468fb34dad139a96",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4012": "3f4600604b00df4a5e744602ec2ef430beecbea527479f68ab8b4924e7c438be",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4013": "365e96d5cec98b9dae11ff70d879b20893eab73584aaf239efd22f27d641c28b",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4014": "81d2cccc861521958d2c2e0e1fb960d874d3541ebac48f37fe8aa6dda4d5c887",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4020": "592a4c5082eaa173b3a20f02aa0c8bfbde4da3ea2c29097707218bb2550e126d",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4021": "dcf8d47dc99126819e8ab9f5a14fd22a4453826032c5a3afd71abc877059effc",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4022": "74804873619d277d0ea3fed814876a9eab5fd16ea829971546b99f049b9da5d0",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4023": "253b5d4e121bf49f3631c067354a487ae9db77b39b7e84f2083d5c4a2741c115",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4024": "d8c76dcb800a3b20f866ce14cb859ffdba0acfd24a5d21276bd3edb0b004e731",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4030": "7e79d78b5831a10333a7daea6497fd0b24bdcaac49c86104a02e0e08441c224b",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4031": "229e839ed577344b07f55e9a0767d219632a4283be05b93ba5e69fdf6c1702c9",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4032": "33157d16e6200b2809a1cf1826502c3825ea62425b155a980bb889d180e23687",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4033": "f3118bce68714e52e107bd9e93b6a75fd751cd54bc23251781c275ed65e95480",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4034": "738219d848c8b4d15c7e104d0ed27b485d5baaaadb577d4440080a00345804b8",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4100": "11aba619ac455424ed4235fd09dd5381336e36cb44ad478c7692a402c0999fe7",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4101": "0b73960046dec3553e63f174ef7f5c66c83b3bfb5e95ed3853ccf4904a899471",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4102": "3385b26cf4d3f87d7a3fda3c94317b1eefcad3bff0087406aa690236942ab2f7",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4103": "cba69c6bbbf283296b4ee762fcbd543770dea9cbbdc4b2f21f56e5d1db804a11",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4104": "25143f1f4b9ed7be009dcddf717c6dd497b4bff7bfb319160f5b33dcf5030174",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4110": "e59ffa5ac81443ca33c8cd04e4b45d0c493dc4e46cd89c52eb133ae159073bde",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4111": "ff59a4b7b1003d1e52272521ab3ded308a67ec9fca1a3ac6468fb34dad139a96",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4112": "3f4600604b00df4a5e744602ec2ef430beecbea527479f68ab8b4924e7c438be",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4113": "365e96d5cec98b9dae11ff70d879b20893eab73584aaf239efd22f27d641c28b",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4114": "81d2cccc861521958d2c2e0e1fb960d874d3541ebac48f37fe8aa6dda4d5c887",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4120": "592a4c5082eaa173b3a20f02aa0c8bfbde4da3ea2c29097707218bb2550e126d",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4121": "dcf8d47dc99126819e8ab9f5a14fd22a4453826032c5a3afd71abc877059effc",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4122": "74804873619d277d0ea3fed814876a9eab5fd16ea829971546b99f049b9da5d0",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4123": "253b5d4e121bf49f3631c067354a487ae9db77b39b7e84f2083d5c4a2741c115",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4124": "d8c76dcb800a3b20f866ce14cb859ffdba0acfd24a5d21276bd3edb0b004e731",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4130": "7e79d78b5831a10333a7daea6497fd0b24bdcaac49c86104a02e0e08441c224b",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4131": "229e839ed577344b07f55e9a0767d219632a4283be05b93ba5e69fdf6c1702c9",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4132": "33157d16e6200b2809a1cf1826502c3825ea62425b155a980bb889d180e23687",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4133": "f3118bce68714e52e107bd9e93b6a75fd751cd54bc23251781c275ed65e95480",
+      "texture:ddrhw-parallel-b-southeast-terminal:7ab50e44-1abe787d-7f5c4134": "738219d848c8b4d15c7e104d0ed27b485d5baaaadb577d4440080a00345804b8",
+      "construction:ddrhw-parallel-b-southeast-terminal": "733e598d16f859e5f69812d3efc8a65a7d0284e0863c92bba307b1ec61a4f4c1",
+      "effect:ddrhw-parallel-b-lower-exit-slip:ea5118b0-ea5118b1-7f5c5ff5": "50e9f9c5ae1fddeebf1f6dbe78cbb0edaa1dae0b0ae8af17d41bd9c491c203f6",
+      "exemplar:ddrhw-parallel-b-lower-exit-slip:6534284a-a8434037-7f5c5010": "b7652125af29e6e06ec84f9e895e0c515416ba674cfdc7834f5014435dbf64d2",
+      "exemplar:ddrhw-parallel-b-lower-exit-slip:6534284a-a8434037-7f5c5100": "d0cf081dee2a68997b3eb3cd720a5f6a3acd1b3b60646dfc4561bdf926f41c7b",
+      "model:ddrhw-parallel-b-lower-exit-slip:5ad0e817-badb57f1-7f5c5010": "155aa2433ff4623ee4a1283d01b7529567feb0390b62638d4bb2e5ec7c6f1cc7",
+      "model:ddrhw-parallel-b-lower-exit-slip:5ad0e817-badb57f1-7f5c5011": "155aa2433ff4623ee4a1283d01b7529567feb0390b62638d4bb2e5ec7c6f1cc7",
+      "model:ddrhw-parallel-b-lower-exit-slip:5ad0e817-badb57f1-7f5c5012": "155aa2433ff4623ee4a1283d01b7529567feb0390b62638d4bb2e5ec7c6f1cc7",
+      "model:ddrhw-parallel-b-lower-exit-slip:5ad0e817-badb57f1-7f5c5013": "155aa2433ff4623ee4a1283d01b7529567feb0390b62638d4bb2e5ec7c6f1cc7",
+      "model:ddrhw-parallel-b-lower-exit-slip:5ad0e817-badb57f1-7f5c5014": "155aa2433ff4623ee4a1283d01b7529567feb0390b62638d4bb2e5ec7c6f1cc7",
+      "model:ddrhw-parallel-b-lower-exit-slip:5ad0e817-badb57f1-7f5c5100": "5bf0a69df5139f4c6cc2533e825a7175452070c83d4e14df05f303f7df00e3ff",
+      "model:ddrhw-parallel-b-lower-exit-slip:5ad0e817-badb57f1-7f5c5101": "5bf0a69df5139f4c6cc2533e825a7175452070c83d4e14df05f303f7df00e3ff",
+      "model:ddrhw-parallel-b-lower-exit-slip:5ad0e817-badb57f1-7f5c5102": "5bf0a69df5139f4c6cc2533e825a7175452070c83d4e14df05f303f7df00e3ff",
+      "model:ddrhw-parallel-b-lower-exit-slip:5ad0e817-badb57f1-7f5c5103": "5bf0a69df5139f4c6cc2533e825a7175452070c83d4e14df05f303f7df00e3ff",
+      "model:ddrhw-parallel-b-lower-exit-slip:5ad0e817-badb57f1-7f5c5104": "5bf0a69df5139f4c6cc2533e825a7175452070c83d4e14df05f303f7df00e3ff",
+      "model:ddrhw-parallel-b-lower-exit-slip:5ad0e817-badb57f1-7f5c5ff5": "63d97ca303e3069a610bbf1ffd3e259bf920f451bb966f952d7928a52628bf03",
+      "path:ddrhw-parallel-b-lower-exit-slip:296678f7-a966883f-7f5c5010": "a784d81f532447693fa3f95cc7d0fbae4fe2c890cbc74a82b3d85aba934c2bd3",
+      "path:ddrhw-parallel-b-lower-exit-slip:296678f7-a966883f-7f5c5100": "e57311aa7dd07030a549b9494b0210d5c572ebb5d2137c7e7059243db3823268",
+      "text:ddrhw-parallel-b-lower-exit-slip:2026960b-2a592fd1-7f5c5010": "d89688ef75612c3890dd19307d272209b126d1b21772b45026571e646e19074c",
+      "text:ddrhw-parallel-b-lower-exit-slip:2026960b-2a592fd1-7f5c5100": "d89688ef75612c3890dd19307d272209b126d1b21772b45026571e646e19074c",
+      "construction:ddrhw-parallel-b-lower-exit-slip": "42941f5c6c960502d1ce0a0c67c3db4e2304f905106766587bec4f10ffb542b4",
+      "effect:ddrhw-parallel-b-lower-entry-slip:ea5118b0-ea5118b1-7f5c6ff5": "3278b46cf7e4a3aa4d94028b6fdf6a0992b50ca4676ba5076975414b0ed0a99a",
+      "exemplar:ddrhw-parallel-b-lower-entry-slip:6534284a-a8434037-7f5c6010": "88260ca571df0a56c2ceb541c257133888bd16d5187e1510f10b446d9e94bd75",
+      "exemplar:ddrhw-parallel-b-lower-entry-slip:6534284a-a8434037-7f5c6100": "0b935ad289d30ee64c85caeb9323795738e75aeb1fd322a11c4dfb76b914768c",
+      "model:ddrhw-parallel-b-lower-entry-slip:5ad0e817-badb57f1-7f5c6010": "ef45bd17d4b2f37af3a5684f2f948425586ea3ccfd618f545fb2c0e2b0f17672",
+      "model:ddrhw-parallel-b-lower-entry-slip:5ad0e817-badb57f1-7f5c6011": "ef45bd17d4b2f37af3a5684f2f948425586ea3ccfd618f545fb2c0e2b0f17672",
+      "model:ddrhw-parallel-b-lower-entry-slip:5ad0e817-badb57f1-7f5c6012": "ef45bd17d4b2f37af3a5684f2f948425586ea3ccfd618f545fb2c0e2b0f17672",
+      "model:ddrhw-parallel-b-lower-entry-slip:5ad0e817-badb57f1-7f5c6013": "ef45bd17d4b2f37af3a5684f2f948425586ea3ccfd618f545fb2c0e2b0f17672",
+      "model:ddrhw-parallel-b-lower-entry-slip:5ad0e817-badb57f1-7f5c6014": "ef45bd17d4b2f37af3a5684f2f948425586ea3ccfd618f545fb2c0e2b0f17672",
+      "model:ddrhw-parallel-b-lower-entry-slip:5ad0e817-badb57f1-7f5c6100": "f5c1068d5c186e10669abb0934850d3895ee1e2fdd70f4d544217f633e6ce84b",
+      "model:ddrhw-parallel-b-lower-entry-slip:5ad0e817-badb57f1-7f5c6101": "f5c1068d5c186e10669abb0934850d3895ee1e2fdd70f4d544217f633e6ce84b",
+      "model:ddrhw-parallel-b-lower-entry-slip:5ad0e817-badb57f1-7f5c6102": "f5c1068d5c186e10669abb0934850d3895ee1e2fdd70f4d544217f633e6ce84b",
+      "model:ddrhw-parallel-b-lower-entry-slip:5ad0e817-badb57f1-7f5c6103": "f5c1068d5c186e10669abb0934850d3895ee1e2fdd70f4d544217f633e6ce84b",
+      "model:ddrhw-parallel-b-lower-entry-slip:5ad0e817-badb57f1-7f5c6104": "f5c1068d5c186e10669abb0934850d3895ee1e2fdd70f4d544217f633e6ce84b",
+      "model:ddrhw-parallel-b-lower-entry-slip:5ad0e817-badb57f1-7f5c6ff5": "87a4c2b58fba50695d0daa7211ec75f0a02ee600b43700b4d488385082f912eb",
+      "path:ddrhw-parallel-b-lower-entry-slip:296678f7-a966883f-7f5c6010": "3ab26daae12aa70d638f698a0fe1a729ddfb4a0d1449b22c425c981d145a893b",
+      "path:ddrhw-parallel-b-lower-entry-slip:296678f7-a966883f-7f5c6100": "ff746f38921a3659040eb7a93be5fa723d710d30b8af94435f966984eb3f41d2",
+      "text:ddrhw-parallel-b-lower-entry-slip:2026960b-2a592fd1-7f5c6010": "4ea1dccbf431e79cb79a4cd5bd86f64868d88490b5df6bcbf19692ba571831ac",
+      "text:ddrhw-parallel-b-lower-entry-slip:2026960b-2a592fd1-7f5c6100": "4ea1dccbf431e79cb79a4cd5bd86f64868d88490b5df6bcbf19692ba571831ac",
+      "construction:ddrhw-parallel-b-lower-entry-slip": "7beba3703cc1a78af51be69b8a2d06a13be48a8b36da24beffd31292d7b30c81",
+      "effect:ddrhw-parallel-b-upper-exit-slip:ea5118b0-ea5118b1-7f5c7ff5": "03aad300544a51f8d87fd676218901bf0dabfac01f0e0b5a8bed96ff31629693",
+      "exemplar:ddrhw-parallel-b-upper-exit-slip:6534284a-a8434037-7f5c7020": "0e4b2c9a14c8a8b8da773a0e0ca1602e3e6f18d48d58b64b6c37ff2941eb0f5e",
+      "exemplar:ddrhw-parallel-b-upper-exit-slip:6534284a-a8434037-7f5c7110": "a84ff1f994cb316c3999ef5bcbd7959109e8b797980864f55c4b78a4b469fbbf",
+      "exemplar:ddrhw-parallel-b-upper-exit-slip:6534284a-a8434037-7f5c7200": "fbe8f894a07aaa8751191b99ee5ffdc7c3f00426321113ac598b78f193a460d0",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7020": "8b6ec29c21df74f6f1cb9c789b6e1030613ce0180f99fef28814aa78d7397dd4",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7021": "8b6ec29c21df74f6f1cb9c789b6e1030613ce0180f99fef28814aa78d7397dd4",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7022": "8b6ec29c21df74f6f1cb9c789b6e1030613ce0180f99fef28814aa78d7397dd4",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7023": "8b6ec29c21df74f6f1cb9c789b6e1030613ce0180f99fef28814aa78d7397dd4",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7024": "8b6ec29c21df74f6f1cb9c789b6e1030613ce0180f99fef28814aa78d7397dd4",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7110": "903f5a06e32b430fe7934b3a0880731add9c008ea614c0e7451cd008f0cecf83",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7111": "903f5a06e32b430fe7934b3a0880731add9c008ea614c0e7451cd008f0cecf83",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7112": "903f5a06e32b430fe7934b3a0880731add9c008ea614c0e7451cd008f0cecf83",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7113": "903f5a06e32b430fe7934b3a0880731add9c008ea614c0e7451cd008f0cecf83",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7114": "903f5a06e32b430fe7934b3a0880731add9c008ea614c0e7451cd008f0cecf83",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7200": "b7d84c43920e1705f317f94a9d94b4306ab262d4b396e8459a38be3838c6b082",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7201": "b7d84c43920e1705f317f94a9d94b4306ab262d4b396e8459a38be3838c6b082",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7202": "b7d84c43920e1705f317f94a9d94b4306ab262d4b396e8459a38be3838c6b082",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7203": "b7d84c43920e1705f317f94a9d94b4306ab262d4b396e8459a38be3838c6b082",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7204": "b7d84c43920e1705f317f94a9d94b4306ab262d4b396e8459a38be3838c6b082",
+      "model:ddrhw-parallel-b-upper-exit-slip:5ad0e817-badb57f1-7f5c7ff5": "ae53d3c1ee8717ad9967dea524227c599a9698aa6617087f08289212aa00c9e0",
+      "path:ddrhw-parallel-b-upper-exit-slip:296678f7-a966883f-7f5c7020": "d90b7ca17819f9aceb490b568bd2abcfc81969a7c97be64d2cff39b63c127d2c",
+      "path:ddrhw-parallel-b-upper-exit-slip:296678f7-a966883f-7f5c7110": "4f26cc7fe9ae2c433bd458d49956e25783c167cc77dfd5a2a27eb6cc9c65011c",
+      "path:ddrhw-parallel-b-upper-exit-slip:296678f7-a966883f-7f5c7200": "4d0045a6bba835ae30a8732dfb095fc38b855f01fd7603c110f1ca74c5dc977a",
+      "text:ddrhw-parallel-b-upper-exit-slip:2026960b-2a592fd1-7f5c7020": "7419c411d950ce58da33c416579623c41913d5de7261bbb10de5722e7ecf79ff",
+      "text:ddrhw-parallel-b-upper-exit-slip:2026960b-2a592fd1-7f5c7110": "7419c411d950ce58da33c416579623c41913d5de7261bbb10de5722e7ecf79ff",
+      "text:ddrhw-parallel-b-upper-exit-slip:2026960b-2a592fd1-7f5c7200": "7419c411d950ce58da33c416579623c41913d5de7261bbb10de5722e7ecf79ff",
+      "construction:ddrhw-parallel-b-upper-exit-slip": "cd29b27d9e0bf736786a3041f641ada8d25ec563868209d7d98b58bf9fbd7ad8",
+      "effect:ddrhw-parallel-b-upper-entry-slip:ea5118b0-ea5118b1-7f5c8ff5": "a1be97518c0815c111588fe8bbfcfe5bcae4e0e7b4ba86014df0999a3cdd1332",
+      "exemplar:ddrhw-parallel-b-upper-entry-slip:6534284a-a8434037-7f5c8020": "76b544a97c2da14910362556022c6e5e17e444ed025df7a47cdbdb66c4344307",
+      "exemplar:ddrhw-parallel-b-upper-entry-slip:6534284a-a8434037-7f5c8110": "2683243465708155bb194860f52784bf5f23f55278521a6f0d39367e0713d0c9",
+      "exemplar:ddrhw-parallel-b-upper-entry-slip:6534284a-a8434037-7f5c8200": "fb25a52371c63bf51561f30bc12df7c8a58e8c01240c2eb1a7a1980678664628",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8020": "353c66b2525766188505e7cf6c7a784d152cb1e8ccf625fc93b993cc38f8e789",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8021": "353c66b2525766188505e7cf6c7a784d152cb1e8ccf625fc93b993cc38f8e789",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8022": "353c66b2525766188505e7cf6c7a784d152cb1e8ccf625fc93b993cc38f8e789",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8023": "353c66b2525766188505e7cf6c7a784d152cb1e8ccf625fc93b993cc38f8e789",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8024": "353c66b2525766188505e7cf6c7a784d152cb1e8ccf625fc93b993cc38f8e789",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8110": "81dc68c5cfa6ff5802800aa82c5c2932c9e8f27bcd33745a028d256e474dc643",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8111": "81dc68c5cfa6ff5802800aa82c5c2932c9e8f27bcd33745a028d256e474dc643",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8112": "81dc68c5cfa6ff5802800aa82c5c2932c9e8f27bcd33745a028d256e474dc643",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8113": "81dc68c5cfa6ff5802800aa82c5c2932c9e8f27bcd33745a028d256e474dc643",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8114": "81dc68c5cfa6ff5802800aa82c5c2932c9e8f27bcd33745a028d256e474dc643",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8200": "2ed1414ccc2fd298b5c1c1b8f4c997e418693d38ebc7e34913240032aa012262",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8201": "2ed1414ccc2fd298b5c1c1b8f4c997e418693d38ebc7e34913240032aa012262",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8202": "2ed1414ccc2fd298b5c1c1b8f4c997e418693d38ebc7e34913240032aa012262",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8203": "2ed1414ccc2fd298b5c1c1b8f4c997e418693d38ebc7e34913240032aa012262",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8204": "2ed1414ccc2fd298b5c1c1b8f4c997e418693d38ebc7e34913240032aa012262",
+      "model:ddrhw-parallel-b-upper-entry-slip:5ad0e817-badb57f1-7f5c8ff5": "b3a865f20d7293f38b4cc907c7a79d768e8759dc15977de3c13b8d8bf2f81606",
+      "path:ddrhw-parallel-b-upper-entry-slip:296678f7-a966883f-7f5c8020": "e4cbc03befb87ee8ed9333a1bf3c0a1f83ebe9ebfa6f0e61f9f6177648d1918b",
+      "path:ddrhw-parallel-b-upper-entry-slip:296678f7-a966883f-7f5c8110": "152bfc3589bcbcb12ce66b766895ecf69bba3a5442e590272e3a09ff6fef5111",
+      "path:ddrhw-parallel-b-upper-entry-slip:296678f7-a966883f-7f5c8200": "a459295830fbd893c18ff2a9d04542fce204086528a20a9102324552fbdc7f89",
+      "text:ddrhw-parallel-b-upper-entry-slip:2026960b-2a592fd1-7f5c8020": "0162a2942fa0bc2640d2ba1745ab2ed22721c420dd5d2f9e4dde3fce445d93f9",
+      "text:ddrhw-parallel-b-upper-entry-slip:2026960b-2a592fd1-7f5c8110": "0162a2942fa0bc2640d2ba1745ab2ed22721c420dd5d2f9e4dde3fce445d93f9",
+      "text:ddrhw-parallel-b-upper-entry-slip:2026960b-2a592fd1-7f5c8200": "0162a2942fa0bc2640d2ba1745ab2ed22721c420dd5d2f9e4dde3fce445d93f9",
+      "construction:ddrhw-parallel-b-upper-entry-slip": "ac5c85c8c5f3b9cbdb9fe84c4eeaa65fa8256c654562344049fee595a97c857d",
+      "effect:ddrhw-parallel-b-lower-exit-departure:ea5118b0-ea5118b1-7f5c9ff5": "f4debe230880d594bb9b1e74c6ad24c28cd1ecb7bd0a630b4509a6aba31cfee9",
+      "exemplar:ddrhw-parallel-b-lower-exit-departure:6534284a-a8434037-7f5c9000": "402e28389d70f70fa0f3f1bdda2156043b02657a5828b9379e4d1baf268f2edf",
+      "model:ddrhw-parallel-b-lower-exit-departure:5ad0e817-badb57f1-7f5c9000": "c93967e632545a5140790f331ac24447ad2d5b89deda0d4c4e1ebbd99257f7bc",
+      "model:ddrhw-parallel-b-lower-exit-departure:5ad0e817-badb57f1-7f5c9001": "c93967e632545a5140790f331ac24447ad2d5b89deda0d4c4e1ebbd99257f7bc",
+      "model:ddrhw-parallel-b-lower-exit-departure:5ad0e817-badb57f1-7f5c9002": "c93967e632545a5140790f331ac24447ad2d5b89deda0d4c4e1ebbd99257f7bc",
+      "model:ddrhw-parallel-b-lower-exit-departure:5ad0e817-badb57f1-7f5c9003": "c93967e632545a5140790f331ac24447ad2d5b89deda0d4c4e1ebbd99257f7bc",
+      "model:ddrhw-parallel-b-lower-exit-departure:5ad0e817-badb57f1-7f5c9004": "c93967e632545a5140790f331ac24447ad2d5b89deda0d4c4e1ebbd99257f7bc",
+      "model:ddrhw-parallel-b-lower-exit-departure:5ad0e817-badb57f1-7f5c9ff5": "c93967e632545a5140790f331ac24447ad2d5b89deda0d4c4e1ebbd99257f7bc",
+      "path:ddrhw-parallel-b-lower-exit-departure:296678f7-a966883f-7f5c9000": "2ebf3358796cd41adccd9336c8600e05a7ac553ea7442c1e6ae5a2afa34d86f6",
+      "text:ddrhw-parallel-b-lower-exit-departure:2026960b-2a592fd1-7f5c9000": "06c794c90da28fc4175eeac76a434e9b90209ce850aaff71518959d641e7f51d",
+      "construction:ddrhw-parallel-b-lower-exit-departure": "7e64dda8ef30e9e544e5cf3c8857d6a4cf4f0f7936de55d991c5a4ad955c119e",
+      "effect:ddrhw-parallel-b-lower-entry-departure:ea5118b0-ea5118b1-7f5caff5": "35f7d551d4a2122bcb26e4070af87402f057943488d481ad74884a9f9ff75395",
+      "exemplar:ddrhw-parallel-b-lower-entry-departure:6534284a-a8434037-7f5ca000": "83392c2e06813adf701b5f89922422185eebd317b4e6f60c20d7f10a996b0017",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca000": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca001": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca002": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca003": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca004": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5caff5": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "path:ddrhw-parallel-b-lower-entry-departure:296678f7-a966883f-7f5ca000": "746c287f4c4cc2eed50bc0c2ce249405a8481a6809a4c54a28193aea5378c6b7",
+      "text:ddrhw-parallel-b-lower-entry-departure:2026960b-2a592fd1-7f5ca000": "00c295f4b1a3aafb07580238d0c7bb5578a25cfff23b4a68781f87b94defe360",
+      "construction:ddrhw-parallel-b-lower-entry-departure": "ca24a493eeca2e94eeb9fb6f6fda502b61e6dcd4daeb45c89d1197565c136992",
+      "effect:ddrhw-parallel-b-upper-exit-departure:ea5118b0-ea5118b1-7f5cbff5": "dbbe50df3b0049b5ace8fec9b5f0910cc89cc69effcf202ba61f30afd10e6ca8",
+      "exemplar:ddrhw-parallel-b-upper-exit-departure:6534284a-a8434037-7f5cb000": "5ba058a87241528373587c2beb13ef2766181095d34595db74628c641aa8a8a6",
+      "model:ddrhw-parallel-b-upper-exit-departure:5ad0e817-badb57f1-7f5cb000": "0bee790114e523f8d51b724ad943dbe3ec62f3ee7ec2d0bca3803b31ba08d620",
+      "model:ddrhw-parallel-b-upper-exit-departure:5ad0e817-badb57f1-7f5cb001": "0bee790114e523f8d51b724ad943dbe3ec62f3ee7ec2d0bca3803b31ba08d620",
+      "model:ddrhw-parallel-b-upper-exit-departure:5ad0e817-badb57f1-7f5cb002": "0bee790114e523f8d51b724ad943dbe3ec62f3ee7ec2d0bca3803b31ba08d620",
+      "model:ddrhw-parallel-b-upper-exit-departure:5ad0e817-badb57f1-7f5cb003": "0bee790114e523f8d51b724ad943dbe3ec62f3ee7ec2d0bca3803b31ba08d620",
+      "model:ddrhw-parallel-b-upper-exit-departure:5ad0e817-badb57f1-7f5cb004": "0bee790114e523f8d51b724ad943dbe3ec62f3ee7ec2d0bca3803b31ba08d620",
+      "model:ddrhw-parallel-b-upper-exit-departure:5ad0e817-badb57f1-7f5cbff5": "0bee790114e523f8d51b724ad943dbe3ec62f3ee7ec2d0bca3803b31ba08d620",
+      "path:ddrhw-parallel-b-upper-exit-departure:296678f7-a966883f-7f5cb000": "82a9f908358a2260dbcec0e4cb574f5878912b45cee12f5f002325c748aa9984",
+      "text:ddrhw-parallel-b-upper-exit-departure:2026960b-2a592fd1-7f5cb000": "0b2beba3dc494bb1c7300815f7f2e1df3a254e4a48d2b9e406e62c00316919d4",
+      "construction:ddrhw-parallel-b-upper-exit-departure": "13e32378ffa75da20155c3fd04048dc9a6505197bf944c9e289df159a7b424b9",
+      "effect:ddrhw-parallel-b-upper-entry-departure:ea5118b0-ea5118b1-7f5ccff5": "9ba3470fc55703c55cf55a98dd01f9fe1d2cffcf0fbaee0b1568227bdd9516f8",
+      "exemplar:ddrhw-parallel-b-upper-entry-departure:6534284a-a8434037-7f5cc000": "bccad370c8234c6a8f5ae2d8576c048416f50718d28d1b0ed715aab5d7bbb633",
+      "model:ddrhw-parallel-b-upper-entry-departure:5ad0e817-badb57f1-7f5cc000": "e9aca00b6a79b2cb5eabafd744f2eaf1953b9d3736045d33732fdcc02535af59",
+      "model:ddrhw-parallel-b-upper-entry-departure:5ad0e817-badb57f1-7f5cc001": "e9aca00b6a79b2cb5eabafd744f2eaf1953b9d3736045d33732fdcc02535af59",
+      "model:ddrhw-parallel-b-upper-entry-departure:5ad0e817-badb57f1-7f5cc002": "e9aca00b6a79b2cb5eabafd744f2eaf1953b9d3736045d33732fdcc02535af59",
+      "model:ddrhw-parallel-b-upper-entry-departure:5ad0e817-badb57f1-7f5cc003": "e9aca00b6a79b2cb5eabafd744f2eaf1953b9d3736045d33732fdcc02535af59",
+      "model:ddrhw-parallel-b-upper-entry-departure:5ad0e817-badb57f1-7f5cc004": "e9aca00b6a79b2cb5eabafd744f2eaf1953b9d3736045d33732fdcc02535af59",
+      "model:ddrhw-parallel-b-upper-entry-departure:5ad0e817-badb57f1-7f5ccff5": "e9aca00b6a79b2cb5eabafd744f2eaf1953b9d3736045d33732fdcc02535af59",
+      "path:ddrhw-parallel-b-upper-entry-departure:296678f7-a966883f-7f5cc000": "973e1ce7e1c9514734cf657e899969ef871f589fd9274250b53f09dfceca16f0",
+      "text:ddrhw-parallel-b-upper-entry-departure:2026960b-2a592fd1-7f5cc000": "d30200e2a0f47ec67c21299607b3a49d96d717bbec1aebeda90b02e3934b2dc4",
+      "construction:ddrhw-parallel-b-upper-entry-departure": "87be5c02c19217fa52f254206fa4674451f2d8f9907431d002519f81d72c3572",
+      "effect:ddrhw-parallel-b-lower-exit-grade:ea5118b0-ea5118b1-7f5cdff5": "d7fbe6d3b0bc58f357f262b0e8a927780255d0c644d8d27878ec1b3869799632",
+      "exemplar:ddrhw-parallel-b-lower-exit-grade:6534284a-a8434037-7f5cd010": "363467c62709aeff4e7a600bb445cad30a0cd44730e9ec60117f73a9e6861d16",
+      "exemplar:ddrhw-parallel-b-lower-exit-grade:6534284a-a8434037-7f5cd100": "cb8c4232526d2f7fa5e473115815c7141de63b76f0bc09ad6754f279d7442a05",
+      "exemplar:ddrhw-parallel-b-lower-exit-grade:6534284a-a8434037-7f5cd110": "e8afe44ec4d7bbbb805ea6473f9b43d69d30084931155a4886499868b0b216a0",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd010": "4d5d66db824f3dd94cd891a94fbfaec403c8a97d4b1656a4b416c24a7aa5281a",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd011": "4d5d66db824f3dd94cd891a94fbfaec403c8a97d4b1656a4b416c24a7aa5281a",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd012": "4d5d66db824f3dd94cd891a94fbfaec403c8a97d4b1656a4b416c24a7aa5281a",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd013": "4d5d66db824f3dd94cd891a94fbfaec403c8a97d4b1656a4b416c24a7aa5281a",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd014": "4d5d66db824f3dd94cd891a94fbfaec403c8a97d4b1656a4b416c24a7aa5281a",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd100": "bbcd4e8b976bec148bd9e7d2315f888a090c289594fd8384d28d1b5541d5ef51",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd101": "bbcd4e8b976bec148bd9e7d2315f888a090c289594fd8384d28d1b5541d5ef51",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd102": "bbcd4e8b976bec148bd9e7d2315f888a090c289594fd8384d28d1b5541d5ef51",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd103": "bbcd4e8b976bec148bd9e7d2315f888a090c289594fd8384d28d1b5541d5ef51",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd104": "bbcd4e8b976bec148bd9e7d2315f888a090c289594fd8384d28d1b5541d5ef51",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd110": "ea0e696a2bcfbca07859150b55893cd1e1356b301ab9497ab31c72dc18de77c8",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd111": "ea0e696a2bcfbca07859150b55893cd1e1356b301ab9497ab31c72dc18de77c8",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd112": "ea0e696a2bcfbca07859150b55893cd1e1356b301ab9497ab31c72dc18de77c8",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd113": "ea0e696a2bcfbca07859150b55893cd1e1356b301ab9497ab31c72dc18de77c8",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cd114": "ea0e696a2bcfbca07859150b55893cd1e1356b301ab9497ab31c72dc18de77c8",
+      "model:ddrhw-parallel-b-lower-exit-grade:5ad0e817-badb57f1-7f5cdff5": "abab52f987640d8424fd21fcd34c2bec47d9ace145c4ba7c06dcb5e66affa158",
+      "path:ddrhw-parallel-b-lower-exit-grade:296678f7-a966883f-7f5cd010": "48c1a384c7342eced552653e064e8023a964e026da6f3aa5ed9b61d517247d5b",
+      "path:ddrhw-parallel-b-lower-exit-grade:296678f7-a966883f-7f5cd100": "6907488352e0f0d0d0f0e6903cdd345c5a40b37441ecae66c340064dc42292b0",
+      "path:ddrhw-parallel-b-lower-exit-grade:296678f7-a966883f-7f5cd110": "9fad3a84c73d49047977717ef709b08edd908bc59f6de36107cef7280dd69a27",
+      "text:ddrhw-parallel-b-lower-exit-grade:2026960b-2a592fd1-7f5cd010": "141e6fe9196be4897080e4bd559965c67ab6bf3b57d81728e696253823c715d3",
+      "text:ddrhw-parallel-b-lower-exit-grade:2026960b-2a592fd1-7f5cd100": "141e6fe9196be4897080e4bd559965c67ab6bf3b57d81728e696253823c715d3",
+      "text:ddrhw-parallel-b-lower-exit-grade:2026960b-2a592fd1-7f5cd110": "141e6fe9196be4897080e4bd559965c67ab6bf3b57d81728e696253823c715d3",
+      "construction:ddrhw-parallel-b-lower-exit-grade": "9cbaa586fc9a6de589a8ec8ab1aa9faf20eb544d90be86125f4a5056b9f23ae2",
+      "effect:ddrhw-parallel-b-lower-entry-grade:ea5118b0-ea5118b1-7f5ceff5": "b3a5aec2fa8fe9fe86fecefad620ccf3865014fac27d711bac8a523ef19ae3f9",
+      "exemplar:ddrhw-parallel-b-lower-entry-grade:6534284a-a8434037-7f5ce010": "947c9979b577e76f067a3a9108b2279b915c22e1189a86e8e4f90702891ac4d3",
+      "exemplar:ddrhw-parallel-b-lower-entry-grade:6534284a-a8434037-7f5ce100": "1c439ab6ad64e85831fce953d5afa7ff05bfb255a3cb33f8f66a8a41c5a3b903",
+      "exemplar:ddrhw-parallel-b-lower-entry-grade:6534284a-a8434037-7f5ce110": "6721d6b6e9d946abeb77ab1f78d5de4b474ccaf48ad476a9885b6008294bc796",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce010": "286f1ec936192752e260742591f822a5c792cc401ee56224a862f769b2924b6b",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce011": "286f1ec936192752e260742591f822a5c792cc401ee56224a862f769b2924b6b",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce012": "286f1ec936192752e260742591f822a5c792cc401ee56224a862f769b2924b6b",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce013": "286f1ec936192752e260742591f822a5c792cc401ee56224a862f769b2924b6b",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce014": "286f1ec936192752e260742591f822a5c792cc401ee56224a862f769b2924b6b",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce100": "c9a55e4b5afa2ad10a21dc431d4471d2d02d6dcd9e76288147a3cf4397e95233",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce101": "c9a55e4b5afa2ad10a21dc431d4471d2d02d6dcd9e76288147a3cf4397e95233",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce102": "c9a55e4b5afa2ad10a21dc431d4471d2d02d6dcd9e76288147a3cf4397e95233",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce103": "c9a55e4b5afa2ad10a21dc431d4471d2d02d6dcd9e76288147a3cf4397e95233",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce104": "c9a55e4b5afa2ad10a21dc431d4471d2d02d6dcd9e76288147a3cf4397e95233",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce110": "6ed4a2c213f0a8ae6767b84266c03aabd11dc2ce9a31e6dd0fde0cefde97a935",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce111": "6ed4a2c213f0a8ae6767b84266c03aabd11dc2ce9a31e6dd0fde0cefde97a935",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce112": "6ed4a2c213f0a8ae6767b84266c03aabd11dc2ce9a31e6dd0fde0cefde97a935",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce113": "6ed4a2c213f0a8ae6767b84266c03aabd11dc2ce9a31e6dd0fde0cefde97a935",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ce114": "6ed4a2c213f0a8ae6767b84266c03aabd11dc2ce9a31e6dd0fde0cefde97a935",
+      "model:ddrhw-parallel-b-lower-entry-grade:5ad0e817-badb57f1-7f5ceff5": "692b4d4d9cace3c8218a26f9b9e1e3454eab32a5b8a8024e7732c14cea6aea68",
+      "path:ddrhw-parallel-b-lower-entry-grade:296678f7-a966883f-7f5ce010": "0a14b5678244329f0013484bbb9cc6fe035b5e15777fe5302cc2a2a4fb971ddc",
+      "path:ddrhw-parallel-b-lower-entry-grade:296678f7-a966883f-7f5ce100": "eaff60f175176affc48cf08bb4a5bad2e991361fe668f03e3fe1927f8c9a86ab",
+      "path:ddrhw-parallel-b-lower-entry-grade:296678f7-a966883f-7f5ce110": "931b743dc82bb8e08418accf6504ff4cd77dd6bea70f8e5a113adef3979fd452",
+      "text:ddrhw-parallel-b-lower-entry-grade:2026960b-2a592fd1-7f5ce010": "73c025a33c7d8d9e034e020f2da1957a2ca6b438813013bede5892fbd48f9a23",
+      "text:ddrhw-parallel-b-lower-entry-grade:2026960b-2a592fd1-7f5ce100": "73c025a33c7d8d9e034e020f2da1957a2ca6b438813013bede5892fbd48f9a23",
+      "text:ddrhw-parallel-b-lower-entry-grade:2026960b-2a592fd1-7f5ce110": "73c025a33c7d8d9e034e020f2da1957a2ca6b438813013bede5892fbd48f9a23",
+      "construction:ddrhw-parallel-b-lower-entry-grade": "a3bf27620c1f7c7c8cd7d382ed90145430584ef2673d0e7fe57e017e16f06f9e",
+      "effect:ddrhw-parallel-b-upper-exit-grade:ea5118b0-ea5118b1-7f5cfff5": "b7bc1755ee0fde48f55897a56505715f3b522fe79b3eb208a44d1457c189394b",
+      "exemplar:ddrhw-parallel-b-upper-exit-grade:6534284a-a8434037-7f5cf020": "37e735a856b1b789989a6ddff23cefc6fd983a38004fd55c46419463e856d06e",
+      "exemplar:ddrhw-parallel-b-upper-exit-grade:6534284a-a8434037-7f5cf100": "da6b0076bb6ff94d3e3e978990621dd599979e91707ed3ab9250182d535cb3e5",
+      "exemplar:ddrhw-parallel-b-upper-exit-grade:6534284a-a8434037-7f5cf110": "298cd082f7902b4c4de8c2a2a174873f58525e3dad24ec8ea4059b371011f496",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf020": "894c05d94da933cfacf559dde525862fb9de11bb4d584b68fac39e58b75121ba",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf021": "894c05d94da933cfacf559dde525862fb9de11bb4d584b68fac39e58b75121ba",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf022": "894c05d94da933cfacf559dde525862fb9de11bb4d584b68fac39e58b75121ba",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf023": "894c05d94da933cfacf559dde525862fb9de11bb4d584b68fac39e58b75121ba",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf024": "894c05d94da933cfacf559dde525862fb9de11bb4d584b68fac39e58b75121ba",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf100": "de29f8704e9607f621469759acb4f3f29dd28113bbd003738ba57c3d954236f8",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf101": "de29f8704e9607f621469759acb4f3f29dd28113bbd003738ba57c3d954236f8",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf102": "de29f8704e9607f621469759acb4f3f29dd28113bbd003738ba57c3d954236f8",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf103": "de29f8704e9607f621469759acb4f3f29dd28113bbd003738ba57c3d954236f8",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf104": "de29f8704e9607f621469759acb4f3f29dd28113bbd003738ba57c3d954236f8",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf110": "fd1c069cb96cf327bcaf2cf4313b050641bc98002014ac1105fc7189a9449412",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf111": "fd1c069cb96cf327bcaf2cf4313b050641bc98002014ac1105fc7189a9449412",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf112": "fd1c069cb96cf327bcaf2cf4313b050641bc98002014ac1105fc7189a9449412",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf113": "fd1c069cb96cf327bcaf2cf4313b050641bc98002014ac1105fc7189a9449412",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cf114": "fd1c069cb96cf327bcaf2cf4313b050641bc98002014ac1105fc7189a9449412",
+      "model:ddrhw-parallel-b-upper-exit-grade:5ad0e817-badb57f1-7f5cfff5": "a73ed8caae9d81ef0fbf166589a912e52f664fb1e9b127715824a3b53f3aba70",
+      "path:ddrhw-parallel-b-upper-exit-grade:296678f7-a966883f-7f5cf020": "fca02760cf3a0f96f23e78aa8ade895ef37bdc1f72b7ead5dd29a341e77b8172",
+      "path:ddrhw-parallel-b-upper-exit-grade:296678f7-a966883f-7f5cf100": "efa42016b9f3a57bce074c4b49ad65ecb75d1a52900304be7bd6de340e01aae3",
+      "path:ddrhw-parallel-b-upper-exit-grade:296678f7-a966883f-7f5cf110": "d34e890f961285c6b05e4384e95f2c915a5ab9b743b590e66725f1315e90ed2c",
+      "text:ddrhw-parallel-b-upper-exit-grade:2026960b-2a592fd1-7f5cf020": "58eb4229918b9cbd8e37bb3b092312e114cbb3a6bcee6eb7635ebff20d466fa4",
+      "text:ddrhw-parallel-b-upper-exit-grade:2026960b-2a592fd1-7f5cf100": "58eb4229918b9cbd8e37bb3b092312e114cbb3a6bcee6eb7635ebff20d466fa4",
+      "text:ddrhw-parallel-b-upper-exit-grade:2026960b-2a592fd1-7f5cf110": "58eb4229918b9cbd8e37bb3b092312e114cbb3a6bcee6eb7635ebff20d466fa4",
+      "construction:ddrhw-parallel-b-upper-exit-grade": "81144c341b805af3b4a723220103e0a2c3f1ca0621012684a5c02c5c4d4b485f",
+      "effect:ddrhw-parallel-b-upper-entry-grade:ea5118b0-ea5118b1-7f5d0ff5": "f6d0c2bff6a6836dabcd748e163f2f3eae33c1e8e4ae41793ccb96839f1d87c3",
+      "exemplar:ddrhw-parallel-b-upper-entry-grade:6534284a-a8434037-7f5d0010": "0a1d95d0576cbc3924517805106bc44145bf3b514431a445580e6920f2ed3c50",
+      "exemplar:ddrhw-parallel-b-upper-entry-grade:6534284a-a8434037-7f5d0110": "b505198c06f2a3b23bc39d70e71e85a4461339b7e25353ae75ec63a9e4edc808",
+      "exemplar:ddrhw-parallel-b-upper-entry-grade:6534284a-a8434037-7f5d0200": "b70ebbef605cdd740baaf2245995e1d321cd70fd6eb0a5bb6e71e641883e5fec",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0010": "b66617e715f4083b66b5433d4dadb4bca36fd1d5f31b140248ce639aff587f68",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0011": "b66617e715f4083b66b5433d4dadb4bca36fd1d5f31b140248ce639aff587f68",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0012": "b66617e715f4083b66b5433d4dadb4bca36fd1d5f31b140248ce639aff587f68",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0013": "b66617e715f4083b66b5433d4dadb4bca36fd1d5f31b140248ce639aff587f68",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0014": "b66617e715f4083b66b5433d4dadb4bca36fd1d5f31b140248ce639aff587f68",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0110": "59ad45746896e7cbc5d9438e52bbe6e9722a66e78e6f32d285f47d8e81a7c30a",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0111": "59ad45746896e7cbc5d9438e52bbe6e9722a66e78e6f32d285f47d8e81a7c30a",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0112": "59ad45746896e7cbc5d9438e52bbe6e9722a66e78e6f32d285f47d8e81a7c30a",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0113": "59ad45746896e7cbc5d9438e52bbe6e9722a66e78e6f32d285f47d8e81a7c30a",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0114": "59ad45746896e7cbc5d9438e52bbe6e9722a66e78e6f32d285f47d8e81a7c30a",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0200": "90b5e1180dc7da5cb11c2b0e7e3868ae4d06dce4ed26cb2427128eb35e502bb5",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0201": "90b5e1180dc7da5cb11c2b0e7e3868ae4d06dce4ed26cb2427128eb35e502bb5",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0202": "90b5e1180dc7da5cb11c2b0e7e3868ae4d06dce4ed26cb2427128eb35e502bb5",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0203": "90b5e1180dc7da5cb11c2b0e7e3868ae4d06dce4ed26cb2427128eb35e502bb5",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0204": "90b5e1180dc7da5cb11c2b0e7e3868ae4d06dce4ed26cb2427128eb35e502bb5",
+      "model:ddrhw-parallel-b-upper-entry-grade:5ad0e817-badb57f1-7f5d0ff5": "d75438c9051d82e05bd58f233f94cb35592724674c4eeece2bae69c1009a6577",
+      "path:ddrhw-parallel-b-upper-entry-grade:296678f7-a966883f-7f5d0010": "463963ffcf0bba371f4466a84341e7cb38344a5229f37bbdf29dda718ee11c4e",
+      "path:ddrhw-parallel-b-upper-entry-grade:296678f7-a966883f-7f5d0110": "0fc310fec60ed737f01ad02fd7e4e0bf185d2510d250d0f1c42b4d4a058da6a6",
+      "path:ddrhw-parallel-b-upper-entry-grade:296678f7-a966883f-7f5d0200": "b3d1edfc2bff2b5b672fd54f2d582a8e818e1476dc01c6fdac831da574d6a353",
+      "text:ddrhw-parallel-b-upper-entry-grade:2026960b-2a592fd1-7f5d0010": "04487aaada391d0c14ca4b22e9b77a03fca981e296f2b6bf67353b3defe06bf2",
+      "text:ddrhw-parallel-b-upper-entry-grade:2026960b-2a592fd1-7f5d0110": "04487aaada391d0c14ca4b22e9b77a03fca981e296f2b6bf67353b3defe06bf2",
+      "text:ddrhw-parallel-b-upper-entry-grade:2026960b-2a592fd1-7f5d0200": "04487aaada391d0c14ca4b22e9b77a03fca981e296f2b6bf67353b3defe06bf2",
+      "construction:ddrhw-parallel-b-upper-entry-grade": "32471ee0862aea4110346e52967a2173f849d17d0588562168cdbd0c140155be",
+      "assembly_pose:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b": "a5887470f5e3d8ddfd472baa6b5827b38c310a92445ef24dece4d5c65c0fec34"
+    }
+  },
+  "software_status": {
+    "path_extraction": "passed",
+    "placed_encoded_route_joins": "passed",
+    "complete_boundary_compatibility": "not_evaluated",
+    "physical_seams": "unverified",
+    "in_game": "unverified"
+  },
+  "compatibility_policy": "Individual encoded-route seams only. Complete physical-channel boundary agreement, model seams, construction operation, and in-game behaviour require separate evidence."
+}

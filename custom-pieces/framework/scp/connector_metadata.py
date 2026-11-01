@@ -295,6 +295,14 @@ def validate_piece(piece, connections, groups, profiles):
             point, tangent = port.get("endpoint_m"), port.get("tangent")
             _need(_vector(point, 3) and _vector(tangent, 2) and abs(math.hypot(*tangent)-1.) <= EPS, "Invalid measured endpoint or tangent")
             _need(port.get("direction") in ("in", "out") and _number(port.get("grade")), "Invalid measured direction or grade")
+            _need("grade_basis" not in port or port["grade_basis"] in (
+                "actual_saved_PATH_before_graph_rounding", "six_decimal_graph_sample_retained_for_existing_contract"),
+                "Unknown measured boundary grade basis")
+            _need("actual_saved_grade" not in port or _number(port["actual_saved_grade"]),
+                "Invalid exact saved boundary grade")
+            _need("actual_saved_tangent" not in port or
+                (_vector(port["actual_saved_tangent"], 2) and abs(math.hypot(*port["actual_saved_tangent"])-1.) <= EPS),
+                "Invalid exact saved boundary tangent")
             _need(port.get("service_network") == component["network"], "Measured service differs from component")
             for key in ("engine_transport", "role"):
                 _need(key not in profile or port.get(key) == profile[key], f"Measured {key} differs from optional profile")
@@ -510,6 +518,12 @@ def verify_compiled(custom_root, build, resolved, domain_id="high-speed-rail"):
         measured = piece_connectivity(item["piece"], payload, contract=adapter.reviewed_contract(item["piece"]), service_classifier=adapter.service_classifier)
         saved = item["connections"]
         _need(port_facts(measured) == port_facts(saved) and journey_facts(measured) == journey_facts(saved), f"{identifier}: compiled PATH facts differ from connections.json")
+        measured_ports = {port["id"]: port for port in measured["ports"]}
+        for port in saved["ports"]:
+            for field in ("actual_saved_grade", "actual_saved_tangent", "grade_basis"):
+                if field in port:
+                    _need(port[field] == measured_ports[port["id"]].get(field),
+                        f"{identifier}: exact saved PATH boundary witness differs from connections.json")
         actual_hashes = resource_fingerprints(identifier, payload)
         checked = 0
         for key, digest in saved["source"]["resource_fingerprints"].items():
@@ -523,6 +537,9 @@ def verify_compiled(custom_root, build, resolved, domain_id="high-speed-rail"):
             parsed = parse_paths(payload[0x296678f7, 0xa966883f, int(route["tile_id"],16)])["routes"][route["source_route_index"]]
             col, row = route["cell"]
             route["points"] = [[east+16.*col, north-16.*row, height] for east,north,height in parsed["points"]]
+            # The extractor's private precise stream has now become the
+            # canonical exported polyline; avoid publishing it twice.
+            route.pop("saved_points", None)
         refs = {}
         for group in item["groups"]:
             for member in group["members"]:
@@ -548,14 +565,25 @@ def _route_matches_member(route, member):
         return False
     # The graph extractor uses 6-decimal-metre samples; full exported polylines
     # retain parsed PATH precision. Compare occurrence IDs in that graph frame.
-    segment = route["points"][:2] if endpoint == 0 else route["points"][-2:]
-    segment = [[round(value,6) for value in point] for point in segment]
+    saved_segment = route["points"][:2] if endpoint == 0 else route["points"][-2:]
+    segment = [[round(value,6) for value in point] for point in saved_segment]
     delta = [last-first for first,last in zip(*segment)]
     length = math.hypot(*delta[:2])
     if not length:
         return False
     sampled = [value/length for value in delta[:2]]
-    return _close(sampled, member.get("sampled_tangent", member["tangent"])) and abs(delta[2]/length-member["grade"]) <= EPS
+    saved_delta = [last-first for first,last in zip(*saved_segment)]
+    saved_length = math.hypot(*saved_delta[:2])
+    if not saved_length:
+        return False
+    saved_tangent = [value/saved_length for value in saved_delta[:2]]
+    saved_grade = saved_delta[2]/saved_length
+    if "actual_saved_tangent" in member and not _close(saved_tangent, member["actual_saved_tangent"]):
+        return False
+    if "actual_saved_grade" in member and abs(saved_grade-member["actual_saved_grade"]) > EPS:
+        return False
+    grade = saved_grade if member.get("grade_basis") == "actual_saved_PATH_before_graph_rounding" else delta[2]/length
+    return _close(sampled, member.get("sampled_tangent", member["tangent"])) and abs(grade-member["grade"]) <= EPS
 
 
 def _source_files(root, domain_id, piece_id, compiled):

@@ -115,6 +115,9 @@ def build_piece(spec, context):
         core_data = (alignment_b_core_construction_data if alignment_b else core_construction_data)()
         rows, checks, cons = add_approaches(spec, *core_data)
         return add_shadows(spec, context, compiled, assets), construction(spec, rows, checks, cons)
+    if spec['recipe'].startswith('highway_ddrhw_parallel_b_'):
+        from .parallel_b_modules import build_piece as build_parallel_b
+        return build_parallel_b(spec, context)
     if spec['recipe'].startswith('highway_ddrhw_parallel_'):
         from .parallel_modules import build_piece as build_parallel
         return build_parallel(spec, context)

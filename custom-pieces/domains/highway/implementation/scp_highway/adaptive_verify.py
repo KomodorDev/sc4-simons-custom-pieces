@@ -92,24 +92,37 @@ def _route_signature(route, turns=0):
             (route['exit'] + turns) % 4, route['compatibility'], tuple(points))
 
 
+def _source_frame(piece):
+    """Return the independently checked origin and native Avenue phase.
+
+    The complementary parallel alignment keeps the DD lattice fixed while
+    advancing the Avenue by one native half-step. The writer's layout or
+    donor-selection functions do not supply this independent expectation.
+    """
+    key = piece.get('geometry_key')
+    if isinstance(key, str) and key.startswith('parallel-b-'):
+        from .parallel_alignment_b_verify import _source_origin
+        return _source_origin(piece), 1
+    require(key in ORIGINS, 'Adaptive highway cells need a reviewed module origin')
+    return ORIGINS[key], 0
+
+
 def check_resources(resources, piece):
     """Prove the saved runtime layers preserve geometry and all actual routes."""
     rows = bindings(piece)
     if not rows:
         return {'adaptive_cells_checked': 0, 'game_behavior_tested': False}
     validate_active_resources(resources, piece)
-    key = piece.get('geometry_key')
-    require(key in ORIGINS, 'Adaptive highway cells need a reviewed module origin')
-    origin = ORIGINS[key]
+    origin, phase = _source_frame(piece)
     required_cells = {tuple(cell) for cell in piece['cells']
-                      if cell[0] + origin[0] - cell[1] - origin[1] in (-1, 0, 1)}
+                      if cell[0] + origin[0] - cell[1] - origin[1] - phase in (-1, 0, 1)}
     require({tuple(row['cell']) for row in rows} == required_cells,
             'Adaptive metadata must cover every and only the module Avenue cells')
     texture_hashes = _texture_hashes()
     route_count = retained_count = removed_count = props = 0
     for row in rows:
         cell = row['cell']
-        difference = cell[0] + origin[0] - cell[1] - origin[1]
+        difference = cell[0] + origin[0] - cell[1] - origin[1] - phase
         donor = 0x04003800 if difference == 0 else 0x04000200
         rotation = 2 if difference == 1 else 0
         avenue = {0: 0x01030103, 1: 0x01000003, -1: 0x00030100}[difference]
@@ -175,8 +188,7 @@ def check_construction_fields(fields, piece, resources):
     """Check the hybrid FLEX/fixed ownership without calling its author."""
     rows = bindings(piece)
     require(rows, 'Adaptive construction verification needs explicit bindings')
-    key = piece.get('geometry_key')
-    require(key in ORIGINS, 'Adaptive construction has no reviewed module origin')
+    origin, _phase = _source_frame(piece)
     by_cell = {tuple(row['cell']): row for row in rows}
     width, depth = piece['footprint']
     expected = [['.'] * (width + 2) for _ in range(depth + 1)]
@@ -184,7 +196,6 @@ def check_construction_fields(fields, piece, resources):
     cons = [list(row) for row in expected]
     checks = []
     from .ramp_verify import _road_word
-    origin = ORIGINS[key]
     for index, (cell, identifier) in enumerate(zip(piece['cells'], piece['tile_ids'])):
         letter = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'[index]
         expected[cell[1]][cell[0]] = letter

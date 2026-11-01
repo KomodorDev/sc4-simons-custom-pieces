@@ -17,6 +17,25 @@ from scp.dbpf import pack_dbpf
 from scp.install import FOLDER, RUL0, NETWORK_INI
 
 
+PARALLEL_B_RECIPES = {
+    "highway_ddrhw_parallel_b_crossing",
+    "highway_ddrhw_parallel_b_northwest_terminal",
+    "highway_ddrhw_parallel_b_southeast_terminal",
+    "highway_ddrhw_parallel_b_lower_exit_slip",
+    "highway_ddrhw_parallel_b_lower_entry_slip",
+    "highway_ddrhw_parallel_b_upper_exit_slip",
+    "highway_ddrhw_parallel_b_upper_entry_slip",
+    "highway_ddrhw_parallel_b_lower_exit_departure",
+    "highway_ddrhw_parallel_b_lower_entry_departure",
+    "highway_ddrhw_parallel_b_upper_exit_departure",
+    "highway_ddrhw_parallel_b_upper_entry_departure",
+    "highway_ddrhw_parallel_b_lower_exit_grade",
+    "highway_ddrhw_parallel_b_lower_entry_grade",
+    "highway_ddrhw_parallel_b_upper_exit_grade",
+    "highway_ddrhw_parallel_b_upper_entry_grade",
+}
+
+
 class DiscoveryTests(unittest.TestCase):
     def setUp(self):
         temporary = tempfile.TemporaryDirectory()
@@ -196,8 +215,67 @@ class InstallerSelectionTests(unittest.TestCase):
                                                  "highway_ddrhw_diagonal_ghsr_crossing",
                                                  "highway_ddrhw_diagonal_ghsr_crossing_alignment_b"} | {
             item["recipe"] for provider in (ramp_paths, modular_ramps, parallel_layout)
-            for item in provider.module_catalog()["types"]})
+            for item in provider.module_catalog()["types"]} | PARALLEL_B_RECIPES)
         self.assertIn("hsr_diagonal_ghsr", capabilities["high-speed-rail"])
+
+    def test_parallel_b_has_exactly_fifteen_finite_recipes_and_reaches_complete_selection(self):
+        catalog = load_catalog(ROOT)
+        identifiers = set(catalog["piece_sets"]["ddrhw-parallel-diamond-alignment-b"])
+        pieces = [piece for piece in catalog["pieces"] if piece["id"] in identifiers]
+        self.assertEqual(len(pieces), 15)
+        self.assertEqual({piece["recipe"] for piece in pieces}, PARALLEL_B_RECIPES)
+        capabilities = service.implemented_recipes_by_domain()["highway"]
+        self.assertEqual({recipe for recipe in capabilities if recipe.startswith("highway_ddrhw_parallel_b_")},
+                         PARALLEL_B_RECIPES)
+        self.assertTrue(identifiers <= set(service.all_implemented_ids(ROOT)))
+
+    def test_parallel_b_update_adds_fifteen_types_and_retains_the_previous_37_without_receipt_changes(self):
+        catalog = load_catalog(ROOT)
+        retained_assemblies = {"ddrhw-l1-and-l2-diagonal-avenue-diamond",
+                               "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond",
+                               "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond"}
+        previous = {row["piece_id"] for assembly in catalog["_assemblies"]
+                    if assembly["id"] in retained_assemblies for row in assembly["scene"]["placements"]}
+        previous.update(catalog["piece_sets"]["ddrhw-diagonal-ghsr-crossing-alignments"])
+        self.assertEqual(len(previous), 37)
+        added = set(catalog["piece_sets"]["ddrhw-parallel-diamond-alignment-b"])
+        self.assertEqual(len(added), 15)
+        self.assertFalse(previous & added)
+        receipt = {"piece_ids": sorted(previous)}
+        original = deepcopy(receipt)
+        plan = service.Installation(Path("game"), Path("Plugins"), (), "win32")
+        with patch.object(service, "_owned", return_value=receipt), \
+                patch("scp.install.install_build") as install:
+            selection = service.installed_selection(ROOT, plan)
+        self.assertTrue(previous | added <= set(selection))
+        self.assertEqual(receipt, original)
+        install.assert_not_called()
+
+    def test_parallel_b_unknown_recipe_cannot_hide_behind_the_implemented_prefix(self):
+        catalog = load_catalog(ROOT)
+        for recipe in ("highway_ddrhw_parallel_b_unknown", "highway_ddrhw_parallel_b_crossing_extra",
+                       "highway_ddrhw_parallel_b_upper_entry_grade_unimplemented"):
+            with self.subTest(recipe=recipe):
+                changed = deepcopy(catalog)
+                piece = next(row for row in changed["pieces"] if row["id"] == "ddrhw-parallel-b-crossing")
+                piece["recipe"] = recipe
+                with patch.object(service, "load_catalog", return_value=changed):
+                    with self.assertRaisesRegex(ValueError, "cannot prove an implementation.*ddrhw-parallel-b-crossing"):
+                        service.all_implemented_ids(ROOT)
+
+    def test_parallel_b_draft_exclusion_and_failed_placement_guard_remain_in_force(self):
+        catalog = load_catalog(ROOT)
+        changed = deepcopy(catalog)
+        piece = next(row for row in changed["pieces"] if row["id"] == "ddrhw-parallel-b-crossing")
+        piece.update(status="draft", recipe="highway_ddrhw_parallel_b_unimplemented")
+        with patch.object(service, "load_catalog", return_value=changed):
+            self.assertNotIn(piece["id"], service.all_implemented_ids(ROOT))
+        changed = deepcopy(catalog)
+        piece = next(row for row in changed["pieces"] if row["id"] == "ddrhw-parallel-b-crossing")
+        piece["game_tests"]["placement"] = "failed"
+        with patch.object(service, "load_catalog", return_value=changed):
+            with self.assertRaisesRegex(ValueError, "failed placement"):
+                service.all_implemented_ids(ROOT)
 
     def test_non_draft_record_with_no_implementation_blocks_complete_selection(self):
         catalog = deepcopy(load_catalog(ROOT))

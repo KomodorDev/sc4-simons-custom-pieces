@@ -229,7 +229,7 @@ class PieceMenuFamilyTests(unittest.TestCase):
             with self.subTest(groups=groups), self.assertRaises(ValueError):
                 families.with_feature_sequence_preserving_families(raw, meta, [0xF804, 0xF800])
 
-    def test_production_three_assembly_transform_preserves_unrelated_alternative_family(self):
+    def three_assembly_transform(self, *, nested=False):
         from scp.multi_assembly_menu import _actual, _transform
         from scp.menu_experiment_resources import make_assembly_icon
         pieces = deepcopy(self.pieces)
@@ -253,6 +253,11 @@ class PieceMenuFamilyTests(unittest.TestCase):
                     'cycle_button': {'id': f'{0x6A47FEF0 + index:08x}', 'order': f'{0x7200FEF0 + index:08x}',
                         'title': 'Fixture assembly ' + str(index), 'description': 'Select individual components.'}},
                 'scene': {'placements': [{'piece_id': piece['id']} for piece in members]}})
+        if nested:
+            submenu = {'id': '6a47fef8', 'order': '7200fef8',
+                       'title': 'Fixture assembly alignments', 'description': 'Choose one isolated assembly cycle.'}
+            for row in bundle['groups'][:2]:
+                row['layout']['cycle_submenu'] = deepcopy(submenu)
         icon = make_assembly_icon([[(0, 0, 15.5), (16, 16, 15.5)]], network_label='HSR')
         changed, new_menu, metadata, _audits = _transform(base, controller, menu, bundle, [icon] * 3)
         _actual(base, bundle, controller, menu, changed, new_menu, metadata)
@@ -260,10 +265,17 @@ class PieceMenuFamilyTests(unittest.TestCase):
         kept = [row for row in rows(metadata['ordering_insertion']) if row[1][0] in (0xF801, 0xF803)]
         self.assertEqual([(keyword, states[0]) for keyword, states in kept],
                          [('rotationring', 0xF801), ('addtypes', 0xF803)])
-        self.assertEqual(len(strict_dbpf(new_menu)), 4 * 5)  # Three assemblies, A/B anchor, unused last piece.
+        # Three assemblies, unrelated A/B anchor, unused piece, and optional parent.
+        self.assertEqual(len(strict_dbpf(new_menu)), 4 * (6 if nested else 5))
         for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION):
             key = (*prefix, int(pieces[1]['menu']['id'], 16))
             self.assertEqual(strict_dbpf(new_menu)[key], menus[key])
+
+    def test_production_three_assembly_transform_preserves_unrelated_alternative_family(self):
+        self.three_assembly_transform()
+
+    def test_nested_assembly_buttons_preserve_unrelated_alternative_family_and_native_bytes(self):
+        self.three_assembly_transform(nested=True)
 
     def test_production_single_assembly_transform_preserves_alternative_family(self):
         from scp.menu_experiment import _check_actual_resources, _transformed

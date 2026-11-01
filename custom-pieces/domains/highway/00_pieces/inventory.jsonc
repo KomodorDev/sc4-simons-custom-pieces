@@ -15,7 +15,7 @@
   "purpose": "Generated current subject index and manual coverage; authoritative results remain in each subject manual-tests.json.",
   "version": "0.6.0.dev1",
   "domain": "highway",
-  "count": 42,
+  "count": 57,
   "pieces": [
     {
       "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over Avenue Ground (0 m) \u2014 Diagonal Crossing 90\u00b0.",
@@ -5744,6 +5744,2007 @@
         "demolition": "unverified",
         "save_reload": "unverified"
       }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 L1/L2 over Avenue L0 \u2014 Diagonal 90\u00b0 \u2014 Parallel \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-crossing",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 L1/L2 over Avenue L0 \u2014 Diagonal 90\u00b0 \u2014 Parallel \u2014 Alignment B",
+      "description": "Place one dd rhw / avenue crossing for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_crossing",
+      "geometry_key": "parallel-b-crossing",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f870",
+      "tile_ids": [
+        "7f5bf100",
+        "7f5bf010",
+        "7f5bf110"
+      ],
+      "preview_id": "7f5bfff5",
+      "effect_name": "preview_scp_hw_f870_____001",
+      "footprint": [
+        2,
+        2
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis",
+        "adaptive_avenue"
+      ],
+      "menu": {
+        "id": "6a47f870",
+        "order": "ffffff70",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "crossing",
+        "model_overhang": true,
+        "authored_model_overhang": false,
+        "pure_ramp_model": false,
+        "native_model_transfers": [],
+        "native_avenue_cells": [
+          [
+            1,
+            -1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "native_highway_cells": [
+          [
+            1,
+            -1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5bf800"
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5bf900"
+          },
+          {
+            "cell": [
+              1,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5bfa00"
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "adaptive_ground": {
+        "schema_version": 1,
+        "use_path_elevation": true,
+        "construction_helper": [
+          0,
+          0
+        ],
+        "cells": [
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "rotation": 2,
+            "texture_donor_id": "04000200",
+            "street_flags": "02020400",
+            "avenue_flags": "01000003",
+            "prop": true,
+            "resolved_tile_id": "7f5c0000"
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "rotation": 0,
+            "texture_donor_id": "04000200",
+            "street_flags": "02020400",
+            "avenue_flags": "00030100",
+            "prop": true,
+            "resolved_tile_id": "7f5c0100"
+          },
+          {
+            "cell": [
+              1,
+              1
+            ],
+            "rotation": 0,
+            "texture_donor_id": "04003800",
+            "street_flags": "02040400",
+            "avenue_flags": "01030103",
+            "prop": true,
+            "resolved_tile_id": "7f5c0200"
+          }
+        ]
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for Avenue \u2014 Northwest Avenue Right-Turn Terminal \u2014 Parallel DD RHW \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-northwest-terminal",
+      "domain": "highway",
+      "name": "Avenue \u2014 Northwest Avenue Right-Turn Terminal \u2014 Parallel DD RHW \u2014 Alignment B",
+      "description": "Place one northwest avenue right-turn terminal for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_northwest_terminal",
+      "geometry_key": "parallel-b-northwest-terminal",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f871",
+      "tile_ids": [
+        "7f5c1100",
+        "7f5c1010",
+        "7f5c1110"
+      ],
+      "preview_id": "7f5c1ff5",
+      "effect_name": "preview_scp_hw_f871_____001",
+      "footprint": [
+        2,
+        2
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis",
+        "adaptive_avenue"
+      ],
+      "menu": {
+        "id": "6a47f871",
+        "order": "ffffff71",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "terminal",
+        "ground_mouth_profile": "taper-6m-to-3p5m-over-3m",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": false,
+        "native_model_transfers": [],
+        "native_avenue_cells": [
+          [
+            0,
+            -2
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        "native_highway_cells": [],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "cast_shadow": false
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "cast_shadow": false
+          },
+          {
+            "cell": [
+              1,
+              1
+            ],
+            "cast_shadow": false
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "adaptive_ground": {
+        "schema_version": 1,
+        "use_path_elevation": true,
+        "construction_helper": [
+          0,
+          0
+        ],
+        "cells": [
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "rotation": 2,
+            "texture_donor_id": "04000200",
+            "street_flags": "04020400",
+            "avenue_flags": "01000003",
+            "prop": true,
+            "resolved_tile_id": "7f5c2000"
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "rotation": 0,
+            "texture_donor_id": "04000200",
+            "street_flags": "04020400",
+            "avenue_flags": "00030100",
+            "prop": true,
+            "resolved_tile_id": "7f5c2100"
+          },
+          {
+            "cell": [
+              1,
+              1
+            ],
+            "rotation": 0,
+            "texture_donor_id": "04003800",
+            "street_flags": "04020002",
+            "avenue_flags": "01030103",
+            "prop": true,
+            "resolved_tile_id": "7f5c2200"
+          }
+        ]
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for Avenue \u2014 Southeast Avenue Right-Turn Terminal \u2014 Parallel DD RHW \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-southeast-terminal",
+      "domain": "highway",
+      "name": "Avenue \u2014 Southeast Avenue Right-Turn Terminal \u2014 Parallel DD RHW \u2014 Alignment B",
+      "description": "Place one southeast avenue right-turn terminal for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_southeast_terminal",
+      "geometry_key": "parallel-b-southeast-terminal",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f872",
+      "tile_ids": [
+        "7f5c3100",
+        "7f5c3010"
+      ],
+      "preview_id": "7f5c3ff5",
+      "effect_name": "preview_scp_hw_f872_____001",
+      "footprint": [
+        2,
+        2
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis",
+        "adaptive_avenue"
+      ],
+      "menu": {
+        "id": "6a47f872",
+        "order": "ffffff72",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "terminal",
+        "ground_mouth_profile": "taper-6m-to-3p5m-over-3m",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": false,
+        "native_model_transfers": [],
+        "native_avenue_cells": [
+          [
+            2,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "native_highway_cells": [],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "cast_shadow": false
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "cast_shadow": false
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "adaptive_ground": {
+        "schema_version": 1,
+        "use_path_elevation": true,
+        "construction_helper": [
+          1,
+          1
+        ],
+        "cells": [
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "rotation": 2,
+            "texture_donor_id": "04000200",
+            "street_flags": "02040400",
+            "avenue_flags": "01000003",
+            "prop": true,
+            "resolved_tile_id": "7f5c4000"
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "rotation": 0,
+            "texture_donor_id": "04000200",
+            "street_flags": "02040400",
+            "avenue_flags": "00030100",
+            "prop": true,
+            "resolved_tile_id": "7f5c4100"
+          }
+        ]
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 L1 Exit Slip Lanes \u2014 Parallel \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-lower-exit-slip",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 L1 Exit Slip Lanes \u2014 Parallel \u2014 Alignment B",
+      "description": "Place one l1 exit slip lanes for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_lower_exit_slip",
+      "geometry_key": "parallel-b-lower-exit-slip",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f873",
+      "tile_ids": [
+        "7f5c5100",
+        "7f5c5010"
+      ],
+      "preview_id": "7f5c5ff5",
+      "effect_name": "preview_scp_hw_f873_____001",
+      "footprint": [
+        2,
+        2
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f873",
+        "order": "ffffff73",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "slip",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": false,
+        "native_model_transfers": [
+          {
+            "source_city_cell": [
+              2,
+              -2
+            ],
+            "model_host_city_cell": [
+              3,
+              -3
+            ],
+            "native_path_owner": "lower-exit-grade",
+            "native_model_owner": "lower-exit-slip"
+          }
+        ],
+        "native_avenue_cells": [],
+        "native_highway_cells": [
+          [
+            4,
+            -4
+          ],
+          [
+            3,
+            -3
+          ]
+        ],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5c5800"
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5c5900"
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 L1 Entry Slip Lanes \u2014 Parallel \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-lower-entry-slip",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 L1 Entry Slip Lanes \u2014 Parallel \u2014 Alignment B",
+      "description": "Place one l1 entry slip lanes for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_lower_entry_slip",
+      "geometry_key": "parallel-b-lower-entry-slip",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f874",
+      "tile_ids": [
+        "7f5c6100",
+        "7f5c6010"
+      ],
+      "preview_id": "7f5c6ff5",
+      "effect_name": "preview_scp_hw_f874_____001",
+      "footprint": [
+        2,
+        2
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f874",
+        "order": "ffffff74",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "slip",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": false,
+        "native_model_transfers": [
+          {
+            "source_city_cell": [
+              -1,
+              1
+            ],
+            "model_host_city_cell": [
+              -2,
+              2
+            ],
+            "native_path_owner": "lower-entry-grade",
+            "native_model_owner": "lower-entry-slip"
+          }
+        ],
+        "native_avenue_cells": [],
+        "native_highway_cells": [
+          [
+            -2,
+            2
+          ],
+          [
+            -3,
+            3
+          ]
+        ],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5c6800"
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5c6900"
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 L2 Exit Slip Lanes \u2014 Parallel \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-upper-exit-slip",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 L2 Exit Slip Lanes \u2014 Parallel \u2014 Alignment B",
+      "description": "Place one l2 exit slip lanes for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_upper_exit_slip",
+      "geometry_key": "parallel-b-upper-exit-slip",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f875",
+      "tile_ids": [
+        "7f5c7200",
+        "7f5c7110",
+        "7f5c7020"
+      ],
+      "preview_id": "7f5c7ff5",
+      "effect_name": "preview_scp_hw_f875_____001",
+      "footprint": [
+        3,
+        3
+      ],
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "orientation_count": 8,
+      "native_dd_approaches": true,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f875",
+        "order": "ffffff75",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "slip",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": false,
+        "native_model_transfers": [
+          {
+            "source_city_cell": [
+              0,
+              1
+            ],
+            "model_host_city_cell": [
+              -1,
+              2
+            ],
+            "native_path_owner": "upper-exit-grade",
+            "native_model_owner": "upper-exit-slip"
+          }
+        ],
+        "native_avenue_cells": [],
+        "native_highway_cells": [
+          [
+            -1,
+            2
+          ],
+          [
+            -2,
+            3
+          ],
+          [
+            -3,
+            4
+          ]
+        ],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5c7800"
+          },
+          {
+            "cell": [
+              1,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5c7900"
+          },
+          {
+            "cell": [
+              0,
+              2
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5c7a00"
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 L2 Entry Slip Lanes \u2014 Parallel \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-upper-entry-slip",
+      "domain": "highway",
+      "name": "DD RHW-4 \u2014 L2 Entry Slip Lanes \u2014 Parallel \u2014 Alignment B",
+      "description": "Place one l2 entry slip lanes for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_upper_entry_slip",
+      "geometry_key": "parallel-b-upper-entry-slip",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f876",
+      "tile_ids": [
+        "7f5c8200",
+        "7f5c8110",
+        "7f5c8020"
+      ],
+      "preview_id": "7f5c8ff5",
+      "effect_name": "preview_scp_hw_f876_____001",
+      "footprint": [
+        3,
+        3
+      ],
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "orientation_count": 8,
+      "native_dd_approaches": true,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f876",
+        "order": "ffffff76",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "slip",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": false,
+        "native_model_transfers": [
+          {
+            "source_city_cell": [
+              2,
+              -1
+            ],
+            "model_host_city_cell": [
+              3,
+              -2
+            ],
+            "native_path_owner": "upper-entry-grade",
+            "native_model_owner": "upper-entry-slip"
+          }
+        ],
+        "native_avenue_cells": [],
+        "native_highway_cells": [
+          [
+            5,
+            -4
+          ],
+          [
+            4,
+            -3
+          ],
+          [
+            3,
+            -2
+          ]
+        ],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5c8800"
+          },
+          {
+            "cell": [
+              1,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5c8900"
+          },
+          {
+            "cell": [
+              0,
+              2
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5c8a00"
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 L1 Exit Lateral Departure \u2014 Parallel \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-lower-exit-departure",
+      "domain": "highway",
+      "name": "RHW Ramp \u2014 L1 Exit Lateral Departure \u2014 Parallel \u2014 Alignment B",
+      "description": "Place one l1 exit lateral departure for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_lower_exit_departure",
+      "geometry_key": "parallel-b-lower-exit-departure",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f877",
+      "tile_ids": [
+        "7f5c9000"
+      ],
+      "preview_id": "7f5c9ff5",
+      "effect_name": "preview_scp_hw_f877_____001",
+      "footprint": [
+        1,
+        1
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f877",
+        "order": "ffffff77",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "departure",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": true,
+        "native_model_transfers": [],
+        "native_avenue_cells": [],
+        "native_highway_cells": [],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5c9800"
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 L1 Entry Lateral Departure \u2014 Parallel \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-lower-entry-departure",
+      "domain": "highway",
+      "name": "RHW Ramp \u2014 L1 Entry Lateral Departure \u2014 Parallel \u2014 Alignment B",
+      "description": "Place one l1 entry lateral departure for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_lower_entry_departure",
+      "geometry_key": "parallel-b-lower-entry-departure",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f878",
+      "tile_ids": [
+        "7f5ca000"
+      ],
+      "preview_id": "7f5caff5",
+      "effect_name": "preview_scp_hw_f878_____001",
+      "footprint": [
+        1,
+        1
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f878",
+        "order": "ffffff78",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "departure",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": true,
+        "native_model_transfers": [],
+        "native_avenue_cells": [],
+        "native_highway_cells": [],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5ca800"
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 L2 Exit Lateral Departure \u2014 Parallel \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-upper-exit-departure",
+      "domain": "highway",
+      "name": "RHW Ramp \u2014 L2 Exit Lateral Departure \u2014 Parallel \u2014 Alignment B",
+      "description": "Place one l2 exit lateral departure for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_upper_exit_departure",
+      "geometry_key": "parallel-b-upper-exit-departure",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f879",
+      "tile_ids": [
+        "7f5cb000"
+      ],
+      "preview_id": "7f5cbff5",
+      "effect_name": "preview_scp_hw_f879_____001",
+      "footprint": [
+        1,
+        1
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f879",
+        "order": "ffffff79",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "departure",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": true,
+        "native_model_transfers": [],
+        "native_avenue_cells": [],
+        "native_highway_cells": [],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5cb800"
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 L2 Entry Lateral Departure \u2014 Parallel \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-upper-entry-departure",
+      "domain": "highway",
+      "name": "RHW Ramp \u2014 L2 Entry Lateral Departure \u2014 Parallel \u2014 Alignment B",
+      "description": "Place one l2 entry lateral departure for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_upper_entry_departure",
+      "geometry_key": "parallel-b-upper-entry-departure",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f87a",
+      "tile_ids": [
+        "7f5cc000"
+      ],
+      "preview_id": "7f5ccff5",
+      "effect_name": "preview_scp_hw_f87a_____001",
+      "footprint": [
+        1,
+        1
+      ],
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f87a",
+        "order": "ffffff7a",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "departure",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": true,
+        "native_model_transfers": [],
+        "native_avenue_cells": [],
+        "native_highway_cells": [],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5cc800"
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 L1 Exit Parallel Grade \u2014 Parallel \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-lower-exit-grade",
+      "domain": "highway",
+      "name": "RHW Ramp \u2014 L1 Exit Parallel Grade \u2014 Parallel \u2014 Alignment B",
+      "description": "Place one l1 exit parallel grade for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_lower_exit_grade",
+      "geometry_key": "parallel-b-lower-exit-grade",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f87b",
+      "tile_ids": [
+        "7f5cd100",
+        "7f5cd010",
+        "7f5cd110"
+      ],
+      "preview_id": "7f5cdff5",
+      "effect_name": "preview_scp_hw_f87b_____001",
+      "footprint": [
+        2,
+        2
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f87b",
+        "order": "ffffff7b",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "grade",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": true,
+        "native_model_transfers": [
+          {
+            "source_city_cell": [
+              2,
+              -2
+            ],
+            "model_host_city_cell": [
+              3,
+              -3
+            ],
+            "native_path_owner": "lower-exit-grade",
+            "native_model_owner": "lower-exit-slip"
+          }
+        ],
+        "native_avenue_cells": [],
+        "native_highway_cells": [
+          [
+            2,
+            -2
+          ]
+        ],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5cd800"
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5cd900"
+          },
+          {
+            "cell": [
+              1,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5cda00"
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 L1 Entry Parallel Grade \u2014 Parallel \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-lower-entry-grade",
+      "domain": "highway",
+      "name": "RHW Ramp \u2014 L1 Entry Parallel Grade \u2014 Parallel \u2014 Alignment B",
+      "description": "Place one l1 entry parallel grade for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_lower_entry_grade",
+      "geometry_key": "parallel-b-lower-entry-grade",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f87c",
+      "tile_ids": [
+        "7f5ce100",
+        "7f5ce010",
+        "7f5ce110"
+      ],
+      "preview_id": "7f5ceff5",
+      "effect_name": "preview_scp_hw_f87c_____001",
+      "footprint": [
+        2,
+        2
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f87c",
+        "order": "ffffff7c",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "grade",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": true,
+        "native_model_transfers": [
+          {
+            "source_city_cell": [
+              -1,
+              1
+            ],
+            "model_host_city_cell": [
+              -2,
+              2
+            ],
+            "native_path_owner": "lower-entry-grade",
+            "native_model_owner": "lower-entry-slip"
+          }
+        ],
+        "native_avenue_cells": [],
+        "native_highway_cells": [
+          [
+            -1,
+            1
+          ]
+        ],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5ce800"
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5ce900"
+          },
+          {
+            "cell": [
+              1,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5cea00"
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 L2 Exit Parallel Grade \u2014 Parallel \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-upper-exit-grade",
+      "domain": "highway",
+      "name": "RHW Ramp \u2014 L2 Exit Parallel Grade \u2014 Parallel \u2014 Alignment B",
+      "description": "Place one l2 exit parallel grade for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_upper_exit_grade",
+      "geometry_key": "parallel-b-upper-exit-grade",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f87d",
+      "tile_ids": [
+        "7f5cf100",
+        "7f5cf110",
+        "7f5cf020"
+      ],
+      "preview_id": "7f5cfff5",
+      "effect_name": "preview_scp_hw_f87d_____001",
+      "footprint": [
+        2,
+        3
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f87d",
+        "order": "ffffff7d",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "grade",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": true,
+        "native_model_transfers": [
+          {
+            "source_city_cell": [
+              0,
+              1
+            ],
+            "model_host_city_cell": [
+              -1,
+              2
+            ],
+            "native_path_owner": "upper-exit-grade",
+            "native_model_owner": "upper-exit-slip"
+          }
+        ],
+        "native_avenue_cells": [],
+        "native_highway_cells": [
+          [
+            0,
+            1
+          ]
+        ],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5cf800"
+          },
+          {
+            "cell": [
+              1,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5cf900"
+          },
+          {
+            "cell": [
+              0,
+              2
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5cfa00"
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
+    },
+    {
+      "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 L2 Entry Parallel Grade \u2014 Parallel \u2014 Alignment B.",
+      "schema_version": 1,
+      "id": "ddrhw-parallel-b-upper-entry-grade",
+      "domain": "highway",
+      "name": "RHW Ramp \u2014 L2 Entry Parallel Grade \u2014 Parallel \u2014 Alignment B",
+      "description": "Place one l2 entry parallel grade for Alignment B of the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+      "recipe": "highway_ddrhw_parallel_b_upper_entry_grade",
+      "geometry_key": "parallel-b-upper-entry-grade",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f87e",
+      "tile_ids": [
+        "7f5d0200",
+        "7f5d0010",
+        "7f5d0110"
+      ],
+      "preview_id": "7f5d0ff5",
+      "effect_name": "preview_scp_hw_f87e_____001",
+      "footprint": [
+        3,
+        2
+      ],
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f87e",
+        "order": "ffffff7e",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "grid_alignment": "B",
+        "alignment_a_translation_en_m": [
+          8.0,
+          8.0
+        ],
+        "avenue_phase_offset": 1,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "max_grade_percent": 30.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "pavement_path_offset_m": 0.0,
+        "model_only_cells": [],
+        "path_ownership": "Every full native and ramp fragment in each owned city cell",
+        "physical_model_function": "grade",
+        "model_overhang": true,
+        "authored_model_overhang": true,
+        "pure_ramp_model": true,
+        "native_model_transfers": [
+          {
+            "source_city_cell": [
+              2,
+              -1
+            ],
+            "model_host_city_cell": [
+              3,
+              -2
+            ],
+            "native_path_owner": "upper-entry-grade",
+            "native_model_owner": "upper-entry-slip"
+          }
+        ],
+        "native_avenue_cells": [],
+        "native_highway_cells": [
+          [
+            2,
+            -1
+          ]
+        ],
+        "reuse_limit": "Half-grid recutting changes complete native and ramp PATH ownership; no Alignment A whole type is substituted"
+      },
+      "shadow_mode": "model-carrier",
+      "shadow_mappings": [],
+      "model_shadows": {
+        "schema_version": 1,
+        "sun_profile": "sc4-default-67p5-45",
+        "enabled": false,
+        "cells": [
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5d0800"
+          },
+          {
+            "cell": [
+              0,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5d0900"
+          },
+          {
+            "cell": [
+              1,
+              1
+            ],
+            "cast_shadow": true,
+            "resource_base": "7f5d0a00"
+          }
+        ]
+      },
+      "provenance": {
+        "geometry": "Reviewed complementary grid phase: authored ramps translate 8 m east and 8 m north; unchanged directed DD phase and adjacent Avenue phase are independently recut into minimum whole-cell traffic owners.",
+        "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+        "redistribution": "permission-pending"
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      }
     }
   ],
   "status": {
@@ -9903,6 +11904,1493 @@
       "preview": "ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b/previews/preview.png",
       "thumbnail": "ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b/previews/preview-thumb.png",
       "manual_record": "ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-crossing": {
+      "record_present": true,
+      "summary": {
+        "total": 645,
+        "states": {
+          "unverified": 645,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 528,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 48,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 48,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 96,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 24,
+      "journeys": 12,
+      "path": "ddrhw-parallel-b-crossing/README.md",
+      "preview": "ddrhw-parallel-b-crossing/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-crossing/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-crossing/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-northwest-terminal": {
+      "record_present": true,
+      "summary": {
+        "total": 249,
+        "states": {
+          "unverified": 249,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 164,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 32,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 32,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 64,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 14,
+      "journeys": 8,
+      "path": "ddrhw-parallel-b-northwest-terminal/README.md",
+      "preview": "ddrhw-parallel-b-northwest-terminal/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-northwest-terminal/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-northwest-terminal/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-southeast-terminal": {
+      "record_present": true,
+      "summary": {
+        "total": 249,
+        "states": {
+          "unverified": 249,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 164,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 32,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 32,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 64,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 14,
+      "journeys": 8,
+      "path": "ddrhw-parallel-b-southeast-terminal/README.md",
+      "preview": "ddrhw-parallel-b-southeast-terminal/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-southeast-terminal/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-southeast-terminal/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-lower-exit-slip": {
+      "record_present": true,
+      "summary": {
+        "total": 421,
+        "states": {
+          "unverified": 421,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 320,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 40,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 40,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 80,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 19,
+      "journeys": 10,
+      "path": "ddrhw-parallel-b-lower-exit-slip/README.md",
+      "preview": "ddrhw-parallel-b-lower-exit-slip/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-lower-exit-slip/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-lower-exit-slip/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-lower-entry-slip": {
+      "record_present": true,
+      "summary": {
+        "total": 421,
+        "states": {
+          "unverified": 421,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 320,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 40,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 40,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 80,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 19,
+      "journeys": 10,
+      "path": "ddrhw-parallel-b-lower-entry-slip/README.md",
+      "preview": "ddrhw-parallel-b-lower-entry-slip/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-lower-entry-slip/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-lower-entry-slip/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-upper-exit-slip": {
+      "record_present": true,
+      "summary": {
+        "total": 921,
+        "states": {
+          "unverified": 921,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 780,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 60,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 60,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 120,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 29,
+      "journeys": 15,
+      "path": "ddrhw-parallel-b-upper-exit-slip/README.md",
+      "preview": "ddrhw-parallel-b-upper-exit-slip/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-upper-exit-slip/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-upper-exit-slip/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-upper-entry-slip": {
+      "record_present": true,
+      "summary": {
+        "total": 921,
+        "states": {
+          "unverified": 921,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 780,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 60,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 60,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 120,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 29,
+      "journeys": 15,
+      "path": "ddrhw-parallel-b-upper-entry-slip/README.md",
+      "preview": "ddrhw-parallel-b-upper-entry-slip/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-upper-entry-slip/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-upper-entry-slip/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-lower-exit-departure": {
+      "record_present": true,
+      "summary": {
+        "total": 29,
+        "states": {
+          "unverified": 29,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 8,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 2,
+      "journeys": 1,
+      "path": "ddrhw-parallel-b-lower-exit-departure/README.md",
+      "preview": "ddrhw-parallel-b-lower-exit-departure/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-lower-exit-departure/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-lower-exit-departure/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-lower-entry-departure": {
+      "record_present": true,
+      "summary": {
+        "total": 29,
+        "states": {
+          "unverified": 29,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 8,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 2,
+      "journeys": 1,
+      "path": "ddrhw-parallel-b-lower-entry-departure/README.md",
+      "preview": "ddrhw-parallel-b-lower-entry-departure/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-lower-entry-departure/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-lower-entry-departure/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-upper-exit-departure": {
+      "record_present": true,
+      "summary": {
+        "total": 29,
+        "states": {
+          "unverified": 29,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 8,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 2,
+      "journeys": 1,
+      "path": "ddrhw-parallel-b-upper-exit-departure/README.md",
+      "preview": "ddrhw-parallel-b-upper-exit-departure/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-upper-exit-departure/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-upper-exit-departure/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-upper-entry-departure": {
+      "record_present": true,
+      "summary": {
+        "total": 29,
+        "states": {
+          "unverified": 29,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 8,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 2,
+      "journeys": 1,
+      "path": "ddrhw-parallel-b-upper-entry-departure/README.md",
+      "preview": "ddrhw-parallel-b-upper-entry-departure/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-upper-entry-departure/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-upper-entry-departure/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-lower-exit-grade": {
+      "record_present": true,
+      "summary": {
+        "total": 141,
+        "states": {
+          "unverified": 141,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 80,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 20,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 20,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 40,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 10,
+      "journeys": 5,
+      "path": "ddrhw-parallel-b-lower-exit-grade/README.md",
+      "preview": "ddrhw-parallel-b-lower-exit-grade/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-lower-exit-grade/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-lower-exit-grade/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-lower-entry-grade": {
+      "record_present": true,
+      "summary": {
+        "total": 141,
+        "states": {
+          "unverified": 141,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 80,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 20,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 20,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 40,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 10,
+      "journeys": 5,
+      "path": "ddrhw-parallel-b-lower-entry-grade/README.md",
+      "preview": "ddrhw-parallel-b-lower-entry-grade/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-lower-entry-grade/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-lower-entry-grade/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-upper-exit-grade": {
+      "record_present": true,
+      "summary": {
+        "total": 189,
+        "states": {
+          "unverified": 189,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 120,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 24,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 24,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 48,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 12,
+      "journeys": 6,
+      "path": "ddrhw-parallel-b-upper-exit-grade/README.md",
+      "preview": "ddrhw-parallel-b-upper-exit-grade/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-upper-exit-grade/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-upper-exit-grade/checks/manual-tests.json",
+      "design_review": null
+    },
+    "ddrhw-parallel-b-upper-entry-grade": {
+      "record_present": true,
+      "summary": {
+        "total": 189,
+        "states": {
+          "unverified": 189,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "by_kind": {
+          "in_game_demolition": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_forbidden_transfer": {
+            "unverified": 120,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_placement": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_render": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_route_query": {
+            "unverified": 24,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_save_reload": {
+            "unverified": 4,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "in_game_visible_travel": {
+            "unverified": 24,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "preview_review": {
+            "unverified": 3,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_connectivity": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          },
+          "software_resources": {
+            "unverified": 1,
+            "passed": 0,
+            "failed": 0,
+            "stale": 0,
+            "not_applicable": 0
+          }
+        },
+        "journey_coverage": {
+          "unverified": 48,
+          "passed": 0,
+          "failed": 0,
+          "stale": 0,
+          "not_applicable": 0
+        },
+        "environment_filter": null,
+        "coverage_scope": "Only the current explicitly listed scopes, rotations, and recorded environments; legacy endpoint observations are historical evidence, not current compatibility coverage."
+      },
+      "ports": 12,
+      "journeys": 6,
+      "path": "ddrhw-parallel-b-upper-entry-grade/README.md",
+      "preview": "ddrhw-parallel-b-upper-entry-grade/previews/preview.png",
+      "thumbnail": "ddrhw-parallel-b-upper-entry-grade/previews/preview-thumb.png",
+      "manual_record": "ddrhw-parallel-b-upper-entry-grade/checks/manual-tests.json",
       "design_review": null
     }
   }

@@ -227,7 +227,8 @@ def freeze(root, build, *, reuse_accepted_resource_checks=False):
     root, build = Path(root).resolve(), Path(build).resolve()
     require(build.is_relative_to(root), 'The saved build must be inside the selected library')
     catalog = load_catalog(root)
-    pieces = {p['id']: p for p in catalog['pieces'] if p['recipe'].startswith(PREFIX)}
+    pieces = {p['id']: p for p in catalog['pieces'] if p['recipe'].startswith(PREFIX)
+              and not p['recipe'].startswith('highway_ddrhw_parallel_b_')}
     require(len(pieces) == len(PARTITIONS) == 15, 'Freeze requires all fifteen registered parallel types')
     profiles = {piece.get('engineering', {}).get('highway_slip_profile') for piece in pieces.values()}
     require(len(profiles) == 1, 'Freeze requires one coordinated highway slip profile')

@@ -34,6 +34,9 @@ def connector_source_files(piece_id):
                     'ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b'):
         from .ghsr_crossing_verify import connector_source_files as sources
         return sources(piece_id)
+    if piece_id.startswith('ddrhw-parallel-b-'):
+        from .parallel_b_connector_contracts import REFERENCE
+        return [REFERENCE] if (Path(__file__).resolve().parents[4] / REFERENCE).is_file() else []
     if piece_id.startswith('ddrhw-parallel-'):
         from .parallel_connector_contracts import REFERENCE
         return [REFERENCE]
@@ -106,7 +109,9 @@ def reviewed_contract(piece):
     facts = _reviewed_facts(piece)
     if facts is None:
         return None
-    return {'ports':{p['id']:list(p['endpoint_m']) for p in facts['ports']},
+    return {**({'boundary_measurement_precision': 'saved-path'}
+               if piece['recipe'].startswith('highway_ddrhw_parallel_b_') else {}),
+            'ports':{p['id']:list(p['endpoint_m']) for p in facts['ports']},
             'port_vectors':{p['id']:list(p.get('tangent',p['sampled_tangent'])) for p in facts['ports']},
             'port_transports':{p['id']:p['engine_transport'] for p in facts['ports']},
             'port_directions':{p['id']:p['direction'] for p in facts['ports']},
@@ -130,6 +135,14 @@ def reviewed_path_ports(piece):
 
 
 def _reviewed_facts(piece):
+    if piece['recipe'].startswith('highway_ddrhw_parallel_b_'):
+        from .parallel_b_connector_contracts import load_contracts
+        from .parallel_alignment_b_verify import reviewed_facts
+        facts = load_contracts().get(piece['recipe']) or reviewed_facts(piece)
+        require(piece['footprint'] == facts['footprint']
+                and sorted(map(tuple, piece['cells'])) == sorted(map(tuple, facts['cells'])),
+                piece['id'] + ': owned cells differ from the reviewed Alignment B contract')
+        return facts
     if piece['recipe'] in GHSR_RECIPES:
         from .ghsr_crossing_verify import reviewed_facts
         return reviewed_facts(piece)
@@ -155,6 +168,11 @@ def validate_connection_record(piece,record):
     """
     facts = _reviewed_facts(piece)
     require(facts is not None,piece['id']+': no complete reviewed highway boundary contract')
+    if piece['recipe'].startswith('highway_ddrhw_parallel_b_'):
+        require(len(facts.get('path_hashes_by_cell', [])) == len(piece['cells'])
+                and {tuple(cell) for cell, _digest in facts['path_hashes_by_cell']}
+                    == set(map(tuple, piece['cells'])),
+                'Alignment B strict extraction requires independently checked saved PATH fingerprints; run freeze_parallel_b_connectors.py after native package and assembly verification')
     require(record['subject_id'] == piece['id'] and record['subject_kind'] == 'piece',
             'Highway connector record belongs to another subject')
     actual = {p['id']:p for p in record['ports']}

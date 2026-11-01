@@ -181,7 +181,7 @@ class MultiAssemblyMenuTests(unittest.TestCase):
             self.build()
         self.assertFalse(self.output.exists())
 
-    def test_highway_buttons_and_adaptive_controller_overlay_are_preserved(self):
+    def highway_fixture(self):
         from scp.adaptive_network import RUL1
         self.catalog['domains'] = {'highway': {'path': 'domains/test'}}
         for index, piece in enumerate(self.normal_pieces):
@@ -219,6 +219,11 @@ class MultiAssemblyMenuTests(unittest.TestCase):
         for path, raw in self.payloads.items():
             (self.source / path).write_bytes(raw)
         fixture.write_json(self.source / 'manifest.json', self.base)
+    def test_highway_buttons_and_adaptive_controller_overlay_are_preserved(self):
+        from scp.adaptive_network import RUL1
+        self.highway_fixture()
+        controller_path = f'{self.folder}/{CONTROLLER}'
+        rul1_bytes = strict_dbpf(self.payloads[controller_path])[RUL1]
         with patch('scp.menu_experiment._assembly_icon_network', return_value='HW'):
             self.build(domain_id='highway')
         actual_controller = strict_dbpf((self.output / controller_path).read_bytes())
@@ -230,6 +235,136 @@ class MultiAssemblyMenuTests(unittest.TestCase):
                 self.assertEqual(properties[0x4005], [0])
                 self.assertNotIn(0x4001, properties)
         self.assertTrue(self.real_verify(self.output, write_report=False)['static_checks_passed'])
+
+    def submenu_fixture(self):
+        self.highway_fixture()
+        self.submenu = {'id': '6a47fef8', 'order': 'fffffef8',
+                        'title': 'Fixture diagonal diamond alignments',
+                        'description': 'Choose Alignment A or Alignment B, then cycle its components.'}
+        for identifier in self.layout_ids[1:]:
+            self.layouts[identifier]['cycle_submenu'] = deepcopy(self.submenu)
+        self.write_layouts()
+
+    def test_highway_submenu_contains_two_independent_assembly_buttons_and_keeps_other_button(self):
+        from scp.adaptive_network import RUL1
+        self.submenu_fixture()
+        with patch('scp.menu_experiment._assembly_icon_network', return_value='HW'):
+            result = self.build(domain_id='highway')
+        self.assertTrue(result['submenus_dll_required'])
+        resources = strict_dbpf((self.output / self.folder / MENU).read_bytes())
+        parent = int(self.submenu['id'], 16)
+        root = fixture.props(resources[*MENU_EXEMPLAR, parent])
+        self.assertEqual(root[0x8A2602CA], [0x31])
+        self.assertEqual(root[0x8A2602CC], [1])
+        self.assertEqual(root[0x8A2602BB], [parent])
+        self.assertEqual(root[0x4005], [0]); self.assertNotIn(0x4001, root)
+        for index, identifier in enumerate(self.layout_ids):
+            iid = int(self.layouts[identifier]['cycle_button']['id'], 16)
+            props = fixture.props(resources[*MENU_EXEMPLAR, iid])
+            self.assertEqual(props[0x8A2602BB], [int(self.groups[index][0]['menu']['id'], 16)])
+            if index:
+                self.assertEqual(props[0x8A2602CA], [parent]); self.assertEqual(props[0x8A2602CC], [2])
+            else:
+                self.assertNotIn(0x8A2602CA, props); self.assertNotIn(0x8A2602CC, props)
+            for piece in self.groups[index]:
+                self.assertNotIn((*MENU_EXEMPLAR, int(piece['menu']['id'], 16)), resources)
+                self.assertEqual((self.output / piece['asset_file']).read_bytes(), self.payloads[piece['asset_file']])
+        original = strict_dbpf(self.payloads[f'{self.folder}/{CONTROLLER}'])
+        actual = strict_dbpf((self.output / self.folder / CONTROLLER).read_bytes())
+        self.assertEqual(actual[RUL1], original[RUL1]); self.assertEqual(actual[NETWORK_INI], original[NETWORK_INI])
+        first, last = ordering_span(actual[RUL0])
+        rows = [match.groups() for match in re.finditer(rb'(RotationRing|AddTypes)=([^\r\n]+)', actual[RUL0][first:last])]
+        for pieces in self.groups:
+            roots = [int(piece['puzzle_id'], 16) for piece in pieces]
+            entries = [(kind, tuple(int(value, 16) for value in states.split(b',')))
+                       for kind, states in rows if int(states.split(b',')[0], 16) in roots]
+            self.assertEqual([kind for kind, _ in entries], [b'RotationRing', b'AddTypes'])
+            self.assertEqual([states for _, states in entries],
+                             [tuple(root + turn * 0x10000 for turn in range(8)) for root in roots])
+        report = self.real_verify(self.output, write_report=False)
+        self.assertTrue(report['static_checks_passed'])
+        self.assertTrue(report['menu_experiment']['submenus_dll_required'])
+        self.assertEqual(report['menu_experiment']['new_presentation_resources'], 16)
+        self.assertEqual(report['menu_experiment']['assembly_submenus'],
+                         [{'button_id': self.submenu['id'], 'parent_id': '00000031',
+                           'assembly_cycle_ids': [self.layouts[value]['cycle_button']['id'] for value in self.layout_ids[1:]]}])
+        guide = (self.output / 'docs/assembly-menus/README.md').read_text()
+        self.assertIn('Transportation → Highways → Fixture diagonal diamond alignments', guide)
+        self.assertIn('SC4ResourceLoadingHooks DLL', guide)
+        self.assertNotIn('does not require Submenus', guide)
+        checks = json.loads((self.output / 'docs/assembly-menus/game-checks.json').read_text())
+        self.assertTrue(all(row['status'] == 'unverified' and row['observations'] == [] for row in checks['cases']))
+        self.assertEqual(sum(row['id'].startswith('submenu:') for row in checks['cases']), 1)
+        archive_path = self.root / 'nested-assemblies.zip'
+        package_build(self.output, archive_path)
+        extracted = self.root / 'nested-extracted'
+        with zipfile.ZipFile(archive_path) as archive:
+            self.assertIsNone(archive.testzip()); archive.extractall(extracted)
+        self.assertTrue(self.real_verify(extracted, write_report=False)['static_checks_passed'])
+
+    def test_conflicting_submenu_definitions_and_colliding_presentation_ids_reject(self):
+        self.submenu_fixture()
+        original = deepcopy(self.layouts)
+        for field, value in (('title', 'Conflicting title'),
+                             ('id', self.layouts[self.layout_ids[0]]['cycle_button']['id']),
+                             ('id', self.normal_pieces[1]['menu']['id'])):
+            with self.subTest(field=field, value=value):
+                self.layouts = deepcopy(original)
+                if field == 'title':
+                    self.layouts[self.layout_ids[2]]['cycle_submenu'][field] = value
+                else:
+                    for identifier in self.layout_ids[1:]:
+                        self.layouts[identifier]['cycle_submenu'][field] = value
+                self.write_layouts()
+                with patch('scp.menu_experiment._assembly_icon_network', return_value='HW'):
+                    with self.assertRaisesRegex(ValueError, '(?i)(conflict|overlap|collid)'):
+                        self.build(domain_id='highway')
+                self.assertFalse(self.output.exists())
+
+    def test_explicit_variant_label_validates_canonical_frozen_scene_without_changing_it(self):
+        from scp.assembly_presentation import canonical_cycle_title
+        self.submenu_fixture()
+        scene = self.catalog['_assemblies'][1]['scene']
+        scene['title'] = 'Fixture accepted alignment'
+        before = deepcopy(scene)
+        button = self.layouts[self.layout_ids[1]]['cycle_button']
+        button['variant_label'] = 'Alignment A'
+        button['title'] = canonical_cycle_title(scene['title'], variant_label=button['variant_label'])
+        self.write_layouts()
+        with patch('scp.menu_experiment._assembly_icon_network', return_value='HW'):
+            self.build(domain_id='highway')
+        self.assertEqual(scene, before)
+        self.assertTrue(self.real_verify(self.output, write_report=False)['static_checks_passed'])
+        resources = strict_dbpf((self.output / self.folder / MENU).read_bytes())
+        props = fixture.props(resources[*MENU_EXEMPLAR, int(button['id'], 16)])
+        self.assertEqual(props[0x20], button['title'])
+
+    def test_explicit_variant_label_cannot_hide_a_wrong_canonical_title(self):
+        self.submenu_fixture()
+        self.catalog['_assemblies'][1]['scene']['title'] = 'Fixture accepted alignment'
+        self.layouts[self.layout_ids[1]]['cycle_button']['variant_label'] = 'Alignment A'
+        self.write_layouts()
+        with patch('scp.menu_experiment._assembly_icon_network', return_value='HW'):
+            with self.assertRaisesRegex(ValueError, 'canonical scene title'):
+                self.build(domain_id='highway')
+        self.assertFalse(self.output.exists())
+
+    def test_rehashed_submenu_with_rail_parent_or_wrong_cycle_class_is_rejected(self):
+        self.submenu_fixture()
+        with patch('scp.menu_experiment._assembly_icon_network', return_value='HW'):
+            self.build(domain_id='highway')
+        relative = f'{self.folder}/{MENU}'
+        original = (self.output / relative).read_bytes()
+        for iid, propid, values in ((int(self.submenu['id'], 16), 0x8A2602CA, [0x29]),
+                                   (int(self.layouts[self.layout_ids[1]]['cycle_button']['id'], 16), 0x8A2602CC, [1])):
+            with self.subTest(iid=iid):
+                resources = strict_dbpf(original)
+                key = (*MENU_EXEMPLAR, iid); record = exemplar(resources[key])
+                next(prop for prop in record['properties'] if int(prop['id'], 16) == propid)['values'] = values
+                resources[key] = encode_exemplar(record)
+                self.replace_record(relative, pack_dbpf(resources))
+                with self.assertRaises(ValueError):
+                    self.real_verify(self.output, write_report=False)
 
     def test_case_normalized_duplicate_button_ids_reject_before_creating_output(self):
         self.layouts['fixture-two']['cycle_button']['id'] = self.layouts['fixture-one']['cycle_button']['id'].upper()

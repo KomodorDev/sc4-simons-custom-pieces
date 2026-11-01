@@ -134,6 +134,9 @@ def check_paths(resources, piece):
                            'highway_ddrhw_diagonal_ghsr_crossing_alignment_b'):
         from .ghsr_crossing_verify import check_paths as check_crossing
         return check_crossing(resources, piece)
+    if piece['recipe'].startswith('highway_ddrhw_parallel_b_'):
+        from .parallel_alignment_b_verify import check_paths as check_parallel_b
+        return check_parallel_b(resources, piece)
     if piece['recipe'].startswith('highway_ddrhw_parallel_'):
         from .parallel_verify import check_paths as check_parallel
         return check_parallel(resources, piece)
@@ -165,6 +168,9 @@ def check_models(resources, piece, donors):
                            'highway_ddrhw_diagonal_ghsr_crossing_alignment_b'):
         from .ghsr_crossing_verify import check_models as check_crossing
         return check_crossing(resources, piece, donors)
+    if piece['recipe'].startswith('highway_ddrhw_parallel_b_'):
+        from .parallel_alignment_b_verify import check_models as check_parallel_b
+        return check_parallel_b(resources, piece, donors)
     if piece['recipe'].startswith('highway_ddrhw_parallel_'):
         from .parallel_verify import check_models as check_parallel
         return check_parallel(resources, piece, donors)
@@ -216,6 +222,9 @@ def check_construction_fields(fields, piece, resources):
                            'highway_ddrhw_diagonal_ghsr_crossing_alignment_b'):
         from .ghsr_crossing_verify import check_construction_fields as check_crossing
         return check_crossing(piece, fields)
+    if piece['recipe'].startswith('highway_ddrhw_parallel_b_'):
+        from .parallel_alignment_b_verify import check_construction_fields as check_parallel_b
+        return check_parallel_b(fields, piece, resources)
     if piece['recipe'].startswith('highway_ddrhw_parallel_'):
         from .parallel_verify import check_construction_fields as check_parallel
         return check_parallel(fields, piece, resources)

@@ -16,7 +16,9 @@ BASES = {'ddrhw-diagonal-upper-exit-branch': 0x7F593000,
          'ddrhw-diagonal-upper-entry-branch': 0x7F594000,
          'ddrhw-modular-highway-stamp': 0x7F59D000,
          'ddrhw-parallel-upper-exit-slip': 0x7F5B3000,
-         'ddrhw-parallel-upper-entry-slip': 0x7F5B4000}
+         'ddrhw-parallel-upper-entry-slip': 0x7F5B4000,
+         'ddrhw-parallel-b-upper-exit-slip': 0x7F5C7000,
+         'ddrhw-parallel-b-upper-entry-slip': 0x7F5C8000}
 
 
 def pieces():
@@ -47,13 +49,14 @@ def extended(piece):
 
 
 class NativeDDApproachTests(unittest.TestCase):
-    def test_exact_six_ends_have_five_source_bound_owners(self):
+    def test_exact_eight_ends_have_seven_source_bound_owners(self):
         selected = pieces()
-        self.assertEqual(len(selected), 5)
+        self.assertEqual(len(selected), 7)
         rows = [(piece['id'], row) for piece in selected.values() for row in connections.approaches(piece)]
-        self.assertEqual(len(rows), 6)
+        self.assertEqual(len(rows), 8)
         self.assertEqual({row['end_tile_id'] for _, row in rows},
-                         {'7f593020', '7f594200', '7f59d090', '7f59d900', '7f5b3010', '7f5b4100'})
+                         {'7f593020', '7f594200', '7f59d090', '7f59d900', '7f5b3010', '7f5b4100',
+                          '7f5c7020', '7f5c8200'})
         self.assertEqual({row['native_tile_id'] for _, row in rows}, {'57530900'})
         for identifier, row in rows:
             with self.subTest(piece=identifier, cell=row['cell']):
@@ -186,8 +189,8 @@ class NativeDDApproachTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             connections.add_approaches(piece, old['CellLayout'], old['CheckType'], old['ConsLayout'])
 
-    def test_all_three_registered_plans_are_collision_free_in_four_global_rotations(self):
-        for suffix in ('diamond', 'modular-diamond', 'parallel-diamond'):
+    def test_all_four_registered_plans_are_collision_free_in_four_global_rotations(self):
+        for suffix in ('diamond', 'modular-diamond', 'parallel-diamond', 'parallel-diamond-alignment-b'):
             path = ROOT / ('domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-'
                            + suffix + '/assembly.jsonc')
             scene = jsonc.load(path)
@@ -204,6 +207,24 @@ class NativeDDApproachTests(unittest.TestCase):
                 with self.subTest(assembly=suffix, quarter=quarter):
                     report = connections.check_helper_collisions(selected, rotated)
                     self.assertEqual(report['outside_approaches_checked'], 2)
+
+    def test_alignment_b_helpers_use_the_actual_sparse_extent_and_original_native_phase(self):
+        selected = pieces()
+        for identifier, owned, outside, tile in (
+            ('ddrhw-parallel-b-upper-exit-slip', [0, 2], [-1, 2], '7f5c7020'),
+            ('ddrhw-parallel-b-upper-entry-slip', [2, 0], [2, -1], '7f5c8200')):
+            piece = selected[identifier]
+            row, = connections.approaches(piece)
+            with self.subTest(piece=identifier):
+                self.assertEqual(piece['footprint'], [3, 3])
+                self.assertEqual(row['end_cell'], owned)
+                self.assertEqual(row['cell'], outside)
+                self.assertEqual(row['end_tile_id'], tile)
+                self.assertEqual(row['native_tile_id'], '57530900')
+                self.assertEqual(row['native_rotation'], 0)
+                self.assertNotIn(outside, piece['cells'])
+                old, changed = extended(piece)
+                self.assertEqual(connections.check_construction_approaches(changed, piece), old)
 
     def test_helper_over_another_piece_or_repeated_helper_is_rejected(self):
         selected = pieces(); piece = selected['ddrhw-parallel-upper-exit-slip']

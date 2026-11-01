@@ -119,12 +119,13 @@ class AdaptivePathElevationTests(unittest.TestCase):
                     self.assertEqual(active[resource], expected)
             self.assertEqual(source, source_before)
 
-    def test_exactly_nine_current_owners_opt_in_for_all_forty_six_cells(self):
+    def test_exactly_twelve_current_owners_opt_in_for_all_fifty_four_cells(self):
         expected = {'ddrhw-diagonal-access-core', 'ddrhw-diagonal-northwest-junction',
                     'ddrhw-diagonal-southeast-junction', 'ddrhw-modular-highway-stamp',
                     'ddrhw-modular-northwest-terminal-r40', 'ddrhw-modular-southeast-terminal-r40',
                     'ddrhw-parallel-crossing', 'ddrhw-parallel-northwest-terminal',
-                    'ddrhw-parallel-southeast-terminal'}
+                    'ddrhw-parallel-southeast-terminal', 'ddrhw-parallel-b-crossing',
+                    'ddrhw-parallel-b-northwest-terminal', 'ddrhw-parallel-b-southeast-terminal'}
         owners, count = set(), 0
         for path in (ROOT / 'domains/highway/00_pieces').glob('*/piece.jsonc'):
             piece = jsonc.load(path)
@@ -134,7 +135,7 @@ class AdaptivePathElevationTests(unittest.TestCase):
             self.assertIs(piece['adaptive_ground']['use_path_elevation'], True)
             count += len(adaptive_network.bindings(piece))
         self.assertEqual(owners, expected)
-        self.assertEqual(count, 46)
+        self.assertEqual(count, 54)
 
 
 if __name__ == '__main__':

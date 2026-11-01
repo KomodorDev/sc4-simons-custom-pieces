@@ -23,6 +23,11 @@ import test_ghsr_crossing_integration as baseline
 
 IDENTIFIER = ghsr_approaches.ALIGNMENT_B_PIECE_ID
 ANCHOR = ghsr_approaches.PIECE_ID
+PREVIOUS_DIAMOND_ASSEMBLIES = frozenset({
+    'ddrhw-l1-and-l2-diagonal-avenue-diamond',
+    'ddrhw-l1-and-l2-diagonal-avenue-modular-diamond',
+    'ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond',
+})
 
 
 def file_snapshot(root):
@@ -31,12 +36,20 @@ def file_snapshot(root):
 
 
 def previous_installation_pieces(catalog):
-    """The three retained diamond assemblies and original reusable GHSR crossing."""
+    """The historical three diamonds and original GHSR crossing, bounded in time."""
     registry = jsonc.load(ROOT / 'domains/highway/domain.jsonc')
-    identifiers = {ANCHOR}
+    identifiers, found = {ANCHOR}, set()
     for relative in registry['assemblies']:
+        assembly_id = Path(relative).parent.name
+        if assembly_id not in PREVIOUS_DIAMOND_ASSEMBLIES:
+            continue
+        if assembly_id in found:
+            raise ValueError('Historical diamond is registered more than once: ' + assembly_id)
+        found.add(assembly_id)
         assembly = jsonc.load(ROOT / 'domains/highway' / relative)
         identifiers.update(row['piece_id'] for row in assembly['placements'])
+    if found != PREVIOUS_DIAMOND_ASSEMBLIES:
+        raise ValueError('A historical diamond registration is missing')
     return [piece for piece in catalog['pieces'] if piece['id'] in identifiers]
 
 
@@ -131,6 +144,20 @@ class GHSRCrossingAlignmentRegistrationTests(unittest.TestCase):
                          native_approaches.expected_solution_sections(previous))
         self.assertEqual(native_approaches.required_controller_resources([*previous, self.piece]),
                          native_approaches.required_controller_resources(previous))
+
+    def test_parallel_alignment_b_is_not_classified_as_the_historical_previous_36(self):
+        previous = {piece['id'] for piece in previous_installation_pieces(self.catalog)}
+        parallel_b = {piece['id'] for piece in self.catalog['pieces']
+                      if piece['recipe'].startswith('highway_ddrhw_parallel_b_')}
+        self.assertEqual(len(previous), 36)
+        self.assertEqual(len(parallel_b), 15)
+        self.assertTrue(previous.isdisjoint(parallel_b))
+        self.assertNotIn(IDENTIFIER, previous)
+        self.assertIn(ANCHOR, previous)
+        assembly = jsonc.load(ROOT / 'domains/highway/01_assemblies' /
+                              'ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b' /
+                              'assembly.jsonc')
+        self.assertEqual({pose['piece_id'] for pose in assembly['placements']}, parallel_b)
 
     def test_dispatcher_builds_b_only_and_preserves_normal_finishing_and_shadow_owners(self):
         compiled = [((0, 0), b'first model', b'first paths'),

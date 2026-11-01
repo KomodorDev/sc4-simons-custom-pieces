@@ -6,7 +6,8 @@ from .menu import make_icon
 def assembly_icon_network(assembly_id):
     require(assembly_id in ('ddrhw-l1-and-l2-diagonal-avenue-diamond',
                            'ddrhw-l1-and-l2-diagonal-avenue-modular-diamond',
-                           'ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond'),
+                           'ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond',
+                           'ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b'),
             'No declared highway assembly icon network')
     return 'HWY'
 
@@ -52,6 +53,13 @@ def assembly_icon_routes(scene, pieces):
         elif piece.get('recipe', '').startswith('highway_ddrhw_modular_'):
             from .modular_ramps import component_routes
             source = component_routes(piece)
+        elif piece.get('recipe', '').startswith('highway_ddrhw_parallel_b_'):
+            from .parallel_alignment_b_verify import expected_cell_routes, _source_origin, PARTITIONS
+            ox, oy = _source_origin(piece)
+            cell_routes = expected_cell_routes()
+            source = [[(x - 16. * ox, y + 16. * oy, h) for x, y, h in route['points']]
+                      for cell in PARTITIONS[piece['geometry_key'].removeprefix('parallel-b-')]
+                      for route in cell_routes[cell]]
         elif piece.get('recipe', '').startswith('highway_ddrhw_parallel_'):
             # The frozen approved lines include native through services and
             # every ramp cut. Transform their complete whole-cell partition

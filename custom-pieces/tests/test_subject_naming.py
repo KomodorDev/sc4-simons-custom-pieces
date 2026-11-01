@@ -7,6 +7,7 @@ import unittest
 from scp import jsonc
 from scp.catalog import load_catalog
 from scp.subject_sources import piece_id_for_recipe, piece_directory, source_path
+from scp.assembly_presentation import validate_cycle_title
 from scp_hsr.menu import _spec_fields
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -68,7 +69,7 @@ class SubjectNamingIntegrationTests(unittest.TestCase):
             layouts = jsonc.load(domain/'menu-layout.jsonc')['layouts']
             for layout in layouts.values():
                 if layout['assembly_id'] == assembly['id']:
-                    self.assertEqual(layout['cycle_button']['title'], 'SCP | ASSEMBLY | '+scene['title'])
+                    self.assertEqual(layout['cycle_button']['title'], validate_cycle_title(scene, layout['cycle_button']))
 
 
 if __name__ == '__main__':

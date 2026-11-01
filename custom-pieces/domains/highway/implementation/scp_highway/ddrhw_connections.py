@@ -1,4 +1,4 @@
-"""Experimental movable native approaches outside the six retained DD ends.
+"""Experimental movable native approaches outside reviewed custom DD ends.
 
 The existing custom end cells remain static and keep every allocated resource.
 An optional, unmodelled construction cell requests a native diagonal DD tile
@@ -67,6 +67,10 @@ ENDS = (
          0x7F5B3010, (0, 1), 0, (-1, 1)),
     _End('ddrhw-parallel-upper-entry-slip', 'highway_ddrhw_parallel_upper_entry_slip',
          0x7F5B4100, (1, 0), 1, (1, -1)),
+    _End('ddrhw-parallel-b-upper-exit-slip', 'highway_ddrhw_parallel_b_upper_exit_slip',
+         0x7F5C7020, (0, 2), 0, (-1, 2)),
+    _End('ddrhw-parallel-b-upper-entry-slip', 'highway_ddrhw_parallel_b_upper_entry_slip',
+         0x7F5C8200, (2, 0), 1, (2, -1)),
 )
 
 

@@ -103,15 +103,20 @@ def _members(scene):
 def _layout(value, domain='high-speed-rail'):
     from .menu_experiment_resources import valid_menu_order
     required = {'assembly_id', 'member_order', 'cycle_button'}
-    require(isinstance(value, dict) and set(value) in (required, required | {'submenu'}),
+    require(isinstance(value, dict) and set(value) in (required, required | {'submenu'}, required | {'cycle_submenu'}),
             'Unsupported menu layout fields')
     require(isinstance(value['assembly_id'], str) and
             re.fullmatch(r'[a-z][a-z0-9-]{1,63}', value['assembly_id']), 'Invalid assembly identifier')
     require(value['member_order'] == 'first-use-in-assembly', 'Unsupported menu member order')
-    for key in (('cycle_button', 'submenu') if 'submenu' in value else ('cycle_button',)):
+    for key in ('cycle_button', *[field for field in ('submenu', 'cycle_submenu') if field in value]):
         entry = value[key]
-        require(isinstance(entry, dict) and set(entry) == {'id', 'order', 'title', 'description'},
+        fields = {'id', 'order', 'title', 'description'}
+        accepted = (fields, fields | {'variant_label'}) if key == 'cycle_button' else (fields,)
+        require(isinstance(entry, dict) and set(entry) in accepted,
                 'Menu presentation needs id, order, title, and description')
+        if 'variant_label' in entry:
+            from .assembly_presentation import validate_variant_label
+            validate_variant_label(entry['variant_label'])
         require(isinstance(entry['id'], str) and isinstance(entry['order'], str)
                 and len(entry['id']) == 8 and len(entry['order']) == 8,
                 'Menu presentation identifiers must use eight hexadecimal digits')
@@ -122,6 +127,9 @@ def _layout(value, domain='high-speed-rail'):
                 'Experimental menu titles and descriptions must be nonempty')
     if 'submenu' in value:
         require(value['cycle_button']['id'] != value['submenu']['id'], 'Experimental presentation IDs overlap')
+    if 'cycle_submenu' in value:
+        require(number(value['cycle_button']['id']) != number(value['cycle_submenu']['id']),
+                'Assembly cycle and submenu presentation IDs overlap')
     return deepcopy(value)
 
 
@@ -161,6 +169,9 @@ def _transformed(base, controller, menu, layout, scene, *, cycle_icon=None, expe
     from .piece_menu_families import with_feature_sequence_preserving_families as with_feature_sequence
     from .menu_experiment_resources import build_menu_experiment_resources
     from .verify import strict_dbpf
+    if 'variant_label' in layout['cycle_button']:
+        from .assembly_presentation import validate_cycle_title
+        validate_cycle_title(scene, layout['cycle_button'])
     pieces = _selected(base, scene)
     from .piece_menu_families import declarations
     alternatives = {piece['id'] for family in declarations(base['pieces']) for piece in family}
@@ -604,6 +615,8 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
         layout_id = 'trumpet'
     require(layout_id in config['layouts'], 'Unknown assembly menu layout')
     layout = _layout(config['layouts'][layout_id], domain_id)
+    require('cycle_submenu' not in layout,
+            'A shared assembly submenu requires multiple selected assembly layouts')
     require(not single_button_only or 'submenu' not in layout,
             'Assembly delivery requires one cycle button; legacy submenu layouts are not supported by assembly-menu')
     assemblies = [assembly for assembly in catalog['_assemblies']

@@ -35,7 +35,10 @@ def bindings(spec):
     rows = adaptive_network.bindings(spec)
     if not rows:
         return []
-    if spec.get('recipe', '').startswith('highway_ddrhw_parallel_'):
+    phase = int(spec.get('recipe', '').startswith('highway_ddrhw_parallel_b_'))
+    if phase:
+        from .parallel_b_modules import declaration as module_declaration
+    elif spec.get('recipe', '').startswith('highway_ddrhw_parallel_'):
         from .parallel_modules import declaration as module_declaration
     else:
         from .ramp_paths import module_declaration
@@ -45,7 +48,7 @@ def bindings(spec):
     expected = {}
     for local in map(tuple, spec['cells']):
         world = local[0] + origin[0], local[1] + origin[1]
-        difference = world[0] - world[1]
+        difference = world[0] - world[1] - phase
         if difference in (-1, 0, 1):
             expected[local] = (world, difference)
     require({tuple(row['cell']) for row in rows} == set(expected),
@@ -59,7 +62,7 @@ def bindings(spec):
                 and int(row['texture_donor_id'], 16) == donor and row['rotation'] == rotation,
                 'Adaptive Avenue flags, donor, or half-tile pose differs from native measurements')
         if spec.get('recipe', '').startswith('highway_ddrhw_parallel_'):
-            # All nine frozen adaptive cells retain an actual deck or terminal overlay.
+            # Every parallel adaptive cell retains a deck or terminal overlay.
             expected_prop = True
         elif spec.get('geometry_key') == 'modular-stamp':
             expected_prop = sum(world) in (0, 1)
@@ -247,7 +250,9 @@ def build_construction(spec, compiled, native_rul0, native_rul1):
     """Return RUL0/RUL1 deltas for a measured mixed static/FLEX component."""
     from .recipes import construction
     from .ramp_paths import construction_symbol
-    if spec.get('recipe', '').startswith('highway_ddrhw_parallel_'):
+    if spec.get('recipe', '').startswith('highway_ddrhw_parallel_b_'):
+        from .parallel_b_modules import construction_fields
+    elif spec.get('recipe', '').startswith('highway_ddrhw_parallel_'):
         from .parallel_modules import construction_fields
     else:
         from .ramp_paths import construction_fields
