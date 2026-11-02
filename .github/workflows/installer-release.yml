@@ -51,8 +51,9 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
-      - name: Preserve exact source and frozen-evidence bytes on Windows
+      - name: Prepare long paths and exact source bytes on Windows
         run: |
+          git config --global core.longpaths true
           git config --global core.autocrlf false
           git config --global core.eol lf
       - name: Check out the exact tested revision
