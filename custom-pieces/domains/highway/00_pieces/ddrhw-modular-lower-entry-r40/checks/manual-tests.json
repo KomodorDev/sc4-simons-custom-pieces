@@ -1,0 +1,963 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative explicit observations for individually scoped manual and software checks.",
+  "subject": {
+    "id": "ddrhw-modular-lower-entry-r40",
+    "kind": "piece"
+  },
+  "authority": "Explicit user observations; generated Markdown is a read-only view.",
+  "state_policy": "Unverified, passed, failed, stale; not applicable is an explicit separate declaration.",
+  "rotation_policy": "Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.",
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f83e",
+        "0004f83e"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f83e",
+        "0007f83e"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f83e",
+        "0006f83e"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f83e",
+        "0005f83e"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ],
+  "environment_policy": "Every result applies only to its recorded platform, game version, and NAM profile.",
+  "fingerprints": {
+    "construction:ddrhw-modular-lower-entry-r40": "530a696c7d1270e36bd15f27d303034a459121d0aa0af319734e0156899a1654",
+    "effect:ddrhw-modular-lower-entry-r40:ea5118b0-ea5118b1-7f59fff5": "9019aafa7b1f4b672847ab1bfda30c23daf2c9888cdb1724a89e64e2a6d8b73d",
+    "exemplar:ddrhw-modular-lower-entry-r40:6534284a-a8434037-7f59f010": "d48ec885d672a6933153e3633061bf37c2af048b98d12b3a9074db3e1f62fadb",
+    "exemplar:ddrhw-modular-lower-entry-r40:6534284a-a8434037-7f59f020": "6ff2be275eb2b028f94cd687152e4635ee7c91c6bfce4de5cd6735d2f35b852d",
+    "exemplar:ddrhw-modular-lower-entry-r40:6534284a-a8434037-7f59f100": "99232e72e2d54cf2a2cd21451527d2c8374e87859338cd14d8b5ba6c8d6caaab",
+    "exemplar:ddrhw-modular-lower-entry-r40:6534284a-a8434037-7f59f110": "ec77249ccb23eb0a2aeda798cd2c45687ba63d060046ab6c9d90a1e43e1fc45b",
+    "graph:ddrhw-modular-lower-entry-r40": "014ececfcd211a496564f2ebea11cfb4d313080d92a7352c02ae8848ba489c61",
+    "image:ddrhw-modular-lower-entry-r40:canonical-southeast": "7c6f6c0d3f0f8acd82ed4f22253b342b29128ec18ce1c3eca64e8fe21b7503cf",
+    "image:ddrhw-modular-lower-entry-r40:canonical-top": "a22c39b94234b8fa393cbd565c22517a7b759dc37960d442438976e692e25ba3",
+    "image:ddrhw-modular-lower-entry-r40:connection-overview": "214c617d2aeb1af296dcb29e454404d0cc203d87cc7d24ecc5e8077ce2080169",
+    "interface:ddrhw-modular-lower-entry-r40:1-E-in-2": "eba62c3d3ae87d3b2974243fe6d6b6a22efecc9a48430d78ab9fa2ff32a84506",
+    "interface:ddrhw-modular-lower-entry-r40:1-N-in-4": "840c5203e251bfca40b799b12040ace84086acfcc29b97bb22e834ca48ab18da",
+    "interface:ddrhw-modular-lower-entry-r40:1-S-out-1": "f59f14169f90678630b9f2bc5536140a07f15872b3dfedf60f7fa5a7cc082a48",
+    "interface:ddrhw-modular-lower-entry-r40:1-S-out-3": "9565c43f0f58ff3b72db5516b37f077bb17be50917e9ec31d9ff0267ab42d0c5",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f010": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f011": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f012": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f013": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f014": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f020": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f021": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f022": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f023": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f024": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f100": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f101": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f102": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f103": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f104": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f110": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f111": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f112": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f113": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f114": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+    "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59fff5": "35402f2340bc0fa52d36824fa52f2f07156809459510038324d7f52121972072",
+    "path:ddrhw-modular-lower-entry-r40:296678f7-a966883f-7f59f010": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+    "path:ddrhw-modular-lower-entry-r40:296678f7-a966883f-7f59f020": "05a51765d54450bb4bf7c39ef1afa91d6388556aff2e68b98d417b149e6ca40e",
+    "path:ddrhw-modular-lower-entry-r40:296678f7-a966883f-7f59f100": "ba3bb6d0755f4c29af2eae27ccf962aeaa20edff99b2efa8046b92dc6807e5cf",
+    "path:ddrhw-modular-lower-entry-r40:296678f7-a966883f-7f59f110": "e3b2892150a7a0e4a02427e47ab83e3fa4cd61fb3ccc23cff532bfda846bd95f",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f010": "ed7cd8bc4a65b186cfdfa928f831539e54925869cd92ace8b4d3ce2a24d501e2",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f011": "0fb4ef29f37b0439bd767c49d95bf5f6a2ed169a0850f072fbea5de8a0577456",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f012": "d358ba747f9f20ee18e1fd6cb3e9e60aea301a143ffe7d5b0e97099249491e84",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f013": "e24a1d39a70ce5eb1000c880d1334e47f398abeb1ad56388fe18f30a179fa002",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f014": "c0d4dd7e8c34ae02002cf9ad12b9e857dd3ceaa367a92178f5668eef75390035",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f020": "f9cd29c1e03cbcfbff097f74d3ac1552a5daecde72a8be5c3b817962b3efdeaa",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f021": "b591ad98ae1e98bde777f027c2340a9b3de2e3c8656c98fb2393ac6ddd54a380",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f022": "827a73495e126573852ba9d3e5e5cfe2452455a4663ab1d7cae14150cff549d9",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f023": "566c921e3b6d764a9ce8c0d8cd11a880dff977a4e31a48fc776dc1f97b00d8a3",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f024": "b4a8d5258ca3dfd142e130a8b9ca6ba91e32bf2ae1a7262c959176d52aacd26a",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f100": "a935ea0c21934fc219385ee6ac53b83a3224f77283fa345a163b1738d7c8cc04",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f101": "176c16df5b0ac68cf6759a541e2f6a2bfb6b583ba09afda90329d108fdc01342",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f102": "96c297db610a0ec64f24397e6c623e251f6f6328091b5086e64d2d382d4ef2e8",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f103": "180ebdb11fbb85b0610ea4f2b2de02a28bcc4b7cbb79457fe66f1516619d30b0",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f104": "0940db97d7e6cd9cf29730ff63f610b873fe74d8061cbc7aa92ff8796471e552",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f110": "3242d41eddb26c2f857fce80a813935be4bbe02aca66f6ae14d62fa69ed1b953",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f111": "623fdcd64917618a5acdd9668f8d37f42f9adeab90673453f4068279fde6436e",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f112": "b15eefadf2734a4da61d06e46d3ca74644049ee3f2ac1368afc6563548af5d58",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f113": "e4cc8bba77e2dbdd878c4edb475819886af553fe2ae798c7ffc240cbb4516957",
+    "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f114": "7835459efcce75e6130923939df7ee384b93a7a3de7aab3a7103c61cab67f640",
+    "text:ddrhw-modular-lower-entry-r40:2026960b-2a592fd1-7f59f010": "14adb23217cfe6438b683b8a51fd60a757da1820c2bbb76daac494fd87cace62",
+    "text:ddrhw-modular-lower-entry-r40:2026960b-2a592fd1-7f59f020": "14adb23217cfe6438b683b8a51fd60a757da1820c2bbb76daac494fd87cace62",
+    "text:ddrhw-modular-lower-entry-r40:2026960b-2a592fd1-7f59f100": "14adb23217cfe6438b683b8a51fd60a757da1820c2bbb76daac494fd87cace62",
+    "text:ddrhw-modular-lower-entry-r40:2026960b-2a592fd1-7f59f110": "14adb23217cfe6438b683b8a51fd60a757da1820c2bbb76daac494fd87cace62"
+  },
+  "cases": [
+    {
+      "id": "software_resources-c572434e9e4037f26161",
+      "kind": "software_resources",
+      "description": "Verify the actual compiled resources and construction rules.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9507274780a2380ec934d8c202b51d8fb9375d49efde9e950c36911cc30fb380",
+      "dependency_ref": "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172"
+    },
+    {
+      "id": "software_connectivity-c572434e9e4037f26161",
+      "kind": "software_connectivity",
+      "description": "Verify the declared directed journeys and forbidden transfers.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d958893cb1081dc92eae7cc63a3a8339c1fd45f9197c5ffe74ed29c7bd4d6cc5",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_render-b673c66aa1974634cad8",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "babe7e8195ae31a06bf3f876bfa5728a35ed33335f1545af16391bf0e96b225a",
+      "dependency_ref": "1e78c947744b7831bbb0bdc778f6d1feb50e2bde79bf2d05a51d2178d6da6da3"
+    },
+    {
+      "id": "in_game_placement-b673c66aa1974634cad8",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d14e1db98359b82f31c0a449f6a2964abc1c22cab076573261399ce92c07e36d",
+      "dependency_ref": "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172"
+    },
+    {
+      "id": "in_game_demolition-b673c66aa1974634cad8",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d14e1db98359b82f31c0a449f6a2964abc1c22cab076573261399ce92c07e36d",
+      "dependency_ref": "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172"
+    },
+    {
+      "id": "in_game_save_reload-b673c66aa1974634cad8",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d14e1db98359b82f31c0a449f6a2964abc1c22cab076573261399ce92c07e36d",
+      "dependency_ref": "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172"
+    },
+    {
+      "id": "in_game_render-37bd367f0d79e70ed174",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b2cc63d38ad80c7ce2689c14287363b542ecbd2ce1d17031349c8414c3f0d58f",
+      "dependency_ref": "1e78c947744b7831bbb0bdc778f6d1feb50e2bde79bf2d05a51d2178d6da6da3"
+    },
+    {
+      "id": "in_game_placement-37bd367f0d79e70ed174",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c8a6b15eaca4ba8aee35db882cb0379e48fa218cd6ea180dd4071b178576be37",
+      "dependency_ref": "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172"
+    },
+    {
+      "id": "in_game_demolition-37bd367f0d79e70ed174",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c8a6b15eaca4ba8aee35db882cb0379e48fa218cd6ea180dd4071b178576be37",
+      "dependency_ref": "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172"
+    },
+    {
+      "id": "in_game_save_reload-37bd367f0d79e70ed174",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c8a6b15eaca4ba8aee35db882cb0379e48fa218cd6ea180dd4071b178576be37",
+      "dependency_ref": "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172"
+    },
+    {
+      "id": "in_game_render-1d9c62925672eb83cb07",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bed5d8532fd49666c12132f2ec3bdf87b06332ac65e93a7a64fbde9adbd98c35",
+      "dependency_ref": "1e78c947744b7831bbb0bdc778f6d1feb50e2bde79bf2d05a51d2178d6da6da3"
+    },
+    {
+      "id": "in_game_placement-1d9c62925672eb83cb07",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "92ec913f62f8228ddcf8a69205520f1e2da528f5fbf3905c3228fc7d9eb5777b",
+      "dependency_ref": "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172"
+    },
+    {
+      "id": "in_game_demolition-1d9c62925672eb83cb07",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "92ec913f62f8228ddcf8a69205520f1e2da528f5fbf3905c3228fc7d9eb5777b",
+      "dependency_ref": "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172"
+    },
+    {
+      "id": "in_game_save_reload-1d9c62925672eb83cb07",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "92ec913f62f8228ddcf8a69205520f1e2da528f5fbf3905c3228fc7d9eb5777b",
+      "dependency_ref": "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172"
+    },
+    {
+      "id": "in_game_render-d9141d6f68a884e55016",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3b7c44cb6a7c7bcd96eb58fb8dba19f1e4d1d0ba52cd86cc1ae6efefbbefabb0",
+      "dependency_ref": "1e78c947744b7831bbb0bdc778f6d1feb50e2bde79bf2d05a51d2178d6da6da3"
+    },
+    {
+      "id": "in_game_placement-d9141d6f68a884e55016",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e123ee10d6170aa6f9dfebc22f0ba0cf12247be9148781e3dc39d938e1a6ed47",
+      "dependency_ref": "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172"
+    },
+    {
+      "id": "in_game_demolition-d9141d6f68a884e55016",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e123ee10d6170aa6f9dfebc22f0ba0cf12247be9148781e3dc39d938e1a6ed47",
+      "dependency_ref": "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172"
+    },
+    {
+      "id": "in_game_save_reload-d9141d6f68a884e55016",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e123ee10d6170aa6f9dfebc22f0ba0cf12247be9148781e3dc39d938e1a6ed47",
+      "dependency_ref": "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172"
+    },
+    {
+      "id": "in_game_route_query-7ccdc561d6bfc860bf84",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-E-in-2>1-S-out-1",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-E-in-2",
+        "exit_port": "1-S-out-1",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0ccc0ae545b51447e97aad5b94fd6f36df7039037e6b472bb4fc656af2808ca0",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_visible_travel-7ccdc561d6bfc860bf84",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-E-in-2>1-S-out-1",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-E-in-2",
+        "exit_port": "1-S-out-1",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0ccc0ae545b51447e97aad5b94fd6f36df7039037e6b472bb4fc656af2808ca0",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_route_query-ba4b7b6a11cf99482235",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-E-in-2>1-S-out-1",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-E-in-2",
+        "exit_port": "1-S-out-1",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d6e1a0c9b8d26c4b86d7c9c17fff818101923a2b01312675137e7b5d5e6752a0",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_visible_travel-ba4b7b6a11cf99482235",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-E-in-2>1-S-out-1",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-E-in-2",
+        "exit_port": "1-S-out-1",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d6e1a0c9b8d26c4b86d7c9c17fff818101923a2b01312675137e7b5d5e6752a0",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_route_query-2248dc70809ae783143c",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-E-in-2>1-S-out-1",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-E-in-2",
+        "exit_port": "1-S-out-1",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0b8cb678da2accde835f7bfdaf59f31567223062ee931b91888e237f74d7397f",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_visible_travel-2248dc70809ae783143c",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-E-in-2>1-S-out-1",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-E-in-2",
+        "exit_port": "1-S-out-1",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0b8cb678da2accde835f7bfdaf59f31567223062ee931b91888e237f74d7397f",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_route_query-0c5c789de87e51bd6d71",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-E-in-2>1-S-out-1",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-E-in-2",
+        "exit_port": "1-S-out-1",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "84e0e214dd79d506de7a17c35b8dff4b06e29292bb6e21f83d51caba3c16b987",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_visible_travel-0c5c789de87e51bd6d71",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-E-in-2>1-S-out-1",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-E-in-2",
+        "exit_port": "1-S-out-1",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "84e0e214dd79d506de7a17c35b8dff4b06e29292bb6e21f83d51caba3c16b987",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_route_query-d388617b4443bc7ae40c",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-N-in-4>1-S-out-3",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-N-in-4",
+        "exit_port": "1-S-out-3",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8ff22ce31a2f0c8da1d202afbbc252c1e1cf51836fe6b086968d7677f8d2caa9",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_visible_travel-d388617b4443bc7ae40c",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-N-in-4>1-S-out-3",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-N-in-4",
+        "exit_port": "1-S-out-3",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8ff22ce31a2f0c8da1d202afbbc252c1e1cf51836fe6b086968d7677f8d2caa9",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_route_query-4d46e91c0abae4af30dd",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-N-in-4>1-S-out-3",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-N-in-4",
+        "exit_port": "1-S-out-3",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5896086e22980af7b2b820af718b64452cf60ed05eebe82e856167ddd6475127",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_visible_travel-4d46e91c0abae4af30dd",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-N-in-4>1-S-out-3",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-N-in-4",
+        "exit_port": "1-S-out-3",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5896086e22980af7b2b820af718b64452cf60ed05eebe82e856167ddd6475127",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_route_query-8451176b5754e60db360",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-N-in-4>1-S-out-3",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-N-in-4",
+        "exit_port": "1-S-out-3",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "60f9bd37021195317db4de30f278bed096a4391630fc84d64f037b4eec8dfea6",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_visible_travel-8451176b5754e60db360",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-N-in-4>1-S-out-3",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-N-in-4",
+        "exit_port": "1-S-out-3",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "60f9bd37021195317db4de30f278bed096a4391630fc84d64f037b4eec8dfea6",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_route_query-a524a4b9f8eb775ef80a",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-N-in-4>1-S-out-3",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-N-in-4",
+        "exit_port": "1-S-out-3",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "809aaaa0aa91baae8f824ed864d1b406c6ae4aafcfa66c1f3da6ed86a2c832fa",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_visible_travel-a524a4b9f8eb775ef80a",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "journey_id": "1:1-N-in-4>1-S-out-3",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "1-N-in-4",
+        "exit_port": "1-S-out-3",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "809aaaa0aa91baae8f824ed864d1b406c6ae4aafcfa66c1f3da6ed86a2c832fa",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3dbe19e56efdf5c49a69",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "forbidden_transfer": {
+          "from_port": "1-E-in-2",
+          "to_port": "1-S-out-3",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a0764eb79d0b92a59dd425f5dadf7ecf5f3f8aa530a83a563f9e65c71049bb4d",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b9737819664589e7684a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "forbidden_transfer": {
+          "from_port": "1-E-in-2",
+          "to_port": "1-S-out-3",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "76a5929c56cfc7de1322650da3fe906c4d55dc771aa4ae905e5f08d881d79a38",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-1ec75ba0d9eae5730814",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "forbidden_transfer": {
+          "from_port": "1-E-in-2",
+          "to_port": "1-S-out-3",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ba68ff9595ebf28f7e66949e4516a73bb035e1226c1386dc0cc98b14f0bd0eea",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-38718fe493a1c19bed21",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "forbidden_transfer": {
+          "from_port": "1-E-in-2",
+          "to_port": "1-S-out-3",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7630f1168fd8deaad3ae4ef49d48518ae261e4e4d2591f6107b9db0125cf11fd",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-32908f9ea35fdf78039e",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "forbidden_transfer": {
+          "from_port": "1-N-in-4",
+          "to_port": "1-S-out-1",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8028f45ea91957d371237e7dcd4e8adca933b9ec9c404fc3e890987e3a816590",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c535a7dd2ac6b4d408af",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "forbidden_transfer": {
+          "from_port": "1-N-in-4",
+          "to_port": "1-S-out-1",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e21ea64d08d8bee997a6d97ed006e72aeb38a97012c9fd39e13c3ec3b95a1b45",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-58a6a0dafef9c07bd68c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "forbidden_transfer": {
+          "from_port": "1-N-in-4",
+          "to_port": "1-S-out-1",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "84a3770234a0bac9738d3a45d662585ecc11f647863fd98cc7704f63c3a3f44a",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3f13ee9374758212eeaf",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "forbidden_transfer": {
+          "from_port": "1-N-in-4",
+          "to_port": "1-S-out-1",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "36fa005d78f9b1641823e304a6ec91e4c98cfb158e8476cb16356e0a1fd492d6",
+      "dependency_ref": "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9"
+    },
+    {
+      "id": "preview_review-6b6da3ee387e514e9c92",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "image_key": "image:ddrhw-modular-lower-entry-r40:canonical-southeast"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "38354948dc382b85ec8b1ab19eec3a91573a3ca74cda2d5c4a87fb574baf6dbd",
+      "dependency_ref": "2fedfaab031bc9ebc6f0685c2b1b8521dd9327bec7f76a68ad473515247578fb"
+    },
+    {
+      "id": "preview_review-560e6a5ba875b48cce14",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "image_key": "image:ddrhw-modular-lower-entry-r40:canonical-top"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "31e58443c6527566f1b132edb12a901c6cefd385ec10bdf8a17d8fda68e8f26b",
+      "dependency_ref": "b283ef3040f07ac890846865bd0a7f2f06b85b0343b1a8432b182c71cb05ff58"
+    },
+    {
+      "id": "preview_review-3bc8ab167e71ae33a8f3",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-modular-lower-entry-r40",
+        "image_key": "image:ddrhw-modular-lower-entry-r40:connection-overview"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ce9a60028f6fff1c7d21c6743e4c73b94a4883463099e9adfc6b7893e17cfa9f",
+      "dependency_ref": "b6ce5e763da27125f55e8367c3cdf1aa2a347315e2769e4896bf2f3756dbfaeb"
+    }
+  ],
+  "dependency_sets": {
+    "d3246b389cd86a27c737fc1f241205c916b233152130c30ba673b2b7c5165172": {
+      "construction:ddrhw-modular-lower-entry-r40": "530a696c7d1270e36bd15f27d303034a459121d0aa0af319734e0156899a1654",
+      "effect:ddrhw-modular-lower-entry-r40:ea5118b0-ea5118b1-7f59fff5": "9019aafa7b1f4b672847ab1bfda30c23daf2c9888cdb1724a89e64e2a6d8b73d",
+      "exemplar:ddrhw-modular-lower-entry-r40:6534284a-a8434037-7f59f010": "d48ec885d672a6933153e3633061bf37c2af048b98d12b3a9074db3e1f62fadb",
+      "exemplar:ddrhw-modular-lower-entry-r40:6534284a-a8434037-7f59f020": "6ff2be275eb2b028f94cd687152e4635ee7c91c6bfce4de5cd6735d2f35b852d",
+      "exemplar:ddrhw-modular-lower-entry-r40:6534284a-a8434037-7f59f100": "99232e72e2d54cf2a2cd21451527d2c8374e87859338cd14d8b5ba6c8d6caaab",
+      "exemplar:ddrhw-modular-lower-entry-r40:6534284a-a8434037-7f59f110": "ec77249ccb23eb0a2aeda798cd2c45687ba63d060046ab6c9d90a1e43e1fc45b",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f010": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f011": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f012": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f013": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f014": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f020": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f021": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f022": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f023": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f024": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f100": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f101": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f102": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f103": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f104": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f110": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f111": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f112": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f113": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f114": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59fff5": "35402f2340bc0fa52d36824fa52f2f07156809459510038324d7f52121972072",
+      "path:ddrhw-modular-lower-entry-r40:296678f7-a966883f-7f59f010": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "path:ddrhw-modular-lower-entry-r40:296678f7-a966883f-7f59f020": "05a51765d54450bb4bf7c39ef1afa91d6388556aff2e68b98d417b149e6ca40e",
+      "path:ddrhw-modular-lower-entry-r40:296678f7-a966883f-7f59f100": "ba3bb6d0755f4c29af2eae27ccf962aeaa20edff99b2efa8046b92dc6807e5cf",
+      "path:ddrhw-modular-lower-entry-r40:296678f7-a966883f-7f59f110": "e3b2892150a7a0e4a02427e47ab83e3fa4cd61fb3ccc23cff532bfda846bd95f",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f010": "ed7cd8bc4a65b186cfdfa928f831539e54925869cd92ace8b4d3ce2a24d501e2",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f011": "0fb4ef29f37b0439bd767c49d95bf5f6a2ed169a0850f072fbea5de8a0577456",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f012": "d358ba747f9f20ee18e1fd6cb3e9e60aea301a143ffe7d5b0e97099249491e84",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f013": "e24a1d39a70ce5eb1000c880d1334e47f398abeb1ad56388fe18f30a179fa002",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f014": "c0d4dd7e8c34ae02002cf9ad12b9e857dd3ceaa367a92178f5668eef75390035",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f020": "f9cd29c1e03cbcfbff097f74d3ac1552a5daecde72a8be5c3b817962b3efdeaa",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f021": "b591ad98ae1e98bde777f027c2340a9b3de2e3c8656c98fb2393ac6ddd54a380",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f022": "827a73495e126573852ba9d3e5e5cfe2452455a4663ab1d7cae14150cff549d9",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f023": "566c921e3b6d764a9ce8c0d8cd11a880dff977a4e31a48fc776dc1f97b00d8a3",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f024": "b4a8d5258ca3dfd142e130a8b9ca6ba91e32bf2ae1a7262c959176d52aacd26a",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f100": "a935ea0c21934fc219385ee6ac53b83a3224f77283fa345a163b1738d7c8cc04",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f101": "176c16df5b0ac68cf6759a541e2f6a2bfb6b583ba09afda90329d108fdc01342",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f102": "96c297db610a0ec64f24397e6c623e251f6f6328091b5086e64d2d382d4ef2e8",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f103": "180ebdb11fbb85b0610ea4f2b2de02a28bcc4b7cbb79457fe66f1516619d30b0",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f104": "0940db97d7e6cd9cf29730ff63f610b873fe74d8061cbc7aa92ff8796471e552",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f110": "3242d41eddb26c2f857fce80a813935be4bbe02aca66f6ae14d62fa69ed1b953",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f111": "623fdcd64917618a5acdd9668f8d37f42f9adeab90673453f4068279fde6436e",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f112": "b15eefadf2734a4da61d06e46d3ca74644049ee3f2ac1368afc6563548af5d58",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f113": "e4cc8bba77e2dbdd878c4edb475819886af553fe2ae798c7ffc240cbb4516957",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f114": "7835459efcce75e6130923939df7ee384b93a7a3de7aab3a7103c61cab67f640"
+    },
+    "f2157d525149f05e8494cba5a7b38eb915d892e7bc87dd5711eb0a66e9f8b3a9": {
+      "construction:ddrhw-modular-lower-entry-r40": "530a696c7d1270e36bd15f27d303034a459121d0aa0af319734e0156899a1654",
+      "graph:ddrhw-modular-lower-entry-r40": "014ececfcd211a496564f2ebea11cfb4d313080d92a7352c02ae8848ba489c61",
+      "interface:ddrhw-modular-lower-entry-r40:1-E-in-2": "eba62c3d3ae87d3b2974243fe6d6b6a22efecc9a48430d78ab9fa2ff32a84506",
+      "interface:ddrhw-modular-lower-entry-r40:1-N-in-4": "840c5203e251bfca40b799b12040ace84086acfcc29b97bb22e834ca48ab18da",
+      "interface:ddrhw-modular-lower-entry-r40:1-S-out-1": "f59f14169f90678630b9f2bc5536140a07f15872b3dfedf60f7fa5a7cc082a48",
+      "interface:ddrhw-modular-lower-entry-r40:1-S-out-3": "9565c43f0f58ff3b72db5516b37f077bb17be50917e9ec31d9ff0267ab42d0c5",
+      "path:ddrhw-modular-lower-entry-r40:296678f7-a966883f-7f59f010": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "path:ddrhw-modular-lower-entry-r40:296678f7-a966883f-7f59f020": "05a51765d54450bb4bf7c39ef1afa91d6388556aff2e68b98d417b149e6ca40e",
+      "path:ddrhw-modular-lower-entry-r40:296678f7-a966883f-7f59f100": "ba3bb6d0755f4c29af2eae27ccf962aeaa20edff99b2efa8046b92dc6807e5cf",
+      "path:ddrhw-modular-lower-entry-r40:296678f7-a966883f-7f59f110": "e3b2892150a7a0e4a02427e47ab83e3fa4cd61fb3ccc23cff532bfda846bd95f"
+    },
+    "2fedfaab031bc9ebc6f0685c2b1b8521dd9327bec7f76a68ad473515247578fb": {
+      "image:ddrhw-modular-lower-entry-r40:canonical-southeast": "7c6f6c0d3f0f8acd82ed4f22253b342b29128ec18ce1c3eca64e8fe21b7503cf"
+    },
+    "b283ef3040f07ac890846865bd0a7f2f06b85b0343b1a8432b182c71cb05ff58": {
+      "image:ddrhw-modular-lower-entry-r40:canonical-top": "a22c39b94234b8fa393cbd565c22517a7b759dc37960d442438976e692e25ba3"
+    },
+    "13a85852a1fbd399c71ffa5a1c997ad5df4b9ef153dc15ec755565ff429b68c8": {
+      "image:ddrhw-modular-lower-entry-r40:connection-overview": "6a10947befa45593c48b929de1c5a91a3ab4074e9ddcf9f847fd2e4896184f55"
+    },
+    "1e78c947744b7831bbb0bdc778f6d1feb50e2bde79bf2d05a51d2178d6da6da3": {
+      "effect:ddrhw-modular-lower-entry-r40:ea5118b0-ea5118b1-7f59fff5": "9019aafa7b1f4b672847ab1bfda30c23daf2c9888cdb1724a89e64e2a6d8b73d",
+      "exemplar:ddrhw-modular-lower-entry-r40:6534284a-a8434037-7f59f010": "d48ec885d672a6933153e3633061bf37c2af048b98d12b3a9074db3e1f62fadb",
+      "exemplar:ddrhw-modular-lower-entry-r40:6534284a-a8434037-7f59f020": "6ff2be275eb2b028f94cd687152e4635ee7c91c6bfce4de5cd6735d2f35b852d",
+      "exemplar:ddrhw-modular-lower-entry-r40:6534284a-a8434037-7f59f100": "99232e72e2d54cf2a2cd21451527d2c8374e87859338cd14d8b5ba6c8d6caaab",
+      "exemplar:ddrhw-modular-lower-entry-r40:6534284a-a8434037-7f59f110": "ec77249ccb23eb0a2aeda798cd2c45687ba63d060046ab6c9d90a1e43e1fc45b",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f010": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f011": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f012": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f013": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f014": "c3bef4d333aabf141c21c8b0a9d9ea938e424383dd5b0f670433c5f29afb7aa6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f020": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f021": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f022": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f023": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f024": "0389fb60b7ad6fcc7fb8308f1d7f310f75863e8bf1cf51f6d48ee2eb2339c971",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f100": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f101": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f102": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f103": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f104": "be3f17e3768109cb87c416e4041fb9d66d8d09c225751a4bfb26ef03d456e703",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f110": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f111": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f112": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f113": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59f114": "e62be153e66d196d3e021006272192f91c3dbd98e6cfef23b5c2ab4761536be6",
+      "model:ddrhw-modular-lower-entry-r40:5ad0e817-badb57f1-7f59fff5": "35402f2340bc0fa52d36824fa52f2f07156809459510038324d7f52121972072",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f010": "ed7cd8bc4a65b186cfdfa928f831539e54925869cd92ace8b4d3ce2a24d501e2",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f011": "0fb4ef29f37b0439bd767c49d95bf5f6a2ed169a0850f072fbea5de8a0577456",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f012": "d358ba747f9f20ee18e1fd6cb3e9e60aea301a143ffe7d5b0e97099249491e84",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f013": "e24a1d39a70ce5eb1000c880d1334e47f398abeb1ad56388fe18f30a179fa002",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f014": "c0d4dd7e8c34ae02002cf9ad12b9e857dd3ceaa367a92178f5668eef75390035",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f020": "f9cd29c1e03cbcfbff097f74d3ac1552a5daecde72a8be5c3b817962b3efdeaa",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f021": "b591ad98ae1e98bde777f027c2340a9b3de2e3c8656c98fb2393ac6ddd54a380",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f022": "827a73495e126573852ba9d3e5e5cfe2452455a4663ab1d7cae14150cff549d9",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f023": "566c921e3b6d764a9ce8c0d8cd11a880dff977a4e31a48fc776dc1f97b00d8a3",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f024": "b4a8d5258ca3dfd142e130a8b9ca6ba91e32bf2ae1a7262c959176d52aacd26a",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f100": "a935ea0c21934fc219385ee6ac53b83a3224f77283fa345a163b1738d7c8cc04",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f101": "176c16df5b0ac68cf6759a541e2f6a2bfb6b583ba09afda90329d108fdc01342",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f102": "96c297db610a0ec64f24397e6c623e251f6f6328091b5086e64d2d382d4ef2e8",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f103": "180ebdb11fbb85b0610ea4f2b2de02a28bcc4b7cbb79457fe66f1516619d30b0",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f104": "0940db97d7e6cd9cf29730ff63f610b873fe74d8061cbc7aa92ff8796471e552",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f110": "3242d41eddb26c2f857fce80a813935be4bbe02aca66f6ae14d62fa69ed1b953",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f111": "623fdcd64917618a5acdd9668f8d37f42f9adeab90673453f4068279fde6436e",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f112": "b15eefadf2734a4da61d06e46d3ca74644049ee3f2ac1368afc6563548af5d58",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f113": "e4cc8bba77e2dbdd878c4edb475819886af553fe2ae798c7ffc240cbb4516957",
+      "shadow:ddrhw-modular-lower-entry-r40:7ab50e44-2bc2759a-7f59f114": "7835459efcce75e6130923939df7ee384b93a7a3de7aab3a7103c61cab67f640"
+    },
+    "b6ce5e763da27125f55e8367c3cdf1aa2a347315e2769e4896bf2f3756dbfaeb": {
+      "image:ddrhw-modular-lower-entry-r40:connection-overview": "214c617d2aeb1af296dcb29e454404d0cc203d87cc7d24ecc5e8077ce2080169"
+    }
+  }
+}

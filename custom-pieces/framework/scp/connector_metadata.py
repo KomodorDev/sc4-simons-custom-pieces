@@ -12,6 +12,8 @@ from pathlib import Path
 import re
 
 from . import jsonc
+from .adaptive_network import PATH as ADAPTIVE_PATH, bindings as adaptive_bindings
+from .subject_sources import registered_source_path, source_path
 from importlib import resources
 
 EPS = 2e-5
@@ -214,6 +216,11 @@ def validate_piece(piece, connections, groups, profiles):
     tiles = piece.get("tile_ids", [])
     _need(len(tiles) == len(cells) and len(set(tiles)) == len(tiles), "Tile/cell mapping is invalid")
     tile_cells = {int(tile, 16): tuple(cell) for tile, cell in zip(tiles, cells)}
+    # Adaptive PATHs are saved runtime dependencies for the whole piece. They
+    # do not replace the canonical PATH that identifies a member's source cell.
+    adaptive_paths = {f"path:{identifier}:{ADAPTIVE_PATH[0]:08x}-{ADAPTIVE_PATH[1]:08x}-"
+                      f"{int(row['resolved_tile_id'], 16):08x}" for row in adaptive_bindings(piece)}
+    fingerprints = connections.get("source", {}).get("resource_fingerprints", {})
     ports = {p["id"]: p for p in connections.get("ports", [])}
     _need(ports and len(ports) == len(connections["ports"]), "Missing or duplicate measured ports")
     components = groups.get("components", [])
@@ -288,6 +295,14 @@ def validate_piece(piece, connections, groups, profiles):
             point, tangent = port.get("endpoint_m"), port.get("tangent")
             _need(_vector(point, 3) and _vector(tangent, 2) and abs(math.hypot(*tangent)-1.) <= EPS, "Invalid measured endpoint or tangent")
             _need(port.get("direction") in ("in", "out") and _number(port.get("grade")), "Invalid measured direction or grade")
+            _need("grade_basis" not in port or port["grade_basis"] in (
+                "actual_saved_PATH_before_graph_rounding", "six_decimal_graph_sample_retained_for_existing_contract"),
+                "Unknown measured boundary grade basis")
+            _need("actual_saved_grade" not in port or _number(port["actual_saved_grade"]),
+                "Invalid exact saved boundary grade")
+            _need("actual_saved_tangent" not in port or
+                (_vector(port["actual_saved_tangent"], 2) and abs(math.hypot(*port["actual_saved_tangent"])-1.) <= EPS),
+                "Invalid exact saved boundary tangent")
             _need(port.get("service_network") == component["network"], "Measured service differs from component")
             for key in ("engine_transport", "role"):
                 _need(key not in profile or port.get(key) == profile[key], f"Measured {key} differs from optional profile")
@@ -301,8 +316,18 @@ def validate_piece(piece, connections, groups, profiles):
             _need(abs(sum(delta[i]*normal[i] for i in (0, 1))) <= EPS and abs(offset) <= 8.+EPS, "Port is outside its source tile seam")
             source_cells = set()
             for key in port.get("resource_keys", []):
-                if key.startswith("path:" + identifier + ":"):
-                    tile = int(key.rsplit("-", 1)[-1], 16)
+                if key.startswith("path:"):
+                    prefix = "path:" + identifier + ":"
+                    _need(key.startswith(prefix), "PATH resource belongs to another piece")
+                    match = re.fullmatch(r"296678f7-([0-9a-f]{8})-([0-9a-f]{8})", key[len(prefix):])
+                    _need(match is not None, "Malformed PATH resource identity")
+                    group, tile = int(match[1], 16), int(match[2], 16)
+                    if group != 0xa966883f:
+                        _need(key in adaptive_paths, "PATH dependency is not a declared adaptive binding")
+                        _need(isinstance(fingerprints.get(key), str) and
+                              re.fullmatch(r"[0-9a-f]{64}", fingerprints[key]) is not None,
+                              "Adaptive PATH dependency lacks a saved resource fingerprint")
+                        continue
                     _need(tile in tile_cells, "PATH resource is not owned by this piece")
                     source_cells.add(tile_cells[tile])
             _need(source_cells == {tuple(cell)}, "PATH resource source cell differs from boundary")
@@ -401,17 +426,20 @@ def load_library(custom_root, piece_ids, domain_id="high-speed-rail"):
     _need(registry.get("schema_version") == 1 and registry.get("id") == domain_id, "Invalid HSR domain registry schema or ID")
     profile_path = _safe_relative(domain, registry.get("connector_profiles", "connector-profiles.jsonc"))
     profiles = resolve_profiles(jsonc.load(profile_path)) if profile_path.is_file() else {}
-    registered = {Path(p).parent.name: p for p in registry["pieces"]}
+    paths = registry["pieces"]
+    _need(isinstance(paths, list) and all(isinstance(path, str) for path in paths)
+          and len(paths) == len(set(paths)), "Duplicate or invalid registered piece source path")
+    registered = {Path(p).parent.name: p for p in paths}
+    _need(len(registered) == len(paths), "Piece registry contains parallel sources for one identity")
     _need(isinstance(piece_ids, (list, tuple)) and piece_ids and len(set(piece_ids)) == len(piece_ids), "Pilot needs unique selected piece IDs")
     result = {}
     for identifier in piece_ids:
         _need(identifier in registered and re.fullmatch(r"[a-z][a-z0-9-]{1,63}", identifier), "Unknown pilot piece ID")
-        _need(Path(registered[identifier]) == Path("00_pieces") / identifier / "piece.json", "Piece registry path differs from canonical source path")
-        piece_path = _safe_relative(domain, registered[identifier])
+        piece_path = registered_source_path(domain, registered[identifier], "piece", identifier=identifier)
         directory = piece_path.parent
         piece_bytes, connection_bytes = piece_path.read_bytes(), _safe_relative(directory, "connections.json").read_bytes()
         sidecar = jsonc.load(_safe_relative(directory, "connector-groups.jsonc"))
-        piece_data = json.loads(piece_bytes)
+        piece_data = jsonc.loads(piece_bytes.decode("utf-8"))
         _need(piece_data.get("domain") == domain_id and piece_data.get("id") == identifier, "Piece identity differs from its domain registration")
         expected = sidecar.get("source_binding", {})
         _export_need(expected.get("piece_sha256") == hashlib.sha256(piece_bytes).hexdigest() and
@@ -490,6 +518,12 @@ def verify_compiled(custom_root, build, resolved, domain_id="high-speed-rail"):
         measured = piece_connectivity(item["piece"], payload, contract=adapter.reviewed_contract(item["piece"]), service_classifier=adapter.service_classifier)
         saved = item["connections"]
         _need(port_facts(measured) == port_facts(saved) and journey_facts(measured) == journey_facts(saved), f"{identifier}: compiled PATH facts differ from connections.json")
+        measured_ports = {port["id"]: port for port in measured["ports"]}
+        for port in saved["ports"]:
+            for field in ("actual_saved_grade", "actual_saved_tangent", "grade_basis"):
+                if field in port:
+                    _need(port[field] == measured_ports[port["id"]].get(field),
+                        f"{identifier}: exact saved PATH boundary witness differs from connections.json")
         actual_hashes = resource_fingerprints(identifier, payload)
         checked = 0
         for key, digest in saved["source"]["resource_fingerprints"].items():
@@ -503,6 +537,9 @@ def verify_compiled(custom_root, build, resolved, domain_id="high-speed-rail"):
             parsed = parse_paths(payload[0x296678f7, 0xa966883f, int(route["tile_id"],16)])["routes"][route["source_route_index"]]
             col, row = route["cell"]
             route["points"] = [[east+16.*col, north-16.*row, height] for east,north,height in parsed["points"]]
+            # The extractor's private precise stream has now become the
+            # canonical exported polyline; avoid publishing it twice.
+            route.pop("saved_points", None)
         refs = {}
         for group in item["groups"]:
             for member in group["members"]:
@@ -528,20 +565,31 @@ def _route_matches_member(route, member):
         return False
     # The graph extractor uses 6-decimal-metre samples; full exported polylines
     # retain parsed PATH precision. Compare occurrence IDs in that graph frame.
-    segment = route["points"][:2] if endpoint == 0 else route["points"][-2:]
-    segment = [[round(value,6) for value in point] for point in segment]
+    saved_segment = route["points"][:2] if endpoint == 0 else route["points"][-2:]
+    segment = [[round(value,6) for value in point] for point in saved_segment]
     delta = [last-first for first,last in zip(*segment)]
     length = math.hypot(*delta[:2])
     if not length:
         return False
     sampled = [value/length for value in delta[:2]]
-    return _close(sampled, member.get("sampled_tangent", member["tangent"])) and abs(delta[2]/length-member["grade"]) <= EPS
+    saved_delta = [last-first for first,last in zip(*saved_segment)]
+    saved_length = math.hypot(*saved_delta[:2])
+    if not saved_length:
+        return False
+    saved_tangent = [value/saved_length for value in saved_delta[:2]]
+    saved_grade = saved_delta[2]/saved_length
+    if "actual_saved_tangent" in member and not _close(saved_tangent, member["actual_saved_tangent"]):
+        return False
+    if "actual_saved_grade" in member and abs(saved_grade-member["actual_saved_grade"]) > EPS:
+        return False
+    grade = saved_grade if member.get("grade_basis") == "actual_saved_PATH_before_graph_rounding" else delta[2]/length
+    return _close(sampled, member.get("sampled_tangent", member["tangent"])) and abs(grade-member["grade"]) <= EPS
 
 
 def _source_files(root, domain_id, piece_id, compiled):
     domain = root / "domains" / domain_id
     directory = domain / "00_pieces" / piece_id
-    files = [directory/name for name in ("piece.json", "connections.json", "connector-groups.jsonc")]
+    files = [source_path(directory, "piece"), directory/"connections.json", directory/"connector-groups.jsonc"]
     # The manifest's compiled facts have their own semantic fingerprint. Its
     # documentation snapshot must be allowed to change after final rendering.
     files += [domain/"domain.jsonc", root/compiled["pieces"][piece_id]["dat_path"]]
@@ -552,6 +600,16 @@ def _source_files(root, domain_id, piece_id, compiled):
     # Contract providers can import reviewed tangent/geometry helpers. Bind the
     # complete owning implementation, rather than only its thin adapter module.
     files += list((domain/"implementation").rglob("*.py"))
+    # Reviewed measurements may live in maintained JSONC rather than Python.
+    # Bind the adapter's explicit dependencies without scanning unrelated
+    # evidence or creating another authoring format.
+    dependencies = getattr(_registered_adapter(root, domain_id), "connector_source_files", None)
+    if dependencies is not None:
+        _need(callable(dependencies), "connector_source_files must be callable")
+        names = dependencies(piece_id)
+        _need(isinstance(names, (list, tuple)) and all(isinstance(name, str) for name in names),
+              "Connector source dependencies must be relative path strings")
+        files += [_safe_relative(root, name) for name in names]
     files += list((root/"framework/scp").glob("*.py"))
     files += list((root/"schemas").glob("*.schema.jsonc"))
     for path in files:
@@ -696,7 +754,12 @@ def verify_overview(custom_root, piece_id, domain_id="high-speed-rail", plugins=
     _need(plugins is not None, "Overview texture freshness needs --plugins or configured texture inputs; use --no-render for data-only checks")
     payload = entries(_safe_relative(root,evidence["source_dat"]).read_bytes())
     model = parse_s3d(decompress(payload[0x5ad0e817,0xbadb57f1,int(evidence["source_preview_id"],16)]))
-    _, textures = TextureLibrary(Path(plugins).expanduser()).for_model(model)
+    from .connector_overview import _overview_textures
+    manifest = jsonc.load(_safe_relative(root, evidence['source_manifest']))
+    matching = [piece for piece in manifest['pieces'] if piece['id'] == piece_id]
+    _need(len(matching) == 1, 'Overview manifest must own exactly one selected piece')
+    owned = {key: decompress(raw) for key, raw in payload.items() if key[:2] == (0x7AB50E44, 0x1ABE787D)}
+    _, textures = _overview_textures(TextureLibrary(Path(plugins).expanduser()), model, matching[0], owned)
     _need(textures == evidence["textures"], f"{piece_id}: stale overview texture inputs")
     current_fonts = [font_fingerprint(face)
                      for face in (font(BODY_SIZE),font(BODY_SIZE,True),mono_font(BODY_SIZE,font))]

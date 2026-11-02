@@ -21,8 +21,8 @@ def register_examples(info_by_recipe,recipes,selection_name):
     ledger=jsonc.load(ROOT/'config/allocations.jsonc')
     current={p['id']:p for p in catalog['pieces']}
     used_puzzles={number(p['puzzle_id']) for p in ledger['pieces'].values()}
-    used_blocks={number(value)&0xfffff000 for p in ledger['pieces'].values()
-                 for value in [p['preview_id'],*p['tile_ids'],*p.get('resource_blocks',[])]}
+    from scp.adaptive_network import allocation_blocks
+    used_blocks={block for record in ledger['pieces'].values() for block in allocation_blocks(record)}
     selected=[];added=[]
     for recipe in recipes:
         info=info_by_recipe[recipe]

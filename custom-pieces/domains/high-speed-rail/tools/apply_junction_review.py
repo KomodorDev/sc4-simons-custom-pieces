@@ -11,6 +11,7 @@ from scp import jsonc
 from scp.catalog import load_catalog
 from scp.content import refresh_catalog_content
 from scp.design_review import LABELS
+from scp.subject_sources import load_subject, write_subject
 
 
 SUMMARIES = {
@@ -67,8 +68,8 @@ def apply_saved_review(root):
     result = validate_saved_review(review, known)
     for record in review['pieces']:
         slug = record['id']
-        path = domain / '00_pieces' / slug / 'piece.json'
-        piece = json.loads(path.read_text())
+        directory = domain / '00_pieces' / slug
+        piece = load_subject(directory, 'piece')
         if record['flag_recommended']:
             summary = next((SUMMARIES[code] for code in record['reason_codes']
                             if code in SUMMARIES), record['reasons'][0])
@@ -81,9 +82,7 @@ def apply_saved_review(root):
         elif piece.get('design_review', {}).get('reviewed_build') == review['source_build_version']:
             # A newer independent review must survive an older saved observation.
             piece.pop('design_review', None)
-        updated = json.dumps(piece, indent=2) + '\n'
-        if path.read_text() != updated:
-            path.write_text(updated)
+        write_subject(directory, 'piece', piece)
     selections = collections['collections']
     selections['flagged-junctions'] = result['flagged']
     for status, selection in (

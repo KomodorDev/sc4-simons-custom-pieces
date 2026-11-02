@@ -1,0 +1,328 @@
+// title: "Assembly definition: DD RHW-4 — Modular Diagonal Avenue Diamond"
+// summary: "Define the placed reusable components and construction plan for this assembly."
+//
+// Used when: Contributors author this assembly, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: Contributors following custom-pieces/docs/WORKFLOW_ASSEMBLY_CREATION.md; scp.subject_sources.write_subject() preserves later edits.
+// Affects: Placed component positions and rotations, generated documentation, and the assembly’s component-cycle menu.
+{
+  "id": "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond",
+  "title": "DD RHW-4 \u2014 Modular Diagonal Avenue Diamond",
+  "purpose": "One completely straight highway stamp with barrier cutouts. All four complete curved ramps and both Avenue terminals are placed separately.",
+  "geometry_status": "Compiled experimental modules; see TESTING.md for exact software and game evidence.",
+  "coordinate_units": "metres east,north,height; rotations counterclockwise",
+  "coordinate_system": {
+    "origin_world_m": [
+      0.0,
+      -144.0
+    ],
+    "origin_name": "southwest tile-centre reference",
+    "tile_size_m": 16,
+    "tile_boundaries_offset_m": 8,
+    "axes": [
+      "east",
+      "north",
+      "height"
+    ]
+  },
+  "construction_rectangle_tiles": [
+    10,
+    10
+  ],
+  "occupied_tiles": 62,
+  "module_placements": 7,
+  "component_types_used": 7,
+  "separately_available_component_types": 13,
+  "traffic_policy": {
+    "ramp_access": "adjacent-carriageway right turns only",
+    "required_movements": [
+      "SW->NE",
+      "NE->SW",
+      "NW->SE",
+      "SE->NW",
+      "NE->NW",
+      "NW->SW",
+      "SW->SE",
+      "SE->NE"
+    ],
+    "forbidden_cross_avenue_turns": [
+      "NE->SE",
+      "SE->SW",
+      "SW->NW",
+      "NW->NE"
+    ]
+  },
+  "placements": [
+    {
+      "instance_id": "P01",
+      "label": "P01",
+      "piece_id": "ddrhw-modular-highway-stamp",
+      "origin_m": [
+        0.0,
+        -0.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        0,
+        9
+      ],
+      "name": "DD RHW-4 \u2014 Straight Diagonal Highway Stamp at P01",
+      "menu_name": "DD RHW-4 \u2014 Straight Diagonal Highway Stamp",
+      "recipe": "highway_ddrhw_modular_stamp"
+    },
+    {
+      "instance_id": "P02",
+      "label": "P02",
+      "piece_id": "ddrhw-modular-lower-exit-r40",
+      "origin_m": [
+        64.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        4,
+        8
+      ],
+      "name": "RHW Ramp \u2014 Lower Full Exit Ramp \u2014 R40 at P02",
+      "menu_name": "RHW Ramp \u2014 Lower Full Exit Ramp \u2014 R40",
+      "recipe": "highway_ddrhw_modular_lower_exit_r40"
+    },
+    {
+      "instance_id": "P03",
+      "label": "P03",
+      "piece_id": "ddrhw-modular-lower-entry-r40",
+      "origin_m": [
+        16.0,
+        -64.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        1,
+        5
+      ],
+      "name": "RHW Ramp \u2014 Lower Full Entry Ramp \u2014 R40 at P03",
+      "menu_name": "RHW Ramp \u2014 Lower Full Entry Ramp \u2014 R40",
+      "recipe": "highway_ddrhw_modular_lower_entry_r40"
+    },
+    {
+      "instance_id": "P04",
+      "label": "P04",
+      "piece_id": "ddrhw-modular-upper-exit-r40",
+      "origin_m": [
+        16.0,
+        -112.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        1,
+        2
+      ],
+      "name": "RHW Ramp \u2014 Upper Full Exit Ramp \u2014 R40 at P04",
+      "menu_name": "RHW Ramp \u2014 Upper Full Exit Ramp \u2014 R40",
+      "recipe": "highway_ddrhw_modular_upper_exit_r40"
+    },
+    {
+      "instance_id": "P05",
+      "label": "P05",
+      "piece_id": "ddrhw-modular-upper-entry-r40",
+      "origin_m": [
+        112.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        7,
+        8
+      ],
+      "name": "RHW Ramp \u2014 Upper Full Entry Ramp \u2014 R40 at P05",
+      "menu_name": "RHW Ramp \u2014 Upper Full Entry Ramp \u2014 R40",
+      "recipe": "highway_ddrhw_modular_upper_entry_r40"
+    },
+    {
+      "instance_id": "P06",
+      "label": "P06",
+      "piece_id": "ddrhw-modular-northwest-terminal-r40",
+      "origin_m": [
+        16.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        1,
+        8
+      ],
+      "name": "RHW Ramp \u2014 Northwest Avenue Ramp Terminal \u2014 R40 at P06",
+      "menu_name": "RHW Ramp \u2014 Northwest Avenue Ramp Terminal \u2014 R40",
+      "recipe": "highway_ddrhw_modular_northwest_terminal_r40"
+    },
+    {
+      "instance_id": "P07",
+      "label": "P07",
+      "piece_id": "ddrhw-modular-southeast-terminal-r40",
+      "origin_m": [
+        80.0,
+        -80.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        5,
+        4
+      ],
+      "name": "RHW Ramp \u2014 Southeast Avenue Ramp Terminal \u2014 R40 at P07",
+      "menu_name": "RHW Ramp \u2014 Southeast Avenue Ramp Terminal \u2014 R40",
+      "recipe": "highway_ddrhw_modular_southeast_terminal_r40"
+    }
+  ],
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "alternatives": {
+    "compact": {
+      "purpose": "The same completely straight stamp with four separately placed full compact ramps and the two retained Avenue junctions.",
+      "occupied_tiles": 53,
+      "module_placements": 7,
+      "placements": [
+        {
+          "instance_id": "C01",
+          "label": "C01",
+          "piece_id": "ddrhw-modular-highway-stamp",
+          "origin_m": [
+            0.0,
+            -0.0
+          ],
+          "rotation_degrees_ccw": 0,
+          "rotation_degrees": 0,
+          "display_origin_tiles_en": [
+            0,
+            9
+          ],
+          "name": "DD RHW-4 \u2014 Straight Diagonal Highway Stamp at C01",
+          "menu_name": "DD RHW-4 \u2014 Straight Diagonal Highway Stamp",
+          "recipe": "highway_ddrhw_modular_stamp"
+        },
+        {
+          "instance_id": "C02",
+          "label": "C02",
+          "piece_id": "ddrhw-modular-lower-exit-compact",
+          "origin_m": [
+            80.0,
+            -16.0
+          ],
+          "rotation_degrees_ccw": 0,
+          "rotation_degrees": 0,
+          "display_origin_tiles_en": [
+            5,
+            8
+          ],
+          "name": "RHW Ramp \u2014 Lower Full Exit Ramp \u2014 Compact at C02",
+          "menu_name": "RHW Ramp \u2014 Lower Full Exit Ramp \u2014 Compact",
+          "recipe": "highway_ddrhw_modular_lower_exit_compact"
+        },
+        {
+          "instance_id": "C03",
+          "label": "C03",
+          "piece_id": "ddrhw-modular-lower-entry-compact",
+          "origin_m": [
+            16.0,
+            -80.0
+          ],
+          "rotation_degrees_ccw": 0,
+          "rotation_degrees": 0,
+          "display_origin_tiles_en": [
+            1,
+            4
+          ],
+          "name": "RHW Ramp \u2014 Lower Full Entry Ramp \u2014 Compact at C03",
+          "menu_name": "RHW Ramp \u2014 Lower Full Entry Ramp \u2014 Compact",
+          "recipe": "highway_ddrhw_modular_lower_entry_compact"
+        },
+        {
+          "instance_id": "C04",
+          "label": "C04",
+          "piece_id": "ddrhw-modular-upper-exit-compact",
+          "origin_m": [
+            16.0,
+            -96.0
+          ],
+          "rotation_degrees_ccw": 0,
+          "rotation_degrees": 0,
+          "display_origin_tiles_en": [
+            1,
+            3
+          ],
+          "name": "RHW Ramp \u2014 Upper Full Exit Ramp \u2014 Compact at C04",
+          "menu_name": "RHW Ramp \u2014 Upper Full Exit Ramp \u2014 Compact",
+          "recipe": "highway_ddrhw_modular_upper_exit_compact"
+        },
+        {
+          "instance_id": "C05",
+          "label": "C05",
+          "piece_id": "ddrhw-modular-upper-entry-compact",
+          "origin_m": [
+            96.0,
+            -16.0
+          ],
+          "rotation_degrees_ccw": 0,
+          "rotation_degrees": 0,
+          "display_origin_tiles_en": [
+            6,
+            8
+          ],
+          "name": "RHW Ramp \u2014 Upper Full Entry Ramp \u2014 Compact at C05",
+          "menu_name": "RHW Ramp \u2014 Upper Full Entry Ramp \u2014 Compact",
+          "recipe": "highway_ddrhw_modular_upper_entry_compact"
+        },
+        {
+          "instance_id": "C06",
+          "label": "C06",
+          "piece_id": "ddrhw-diagonal-northwest-junction",
+          "origin_m": [
+            32.0,
+            -32.0
+          ],
+          "rotation_degrees_ccw": 0,
+          "rotation_degrees": 0,
+          "display_origin_tiles_en": [
+            2,
+            7
+          ],
+          "name": "DD RHW-4 \u2014 Avenue Northwest Ramp Junction at C06",
+          "menu_name": "DD RHW-4 \u2014 Avenue Northwest Ramp Junction",
+          "recipe": "highway_ddrhw_compact_northwest_junction"
+        },
+        {
+          "instance_id": "C07",
+          "label": "C07",
+          "piece_id": "ddrhw-diagonal-southeast-junction",
+          "origin_m": [
+            80.0,
+            -80.0
+          ],
+          "rotation_degrees_ccw": 0,
+          "rotation_degrees": 0,
+          "display_origin_tiles_en": [
+            5,
+            4
+          ],
+          "name": "DD RHW-4 \u2014 Avenue Southeast Ramp Junction at C07",
+          "menu_name": "DD RHW-4 \u2014 Avenue Southeast Ramp Junction",
+          "recipe": "highway_ddrhw_compact_southeast_junction"
+        }
+      ],
+      "menu": "Four full compact ramps and two compact Avenue junctions retain separate icons outside the seven-component R40 cycle."
+    }
+  }
+}

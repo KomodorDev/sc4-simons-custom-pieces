@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "scope": "Current measured sloped interfaces plus analytic standards proposal; no replacement modules or generated boundary cards.",
+  "baseline_commit": "06d3d430d515df230f20802872b14eb836f31a69",
+  "branch": "codex/ddrhw-modular-ramp-kit",
+  "source_inputs": {
+    "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/assembly.jsonc": "80562abbc4913f2ca95ff0a580a0b851465d52f3a305ef417b548f657f487b50",
+    "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/evidence/ramp-atomization-saved-paths.json": "fe64234b55ceecc4c8e20aa3d86805bb928e7b4c717cb44fd0f3e0f15cd9ded0",
+    "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/evidence/ramp-atomization-measurements.json": "394ba517ea0528b3619d21c36e527098c42efedb7b970b4ce881e5022a6ce76d",
+    "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/evidence/modular-ramp-primary-research.json": "05d3ded3ed18e4511c933e9a5153b4922a8be35c5c29e655f493124bce0668b8",
+    "domains/highway/implementation/scp_highway/ramp_paths.py": "c4302863e48bea4d2e62adc06e6b8de90ec32ae290a81fb1fb3e85e295a55575"
+  },
+  "current_socket_measurements": [
+    {
+      "label": "L-exit",
+      "assembly_XY": [
+        5.5,
+        7.362034736875
+      ],
+      "height_m": 6.745131504,
+      "branch_outward_heading_degrees_N_clockwise": 258.3358861222152,
+      "branch_outward_grade_percent": -22.675579133104765
+    },
+    {
+      "label": "L-entry",
+      "assembly_XY": [
+        1.637965263125,
+        3.5
+      ],
+      "height_m": 6.745131504,
+      "branch_outward_heading_degrees_N_clockwise": 11.6641138777848,
+      "branch_outward_grade_percent": -22.675579133104765
+    },
+    {
+      "label": "U-exit",
+      "assembly_XY": [
+        2.5,
+        1.4910772046249998
+      ],
+      "height_m": 12.258240085,
+      "branch_outward_heading_degrees_N_clockwise": 68.02052228247487,
+      "branch_outward_grade_percent": -29.609595190853227
+    },
+    {
+      "label": "U-entry",
+      "assembly_XY": [
+        7.508922795375,
+        6.5
+      ],
+      "height_m": 12.258240085,
+      "branch_outward_heading_degrees_N_clockwise": 201.97947771752513,
+      "branch_outward_grade_percent": -29.609595190853227
+    }
+  ],
+  "proposed_curve_references": [
+    {
+      "radius_m": 24,
+      "turn_degrees": 90,
+      "start_EN_m": [
+        -8,
+        0
+      ],
+      "end_EN_m": [
+        16,
+        24
+      ],
+      "length_plan_m": 37.69911184307752,
+      "scope": "Exact circular centreline reference only; not an eased 45-degree piece or a verified finished construction footprint."
+    },
+    {
+      "radius_m": 40,
+      "turn_degrees": 90,
+      "start_EN_m": [
+        -8,
+        0
+      ],
+      "end_EN_m": [
+        32,
+        40
+      ],
+      "length_plan_m": 62.83185307179586,
+      "scope": "Exact circular centreline reference only; not an eased 45-degree piece or a verified finished construction footprint."
+    },
+    {
+      "radius_m": 56,
+      "turn_degrees": 90,
+      "start_EN_m": [
+        -8,
+        0
+      ],
+      "end_EN_m": [
+        48,
+        56
+      ],
+      "length_plan_m": 87.96459430051421,
+      "scope": "Exact circular centreline reference only; not an eased 45-degree piece or a verified finished construction footprint."
+    }
+  ],
+  "proposed_vertical_profiles": [
+    {
+      "label": "Sloped \u2192 flat",
+      "length_plan_m": 37.69911184307752,
+      "height_change_m": -7.5,
+      "entry_travel_grade": -0.234375,
+      "exit_travel_grade": 0,
+      "middle_grade": -0.22096620379338497,
+      "grade_in_m": 8,
+      "grade_out_m": 8,
+      "peak_grade_percent": 23.4375
+    },
+    {
+      "label": "Flat \u2192 flat",
+      "length_plan_m": 37.69911184307752,
+      "height_change_m": -7.5,
+      "entry_travel_grade": 0,
+      "exit_travel_grade": 0,
+      "middle_grade": -0.2525328043352971,
+      "grade_in_m": 8,
+      "grade_out_m": 8,
+      "peak_grade_percent": 25.253280433529714
+    }
+  ],
+  "authoring_authority": "../../../NETWORK_SPEC.md#10-proposed-modular-ramp-standards",
+  "artwork": {
+    "png_sha256": "1fc2bda50472e9ff36e3648df96fd1ef67c26820f11df51a7e9443413a8de697",
+    "svg_sha256": "723a5cc7c382de00d24e112089a8e534d3591ba758df9cd4bb0c90032d014b49",
+    "editable_source": "../previews/modular-ramp-standards.svg"
+  },
+  "evidence_limits": [
+    "Panel A route lines and join positions/heights are decoded saved measurements; ownership is current source.",
+    "Panel B is an unplaced mathematical reference in its own labelled local grid, not a same-position replacement footprint.",
+    "Panel C uses independent horizontal/vertical scales and exact analytic linear-grade transitions.",
+    "Real-world examples and research interpretations are frozen references; current policy is the owning NETWORK_SPEC and decision ledger.",
+    "All new compatibility, full profiles, construction ownership, supports, clearances, and operation remain unverified."
+  ],
+  "canonical_artwork_preserved": {
+    "preview.png": "f5d3b755090eed2317582efaeb89240027c479a0626272f949fae7d42264d1e2",
+    "tile-ownership.png": "75d665912b534e184b0452aa8239a5180b27396ed9376605634150b041194776",
+    "named-southeast.png": "ebed105ee199f6060044380bf71065a1abbc612d7c7443456290b4adea857e0a",
+    "named-top.png": "937f59526cbbe9c0405347a4747aae355d3878c03778d769b3b884e91de9da97",
+    "overview-top.png": "97cb614ee89aed1886f5a9b48b9062d1a081c7ba45f614a6756cb5a24b7aa5fe",
+    "named-northwest.png": "1cf62a52c49b20c2c4722ca4467a13a9c13d7215a544066453b86ebd5da28b7b"
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "purpose": "Intrinsic ports, service roles, and directed journeys measured from this piece\u2019s saved resources.",
+  "subject_id": "ddrhw-parallel-upper-exit-departure",
+  "subject_kind": "piece",
+  "source": {
+    "basis": "actual decompressed saved resources",
+    "resource_fingerprints": {
+      "effect:ddrhw-parallel-upper-exit-departure:ea5118b0-ea5118b1-7f5b7ff5": "d804daecaf1a9337f6066a17f6ef17c9cc8517dbb4ef9a9ca4ab26cdeba9501c",
+      "exemplar:ddrhw-parallel-upper-exit-departure:6534284a-a8434037-7f5b7000": "e749136ca18246a9f07ca81c56dd6c2f60d7c96041c5958a95a3f22999d1f2f7",
+      "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7000": "7b11744f11a419715ce137ee9d77605c7340254a1758839eb47956597d9cdf8b",
+      "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7001": "7b11744f11a419715ce137ee9d77605c7340254a1758839eb47956597d9cdf8b",
+      "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7002": "7b11744f11a419715ce137ee9d77605c7340254a1758839eb47956597d9cdf8b",
+      "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7003": "7b11744f11a419715ce137ee9d77605c7340254a1758839eb47956597d9cdf8b",
+      "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7004": "7b11744f11a419715ce137ee9d77605c7340254a1758839eb47956597d9cdf8b",
+      "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7ff5": "7b11744f11a419715ce137ee9d77605c7340254a1758839eb47956597d9cdf8b",
+      "path:ddrhw-parallel-upper-exit-departure:296678f7-a966883f-7f5b7000": "92861ce332217d5be43265ec5aaf6d5a9fb424a5d906948a1fad134c9563d6aa",
+      "text:ddrhw-parallel-upper-exit-departure:2026960b-2a592fd1-7f5b7000": "b8a3cf9e9f14c7db0b89e36c5b4fe91041c5f2c35db2058423884ef42e0d8d32",
+      "construction:ddrhw-parallel-upper-exit-departure": "64c8877d342d82b69d3ba2f432e7eced2bc2be34eae5baa3d852b39fa6e45a9b"
+    },
+    "reviewed_contract_available": true,
+    "scope": "one piece only; no counterpart catalogue is consulted",
+    "construction_basis": "Actual emitted per-piece rule sections from the independently verified saved build"
+  },
+  "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+  "ports": [
+    {
+      "id": "channel-01-in",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l2",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        -8.0,
+        -0.104467,
+        15.0
+      ],
+      "tangent": [
+        0.9404586044447427,
+        0.3399082425094264
+      ],
+      "sampled_tangent": [
+        0.9404401521347661,
+        0.3399592920523549
+      ],
+      "grade": 0.0,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7000",
+        "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7001",
+        "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7002",
+        "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7003",
+        "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7004",
+        "path:ddrhw-parallel-upper-exit-departure:296678f7-a966883f-7f5b7000",
+        "construction:ddrhw-parallel-upper-exit-departure"
+      ],
+      "source_route_ids": [
+        "path-7f5b7000-route-000"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 0,
+          "tile_id": "7f5b7000"
+        }
+      ],
+      "connection_class": "path-interface-53fdf60e4bef5b46033e"
+    },
+    {
+      "id": "channel-02-out",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "access-ramp",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 1,
+      "endpoint_m": [
+        0.970563,
+        8.0,
+        12.866039
+      ],
+      "tangent": [
+        0.7071067811865686,
+        0.7071067811865265
+      ],
+      "sampled_tangent": [
+        0.7071067811865462,
+        0.7071067811865489
+      ],
+      "grade": -0.282031078,
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7000",
+        "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7001",
+        "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7002",
+        "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7003",
+        "model:ddrhw-parallel-upper-exit-departure:5ad0e817-badb57f1-7f5b7004",
+        "path:ddrhw-parallel-upper-exit-departure:296678f7-a966883f-7f5b7000",
+        "construction:ddrhw-parallel-upper-exit-departure"
+      ],
+      "source_route_ids": [
+        "path-7f5b7000-route-000"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "edge": 1,
+          "tile_id": "7f5b7000"
+        }
+      ],
+      "connection_class": "path-interface-8f6f5a8624b510f03427"
+    }
+  ],
+  "journeys": [
+    {
+      "id": "1:channel-01-in>channel-02-out",
+      "entry_port": "channel-01-in",
+      "exit_port": "channel-02-out",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "endpoint_variants": [
+        "dd-rhw-l2",
+        "access-ramp"
+      ],
+      "basis": "reachability_in_actual_saved_PATH_graph"
+    }
+  ],
+  "forbidden_transfers": [],
+  "compatibility_policy": "Intrinsic encoded-route facts only; complete shared-boundary agreement, physical seams, and game operation are not evaluated.",
+  "software_status": {
+    "path_extraction": "passed",
+    "contract_consistency": "passed",
+    "physical_seams": "unverified",
+    "in_game": "unverified"
+  },
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f868",
+        "0004f868"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f868",
+        "0007f868"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f868",
+        "0006f868"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f868",
+        "0005f868"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "purpose": "Current compiled candidate and portable test evidence; historical prototype validation.json remains unchanged.",
+  "branch": "codex/double-decker-diagonal-highway",
+  "date": "2026-10-30",
+  "actual_native_build": {
+    "command": "python3 -B custom-pieces/scp.py build --set ddrhw-compact-diagonal-diamond --output custom-pieces/dist/ddrhw-compact-diagonal-diamond-clean",
+    "manifest_sha256": "5d626cc4dded5e8e7e4d3c67f8b42823fc6b431c7362cea87108958900c5d7bd",
+    "static_checks_passed": true,
+    "piece_types": 13,
+    "dat_files": 15,
+    "resources": 574,
+    "local_native_donor_comparison": true,
+    "unchanged_native_donor_files": 3,
+    "profile": {
+      "donors": [
+        {
+          "filename": "NetworkAddonMod_Controller.dat",
+          "sha256": "d903540cdf772b4ed6a072c504e006e1cac384f8027ce58a288a5a9654f94161"
+        },
+        {
+          "filename": "RealHighway_DD_RHW-4.dat",
+          "sha256": "ccf8dabd3930fce92d0baa872ff974e3a536ddcc40762505a2e70eafcf9c0dfb"
+        },
+        {
+          "filename": "RealHighway_Core.dat",
+          "sha256": "8a172e4d7f628e09af3e153ef2effb34a2bcf876ff3c8f76210cb48d660aa191"
+        }
+      ],
+      "id": "nam50-rhd"
+    },
+    "asset_sha256": {
+      "zzz_Simons_Custom_Pieces/00_SCP_Controller_NAM50.dat": "1df3dca6b8e996687d1218be58af685de9af0c626155ec576daaf928b36d49f5",
+      "zzz_Simons_Custom_Pieces/10_SCP_Menu.dat": "9df2869024b87e3762e91e00923eecc2377de03b1297401ca8beefbe8873425f",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-access-core.dat": "970a84692c7c288edfb175369d6d54da4999a5f77ee9345aa7f231552a95bd45",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-diagonal-half-a.dat": "6000abbe760169e2dfc5ee0e69c715c048479617e5d8843161697c5fb36c5a47",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-diagonal-half-b.dat": "984b41f13d5b0b0064313e51c48345b5c3617852b41413edab29562bcf6ac09b",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-entry-branch.dat": "53b0f9b8d7b16d7e9cd2fc3ea696030c2c499c0d3fec15589107ad60a45d49a5",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-entry-grade.dat": "319c7d6c6253d847480f0664bd0b26a68e11dd590624495ac9d013c4fcaf1664",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-branch.dat": "7ee278bbd523ca187547f2addbd6be6b3cb9c668df7d53a2d6955b987bc8e02a",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-grade.dat": "999aa5a34a72e2eeab1fc85934b24eb05ff8ce320ab4d99bc2610e41cb5651ff",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-northwest-junction.dat": "8374d08651e7f11813504b842b4b97375be02dff7c70a76764cb2d8c9fec7ece",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-southeast-junction.dat": "e2359f12fd956ddc04bb030e9378187e0779e076f74a7eb2e63c0b1437f42be7",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-entry-branch.dat": "70f8f4dcc23056fe617d6ae755f07c9add5834714f3892316561273e57aed3b5",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-entry-grade.dat": "3b4efc75fc9576cd895fe64430581d426e0b50d1a33b363b1a0e57889306a7a6",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-branch.dat": "5664d57581d1f7f12dcffe9bed570a5b24030e5bbef2b46e240f59faeb74808f",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-grade.dat": "608c4f01fb478d5a5e60031fa7663275dd20a7de47eda200012aabdb545be51a"
+    }
+  },
+  "independent_assembly": {
+    "report": "compiled-assembly-check.json",
+    "sha256": "653a5bca2d6bcc99389ed6dbc5323813c42e8d078ba8a60c7d01a5f4e44ac6a0",
+    "pier_report": "pier-contact-proof.json",
+    "pier_sha256": "c0e694094d76ac605197555d0559a497614be4582d4553494c95eb9dddbec475"
+  },
+  "portable_tests": {
+    "command": "python3 -B tools/run_tests.py",
+    "source_scope": "Isolated public-source snapshot without ignored personal settings, native archives, or staged builds.",
+    "snapshot_source_content_sha256": "dc0b847aa8619b77ad9a56a0eac98e75ed21d2517a3a51b87bfcc58b28510b73",
+    "reported_full_matrix_tests": 1428,
+    "explicit_skips": 81,
+    "suites": [
+      {
+        "name": "framework",
+        "tests": 815,
+        "skipped": 10,
+        "full_run_failures": 1
+      },
+      {
+        "name": "high-speed-rail",
+        "tests": 427,
+        "skipped": 65,
+        "full_run_failures": 0
+      },
+      {
+        "name": "highway",
+        "tests": 70,
+        "skipped": 1,
+        "full_run_failures": 0
+      },
+      {
+        "name": "trumpet assembly",
+        "tests": 116,
+        "skipped": 5,
+        "full_run_failures": 0
+      }
+    ],
+    "full_run_issue": "One CLI documentation check found an assembly setup link escaping a standalone library export. Replaced it with the self-contained build-guide setup link.",
+    "corrective_reruns": [
+      {
+        "scope": "complete CLI test module",
+        "tests": 20,
+        "failures": 0
+      },
+      {
+        "scope": "complete installer bundle test module, including final highway freezer collection",
+        "tests": 26,
+        "failures": 0
+      },
+      {
+        "scope": "final portable-snapshot documentation check",
+        "all_passed": true
+      }
+    ],
+    "unresolved_failures": 0,
+    "single_clean_full_matrix_claimed": false,
+    "skip_reasons": {
+      "unavailable_private_or_audited_native_inputs": 69,
+      "unavailable_protected_or_historical_build_captures": 12
+    },
+    "private_settings_copied": false,
+    "native_inputs_copied": false,
+    "build_output_copied": false,
+    "history_preserved": "Original failed runs and passing follow-up logs remain under ignored local/; they have not been relabelled as a clean full run."
+  },
+  "media": {
+    "assembly_images": 6,
+    "module_images": 26,
+    "standalone_crossing_images": 2,
+    "actual_saved_models_and_textures": true,
+    "report": "compiled-render.json",
+    "schematic_render_report_preserved": "render.json"
+  },
+  "limits": [
+    "No installation or human game observation was performed.",
+    "Steep grades use an experimental 40 percent authoring bound, not a proved highway standard.",
+    "Saved-face corridor and pier contact checks do not establish closed-solid containment or structural engineering.",
+    "Full physical connector declarations for graded modules remain unsupported pending review; intrinsic saved-PATH records are current."
+  ]
+}

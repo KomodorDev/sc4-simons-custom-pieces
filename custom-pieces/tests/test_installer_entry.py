@@ -11,6 +11,7 @@ from unittest.mock import patch
 ROOT = next(path for path in Path(__file__).resolve().parents if (path / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'installer'))
 from scp_installer import ui_support
+from scp.catalog import load_catalog
 
 
 class InstallerEntryTests(unittest.TestCase):
@@ -35,7 +36,8 @@ class InstallerEntryTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             value = json.loads(report.read_text())
             self.assertEqual(value['status'], 'passed')
-            self.assertEqual(value['implemented_pieces'], 166)
+            expected = sum(piece['status'] != 'draft' for piece in load_catalog(ROOT)['pieces'])
+            self.assertEqual(value['implemented_pieces'], expected)
             self.assertTrue(value['real_receipt_install_and_rollback'])
             self.assertTrue(value['geometry_verification_mocked_for_synthetic_fixture'])
             self.assertFalse(value['live_game_modified'])

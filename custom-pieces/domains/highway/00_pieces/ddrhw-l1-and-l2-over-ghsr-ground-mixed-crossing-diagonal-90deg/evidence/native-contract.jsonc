@@ -1,0 +1,1081 @@
+// title: "Independent diagonal DD/GHSR native contract"
+// summary: "Freeze original resource fingerprints and independent saved crossing, native approach, routing, geometry, and clearance measurements."
+//
+// Used when: Contributors review or reproduce this exact diagonal DD RHW-4 over GHSR crossing and its source-bound connection metadata.
+// Read by: Highway connector source binding, maintainers, and agents reviewing the piece's testing evidence.
+// Updated by: A maintainer after an actual new saved-resource audit; preserve earlier observations and do not substitute a software result for a human game test.
+// Affects: Evidence for this exact native profile and saved source build; this file does not alter game resources, install files, or certify in-game operation.
+{
+  "schema_version": 1,
+  "title": "Independent native contract for the diagonal DD RHW-4 over GHSR crossing",
+  "measurement_utc": "2026-11-01T01:19:12.201787+00:00",
+  "status": "Saved-resource and native-source software evidence only; all game observations remain unverified.",
+  "in_game_tested": false,
+  "privacy": "Original game archives, binary resource payloads, executable bytes, absolute workstation paths, and private settings are excluded.",
+  "piece_id": "ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg",
+  "recipe": "highway_ddrhw_diagonal_ghsr_crossing",
+  "owned_cells": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "footprint_tiles": [
+    1,
+    2
+  ],
+  "construction_check_extent_tiles": [
+    3,
+    2
+  ],
+  "native_archives": [
+    {
+      "filename": "RealHighway_DD_RHW-4.dat",
+      "sha256": "ccf8dabd3930fce92d0baa872ff974e3a536ddcc40762505a2e70eafcf9c0dfb",
+      "bytes": 889582,
+      "resources": 1460
+    },
+    {
+      "filename": "High Speed Rail.dat",
+      "sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
+      "bytes": 1529018,
+      "resources": 755
+    },
+    {
+      "filename": "NetworkAddonMod_Controller.dat",
+      "sha256": "d903540cdf772b4ed6a072c504e006e1cac384f8027ce58a288a5a9654f94161",
+      "bytes": 59179473,
+      "resources": 5
+    }
+  ],
+  "native_core_resources": [
+    {
+      "profile_label": "RealHighway_DD_RHW-4.dat",
+      "tgi": "5ad0e817-badb57f1-5753a905",
+      "sha256": "341aa73b6fc75596511883715d3edb3de91e988c3f7d1201bd02867313ee25f0"
+    },
+    {
+      "profile_label": "RealHighway_DD_RHW-4.dat",
+      "tgi": "296678f7-a966883f-5753a905",
+      "sha256": "830513d3274d30eb9934b42ef63e4b5324584af4056331fa61f5a636fe692857"
+    },
+    {
+      "profile_label": "RealHighway_DD_RHW-4.dat",
+      "tgi": "5ad0e817-badb57f1-5753a985",
+      "sha256": "1937f3d3e5e0c42995fa309d37bffb32a7a30640681b2bfa2920a67d1eb339a8"
+    },
+    {
+      "profile_label": "RealHighway_DD_RHW-4.dat",
+      "tgi": "296678f7-a966883f-5753a985",
+      "sha256": "2d262758f1f1c22cacae2ef76847de3d995f0fa4a8d82244487501e0eccbd676"
+    },
+    {
+      "profile_label": "High Speed Rail.dat",
+      "tgi": "5ad0e817-badb57f1-5dc01a00",
+      "sha256": "58e54d5d212e26564e5454c57b6fd3269067a7f48df81eec45925590c1a59fa6"
+    },
+    {
+      "profile_label": "High Speed Rail.dat",
+      "tgi": "296678f7-a966883f-5dc01a00",
+      "sha256": "978a2a8c8f8e5de89e80bd6841d0b91666407efe2e77c32c312c0ff2c6353e4a"
+    }
+  ],
+  "source_build": {
+    "directory": "dist/ghsr-under-ddrhw-diagonal-source-01",
+    "manifest_sha256": "cc6db4968e1c469c689b0a039f53cd9ae0599ece2cb6233ac6860b3404f5bd44",
+    "piece_dat_sha256": "f2b3296a49fc3d21983a3f78d8fc1748043328ccd07026f4988e85a07f9d5f73",
+    "piece_dat_bytes": 6869874,
+    "installed": false,
+    "in_game_tested": false
+  },
+  "saved_cell_resources": [
+    {
+      "cell": [
+        0,
+        0
+      ],
+      "model": {
+        "tgi": "5ad0e817-badb57f1-7f5bd000",
+        "sha256": "39c7e3b884df2c673fe9e97147766b16f7d68576eb731ce5cb2411bc9e0feba8",
+        "all_five_zooms_identical": true
+      },
+      "path": {
+        "tgi": "296678f7-a966883f-7f5bd000",
+        "sha256": "c0647202666bf828612a49fd1576276379d848a4fa3a0fb5028cf1bb995f6db3",
+        "decoded": {
+          "version": "1.2",
+          "terrain": 1,
+          "routes": [
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  3.2,
+                  15.0
+                ],
+                [
+                  -3.2,
+                  -8.0,
+                  15.0
+                ]
+              ]
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  -3.2,
+                  15.0
+                ],
+                [
+                  3.2,
+                  -8.0,
+                  15.0
+                ]
+              ]
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  -8.0,
+                  7.5
+                ],
+                [
+                  8.0,
+                  3.2,
+                  7.5
+                ]
+              ]
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  -8.0,
+                  7.5
+                ],
+                [
+                  8.0,
+                  -3.2,
+                  7.5
+                ]
+              ]
+            },
+            {
+              "transport": 7,
+              "lane": 0,
+              "entry": 0,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  -8.0,
+                  -2.9,
+                  1.0
+                ],
+                [
+                  -5.87867965644,
+                  -5.02132034356,
+                  1.0
+                ],
+                [
+                  -3.60710678119,
+                  -7.29289321881,
+                  1.0
+                ],
+                [
+                  -2.9,
+                  -8.0,
+                  1.0
+                ]
+              ]
+            },
+            {
+              "transport": 7,
+              "lane": 0,
+              "entry": 3,
+              "exit": 0,
+              "compatibility": 0,
+              "points": [
+                [
+                  2.9,
+                  -8.0,
+                  1.0
+                ],
+                [
+                  2.19289321881,
+                  -7.29289321881,
+                  1.0
+                ],
+                [
+                  -5.85818525421,
+                  0.799373999323,
+                  1.0
+                ],
+                [
+                  -8.0,
+                  2.9,
+                  1.0
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cell": [
+        0,
+        1
+      ],
+      "model": {
+        "tgi": "5ad0e817-badb57f1-7f5bd010",
+        "sha256": "7567942cfc061b21dbe77696bba0a5f5dc91f1f92fab397bb8c656d0229af3bd",
+        "all_five_zooms_identical": true
+      },
+      "path": {
+        "tgi": "296678f7-a966883f-7f5bd010",
+        "sha256": "c053ea61baa8481a327223a057bddfb94f2fee25ed2b5137ee21d9851876422a",
+        "decoded": {
+          "version": "1.2",
+          "terrain": 1,
+          "routes": [
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 1,
+              "exit": 0,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  8.0,
+                  15.0
+                ],
+                [
+                  -8.0,
+                  3.2,
+                  15.0
+                ]
+              ]
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 1,
+              "exit": 0,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  8.0,
+                  15.0
+                ],
+                [
+                  -8.0,
+                  -3.2,
+                  15.0
+                ]
+              ]
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 0,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  -8.0,
+                  -3.2,
+                  7.5
+                ],
+                [
+                  3.2,
+                  8.0,
+                  7.5
+                ]
+              ]
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 0,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  -8.0,
+                  3.2,
+                  7.5
+                ],
+                [
+                  -3.2,
+                  8.0,
+                  7.5
+                ]
+              ]
+            },
+            {
+              "transport": 7,
+              "lane": 0,
+              "entry": 2,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  2.9,
+                  1.0
+                ],
+                [
+                  5.87867965644,
+                  5.02132034356,
+                  1.0
+                ],
+                [
+                  3.60710678119,
+                  7.29289321881,
+                  1.0
+                ],
+                [
+                  2.9,
+                  8.0,
+                  1.0
+                ]
+              ]
+            },
+            {
+              "transport": 7,
+              "lane": 0,
+              "entry": 1,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  -2.9,
+                  8.0,
+                  1.0
+                ],
+                [
+                  -2.19289321881,
+                  7.29289321881,
+                  1.0
+                ],
+                [
+                  5.85818525421,
+                  -0.799373999323,
+                  1.0
+                ],
+                [
+                  8.0,
+                  -2.9,
+                  1.0
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "independent_path_checks": {
+    "tile_count": 2,
+    "complete_directed_journeys": 6,
+    "car_journeys": 4,
+    "ghsr_journeys": 2,
+    "matched_internal_lane_seams": 6,
+    "route_fragments_consumed": 12,
+    "complete_native_boundary_members_checked": 12,
+    "proper_rotations_checked": 4,
+    "external_ghsr_collar_length_m": 3.0,
+    "internal_ghsr_collar_length_m": 1.0,
+    "native_helper_boundary_tangents_verified": true,
+    "internal_seam_tangents_verified": true,
+    "use_path_elevation": true,
+    "no_capacity_only_paths": true,
+    "no_network_or_height_transfers": true,
+    "game_operation_tested": false
+  },
+  "independent_model_checks": {
+    "native_channel_fingerprints_verified": true,
+    "model_resources_checked": 11,
+    "native_paired_deck_width_m": 16.0,
+    "deck_surface_heights_m": [
+      7.5,
+      15.0
+    ],
+    "ghsr_path_height_m": 1.0,
+    "lower_underside_height_m": 6.5,
+    "train_envelope_width_m": 5.0,
+    "train_envelope_height_m": 5.0,
+    "minimum_train_roof_clearance_m": 0.5,
+    "rail_bed_corridor_samples": 192,
+    "rail_bed_coverage_includes_native_helper_collars": true,
+    "native_overhang_preserved": true,
+    "preview_matches_all_cells": true,
+    "texture_ids": [
+      200481343,
+      1460862990,
+      1588903657,
+      1588903662
+    ],
+    "game_rendering_tested": false,
+    "model_shadow_geometry": {
+      "hosts_checked": 2,
+      "ground_only_hosts_checked": 0,
+      "hosts": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "referenced_faces": 75,
+          "ground_or_below_faces_excluded": 12,
+          "ground_crossing_faces_clipped": 6,
+          "vertical_faces_retained": 9,
+          "clipped_elevated_triangles": 66,
+          "variants": [
+            {
+              "relative_pose": 0,
+              "mask_size": 512,
+              "actual_covered_pixels": 29162,
+              "ground_shadow_area_m2": 449.9142769607843,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 1.9073486328125e-06,
+              "maximum_affine_corner_error_m": 3.814697265625e-06
+            },
+            {
+              "relative_pose": 1,
+              "mask_size": 512,
+              "actual_covered_pixels": 24566,
+              "ground_shadow_area_m2": 375.5891544117647,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 8.004370499747893e-07,
+              "maximum_affine_corner_error_m": 3.814697265625e-06
+            },
+            {
+              "relative_pose": 2,
+              "mask_size": 512,
+              "actual_covered_pixels": 30573,
+              "ground_shadow_area_m2": 470.4407475490196,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 1.8451273504638266e-06,
+              "maximum_affine_corner_error_m": 3.814697265625e-06
+            },
+            {
+              "relative_pose": 3,
+              "mask_size": 256,
+              "actual_covered_pixels": 29202,
+              "ground_shadow_area_m2": 450.78719362745096,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 8.694906448170059e-07,
+              "maximum_affine_corner_error_m": 3.814697265625e-06
+            }
+          ],
+          "proper_object_camera_poses_checked": 16,
+          "maximum_native_pose_error_m": 0.0,
+          "source_sha256": "39c7e3b884df2c673fe9e97147766b16f7d68576eb731ce5cb2411bc9e0feba8"
+        },
+        {
+          "cell": [
+            0,
+            1
+          ],
+          "referenced_faces": 75,
+          "ground_or_below_faces_excluded": 12,
+          "ground_crossing_faces_clipped": 6,
+          "vertical_faces_retained": 9,
+          "clipped_elevated_triangles": 66,
+          "variants": [
+            {
+              "relative_pose": 0,
+              "mask_size": 512,
+              "actual_covered_pixels": 30573,
+              "ground_shadow_area_m2": 470.4407475490196,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 1.8451273504638266e-06,
+              "maximum_affine_corner_error_m": 3.814697265625e-06
+            },
+            {
+              "relative_pose": 1,
+              "mask_size": 256,
+              "actual_covered_pixels": 29202,
+              "ground_shadow_area_m2": 450.78719362745096,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 8.694906448170059e-07,
+              "maximum_affine_corner_error_m": 3.814697265625e-06
+            },
+            {
+              "relative_pose": 2,
+              "mask_size": 512,
+              "actual_covered_pixels": 29162,
+              "ground_shadow_area_m2": 449.9142769607843,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 1.9073486328125e-06,
+              "maximum_affine_corner_error_m": 3.814697265625e-06
+            },
+            {
+              "relative_pose": 3,
+              "mask_size": 512,
+              "actual_covered_pixels": 24566,
+              "ground_shadow_area_m2": 375.5891544117647,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 8.004370499747893e-07,
+              "maximum_affine_corner_error_m": 3.814697265625e-06
+            }
+          ],
+          "proper_object_camera_poses_checked": 16,
+          "maximum_native_pose_error_m": 0.0,
+          "source_sha256": "7567942cfc061b21dbe77696bba0a5f5dc91f1f92fab397bb8c656d0229af3bd"
+        }
+      ],
+      "binary_mask_edge_tolerance_texture_pixels": 1,
+      "metres_per_texture_pixel": 0.125,
+      "proper_rotations_checked": 4,
+      "camera_rotations_checked": 4,
+      "ground_clipping_checked": true,
+      "tile_clipping": false,
+      "material_texture_alpha_sampled": false,
+      "limits": [
+        "Opaque selected source materials only; original atlas coverage is a separate dependency audit.",
+        "Four proper object rotations and four camera rotations; mirrored placements are outside this contract.",
+        "Instruction-derived native projection and saved resources; no live game, lifecycle, or terrain-render pass."
+      ],
+      "in_game_tested": false
+    }
+  },
+  "independent_construction_checks": {
+    "explicit_two_cell_construction": true,
+    "native_core_flags_verified": true,
+    "owned_tiles": 2,
+    "native_helper_check_flags_verified": 4,
+    "game_construction_tested": false
+  },
+  "original_mesh_semantic_pins": [
+    [
+      "8aa5a40fae1a20f98af68c8d8ee87ba9b153a70880baed037ecaa6040d5aee1e",
+      "6f14f3f112f8cb6e2f1186e5891aad9c36a4810dd573b7366be84b77d73590dd",
+      "3a4c515dc63fbd9717bb7533610baf89404ee1ef0abafd416bf7a274f1fa8099",
+      "c1ca480c6cb635033713fe564a2a4e84aea476601a10128af6d7f9365e8ae744",
+      "ec93dd2d0b7a49d59caebd87bc34bf5f5bfdc70dc9f8c5ff7006bdc8ebd56f10",
+      "938f75fff25d17c926b22985ee5553fa9942da3836078dc62a0ab7cbeaabed86",
+      "a7464910bc13f1ac9954bb354482ce1073783f010a811bbb9bfc7ecaad2702c0"
+    ],
+    [
+      "2f907f29bd75c30707516ae2f0967ad490463efa4878045f9ab43359ae997bc6",
+      "89393e93f0bb31b26a6a99c44383f2dcdc573961e852884b3f6db8a4805e6422",
+      "fd14f8311a5e159a814da3c0234baff8aa67a6bc577609be238bc85954c73f6c",
+      "341998a8daf93b606cf4520272d4c38d8079da9de82c7189fb4edb9f1ffb2238",
+      "ee640953757a3f36aea84a1888fb62ad078ac9b5d018393fc9e2ff1c90a911b2",
+      "4f6c575c4af398202986c178279fb44e28b990360d2da947645db36b23e1b474",
+      "8ed80b6c2f1766c3c47de51662cc6182cfbfbb27b8c956b7b5b2a56b116e97cd"
+    ]
+  ],
+  "independent_verifier_sources": [
+    {
+      "path": "domains/highway/implementation/scp_highway/ghsr_crossing_verify.py",
+      "sha256": "91ceeec77bb18dcc8a56791adb29ef029b6762c1a5643b1f5a434c1619980dac"
+    },
+    {
+      "path": "domains/highway/tests/test_ghsr_crossing_verify.py",
+      "sha256": "b0dce3435ef3ad40e7c73435b555a8b2c49bfc7c7607624d5c5c7638abf94f36"
+    }
+  ],
+  "targeted_tests": {
+    "command": "python3 -B -m unittest discover -s custom-pieces/domains/highway/tests -p test_ghsr_crossing_verify.py",
+    "tests_passed": 24,
+    "tests_skipped": 0,
+    "includes_original_native_integration": true
+  },
+  "rail_path_transition": {
+    "classification": "Authored internal PATH transition with unchanged native visible geometry.",
+    "maximum_internal_endpoint_shift_m": 0.10000000000000009,
+    "maximum_lateral_deviation_from_native_chord_m": 0.07002086668924713,
+    "external_coordinates_preserved": true,
+    "external_tangents_match_actual_complementary_native_helpers": true,
+    "internal_shared_endpoints_and_tangents_match": true,
+    "native_rail_mesh_positions_and_attributes_preserved": true,
+    "measurements": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "source_route_index": 0,
+        "maximum_lateral_deviation_from_native_chord_m": 0.07002086668924713,
+        "maximum_endpoint_shift_m": 0.10000000000000009,
+        "external_collar_length_m": 3.0,
+        "internal_collar_length_m": 1.0,
+        "points": [
+          [
+            -8.0,
+            -2.9,
+            1.0
+          ],
+          [
+            -5.87867965644,
+            -5.02132034356,
+            1.0
+          ],
+          [
+            -3.60710678119,
+            -7.29289321881,
+            1.0
+          ],
+          [
+            -2.9,
+            -8.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "source_route_index": 1,
+        "maximum_lateral_deviation_from_native_chord_m": 0.02912484097796732,
+        "maximum_endpoint_shift_m": 0.0,
+        "external_collar_length_m": 3.0,
+        "internal_collar_length_m": 1.0,
+        "points": [
+          [
+            2.9,
+            -8.0,
+            1.0
+          ],
+          [
+            2.19289321881,
+            -7.29289321881,
+            1.0
+          ],
+          [
+            -5.85818525421,
+            0.799373999323,
+            1.0
+          ],
+          [
+            -8.0,
+            2.9,
+            1.0
+          ]
+        ]
+      },
+      {
+        "cell": [
+          0,
+          1
+        ],
+        "source_route_index": 0,
+        "maximum_lateral_deviation_from_native_chord_m": 0.07002086668924713,
+        "maximum_endpoint_shift_m": 0.10000000000000009,
+        "external_collar_length_m": 3.0,
+        "internal_collar_length_m": 1.0,
+        "points": [
+          [
+            8.0,
+            2.9,
+            1.0
+          ],
+          [
+            5.87867965644,
+            5.02132034356,
+            1.0
+          ],
+          [
+            3.60710678119,
+            7.29289321881,
+            1.0
+          ],
+          [
+            2.9,
+            8.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "cell": [
+          0,
+          1
+        ],
+        "source_route_index": 1,
+        "maximum_lateral_deviation_from_native_chord_m": 0.02912484097796732,
+        "maximum_endpoint_shift_m": 0.0,
+        "external_collar_length_m": 3.0,
+        "internal_collar_length_m": 1.0,
+        "points": [
+          [
+            -2.9,
+            8.0,
+            1.0
+          ],
+          [
+            -2.19289321881,
+            7.29289321881,
+            1.0
+          ],
+          [
+            5.85818525421,
+            -0.799373999323,
+            1.0
+          ],
+          [
+            8.0,
+            -2.9,
+            1.0
+          ]
+        ]
+      }
+    ]
+  },
+  "native_approaches": [
+    {
+      "cell": [
+        1,
+        0
+      ],
+      "end_cell": [
+        0,
+        0
+      ],
+      "outward_edge": 2,
+      "native_tile_id": "57530900",
+      "native_rotation": 2,
+      "section": "MonoRailDirtRoadIntersectionSolutions",
+      "networks": [
+        {
+          "name": "monorail",
+          "flags": "04000100"
+        },
+        {
+          "name": "dirtroad",
+          "flags": "00000301"
+        }
+      ],
+      "native_exemplar_group": "6be08658",
+      "native_model_reference": "rkt0",
+      "optional": true,
+      "experimental": true
+    },
+    {
+      "cell": [
+        -1,
+        1
+      ],
+      "end_cell": [
+        0,
+        1
+      ],
+      "outward_edge": 0,
+      "native_tile_id": "57530200",
+      "native_rotation": 0,
+      "section": "MonoRailDirtRoadIntersectionSolutions",
+      "networks": [
+        {
+          "name": "monorail",
+          "flags": "04000100"
+        },
+        {
+          "name": "dirtroad",
+          "flags": "03010000"
+        }
+      ],
+      "native_exemplar_group": "6be08658",
+      "native_model_reference": "rkt0",
+      "optional": true,
+      "experimental": true
+    },
+    {
+      "cell": [
+        -1,
+        0
+      ],
+      "end_cell": [
+        0,
+        0
+      ],
+      "outward_edge": 0,
+      "native_tile_id": "5dc01a00",
+      "native_rotation": 1,
+      "section": "RailMonoRailIntersectionSolutions",
+      "networks": [
+        {
+          "name": "rail",
+          "flags": "01010000"
+        },
+        {
+          "name": "monorail",
+          "flags": "00030100"
+        }
+      ],
+      "native_exemplar_group": "ebe084c2",
+      "native_model_reference": "rkt1",
+      "optional": true,
+      "experimental": true
+    },
+    {
+      "cell": [
+        1,
+        1
+      ],
+      "end_cell": [
+        0,
+        1
+      ],
+      "outward_edge": 2,
+      "native_tile_id": "5dc01a00",
+      "native_rotation": 3,
+      "section": "RailMonoRailIntersectionSolutions",
+      "networks": [
+        {
+          "name": "rail",
+          "flags": "00000101"
+        },
+        {
+          "name": "monorail",
+          "flags": "01000003"
+        }
+      ],
+      "native_exemplar_group": "ebe084c2",
+      "native_model_reference": "rkt1",
+      "optional": true,
+      "experimental": true
+    }
+  ],
+  "native_helper_resources": [
+    {
+      "tgi": "296678f7-a966883f-57530200",
+      "sha256": "e888625d239fe19f546f36f58bed998359440e889904fa4976c3aec355640eb1"
+    },
+    {
+      "tgi": "296678f7-a966883f-57530900",
+      "sha256": "bd5435abd7e1f8360b3b8704eab474112330d8b7719333863e5bd264216415ce"
+    },
+    {
+      "tgi": "296678f7-a966883f-5dc01a00",
+      "sha256": "978a2a8c8f8e5de89e80bd6841d0b91666407efe2e77c32c312c0ff2c6353e4a"
+    },
+    {
+      "tgi": "5ad0e817-badb57f1-57530200",
+      "sha256": "4eb082b8329ddf70be7333f3343c4f1a621985d3992b17ca624eef79dc0ee4a8"
+    },
+    {
+      "tgi": "5ad0e817-badb57f1-57530900",
+      "sha256": "d319f9bb39e21e319f5ce566c5093ba9e955c4c0ed5a5dcbb703c6afe127c93a"
+    },
+    {
+      "tgi": "5ad0e817-badb57f1-5dc01a00",
+      "sha256": "58e54d5d212e26564e5454c57b6fd3269067a7f48df81eec45925590c1a59fa6"
+    },
+    {
+      "tgi": "6534284a-6be08658-57530200",
+      "sha256": "394c783a8fedf150c93d21701e1450a520d5c31ff59245e2d1e40ebf12889b70"
+    },
+    {
+      "tgi": "6534284a-6be08658-57530900",
+      "sha256": "d8c35e3673dee409fcc007c6adafcd193d50f551bffe473b70ef11c753cb63a9"
+    },
+    {
+      "tgi": "6534284a-ebe084c2-5dc01a00",
+      "sha256": "3029157db99ce4334d588c4b6fb765ee3de84154b95b8d541df6d63546e8be56"
+    }
+  ],
+  "native_core_construction_flags": [
+    {
+      "cell": [
+        0,
+        0
+      ],
+      "dirtroad": "03010000",
+      "monorail": "01000003"
+    },
+    {
+      "cell": [
+        0,
+        1
+      ],
+      "dirtroad": "00000301",
+      "monorail": "00030100"
+    }
+  ],
+  "native_rul1_overlay": {
+    "native_rul1_sha256": "4e44ec44283de6fccc3cd40492fc24154d13fb16a5150e13c201c6e615bba998",
+    "section_solutions": [
+      {
+        "section": "MonoRailDirtRoadIntersectionSolutions",
+        "solution_count": 8,
+        "solutions": [
+          [
+            65540,
+            196864,
+            1465059584,
+            3,
+            0
+          ],
+          [
+            65540,
+            16777219,
+            1465057792,
+            1,
+            0
+          ],
+          [
+            262145,
+            196864,
+            1465057792,
+            3,
+            0
+          ],
+          [
+            262145,
+            16777219,
+            1465059584,
+            1,
+            0
+          ],
+          [
+            16778240,
+            769,
+            1465057792,
+            2,
+            0
+          ],
+          [
+            16778240,
+            50397184,
+            1465059584,
+            0,
+            0
+          ],
+          [
+            67109120,
+            769,
+            1465059584,
+            2,
+            0
+          ],
+          [
+            67109120,
+            50397184,
+            1465057792,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "section": "RailMonoRailIntersectionSolutions",
+        "solution_count": 4,
+        "solutions": [
+          [
+            257,
+            16777219,
+            1572870656,
+            3,
+            0
+          ],
+          [
+            65792,
+            769,
+            1572870656,
+            0,
+            0
+          ],
+          [
+            16777217,
+            50397184,
+            1572870656,
+            2,
+            0
+          ],
+          [
+            16842752,
+            196864,
+            1572870656,
+            1,
+            0
+          ]
+        ]
+      }
+    ],
+    "native_marker_key_conflicts": 0,
+    "native_resources_modified": false
+  },
+  "native_rul2_continuation": {
+    "native_rul2_sha256": "c427c7872743ca4cd9f583adf33c93a320babe37c42061fbd33c905696e7a3b1",
+    "native_continuation_rows_checked": 6,
+    "native_rul2_unchanged": true,
+    "game_behavior_tested": false,
+    "fresh_original_rul2_sha256": "c427c7872743ca4cd9f583adf33c93a320babe37c42061fbd33c905696e7a3b1",
+    "authored_controller_contains_rul2_override": false,
+    "literal_native_rows_checked": [
+      {
+        "line": 240185,
+        "row": "0x57530200,0,0,0x57000200,2,0=0x57530200,0,0,0x57530900,2,0"
+      },
+      {
+        "line": 240186,
+        "row": "0x57530200,3,0,0x57000200,1,0=0x57530200,3,0,0x57530900,1,0"
+      },
+      {
+        "line": 240187,
+        "row": "0x57530900,0,0,0x57000200,2,0=0x57530900,0,0,0x57530200,2,0"
+      },
+      {
+        "line": 240188,
+        "row": "0x57530900,3,0,0x57000200,1,0=0x57530900,3,0,0x57530200,1,0"
+      },
+      {
+        "line": 843538,
+        "row": "0x5dc01a00,1,0,0x0d001a00,1,0=0x5dc01a00,1,0,0x5dc01a00,3,0"
+      },
+      {
+        "line": 843539,
+        "row": "0x5dc01a00,2,0,0x0d001a00,2,0=0x5dc01a00,2,0,0x5dc01a00,0,0"
+      }
+    ]
+  },
+  "legacy_dd_helper_preservation": {
+    "owners": 5,
+    "declarations": 6,
+    "native_rul1_and_proof_serialization_compared_to_pre_change_implementation": true,
+    "legacy_helpers_composed_rul1_sha256": "10841a0f582d355981afe78513881d83af0351345ee63bb040cd20f1bb6db529",
+    "scope": "Helper-only overlay; original adaptive overlays are separately composed and verified by their owning framework."
+  },
+  "limits": [
+    "The source build has not been installed or observed in game by this audit.",
+    "All four native approaches are separate check-only cells; construction ownership remains two cells.",
+    "The actual visible railway uses its native bed datum, including faces about 1.18933 m high; its vehicle PATH datum remains 1 m.",
+    "The 5 m-wide and 5 m-high train envelope is a project verification bound, not a measured in-game automaton collision box.",
+    "Native highway model offsets can differ by approximately 1 mm at original draggable seams; no general physical profile compatibility is inferred from PATH matches.",
+    "Construction, draggable continuation, route queries, moving cars and trains, shadows, zooms, camera rotation, save/reload, and demolition require matching human game observations."
+  ]
+}

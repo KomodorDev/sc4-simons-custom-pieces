@@ -1,0 +1,2511 @@
+{
+  "schema_version": 1,
+  "purpose": "Generated resolved connection description; edit source declarations or compiled resources, then refresh.",
+  "piece_id": "ddrhw-modular-upper-exit-r40",
+  "domain_id": "highway",
+  "source_binding": {
+    "compiled_build": "dist/ddrhw-straight-modular-ramp-kit-parts-01",
+    "compiled_manifest_sha256": "fc48bddc9bde2000a12c40ec0c0eb70e1051b4a586a87fea2715c50065e418ea",
+    "files": {
+      "dist/ddrhw-straight-modular-ramp-kit-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-upper-exit-r40.dat": "b222fb72dcba4a142ced0fddf6a78cb28a3b1c669dc4d28243a7938b28c6c7c0",
+      "domains/highway/00_pieces/ddrhw-modular-upper-exit-r40/connections.json": "057f165341b3b40dd60e60493dd0fa8fe332c90a32b85b5046e6f2c493d19751",
+      "domains/highway/00_pieces/ddrhw-modular-upper-exit-r40/connector-groups.jsonc": "0fa3db1edb670bb80bbdba022af9ca7f25b3d92f9988b54fe2ef58add55bc6ac",
+      "domains/highway/00_pieces/ddrhw-modular-upper-exit-r40/piece.jsonc": "cd5b097bbf77d04d6eeb745999cc3aba70edeb683fa94f4b569e54982b34d7f6",
+      "domains/highway/domain.jsonc": "5d8025714a77be75e6b5d3e433a92d13c07827a40114e1300f25578bbac89a6c",
+      "domains/highway/implementation/scp_highway/__init__.py": "cfe6194f65f8ddb8f171fc02c3ca2064cc0e5afcff9ad3e509c694c0785c3bb6",
+      "domains/highway/implementation/scp_highway/adaptive_ground.py": "cb67c342b7f9e3a46598fe05ac1aea800948a3e6775340e531818562c2c11662",
+      "domains/highway/implementation/scp_highway/adaptive_verify.py": "4d5e2c9fa473b6a285745e08e05813feff73116a21b5dc3cf362b0dc8d0aa013",
+      "domains/highway/implementation/scp_highway/assembly_verify.py": "cc48835b808f24b575fd480a81284f251accccf163c4ad401a613235dd3eaed4",
+      "domains/highway/implementation/scp_highway/barrier_mouth_verify.py": "7133786407a5cac082b6d8c097a48cf4db7ded1e615ab2d3a906977679e070b1",
+      "domains/highway/implementation/scp_highway/connections.py": "8d5f1a5f586a88ee19e9c3683ff19c8ea8e89562cda5a7316d79ff3f2ec96521",
+      "domains/highway/implementation/scp_highway/connector_contracts.py": "933af0cdf332cf494f795d5172603a702aa3372dc24e6a4750d447cd5c12d0fa",
+      "domains/highway/implementation/scp_highway/ddrhw_connections.py": "1c0067fac24ff938f6889987da821b3a546440dc49ba3cddbaf06938436ec5cc",
+      "domains/highway/implementation/scp_highway/ghsr_approaches.py": "ba8bbe251bf077e9d70584f7a1232ddc6b2a2e344490d312d7f96efb41ead847",
+      "domains/highway/implementation/scp_highway/ghsr_crossing.py": "d8a6411f5a23a4ebbcd1eedddcaf37da3ff79162e93457f28b2bf649c28f0d47",
+      "domains/highway/implementation/scp_highway/ghsr_crossing_verify.py": "2f8621e22625b8b3be9aa7bc0a4583e24d7fa8da0604a94a88af851d09fa1938",
+      "domains/highway/implementation/scp_highway/icons.py": "c7046347d2b5465bf8bbeb875673e1f10ff80c6660348b90c929af596a13610a",
+      "domains/highway/implementation/scp_highway/marking_verify.py": "00b83ad36189b030fdf23248c250115393da339cdf904d2201139bb5802014df",
+      "domains/highway/implementation/scp_highway/menu.py": "06f3b52d62350c93c2a7fcedb54ce9b92b4b909fb9603a640d4dfc8dafd05814",
+      "domains/highway/implementation/scp_highway/model_shadows.py": "60e2c84a1b2bd943818d285861aa0edfe2b85ff312e3e9f59e400926a4cc7ff0",
+      "domains/highway/implementation/scp_highway/modular_assembly_verify.py": "a8aa8ae7f9a92ec6482a33bfd75cf0f23865721a1e16bd633c192b87cc5f4a91",
+      "domains/highway/implementation/scp_highway/modular_connector_contracts.py": "ce8e765284ce2a625b979af3d5b4399ab946b5827c64a2485603dbe753c2d9da",
+      "domains/highway/implementation/scp_highway/modular_partition_verify.py": "803d4b0354e63eaea51332d71ced1d1879090d70c261f89bb428d9b20844bad3",
+      "domains/highway/implementation/scp_highway/modular_ramps.py": "b3dc8d3a1680326802e29c07dd2ea125fb5e2624cf71377082c5812a5aa4433e",
+      "domains/highway/implementation/scp_highway/modular_stamp.py": "332aa5898a7a9616e8f569ea5aa01fef92d71705109b6137496584f8709cc307",
+      "domains/highway/implementation/scp_highway/modular_verify.py": "0eebb3a85f477c9a637c41bb5795d9262a3683b33b442aa8cbd7b8dee1287ee0",
+      "domains/highway/implementation/scp_highway/native.py": "89b16ac53e7d5426a637dd917c085a6cd768db679fcc70b74eda05b98e7fe6a3",
+      "domains/highway/implementation/scp_highway/native_audit.py": "80358028133d5a2f955573e920febba8531f9eb9b9d841e22b9f1090cd20e25f",
+      "domains/highway/implementation/scp_highway/native_overhangs.py": "f98e3bd11b75b2a3108a01b122ea1d021a4daf9717199438def6c192d4245824",
+      "domains/highway/implementation/scp_highway/parallel_alignment_b_verify.py": "93bfbe26e334ff732ecd0d9ba2e6d2d565a053d81e96c78f5bdd7c34e1679ec1",
+      "domains/highway/implementation/scp_highway/parallel_b_connector_contracts.py": "fe123ef15e4d23ef6c79851746d06992bda6679e026a3a69f6c424bede444034",
+      "domains/highway/implementation/scp_highway/parallel_b_geometry.py": "a852e712582aca631f683b5bb7eda6fbf1f8e5e0e0b81206f94c003555c9cdb5",
+      "domains/highway/implementation/scp_highway/parallel_b_layout.py": "588f13a34a5e421bce59b277e704c7b5295d14549973ec217d71ebd590f1bd2f",
+      "domains/highway/implementation/scp_highway/parallel_b_modules.py": "2ae3ba9908d3fd3847b861e2e9f2bcde02e632bdb00b6ee2af88560eacf16889",
+      "domains/highway/implementation/scp_highway/parallel_connector_contracts.py": "9969f31d2bcc500634bce05f97f3dddeb8e879c44119f55a131210959f0cf1c9",
+      "domains/highway/implementation/scp_highway/parallel_geometry.py": "30fe2eefb87f82994d55742353d24d8f28f8457e1933d09b9242d1d470ace59a",
+      "domains/highway/implementation/scp_highway/parallel_layout.py": "ac80ecdf7d9f56db0a50619b315516dcd9f50b8796b4e21cc3413041f023641f",
+      "domains/highway/implementation/scp_highway/parallel_modules.py": "ae6a1dbfa6262dad5ce01630dde090fbe2bb18018665256639dbb12714dc4853",
+      "domains/highway/implementation/scp_highway/parallel_ramp_review.py": "9be508c2d7b0358905ab3ad5ea626a58e3a230310a5509bfedf47048c75bfc27",
+      "domains/highway/implementation/scp_highway/parallel_slip_lanes.py": "1d217570bb59a6633c0d3cec054410349d3df3471aed4d2e389fc230bf9fae48",
+      "domains/highway/implementation/scp_highway/parallel_verify.py": "29bc9e103fc8e97b895818c76bdf0ccda267b381648bf18860d5d3841ffc9e5e",
+      "domains/highway/implementation/scp_highway/ramp_geometry.py": "fa30dd148e295e79e3ae25678d8b6e783f42d0a91e2e789cc08d475b38cece7b",
+      "domains/highway/implementation/scp_highway/ramp_materials.py": "f172bd64ab0439b307cf38e6b00a8456724ebc0974c86122e372a60b0e4ed563",
+      "domains/highway/implementation/scp_highway/ramp_paths.py": "5a13647e74c535aaba2579efd84d1a69251136f1b7160f81c3188ba2fd584c82",
+      "domains/highway/implementation/scp_highway/ramp_verify.py": "34992437599b66e5d97dfa16b57fa58fba5b8e1d12cd988974d9b305ac6ba4e8",
+      "domains/highway/implementation/scp_highway/recipes.py": "425ea722fc062492793ca5224ae9ea980e224cfcd1be246adeb840c248134e79",
+      "domains/highway/implementation/scp_highway/shadow_verify.py": "fb98738ca90257aeadb89341aed8d0591b94362b0a38e0884aaa17637ea7b6d0",
+      "domains/highway/implementation/scp_highway/shoulder_uv_verify.py": "5bb1bc1833235c61d21bfa555b21bfab447c3dd55f17eb69a6b108a668d1d237",
+      "domains/highway/implementation/scp_highway/slip_lanes.py": "cf07e354386195b3ec7078ec0d1ddf4609afdf2ea426bd1f9469e48c369bfbfb",
+      "domains/highway/implementation/scp_highway/straight_stamp_geometry.py": "7306656ab4d6c1497816f9cf95409a99accd46300ec7d5068287b0b35659f4d1",
+      "domains/highway/implementation/scp_highway/verify.py": "e59b564ccd4ff0fe13f7d40fbb0e9eae6a6eee779de6521bae23e63347555cea",
+      "domains/highway/implementation/scp_highway/wheeltrack_verify.py": "3ca9967f6d531a9063c16faf80c0d67949dcc0be46e42e32d2e2ef626563535e",
+      "domains/highway/implementation/scp_highway/wheeltracks.py": "b89eb86842e509f0036442c45ebb9a65eed0e53c3d5a472fcdad06679b371438",
+      "framework/scp/__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
+      "framework/scp/adaptive_network.py": "601a7d70fbe0505427fc5a847ac64b6d92b1c36ef66547f41ae260b1759c73fa",
+      "framework/scp/assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
+      "framework/scp/assembly_presentation.py": "ea28217b3e01d86a45b92736abb3f705661697aff5219d5e8e71751ac953c836",
+      "framework/scp/assembly_submenus.py": "e40580dd97cf5334ea8dda445251897110394b664c7967bd70452fbc7d467784",
+      "framework/scp/autotile.py": "3bf7aec47fefc83efd89836128cc606adf49b128cecf71e328c4493cd918b6cd",
+      "framework/scp/build.py": "084bd4df381cb67a5bb8ef192fd2c2ac4424f18949cfe2980205d9bb85e9b735",
+      "framework/scp/catalog.py": "f1f3b6aaca769a2f66c444297b6704bed19a8f35a3aa38849aa80aa347e5a4f1",
+      "framework/scp/check_bootstrap.py": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4",
+      "framework/scp/checks.py": "43af6deac2016862cc090edc00415474c2d02b34dc3c39a51952dc32d0c17128",
+      "framework/scp/city_grid.py": "58560c2409e7e309b9f0030b6e765840a34fd5e9859fa93e78eb55de014776e5",
+      "framework/scp/connectivity.py": "85331c10640917e6d54d66b63836431ce132a1734728c2f7d6b11975f249ed34",
+      "framework/scp/connector_metadata.py": "69bc2aca49cc19defa49b95123f68aa99f7aaec7319e7432e47041ef62efff1a",
+      "framework/scp/connector_overview.py": "df5fd866220cafb7493628c6662a173800094fae42a19d2870ec5365cb041a6e",
+      "framework/scp/content.py": "975bafa4a5137cc7b6e3e7c08efc7950dd82eb3c47b84fcd2a962ed12c749100",
+      "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+      "framework/scp/design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
+      "framework/scp/document_validation.py": "0550ee6471f379e404c9ea885da8accc3b32c006b344463e9c67cd32ecd4eacb",
+      "framework/scp/documentation_check.py": "0a3034e22d5852495ed9b6c8edb628f7152100ee0e7b8e75e5ba43694080842d",
+      "framework/scp/export.py": "440b821a1cb214b437a166fb8761271449947ef206b1594bf753dc08bae7000c",
+      "framework/scp/install.py": "c3bed215d764154f47c9d3e0285f7dc51737eb230c07c48ba8aa610182766df1",
+      "framework/scp/inventory.py": "838ef5bd9b5233813cf0c06c094e03b8fc568149e6bade501d1017612d31277c",
+      "framework/scp/jsonc.py": "5ca803292230dcbcb6ea752548743b0e2abb7ca63a0b3bfb843c2500696be95a",
+      "framework/scp/markdown_navigation.py": "7410f90ef85aca23d5ffe018b915d901e5ccd2c647ecb136df540c3bb8bb1d78",
+      "framework/scp/menu.py": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607",
+      "framework/scp/menu_experiment.py": "444e86a34330a9eb5290af2d9953218914d130156f737d31bc9f86fa53504a69",
+      "framework/scp/menu_experiment_resources.py": "3b9f7d434caef9a193c59d1991079438ae9019edae667389e0e98d40f0a5774b",
+      "framework/scp/model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
+      "framework/scp/model_outlines.py": "349d479e1c1e09efaf6f884829f1971852c71d06327c007549469b54d055a542",
+      "framework/scp/model_shadow_geometry.py": "22709ab390618a00eaa874b1525b4fb2706ef6091665898fd2acd7a48c14aa57",
+      "framework/scp/model_shadows.py": "e606b4012606132aa8ef6d430bec54152c53affafcc89b2fbcbe9f784b80a1f8",
+      "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+      "framework/scp/multi_assembly_menu.py": "69aa881ca127802643cffe8097d416c0c0c9bd730cb67a5c8647f2dff3e2f61f",
+      "framework/scp/native_approaches.py": "cc739652d3b3b6d5a7c30e198b97ec8a80acef99072b34bac4bbfae2ce0b0a46",
+      "framework/scp/paths.py": "24f6ee0ab9b2181a041813ac2bae93b6e6eed6d7339bb3d3465765d52d1d95b5",
+      "framework/scp/piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
+      "framework/scp/piece_menu_families.py": "6843af98e7d520043518bc328721e696fe965e5e714ad91cb15fbb5e896e7d4c",
+      "framework/scp/piece_previews.py": "cb26ba733fe300a3cc832dec1696877e35976219c8e1cc4dc99394fb78c52cbe",
+      "framework/scp/preview.py": "30e099f296b95b1868ef047094abe242b8026524dfdbd13f9719e0a93a4dc112",
+      "framework/scp/providers.py": "22791a2d9760fa01be1ef07e72cff682147fdddaa8f3b61df248be9748e5a250",
+      "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+      "framework/scp/registration.py": "0968b701036f47ac2b3375819f5ce4c0e58a5a13a75a8985193617010448af6f",
+      "framework/scp/release.py": "ccadc4069625be5317281fd4d482acb835b6b3ea687f17d886dc42c4d4d473d1",
+      "framework/scp/render_headers.py": "9f514a58400ed38c12d804ba407039824344ec097f3d1c34c398951b0c0af44e",
+      "framework/scp/render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
+      "framework/scp/resource_audit.py": "a0dac854453c6fe06ca87635e7f6646df6bd748b0f3354c23cdfff965b4e3f40",
+      "framework/scp/rul0.py": "850433da0b6e4ccde890d6bff69d2548464eafe0e30accbe2c5815e9deae9a07",
+      "framework/scp/shadows.py": "1bd77861dcb4ea3164058c39673540c50ca70edc0a0ed11e1938f783ab195540",
+      "framework/scp/subject_sources.py": "228a178f954b399b0046002fc734fd4710dd272040653569c281e5c42a59042d",
+      "framework/scp/test_support.py": "0eea228cc60c81e71dd57abe4f97ce13d2e17ac17ca7566d2cd779d689d66c22",
+      "framework/scp/track_paths.py": "cab40f75c073202ee07128fb7fc07e1b50498033794db90ca9629c8290147b51",
+      "framework/scp/verification_fixtures.py": "0febc2b8c46b88b40dd40fec13c5dee6cf6a767639fd7040bc0ddf82001f4ecd",
+      "framework/scp/verify.py": "79c4b933c7731f3038584ae5071d6f76266c498b64caeea5b4373cb8e59dbbe7",
+      "schemas/connector-data.schema.jsonc": "4e5ee07557da887a543a2292d3f9e7c103d81c15e95d6f677b7fc79fa2e11fd6",
+      "schemas/connector-groups.schema.jsonc": "ebf88cca8a6510c199525f0e5fbab6640e55570b70e13ca5b294fac4de2a879f",
+      "schemas/connector-profiles.schema.jsonc": "e96dbb769f2e63eec3514707f3b47d9262563a2d0227a5d6d0f3f1d877d404ff"
+    }
+  },
+  "coordinate_convention": {
+    "units": "metres",
+    "axes": [
+      "east",
+      "north",
+      "height"
+    ],
+    "tile_metres": 16,
+    "heading": "outward; 0 degrees north, clockwise in plan view",
+    "slope": "outward rise/run at the edge; percent = 100 * grade"
+  },
+  "resolved_piece": {
+    "id": "ddrhw-modular-upper-exit-r40",
+    "piece": {
+      "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 Upper Exit Ramp \u2014 R40.",
+      "schema_version": 1,
+      "id": "ddrhw-modular-upper-exit-r40",
+      "domain": "highway",
+      "name": "RHW Ramp \u2014 Upper Full Exit Ramp \u2014 R40",
+      "description": "Separately placed Upper Exit Ramp \u2014 R40. Includes its entire curved high throat at the highway cutout, including explicit model overhang. Construction and traffic-path ownership remain disjoint.",
+      "recipe": "highway_ddrhw_modular_upper_exit_r40",
+      "geometry_key": "upper-exit-r40",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f83f",
+      "tile_ids": [
+        "7f5a0200",
+        "7f5a0300",
+        "7f5a0400",
+        "7f5a0110",
+        "7f5a0210",
+        "7f5a0020"
+      ],
+      "preview_id": "7f5a0ff5",
+      "effect_name": "preview_scp_hw_f83f_____001",
+      "footprint": [
+        5,
+        3
+      ],
+      "cells": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f83f",
+        "order": "ffffff3f",
+        "style": "ddrhw-ramp"
+      },
+      "engineering": {
+        "max_grade_percent": 30.0,
+        "pavement_path_offset_m": 0.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "model_only_cells": [
+          [
+            0,
+            2
+          ]
+        ],
+        "minimum_new_curve_radius_m": 40.0,
+        "retained_high_collar_m": 2.0
+      },
+      "shadow_mode": "generated",
+      "shadow_mappings": [
+        {
+          "tile": "7f5a0200",
+          "source": "7f5a0200",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a0300",
+          "source": "7f5a0300",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a0400",
+          "source": "7f5a0400",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a0110",
+          "source": "7f5a0110",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a0210",
+          "source": "7f5a0210",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a0020",
+          "source": "7f5a0020",
+          "rotation": 0
+        }
+      ],
+      "provenance": {
+        "geometry": "Retained measured highway sockets and separately attached R40 continuations.",
+        "construction": "Disjoint sparse ownership; four proper rotations repeated; no reflected traffic.",
+        "redistribution": "permission-pending",
+        "partition_review": "Corrected straight21-cell highway stamp; all four complete curved high throats belong to separate ramps. Retains puzzle, menu, preview, and reserved block identities. Uninstalled prototype local tile slots follow the reviewed new AutoTileBase grid."
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "model_overhang_source_cells": [
+        [
+          -2,
+          3
+        ],
+        [
+          -4,
+          4
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          -4,
+          5
+        ]
+      ],
+      "model_overhang_contract": "Retained indexed high-throat faces; construction and PATH ownership do not overlap."
+    },
+    "connections": {
+      "schema_version": 1,
+      "purpose": "Intrinsic saved-resource endpoints, service roles, directed journeys, and forbidden transfers for one piece.",
+      "subject_id": "ddrhw-modular-upper-exit-r40",
+      "subject_kind": "piece",
+      "source": {
+        "basis": "actual decompressed saved resources",
+        "resource_fingerprints": {
+          "effect:ddrhw-modular-upper-exit-r40:ea5118b0-ea5118b1-7f5a0ff5": "e389a084a3970e412a133ccfecff121a09caaf19e706d1397ccef58c471a10a3",
+          "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0020": "fb1b24c61af1ab95cedd65fce06d33d8f0c253b9adfe2595201be5d886e346c1",
+          "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0110": "c6e38b170a9b38e0a43f9a7aef2fbde197c9fff030199bd2457a6994f02d7f17",
+          "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0200": "88ec369c4e3d7023f1d7331c0199aab32ce6edd669c5c1df768ab53851346bd0",
+          "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0210": "e2f22068b008e0e1c8d0d7fc82ade5bd105a45b0f03fc1fdf584625da291d2cc",
+          "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0300": "4f404443c9331bc25fc4ba929a77c03956168314e9b5d6ae70b17d2074b7c585",
+          "exemplar:ddrhw-modular-upper-exit-r40:6534284a-a8434037-7f5a0400": "d2e71c4ed659d3b1c67f7ede988550a1f01dee1bb3a4a99b21b9b433931f9f38",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0020": "a4097d30ce3c48fec0b064947cd1e57c54685f66a340fa3d5e132895aea59776",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0021": "a4097d30ce3c48fec0b064947cd1e57c54685f66a340fa3d5e132895aea59776",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0022": "a4097d30ce3c48fec0b064947cd1e57c54685f66a340fa3d5e132895aea59776",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0023": "a4097d30ce3c48fec0b064947cd1e57c54685f66a340fa3d5e132895aea59776",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0024": "a4097d30ce3c48fec0b064947cd1e57c54685f66a340fa3d5e132895aea59776",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0110": "f6a48440f928f428279ec818cec3d9ee9f9df216e3aa14b6b439554d294e2bed",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0111": "f6a48440f928f428279ec818cec3d9ee9f9df216e3aa14b6b439554d294e2bed",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0112": "f6a48440f928f428279ec818cec3d9ee9f9df216e3aa14b6b439554d294e2bed",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0113": "f6a48440f928f428279ec818cec3d9ee9f9df216e3aa14b6b439554d294e2bed",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0114": "f6a48440f928f428279ec818cec3d9ee9f9df216e3aa14b6b439554d294e2bed",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0200": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0201": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0202": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0203": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0204": "3c593c8e6dbd1d4f6a54791cd80a1ccbea812da98a8a032aa17bbacd7a0edc79",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0210": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0211": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0212": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0213": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0214": "8fbf3756baafed4e162f8d7794bbd8d87f79a75170c9bb67355be83742a46782",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0300": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0301": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0302": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0303": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0304": "0af352c5da2af2beab9a2a668af1c3fc3208270f6eceffa65312b96e31822cf9",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0400": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0401": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0402": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0403": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0404": "fcc497f8b31fed464bb11df890072404b95d3dad06fad5322f6ebecc5695e21b",
+          "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0ff5": "5c786f44ac6d7abed5e9efb844da58d7e88408aa73a2bbe0566517c3a4d2d3e7",
+          "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0020": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0110": "dca0b5aa2dda899b0454dcfcd56ed8f0bb859a88787536b368dc9341b03f3295",
+          "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0200": "91c924e3ade9c577a96570404fc665d92ab45bd58e20bf71e568a7bd978e5428",
+          "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0210": "f16e4c9738174264bd7ae33beb265fe3399130279b9a6a9cf37703f506bcd986",
+          "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0300": "bbf8df4c494bacee64fbb54aed2ab2262dbc5e784db1dedf9025369d95f1c5bf",
+          "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0400": "10ffc66b0fce66c7ee9a9d1a4fbf0cb088da6630a721b51f25224d6a9255ce9a",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0020": "86f715baf91946495916742ff60f219f49e72db711c0bcab3f49d4a278abdc1f",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0021": "43b2a4d3451fbc943a79f48d4cfaf0b271fe4941f575d5e02a7d51b68eac0312",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0022": "ad5a65153a98f2a92ea152b5ba7a66044a4f9cacf7df180d977f759d1cb7b07e",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0023": "c693c6ef1a7a69aa3faec485cdca077fc485134b493b6fa1e5ca166877181634",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0024": "bc7e486fde727fa8fbf0b2098df17b2f6c7b3b5133139d3df210fb193a6d41af",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0110": "0d1cef3c63b54d8dcc9dd391de5f2c9c034126f4cf94755b2136b60ee7a3728a",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0111": "45ea9a89310abad856674fff2c37afa8fdb4140acb49bdf3451d4e2ab4834d1f",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0112": "80d80b0de4e62c3e3743ca3cf08d03544fc05e1aa8190c3192afaf6cce28c1c8",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0113": "634e490d20c8a016cbbe8efad2ef01c70b3277f1933b21f30a6b029f16a8d534",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0114": "9ffe63d01c8a6964420cfc4c692dfd2a98ecde40c81b17202fa4cec21c0af695",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0200": "85a6705a94da8fc99f309c28f2cb8972153974539effd17c9f936229b15ad3ab",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0201": "4c2599f9e50c688988f9c99a22741f384b37628f7575a3d4e7ef6e809d5d0fcd",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0202": "09f6661a0f7a6d01821e374d99b3156512b44b44d3cb461f4d425b6efc63289a",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0203": "7bcd5fb88137b004b662912249a75464ebdd611555d67469e1c72794da66af71",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0204": "bca13eebedf348dafa825368942191c11ebda2563637f57afe52c615c29b7e9f",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0210": "9d2c6243daf468e5b931db3366648567d4a178ac83f348e64132563f18ec2bfe",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0211": "689b755ea475ca9c30f461f094a10320e60d856ec140328b6dbe50688dcf1001",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0212": "c802b4efbf1af4bb8044270f9f84511ee47e6765c3ecb1febac905a433e9a785",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0213": "c47cb1bcea9f9369a8f994921f40d93c9649b0c489682464ab62c24061444f58",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0214": "5e9a4e309fdd837776c76e75030a1aafc1e3eed0df518e350bb9f5dc0ab53968",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0300": "d0f8519ffe3b87aaaa1aa667938814abd257342576756c298c4bafa0ec4f6b2d",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0301": "ba1ba536b095f7f655dcd905f55d66e6a5dc32b596abb14b9a0d911b8e8facd9",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0302": "da2af2a9b5f223c65476e262f9e2263389763f126d4ed025864950d5e5604d97",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0303": "8ee8700de94e58a6787e784dbddf32443b89fb7e459704e176e2c8343e44c935",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0304": "84d396a23c60175b4d4f30be4e8eb4f76cc570c6913fa273ccaa6778a3398a47",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0400": "d0f8519ffe3b87aaaa1aa667938814abd257342576756c298c4bafa0ec4f6b2d",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0401": "a1ac673fea6289fcefb12b1568d0e1daec76af2e7159327d9dc9c636de682e0e",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0402": "9b6e9333610aec7f600d1db4a05fc0e92cb274fd188c9ec0151992c53b103003",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0403": "d2c03503aea92992885e5c4d0b6bda624576b6c12a3f38ceedb9bb740f504648",
+          "shadow:ddrhw-modular-upper-exit-r40:7ab50e44-2bc2759a-7f5a0404": "58783a15cdb8ca161ada5a0730b907b49883bde5575923ad1d8d61bffcba2807",
+          "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0020": "ae91de364cef67470345a5384d917b77244fb756a920feabd4898d01cec452bb",
+          "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0110": "ae91de364cef67470345a5384d917b77244fb756a920feabd4898d01cec452bb",
+          "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0200": "ae91de364cef67470345a5384d917b77244fb756a920feabd4898d01cec452bb",
+          "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0210": "ae91de364cef67470345a5384d917b77244fb756a920feabd4898d01cec452bb",
+          "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0300": "ae91de364cef67470345a5384d917b77244fb756a920feabd4898d01cec452bb",
+          "text:ddrhw-modular-upper-exit-r40:2026960b-2a592fd1-7f5a0400": "ae91de364cef67470345a5384d917b77244fb756a920feabd4898d01cec452bb",
+          "construction:ddrhw-modular-upper-exit-r40": "b926c3d29998053b68d0e16ce7a22b377dd12a4393838260ec00352c15a067e7"
+        },
+        "reviewed_contract_available": true,
+        "scope": "one piece only; no counterpart catalogue is consulted",
+        "construction_basis": "Actual emitted per-piece rule sections from the independently verified saved build"
+      },
+      "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+      "ports": [
+        {
+          "id": "1-W-in-1",
+          "direction": "in",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "dd-rhw-l2",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 0,
+          "endpoint_m": [
+            8.0,
+            -14.669671,
+            15.0
+          ],
+          "tangent": [
+            0.9174352085386687,
+            0.3978852072314444
+          ],
+          "sampled_tangent": [
+            0.9174352085386687,
+            0.3978852072314444
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0110",
+            "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0111",
+            "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0112",
+            "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0113",
+            "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0114",
+            "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0110",
+            "construction:ddrhw-modular-upper-exit-r40"
+          ],
+          "source_route_ids": [
+            "path-7f5a0110-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                1,
+                1
+              ],
+              "edge": 0,
+              "tile_id": "7f5a0110"
+            }
+          ],
+          "connection_class": "path-interface-af2fee3a7996f5d5dde1"
+        },
+        {
+          "id": "1-E-out-2",
+          "direction": "out",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "avenue-ground",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 2,
+          "endpoint_m": [
+            72.0,
+            -3.768542,
+            0.0
+          ],
+          "tangent": [
+            1.0,
+            0.0
+          ],
+          "sampled_tangent": [
+            1.0,
+            0.0
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0400",
+            "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0401",
+            "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0402",
+            "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0403",
+            "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0404",
+            "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0400",
+            "construction:ddrhw-modular-upper-exit-r40"
+          ],
+          "source_route_ids": [
+            "path-7f5a0400-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                4,
+                0
+              ],
+              "edge": 2,
+              "tile_id": "7f5a0400"
+            }
+          ],
+          "connection_class": "path-interface-0aa85c099c852f580fff"
+        }
+      ],
+      "journeys": [
+        {
+          "id": "1:1-W-in-1>1-E-out-2",
+          "entry_port": "1-W-in-1",
+          "exit_port": "1-E-out-2",
+          "service_network": "road",
+          "role": "primary",
+          "engine_transport_classes": [
+            1
+          ],
+          "endpoint_variants": [
+            "dd-rhw-l2",
+            "avenue-ground"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        }
+      ],
+      "forbidden_transfers": [],
+      "compatibility_policy": "Complete-boundary compatibility is computed separately from validated exports; no counterpart shortlist is included.",
+      "software_status": {
+        "path_extraction": "passed",
+        "contract_consistency": "passed",
+        "physical_seams": "unverified",
+        "in_game": "unverified"
+      },
+      "supported_orientations": [
+        {
+          "rotation_ccw_degrees": 0,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0000f83f",
+            "0004f83f"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 90,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0003f83f",
+            "0007f83f"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 180,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0002f83f",
+            "0006f83f"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 270,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0001f83f",
+            "0005f83f"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        }
+      ]
+    },
+    "metadata": {
+      "schema_version": 3,
+      "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
+      "piece_id": "ddrhw-modular-upper-exit-r40",
+      "source_binding": {
+        "piece_sha256": "cd5b097bbf77d04d6eeb745999cc3aba70edeb683fa94f4b569e54982b34d7f6",
+        "connections_sha256": "057f165341b3b40dd60e60493dd0fa8fe332c90a32b85b5046e6f2c493d19751"
+      },
+      "components": [
+        {
+          "id": "access-ramp",
+          "network": "road",
+          "construction_network": "dirtroad"
+        }
+      ],
+      "channels": [
+        {
+          "id": "access-ramp-01",
+          "component_id": "access-ramp",
+          "kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "boundary-01-access-ramp-01",
+          "component_id": "access-ramp",
+          "members": [
+            {
+              "id": "member-1-w-in-1",
+              "source_port_id": "1-W-in-1",
+              "direction": "in",
+              "channel_id": "access-ramp-01",
+              "cut_id": "cut-1-w-in-1"
+            }
+          ]
+        },
+        {
+          "id": "boundary-02-access-ramp-01",
+          "component_id": "access-ramp",
+          "members": [
+            {
+              "id": "member-1-e-out-2",
+              "source_port_id": "1-E-out-2",
+              "direction": "out",
+              "channel_id": "access-ramp-01",
+              "cut_id": "cut-1-e-out-2"
+            }
+          ]
+        }
+      ],
+      "boundary_bundles": [
+        {
+          "id": "boundary-01",
+          "source_cell": [
+            1,
+            1
+          ],
+          "edge": "west",
+          "connector_ids": [
+            "boundary-01-access-ramp-01"
+          ]
+        },
+        {
+          "id": "boundary-02",
+          "source_cell": [
+            4,
+            0
+          ],
+          "edge": "east",
+          "connector_ids": [
+            "boundary-02-access-ramp-01"
+          ]
+        }
+      ]
+    },
+    "cells": [
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "groups": [
+      {
+        "id": "boundary-01-access-ramp-01",
+        "component_id": "access-ramp",
+        "members": [
+          {
+            "id": "member-1-w-in-1",
+            "direction": "in",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "dd-rhw-l2",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 0,
+            "endpoint_m": [
+              8.0,
+              -14.669671,
+              15.0
+            ],
+            "tangent": [
+              0.9174352085386687,
+              0.3978852072314444
+            ],
+            "sampled_tangent": [
+              0.9174352085386687,
+              0.3978852072314444
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0110",
+              "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0111",
+              "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0112",
+              "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0113",
+              "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0114",
+              "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0110",
+              "construction:ddrhw-modular-upper-exit-r40"
+            ],
+            "source_route_ids": [
+              "path-7f5a0110-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  1,
+                  1
+                ],
+                "edge": 0,
+                "tile_id": "7f5a0110"
+              }
+            ],
+            "connection_class": "path-interface-af2fee3a7996f5d5dde1",
+            "source_port_id": "1-W-in-1",
+            "channel_id": "access-ramp-01",
+            "cut_id": "cut-1-w-in-1",
+            "outward_tangent": [
+              -0.9174352085386687,
+              -0.3978852072314444
+            ],
+            "heading_outward_degrees": 246.5539610277989,
+            "grade_outward": -0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "road",
+          "nominal_level": null,
+          "path_height_m": 15.0,
+          "engine_transport": 1,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          1,
+          1
+        ],
+        "edge": "west",
+        "tile_seam_center_m": [
+          8.0,
+          -16.0,
+          15.0
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "access-ramp-01",
+            "component_id": "access-ramp",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-1-w-in-1",
+                "member_ids": [
+                  "member-1-w-in-1"
+                ],
+                "endpoint_m": [
+                  8.0,
+                  -14.669671,
+                  15.0
+                ],
+                "outward_tangent": [
+                  -0.9174352085386687,
+                  -0.3978852072314444
+                ],
+                "heading_outward_degrees": 246.5539610277989,
+                "grade_outward": -0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "dirtroad",
+        "outward_normal": [
+          -1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "boundary-01"
+      },
+      {
+        "id": "boundary-02-access-ramp-01",
+        "component_id": "access-ramp",
+        "members": [
+          {
+            "id": "member-1-e-out-2",
+            "direction": "out",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "avenue-ground",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 2,
+            "endpoint_m": [
+              72.0,
+              -3.768542,
+              0.0
+            ],
+            "tangent": [
+              1.0,
+              0.0
+            ],
+            "sampled_tangent": [
+              1.0,
+              0.0
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0400",
+              "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0401",
+              "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0402",
+              "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0403",
+              "model:ddrhw-modular-upper-exit-r40:5ad0e817-badb57f1-7f5a0404",
+              "path:ddrhw-modular-upper-exit-r40:296678f7-a966883f-7f5a0400",
+              "construction:ddrhw-modular-upper-exit-r40"
+            ],
+            "source_route_ids": [
+              "path-7f5a0400-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  4,
+                  0
+                ],
+                "edge": 2,
+                "tile_id": "7f5a0400"
+              }
+            ],
+            "connection_class": "path-interface-0aa85c099c852f580fff",
+            "source_port_id": "1-E-out-2",
+            "channel_id": "access-ramp-01",
+            "cut_id": "cut-1-e-out-2",
+            "outward_tangent": [
+              1.0,
+              0.0
+            ],
+            "heading_outward_degrees": 90.0,
+            "grade_outward": 0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "road",
+          "nominal_level": null,
+          "path_height_m": 0.0,
+          "engine_transport": 1,
+          "role": "primary",
+          "alignment": "orth"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          4,
+          0
+        ],
+        "edge": "east",
+        "tile_seam_center_m": [
+          72.0,
+          0.0,
+          0.0
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "access-ramp-01",
+            "component_id": "access-ramp",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-1-e-out-2",
+                "member_ids": [
+                  "member-1-e-out-2"
+                ],
+                "endpoint_m": [
+                  72.0,
+                  -3.768542,
+                  0.0
+                ],
+                "outward_tangent": [
+                  1.0,
+                  0.0
+                ],
+                "heading_outward_degrees": 90.0,
+                "grade_outward": 0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "dirtroad",
+        "outward_normal": [
+          1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "boundary-02"
+      }
+    ],
+    "boundary_bundles": [
+      {
+        "id": "boundary-01",
+        "source_cell": [
+          1,
+          1
+        ],
+        "edge": "west",
+        "connector_ids": [
+          "boundary-01-access-ramp-01"
+        ]
+      },
+      {
+        "id": "boundary-02",
+        "source_cell": [
+          4,
+          0
+        ],
+        "edge": "east",
+        "connector_ids": [
+          "boundary-02-access-ramp-01"
+        ]
+      }
+    ],
+    "channels": [
+      {
+        "id": "access-ramp-01",
+        "component_id": "access-ramp",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ]
+      }
+    ],
+    "journeys": [
+      {
+        "id": "member-1-w-in-1>member-1-e-out-2",
+        "entry_port": "member-1-w-in-1",
+        "exit_port": "member-1-e-out-2",
+        "service_network": "road",
+        "role": "primary",
+        "engine_transport_classes": [
+          1
+        ],
+        "endpoint_variants": [
+          "dd-rhw-l2",
+          "avenue-ground"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "1:1-W-in-1>1-E-out-2",
+        "source_entry_port": "1-W-in-1",
+        "source_exit_port": "1-E-out-2"
+      }
+    ],
+    "forbidden_transfers": [],
+    "supported_orientations": [
+      {
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0000f83f",
+          "0004f83f"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0003f83f",
+          "0007f83f"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0002f83f",
+          "0006f83f"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0001f83f",
+          "0005f83f"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      }
+    ],
+    "software_status": {
+      "path_extraction": "passed",
+      "contract_consistency": "passed",
+      "physical_seams": "unverified",
+      "in_game": "unverified"
+    }
+  },
+  "routes": [
+    {
+      "id": "path-7f5a0200-route-000",
+      "source_route_index": 0,
+      "source_class": 1,
+      "compatibility": 1,
+      "engine_transport": 1,
+      "cell": [
+        2,
+        0
+      ],
+      "tile_id": "7f5a0200",
+      "points": [
+        [
+          24.353429898,
+          -8.0,
+          12.145375675
+        ],
+        [
+          24.578360687,
+          -7.908989163,
+          12.073529327
+        ],
+        [
+          24.80767428,
+          -7.81608052,
+          12.000269216
+        ],
+        [
+          25.036951886,
+          -7.723056064,
+          11.927006094
+        ],
+        [
+          25.26619187,
+          -7.62991053,
+          11.853739807
+        ],
+        [
+          25.495392597,
+          -7.536638653,
+          11.780470197
+        ],
+        [
+          25.72455243,
+          -7.44323517,
+          11.707197102
+        ],
+        [
+          25.953669734,
+          -7.349694816,
+          11.633920359
+        ],
+        [
+          26.168430034,
+          -7.26201591,
+          11.56529526
+        ],
+        [
+          26.383190334,
+          -7.174337005,
+          11.496790077
+        ],
+        [
+          26.597950635,
+          -7.086658099,
+          11.428404809
+        ],
+        [
+          26.812710935,
+          -6.998979193,
+          11.360139458
+        ],
+        [
+          27.027471235,
+          -6.911300287,
+          11.291994023
+        ],
+        [
+          27.242231535000002,
+          -6.823621382,
+          11.223968504
+        ],
+        [
+          27.456991835,
+          -6.735942476,
+          11.156062901
+        ],
+        [
+          27.6851212,
+          -6.643623199,
+          11.084151337
+        ],
+        [
+          27.913814241,
+          -6.552709236,
+          11.012374745
+        ],
+        [
+          28.143062303,
+          -6.463204029,
+          10.940733126
+        ],
+        [
+          28.372856707,
+          -6.375110966,
+          10.86922648
+        ],
+        [
+          28.603188754,
+          -6.28843338,
+          10.797854806
+        ],
+        [
+          28.834049726,
+          -6.203174554,
+          10.726618105
+        ],
+        [
+          29.065430884,
+          -6.119337715,
+          10.655516376
+        ],
+        [
+          29.297323468000002,
+          -6.036926036,
+          10.584549621
+        ],
+        [
+          29.529718703,
+          -5.955942636,
+          10.513717838
+        ],
+        [
+          29.762607789,
+          -5.876390582,
+          10.443021027
+        ],
+        [
+          29.995981912,
+          -5.798272884,
+          10.372459189
+        ],
+        [
+          30.229832237,
+          -5.721592501,
+          10.302032324
+        ],
+        [
+          30.464149912,
+          -5.646352333,
+          10.231740431
+        ],
+        [
+          30.698926068,
+          -5.57255523,
+          10.161583511
+        ],
+        [
+          30.934151817,
+          -5.500203985,
+          10.091561564
+        ],
+        [
+          31.169818256,
+          -5.429301336,
+          10.02167459
+        ],
+        [
+          31.405916463,
+          -5.359849968,
+          9.951922588
+        ],
+        [
+          31.642437501,
+          -5.29185251,
+          9.882305558
+        ],
+        [
+          31.879372417,
+          -5.225311535,
+          9.812823502
+        ],
+        [
+          32.116712242,
+          -5.160229563,
+          9.743476418
+        ],
+        [
+          32.354447993,
+          -5.096609056,
+          9.674264306
+        ],
+        [
+          32.592570669,
+          -5.034452424,
+          9.605187167
+        ],
+        [
+          32.831071257,
+          -4.973762018,
+          9.536245001
+        ],
+        [
+          33.069940729,
+          -4.914540138,
+          9.467437808
+        ],
+        [
+          33.309170043,
+          -4.856789023,
+          9.398765587
+        ],
+        [
+          33.548750142,
+          -4.800510861,
+          9.330227779
+        ],
+        [
+          33.788671959,
+          -4.745707781,
+          9.261745723
+        ],
+        [
+          34.028926412,
+          -4.692381858,
+          9.193263667
+        ],
+        [
+          34.269504404,
+          -4.640535111,
+          9.124781611
+        ],
+        [
+          34.510396831,
+          -4.590169503,
+          9.056299555
+        ],
+        [
+          34.751594573,
+          -4.541286939,
+          8.987817499
+        ],
+        [
+          34.9930885,
+          -4.49388927,
+          8.919335443
+        ],
+        [
+          35.234869471,
+          -4.447978291,
+          8.850853387
+        ],
+        [
+          35.476928333000004,
+          -4.403555739,
+          8.782371331
+        ],
+        [
+          35.719255924,
+          -4.360623296,
+          8.713889275
+        ],
+        [
+          35.96184307,
+          -4.319182587,
+          8.645407219
+        ],
+        [
+          36.204680589,
+          -4.27923518,
+          8.576925163
+        ],
+        [
+          36.447759288,
+          -4.240782588,
+          8.508443107
+        ],
+        [
+          36.691069966,
+          -4.203826267,
+          8.439961051
+        ],
+        [
+          36.934603413,
+          -4.168367615,
+          8.371478995
+        ],
+        [
+          37.17835041,
+          -4.134407974,
+          8.302996939
+        ],
+        [
+          37.422301731,
+          -4.101948631,
+          8.234514883
+        ],
+        [
+          37.66644814,
+          -4.070990813,
+          8.166032827
+        ],
+        [
+          37.910780396999996,
+          -4.041535693,
+          8.097550771
+        ],
+        [
+          38.155289252,
+          -4.013584386,
+          8.029068715
+        ],
+        [
+          38.399965449999996,
+          -3.987137949,
+          7.960586659
+        ],
+        [
+          38.644799729,
+          -3.962197384,
+          7.892104603
+        ],
+        [
+          38.889782821,
+          -3.938763634,
+          7.823622547
+        ],
+        [
+          39.134905452,
+          -3.916837588,
+          7.755140491
+        ],
+        [
+          39.380158344,
+          -3.896420075,
+          7.686658435
+        ],
+        [
+          39.625532212,
+          -3.877511867,
+          7.618176379
+        ],
+        [
+          39.87101777,
+          -3.860113681,
+          7.549694323
+        ],
+        [
+          40.0,
+          -3.851769599,
+          7.513727704
+        ]
+      ],
+      "entry_edge": 3,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f5a0300-route-000",
+      "source_route_index": 0,
+      "source_class": 1,
+      "compatibility": 1,
+      "engine_transport": 1,
+      "cell": [
+        3,
+        0
+      ],
+      "tile_id": "7f5a0300",
+      "points": [
+        [
+          40.0,
+          -3.851769599,
+          7.513727704
+        ],
+        [
+          40.116605723,
+          -3.844226175,
+          7.481212267
+        ],
+        [
+          40.362286777,
+          -3.82984995,
+          7.412730211
+        ],
+        [
+          40.60805163,
+          -3.816985551,
+          7.344248155
+        ],
+        [
+          40.85389098,
+          -3.805633465,
+          7.275766099
+        ],
+        [
+          41.099795521,
+          -3.795794121,
+          7.207284043
+        ],
+        [
+          41.345755944000004,
+          -3.787467892,
+          7.138801987
+        ],
+        [
+          41.591762939,
+          -3.780655093,
+          7.070319931
+        ],
+        [
+          41.837807193,
+          -3.775355982,
+          7.001837875
+        ],
+        [
+          42.083879394,
+          -3.771570759,
+          6.933355819
+        ],
+        [
+          42.329970226,
+          -3.769299568,
+          6.864873763
+        ],
+        [
+          42.576070373,
+          -3.768542495,
+          6.796391707
+        ],
+        [
+          42.825425709,
+          -3.768542495,
+          6.727004161
+        ],
+        [
+          43.074781045,
+          -3.768542495,
+          6.657616615
+        ],
+        [
+          43.324136381,
+          -3.768542495,
+          6.588229069
+        ],
+        [
+          43.573491716999996,
+          -3.768542495,
+          6.518841524
+        ],
+        [
+          43.822847052,
+          -3.768542495,
+          6.449453978
+        ],
+        [
+          44.072202388,
+          -3.768542495,
+          6.380066432
+        ],
+        [
+          44.321557724,
+          -3.768542495,
+          6.310678886
+        ],
+        [
+          44.57091306,
+          -3.768542495,
+          6.24129134
+        ],
+        [
+          44.820268396,
+          -3.768542495,
+          6.171903794
+        ],
+        [
+          45.069623732,
+          -3.768542495,
+          6.102516249
+        ],
+        [
+          45.318979067,
+          -3.768542495,
+          6.033128703
+        ],
+        [
+          45.568334403,
+          -3.768542495,
+          5.963741157
+        ],
+        [
+          45.817689739,
+          -3.768542495,
+          5.894353611
+        ],
+        [
+          46.067045075,
+          -3.768542495,
+          5.824966065
+        ],
+        [
+          46.316400411000004,
+          -3.768542495,
+          5.755578519
+        ],
+        [
+          46.565755746,
+          -3.768542495,
+          5.686190974
+        ],
+        [
+          46.815111082,
+          -3.768542495,
+          5.616803428
+        ],
+        [
+          47.064466418,
+          -3.768542495,
+          5.547415882
+        ],
+        [
+          47.313821754,
+          -3.768542495,
+          5.478028336
+        ],
+        [
+          47.56317709,
+          -3.768542495,
+          5.40864079
+        ],
+        [
+          47.812532426,
+          -3.768542495,
+          5.339253244
+        ],
+        [
+          48.061887761,
+          -3.768542495,
+          5.269865699
+        ],
+        [
+          48.311243097,
+          -3.768542495,
+          5.200478153
+        ],
+        [
+          48.560598433,
+          -3.768542495,
+          5.131090607
+        ],
+        [
+          48.809953769,
+          -3.768542495,
+          5.061703061
+        ],
+        [
+          49.059309105,
+          -3.768542495,
+          4.992315515
+        ],
+        [
+          49.30866444,
+          -3.768542495,
+          4.922927969
+        ],
+        [
+          49.558019776,
+          -3.768542495,
+          4.853540423
+        ],
+        [
+          49.807375112,
+          -3.768542495,
+          4.784152878
+        ],
+        [
+          50.056730448,
+          -3.768542495,
+          4.714765332
+        ],
+        [
+          50.306085784,
+          -3.768542495,
+          4.645377786
+        ],
+        [
+          50.55544112,
+          -3.768542495,
+          4.57599024
+        ],
+        [
+          50.804796455,
+          -3.768542495,
+          4.506602694
+        ],
+        [
+          51.054151791,
+          -3.768542495,
+          4.437215148
+        ],
+        [
+          51.303507127,
+          -3.768542495,
+          4.367827603
+        ],
+        [
+          51.552862463,
+          -3.768542495,
+          4.298440057
+        ],
+        [
+          51.802217799,
+          -3.768542495,
+          4.229052511
+        ],
+        [
+          52.051573134,
+          -3.768542495,
+          4.159664965
+        ],
+        [
+          52.30092847,
+          -3.768542495,
+          4.090277419
+        ],
+        [
+          52.550283806,
+          -3.768542495,
+          4.020889873
+        ],
+        [
+          52.799639142000004,
+          -3.768542495,
+          3.951502328
+        ],
+        [
+          53.048994478,
+          -3.768542495,
+          3.882114782
+        ],
+        [
+          53.298349814,
+          -3.768542495,
+          3.812727236
+        ],
+        [
+          53.547705149,
+          -3.768542495,
+          3.74333969
+        ],
+        [
+          53.797060485,
+          -3.768542495,
+          3.673952144
+        ],
+        [
+          54.046415821,
+          -3.768542495,
+          3.604564598
+        ],
+        [
+          54.295771157,
+          -3.768542495,
+          3.535177053
+        ],
+        [
+          54.545126493,
+          -3.768542495,
+          3.465789507
+        ],
+        [
+          54.794481828,
+          -3.768542495,
+          3.396401961
+        ],
+        [
+          55.043837164,
+          -3.768542495,
+          3.327014415
+        ],
+        [
+          55.2931925,
+          -3.768542495,
+          3.257626869
+        ],
+        [
+          55.542547836,
+          -3.768542495,
+          3.188239323
+        ],
+        [
+          55.791903172,
+          -3.768542495,
+          3.118851778
+        ],
+        [
+          56.0,
+          -3.768542495,
+          3.060945143
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f5a0400-route-000",
+      "source_route_index": 0,
+      "source_class": 1,
+      "compatibility": 1,
+      "engine_transport": 1,
+      "cell": [
+        4,
+        0
+      ],
+      "tile_id": "7f5a0400",
+      "points": [
+        [
+          56.0,
+          -3.768542495,
+          3.060945143
+        ],
+        [
+          56.041258508,
+          -3.768542495,
+          3.049464232
+        ],
+        [
+          56.290613843,
+          -3.768542495,
+          2.980076686
+        ],
+        [
+          56.539969178999996,
+          -3.768542495,
+          2.91068914
+        ],
+        [
+          56.789324515,
+          -3.768542495,
+          2.841301594
+        ],
+        [
+          57.038679851,
+          -3.768542495,
+          2.771914048
+        ],
+        [
+          57.288035187,
+          -3.768542495,
+          2.702526503
+        ],
+        [
+          57.537390522,
+          -3.768542495,
+          2.633138957
+        ],
+        [
+          57.786745858,
+          -3.768542495,
+          2.563751411
+        ],
+        [
+          58.036101194,
+          -3.768542495,
+          2.494363865
+        ],
+        [
+          58.28545653,
+          -3.768542495,
+          2.424976319
+        ],
+        [
+          58.534811866,
+          -3.768542495,
+          2.355588773
+        ],
+        [
+          58.784167202,
+          -3.768542495,
+          2.286201228
+        ],
+        [
+          59.033522536999996,
+          -3.768542495,
+          2.216813682
+        ],
+        [
+          59.282877873000004,
+          -3.768542495,
+          2.147426136
+        ],
+        [
+          59.532233209,
+          -3.768542495,
+          2.07803859
+        ],
+        [
+          59.781588545,
+          -3.768542495,
+          2.008651044
+        ],
+        [
+          60.030943881,
+          -3.768542495,
+          1.939263498
+        ],
+        [
+          60.280299216,
+          -3.768542495,
+          1.869875953
+        ],
+        [
+          60.529654552,
+          -3.768542495,
+          1.800488407
+        ],
+        [
+          60.779009888,
+          -3.768542495,
+          1.731100861
+        ],
+        [
+          61.028365224,
+          -3.768542495,
+          1.661713315
+        ],
+        [
+          61.27772056,
+          -3.768542495,
+          1.592325769
+        ],
+        [
+          61.527075896,
+          -3.768542495,
+          1.522938223
+        ],
+        [
+          61.776431231000004,
+          -3.768542495,
+          1.453550678
+        ],
+        [
+          62.025786567,
+          -3.768542495,
+          1.384163132
+        ],
+        [
+          62.275141903,
+          -3.768542495,
+          1.314775586
+        ],
+        [
+          62.524497239,
+          -3.768542495,
+          1.24538804
+        ],
+        [
+          62.773852575,
+          -3.768542495,
+          1.176000494
+        ],
+        [
+          63.023207911,
+          -3.768542495,
+          1.106622316
+        ],
+        [
+          63.272563246,
+          -3.768542495,
+          1.038517447
+        ],
+        [
+          63.521918582,
+          -3.768542495,
+          0.972575348
+        ],
+        [
+          63.771273918,
+          -3.768542495,
+          0.908796018
+        ],
+        [
+          64.020629254,
+          -3.768542495,
+          0.847179457
+        ],
+        [
+          64.26998459,
+          -3.768542495,
+          0.787725666
+        ],
+        [
+          64.519339925,
+          -3.768542495,
+          0.730434644
+        ],
+        [
+          64.768695261,
+          -3.768542495,
+          0.675306391
+        ],
+        [
+          65.018050597,
+          -3.768542495,
+          0.622340908
+        ],
+        [
+          65.267405933,
+          -3.768542495,
+          0.571538194
+        ],
+        [
+          65.516761269,
+          -3.768542495,
+          0.52289825
+        ],
+        [
+          65.766116605,
+          -3.768542495,
+          0.476421075
+        ],
+        [
+          66.01547194,
+          -3.768542495,
+          0.432106669
+        ],
+        [
+          66.264827276,
+          -3.768542495,
+          0.389955032
+        ],
+        [
+          66.514182612,
+          -3.768542495,
+          0.349966165
+        ],
+        [
+          66.763537948,
+          -3.768542495,
+          0.312140067
+        ],
+        [
+          67.012893284,
+          -3.768542495,
+          0.276476739
+        ],
+        [
+          67.262248619,
+          -3.768542495,
+          0.24297618
+        ],
+        [
+          67.511603955,
+          -3.768542495,
+          0.21163839
+        ],
+        [
+          67.760959291,
+          -3.768542495,
+          0.18246337
+        ],
+        [
+          68.010314627,
+          -3.768542495,
+          0.155451119
+        ],
+        [
+          68.259669963,
+          -3.768542495,
+          0.130601637
+        ],
+        [
+          68.509025299,
+          -3.768542495,
+          0.107914925
+        ],
+        [
+          68.758380634,
+          -3.768542495,
+          0.087390982
+        ],
+        [
+          69.00773597,
+          -3.768542495,
+          0.069029808
+        ],
+        [
+          69.257091306,
+          -3.768542495,
+          0.052831404
+        ],
+        [
+          69.506446642,
+          -3.768542495,
+          0.038795769
+        ],
+        [
+          69.755801978,
+          -3.768542495,
+          0.026922903
+        ],
+        [
+          70.005157313,
+          -3.768542495,
+          0.017212807
+        ],
+        [
+          70.254512649,
+          -3.768542495,
+          0.00966548
+        ],
+        [
+          70.503867985,
+          -3.768542495,
+          0.004280923
+        ],
+        [
+          70.75322332100001,
+          -3.768542495,
+          0.001059134
+        ],
+        [
+          71.002578657,
+          -3.768542495,
+          0.0
+        ],
+        [
+          71.251933993,
+          -3.768542495,
+          0.0
+        ],
+        [
+          71.501289328,
+          -3.768542495,
+          0.0
+        ],
+        [
+          71.750644664,
+          -3.768542495,
+          0.0
+        ],
+        [
+          72.0,
+          -3.768542495,
+          0.0
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f5a0110-route-000",
+      "source_route_index": 0,
+      "source_class": 1,
+      "compatibility": 1,
+      "engine_transport": 1,
+      "cell": [
+        1,
+        1
+      ],
+      "tile_id": "7f5a0110",
+      "points": [
+        [
+          8.0,
+          -14.669670836,
+          15.0
+        ],
+        [
+          8.079245279,
+          -14.635303371,
+          15.0
+        ],
+        [
+          8.306851161,
+          -14.536898839,
+          15.0
+        ],
+        [
+          8.534538828999999,
+          -14.438757521,
+          15.0
+        ],
+        [
+          8.762306649,
+          -14.340874151,
+          15.0
+        ],
+        [
+          8.990152984,
+          -14.243243466,
+          15.0
+        ],
+        [
+          9.218076199,
+          -14.145860201,
+          15.0
+        ],
+        [
+          9.446074657,
+          -14.048719093,
+          15.0
+        ],
+        [
+          9.674146724,
+          -13.951814876,
+          15.0
+        ],
+        [
+          9.902290764,
+          -13.855142286,
+          15.0
+        ],
+        [
+          10.13050514,
+          -13.75869606,
+          15.0
+        ],
+        [
+          10.358788217,
+          -13.662470933,
+          15.0
+        ],
+        [
+          10.587138359,
+          -13.566461641,
+          15.0
+        ],
+        [
+          10.815553932,
+          -13.470662918,
+          15.0
+        ],
+        [
+          11.044033297,
+          -13.375069503,
+          15.0
+        ],
+        [
+          11.272574821,
+          -13.279676129,
+          15.0
+        ],
+        [
+          11.501176868,
+          -13.184477531999999,
+          15.0
+        ],
+        [
+          11.7298378,
+          -13.08946845,
+          15.0
+        ],
+        [
+          11.958555984,
+          -12.994643616,
+          15.0
+        ],
+        [
+          12.187329783,
+          -12.899997767,
+          15.0
+        ],
+        [
+          12.416157561,
+          -12.805525638999999,
+          15.0
+        ],
+        [
+          12.645037683,
+          -12.711221967,
+          15.0
+        ],
+        [
+          12.873968513,
+          -12.617081487,
+          15.0
+        ],
+        [
+          13.102948414,
+          -12.523098936,
+          15.0
+        ],
+        [
+          13.331975753,
+          -12.429269047,
+          15.0
+        ],
+        [
+          13.561048892,
+          -12.335586558,
+          15.0
+        ],
+        [
+          13.790166196,
+          -12.242046204000001,
+          15.0
+        ],
+        [
+          14.019326029,
+          -12.148642721,
+          15.0
+        ],
+        [
+          14.248526755,
+          -12.055370845,
+          15.0
+        ],
+        [
+          14.47776674,
+          -11.962225310000001,
+          15.0
+        ],
+        [
+          14.707044346,
+          -11.869200853999999,
+          14.99546812
+        ],
+        [
+          14.936357939,
+          -11.776292211000001,
+          14.981873226
+        ],
+        [
+          15.165705882,
+          -11.683494117999999,
+          14.959216378
+        ],
+        [
+          15.395086539,
+          -11.590801311,
+          14.927498561
+        ],
+        [
+          15.624498276,
+          -11.498208523999999,
+          14.886720687
+        ],
+        [
+          15.853939457,
+          -11.405710493,
+          14.836883598
+        ],
+        [
+          16.083408444,
+          -11.313301956,
+          14.777988062
+        ],
+        [
+          16.312903604,
+          -11.220977646,
+          14.710034778
+        ],
+        [
+          16.542423299,
+          -11.128732301,
+          14.636823637
+        ],
+        [
+          16.771965895,
+          -11.036560654999999,
+          14.563582271
+        ],
+        [
+          17.001529756,
+          -10.944457444000001,
+          14.49034261
+        ],
+        [
+          17.231113245,
+          -10.852417405,
+          14.417104517
+        ],
+        [
+          17.460714728,
+          -10.760435271999999,
+          14.343867857
+        ],
+        [
+          17.690332568,
+          -10.668505782,
+          14.270632496
+        ],
+        [
+          17.919965129,
+          -10.576623671,
+          14.197398301
+        ],
+        [
+          18.149610777,
+          -10.484783672999999,
+          14.12416514
+        ],
+        [
+          18.379267875,
+          -10.392980524999999,
+          14.050932881
+        ],
+        [
+          18.608934787,
+          -10.301208963,
+          13.977701395
+        ],
+        [
+          18.838609878,
+          -10.209463721999999,
+          13.904470551
+        ],
+        [
+          19.068291510999998,
+          -10.117739538999999,
+          13.831240221
+        ],
+        [
+          19.297978052,
+          -10.026031148000001,
+          13.758010276
+        ],
+        [
+          19.527667865,
+          -9.934333285000001,
+          13.684780587
+        ],
+        [
+          19.757359313,
+          -9.842640687,
+          13.611551026
+        ],
+        [
+          19.987050761,
+          -9.750948089000001,
+          13.538321465
+        ],
+        [
+          20.216740574,
+          -9.659250226000001,
+          13.465091775
+        ],
+        [
+          20.446427114,
+          -9.567541836,
+          13.39186183
+        ],
+        [
+          20.676108748,
+          -9.475817652,
+          13.3186315
+        ],
+        [
+          20.905783839,
+          -9.384072411,
+          13.245400656
+        ],
+        [
+          21.135450751,
+          -9.292300849,
+          13.17216917
+        ],
+        [
+          21.365107849,
+          -9.200497701,
+          13.098936912
+        ],
+        [
+          21.594753496,
+          -9.108657703999999,
+          13.02570375
+        ],
+        [
+          21.824386058,
+          -9.016775592,
+          12.952469555
+        ],
+        [
+          22.054003898,
+          -8.924846102,
+          12.879234194
+        ],
+        [
+          22.28360538,
+          -8.83286397,
+          12.805997534
+        ],
+        [
+          22.51318887,
+          -8.740823930000001,
+          12.732759441
+        ],
+        [
+          22.74275273,
+          -8.64872072,
+          12.65951978
+        ],
+        [
+          22.972295326,
+          -8.556549074,
+          12.586278414
+        ],
+        [
+          23.201815021999998,
+          -8.464303728,
+          12.513035206
+        ],
+        [
+          23.431310182,
+          -8.371979417999999,
+          12.439790015
+        ],
+        [
+          23.660779169,
+          -8.279570881,
+          12.366542701
+        ],
+        [
+          23.890220349,
+          -8.187072851,
+          12.293293121
+        ],
+        [
+          24.0,
+          -8.142764726,
+          12.258240085
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 2
+    },
+    {
+      "id": "path-7f5a0210-route-000",
+      "source_route_index": 0,
+      "source_class": 1,
+      "compatibility": 1,
+      "engine_transport": 1,
+      "cell": [
+        2,
+        1
+      ],
+      "tile_id": "7f5a0210",
+      "points": [
+        [
+          24.0,
+          -8.142764726,
+          12.258240085
+        ],
+        [
+          24.119632086,
+          -8.094480063999999,
+          12.22004113
+        ],
+        [
+          24.349012744,
+          -8.001787256,
+          12.146786582
+        ],
+        [
+          24.353429898,
+          -8.0,
+          12.145375675
+        ]
+      ],
+      "entry_edge": 0,
+      "exit_edge": 1
+    }
+  ],
+  "endpoint_route_refs": {
+    "member-1-w-in-1": [
+      "path-7f5a0110-route-000"
+    ],
+    "member-1-e-out-2": [
+      "path-7f5a0400-route-000"
+    ]
+  },
+  "verification": {
+    "metadata": "passed",
+    "compiled_paths": "passed",
+    "compiled_resources": {
+      "dat_path": "dist/ddrhw-straight-modular-ramp-kit-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-upper-exit-r40.dat",
+      "dat_sha256": "b222fb72dcba4a142ced0fddf6a78cb28a3b1c669dc4d28243a7938b28c6c7c0",
+      "model_sha256": "5c786f44ac6d7abed5e9efb844da58d7e88408aa73a2bbe0566517c3a4d2d3e7",
+      "resource_fingerprints_checked": 80,
+      "directional_ports_reextracted": 2,
+      "directed_journeys_reextracted": 1,
+      "compiled_definition": "passed",
+      "manifest_payload": "passed",
+      "saved_resource_fingerprints": "passed",
+      "actual_path_facts": "passed",
+      "preview_model_structure": "passed",
+      "construction_rules_reextracted": false
+    },
+    "occupied_cells": "unverified",
+    "physical_seams": "unverified",
+    "construction_clearance": "unverified",
+    "geometry_collisions": "unverified",
+    "in_game": "unverified"
+  },
+  "content_sha256": "b762704b12d7d743f3c8e6e5c814fe8aca2de2ea6b5563423845fb121c01ea82"
+}

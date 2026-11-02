@@ -1,0 +1,672 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+  "physical_body_comparison": {
+    "exact_geometry_material_winding_triangles": 71772,
+    "exact_retained_native_uv_triangles": 15582,
+    "authored_route_field_uv_triangles": 56190
+  },
+  "native_dd_top_comparison": {
+    "reference_triangles": 103690,
+    "candidate_triangles": 129689,
+    "unmasked_native_vertex_uv_checks": 330,
+    "unmasked_uv_basis": "Affine interpolation on actual preceding saved native DD triangles, preserving their proper or mirrored frame",
+    "unmasked_uv_tolerance": 2e-06,
+    "areas": [
+      {
+        "height_m": 7.5,
+        "reference_area_m2": 2715.290283058097,
+        "candidate_area_m2": 2715.29028343117,
+        "absolute_area_difference_m2": 3.730729076778516e-07,
+        "coordinate_induced_area_bound_m2": 0.0664800577945969
+      },
+      {
+        "height_m": 15.0,
+        "reference_area_m2": 2715.290283058097,
+        "candidate_area_m2": 2715.290280721181,
+        "absolute_area_difference_m2": 2.3369161681330297e-06,
+        "coordinate_induced_area_bound_m2": 0.05587091948882749
+      }
+    ],
+    "finite_face_witnesses": {
+      "reference_to_candidate": {
+        "line_segments_checked": 583158,
+        "admitted_road_encoding_spans": 2668,
+        "maximum_admitted_along_route_span_m": 4.216381029330689,
+        "maximum_sampled_actual_face_distance_m": 5.776562133843016e-07,
+        "historical_saved_reference_support_passed": true,
+        "source_native_hole_fill_triangles": 0,
+        "source_native_hole_fill_projection": null,
+        "historical_reference_holes_repaired": []
+      },
+      "candidate_to_reference_or_frozen_native_donor": {
+        "line_segments_checked": 739152,
+        "admitted_road_encoding_spans": 1595,
+        "maximum_admitted_along_route_span_m": 0.9142162198821653,
+        "maximum_sampled_actual_face_distance_m": 3.9746190707165385e-07,
+        "historical_saved_reference_support_passed": false,
+        "source_native_hole_fill_triangles": 5,
+        "source_native_hole_fill_projection": {
+          "passed": true,
+          "approved_owned_cells": 31,
+          "unowned_native_end_projection_cells": [],
+          "pinned_native_overhang_triangles_checked": 0,
+          "actual_model_projection_cells_by_function": {},
+          "scope": "Positive-area actual indexed projections distinguish model drawing from whole-cell traffic ownership. Native end overhangs retain audited donor geometry/material, and non-DD donor UVs; complete road support is checked separately."
+        },
+        "historical_reference_holes_repaired": [
+          {
+            "actual_saved_triangle_enh_m": [
+              [
+                -44.61282467842102,
+                -61.67807364463806,
+                15.0
+              ],
+              [
+                -44.61282968521118,
+                -61.67849659919739,
+                15.0
+              ],
+              [
+                -44.61279845237732,
+                -61.678497552871704,
+                15.0
+              ]
+            ],
+            "donor_certificate": {
+              "native_triangle_enh_m": [
+                [
+                  -54.34314489364624,
+                  -73.6568546295166,
+                  15.0
+                ],
+                [
+                  -40.0,
+                  -56.0,
+                  15.0
+                ],
+                [
+                  -56.0,
+                  -72.0,
+                  15.0
+                ]
+              ],
+              "native_city_cell": [
+                -3,
+                4
+              ],
+              "frozen_native_face_index": 12,
+              "material_sha256": "307aba7786d4b4f11dbc499eb54f7d05d01a114001919b8a5f7d55970fbb64ca",
+              "maximum_saved_vertex_distance_m": 6.462731696570935e-08,
+              "saved_vertex_distances_m": [
+                0.0,
+                0.0,
+                6.462731696570935e-08
+              ],
+              "position_certificate_m": 2e-06,
+              "whole_face_bounded_by_convexity": true
+            },
+            "historical_reference_gap_witnesses": [
+              {
+                "first_enh_m": [
+                  -44.61282968521118,
+                  -61.67849659919739,
+                  15.0
+                ],
+                "last_enh_m": [
+                  -44.61279845237732,
+                  -61.678497552871704,
+                  15.0
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              },
+              {
+                "first_enh_m": [
+                  -44.61281760533651,
+                  -61.67835593223572,
+                  15.0
+                ],
+                "last_enh_m": [
+                  -44.61282968521118,
+                  -61.67849659919739,
+                  15.0
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              }
+            ]
+          },
+          {
+            "actual_saved_triangle_enh_m": [
+              [
+                -44.61283016204834,
+                -61.678523540496826,
+                15.0
+              ],
+              [
+                -44.61281967163086,
+                -61.678523778915405,
+                15.0
+              ],
+              [
+                -44.61279845237732,
+                -61.678497552871704,
+                15.0
+              ]
+            ],
+            "donor_certificate": {
+              "native_triangle_enh_m": [
+                [
+                  -54.34314489364624,
+                  -73.6568546295166,
+                  15.0
+                ],
+                [
+                  -40.0,
+                  -56.0,
+                  15.0
+                ],
+                [
+                  -56.0,
+                  -72.0,
+                  15.0
+                ]
+              ],
+              "native_city_cell": [
+                -3,
+                4
+              ],
+              "frozen_native_face_index": 12,
+              "material_sha256": "307aba7786d4b4f11dbc499eb54f7d05d01a114001919b8a5f7d55970fbb64ca",
+              "maximum_saved_vertex_distance_m": 1.3050750358744757e-07,
+              "saved_vertex_distances_m": [
+                0.0,
+                1.3050750358744757e-07,
+                6.462731696570935e-08
+              ],
+              "position_certificate_m": 2e-06,
+              "whole_face_bounded_by_convexity": true
+            },
+            "historical_reference_gap_witnesses": [
+              {
+                "first_enh_m": [
+                  -44.61283016204834,
+                  -61.678523540496826,
+                  15.0
+                ],
+                "last_enh_m": [
+                  -44.61281967163086,
+                  -61.678523778915405,
+                  15.0
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              },
+              {
+                "first_enh_m": [
+                  -44.61279845237732,
+                  -61.678497552871704,
+                  15.0
+                ],
+                "last_enh_m": [
+                  -44.61283016204834,
+                  -61.678523540496826,
+                  15.0
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              },
+              {
+                "first_enh_m": [
+                  -44.61281609535217,
+                  -61.67851495742798,
+                  15.0
+                ],
+                "last_enh_m": [
+                  -44.61283016204834,
+                  -61.678523540496826,
+                  15.0
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              }
+            ]
+          },
+          {
+            "actual_saved_triangle_enh_m": [
+              [
+                -44.61283016204834,
+                -61.678523540496826,
+                15.0
+              ],
+              [
+                -44.61279845237732,
+                -61.678497552871704,
+                15.0
+              ],
+              [
+                -44.61282968521118,
+                -61.67849659919739,
+                15.0
+              ]
+            ],
+            "donor_certificate": {
+              "native_triangle_enh_m": [
+                [
+                  -54.34314489364624,
+                  -73.6568546295166,
+                  15.0
+                ],
+                [
+                  -40.0,
+                  -56.0,
+                  15.0
+                ],
+                [
+                  -56.0,
+                  -72.0,
+                  15.0
+                ]
+              ],
+              "native_city_cell": [
+                -3,
+                4
+              ],
+              "frozen_native_face_index": 12,
+              "material_sha256": "307aba7786d4b4f11dbc499eb54f7d05d01a114001919b8a5f7d55970fbb64ca",
+              "maximum_saved_vertex_distance_m": 6.462731696570935e-08,
+              "saved_vertex_distances_m": [
+                0.0,
+                6.462731696570935e-08,
+                0.0
+              ],
+              "position_certificate_m": 2e-06,
+              "whole_face_bounded_by_convexity": true
+            },
+            "historical_reference_gap_witnesses": [
+              {
+                "first_enh_m": [
+                  -44.61283016204834,
+                  -61.678523540496826,
+                  15.0
+                ],
+                "last_enh_m": [
+                  -44.61279845237732,
+                  -61.678497552871704,
+                  15.0
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              },
+              {
+                "first_enh_m": [
+                  -44.61279845237732,
+                  -61.678497552871704,
+                  15.0
+                ],
+                "last_enh_m": [
+                  -44.61282968521118,
+                  -61.67849659919739,
+                  15.0
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              },
+              {
+                "first_enh_m": [
+                  -44.61281943321228,
+                  -61.67850589752197,
+                  15.0
+                ],
+                "last_enh_m": [
+                  -44.61283016204834,
+                  -61.678523540496826,
+                  15.0
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              },
+              {
+                "first_enh_m": [
+                  -44.61281943321228,
+                  -61.67850589752197,
+                  15.0
+                ],
+                "last_enh_m": [
+                  -44.61282968521118,
+                  -61.67849659919739,
+                  15.0
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              }
+            ]
+          },
+          {
+            "actual_saved_triangle_enh_m": [
+              [
+                -44.61283016204834,
+                -61.67853665351868,
+                15.0
+              ],
+              [
+                -44.61281967163086,
+                -61.678523778915405,
+                15.0
+              ],
+              [
+                -44.61283016204834,
+                -61.678523540496826,
+                15.0
+              ]
+            ],
+            "donor_certificate": {
+              "native_triangle_enh_m": [
+                [
+                  -54.34314489364624,
+                  -73.6568546295166,
+                  15.0
+                ],
+                [
+                  -40.0,
+                  -56.0,
+                  15.0
+                ],
+                [
+                  -56.0,
+                  -72.0,
+                  15.0
+                ]
+              ],
+              "native_city_cell": [
+                -3,
+                4
+              ],
+              "frozen_native_face_index": 12,
+              "material_sha256": "307aba7786d4b4f11dbc499eb54f7d05d01a114001919b8a5f7d55970fbb64ca",
+              "maximum_saved_vertex_distance_m": 1.3050750358744757e-07,
+              "saved_vertex_distances_m": [
+                1.0564967186278213e-07,
+                1.3050750358744757e-07,
+                0.0
+              ],
+              "position_certificate_m": 2e-06,
+              "whole_face_bounded_by_convexity": true
+            },
+            "historical_reference_gap_witnesses": [
+              {
+                "first_enh_m": [
+                  -44.61281967163086,
+                  -61.678523778915405,
+                  15.0
+                ],
+                "last_enh_m": [
+                  -44.61283016204834,
+                  -61.678523540496826,
+                  15.0
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              },
+              {
+                "first_enh_m": [
+                  -44.612826665242515,
+                  -61.67852799097697,
+                  15.0
+                ],
+                "last_enh_m": [
+                  -44.61283016204834,
+                  -61.67853665351868,
+                  15.0
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              },
+              {
+                "first_enh_m": [
+                  -44.612826665242515,
+                  -61.67852799097697,
+                  15.0
+                ],
+                "last_enh_m": [
+                  -44.61281967163086,
+                  -61.678523778915405,
+                  15.0
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              },
+              {
+                "first_enh_m": [
+                  -44.612826665242515,
+                  -61.67852799097697,
+                  15.0
+                ],
+                "last_enh_m": [
+                  -44.61283016204834,
+                  -61.678523540496826,
+                  15.0
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              }
+            ]
+          },
+          {
+            "actual_saved_triangle_enh_m": [
+              [
+                44.61282467842102,
+                45.67807364463806,
+                7.5
+              ],
+              [
+                44.61283016204834,
+                45.67853665351868,
+                7.5
+              ],
+              [
+                44.61245822906494,
+                45.67807865142822,
+                7.5
+              ]
+            ],
+            "donor_certificate": {
+              "native_triangle_enh_m": [
+                [
+                  54.34314489364624,
+                  57.6568546295166,
+                  7.5
+                ],
+                [
+                  40.0,
+                  40.0,
+                  7.5
+                ],
+                [
+                  56.0,
+                  56.0,
+                  7.5
+                ]
+              ],
+              "native_city_cell": [
+                3,
+                -3
+              ],
+              "frozen_native_face_index": 17,
+              "material_sha256": "307aba7786d4b4f11dbc499eb54f7d05d01a114001919b8a5f7d55970fbb64ca",
+              "maximum_saved_vertex_distance_m": 1.0564967186278213e-07,
+              "saved_vertex_distances_m": [
+                0.0,
+                1.0564967186278213e-07,
+                1.6688510460987118e-08
+              ],
+              "position_certificate_m": 2e-06,
+              "whole_face_bounded_by_convexity": true
+            },
+            "historical_reference_gap_witnesses": [
+              {
+                "first_enh_m": [
+                  44.612704356511436,
+                  45.678229649861656,
+                  7.5
+                ],
+                "last_enh_m": [
+                  44.61283016204834,
+                  45.67853665351868,
+                  7.5
+                ],
+                "historical_reference_two_micrometre_support_passed": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "position_certificate_m": 2e-06,
+    "all_historical_native_face_witnesses_preserved": true,
+    "candidate_face_witnesses_are_historical_or_frozen_native_donor": true,
+    "exact_boolean_union_equivalence_claimed": false
+  },
+  "reference_white_paint_triangles": 2628,
+  "candidate_white_paint_triangles": 1710,
+  "intentional_uv_mask": {
+    "minimum_served_q_m": 4.3125,
+    "maximum_served_q_m": 8.0,
+    "physical_half_ribbon_end_allowance_m": 3.0,
+    "native_deck_heights_m": [
+      7.5,
+      15.0
+    ],
+    "paint_height_offset_m": 0.01,
+    "source": "Union of bounded original-approved and independently reconstructed revised served-shoulder stations; through lanes are excluded"
+  },
+  "reference_model_sha256_by_city_cell": {
+    "(-3, 2)": "ec9af6064ad8ec903c789e917f4393ceb3e4cff056a35995ef5089c0fce6e999",
+    "(-3, 3)": "7d63f610dd81461ee20155fd59325323365c4ad341e8596ecba8022935f1df32",
+    "(-3, 4)": "caaa84a0d93628e78930df42b7d74c33b9a93092b781f4c1ed2bc7721b7e4153",
+    "(-2, 1)": "0fb4ed4fa5120364756a19b01a4f9b6377f5902c91443e630f8d6963ea37964f",
+    "(-2, 2)": "1c2ce91982433b04220082e45e5f5f61db6a8d698a00b5eae88774da3eafd0ab",
+    "(-2, 3)": "e51200158b1734e081d5b839ef49b564eb5e5db999b5386cb3c604f9d8adbc99",
+    "(-2, 4)": "8e8e821879fcd7e12facebc480403fc9d8802fa388fd01290a4b363cb0ab4177",
+    "(-1, -1)": "c3e10a468fe3faa622883005bdf90c72608d4275d4273952d5f9665a3656bd7f",
+    "(-1, 0)": "eb780de636363b77d74a0a03488052b0bda5a042b241f0ae63132baac6691c85",
+    "(-1, 1)": "4d06065ddbdcda86d824d522384734a5e2760cf3b78792ed6b33aa17fd348881",
+    "(-1, 2)": "73ad9b0d7558bfe3297461e9d5a7bc869290d682a215809dca746e5fd51ce515",
+    "(-1, 3)": "0fd8ebdcf6eacabae9a5f1ca50d26bb2b1d239544c63e8f74acf521f315b86a0",
+    "(0, -1)": "1ff4643eb8035bc291e960d25120862fd2422018523d9130c338b086bca6842b",
+    "(0, 0)": "ee7c37dbe7a259130eead031dca99432e92fb9a37e7c9e0e1dd22870b1bd419a",
+    "(0, 1)": "b3e59fada4a947fd7eac3b56f15eb8aba7998cc01753aa43b3da28237b70dd3d",
+    "(0, 2)": "4fcd5341ebdbadf59c9fae7f1da4f96f3d2bac81dd3a162e031fb2473ee54e2e",
+    "(1, -2)": "b40a30b2e1af6f62e228e1e49fa2e5da8eb9ec06dbcf4321778e83eefe97a874",
+    "(1, -1)": "6edfb8eb937eca0cd51940da20a62f8088ea5bebb12314b749718a61157b24eb",
+    "(1, 0)": "2a12b793d966f00a237fa96c8ae76562c27d21fd224d3830c153e1363e70cbbb",
+    "(1, 1)": "e0be9d4bea14ddac75cc76caa904db1cf589f740014499d897323a931669eda8",
+    "(1, 2)": "8989bb5b3ca31af276cd3714e3a00c4fd76a57f8aec3979c0341b3edf9ece0ed",
+    "(2, -3)": "837dfcb1f7ecc8a6704e99b55f5834c14006e9b2ff2f32b84c8be43ccb8778d7",
+    "(2, -2)": "c710934da5efc34d88ba6c40a3c5788ee19e8f8021b07250dca9ff8f463a2753",
+    "(2, -1)": "94a595051c4ca4b327ae4f3cd1492393c6c23405b3b6e2c30e711c8fe1d56f5d",
+    "(2, 0)": "af1ca1c76f2765db73cb28f96990b90051f51394497beaf50b2a3a6a3ffe57a1",
+    "(2, 1)": "66544838e392c567b584e046fed5d17242eeb2363e6f021044c819849aabc5f7",
+    "(3, -3)": "74b72ea476e64503d23144de187f9fc2eb7f1004c404f1472fc2989eba180907",
+    "(3, -2)": "91e42355e2512b8b5c15ccaa59eeece40db3fb98b9775c6e7e63dda8356cc5ba",
+    "(3, -1)": "a1cf97782fc282345de19cd513295d8413d564dfe8eeb1e1edcf52d257f82ef1",
+    "(4, -3)": "a238e301a768ca9fe786c82e6377e50260440bdd8a60dbf979a873c55138de1e",
+    "(4, -2)": "2e1b0819f5e08b85974acd2acec0b2b3dbd4c524f7e91a09a41d96c8dd15befa"
+  },
+  "candidate_model_sha256_by_city_cell": {
+    "(-3, 2)": "50fdf5f30b644d077618c4b0379112ddc74f17df697953f61711d2408d6e0882",
+    "(-3, 3)": "75ba3fd4a15fc50536b90505c9de8a8d3bb1fcef1965b5116d76f0c9f8e4a477",
+    "(-3, 4)": "05f2b24a1754d2e5994db8477e6cee6dd89703f0c6f0f68375ddf2aa3167a88a",
+    "(-2, 1)": "0fb4ed4fa5120364756a19b01a4f9b6377f5902c91443e630f8d6963ea37964f",
+    "(-2, 2)": "1c2ce91982433b04220082e45e5f5f61db6a8d698a00b5eae88774da3eafd0ab",
+    "(-2, 3)": "e51200158b1734e081d5b839ef49b564eb5e5db999b5386cb3c604f9d8adbc99",
+    "(-2, 4)": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
+    "(-1, -1)": "5cd3ced29a0157e49ec460819099b11551e7fd681ff346a686ba5ae780f2a3fc",
+    "(-1, 0)": "eb780de636363b77d74a0a03488052b0bda5a042b241f0ae63132baac6691c85",
+    "(-1, 1)": "4d06065ddbdcda86d824d522384734a5e2760cf3b78792ed6b33aa17fd348881",
+    "(-1, 2)": "5ab00e9748acfd524c20d7b096b0a7e06bfbb9be5b7a6fd33c8008480e23f873",
+    "(-1, 3)": "1fda4d83c39e5f077538cc5bd4d0e4425ece7c06408d44c505853a83ce849cec",
+    "(0, -1)": "599f8116e6bbd69af681e59637da16e0825501fc8c613c377082f90d7ad945f7",
+    "(0, 0)": "ee7c37dbe7a259130eead031dca99432e92fb9a37e7c9e0e1dd22870b1bd419a",
+    "(0, 1)": "b3e59fada4a947fd7eac3b56f15eb8aba7998cc01753aa43b3da28237b70dd3d",
+    "(0, 2)": "856a9b25ad12386fe05a9fc9b6970c145c3af93c19a7b4bb9a4dfbbafc624f4b",
+    "(1, -2)": "b669d35c94928492c38ff7789d45485bbd1667a86eae517c0453870b6de00cda",
+    "(1, -1)": "370cfbe217458e86308671569bd190ab52f96978e6aea83c461badca26ae6b0d",
+    "(1, 0)": "2a12b793d966f00a237fa96c8ae76562c27d21fd224d3830c153e1363e70cbbb",
+    "(1, 1)": "1a05359599e4841c6576993d181d746e816ca16bcc0589438d765444dd21f58b",
+    "(1, 2)": "f25307ccbdfb4eb35de057eec9db1c0726328ae3e63ab4008681365f787eb503",
+    "(2, -3)": "22061a8319f64dd4165e13973b5f3664d2d81d99850d8cbf8029badfe2f4cd39",
+    "(2, -2)": "c710934da5efc34d88ba6c40a3c5788ee19e8f8021b07250dca9ff8f463a2753",
+    "(2, -1)": "94a595051c4ca4b327ae4f3cd1492393c6c23405b3b6e2c30e711c8fe1d56f5d",
+    "(2, 0)": "af1ca1c76f2765db73cb28f96990b90051f51394497beaf50b2a3a6a3ffe57a1",
+    "(2, 1)": "66544838e392c567b584e046fed5d17242eeb2363e6f021044c819849aabc5f7",
+    "(3, -3)": "02abe7a0e4271bae1e5bb7a85dc589fce87114b2ebce98e689a771b022fb9357",
+    "(3, -2)": "91e42355e2512b8b5c15ccaa59eeece40db3fb98b9775c6e7e63dda8356cc5ba",
+    "(3, -1)": "a1cf97782fc282345de19cd513295d8413d564dfe8eeb1e1edcf52d257f82ef1",
+    "(4, -3)": "3c92b2c8468537021db7171dbc4a171f0b16b89f94d11a87af2bfebd6910bc7e",
+    "(4, -2)": "93201bbd3c95ddb685da967a8b6f3381ec3023927ef0839275afa145916c7364"
+  },
+  "native_hole_fill_source": {
+    "reference": "domains/highway/implementation/scp_highway/native_overhangs.py",
+    "reference_sha256": "f98e3bd11b75b2a3108a01b122ea1d021a4daf9717199438def6c192d4245824",
+    "source_archive_sha256": "ccf8dabd3930fce92d0baa872ff974e3a536ddcc40762505a2e70eafcf9c0dfb",
+    "scope": "Frozen native DD top triangles, in their true approved city cells; each admitted complete new triangle is within two micrometres of one convex donor triangle and keeps the same raw native material."
+  },
+  "game_operation": "unverified",
+  "scope": "Exact actual body XYZ/material/winding and retained native-body UVs; actual-baseline affine unmasked DD vertex UVs; complete historical-to-candidate finite DD face-edge and centroid-fan support witnesses with the existing two-micrometre encoding certificate; candidate witnesses supported by history or a separately reported whole-face convex frozen-native-donor certificate; and coordinate-bounded oriented area. Historical remap holes repaired by new native coverage are explicitly reported. Changed paint and route-field UVs need their separate current saved-resource checks. No exact historical Boolean-union, structural-load, or game-appearance claim.",
+  "negative_controls": [
+    {
+      "mutation": "removed-through-lane-face",
+      "rejected": true,
+      "reason": "Shoulder revision removes or moves native DD coverage at an actual face witness: (-45.333333333333336, -50.666666666666664, 15.0) -> (-40.0, -40.0, 15.0)"
+    },
+    {
+      "mutation": "changed-unmasked-native-uv",
+      "rejected": true,
+      "reason": "Shoulder revision changes an unmasked native DD vertex or UV"
+    },
+    {
+      "mutation": "changed-authored-barrier-vertex",
+      "rejected": true,
+      "reason": "Shoulder revision changes a body pavement, barrier, underside, pier, raw material, or winding"
+    },
+    {
+      "mutation": "changed-raw-material",
+      "rejected": true,
+      "reason": "Shoulder revision changes a body pavement, barrier, underside, pier, raw material, or winding"
+    }
+  ],
+  "negative_controls_passed": true,
+  "reference_source": {
+    "manifest_sha256": "3f5ceaa269921f01d95bb892c67ab83f087595863e739b048f64f7109583b85b",
+    "asset_files": {
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-crossing.dat": "9d206635162e7c68916f5e96d8fae5e9b146d3c66f574dd90ecc13b4036c0105",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-northwest-terminal.dat": "c5910e22c5c198a9b15ca4c04583ac7278d930619f813e0d799e351e94c419cb",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-southeast-terminal.dat": "07af5ad782d448a2a23bb4b0b111caec710589f39f33a9a3c797948b32c684c2",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-slip.dat": "cfc03ce80a6c71fd0d9c710a02466e2115f2ee5786e61a73b173a4f652962b6d",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-slip.dat": "4081e4a11057d85d056b539a6ee9a0b1f4ed48c38d64a75cb10bf49fb6b8b211",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-slip.dat": "f08d356d7c190be7db2733f152b41717b7bb4f724b3e01d080ecd08c4b58e834",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-slip.dat": "28be50180363003ad44d8e89c1246fcdcd0452caf5b1689c1d3f358e19f31eb8",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-departure.dat": "0a6d2453e323c125f5cdfa109ccb9cb088d3fde5d5683efdf4b38b9bb9c14ef6",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-departure.dat": "7d155b51dc34d2771f6f41893583d28d6718e41de8b80887cccd1ccf7372f494",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat": "7e3f9e6d99c1cd9a7d3ff0bf5afc0cefeb6b167170ea8eb7a1b6e62fa45484bb",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-departure.dat": "a20db63ae0b353d4576ec6d094252c48b2d45c5902c566dc900c6576e39f2b16",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-grade.dat": "a5f6e4073e523e33d6d6a7b597ff7562ce968bb3dd93004c1a3f6fec809b930d",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-grade.dat": "283a324a47fe0b9539e0f2370b0d1ac26867e2fe4cb7e3dd6f94d181334928bf",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-grade.dat": "44311a0c2b5356af4d8a3f710ed3e8dcdd4a7db197d2dc573f43b861d7fc099f",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-grade.dat": "8ca115f58a10b4bc1615da082bac4714fc425410715cd9407a226b12e077bf07"
+    },
+    "actual_saved_dat_resources": true
+  },
+  "source": {
+    "manifest_sha256": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+    "asset_files": {
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-crossing.dat": "9d206635162e7c68916f5e96d8fae5e9b146d3c66f574dd90ecc13b4036c0105",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-northwest-terminal.dat": "57f704b36929ae76993e23771956099ee6a25cbc02f64d20a2fa4313518cf428",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-southeast-terminal.dat": "6a3d9f19f7a50781f64057fbd1df176799596e5a84da47066433a832d8ddf81d",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-slip.dat": "ac6f4e8613e86fc4efed2e3b0c344209f2c64f90f9007bd05f310fd124667bb1",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-slip.dat": "759f9876c39de54448a561cca4480c2e5ffe8565726d164c203807a92b1efb99",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-slip.dat": "2522a031fb91724d89ac2afb895ed19c381f27825d1487a7238b326d8c7a7add",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-slip.dat": "1441e18d313b00ece4e3575d253baa58fc036c8b8496fc61cc042b80cedd43c2",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-departure.dat": "20dbe47bb59516c6be06d632f9ceefe1ae9cff4e684a4b5439956c4b755347f6",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-departure.dat": "8dd0d80e6e6ec74ad1b21826bc7c04be0e95b95e62919bbe351db3a645319cba",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat": "cd99bf8f88f60440d5be481bb6218f6dd1fd387c4cb36e36a34ee490d6c13fae",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-departure.dat": "d7d45c1d47c57896742493d3cf3c6f6464e2a0a7533b8f23fca46d14b08ba42f",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-grade.dat": "9fd6ad3f7574a2361dfa69219ee9e5d7e3edb586cc417ecf2b1210df41a523c4",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-grade.dat": "283a324a47fe0b9539e0f2370b0d1ac26867e2fe4cb7e3dd6f94d181334928bf",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-grade.dat": "d62818493bbf76713d1f6adad1c711aaf872b6ec41d99aebd862de55349b97db",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-grade.dat": "8ca115f58a10b4bc1615da082bac4714fc425410715cd9407a226b12e077bf07"
+    },
+    "actual_saved_dat_resources": true
+  },
+  "generator_sha256": "98db825c1d80e82f2fa4bbdba194eb067a944b870414d45f260c11dc30ef6442"
+}

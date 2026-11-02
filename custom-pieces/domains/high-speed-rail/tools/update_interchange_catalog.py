@@ -63,8 +63,8 @@ def main():
     current = {piece['id']: piece for piece in catalog['pieces']}
     used_names = {piece['name'].casefold() for piece in catalog['pieces']}
     used_puzzles = {number(record['puzzle_id']) for record in ledger['pieces'].values()}
-    used_blocks = {number(value)&0xfffff000 for record in ledger['pieces'].values()
-                   for value in [record['preview_id'], *record['tile_ids'], *record.get('resource_blocks', [])]}
+    from scp.adaptive_network import allocation_blocks
+    used_blocks = {block for record in ledger['pieces'].values() for block in allocation_blocks(record)}
     additions, registered = [], []
     game_keys = catalog['pieces'][0]['game_tests']
     groups = {}

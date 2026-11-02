@@ -1,0 +1,339 @@
+// title: "Assembly definition: DD RHW-4 — Parallel Diagonal Avenue Diamond"
+// summary: "Define the placed reusable components and construction plan for this assembly."
+//
+// Used when: Contributors author this assembly, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: Contributors following custom-pieces/docs/WORKFLOW_ASSEMBLY_CREATION.md; scp.subject_sources.write_subject() preserves later edits.
+// Affects: Placed component positions and rotations, generated documentation, and the assembly’s component-cycle menu.
+{
+  "title": "DD RHW-4 \u2014 Parallel Diagonal Avenue Diamond",
+  "purpose": "Close parallel graded ramps beside a straight double-decker highway, with perpendicular right-turn-only Avenue approaches and independently placed functional components.",
+  "geometry_status": "Experimental native resource implementation; software and human observations retain separate scope.",
+  "coordinate_units": "metres east,north,height; rotations counterclockwise",
+  "coordinate_system": {
+    "origin_world_m": [
+      0.0,
+      -144.0
+    ],
+    "origin_name": "retained southwest tile-centre reference",
+    "tile_size_m": 16,
+    "tile_boundaries_offset_m": 8,
+    "axes": [
+      "east",
+      "north",
+      "height"
+    ]
+  },
+  "construction_rectangle_tiles": [
+    8,
+    8
+  ],
+  "reference_grid_rectangle_tiles": [
+    10,
+    10
+  ],
+  "occupied_tiles": 31,
+  "module_placements": 15,
+  "component_types_used": 15,
+  "separately_available_component_types": 15,
+  "traffic_policy": {
+    "ramp_access": "adjacent-carriageway right turns only",
+    "required_movements": [
+      "SW->NE",
+      "NE->SW",
+      "NW->SE",
+      "SE->NW",
+      "NE->NW",
+      "NW->SW",
+      "SW->SE",
+      "SE->NE"
+    ],
+    "forbidden_cross_avenue_turns": [
+      "NE->SE",
+      "SE->SW",
+      "SW->NW",
+      "NW->NE"
+    ]
+  },
+  "placements": [
+    {
+      "instance_id": "P01",
+      "label": "P01",
+      "piece_id": "ddrhw-parallel-crossing",
+      "origin_m": [
+        64.0,
+        -64.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        4,
+        5
+      ],
+      "name": "DD RHW-4 \u2014 L1/L2 over Avenue L0 \u2014 Diagonal 90\u00b0 \u2014 Parallel at P01",
+      "menu_name": "DD RHW-4 \u2014 L1/L2 over Avenue L0 \u2014 Diagonal 90\u00b0 \u2014 Parallel",
+      "recipe": "highway_ddrhw_parallel_crossing"
+    },
+    {
+      "instance_id": "P02",
+      "label": "P02",
+      "piece_id": "ddrhw-parallel-northwest-terminal",
+      "origin_m": [
+        48.0,
+        -48.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        3,
+        6
+      ],
+      "name": "Avenue \u2014 Northwest Avenue Right-Turn Terminal \u2014 Parallel DD RHW at P02",
+      "menu_name": "Avenue \u2014 Northwest Avenue Right-Turn Terminal \u2014 Parallel DD RHW",
+      "recipe": "highway_ddrhw_parallel_northwest_terminal"
+    },
+    {
+      "instance_id": "P03",
+      "label": "P03",
+      "piece_id": "ddrhw-parallel-southeast-terminal",
+      "origin_m": [
+        80.0,
+        -80.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        5,
+        4
+      ],
+      "name": "Avenue \u2014 Southeast Avenue Right-Turn Terminal \u2014 Parallel DD RHW at P03",
+      "menu_name": "Avenue \u2014 Southeast Avenue Right-Turn Terminal \u2014 Parallel DD RHW",
+      "recipe": "highway_ddrhw_parallel_southeast_terminal"
+    },
+    {
+      "instance_id": "P04",
+      "label": "P04",
+      "piece_id": "ddrhw-parallel-lower-exit-slip",
+      "origin_m": [
+        96.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        6,
+        8
+      ],
+      "name": "DD RHW-4 \u2014 L1 Exit Slip Lanes \u2014 Parallel at P04",
+      "menu_name": "DD RHW-4 \u2014 L1 Exit Slip Lanes \u2014 Parallel",
+      "recipe": "highway_ddrhw_parallel_lower_exit_slip"
+    },
+    {
+      "instance_id": "P05",
+      "label": "P05",
+      "piece_id": "ddrhw-parallel-lower-entry-slip",
+      "origin_m": [
+        16.0,
+        -96.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        1,
+        3
+      ],
+      "name": "DD RHW-4 \u2014 L1 Entry Slip Lanes \u2014 Parallel at P05",
+      "menu_name": "DD RHW-4 \u2014 L1 Entry Slip Lanes \u2014 Parallel",
+      "recipe": "highway_ddrhw_parallel_lower_entry_slip"
+    },
+    {
+      "instance_id": "P06",
+      "label": "P06",
+      "piece_id": "ddrhw-parallel-upper-exit-slip",
+      "origin_m": [
+        16.0,
+        -112.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        1,
+        2
+      ],
+      "name": "DD RHW-4 \u2014 L2 Exit Slip Lanes \u2014 Parallel at P06",
+      "menu_name": "DD RHW-4 \u2014 L2 Exit Slip Lanes \u2014 Parallel",
+      "recipe": "highway_ddrhw_parallel_upper_exit_slip"
+    },
+    {
+      "instance_id": "P07",
+      "label": "P07",
+      "piece_id": "ddrhw-parallel-upper-entry-slip",
+      "origin_m": [
+        112.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        7,
+        8
+      ],
+      "name": "DD RHW-4 \u2014 L2 Entry Slip Lanes \u2014 Parallel at P07",
+      "menu_name": "DD RHW-4 \u2014 L2 Entry Slip Lanes \u2014 Parallel",
+      "recipe": "highway_ddrhw_parallel_upper_entry_slip"
+    },
+    {
+      "instance_id": "P08",
+      "label": "P08",
+      "piece_id": "ddrhw-parallel-lower-exit-departure",
+      "origin_m": [
+        96.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        6,
+        8
+      ],
+      "name": "RHW Ramp \u2014 L1 Exit Lateral Departure \u2014 Parallel at P08",
+      "menu_name": "RHW Ramp \u2014 L1 Exit Lateral Departure \u2014 Parallel",
+      "recipe": "highway_ddrhw_parallel_lower_exit_departure"
+    },
+    {
+      "instance_id": "P09",
+      "label": "P09",
+      "piece_id": "ddrhw-parallel-lower-entry-departure",
+      "origin_m": [
+        16.0,
+        -96.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        1,
+        3
+      ],
+      "name": "RHW Ramp \u2014 L1 Entry Lateral Departure \u2014 Parallel at P09",
+      "menu_name": "RHW Ramp \u2014 L1 Entry Lateral Departure \u2014 Parallel",
+      "recipe": "highway_ddrhw_parallel_lower_entry_departure"
+    },
+    {
+      "instance_id": "P10",
+      "label": "P10",
+      "piece_id": "ddrhw-parallel-upper-exit-departure",
+      "origin_m": [
+        32.0,
+        -128.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        2,
+        1
+      ],
+      "name": "RHW Ramp \u2014 L2 Exit Lateral Departure \u2014 Parallel at P10",
+      "menu_name": "RHW Ramp \u2014 L2 Exit Lateral Departure \u2014 Parallel",
+      "recipe": "highway_ddrhw_parallel_upper_exit_departure"
+    },
+    {
+      "instance_id": "P11",
+      "label": "P11",
+      "piece_id": "ddrhw-parallel-upper-entry-departure",
+      "origin_m": [
+        128.0,
+        -32.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        8,
+        7
+      ],
+      "name": "RHW Ramp \u2014 L2 Entry Lateral Departure \u2014 Parallel at P11",
+      "menu_name": "RHW Ramp \u2014 L2 Entry Lateral Departure \u2014 Parallel",
+      "recipe": "highway_ddrhw_parallel_upper_entry_departure"
+    },
+    {
+      "instance_id": "P12",
+      "label": "P12",
+      "piece_id": "ddrhw-parallel-lower-exit-grade",
+      "origin_m": [
+        80.0,
+        -32.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        5,
+        7
+      ],
+      "name": "RHW Ramp \u2014 L1 Exit Parallel Grade \u2014 Parallel at P12",
+      "menu_name": "RHW Ramp \u2014 L1 Exit Parallel Grade \u2014 Parallel",
+      "recipe": "highway_ddrhw_parallel_lower_exit_grade"
+    },
+    {
+      "instance_id": "P13",
+      "label": "P13",
+      "piece_id": "ddrhw-parallel-lower-entry-grade",
+      "origin_m": [
+        32.0,
+        -80.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        2,
+        4
+      ],
+      "name": "RHW Ramp \u2014 L1 Entry Parallel Grade \u2014 Parallel at P13",
+      "menu_name": "RHW Ramp \u2014 L1 Entry Parallel Grade \u2014 Parallel",
+      "recipe": "highway_ddrhw_parallel_lower_entry_grade"
+    },
+    {
+      "instance_id": "P14",
+      "label": "P14",
+      "piece_id": "ddrhw-parallel-upper-exit-grade",
+      "origin_m": [
+        48.0,
+        -96.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        3,
+        3
+      ],
+      "name": "RHW Ramp \u2014 L2 Exit Parallel Grade \u2014 Parallel at P14",
+      "menu_name": "RHW Ramp \u2014 L2 Exit Parallel Grade \u2014 Parallel",
+      "recipe": "highway_ddrhw_parallel_upper_exit_grade"
+    },
+    {
+      "instance_id": "P15",
+      "label": "P15",
+      "piece_id": "ddrhw-parallel-upper-entry-grade",
+      "origin_m": [
+        96.0,
+        -48.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        6,
+        6
+      ],
+      "name": "RHW Ramp \u2014 L2 Entry Parallel Grade \u2014 Parallel at P15",
+      "menu_name": "RHW Ramp \u2014 L2 Entry Parallel Grade \u2014 Parallel",
+      "recipe": "highway_ddrhw_parallel_upper_entry_grade"
+    }
+  ],
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}

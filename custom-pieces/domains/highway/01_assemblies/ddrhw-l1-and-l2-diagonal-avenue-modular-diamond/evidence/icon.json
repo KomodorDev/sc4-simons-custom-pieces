@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "purpose": "Reproduce the corrected assembly schematic from 21 stamp-owned cells and independently placed full ramps.",
+  "basis": "Source routes clipped to actual construction owners and transformed by the registered assembly poses; no compiled model rendering.",
+  "generator": "scp_highway.icons.assembly_icon_routes and scp.menu_experiment_resources.make_assembly_icon",
+  "generation_scope": "Only this assembly was generated; retained assembly artwork was not refreshed.",
+  "reproduction_command": "python3 -B custom-pieces/scp.py assembly-icons --domain highway",
+  "reproduction_command_scope": "The shared command regenerates all registered highway assembly icons.",
+  "generator_sha256": {
+    "scp_highway.icons": "76f1fed986379480ed32c16479180d4aad8a74828dfe4ee9037f359e399d89b5",
+    "scp.menu_experiment_resources": "3b9f7d434caef9a193c59d1991079438ae9019edae667389e0e98d40f0a5774b"
+  },
+  "assembly_source_sha256": "01641b75f4d30cc6ddaada383491697ae5409af6e564bcd78565112d0503a940",
+  "placed_routes_sha256": "c5b517ef6fa095bea17c7051edb85ee781933d3d1f60e0c5a5be92ac41b8c41e",
+  "piece_definitions_sha256": {
+    "ddrhw-modular-highway-stamp": "10d9d9852e08e640c1dd24eb2857ff1a4efd173f04ffb87a4efd28d7bf279cec",
+    "ddrhw-modular-lower-exit-r40": "4969326cb9c8a1389963b54c543a84d55f89b0d4180757da7dc2bd9f39f7b54a",
+    "ddrhw-modular-lower-entry-r40": "0da038d6d77302f550152cce06d4c7f242870dc088fe4246afad67ea1a77bbce",
+    "ddrhw-modular-upper-exit-r40": "d0bd416b7926e5ad8ba9d463d095c8f30cf5ee700dcb4daa48c006984c481bfd",
+    "ddrhw-modular-upper-entry-r40": "c4577211430c15777c9711308fff1502b3550d95c2a9b8ad3a2e9fc134d3fd6e",
+    "ddrhw-modular-northwest-terminal-r40": "d2b4b2b1bd20f1f18e7bb75209570238fdd749abcfb73c8f3d4c682387f9ed0a",
+    "ddrhw-modular-southeast-terminal-r40": "f8c4edd0498f9688b13423e064f080c255111c596654c32f88aa314e49f435b6"
+  },
+  "labels": {
+    "brand": "SCP",
+    "category": "ASM",
+    "network": "HWY",
+    "footer_position": "bottom-centre"
+  },
+  "footer_ink_rows_px": [
+    33,
+    37
+  ],
+  "output": {
+    "path": "icon.png",
+    "sha256": "809a5a3d659e70673b33afde612870314b8a38fcbf9c427337a06cf502fdcbf0",
+    "dimensions_px": [
+      176,
+      44
+    ],
+    "frame_order": [
+      "locked",
+      "normal",
+      "selected",
+      "highlighted"
+    ],
+    "frame_size_px": [
+      44,
+      44
+    ]
+  },
+  "compiled_resource_verification": "separate",
+  "in_game_appearance": "unverified"
+}

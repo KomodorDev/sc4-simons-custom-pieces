@@ -17,6 +17,25 @@ from scp.dbpf import pack_dbpf
 from scp.install import FOLDER, RUL0, NETWORK_INI
 
 
+PARALLEL_B_RECIPES = {
+    "highway_ddrhw_parallel_b_crossing",
+    "highway_ddrhw_parallel_b_northwest_terminal",
+    "highway_ddrhw_parallel_b_southeast_terminal",
+    "highway_ddrhw_parallel_b_lower_exit_slip",
+    "highway_ddrhw_parallel_b_lower_entry_slip",
+    "highway_ddrhw_parallel_b_upper_exit_slip",
+    "highway_ddrhw_parallel_b_upper_entry_slip",
+    "highway_ddrhw_parallel_b_lower_exit_departure",
+    "highway_ddrhw_parallel_b_lower_entry_departure",
+    "highway_ddrhw_parallel_b_upper_exit_departure",
+    "highway_ddrhw_parallel_b_upper_entry_departure",
+    "highway_ddrhw_parallel_b_lower_exit_grade",
+    "highway_ddrhw_parallel_b_lower_entry_grade",
+    "highway_ddrhw_parallel_b_upper_exit_grade",
+    "highway_ddrhw_parallel_b_upper_entry_grade",
+}
+
+
 class DiscoveryTests(unittest.TestCase):
     def setUp(self):
         temporary = tempfile.TemporaryDirectory()
@@ -179,8 +198,86 @@ class InstallerSelectionTests(unittest.TestCase):
         self.assertEqual(actual, expected)
         self.assertIn("hsr-l2-over-road-l0-mixed-parallel-stack", actual)
         self.assertIn("hsr-l2-and-l4-two-track-curve-ramp-90deg-right", actual)
+        highway = [piece for piece in catalog["pieces"] if piece["domain"] == "highway"
+                   and piece["status"] != "draft"]
+        self.assertTrue(highway)
+        self.assertTrue(all(piece["id"] in actual for piece in highway))
+        self.assertTrue(any(not piece["enabled_by_default"] for piece in highway))
         self.assertEqual(len(actual), len(expected))
         self.assertGreater(len(actual), len([piece for piece in catalog["pieces"] if piece["enabled_by_default"]]))
+
+    def test_capabilities_use_finite_provider_recipes_for_both_domains(self):
+        from scp_highway import native, ramp_paths, modular_ramps, modular_stamp, parallel_layout
+        capabilities = service.implemented_recipes_by_domain()
+        self.assertEqual(set(capabilities), {"high-speed-rail", "highway"})
+        self.assertIsInstance(capabilities["highway"], frozenset)
+        self.assertEqual(capabilities["highway"], {native.RECIPE, modular_stamp.RECIPE,
+                                                 "highway_ddrhw_diagonal_ghsr_crossing",
+                                                 "highway_ddrhw_orthogonal_l0_transition",
+                                                 "highway_ddrhw_orthogonal_l0_transition_mirrored",
+                                                 "highway_ddrhw_diagonal_ghsr_crossing_alignment_b"} | {
+            item["recipe"] for provider in (ramp_paths, modular_ramps, parallel_layout)
+            for item in provider.module_catalog()["types"]} | PARALLEL_B_RECIPES)
+        self.assertIn("hsr_diagonal_ghsr", capabilities["high-speed-rail"])
+
+    def test_parallel_b_has_exactly_fifteen_finite_recipes_and_reaches_complete_selection(self):
+        catalog = load_catalog(ROOT)
+        identifiers = set(catalog["piece_sets"]["ddrhw-parallel-diamond-alignment-b"])
+        pieces = [piece for piece in catalog["pieces"] if piece["id"] in identifiers]
+        self.assertEqual(len(pieces), 15)
+        self.assertEqual({piece["recipe"] for piece in pieces}, PARALLEL_B_RECIPES)
+        capabilities = service.implemented_recipes_by_domain()["highway"]
+        self.assertEqual({recipe for recipe in capabilities if recipe.startswith("highway_ddrhw_parallel_b_")},
+                         PARALLEL_B_RECIPES)
+        self.assertTrue(identifiers <= set(service.all_implemented_ids(ROOT)))
+
+    def test_parallel_b_update_adds_fifteen_types_and_retains_the_previous_37_without_receipt_changes(self):
+        catalog = load_catalog(ROOT)
+        retained_assemblies = {"ddrhw-l1-and-l2-diagonal-avenue-diamond",
+                               "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond",
+                               "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond"}
+        previous = {row["piece_id"] for assembly in catalog["_assemblies"]
+                    if assembly["id"] in retained_assemblies for row in assembly["scene"]["placements"]}
+        previous.update(catalog["piece_sets"]["ddrhw-diagonal-ghsr-crossing-alignments"])
+        self.assertEqual(len(previous), 37)
+        added = set(catalog["piece_sets"]["ddrhw-parallel-diamond-alignment-b"])
+        self.assertEqual(len(added), 15)
+        self.assertFalse(previous & added)
+        receipt = {"piece_ids": sorted(previous)}
+        original = deepcopy(receipt)
+        plan = service.Installation(Path("game"), Path("Plugins"), (), "win32")
+        with patch.object(service, "_owned", return_value=receipt), \
+                patch("scp.install.install_build") as install:
+            selection = service.installed_selection(ROOT, plan)
+        self.assertTrue(previous | added <= set(selection))
+        self.assertEqual(receipt, original)
+        install.assert_not_called()
+
+    def test_parallel_b_unknown_recipe_cannot_hide_behind_the_implemented_prefix(self):
+        catalog = load_catalog(ROOT)
+        for recipe in ("highway_ddrhw_parallel_b_unknown", "highway_ddrhw_parallel_b_crossing_extra",
+                       "highway_ddrhw_parallel_b_upper_entry_grade_unimplemented"):
+            with self.subTest(recipe=recipe):
+                changed = deepcopy(catalog)
+                piece = next(row for row in changed["pieces"] if row["id"] == "ddrhw-parallel-b-crossing")
+                piece["recipe"] = recipe
+                with patch.object(service, "load_catalog", return_value=changed):
+                    with self.assertRaisesRegex(ValueError, "cannot prove an implementation.*ddrhw-parallel-b-crossing"):
+                        service.all_implemented_ids(ROOT)
+
+    def test_parallel_b_draft_exclusion_and_failed_placement_guard_remain_in_force(self):
+        catalog = load_catalog(ROOT)
+        changed = deepcopy(catalog)
+        piece = next(row for row in changed["pieces"] if row["id"] == "ddrhw-parallel-b-crossing")
+        piece.update(status="draft", recipe="highway_ddrhw_parallel_b_unimplemented")
+        with patch.object(service, "load_catalog", return_value=changed):
+            self.assertNotIn(piece["id"], service.all_implemented_ids(ROOT))
+        changed = deepcopy(catalog)
+        piece = next(row for row in changed["pieces"] if row["id"] == "ddrhw-parallel-b-crossing")
+        piece["game_tests"]["placement"] = "failed"
+        with patch.object(service, "load_catalog", return_value=changed):
+            with self.assertRaisesRegex(ValueError, "failed placement"):
+                service.all_implemented_ids(ROOT)
 
     def test_non_draft_record_with_no_implementation_blocks_complete_selection(self):
         catalog = deepcopy(load_catalog(ROOT))
@@ -189,12 +286,41 @@ class InstallerSelectionTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "cannot prove an implementation"):
                 service.all_implemented_ids(ROOT)
 
-    def test_failed_placement_guard_is_not_overridden(self):
+    def test_highway_prefix_or_another_domains_recipe_does_not_prove_implementation(self):
+        catalog = load_catalog(ROOT)
+        highway = next(piece for piece in catalog["pieces"] if piece["domain"] == "highway")
+        hsr_recipe = next(piece["recipe"] for piece in catalog["pieces"]
+                          if piece["domain"] == "high-speed-rail")
+        for recipe in ("highway_ddrhw_compact_unimplemented", "highway_ddrhw_modular_unimplemented", "highway_ddrhw_parallel_unimplemented", hsr_recipe):
+            with self.subTest(recipe=recipe):
+                changed = deepcopy(catalog)
+                next(piece for piece in changed["pieces"] if piece["id"] == highway["id"])["recipe"] = recipe
+                with patch.object(service, "load_catalog", return_value=changed):
+                    with self.assertRaisesRegex(ValueError, "cannot prove an implementation.*" + highway["id"]):
+                        service.all_implemented_ids(ROOT)
+
+    def test_unknown_domain_is_rejected_even_with_a_known_recipe(self):
         catalog = deepcopy(load_catalog(ROOT))
-        catalog["pieces"][0]["game_tests"]["placement"] = "failed"
+        catalog["pieces"][0]["domain"] = "unimplemented-domain"
         with patch.object(service, "load_catalog", return_value=catalog):
-            with self.assertRaisesRegex(ValueError, "failed placement"):
+            with self.assertRaisesRegex(ValueError, "cannot prove an implementation"):
                 service.all_implemented_ids(ROOT)
+
+    def test_unknown_draft_recipe_stays_out_of_complete_selection(self):
+        catalog = deepcopy(load_catalog(ROOT))
+        draft = next(piece for piece in catalog["pieces"] if piece["domain"] == "highway")
+        draft.update(status="draft", recipe="highway_ddrhw_compact_unimplemented")
+        with patch.object(service, "load_catalog", return_value=catalog):
+            self.assertNotIn(draft["id"], service.all_implemented_ids(ROOT))
+
+    def test_failed_placement_guard_is_not_overridden(self):
+        for domain in ("high-speed-rail", "highway"):
+            with self.subTest(domain=domain):
+                catalog = deepcopy(load_catalog(ROOT))
+                next(piece for piece in catalog["pieces"] if piece["domain"] == domain)["game_tests"]["placement"] = "failed"
+                with patch.object(service, "load_catalog", return_value=catalog):
+                    with self.assertRaisesRegex(ValueError, "failed placement"):
+                        service.all_implemented_ids(ROOT)
 
     def test_update_cannot_drop_an_installed_type_missing_from_new_source(self):
         plan = service.Installation(Path("game"), Path("Plugins"), (), "win32")
@@ -272,6 +398,17 @@ class CaptureTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "exact supported ordinary_road resource"):
             self.prepare()
         self.assertFalse((self.work / "local").exists())
+
+    def test_commented_audit_sources_preserve_capture_fingerprint_checks(self):
+        audit = (self.library / "audit.json").read_text()
+        (self.library / "audit.jsonc").write_text("// Migrated source audit.\n" + audit)
+        self.record["audit"] = "audit.jsonc"
+        roots, records = self.prepare()
+        self.assertEqual(next(roots[0].rglob(self.record["filename"])).read_bytes(), self.expected)
+        self.assertEqual(records[0]["sha256"], self.record["sha256"])
+        self.source.write_bytes(pack_dbpf({self.key: b"changed"}))
+        with self.assertRaisesRegex(ValueError, "exact supported ordinary_road resource"):
+            self.prepare()
 
     def test_duplicate_source_archives_are_not_load_order_guessed(self):
         duplicate = self.plugins / "another" / self.source.name

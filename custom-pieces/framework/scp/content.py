@@ -20,6 +20,7 @@ from pathlib import Path
 import re
 import shlex
 
+from .subject_sources import load_subject, source_path
 from .document_validation import (
     ASSEMBLY_README_CHAPTERS, ASSEMBLY_TESTING_LAYOUT_MARKER, PIECE_README_CHAPTERS,
     PIECE_TESTING_LAYOUT_MARKER, TESTING_CHAPTERS, validate_subject_documents,
@@ -233,7 +234,7 @@ def new_manual_record(subject_id, subject_kind, connections, fingerprints, previ
     resource_keys = [key for key in values if (subject_kind == 'assembly' or f':{subject_id}:' in key or key.endswith(':'+subject_id)) and key.split(':', 1)[0] in
                      ('model', 'path', 'construction', 'exemplar', 'effect', 'shadow', 'texture', 'resource', 'assembly_pose')]
     traffic_keys = [key for key in values if (subject_kind == 'assembly' or f':{subject_id}:' in key or key.endswith(':'+subject_id)) and key.split(':', 1)[0] in ('path', 'construction', 'graph', 'interface', 'assembly_pose')]
-    visual_keys = [key for key in values if (subject_kind == 'assembly' or f':{subject_id}:' in key or key.endswith(':'+subject_id)) and key.split(':', 1)[0] in ('model', 'shadow', 'texture', 'effect', 'assembly_pose')]
+    visual_keys = [key for key in values if (subject_kind == 'assembly' or f':{subject_id}:' in key or key.endswith(':'+subject_id)) and key.split(':', 1)[0] in ('model', 'shadow', 'texture', 'effect', 'exemplar', 'assembly_pose')]
     cases = [
         _new_case('software_resources', 'Verify the actual compiled resources and construction rules.',
                   {'subject_id': subject_id}, _dependencies(resource_keys, values)),
@@ -787,8 +788,8 @@ def render_connections(connections, *, piece_link=None, include_purpose=True, ma
         lines += ['| From service / port | To service / port | Reason |', '| --- | --- | --- |']
         ports={port['id']:port for port in connections.get('ports',[])}
         reasons={
-            'not reachable in actual saved PATH graph': 'No directed route exists between these ports in the saved piece transport paths. In-game confirmation remains unverified.',
-            'not reachable in actual saved assembly graph': 'No directed route exists between these ports in the saved assembly transport paths. In-game confirmation remains unverified.',
+            'not reachable in actual saved PATH graph': 'No directed route exists between these ports in the saved piece transport paths. In-game outcomes are recorded separately in the test checklist.',
+            'not reachable in actual saved assembly graph': 'No directed route exists between these ports in the saved assembly transport paths. In-game outcomes are recorded separately in the test checklist.',
         }
         for transfer in transfers:
             ends=[]
@@ -1054,8 +1055,8 @@ def _ensure_piece_document(directory, subject):
         else:
             readme.write_text(assembly_document_scaffold(subject)['README.md'])
         return readme
-    if (Path(directory)/'piece.json').is_file():
-        subject = {**json.loads((Path(directory)/'piece.json').read_text()), **subject}
+    if source_path(directory, 'piece', required=False) is not None:
+        subject = {**load_subject(directory, 'piece'), **subject}
     readme.write_text(piece_document_scaffold(subject)['README.md'])
     return readme
 
@@ -1116,8 +1117,8 @@ def _write_numbered_piece_views(directory, subject, connections, record, piece_l
     readme = Path(directory)/'README.md'
     # Observation-file updates carry only stable identity; resolve display facts
     # from the owning definition instead of erasing them from the overview.
-    if (Path(directory)/'piece.json').is_file():
-        subject = {**json.loads((Path(directory)/'piece.json').read_text()), **subject}
+    if source_path(directory, 'piece', required=False) is not None:
+        subject = {**load_subject(directory, 'piece'), **subject}
     title = subject.get('name', subject['id'])
     views = []
     for name, label in (('previews/preview.png', 'Clean angled view'), ('previews/preview-top.png', 'Clean top view')):
@@ -1184,8 +1185,8 @@ def _ensure_testing_document(directory, subject):
         return directory/'README.md'
     testing = directory/'TESTING.md'
     if not testing.is_file():
-        if subject['kind'] == 'piece' and (directory/'piece.json').is_file():
-            subject = {**json.loads((directory/'piece.json').read_text()), **subject}
+        if subject['kind'] == 'piece' and source_path(directory, 'piece', required=False) is not None:
+            subject = {**load_subject(directory, 'piece'), **subject}
         text = _testing_document_scaffold(subject)
         readme = directory/'README.md'
         if subject['kind'] == 'assembly' and readme.is_file() and re.findall(r'^## (.+)$', readme.read_text(), re.M) != list(ASSEMBLY_README_CHAPTERS):
@@ -1329,9 +1330,9 @@ def _require_current_observation_identity(directory, subject):
     """Require an observation record to belong to its authoritative subject."""
     directory = Path(directory)
     current_id = subject['id']
-    if subject['kind'] == 'piece' and (directory/'piece.json').is_file():
-        current_id = json.loads((directory/'piece.json').read_text())['id']
-    elif subject['kind'] == 'assembly' and (directory/'assembly.json').is_file():
+    if subject['kind'] == 'piece' and source_path(directory, 'piece', required=False) is not None:
+        current_id = load_subject(directory, 'piece')['id']
+    elif subject['kind'] == 'assembly' and source_path(directory, 'assembly', required=False) is not None:
         current_id = directory.name
     _require(current_id == subject['id'],
              'Manual record subject '+subject['id']+' does not match current subject '+current_id)

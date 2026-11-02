@@ -363,7 +363,9 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str) ->
                "--paths", str(runtime / "framework"),
                "--paths", str(runtime / "installer"),
                "--paths", str(runtime / "domains/high-speed-rail/implementation"),
+               "--paths", str(runtime / "domains/highway/implementation"),
                "--collect-submodules", "scp", "--collect-submodules", "scp_hsr",
+               "--collect-submodules", "scp_highway",
                "--collect-submodules", "scp_installer", "--collect-all", "PIL",
                "--collect-all", "numpy", "--hidden-import", "tkinter", "--hidden-import", "tkinter.ttk",
                "--hidden-import", "tkinter.filedialog", "--hidden-import", "tkinter.messagebox"]

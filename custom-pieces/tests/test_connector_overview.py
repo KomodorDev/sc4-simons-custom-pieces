@@ -43,6 +43,26 @@ def resolved_piece():
 
 @unittest.skipIf(overview is None, "Pillow/NumPy overview dependencies unavailable")
 class ConnectorOverviewTests(unittest.TestCase):
+    def test_camera_frames_high_ports_and_three_service_badges_without_changing_owned_grid(self):
+        records = [{'id': f'service-{index}', 'source_cell': [0, 0], 'boundary': 'North',
+                    'boundary_bundle_id': 'north-boundary', 'anchor_enh_m': None,
+                    'marker_enh_m': [0., 8., height],
+                    'members': [{'endpoint_m': [0., 8., height]}]}
+                   for index, height in enumerate((7.5, 15., 30.5))]
+        vertices = [(-8., 0., -8.), (8., 0., -8.), (8., 0., 8.), (-8., 0., 8.)]
+        local = {'bounds_world_m': [-8., -8., 8., 8.]}
+        before = deepcopy(records), deepcopy(vertices), deepcopy(local)
+        camera, frame = overview.make_overview_camera(vertices, records, local)
+        self.assertEqual((records, vertices, local), before)
+        self.assertTrue(frame['additional_stack_reserve_applied'])
+        for index, record in enumerate(records):
+            point = camera.project_world(*record['marker_enh_m'])
+            badge = overview.viewport_marker(point, index, camera.width)
+            self.assertGreaterEqual(badge[1], 24)
+            self.assertLessEqual(badge[1], camera.height + 4)
+            self.assertGreaterEqual(badge[0] + overview.PAGE_MARGIN, 24)
+            self.assertLessEqual(badge[0] + overview.PAGE_MARGIN, overview.PAGE_WIDTH - 24)
+
     def test_connection_cards_stay_within_both_numbered_readme_layouts(self):
         from scp.piece_matrix import LAYOUT_MARKER, SPLIT_LAYOUT_MARKER
         content = "## Connection overview\n\n### Boundary A\n\nMeasured facts.\n"

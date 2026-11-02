@@ -187,12 +187,13 @@ def _foreign_overlays(plugins: Path, managed: Path, controller: Path, *, extra_r
                 raise ValueError(f'Symbolic links are not allowed in Plugins: {path}')
         for key, paths in index_plugins(root, exclude=managed).items():
             locations.setdefault(key, []).extend(paths)
-    for resource in (RUL0, NETWORK_INI):
+    from .adaptive_network import RUL1
+    for resource in (RUL0, NETWORK_INI, RUL1):
         foreign = [path for path in locations.get(resource, [])
                    if Path(path).resolve() != controller]
         if foreign:
             raise ValueError(f'Foreign shared controller/NetworkINI overlay is installed: {foreign[0]}')
-        if not locations.get(resource):
+        if resource != RUL1 and not locations.get(resource):
             raise ValueError('The pinned NAM controller is missing a required shared resource')
 
 

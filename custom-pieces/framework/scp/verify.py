@@ -19,6 +19,11 @@ from .catalog import validate_catalog, auto_tile_base
 from .dbpf import entries, decompress, exemplar, encode_exemplar, tgi_string, require
 from .menu import validate_menu_resources, MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION
 from .models import parse_s3d, validate_s3d, valid_frame, positions
+from .adaptive_network import (RUL1, bindings as adaptive_bindings,
+    resource_keys as adaptive_resource_keys, validate_active_resources, CURSOR_BASE)
+from .native_approaches import verify_rul1, approaches as native_approaches
+from . import model_shadows
+from . import piece_menu_families
 
 RUL0 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000000)
 NETWORK_INI = (0, 0x8A5971C5, 0x8A5993B9)
@@ -28,6 +33,7 @@ EXEMPLAR = (0x6534284A, 0xA8434037)
 EFFECT = (0xEA5118B0, 0xEA5118B1)
 LTEXT = (0x2026960B, 0x2A592FD1)
 SHADOW = (0x7AB50E44, 0x2BC2759A)
+TEXTURE = (0x7AB50E44, 0x1ABE787D)
 EPS = 2e-6
 
 
@@ -80,7 +86,9 @@ def parse_paths(raw):
     require(len(lines) >= 5 and lines[0] == 'SC4PATHS' and lines[1] in {'1.1', '1.2'},
             'Unsupported SC4PATH format')
     count, stops, terrain = map(int, lines[2:5])
-    require(count > 0 and stops == 0 and terrain in {0, 1}, 'Invalid SC4PATH header')
+    # Audited NAM shoulder/barrier tiles use a real zero-route 1.2 PATH.
+    # Owning domain verifiers must still reject unexpected route-free cells.
+    require(count >= 0 and stops == 0 and terrain in {0, 1}, 'Invalid SC4PATH header')
     cursor, routes = 5, []
     for _ in range(count):
         fields = 5 if lines[1] == '1.1' else 6
@@ -141,6 +149,9 @@ GHSR_ROUTES = [
 
 
 def check_piece_paths(resources, piece):
+    if piece.get('domain', 'high-speed-rail') != 'high-speed-rail':
+        from .providers import domain_module
+        return domain_module(piece, 'verify').check_paths(resources, piece)
     if piece['recipe'].startswith('hsr_component_'):
         from scp_hsr.hsr_components_verify import check_paths
         return check_paths(resources, piece)
@@ -250,7 +261,17 @@ def rotated_mesh(source, angle):
 
 def check_piece_models(resources, piece, donors):
     render_report = check_piece_render_budget(resources, piece)
+    if adaptive_bindings(piece):
+        validate_active_resources(resources, piece)
     result = _check_piece_geometry(resources, piece, donors)
+    if piece.get('shadow_mode') == model_shadows.MODE:
+        shadow_report = model_shadows.validate_resources(resources, piece)
+        result['model_shadow_carriers'] = {key: value for key, value in shadow_report.items() if key != 'texture_ids'}
+        result['texture_ids'] = sorted(set(result['texture_ids']) | set(shadow_report['texture_ids']))
+    if adaptive_bindings(piece):
+        require(isinstance(result.get('adaptive_ground'), dict) and
+                result['adaptive_ground'].get('active_layer_verified') is True,
+                'Adaptive rendering requires an independent domain proof of its active geometry and PATH layers')
     result['render_groups'] = render_report
     return result
 
@@ -265,6 +286,8 @@ def check_piece_render_budget(resources, piece):
     keys = {(*S3D, number(piece['preview_id']))}
     keys.update((*S3D, number(tile) + zoom)
                 for tile in piece['tile_ids'] for zoom in range(5))
+    keys.update(key for key in adaptive_resource_keys(piece) if key[:2] == S3D)
+    keys.update(key for key in model_shadows.resource_keys(piece) if key[:2] == S3D)
     payloads = dict.fromkeys(resources[key] for key in sorted(keys))
     reports = [assert_render_budget(parse_s3d(raw)) for raw in payloads]
     return {'all_authored_groups_within_budget': True,
@@ -274,6 +297,9 @@ def check_piece_render_budget(resources, piece):
 
 
 def _check_piece_geometry(resources, piece, donors):
+    if piece.get('domain', 'high-speed-rail') != 'high-speed-rail':
+        from .providers import domain_module
+        return domain_module(piece, 'verify').check_models(resources, piece, donors)
     if piece['recipe'].startswith('hsr_component_'):
         from scp_hsr.hsr_components_verify import check_models
         return check_models(resources, piece, donors)
@@ -443,7 +469,7 @@ def check_emitted_runtime_addresses(fields, piece):
     row_anchors = [y for y, line in enumerate(rows) for symbol in line if symbol == '<']
     require(len(column_anchors) == len(row_anchors) == 1,
             'Emitted CellLayout requires one column anchor and one row anchor')
-    built = []
+    built, optional_cells = [], []
     for y, line in enumerate(rows):
         for x, symbol in enumerate(line):
             if symbol in '.^<':
@@ -452,6 +478,8 @@ def check_emitted_runtime_addresses(fields, piece):
                     'Emitted CellLayout uses an undefined construction symbol')
             if symbol == '+' or palette[symbol]:
                 built.append((x, y))
+            else:
+                optional_cells.append((x-column_anchors[0], y-row_anchors[0]))
     require(built, 'Emitted CellLayout contains no modeled cells')
     width, depth = piece['footprint']
     declared_cells = [tuple(cell) for cell in piece.get('cells',
@@ -462,7 +490,26 @@ def check_emitted_runtime_addresses(fields, piece):
             'Declared modeled cells do not uniquely identify the allocated models')
     intended = dict(zip(declared_cells, intended_ids))
     actual_cells = [(x-column_anchors[0], y-row_anchors[0]) for x, y in built]
-    require(set(actual_cells) == set(declared_cells),
+    adaptive = adaptive_bindings(piece)
+    native_helpers = native_approaches(piece)
+    if adaptive or native_helpers:
+        allowed_optional = {tuple(row['cell']) for row in (*adaptive, *native_helpers)}
+        require(set(optional_cells) == allowed_optional,
+                'Optional construction cells differ from declared adaptive and native helper bindings'
+                if native_helpers else
+                'Adaptive optional construction cells differ from their declared real-network bindings')
+    if adaptive:
+        adaptive_cells = {tuple(row['cell']) for row in adaptive}
+        intended = {cell: tile for cell, tile in intended.items() if cell not in adaptive_cells}
+        if not intended:
+            from .adaptive_network import construction_helper
+            helper = construction_helper(piece)
+            require(actual_cells == [helper] and
+                    any(compact(value) == 'z-road:0x02000200' for value in fields['CheckType']) and
+                    rows[row_anchors[0]+helper[1]][column_anchors[0]+helper[0]] == 'Z',
+                    'Fully adaptive construction requires its single native removable Road handle')
+            intended = {helper: CURSOR_BASE}
+    require(set(actual_cells) == set(intended),
             f'{piece["id"]}: emitted modeled cells differ from the allocated physical cells')
     origin_x, origin_y = min(x for x, _ in built), min(y for _, y in built)
     relative = [(x-origin_x, y-origin_y) for x, y in built]
@@ -488,6 +535,11 @@ def check_emitted_runtime_addresses(fields, piece):
 
 def check_construction(resources, pieces, manifest, donors):
     overlay = manifest['overlay']
+    plain_controller, plain_composition, family_report = piece_menu_families.verify(
+        resources[RUL0], overlay['rul0'], pieces, manifest.get(piece_menu_families.KEY))
+    if family_report is not None:
+        resources = {**resources, RUL0: plain_controller}
+        overlay = {**overlay, 'rul0': plain_composition}
     rul = overlay['rul0']
     suffix = rul['suffix'].encode('latin1')
     require(suffix and resources[RUL0].endswith(suffix), 'RUL0 appendix differs from manifest')
@@ -523,7 +575,11 @@ def check_construction(resources, pieces, manifest, donors):
         require(len(placement) == 5 and all(float(n) == 0 for n in placement[:4]) and
                 int(placement[4], 0) == preview, 'Wrong placement preview')
         require(compact(fields['ReplacementIntersection'][0]) == '0,0', 'Unexpected intersection replacement')
-        if piece['recipe'] == 'hsr_diagonal_ghsr':
+        if piece.get('domain', 'high-speed-rail') != 'high-speed-rail':
+            from .providers import domain_module
+            domain_module(piece, 'verify').check_construction_fields(fields, piece, resources)
+            independently_verified_construction = True
+        elif piece['recipe'] == 'hsr_diagonal_ghsr':
             cells, cons = ['.....', '..ys.<', '.rz..', '..^..'], ['...', '.+.<', '.+.', '.^.']
             checks = {'r-monorail:0x00010000,0x00ff0000optional', 's-monorail:0x00000001,0x000000ffoptional',
                       'y-monorail:0x02010200', 'z-monorail:0x02000201'}
@@ -602,8 +658,11 @@ def check_construction(resources, pieces, manifest, donors):
                 for piece in pieces for s in piece['shadow_mappings']}
     required = set()
     for piece in pieces:
+        if piece.get('shadow_mode') == model_shadows.MODE:
+            model_shadows.bindings(piece)
+            continue
         for index, tile in enumerate(map(number, piece['tile_ids'])):
-            if piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
+            if piece.get('shadow_mode') == 'generated' or piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
                 source, rotation = tile, 0
             elif piece['recipe'].startswith('diagonal_hsr_'):
                 source, rotation = 0x5DD01A00, index * 2
@@ -624,7 +683,8 @@ def check_construction(resources, pieces, manifest, donors):
     return {'original_rul0_restored': True, 'original_network_ini_restored': True,
             'separate_piece_menu_roots': len(rings), 'states_per_root': 8,
             'runtime_tile_addresses_checked': sum(len(piece['tile_ids']) for piece in pieces),
-            **ordering_report}
+            **({piece_menu_families.KEY: family_report} if family_report is not None else {}),
+            **ordering_report, **verify_rul1(resources, pieces, overlay, donors)}
 
 
 def _tgi(value):
@@ -712,21 +772,48 @@ def verify_build(output, write_report=True):
             resources.update(parsed); owners.update({key: item['path'] for key in parsed}); by_file[item['path']] = parsed
     donors, donor_report = load_local_donors(output, manifest)
     construction = check_construction(resources, pieces, manifest, donors)
+    hidden_menus = piece_menu_families.hidden_members(pieces)
     base_menu = donors.get((*MENU_EXEMPLAR, 0x6A47C200), menu_baseline())
-    expected_resources = {RUL0, NETWORK_INI}
+    expected_controller = {RUL0, NETWORK_INI} | ({RUL1} if any(
+        adaptive_bindings(piece) or native_approaches(piece) for piece in pieces) else set())
+    expected_resources = set(expected_controller)
     model_textures, piece_reports = set(), []
     for piece in pieces:
         tiles, preview = list(map(number, piece['tile_ids'])), number(piece['preview_id'])
         shadow_report = {'artwork': 'native NAM shadow remapping', 'in_game_shadow_selection_tested': False}
         asset_keys = {(*S3D, preview)}
+        adaptive_rows = adaptive_bindings(piece)
+        adaptive_tiles = {number(row['canonical_tile_id']) for row in adaptive_rows}
         for tile in tiles:
             asset_keys.update({(*S3D, tile + zoom) for zoom in range(5)})
-            asset_keys.update({(*PATH, tile), (*EXEMPLAR, tile), (*LTEXT, tile)})
+            asset_keys.update({(*PATH, tile), (*LTEXT, tile)})
+            if tile not in adaptive_tiles:
+                asset_keys.add((*EXEMPLAR, tile))
+                props = {number(prop['id']): prop['values']
+                         for prop in exemplar(resources[*EXEMPLAR, tile])['properties']}
+                require(props.get(0x10) == [11] and
+                        props.get(0x27812823) == [*S3D, *range(tile, tile + 5)],
+                        'Network exemplar points to wrong zoom models')
             require(piece['name'] in read_ltext(resources[*LTEXT, tile]), 'Piece query description mismatch')
-        if piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
+        adaptive_keys = adaptive_resource_keys(piece)
+        asset_keys.update(adaptive_keys)
+        carrier_keys = model_shadows.resource_keys(piece)
+        asset_keys.update(carrier_keys)
+        if piece.get('shadow_mode') == model_shadows.MODE:
+            shadow_report = model_shadows.validate_resources(resources, piece)
+        if adaptive_rows:
+            validate_active_resources(resources, piece)
+            from .preview import decode_fsh
+            for key in adaptive_keys:
+                if key[:2] == TEXTURE:
+                    image = decode_fsh(resources[key])
+                    require(image.width > 0 and image.height > 0, 'Invalid adaptive ground texture dimensions')
+        if piece.get('shadow_mode') == 'generated' or piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
             asset_keys.update({(*SHADOW, tile + zoom) for tile in tiles for zoom in range(5)})
             from .shadows import validate_piece_shadows
             shadow_report = validate_piece_shadows({key: resources[key] for key in asset_keys}, piece)
+        authored_textures = {(*TEXTURE, number(value)) for value in piece.get('authored_texture_ids', [])}
+        asset_keys.update(authored_textures)
         effect_keys = {key for key in resources if key[:2] == EFFECT and key[2] in {tiles[0], preview}}
         require(len(effect_keys) == 1, 'Missing or repeated per-piece preview effect')
         asset_keys.update(effect_keys)
@@ -734,21 +821,47 @@ def verify_build(output, write_report=True):
                 'Piece asset DAT contains missing, unexpected, or another piece resources')
         expected_resources.update(asset_keys)
         menu_id = number(piece['menu']['id'])
-        expected_resources.update({(*prefix, menu_id) for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)})
-        menu_report = validate_menu_resources(resources, base_menu, piece)
+        if piece['id'] not in hidden_menus:
+            expected_resources.update({(*prefix, menu_id) for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)})
+        if piece.get('domain', 'high-speed-rail') != 'high-speed-rail':
+            from .providers import domain_module
+            piece_menu_donor = domain_module(piece, 'menu').verification_donor(donors)
+        else:
+            piece_menu_donor = base_menu
+        menu_report = ({'presentation': 'hidden-alternative-family-member',
+                        'family_anchor': piece['menu']['family_anchor'], 'in_game_menu_tested': False}
+                       if piece['id'] in hidden_menus else
+                       validate_menu_resources(resources, piece_menu_donor, piece))
         try:
             paths_report = check_piece_paths(resources, piece)
-            models_report = check_piece_models(resources, piece, donors)
+            model_resources = by_file[piece['asset_file']] if piece.get('domain') == 'highway' else resources
+            models_report = check_piece_models(model_resources, piece, donors)
         except ValueError as error:
             raise ValueError(f'{piece["id"]}: {error}') from error
-        model_textures.update(models_report.pop('texture_ids'))
+        piece_texture_ids = set(models_report.pop('texture_ids'))
+        require({key[2] for key in authored_textures} <= piece_texture_ids,
+                'An owned texture is not referenced by its piece models')
+        if authored_textures:
+            from .preview import decode_fsh
+            for key in authored_textures:
+                atlas = decode_fsh(resources[key])
+                require(atlas.width > 0 and atlas.height > 0, 'Invalid owned texture dimensions')
+        model_textures.update(piece_texture_ids)
         effect = resources[next(iter(effect_keys))]
         effect_name = piece['effect_name'].encode('ascii')
         require(effect.count(effect_name) == 4 and effect.count(struct.pack('<I', preview)) == 2,
                 'Preview effect name/model references do not match the piece')
+        if piece.get('domain', 'high-speed-rail') != 'high-speed-rail':
+            from .providers import domain_module
+            domain_module(piece, 'recipes').validate_effect(piece, effect)
         if donors:
             from scp_hsr.crossings import INFO as CROSSINGS
-            if piece['recipe'] in CROSSINGS:
+            if piece.get('domain', 'high-speed-rail') != 'high-speed-rail':
+                from .providers import domain_module
+                key, name, native_model = domain_module(piece, 'recipes').effect_donor(piece)
+                require(key[:2] == EFFECT, 'Domain preview donor has the wrong resource type')
+                native_id, native_name = key[2], name.encode('ascii')
+            elif piece['recipe'] in CROSSINGS:
                 info = CROSSINGS[piece['recipe']]
                 native_id, native_name, native_model = info['effect'], info['effect_name'].encode('ascii'), info['effect']
             elif piece['recipe'].startswith('hsr_component_'):
@@ -785,17 +898,20 @@ def verify_build(output, write_report=True):
         piece_reports.append({'id': piece['id'], 'menu': menu_report, 'paths': paths_report,
                               'models': models_report, 'shadows': shadow_report})
     require(set(resources) == expected_resources, 'Unexpected or missing package resource')
-    require(owners[RUL0] == owners[NETWORK_INI] and set(by_file[owners[RUL0]]) == {RUL0, NETWORK_INI},
-            'Shared controller DAT must contain exactly one RUL0 and NetworkINI overlay')
+    require(all(owners[key] == owners[RUL0] for key in expected_controller)
+            and set(by_file[owners[RUL0]]) == expected_controller,
+            'Shared controller DAT must contain exactly its declared RUL0, NetworkINI, and optional RUL1 overlays')
     menu_keys = {(*prefix, number(piece['menu']['id'])) for piece in pieces
+                 if piece['id'] not in hidden_menus
                  for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)}
     require(set(by_file[f'{folder}/10_SCP_Menu.dat']) == menu_keys and
             owners[RUL0] == f'{folder}/00_SCP_Controller_NAM50.dat',
             'Shared controller and menu resources are not separated into their own DATs')
     deps = manifest['dependency_audit']
     textures, shadows = {_tgi(v) for v in deps['textures']}, {_tgi(v) for v in deps['shadows']}
-    require(all(key[:2] == (0x7AB50E44, 0x1ABE787D) for key in textures) and
-            {key[2] for key in textures} == model_textures,
+    owned_texture_ids = {key[2] for key in resources if key[:2] == TEXTURE}
+    require(all(key[:2] == TEXTURE for key in textures) and
+            {key[2] for key in textures} == model_textures - owned_texture_ids,
             'Declared texture dependencies do not exactly cover model material references')
     expected_shadows = {(*SHADOW, number(s['source']) + zoom) for piece in pieces
                         for s in piece['shadow_mappings'] for zoom in range(5)

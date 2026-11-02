@@ -1,0 +1,2155 @@
+{
+  "schema_version": 1,
+  "purpose": "Generated resolved connection description; edit source declarations or compiled resources, then refresh.",
+  "piece_id": "ddrhw-modular-lower-exit-compact",
+  "domain_id": "highway",
+  "source_binding": {
+    "compiled_build": "dist/ddrhw-straight-modular-ramp-kit-parts-01",
+    "compiled_manifest_sha256": "fc48bddc9bde2000a12c40ec0c0eb70e1051b4a586a87fea2715c50065e418ea",
+    "files": {
+      "dist/ddrhw-straight-modular-ramp-kit-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-lower-exit-compact.dat": "eeae5e6466488bb408d2e500d94a9097fd7989158b8d8fc115e0086536cb7df7",
+      "domains/highway/00_pieces/ddrhw-modular-lower-exit-compact/connections.json": "696dcb8611cb29032db93aa3135a5d2bc5446d86471ffa359cc80b6b525e64d9",
+      "domains/highway/00_pieces/ddrhw-modular-lower-exit-compact/connector-groups.jsonc": "2f4572211725daad76838f59f264e91443cd4d93a2857eb6cf5eda8f49ffc301",
+      "domains/highway/00_pieces/ddrhw-modular-lower-exit-compact/piece.jsonc": "955b0c15aa080d1a0fdf01c68dafe0460c28d01d4902a8b91ab1f3c467ef8da8",
+      "domains/highway/domain.jsonc": "8b59ed57d5af6aaefe67fdd0a16f1cae54f95e40f17723e477b3ded3a6bbd5c0",
+      "domains/highway/implementation/scp_highway/__init__.py": "cfe6194f65f8ddb8f171fc02c3ca2064cc0e5afcff9ad3e509c694c0785c3bb6",
+      "domains/highway/implementation/scp_highway/adaptive_ground.py": "9255b8474ed8aa90af05bcbcdfe96d3d8b8800b74d4c3542c7d03c252871870f",
+      "domains/highway/implementation/scp_highway/adaptive_verify.py": "0673abf5c64b3d335073bc177d12474ffaff4454b94a890675d9e5e0e3ca8454",
+      "domains/highway/implementation/scp_highway/assembly_verify.py": "36d2af65cbec8d1c6bae63e370977c97b7f231c8cb2efcee8968eb67e55af3ff",
+      "domains/highway/implementation/scp_highway/barrier_mouth_verify.py": "7133786407a5cac082b6d8c097a48cf4db7ded1e615ab2d3a906977679e070b1",
+      "domains/highway/implementation/scp_highway/connections.py": "e496c8eb569d8904a746c672073327c1c742c811a6ce09c0eedc11d681ddff9e",
+      "domains/highway/implementation/scp_highway/connector_contracts.py": "933af0cdf332cf494f795d5172603a702aa3372dc24e6a4750d447cd5c12d0fa",
+      "domains/highway/implementation/scp_highway/icons.py": "76f1fed986379480ed32c16479180d4aad8a74828dfe4ee9037f359e399d89b5",
+      "domains/highway/implementation/scp_highway/marking_verify.py": "00b83ad36189b030fdf23248c250115393da339cdf904d2201139bb5802014df",
+      "domains/highway/implementation/scp_highway/menu.py": "5955668a10922cd09ad06002bd7793055da03226e3b8b186190428fb36699514",
+      "domains/highway/implementation/scp_highway/modular_assembly_verify.py": "092ad0734b669c7c28e4ba5284013f4b13d2aa6eb120a8db7d7d574aa8f818b6",
+      "domains/highway/implementation/scp_highway/modular_connector_contracts.py": "ce8e765284ce2a625b979af3d5b4399ab946b5827c64a2485603dbe753c2d9da",
+      "domains/highway/implementation/scp_highway/modular_partition_verify.py": "6c23b77f8cbd890ae44219c71636c5557018e7d5ceff6a6eab3c903fc4572924",
+      "domains/highway/implementation/scp_highway/modular_ramps.py": "b3dc8d3a1680326802e29c07dd2ea125fb5e2624cf71377082c5812a5aa4433e",
+      "domains/highway/implementation/scp_highway/modular_stamp.py": "332aa5898a7a9616e8f569ea5aa01fef92d71705109b6137496584f8709cc307",
+      "domains/highway/implementation/scp_highway/modular_verify.py": "83e297c9e799934a03894316feadf9e4124817845b8de460258b1cd14e2c890b",
+      "domains/highway/implementation/scp_highway/native.py": "89b16ac53e7d5426a637dd917c085a6cd768db679fcc70b74eda05b98e7fe6a3",
+      "domains/highway/implementation/scp_highway/native_audit.py": "80358028133d5a2f955573e920febba8531f9eb9b9d841e22b9f1090cd20e25f",
+      "domains/highway/implementation/scp_highway/native_overhangs.py": "f98e3bd11b75b2a3108a01b122ea1d021a4daf9717199438def6c192d4245824",
+      "domains/highway/implementation/scp_highway/ramp_geometry.py": "f7093dc97cd93c329c075723f632bee55aea625d4962a7f9489095845786fb15",
+      "domains/highway/implementation/scp_highway/ramp_materials.py": "f172bd64ab0439b307cf38e6b00a8456724ebc0974c86122e372a60b0e4ed563",
+      "domains/highway/implementation/scp_highway/ramp_paths.py": "fb5333bd8f3e72e23ec133403c217579600a518e6a4d1ee34aebbbb6194b4413",
+      "domains/highway/implementation/scp_highway/ramp_verify.py": "34992437599b66e5d97dfa16b57fa58fba5b8e1d12cd988974d9b305ac6ba4e8",
+      "domains/highway/implementation/scp_highway/recipes.py": "72eaea2bee21400c7e36ea596f405c31f1e9db22c8e436b810fafbfa38ed9e39",
+      "domains/highway/implementation/scp_highway/shoulder_uv_verify.py": "5bb1bc1833235c61d21bfa555b21bfab447c3dd55f17eb69a6b108a668d1d237",
+      "domains/highway/implementation/scp_highway/slip_lanes.py": "008febbdb4a5b3bda210f090b8cf459b909ece26db347d94b5e2fc7a10b49154",
+      "domains/highway/implementation/scp_highway/straight_stamp_geometry.py": "c5af74ba32237efcd8b646c6005129419d70f7f5ac71f427ffcc9df0f690df8c",
+      "domains/highway/implementation/scp_highway/verify.py": "65dcb7d51a5ec4b9b51cb25a5e66fd5e632ca9ae16d7923f9c4f6c95546a0541",
+      "domains/highway/implementation/scp_highway/wheeltrack_verify.py": "3ca9967f6d531a9063c16faf80c0d67949dcc0be46e42e32d2e2ef626563535e",
+      "domains/highway/implementation/scp_highway/wheeltracks.py": "b65baee151fd7b643b1dd53d92226d96e5e977b4b665830ae50d779718931b61",
+      "framework/scp/__init__.py": "3a61c9211ff4d18e378254c7875d31825522f8184bb24011361834c44c2ec1f0",
+      "framework/scp/adaptive_network.py": "1ed7cdcd915233fc4925a60663726262bd4306a43d50fdfaaa8995bfd7bc1b51",
+      "framework/scp/assembly_matrix.py": "d301a43d5cc4982407aec9b6ec76731fbb570408525dea237401b019690ece8a",
+      "framework/scp/autotile.py": "3bf7aec47fefc83efd89836128cc606adf49b128cecf71e328c4493cd918b6cd",
+      "framework/scp/build.py": "a44100ffe680e87f3fbb3f8370334673d5090889c3c1a2c6d192d8bfa3315511",
+      "framework/scp/catalog.py": "811b16605ca0f7140dec6214811521a135d9d7cd7e75e4971db0a661736062da",
+      "framework/scp/check_bootstrap.py": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4",
+      "framework/scp/checks.py": "43af6deac2016862cc090edc00415474c2d02b34dc3c39a51952dc32d0c17128",
+      "framework/scp/city_grid.py": "58560c2409e7e309b9f0030b6e765840a34fd5e9859fa93e78eb55de014776e5",
+      "framework/scp/connectivity.py": "9709f5d80440c28e666d06e6413fc3cb697e6454aa66229eb9b562489ecc76f2",
+      "framework/scp/connector_metadata.py": "1ee63694f82e64b61a25634d6ef56db093af0403780021b14731c7f8ecb41e1b",
+      "framework/scp/connector_overview.py": "23a6fb505bb13e981dfa6e363cede1445a6f9ee91404b62189dd041ea03886de",
+      "framework/scp/content.py": "975bafa4a5137cc7b6e3e7c08efc7950dd82eb3c47b84fcd2a962ed12c749100",
+      "framework/scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+      "framework/scp/design_review.py": "7d0c90af8b7ff3c67a8b56c10283f1b7253d9c72e1273626e71260991b2befaa",
+      "framework/scp/document_validation.py": "0550ee6471f379e404c9ea885da8accc3b32c006b344463e9c67cd32ecd4eacb",
+      "framework/scp/documentation_check.py": "0a3034e22d5852495ed9b6c8edb628f7152100ee0e7b8e75e5ba43694080842d",
+      "framework/scp/export.py": "440b821a1cb214b437a166fb8761271449947ef206b1594bf753dc08bae7000c",
+      "framework/scp/install.py": "c3bed215d764154f47c9d3e0285f7dc51737eb230c07c48ba8aa610182766df1",
+      "framework/scp/inventory.py": "838ef5bd9b5233813cf0c06c094e03b8fc568149e6bade501d1017612d31277c",
+      "framework/scp/jsonc.py": "5ca803292230dcbcb6ea752548743b0e2abb7ca63a0b3bfb843c2500696be95a",
+      "framework/scp/markdown_navigation.py": "7410f90ef85aca23d5ffe018b915d901e5ccd2c647ecb136df540c3bb8bb1d78",
+      "framework/scp/menu.py": "905a7cab6d20284558386b268df3157778ff135dee024b5c1ed6025ed599e607",
+      "framework/scp/menu_experiment.py": "8c742da684b015d66184944e8e4dd5e2c69c69ad335646db817d73e46d20ea6d",
+      "framework/scp/menu_experiment_resources.py": "3b9f7d434caef9a193c59d1991079438ae9019edae667389e0e98d40f0a5774b",
+      "framework/scp/model_equivalence.py": "d7589591d3e0edae48153c076e055f7e44910efe4b25ed0689b5d330bdc2cec7",
+      "framework/scp/model_outlines.py": "349d479e1c1e09efaf6f884829f1971852c71d06327c007549469b54d055a542",
+      "framework/scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f",
+      "framework/scp/paths.py": "24f6ee0ab9b2181a041813ac2bae93b6e6eed6d7339bb3d3465765d52d1d95b5",
+      "framework/scp/piece_matrix.py": "e42427b894c41f1e5b9b718d82b780f990e8d60663c2edffe399b2238388c3d8",
+      "framework/scp/piece_previews.py": "cb26ba733fe300a3cc832dec1696877e35976219c8e1cc4dc99394fb78c52cbe",
+      "framework/scp/preview.py": "30e099f296b95b1868ef047094abe242b8026524dfdbd13f9719e0a93a4dc112",
+      "framework/scp/providers.py": "22791a2d9760fa01be1ef07e72cff682147fdddaa8f3b61df248be9748e5a250",
+      "framework/scp/recipes.py": "494170f5a87c6552f98a43c94338aa2d4a21b436c2327af586e0a5b3796e8399",
+      "framework/scp/registration.py": "0968b701036f47ac2b3375819f5ce4c0e58a5a13a75a8985193617010448af6f",
+      "framework/scp/release.py": "ccadc4069625be5317281fd4d482acb835b6b3ea687f17d886dc42c4d4d473d1",
+      "framework/scp/render_headers.py": "9f514a58400ed38c12d804ba407039824344ec097f3d1c34c398951b0c0af44e",
+      "framework/scp/render_meshes.py": "e634e9c4070bbafb4c2d6c7751ad77075f31e65412f3978ba17cf7fea4c66f0b",
+      "framework/scp/resource_audit.py": "a0dac854453c6fe06ca87635e7f6646df6bd748b0f3354c23cdfff965b4e3f40",
+      "framework/scp/rul0.py": "850433da0b6e4ccde890d6bff69d2548464eafe0e30accbe2c5815e9deae9a07",
+      "framework/scp/shadows.py": "1bd77861dcb4ea3164058c39673540c50ca70edc0a0ed11e1938f783ab195540",
+      "framework/scp/subject_sources.py": "228a178f954b399b0046002fc734fd4710dd272040653569c281e5c42a59042d",
+      "framework/scp/test_support.py": "0eea228cc60c81e71dd57abe4f97ce13d2e17ac17ca7566d2cd779d689d66c22",
+      "framework/scp/track_paths.py": "cab40f75c073202ee07128fb7fc07e1b50498033794db90ca9629c8290147b51",
+      "framework/scp/verification_fixtures.py": "0febc2b8c46b88b40dd40fec13c5dee6cf6a767639fd7040bc0ddf82001f4ecd",
+      "framework/scp/verify.py": "229c38d01d2560e82a782291996a9cd87e05f714888dd00e65919d0e0d19d7ac",
+      "schemas/connector-data.schema.jsonc": "4e5ee07557da887a543a2292d3f9e7c103d81c15e95d6f677b7fc79fa2e11fd6",
+      "schemas/connector-groups.schema.jsonc": "ebf88cca8a6510c199525f0e5fbab6640e55570b70e13ca5b294fac4de2a879f",
+      "schemas/connector-profiles.schema.jsonc": "e96dbb769f2e63eec3514707f3b47d9262563a2d0227a5d6d0f3f1d877d404ff"
+    }
+  },
+  "coordinate_convention": {
+    "units": "metres",
+    "axes": [
+      "east",
+      "north",
+      "height"
+    ],
+    "tile_metres": 16,
+    "heading": "outward; 0 degrees north, clockwise in plan view",
+    "slope": "outward rise/run at the edge; percent = 100 * grade"
+  },
+  "resolved_piece": {
+    "id": "ddrhw-modular-lower-exit-compact",
+    "piece": {
+      "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 Lower Full Exit Ramp \u2014 Compact.",
+      "schema_version": 1,
+      "id": "ddrhw-modular-lower-exit-compact",
+      "domain": "highway",
+      "recipe": "highway_ddrhw_modular_lower_exit_compact",
+      "geometry_key": "lower-exit-compact",
+      "enabled_by_default": false,
+      "status": "experimental",
+      "puzzle_id": "f843",
+      "preview_id": "7f5a7ff5",
+      "effect_name": "preview_scp_hw_f843_____001",
+      "orientation_count": 8,
+      "dependencies": [
+        "controller",
+        "dd_rhw",
+        "rhw_core",
+        "mis"
+      ],
+      "menu": {
+        "id": "6a47f843",
+        "order": "ffffff43",
+        "style": "ddrhw-ramp"
+      },
+      "shadow_mode": "generated",
+      "provenance": {
+        "geometry": "Complete compact ramp body, including the separately rendered high throat.",
+        "construction": "Disjoint ramp-owned cells plus explicit model overhang into highway-owned cells.",
+        "redistribution": "permission-pending",
+        "partition_review": "Corrected straight21-cell highway stamp; all four complete curved high throats belong to separate ramps. Retains puzzle, menu, preview, and reserved block identities. Uninstalled prototype local tile slots follow the reviewed new AutoTileBase grid."
+      },
+      "game_tests": {
+        "placement": "unverified",
+        "traffic_both_directions": "unverified",
+        "no_unwanted_transfers": "unverified",
+        "rotations_and_mirrors": "unverified",
+        "shadows": "unverified",
+        "demolition": "unverified",
+        "save_reload": "unverified"
+      },
+      "name": "RHW Ramp \u2014 Lower Full Exit Ramp \u2014 Compact",
+      "description": "Separately placed Lower Exit Ramp \u2014 Compact. Includes its entire curved high throat at the highway cutout, including explicit model overhang. Construction and traffic-path ownership remain disjoint.",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "engineering": {
+        "max_grade_percent": 30.0,
+        "pavement_path_offset_m": 0.0,
+        "car_corridor_half_width_m": 1.25,
+        "car_corridor_height_m": 3.8,
+        "model_only_cells": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "tile_ids": [
+        "7f5a7000",
+        "7f5a7100",
+        "7f5a7010"
+      ],
+      "shadow_mappings": [
+        {
+          "tile": "7f5a7000",
+          "source": "7f5a7000",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a7100",
+          "source": "7f5a7100",
+          "rotation": 0
+        },
+        {
+          "tile": "7f5a7010",
+          "source": "7f5a7010",
+          "rotation": 0
+        }
+      ],
+      "model_overhang_source_cells": [
+        [
+          3,
+          -3
+        ],
+        [
+          2,
+          -2
+        ]
+      ],
+      "model_overhang_contract": "Retained indexed high-throat faces; construction and PATH ownership do not overlap."
+    },
+    "connections": {
+      "schema_version": 1,
+      "purpose": "Intrinsic saved-resource endpoints, service roles, directed journeys, and forbidden transfers for one piece.",
+      "subject_id": "ddrhw-modular-lower-exit-compact",
+      "subject_kind": "piece",
+      "source": {
+        "basis": "actual decompressed saved resources",
+        "resource_fingerprints": {
+          "effect:ddrhw-modular-lower-exit-compact:ea5118b0-ea5118b1-7f5a7ff5": "bd81398bda1a9e103c514aea2d6c65119cb4c30a096fab82ddd284535219db8e",
+          "exemplar:ddrhw-modular-lower-exit-compact:6534284a-a8434037-7f5a7000": "7c6c701b650bbeba262f9697b7b59a5f31030cf6386f4ceb40015a1ab5b974cf",
+          "exemplar:ddrhw-modular-lower-exit-compact:6534284a-a8434037-7f5a7010": "708ae82e11f686773e6ab79ed3e4893465aa0d196ecd5101083ba89086e96fd8",
+          "exemplar:ddrhw-modular-lower-exit-compact:6534284a-a8434037-7f5a7100": "3244964d86fedbc55e195fa5701517039801c552084490e2baada4377e41eb23",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7000": "715d2377186dc9bba23502e0bc7484a64610fe18bf52c948a88d1894ab78c991",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7001": "715d2377186dc9bba23502e0bc7484a64610fe18bf52c948a88d1894ab78c991",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7002": "715d2377186dc9bba23502e0bc7484a64610fe18bf52c948a88d1894ab78c991",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7003": "715d2377186dc9bba23502e0bc7484a64610fe18bf52c948a88d1894ab78c991",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7004": "715d2377186dc9bba23502e0bc7484a64610fe18bf52c948a88d1894ab78c991",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7010": "ef45fbd7a62f549d6f07de9717094e9d913342bfc5715a59a649d957b0b7c888",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7011": "ef45fbd7a62f549d6f07de9717094e9d913342bfc5715a59a649d957b0b7c888",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7012": "ef45fbd7a62f549d6f07de9717094e9d913342bfc5715a59a649d957b0b7c888",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7013": "ef45fbd7a62f549d6f07de9717094e9d913342bfc5715a59a649d957b0b7c888",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7014": "ef45fbd7a62f549d6f07de9717094e9d913342bfc5715a59a649d957b0b7c888",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7100": "365612945d0d5fa9c22a0d254bcf21ac8aedd23fad8c2b0ea18bd6cfaf1fb598",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7101": "365612945d0d5fa9c22a0d254bcf21ac8aedd23fad8c2b0ea18bd6cfaf1fb598",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7102": "365612945d0d5fa9c22a0d254bcf21ac8aedd23fad8c2b0ea18bd6cfaf1fb598",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7103": "365612945d0d5fa9c22a0d254bcf21ac8aedd23fad8c2b0ea18bd6cfaf1fb598",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7104": "365612945d0d5fa9c22a0d254bcf21ac8aedd23fad8c2b0ea18bd6cfaf1fb598",
+          "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7ff5": "97c65bbabbdb35f2c4f0a4c6396308fc49561af6136b183b3cbee80335dfef02",
+          "path:ddrhw-modular-lower-exit-compact:296678f7-a966883f-7f5a7000": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "path:ddrhw-modular-lower-exit-compact:296678f7-a966883f-7f5a7010": "3fa3875bfe066b48f923a6bc87bdc43c0eb588f03d1071e65c6ec1705f7ecec7",
+          "path:ddrhw-modular-lower-exit-compact:296678f7-a966883f-7f5a7100": "4f1eb2f32e198e328bde23035c6892c308424cbeb02e70180afa46acf7d17d2d",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7000": "fb8a90f6731d6d2eecef052950c710e465cb3ad28c61215d03426f3bc5181421",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7001": "a0afe51223fad5f76ce98ffe4c345e0997d2622e19125a441b38fe9ab11411dd",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7002": "d3e59f5cd4c1a902d10705b1f1d3c47328deb992055cdf9743b7e4b86b62d1c1",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7003": "b3f2db45602885c3f83279492fe9cbc10808d766142c559ee352f1d3e4415e89",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7004": "c37335d12ef8e4cd99aeaffe929b590eb48c11fc5ad2a95edc14cc1310b7b4cf",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7010": "0e81886b4c29a878f979106a5654a21be5eaacd3c973bcac8b350c981db6e05d",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7011": "6fb7156bd2b5d7d4bceb5b43b68353d15821c54570cb47141792f2f0900347e0",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7012": "f141b2206d90a6f2e9ce2942cc523a427488bb50905f10253f94b66db758f53b",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7013": "0f83284dcfc83b586cc840a3ae0a3bdd75c6ddba7ba534ef1159b167b359cc38",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7014": "64b3cfd69a6ca67348aa60ce6bf057d97638e3bdd3ecbba8ec3bb838c30e6b6e",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7100": "e935cf6d3cb800181622c220df70c5130759acaa7cfdcbd6202e94cd539c3db4",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7101": "6479c009b882b783d130cc7e2334af2b9cf070271f95584da5a3ed66aeac7d0b",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7102": "29483ba3db7506aebd59d8ac4140273d1dc51fa62a4469a84e0fbdd622400eac",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7103": "3b30afbe2777f25e48da14964ee3c14f091fd159d67c1a6e7652bf5601f7bd51",
+          "shadow:ddrhw-modular-lower-exit-compact:7ab50e44-2bc2759a-7f5a7104": "9a54de8661fc7ceff2f001b732e745f9870ae4fd24409e698a2a35a128280507",
+          "text:ddrhw-modular-lower-exit-compact:2026960b-2a592fd1-7f5a7000": "3ec0962c31d7ed6524fa068c77c0c499018f4533de922130d18a58aba802ccf1",
+          "text:ddrhw-modular-lower-exit-compact:2026960b-2a592fd1-7f5a7010": "3ec0962c31d7ed6524fa068c77c0c499018f4533de922130d18a58aba802ccf1",
+          "text:ddrhw-modular-lower-exit-compact:2026960b-2a592fd1-7f5a7100": "3ec0962c31d7ed6524fa068c77c0c499018f4533de922130d18a58aba802ccf1",
+          "construction:ddrhw-modular-lower-exit-compact": "ec406c99c666b55cda9b95292dc5c6d77d0755b34b91c907b6b3bc175e2cfe12"
+        },
+        "reviewed_contract_available": true,
+        "scope": "one piece only; no counterpart catalogue is consulted",
+        "construction_basis": "Actual emitted per-piece rule sections from the independently verified saved build"
+      },
+      "coordinate_units": "metres east,north,height; canonical orientation 0 degrees",
+      "ports": [
+        {
+          "id": "1-W-out-1",
+          "direction": "out",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "access-ramp",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 0,
+          "endpoint_m": [
+            -8.0,
+            -14.245568,
+            3.000444
+          ],
+          "tangent": [
+            -0.9442561859245556,
+            -0.3292115662354699
+          ],
+          "sampled_tangent": [
+            -0.9442561859245555,
+            -0.3292115662354698
+          ],
+          "grade": -0.226761428,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7010",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7011",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7012",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7013",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7014",
+            "path:ddrhw-modular-lower-exit-compact:296678f7-a966883f-7f5a7010",
+            "construction:ddrhw-modular-lower-exit-compact"
+          ],
+          "source_route_ids": [
+            "path-7f5a7010-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                1
+              ],
+              "edge": 0,
+              "tile_id": "7f5a7010"
+            }
+          ],
+          "connection_class": "path-interface-aeabf380377c95bbb5f1"
+        },
+        {
+          "id": "1-E-in-2",
+          "direction": "in",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "access-ramp",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 2,
+          "endpoint_m": [
+            8.0,
+            -10.207444,
+            6.745132
+          ],
+          "tangent": [
+            -0.9793492239542138,
+            -0.2021759074179693
+          ],
+          "sampled_tangent": [
+            -0.9793492239542136,
+            -0.20217590741796929
+          ],
+          "grade": -0.226757443,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7010",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7011",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7012",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7013",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7014",
+            "path:ddrhw-modular-lower-exit-compact:296678f7-a966883f-7f5a7010",
+            "construction:ddrhw-modular-lower-exit-compact"
+          ],
+          "source_route_ids": [
+            "path-7f5a7010-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                0,
+                1
+              ],
+              "edge": 2,
+              "tile_id": "7f5a7010"
+            }
+          ],
+          "connection_class": "path-interface-daca863776677fe500f2"
+        },
+        {
+          "id": "1-S-out-3",
+          "direction": "out",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "dd-rhw-l1",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 3,
+          "endpoint_m": [
+            17.960601,
+            -8.0,
+            7.5
+          ],
+          "tangent": [
+            -0.969170208591516,
+            -0.24639218083915987
+          ],
+          "sampled_tangent": [
+            -0.9691702085915159,
+            -0.24639218083915984
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7100",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7101",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7102",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7103",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7104",
+            "path:ddrhw-modular-lower-exit-compact:296678f7-a966883f-7f5a7100",
+            "construction:ddrhw-modular-lower-exit-compact"
+          ],
+          "source_route_ids": [
+            "path-7f5a7100-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                1,
+                0
+              ],
+              "edge": 3,
+              "tile_id": "7f5a7100"
+            }
+          ],
+          "connection_class": "path-interface-3dcc6d5eb15355745274"
+        },
+        {
+          "id": "1-E-in-4",
+          "direction": "in",
+          "service_network": "road",
+          "service_family": "road",
+          "variant": "dd-rhw-l1",
+          "role": "primary",
+          "channel_kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ],
+          "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+          "engine_transport": 1,
+          "edge": 2,
+          "endpoint_m": [
+            24.0,
+            -6.634072,
+            7.5
+          ],
+          "tangent": [
+            -0.9935463584813209,
+            -0.11342677615319352
+          ],
+          "sampled_tangent": [
+            -0.9935463584813209,
+            -0.11342677615319352
+          ],
+          "grade": 0.0,
+          "lane_spacing_m": null,
+          "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+          "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+          "endpoint_basis": "actual_saved_PATH",
+          "tangent_basis": "reviewed_contract",
+          "resource_keys": [
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7100",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7101",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7102",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7103",
+            "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7104",
+            "path:ddrhw-modular-lower-exit-compact:296678f7-a966883f-7f5a7100",
+            "construction:ddrhw-modular-lower-exit-compact"
+          ],
+          "source_route_ids": [
+            "path-7f5a7100-route-000"
+          ],
+          "boundary_sources": [
+            {
+              "cell": [
+                1,
+                0
+              ],
+              "edge": 2,
+              "tile_id": "7f5a7100"
+            }
+          ],
+          "connection_class": "path-interface-34a26816572a48081146"
+        }
+      ],
+      "journeys": [
+        {
+          "id": "1:1-E-in-2>1-W-out-1",
+          "entry_port": "1-E-in-2",
+          "exit_port": "1-W-out-1",
+          "service_network": "road",
+          "role": "primary",
+          "engine_transport_classes": [
+            1
+          ],
+          "endpoint_variants": [
+            "access-ramp",
+            "access-ramp"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        },
+        {
+          "id": "1:1-E-in-4>1-S-out-3",
+          "entry_port": "1-E-in-4",
+          "exit_port": "1-S-out-3",
+          "service_network": "road",
+          "role": "primary",
+          "engine_transport_classes": [
+            1
+          ],
+          "endpoint_variants": [
+            "dd-rhw-l1",
+            "dd-rhw-l1"
+          ],
+          "basis": "reachability_in_actual_saved_PATH_graph"
+        }
+      ],
+      "forbidden_transfers": [
+        {
+          "from_port": "1-E-in-2",
+          "to_port": "1-S-out-3",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        {
+          "from_port": "1-E-in-4",
+          "to_port": "1-W-out-1",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        }
+      ],
+      "compatibility_policy": "Complete-boundary compatibility is computed separately from validated exports; no counterpart shortlist is included.",
+      "software_status": {
+        "path_extraction": "passed",
+        "contract_consistency": "passed",
+        "physical_seams": "unverified",
+        "in_game": "unverified"
+      },
+      "supported_orientations": [
+        {
+          "rotation_ccw_degrees": 0,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0000f843",
+            "0004f843"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 90,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0003f843",
+            "0007f843"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 180,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0002f843",
+            "0006f843"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        },
+        {
+          "rotation_ccw_degrees": 270,
+          "construction_transposed": false,
+          "construction_section_ids": [
+            "0001f843",
+            "0005f843"
+          ],
+          "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+        }
+      ]
+    },
+    "metadata": {
+      "schema_version": 3,
+      "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
+      "piece_id": "ddrhw-modular-lower-exit-compact",
+      "source_binding": {
+        "piece_sha256": "955b0c15aa080d1a0fdf01c68dafe0460c28d01d4902a8b91ab1f3c467ef8da8",
+        "connections_sha256": "696dcb8611cb29032db93aa3135a5d2bc5446d86471ffa359cc80b6b525e64d9"
+      },
+      "components": [
+        {
+          "id": "access-ramp",
+          "network": "road",
+          "construction_network": "dirtroad"
+        }
+      ],
+      "channels": [
+        {
+          "id": "access-ramp-01",
+          "component_id": "access-ramp",
+          "kind": "road-lane",
+          "traffic_modes": [
+            "car"
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "boundary-01-access-ramp-01",
+          "component_id": "access-ramp",
+          "members": [
+            {
+              "id": "member-1-w-out-1",
+              "source_port_id": "1-W-out-1",
+              "direction": "out",
+              "channel_id": "access-ramp-01",
+              "cut_id": "cut-1-w-out-1"
+            }
+          ]
+        },
+        {
+          "id": "boundary-02-access-ramp-01",
+          "component_id": "access-ramp",
+          "members": [
+            {
+              "id": "member-1-e-in-2",
+              "source_port_id": "1-E-in-2",
+              "direction": "in",
+              "channel_id": "access-ramp-01",
+              "cut_id": "cut-1-e-in-2"
+            }
+          ]
+        },
+        {
+          "id": "boundary-03-access-ramp-01",
+          "component_id": "access-ramp",
+          "members": [
+            {
+              "id": "member-1-e-in-4",
+              "source_port_id": "1-E-in-4",
+              "direction": "in",
+              "channel_id": "access-ramp-01",
+              "cut_id": "cut-1-e-in-4"
+            }
+          ]
+        },
+        {
+          "id": "boundary-04-access-ramp-01",
+          "component_id": "access-ramp",
+          "members": [
+            {
+              "id": "member-1-s-out-3",
+              "source_port_id": "1-S-out-3",
+              "direction": "out",
+              "channel_id": "access-ramp-01",
+              "cut_id": "cut-1-s-out-3"
+            }
+          ]
+        }
+      ],
+      "boundary_bundles": [
+        {
+          "id": "boundary-01",
+          "source_cell": [
+            0,
+            1
+          ],
+          "edge": "west",
+          "connector_ids": [
+            "boundary-01-access-ramp-01"
+          ]
+        },
+        {
+          "id": "boundary-02",
+          "source_cell": [
+            0,
+            1
+          ],
+          "edge": "east",
+          "connector_ids": [
+            "boundary-02-access-ramp-01"
+          ]
+        },
+        {
+          "id": "boundary-03",
+          "source_cell": [
+            1,
+            0
+          ],
+          "edge": "east",
+          "connector_ids": [
+            "boundary-03-access-ramp-01"
+          ]
+        },
+        {
+          "id": "boundary-04",
+          "source_cell": [
+            1,
+            0
+          ],
+          "edge": "south",
+          "connector_ids": [
+            "boundary-04-access-ramp-01"
+          ]
+        }
+      ]
+    },
+    "cells": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "groups": [
+      {
+        "id": "boundary-01-access-ramp-01",
+        "component_id": "access-ramp",
+        "members": [
+          {
+            "id": "member-1-w-out-1",
+            "direction": "out",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "access-ramp",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 0,
+            "endpoint_m": [
+              -8.0,
+              -14.245568,
+              3.000444
+            ],
+            "tangent": [
+              -0.9442561859245556,
+              -0.3292115662354699
+            ],
+            "sampled_tangent": [
+              -0.9442561859245555,
+              -0.3292115662354698
+            ],
+            "grade": -0.226761428,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7010",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7011",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7012",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7013",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7014",
+              "path:ddrhw-modular-lower-exit-compact:296678f7-a966883f-7f5a7010",
+              "construction:ddrhw-modular-lower-exit-compact"
+            ],
+            "source_route_ids": [
+              "path-7f5a7010-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  1
+                ],
+                "edge": 0,
+                "tile_id": "7f5a7010"
+              }
+            ],
+            "connection_class": "path-interface-aeabf380377c95bbb5f1",
+            "source_port_id": "1-W-out-1",
+            "channel_id": "access-ramp-01",
+            "cut_id": "cut-1-w-out-1",
+            "outward_tangent": [
+              -0.9442561859245556,
+              -0.3292115662354699
+            ],
+            "heading_outward_degrees": 250.7790722328076,
+            "grade_outward": -0.226761428,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "road",
+          "nominal_level": null,
+          "path_height_m": 3.000444,
+          "engine_transport": 1,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          0,
+          1
+        ],
+        "edge": "west",
+        "tile_seam_center_m": [
+          -8.0,
+          -16.0,
+          3.000444
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "access-ramp-01",
+            "component_id": "access-ramp",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-1-w-out-1",
+                "member_ids": [
+                  "member-1-w-out-1"
+                ],
+                "endpoint_m": [
+                  -8.0,
+                  -14.245568,
+                  3.000444
+                ],
+                "outward_tangent": [
+                  -0.9442561859245556,
+                  -0.3292115662354699
+                ],
+                "heading_outward_degrees": 250.7790722328076,
+                "grade_outward": -0.226761428
+              }
+            ]
+          }
+        ],
+        "construction_network": "dirtroad",
+        "outward_normal": [
+          -1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "boundary-01"
+      },
+      {
+        "id": "boundary-02-access-ramp-01",
+        "component_id": "access-ramp",
+        "members": [
+          {
+            "id": "member-1-e-in-2",
+            "direction": "in",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "access-ramp",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 2,
+            "endpoint_m": [
+              8.0,
+              -10.207444,
+              6.745132
+            ],
+            "tangent": [
+              -0.9793492239542138,
+              -0.2021759074179693
+            ],
+            "sampled_tangent": [
+              -0.9793492239542136,
+              -0.20217590741796929
+            ],
+            "grade": -0.226757443,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7010",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7011",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7012",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7013",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7014",
+              "path:ddrhw-modular-lower-exit-compact:296678f7-a966883f-7f5a7010",
+              "construction:ddrhw-modular-lower-exit-compact"
+            ],
+            "source_route_ids": [
+              "path-7f5a7010-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  0,
+                  1
+                ],
+                "edge": 2,
+                "tile_id": "7f5a7010"
+              }
+            ],
+            "connection_class": "path-interface-daca863776677fe500f2",
+            "source_port_id": "1-E-in-2",
+            "channel_id": "access-ramp-01",
+            "cut_id": "cut-1-e-in-2",
+            "outward_tangent": [
+              0.9793492239542138,
+              0.2021759074179693
+            ],
+            "heading_outward_degrees": 78.33577090529988,
+            "grade_outward": 0.226757443,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "road",
+          "nominal_level": null,
+          "path_height_m": 6.745132,
+          "engine_transport": 1,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          0,
+          1
+        ],
+        "edge": "east",
+        "tile_seam_center_m": [
+          8.0,
+          -16.0,
+          6.745132
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "access-ramp-01",
+            "component_id": "access-ramp",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-1-e-in-2",
+                "member_ids": [
+                  "member-1-e-in-2"
+                ],
+                "endpoint_m": [
+                  8.0,
+                  -10.207444,
+                  6.745132
+                ],
+                "outward_tangent": [
+                  0.9793492239542138,
+                  0.2021759074179693
+                ],
+                "heading_outward_degrees": 78.33577090529988,
+                "grade_outward": 0.226757443
+              }
+            ]
+          }
+        ],
+        "construction_network": "dirtroad",
+        "outward_normal": [
+          1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "boundary-02"
+      },
+      {
+        "id": "boundary-03-access-ramp-01",
+        "component_id": "access-ramp",
+        "members": [
+          {
+            "id": "member-1-e-in-4",
+            "direction": "in",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "dd-rhw-l1",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 2,
+            "endpoint_m": [
+              24.0,
+              -6.634072,
+              7.5
+            ],
+            "tangent": [
+              -0.9935463584813209,
+              -0.11342677615319352
+            ],
+            "sampled_tangent": [
+              -0.9935463584813209,
+              -0.11342677615319352
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7100",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7101",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7102",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7103",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7104",
+              "path:ddrhw-modular-lower-exit-compact:296678f7-a966883f-7f5a7100",
+              "construction:ddrhw-modular-lower-exit-compact"
+            ],
+            "source_route_ids": [
+              "path-7f5a7100-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  1,
+                  0
+                ],
+                "edge": 2,
+                "tile_id": "7f5a7100"
+              }
+            ],
+            "connection_class": "path-interface-34a26816572a48081146",
+            "source_port_id": "1-E-in-4",
+            "channel_id": "access-ramp-01",
+            "cut_id": "cut-1-e-in-4",
+            "outward_tangent": [
+              0.9935463584813209,
+              0.11342677615319352
+            ],
+            "heading_outward_degrees": 83.48710778152049,
+            "grade_outward": -0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "road",
+          "nominal_level": null,
+          "path_height_m": 7.5,
+          "engine_transport": 1,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          1,
+          0
+        ],
+        "edge": "east",
+        "tile_seam_center_m": [
+          24.0,
+          0.0,
+          7.5
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "access-ramp-01",
+            "component_id": "access-ramp",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-1-e-in-4",
+                "member_ids": [
+                  "member-1-e-in-4"
+                ],
+                "endpoint_m": [
+                  24.0,
+                  -6.634072,
+                  7.5
+                ],
+                "outward_tangent": [
+                  0.9935463584813209,
+                  0.11342677615319352
+                ],
+                "heading_outward_degrees": 83.48710778152049,
+                "grade_outward": -0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "dirtroad",
+        "outward_normal": [
+          1.0,
+          0.0
+        ],
+        "boundary_bundle_id": "boundary-03"
+      },
+      {
+        "id": "boundary-04-access-ramp-01",
+        "component_id": "access-ramp",
+        "members": [
+          {
+            "id": "member-1-s-out-3",
+            "direction": "out",
+            "service_network": "road",
+            "service_family": "road",
+            "variant": "dd-rhw-l1",
+            "role": "primary",
+            "channel_kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+            "engine_transport": 1,
+            "edge": 3,
+            "endpoint_m": [
+              17.960601,
+              -8.0,
+              7.5
+            ],
+            "tangent": [
+              -0.969170208591516,
+              -0.24639218083915987
+            ],
+            "sampled_tangent": [
+              -0.9691702085915159,
+              -0.24639218083915984
+            ],
+            "grade": 0.0,
+            "lane_spacing_m": null,
+            "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+            "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+            "endpoint_basis": "actual_saved_PATH",
+            "tangent_basis": "reviewed_contract",
+            "resource_keys": [
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7100",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7101",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7102",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7103",
+              "model:ddrhw-modular-lower-exit-compact:5ad0e817-badb57f1-7f5a7104",
+              "path:ddrhw-modular-lower-exit-compact:296678f7-a966883f-7f5a7100",
+              "construction:ddrhw-modular-lower-exit-compact"
+            ],
+            "source_route_ids": [
+              "path-7f5a7100-route-000"
+            ],
+            "boundary_sources": [
+              {
+                "cell": [
+                  1,
+                  0
+                ],
+                "edge": 3,
+                "tile_id": "7f5a7100"
+              }
+            ],
+            "connection_class": "path-interface-3dcc6d5eb15355745274",
+            "source_port_id": "1-S-out-3",
+            "channel_id": "access-ramp-01",
+            "cut_id": "cut-1-s-out-3",
+            "outward_tangent": [
+              -0.969170208591516,
+              -0.24639218083915987
+            ],
+            "heading_outward_degrees": 255.73587778029923,
+            "grade_outward": 0.0,
+            "section_offset_m": null
+          }
+        ],
+        "profile": {
+          "network": "road",
+          "nominal_level": null,
+          "path_height_m": 7.5,
+          "engine_transport": 1,
+          "role": "primary",
+          "alignment": "angled"
+        },
+        "section_offset_m": null,
+        "source_cell": [
+          1,
+          0
+        ],
+        "edge": "south",
+        "tile_seam_center_m": [
+          16.0,
+          -8.0,
+          7.5
+        ],
+        "anchor_m": null,
+        "channels": [
+          {
+            "id": "access-ramp-01",
+            "component_id": "access-ramp",
+            "kind": "road-lane",
+            "traffic_modes": [
+              "car"
+            ],
+            "cuts": [
+              {
+                "id": "cut-1-s-out-3",
+                "member_ids": [
+                  "member-1-s-out-3"
+                ],
+                "endpoint_m": [
+                  17.960601,
+                  -8.0,
+                  7.5
+                ],
+                "outward_tangent": [
+                  -0.969170208591516,
+                  -0.24639218083915987
+                ],
+                "heading_outward_degrees": 255.73587778029923,
+                "grade_outward": 0.0
+              }
+            ]
+          }
+        ],
+        "construction_network": "dirtroad",
+        "outward_normal": [
+          0.0,
+          -1.0
+        ],
+        "boundary_bundle_id": "boundary-04"
+      }
+    ],
+    "boundary_bundles": [
+      {
+        "id": "boundary-01",
+        "source_cell": [
+          0,
+          1
+        ],
+        "edge": "west",
+        "connector_ids": [
+          "boundary-01-access-ramp-01"
+        ]
+      },
+      {
+        "id": "boundary-02",
+        "source_cell": [
+          0,
+          1
+        ],
+        "edge": "east",
+        "connector_ids": [
+          "boundary-02-access-ramp-01"
+        ]
+      },
+      {
+        "id": "boundary-03",
+        "source_cell": [
+          1,
+          0
+        ],
+        "edge": "east",
+        "connector_ids": [
+          "boundary-03-access-ramp-01"
+        ]
+      },
+      {
+        "id": "boundary-04",
+        "source_cell": [
+          1,
+          0
+        ],
+        "edge": "south",
+        "connector_ids": [
+          "boundary-04-access-ramp-01"
+        ]
+      }
+    ],
+    "channels": [
+      {
+        "id": "access-ramp-01",
+        "component_id": "access-ramp",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ]
+      }
+    ],
+    "journeys": [
+      {
+        "id": "member-1-e-in-2>member-1-w-out-1",
+        "entry_port": "member-1-e-in-2",
+        "exit_port": "member-1-w-out-1",
+        "service_network": "road",
+        "role": "primary",
+        "engine_transport_classes": [
+          1
+        ],
+        "endpoint_variants": [
+          "access-ramp",
+          "access-ramp"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "1:1-E-in-2>1-W-out-1",
+        "source_entry_port": "1-E-in-2",
+        "source_exit_port": "1-W-out-1"
+      },
+      {
+        "id": "member-1-e-in-4>member-1-s-out-3",
+        "entry_port": "member-1-e-in-4",
+        "exit_port": "member-1-s-out-3",
+        "service_network": "road",
+        "role": "primary",
+        "engine_transport_classes": [
+          1
+        ],
+        "endpoint_variants": [
+          "dd-rhw-l1",
+          "dd-rhw-l1"
+        ],
+        "basis": "reachability_in_actual_saved_PATH_graph",
+        "source_id": "1:1-E-in-4>1-S-out-3",
+        "source_entry_port": "1-E-in-4",
+        "source_exit_port": "1-S-out-3"
+      }
+    ],
+    "forbidden_transfers": [
+      {
+        "from_port": "member-1-e-in-2",
+        "to_port": "member-1-s-out-3",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "1-E-in-2",
+        "source_to_port": "1-S-out-3"
+      },
+      {
+        "from_port": "member-1-e-in-4",
+        "to_port": "member-1-w-out-1",
+        "from_service": "road",
+        "to_service": "road",
+        "basis": "not reachable in actual saved PATH graph",
+        "source_from_port": "1-E-in-4",
+        "source_to_port": "1-W-out-1"
+      }
+    ],
+    "supported_orientations": [
+      {
+        "rotation_ccw_degrees": 0,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0000f843",
+          "0004f843"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 90,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0003f843",
+          "0007f843"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 180,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0002f843",
+          "0006f843"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      },
+      {
+        "rotation_ccw_degrees": 270,
+        "construction_transposed": false,
+        "construction_section_ids": [
+          "0001f843",
+          "0005f843"
+        ],
+        "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+      }
+    ],
+    "software_status": {
+      "path_extraction": "passed",
+      "contract_consistency": "passed",
+      "physical_seams": "unverified",
+      "in_game": "unverified"
+    }
+  },
+  "routes": [
+    {
+      "id": "path-7f5a7100-route-000",
+      "source_route_index": 0,
+      "source_class": 1,
+      "compatibility": 1,
+      "engine_transport": 1,
+      "cell": [
+        1,
+        0
+      ],
+      "tile_id": "7f5a7100",
+      "points": [
+        [
+          24.0,
+          -6.634072085,
+          7.5
+        ],
+        [
+          23.900370769,
+          -6.645445934,
+          7.5
+        ],
+        [
+          23.742870539000002,
+          -6.662559292,
+          7.5
+        ],
+        [
+          23.584897099,
+          -6.679199439,
+          7.5
+        ],
+        [
+          23.426755531,
+          -6.695671459,
+          7.5
+        ],
+        [
+          23.268750919,
+          -6.712280434,
+          7.5
+        ],
+        [
+          23.111188346,
+          -6.729331449,
+          7.5
+        ],
+        [
+          22.954372895,
+          -6.747129586,
+          7.5
+        ],
+        [
+          22.798609651,
+          -6.76597993,
+          7.5
+        ],
+        [
+          22.644203695,
+          -6.786187562,
+          7.5
+        ],
+        [
+          22.491460113,
+          -6.808057567,
+          7.5
+        ],
+        [
+          22.340683986000002,
+          -6.831895028,
+          7.5
+        ],
+        [
+          22.192180399,
+          -6.858005028,
+          7.5
+        ],
+        [
+          22.046254433999998,
+          -6.886692652,
+          7.5
+        ],
+        [
+          21.903211175,
+          -6.918262981,
+          7.5
+        ],
+        [
+          21.763355706,
+          -6.953021099,
+          7.5
+        ],
+        [
+          21.62699311,
+          -6.99127209,
+          7.5
+        ],
+        [
+          21.45990578,
+          -7.04108127,
+          7.5
+        ],
+        [
+          21.292643988000002,
+          -7.090533612,
+          7.5
+        ],
+        [
+          21.12521,
+          -7.13963375,
+          7.5
+        ],
+        [
+          20.957606081,
+          -7.188386319,
+          7.5
+        ],
+        [
+          20.789834498,
+          -7.236795952,
+          7.5
+        ],
+        [
+          20.621897516,
+          -7.284867284,
+          7.5
+        ],
+        [
+          20.453797401,
+          -7.332604949,
+          7.5
+        ],
+        [
+          20.285536418,
+          -7.380013582,
+          7.5
+        ],
+        [
+          20.117116834,
+          -7.427097816,
+          7.5
+        ],
+        [
+          19.948540913,
+          -7.473862287,
+          7.5
+        ],
+        [
+          19.779810923,
+          -7.520311627,
+          7.5
+        ],
+        [
+          19.610929128,
+          -7.566450472,
+          7.5
+        ],
+        [
+          19.441897794,
+          -7.612283456,
+          7.5
+        ],
+        [
+          19.272719187,
+          -7.657815213,
+          7.5
+        ],
+        [
+          19.103395573,
+          -7.703050377,
+          7.5
+        ],
+        [
+          18.933929217,
+          -7.747993583,
+          7.5
+        ],
+        [
+          18.764322386,
+          -7.792649464,
+          7.5
+        ],
+        [
+          18.594577345,
+          -7.837022655,
+          7.5
+        ],
+        [
+          18.424696359,
+          -7.881117791,
+          7.5
+        ],
+        [
+          18.254681694,
+          -7.924939506,
+          7.5
+        ],
+        [
+          18.084535617,
+          -7.968492433,
+          7.5
+        ],
+        [
+          17.960601453,
+          -8.0,
+          7.5
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 3
+    },
+    {
+      "id": "path-7f5a7010-route-000",
+      "source_route_index": 0,
+      "source_class": 1,
+      "compatibility": 1,
+      "engine_transport": 1,
+      "cell": [
+        0,
+        1
+      ],
+      "tile_id": "7f5a7010",
+      "points": [
+        [
+          8.0,
+          -10.20744421,
+          6.745131504
+        ],
+        [
+          7.894860266,
+          -10.229148934000001,
+          6.720787753
+        ],
+        [
+          7.720975721,
+          -10.265055328999999,
+          6.680526559
+        ],
+        [
+          7.547097972,
+          -10.300975628,
+          6.640266236
+        ],
+        [
+          7.373229286,
+          -10.336914464,
+          6.600007075
+        ],
+        [
+          7.199371929,
+          -10.372876471,
+          6.559749367
+        ],
+        [
+          7.025528166,
+          -10.408866284,
+          6.519493399
+        ],
+        [
+          6.851700264,
+          -10.444888536,
+          6.47923946
+        ],
+        [
+          6.677890487,
+          -10.480947863,
+          6.43898784
+        ],
+        [
+          6.504101102,
+          -10.517048897999999,
+          6.398738824
+        ],
+        [
+          6.330334375,
+          -10.553196275000001,
+          6.3584927
+        ],
+        [
+          6.15659257,
+          -10.589394630000001,
+          6.318249753
+        ],
+        [
+          5.982877955,
+          -10.625648595000001,
+          6.278010267
+        ],
+        [
+          5.809192794,
+          -10.661962806,
+          6.237774526
+        ],
+        [
+          5.635539353,
+          -10.698341896999999,
+          6.197542811
+        ],
+        [
+          5.461919898,
+          -10.734790502,
+          6.157315403
+        ],
+        [
+          5.288336696,
+          -10.771313253999999,
+          6.117092582
+        ],
+        [
+          5.114792011,
+          -10.807914789,
+          6.076874625
+        ],
+        [
+          4.941288109,
+          -10.844599741,
+          6.036661808
+        ],
+        [
+          4.767827256,
+          -10.881372744,
+          5.996454405
+        ],
+        [
+          4.594411718,
+          -10.918238431999999,
+          5.95625269
+        ],
+        [
+          4.42104376,
+          -10.95520144,
+          5.916056932
+        ],
+        [
+          4.247725649,
+          -10.992266401,
+          5.8758674
+        ],
+        [
+          4.07445965,
+          -11.02943795,
+          5.83568436
+        ],
+        [
+          3.901248028,
+          -11.066720722,
+          5.795508078
+        ],
+        [
+          3.72809305,
+          -11.104119350000001,
+          5.755338813
+        ],
+        [
+          3.554996981,
+          -11.141638469,
+          5.715176827
+        ],
+        [
+          3.381962087,
+          -11.179282713,
+          5.675022375
+        ],
+        [
+          3.208990634,
+          -11.217056716,
+          5.634875713
+        ],
+        [
+          3.036084887,
+          -11.254965113,
+          5.594737092
+        ],
+        [
+          2.863247112,
+          -11.293012538,
+          5.55460676
+        ],
+        [
+          2.690479575,
+          -11.331203625,
+          5.514484964
+        ],
+        [
+          2.517784542,
+          -11.369543008,
+          5.474371946
+        ],
+        [
+          2.345164278,
+          -11.408035322,
+          5.434267946
+        ],
+        [
+          2.17262105,
+          -11.446685200000001,
+          5.394173201
+        ],
+        [
+          2.000157122,
+          -11.485497278,
+          5.354087944
+        ],
+        [
+          1.827774761,
+          -11.524476189,
+          5.314012405
+        ],
+        [
+          1.655476232,
+          -11.563626568,
+          5.273946809
+        ],
+        [
+          1.483263801,
+          -11.602953049,
+          5.23389138
+        ],
+        [
+          1.311139734,
+          -11.642460266,
+          5.193846337
+        ],
+        [
+          1.139106296,
+          -11.682152854,
+          5.153811894
+        ],
+        [
+          0.967165754,
+          -11.722035446,
+          5.113788263
+        ],
+        [
+          0.795320373,
+          -11.762112677000001,
+          5.07377565
+        ],
+        [
+          0.623572418,
+          -11.802389181999999,
+          5.03377426
+        ],
+        [
+          0.451924156,
+          -11.842869594,
+          4.99378429
+        ],
+        [
+          0.280377853,
+          -11.883558547,
+          4.953805936
+        ],
+        [
+          0.108935773,
+          -11.924460676999999,
+          4.913839386
+        ],
+        [
+          -0.062399817,
+          -11.965580617,
+          4.873884826
+        ],
+        [
+          -0.233626652,
+          -12.006923002,
+          4.833942438
+        ],
+        [
+          -0.404742465,
+          -12.048492464999999,
+          4.794012397
+        ],
+        [
+          -0.575744991,
+          -12.090293641,
+          4.754094874
+        ],
+        [
+          -0.746631965,
+          -12.132331165,
+          4.714190035
+        ],
+        [
+          -0.91740112,
+          -12.17460967,
+          4.674298041
+        ],
+        [
+          -1.088050192,
+          -12.217133792,
+          4.634419049
+        ],
+        [
+          -1.258576913,
+          -12.259908163,
+          4.594553208
+        ],
+        [
+          -1.428979019,
+          -12.302937419,
+          4.554700663
+        ],
+        [
+          -1.599254243,
+          -12.346226193,
+          4.514861555
+        ],
+        [
+          -1.76940032,
+          -12.38977912,
+          4.475036017
+        ],
+        [
+          -1.939414984,
+          -12.433600834,
+          4.435224178
+        ],
+        [
+          -2.10929597,
+          -12.47769597,
+          4.395426159
+        ],
+        [
+          -2.279041012,
+          -12.522069162000001,
+          4.355642077
+        ],
+        [
+          -2.448647843,
+          -12.566725043,
+          4.315872043
+        ],
+        [
+          -2.618114199,
+          -12.611668249000001,
+          4.276116161
+        ],
+        [
+          -2.787437813,
+          -12.656903413,
+          4.236374528
+        ],
+        [
+          -2.95661642,
+          -12.702435170000001,
+          4.196647235
+        ],
+        [
+          -3.125647754,
+          -12.748268154,
+          4.156934369
+        ],
+        [
+          -3.294529549,
+          -12.794406999,
+          4.117236007
+        ],
+        [
+          -3.463259539,
+          -12.840856339,
+          4.077552221
+        ],
+        [
+          -3.631835459,
+          -12.887620809,
+          4.037883075
+        ],
+        [
+          -3.800255044,
+          -12.934705044000001,
+          3.998228627
+        ],
+        [
+          -3.968516027,
+          -12.982113677000001,
+          3.958588928
+        ],
+        [
+          -4.136616142,
+          -13.029851342,
+          3.918964021
+        ],
+        [
+          -4.304553124,
+          -13.077922674,
+          3.879353943
+        ],
+        [
+          -4.472324707,
+          -13.126332307,
+          3.839758722
+        ],
+        [
+          -4.639928625,
+          -13.175084875,
+          3.800178379
+        ],
+        [
+          -4.807362613,
+          -13.224185013,
+          3.760612928
+        ],
+        [
+          -4.974624405,
+          -13.273637355,
+          3.721062375
+        ],
+        [
+          -5.141711735,
+          -13.323446535,
+          3.681526718
+        ],
+        [
+          -5.308622338,
+          -13.373617188,
+          3.642005946
+        ],
+        [
+          -5.475353947,
+          -13.424153947,
+          3.602500041
+        ],
+        [
+          -5.641904297,
+          -13.475061447,
+          3.563008977
+        ],
+        [
+          -5.808271122,
+          -13.526344322,
+          3.523532719
+        ],
+        [
+          -5.974452157,
+          -13.578007207,
+          3.484071224
+        ],
+        [
+          -6.140445135,
+          -13.630054735,
+          3.444624439
+        ],
+        [
+          -6.306247791,
+          -13.682491541000001,
+          3.405192305
+        ],
+        [
+          -6.47185786,
+          -13.73532226,
+          3.365774752
+        ],
+        [
+          -6.637273075,
+          -13.788551524999999,
+          3.326371702
+        ],
+        [
+          -6.80249117,
+          -13.84218397,
+          3.286983067
+        ],
+        [
+          -6.967509881,
+          -13.896224231,
+          3.247608751
+        ],
+        [
+          -7.132326941,
+          -13.950676941000001,
+          3.208248647
+        ],
+        [
+          -7.296940085,
+          -14.005546735,
+          3.168902642
+        ],
+        [
+          -7.461347046,
+          -14.060838246,
+          3.12957061
+        ],
+        [
+          -7.625545559,
+          -14.116556109,
+          3.090252416
+        ],
+        [
+          -7.789533359,
+          -14.172704959,
+          3.050947918
+        ],
+        [
+          -7.953308179,
+          -14.229289429,
+          3.01165696
+        ],
+        [
+          -8.0,
+          -14.245568441,
+          3.000444276
+        ]
+      ],
+      "entry_edge": 2,
+      "exit_edge": 0
+    }
+  ],
+  "endpoint_route_refs": {
+    "member-1-w-out-1": [
+      "path-7f5a7010-route-000"
+    ],
+    "member-1-e-in-2": [
+      "path-7f5a7010-route-000"
+    ],
+    "member-1-e-in-4": [
+      "path-7f5a7100-route-000"
+    ],
+    "member-1-s-out-3": [
+      "path-7f5a7100-route-000"
+    ]
+  },
+  "verification": {
+    "metadata": "passed",
+    "compiled_paths": "passed",
+    "compiled_resources": {
+      "dat_path": "dist/ddrhw-straight-modular-ramp-kit-parts-01/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-lower-exit-compact.dat",
+      "dat_sha256": "eeae5e6466488bb408d2e500d94a9097fd7989158b8d8fc115e0086536cb7df7",
+      "model_sha256": "97c65bbabbdb35f2c4f0a4c6396308fc49561af6136b183b3cbee80335dfef02",
+      "resource_fingerprints_checked": 41,
+      "directional_ports_reextracted": 4,
+      "directed_journeys_reextracted": 2,
+      "compiled_definition": "passed",
+      "manifest_payload": "passed",
+      "saved_resource_fingerprints": "passed",
+      "actual_path_facts": "passed",
+      "preview_model_structure": "passed",
+      "construction_rules_reextracted": false
+    },
+    "occupied_cells": "unverified",
+    "physical_seams": "unverified",
+    "construction_clearance": "unverified",
+    "geometry_collisions": "unverified",
+    "in_game": "unverified"
+  },
+  "content_sha256": "cf6d89280b62c30b02d05b707a83aa3e12bcd3276a56a4e5aa01ea229a9a0449"
+}

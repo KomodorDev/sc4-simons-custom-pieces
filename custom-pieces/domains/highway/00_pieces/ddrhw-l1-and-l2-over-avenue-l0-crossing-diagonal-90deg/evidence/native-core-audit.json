@@ -1,0 +1,578 @@
+{
+  "schema_version": 1,
+  "measurement_date": "2026-10-30",
+  "purpose": "Native DD RHW-4 and Avenue channel composition and zero-route PATH measurements.",
+  "status": "Saved-resource evidence only; no game observation, installation, or publication is asserted.",
+  "privacy": "Original archives stay private; absolute workstation paths and binary archive payloads are omitted.",
+  "generator": {
+    "module": "scp_highway.native_audit",
+    "sha256": "80358028133d5a2f955573e920febba8531f9eb9b9d841e22b9f1090cd20e25f"
+  },
+  "archives": [
+    {
+      "filename": "RealHighway_DD_RHW-4.dat",
+      "sha256": "ccf8dabd3930fce92d0baa872ff974e3a536ddcc40762505a2e70eafcf9c0dfb",
+      "bytes": 889582
+    },
+    {
+      "filename": "RealHighway_Core.dat",
+      "sha256": "8a172e4d7f628e09af3e153ef2effb34a2bcf876ff3c8f76210cb48d660aa191",
+      "bytes": 652796
+    },
+    {
+      "filename": "RealHighway_MIS.dat",
+      "sha256": "dec1873a357cca39a5a06de3b0722757b52b72c47c33a24d269d846779dba1a8",
+      "bytes": 4462822
+    },
+    {
+      "filename": "RealHighway_Avenue_MIS_Ramp_PuzzlePieces.dat",
+      "sha256": "e0eb1f2b47327f2a65e16a099df3ea7de2ff5af0f4ef723ae8fe74cba380657a",
+      "bytes": 21285
+    }
+  ],
+  "native_channel_resources": [
+    {
+      "tgi": "296678f7-a966883f-5753a300",
+      "decoded_bytes": 431,
+      "sha256": "270de5c64994b0389796a5b036f78689c2e32ace25c05ad4af31743b0c2b3557"
+    },
+    {
+      "tgi": "5ad0e817-badb57f1-5753a300",
+      "decoded_bytes": 2690,
+      "sha256": "7509d29d6e36aa20c1b01689808ac30bf4a063fb6be8a0affd04b09a4643aef9"
+    },
+    {
+      "tgi": "296678f7-a966883f-5753a305",
+      "decoded_bytes": 610,
+      "sha256": "d412f766bfaa836a6cfdb090f943fe1e0b972bd68da1e7840aa599dd1df8ec25"
+    },
+    {
+      "tgi": "5ad0e817-badb57f1-5753a305",
+      "decoded_bytes": 2702,
+      "sha256": "952d02ab4a523747cd4b049c56d7b7091a2d253a59530ebf96207d9691d99c40"
+    },
+    {
+      "tgi": "296678f7-a966883f-5753a380",
+      "decoded_bytes": 431,
+      "sha256": "58c9f8c294ad726e1ea74e5ce45fe51fbfa30460e6f68d95fd474c506535fd49"
+    },
+    {
+      "tgi": "5ad0e817-badb57f1-5753a380",
+      "decoded_bytes": 2690,
+      "sha256": "ec9d3b09e7c80b8edc921ad5022a26905b92b0de99804e2ac257bb381cf8bf8c"
+    }
+  ],
+  "coordinates": {
+    "path": "(east, north, height), metres",
+    "s3d": "(east, height, -north), metres",
+    "construction_cells": "(column east, row south), 16 metres per cell",
+    "normalized_core_cell": [
+      1,
+      1
+    ],
+    "highway_axis": "east - north = 40 metres",
+    "avenue_axis": "east + north = 0 metres"
+  },
+  "placements": [
+    {
+      "cell": [
+        1,
+        0
+      ],
+      "dd_source": null,
+      "dd_rotation_quarter_turns": 0,
+      "avenue_source": "5753A300",
+      "avenue_rotation_quarter_turns": 0
+    },
+    {
+      "cell": [
+        0,
+        1
+      ],
+      "dd_source": null,
+      "dd_rotation_quarter_turns": 0,
+      "avenue_source": "5753A300",
+      "avenue_rotation_quarter_turns": 2
+    },
+    {
+      "cell": [
+        1,
+        1
+      ],
+      "dd_source": "5753A380",
+      "dd_rotation_quarter_turns": 0,
+      "avenue_source": "5753A305",
+      "avenue_rotation_quarter_turns": 0
+    },
+    {
+      "cell": [
+        2,
+        1
+      ],
+      "dd_source": "5753A300",
+      "dd_rotation_quarter_turns": 2,
+      "avenue_source": "5753A300",
+      "avenue_rotation_quarter_turns": 0
+    },
+    {
+      "cell": [
+        1,
+        2
+      ],
+      "dd_source": "5753A300",
+      "dd_rotation_quarter_turns": 2,
+      "avenue_source": "5753A300",
+      "avenue_rotation_quarter_turns": 2
+    }
+  ],
+  "saved_channel_models": [
+    {
+      "cell": [
+        1,
+        0
+      ],
+      "s3d_sha256": "e166ee3fe408f6f9f3a38ff9393cadda81cc5c7ea8b1b997eed73947b8fce911",
+      "path_sha256": "04841997045856c0c0d215dff080b26ed947604746ebe1756a7cc2356c52ceba",
+      "path_fragments": 3
+    },
+    {
+      "cell": [
+        0,
+        1
+      ],
+      "s3d_sha256": "fa49cb4d40b8890ae23cc993ac31ae89191ff15a7daa3bf48ca657ddca2aa06b",
+      "path_sha256": "6718853af1526410fd01e80c51b4fee93e7f18e7ef9de001b4a5864bce8aa9bb",
+      "path_fragments": 3
+    },
+    {
+      "cell": [
+        1,
+        1
+      ],
+      "s3d_sha256": "ee7c37dbe7a259130eead031dca99432e92fb9a37e7c9e0e1dd22870b1bd419a",
+      "path_sha256": "109c0ec398895e58f6af28071d98f819507e57f0e71e85e28f2a50ba87401cd6",
+      "path_fragments": 10
+    },
+    {
+      "cell": [
+        2,
+        1
+      ],
+      "s3d_sha256": "5c36e47942a024f5c9e165c520829430895c922f380cbf4278951f8ceb8f5d75",
+      "path_sha256": "23090de79adca2828957c5f66c2bd0253712ff0754cf837f2854ae949e32e520",
+      "path_fragments": 7
+    },
+    {
+      "cell": [
+        1,
+        2
+      ],
+      "s3d_sha256": "c039d989e33fe40b1fb4aeacce4fb03159c7be9ca8f2e5a1a1168ec96920b861",
+      "path_sha256": "3352c6fa2436ddfd1703b109a8cad2fabb2e957475a4425120aab95161597d1a",
+      "path_fragments": 7
+    }
+  ],
+  "complete_boundary_channels": [
+    {
+      "direction": "entry",
+      "transport": 1,
+      "world_east_north_height_m": [
+        -3.2,
+        -8.0,
+        0.0
+      ]
+    },
+    {
+      "direction": "entry",
+      "transport": 1,
+      "world_east_north_height_m": [
+        3.2,
+        -8.0,
+        0.0
+      ]
+    },
+    {
+      "direction": "entry",
+      "transport": 1,
+      "world_east_north_height_m": [
+        8.0,
+        -35.2,
+        15.0
+      ]
+    },
+    {
+      "direction": "entry",
+      "transport": 1,
+      "world_east_north_height_m": [
+        8.0,
+        -28.8,
+        15.0
+      ]
+    },
+    {
+      "direction": "entry",
+      "transport": 1,
+      "world_east_north_height_m": [
+        28.8,
+        -24.0,
+        0.0
+      ]
+    },
+    {
+      "direction": "entry",
+      "transport": 1,
+      "world_east_north_height_m": [
+        28.8,
+        -8.0,
+        7.5
+      ]
+    },
+    {
+      "direction": "entry",
+      "transport": 1,
+      "world_east_north_height_m": [
+        35.2,
+        -24.0,
+        0.0
+      ]
+    },
+    {
+      "direction": "entry",
+      "transport": 1,
+      "world_east_north_height_m": [
+        35.2,
+        -8.0,
+        7.5
+      ]
+    },
+    {
+      "direction": "entry",
+      "transport": 2,
+      "world_east_north_height_m": [
+        -7.3,
+        -8.0,
+        0.0
+      ]
+    },
+    {
+      "direction": "entry",
+      "transport": 2,
+      "world_east_north_height_m": [
+        39.3,
+        -24.0,
+        0.0
+      ]
+    },
+    {
+      "direction": "exit",
+      "transport": 1,
+      "world_east_north_height_m": [
+        8.0,
+        -35.2,
+        7.5
+      ]
+    },
+    {
+      "direction": "exit",
+      "transport": 1,
+      "world_east_north_height_m": [
+        8.0,
+        -28.8,
+        7.5
+      ]
+    },
+    {
+      "direction": "exit",
+      "transport": 1,
+      "world_east_north_height_m": [
+        8.0,
+        -3.2,
+        0.0
+      ]
+    },
+    {
+      "direction": "exit",
+      "transport": 1,
+      "world_east_north_height_m": [
+        8.0,
+        3.2,
+        0.0
+      ]
+    },
+    {
+      "direction": "exit",
+      "transport": 1,
+      "world_east_north_height_m": [
+        24.0,
+        -35.2,
+        0.0
+      ]
+    },
+    {
+      "direction": "exit",
+      "transport": 1,
+      "world_east_north_height_m": [
+        24.0,
+        -28.8,
+        0.0
+      ]
+    },
+    {
+      "direction": "exit",
+      "transport": 1,
+      "world_east_north_height_m": [
+        28.8,
+        -8.0,
+        15.0
+      ]
+    },
+    {
+      "direction": "exit",
+      "transport": 1,
+      "world_east_north_height_m": [
+        35.2,
+        -8.0,
+        15.0
+      ]
+    },
+    {
+      "direction": "exit",
+      "transport": 2,
+      "world_east_north_height_m": [
+        8.0,
+        7.3,
+        0.0
+      ]
+    },
+    {
+      "direction": "exit",
+      "transport": 2,
+      "world_east_north_height_m": [
+        24.0,
+        -39.3,
+        0.0
+      ]
+    }
+  ],
+  "route_graph": [
+    {
+      "complete_directed_journeys": 10,
+      "car_journeys": 8,
+      "pedestrian_channels": 2,
+      "matched_internal_lane_seams": 20,
+      "route_fragments_consumed": 30
+    },
+    {
+      "complete_directed_journeys": 10,
+      "car_journeys": 8,
+      "pedestrian_channels": 2,
+      "matched_internal_lane_seams": 20,
+      "route_fragments_consumed": 30
+    },
+    {
+      "complete_directed_journeys": 10,
+      "car_journeys": 8,
+      "pedestrian_channels": 2,
+      "matched_internal_lane_seams": 20,
+      "route_fragments_consumed": 30
+    },
+    {
+      "complete_directed_journeys": 10,
+      "car_journeys": 8,
+      "pedestrian_channels": 2,
+      "matched_internal_lane_seams": 20,
+      "route_fragments_consumed": 30
+    }
+  ],
+  "measured_profiles": {
+    "dd_paired_paved_deck_width_m": 16.0,
+    "dd_lane_offsets_from_axis_m": [
+      -2.262741699796952,
+      2.262741699796952
+    ],
+    "dd_deck_surface_heights_m": [
+      7.5,
+      15.0
+    ],
+    "dd_substructure_thickness_m": 1.0,
+    "dd_barrier_profile_relative_to_deck_m": [
+      [
+        -8.0,
+        0.0
+      ],
+      [
+        -7.78125,
+        0.328125
+      ],
+      [
+        -7.734375,
+        1.390625
+      ],
+      [
+        -7.4375,
+        1.390625
+      ],
+      [
+        -7.375,
+        0.328125
+      ],
+      [
+        -7.171875,
+        0.0
+      ]
+    ],
+    "dd_barrier_opposite_side": "Reflect transverse offsets through zero; retain heights.",
+    "avenue_lane_offsets_from_axis_m": [
+      -7.919595949289331,
+      -3.3941125496954276,
+      3.3941125496954276,
+      7.919595949289331
+    ],
+    "avenue_outer_pedestrian_offsets_from_axis_m": [
+      -10.818733752154177,
+      10.818733752154177
+    ],
+    "avenue_paved_width": "Not measured: native triangle bounds include texture-controlled coverage."
+  },
+  "zero_route_scan": [
+    {
+      "archive_filename": "RealHighway_DD_RHW-4.dat",
+      "path_resources_scanned": 532,
+      "zero_route_path_resources": 0,
+      "samples": [],
+      "scope": "Every PATH in this exact archive; no claim about other versions or in-game behaviour."
+    },
+    {
+      "archive_filename": "RealHighway_Core.dat",
+      "path_resources_scanned": 156,
+      "zero_route_path_resources": 0,
+      "samples": [],
+      "scope": "Every PATH in this exact archive; no claim about other versions or in-game behaviour."
+    },
+    {
+      "archive_filename": "RealHighway_MIS.dat",
+      "path_resources_scanned": 3377,
+      "zero_route_path_resources": 102,
+      "samples": [
+        {
+          "tgi": "296678f7-a966883f-5792a449",
+          "decoded_bytes": 24,
+          "sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+          "decoded_text": "SC4PATHS\r\n1.2\r\n0\r\n0\r\n0\r\n",
+          "model": {
+            "tgi": "5ad0e817-badb57f1-5792a449",
+            "decoded_bytes": 2359,
+            "sha256": "3a175e1525bb07780e3cc487fd14d62543551b3a0a893fdd91d6a07be0abfc2d",
+            "meshes": [
+              {
+                "vertices": 16,
+                "bounds_s3d_xyz_m": [
+                  [
+                    2.5,
+                    8.0
+                  ],
+                  [
+                    30.0,
+                    30.0
+                  ],
+                  [
+                    -8.0,
+                    8.0
+                  ]
+                ]
+              },
+              {
+                "vertices": 50,
+                "bounds_s3d_xyz_m": [
+                  [
+                    3.96875,
+                    8.171875
+                  ],
+                  [
+                    29.984375,
+                    31.390625
+                  ],
+                  [
+                    -8.0,
+                    8.0
+                  ]
+                ]
+              },
+              {
+                "vertices": 16,
+                "bounds_s3d_xyz_m": [
+                  [
+                    3.96875,
+                    7.328125
+                  ],
+                  [
+                    29.0,
+                    30.0
+                  ],
+                  [
+                    -8.0,
+                    8.0
+                  ]
+                ]
+              }
+            ]
+          },
+          "interpretation": "The model has an elevated partial road surface, raised barrier, and underside, while the saved PATH contains no traffic routes."
+        }
+      ],
+      "scope": "Every PATH in this exact archive; no claim about other versions or in-game behaviour."
+    },
+    {
+      "archive_filename": "RealHighway_Avenue_MIS_Ramp_PuzzlePieces.dat",
+      "path_resources_scanned": 34,
+      "zero_route_path_resources": 4,
+      "samples": [],
+      "scope": "Every PATH in this exact archive; no claim about other versions or in-game behaviour."
+    }
+  ],
+  "inspection_render_filenames": [
+    "core-top.png",
+    "core-ne.png",
+    "core-sw.png"
+  ],
+  "limits": [
+    "The complete five-cell crossing composes highway and Avenue channels independently; it is not a renamed RUL2 neighbourhood.",
+    "Native DD models retain their approximately 1.657-metre tile overhangs and contain no new support pillars.",
+    "Generated shadows clip opaque projected triangles to each tile and do not sample texture alpha.",
+    "Software renders and saved-resource graphs do not establish game placement, driving, walking, shadows, or neighbour overrides."
+  ],
+  "native_avenue_construction_flags": {
+    "archive_filename": "SimCity_1.dat",
+    "tgi": "0a5bcf4b-aa5bcf57-0000000d",
+    "decoded_bytes": 3800,
+    "sha256": "66d42afe5863843be858b99593b0bd482f72278d349125d992f0c5cf52a19adc",
+    "measured_records": [
+      {
+        "native_instance": "04000200",
+        "rul1_flags_in_source_order": [
+          0,
+          1,
+          3,
+          0
+        ],
+        "rul0_little_endian_flags": "00030100",
+        "proper_rotation": 0
+      },
+      {
+        "native_instance": "04003800",
+        "rul1_flags_in_source_order": [
+          3,
+          1,
+          3,
+          1
+        ],
+        "rul0_little_endian_flags": "01030103",
+        "proper_rotation": 0
+      }
+    ],
+    "avenue_half_A300": {
+      "derivation": "04000200 rotated by 180 degrees",
+      "rul0_flags": "01000003"
+    }
+  }
+}

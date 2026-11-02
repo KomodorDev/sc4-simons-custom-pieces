@@ -1,0 +1,136 @@
+{
+  "artwork": {
+    "assembly_views": 6,
+    "changed_piece_types": 4,
+    "historical_render_records_preserved": true,
+    "other_nine_piece_artwork_and_report_files_exact": 45,
+    "piece_views": 8,
+    "presentation": "Same six-view order, full-name legends, badges, leaders, and ownership style as the retained HSR trumpet references."
+  },
+  "documentation": {
+    "command": "python3 -B custom-pieces/scp.py docs-check",
+    "documents_checked": 88,
+    "errors": [],
+    "local_links_checked": 8526,
+    "passed": true
+  },
+  "evidence": {
+    "marking-consistency-assembly-check.json": {
+      "path": "evidence/marking-consistency-assembly-check.json",
+      "sha256": "0037b19afa53349bc70e4c572c0b973bc49b0dd6cd15da918ff9e1356208dc39"
+    },
+    "marking-consistency-piece-renders.json": {
+      "path": "evidence/marking-consistency-piece-renders.json",
+      "sha256": "6078c0c14811c392f121003896b36d48095d685064c97581bc85e7d9e91aae61"
+    },
+    "marking-consistency-preservation.json": {
+      "path": "evidence/marking-consistency-preservation.json",
+      "sha256": "ca961b82e957675d4e7a647e651a8d71b51be394ec21f01f839325aee1d714c1"
+    },
+    "marking-consistency-render.json": {
+      "path": "evidence/marking-consistency-render.json",
+      "sha256": "cdf8585f1dec151de9869a4d719d6d80976394fe357736fec2c1445ca870365b"
+    },
+    "native-marking-measurements.json": {
+      "path": "evidence/native-marking-measurements.json",
+      "sha256": "0af4399fd27fcf21dfedd8205737b5e3873e7d1d9fdbf286de2bc593be978c68"
+    }
+  },
+  "game_operation": "unverified",
+  "implementation_and_focused_test_hashes": {
+    "domains/highway/implementation/scp_highway/assembly_verify.py": "0d131b84945f87cfc0e104c71039730e26f56ef17870f895608f1b708cee0b53",
+    "domains/highway/implementation/scp_highway/marking_verify.py": "00b83ad36189b030fdf23248c250115393da339cdf904d2201139bb5802014df",
+    "domains/highway/implementation/scp_highway/slip_lanes.py": "008febbdb4a5b3bda210f090b8cf459b909ece26db347d94b5e2fc7a10b49154",
+    "domains/highway/tests/test_saved_marking_widths.py": "b147ec3ce20c6bd2e5fff200a4816fe2c6fc64f4bc188aa8c4e2883fa4a66816",
+    "domains/highway/tests/test_slip_lane_markings.py": "8118018ee6d0e7102856952ea09014ac086262c326f4097cb311e082721f3bf5"
+  },
+  "installed_during_validation": false,
+  "limits": [
+    "Full portable tests deliberately omit private native settings; explicit skipped classes and subtests are reported separately from tests run. The native highway suite runs separately with the exact supported inputs.",
+    "Code was frozen before full tests; refreshed image bindings and documentation were checked after artwork promotion.",
+    "Saved geometry, material preservation, and software pictures do not establish filtered game appearance or a traffic pass."
+  ],
+  "manual_observations_added": 0,
+  "native_build": {
+    "build_label": "ddrhw-marking-consistency-parts-01",
+    "dat_files": 15,
+    "distinct_component_types": 13,
+    "manifest_sha256": "1b1a0da2800ce5498162b2b8470933cd719e2e104522ccb9565a66f29739311d",
+    "passed": true,
+    "resource_identities": 1086
+  },
+  "recorded_at_utc": "2026-10-30T20:49:47.384268+00:00",
+  "revision": "marking-consistency",
+  "saved_marking_checks": {
+    "coverage_limit": "Bounded saved triangle-union widths, reviewed gore/mainline centres, hatch angles, acute noses, and near-seam point continuity at four mouths; this does not certify every stroke point, full polygon/barrier clearance, native filtered fringes, or game appearance.",
+    "hatch_angle_tolerance_degrees": 0.5,
+    "hatches_checked": 12,
+    "native_white_core_width_m": 0.25,
+    "nose_and_handoff_points_checked": 44,
+    "perpendicular_width_sections_checked": 76,
+    "reviewed_centre_tolerance_m": 0.003,
+    "width_tolerance_m": 0.001
+  },
+  "schema_version": 1,
+  "scope": "Compiled software checks and reviewed artwork before final packaging; no new game observation.",
+  "source_baseline_commit": "6768fe99c31ad81585d20a9b574f2ea4bc4b61e2",
+  "subject_id": "ddrhw-l1-and-l2-diagonal-avenue-diamond",
+  "tests": {
+    "native_highway": {
+      "command": "python3 -B custom-pieces/scp.py check --scope highway --verbose",
+      "environment": "Development checkout with the exact supported native NAM inputs and captured adaptive Avenue bundle.",
+      "explicit_success_records": 172,
+      "log_sha256": "5077fe36d3932a85d42cc03e9da2136e5f4e1167c7acd8dc1b1b65fc00bd6fca",
+      "passed": true,
+      "reported_skip_entries": 0,
+      "reported_tests_run": 172
+    },
+    "portable_repository": {
+      "command": "python3 -B tools/run_tests.py",
+      "counting_limit": "Reported tests run, explicit successful method records, and skipped classes/subtests are different counters. No pass total is derived by subtracting skips from tests run.",
+      "environment": "Portable validation checkout without private native settings; native input and saved-build dependent checks report explicit skips.",
+      "log_sha256": "f68cdb8152b97e1f46a8306055becfbfccef52f7e085d8ea207f0f52af408632",
+      "passed": true,
+      "reported_skip_entries": 82,
+      "reported_tests_run": 1570,
+      "scopes": [
+        {
+          "explicit_success_records": 851,
+          "scope": "framework",
+          "skip_entries": 10,
+          "summary": [
+            "OK (skipped=10)"
+          ],
+          "tests_reported_run": 859
+        },
+        {
+          "explicit_success_records": 404,
+          "scope": "high-speed-rail",
+          "skip_entries": 65,
+          "summary": [
+            "OK (skipped=65)"
+          ],
+          "tests_reported_run": 428
+        },
+        {
+          "explicit_success_records": 167,
+          "scope": "highway",
+          "skip_entries": 2,
+          "summary": [
+            "OK (skipped=2)"
+          ],
+          "tests_reported_run": 167
+        },
+        {
+          "explicit_success_records": 115,
+          "scope": "hsr-trumpet-straight-stem",
+          "skip_entries": 5,
+          "summary": [
+            "OK (skipped=5)"
+          ],
+          "tests_reported_run": 116
+        }
+      ]
+    }
+  }
+}

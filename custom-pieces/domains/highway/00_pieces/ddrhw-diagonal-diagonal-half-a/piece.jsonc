@@ -1,0 +1,78 @@
+// title: "Piece definition: DD RHW-4 — Diagonal Continuation A"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Diagonal Continuation A.",
+  "schema_version": 1,
+  "id": "ddrhw-diagonal-diagonal-half-a",
+  "domain": "highway",
+  "name": "DD RHW-4 \u2014 Diagonal Continuation A",
+  "description": "Reusable native diagonal DD RHW-4 continuation half with an authored concrete centre pier meeting both deck pavement planes. Use the complementary half and the assembly placement guide; traffic follows measured native car lanes.",
+  "recipe": "highway_ddrhw_compact_diagonal_half_a",
+  "geometry_key": "diagonal-half-a",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f83a",
+  "tile_ids": [
+    "7f597000"
+  ],
+  "preview_id": "7f597ff5",
+  "effect_name": "preview_scp_hw_f83a_____001",
+  "footprint": [
+    1,
+    1
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "mis"
+  ],
+  "menu": {
+    "id": "6a47f83a",
+    "order": "ffffff3a",
+    "style": "ddrhw-ramp"
+  },
+  "engineering": {
+    "max_grade_percent": 30.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "pavement_path_offset_m": 0.0,
+    "model_only_cells": []
+  },
+  "shadow_mode": "generated",
+  "shadow_mappings": [
+    {
+      "tile": "7f597000",
+      "source": "7f597000",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+    "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+    "redistribution": "permission-pending",
+    "supports": "One 0.8 m square open-sided concrete column at the native tile centre, from ground 0 m to upper pavement 15 m; six repeated placements in the complete assembly.",
+    "partition_review": "Reviewed one-diagonal-tile ramp extension and right-turn-only access. Retains piece, puzzle, menu, preview, and reserved resource-block identities; local model slots follow the revised AutoTileBase grid. Native MIS materials replace the flat atlas."
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}

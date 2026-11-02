@@ -1,0 +1,2881 @@
+{
+  "schema_version": 1,
+  "purpose": "Frozen native-donor measurements for the experimental diagonal double-decker highway and avenue design.",
+  "status": "donor-only; no highway implementation adapter, compiled candidate, installed candidate, or game operation is established by this audit",
+  "baseline_measurement_date": "2026-10-30",
+  "generator": {
+    "path": "domains/highway/tools/audit_diagonal_diamond_native.py",
+    "version": 1,
+    "sha256": "ee44b668cd79ec23bff87e8c352cf2f7fe9edf018f132fe0405d824242402e07",
+    "shared_parsers": {
+      "scp/dbpf.py": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+      "scp/models.py": "b8383f0c9072ffb50612c5aa3943ba7a9a649bd850cc9aa16a867cee4a99514f"
+    }
+  },
+  "source_privacy": "Archive filenames and resource identifiers are portable; private absolute source paths are intentionally omitted. Native archives remain private and are not copied into this evidence.",
+  "coordinate_notes": {
+    "path": "Saved PATH points use x, y_ground_plane, and z_vertical in meters. Direction indices are native 0=west, 1=north, 2=east, and 3=south.",
+    "model": "Saved S3D vertices use x, y_vertical, and z in meters. No automatic PATH-to-model alignment or texture-alpha interpretation is asserted."
+  },
+  "facts": {
+    "traffic_profile": "NAM 50, right-hand traffic, identified by the pinned audited controller hash. Individual donor semantics still require comparison with the placed geometry.",
+    "dd_real_deck_heights_m": [
+      7.5,
+      15.0
+    ],
+    "avenue_height_m": 0.0,
+    "dd_lanes_per_deck": 2,
+    "main_diagonal_route_directions": {
+      "57530200": {
+        "upper": "2 to 3",
+        "lower": "3 to 2"
+      },
+      "57530900": {
+        "upper": "3 to 2",
+        "lower": "2 to 3"
+      }
+    },
+    "capacity_paths": "The native 57530200, 57530900, 57F53600, and 57F53900 resources contain two routes explicitly labelled Invalid Paths for Capacity Increase. They are recorded and excluded from connectable-route claims using the native comment section, not a coordinate heuristic.",
+    "crossing": "5753A300, 5753A305, 5753A380, and 5753A385 contain actual diagonal DD road and perpendicular diagonal ground-avenue paths plus models. Their complete multi-cell arrangement has not been solved or verified here.",
+    "construction": "The native DD diagonal filler has RUL0 puzzle roots 00085072 and 00095072 and references Core.dat models 57F53600 and 57F53900. The 5753A3 crossing is created through native RUL2 rewrites; no RUL0 family containing 5753A3 references was found in the controller.",
+    "ramps": "The native named DDRHW-4/MIS-1 entrance and exit puzzle roots 00045136 and 00005136 explicitly describe Orthogonal ramps. This audit does not establish a diagonal DD to avenue on/off-ramp seam or a complete donor-clone solution."
+  },
+  "archives": [
+    {
+      "filename": "NetworkAddonMod_Controller.dat",
+      "sha256": "d903540cdf772b4ed6a072c504e006e1cac384f8027ce58a288a5a9654f94161",
+      "archive_bytes": 59179473,
+      "resource_count": 5,
+      "resource_types": {
+        "00000000": 1,
+        "0A5BCF4B": 3,
+        "2026960B": 1
+      }
+    },
+    {
+      "filename": "RealHighway_DD_RHW-4.dat",
+      "sha256": "ccf8dabd3930fce92d0baa872ff974e3a536ddcc40762505a2e70eafcf9c0dfb",
+      "archive_bytes": 889582,
+      "resource_count": 1460,
+      "resource_types": {
+        "296678F7": 532,
+        "5AD0E817": 455,
+        "6534284A": 472,
+        "E86B1EEF": 1
+      },
+      "measured_paths": [
+        {
+          "tgi": "296678F7-A966883F-57530200",
+          "decoded_bytes": 409,
+          "sha256": "e888625d239fe19f546f36f58bed998359440e889904fa4976c3aec355640eb1",
+          "format": "1.2",
+          "terrain": 0,
+          "routes": [
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  3.2,
+                  15.0
+                ],
+                [
+                  -3.2,
+                  -8.0,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_2_3_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  -3.2,
+                  15.0
+                ],
+                [
+                  3.2,
+                  -8.0,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_2_3_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  -8.0,
+                  7.5
+                ],
+                [
+                  8.0,
+                  -3.2,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_3_2_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  -8.0,
+                  7.5
+                ],
+                [
+                  8.0,
+                  3.2,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_3_2_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 0,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  -7.0,
+                  -7.1,
+                  0.0
+                ],
+                [
+                  -7.1,
+                  -7.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "car_0_3",
+              "classification": "native_invalid_capacity_path",
+              "included_as_connectable_route": false
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  7.0,
+                  7.1,
+                  0.0
+                ],
+                [
+                  7.1,
+                  7.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "car_2_1",
+              "classification": "native_invalid_capacity_path",
+              "included_as_connectable_route": false
+            }
+          ],
+          "total_routes": 6,
+          "connectable_routes": 4,
+          "invalid_capacity_routes_excluded": 2
+        },
+        {
+          "tgi": "296678F7-A966883F-57530900",
+          "decoded_bytes": 407,
+          "sha256": "bd5435abd7e1f8360b3b8704eab474112330d8b7719333863e5bd264216415ce",
+          "format": "1.2",
+          "terrain": 0,
+          "routes": [
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  -8.0,
+                  15.0
+                ],
+                [
+                  8.0,
+                  -3.2,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_3_2_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  -8.0,
+                  15.0
+                ],
+                [
+                  8.0,
+                  3.2,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_3_2_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  3.2,
+                  7.5
+                ],
+                [
+                  -3.2,
+                  -8.0,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_2_3_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  -3.2,
+                  7.5
+                ],
+                [
+                  3.2,
+                  -8.0,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_2_3_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 0,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  -7.0,
+                  -7.1,
+                  0.0
+                ],
+                [
+                  -7.1,
+                  -7.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "car_0_3",
+              "classification": "native_invalid_capacity_path",
+              "included_as_connectable_route": false
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  7.0,
+                  7.1,
+                  0.0
+                ],
+                [
+                  7.1,
+                  7.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "car_2_1",
+              "classification": "native_invalid_capacity_path",
+              "included_as_connectable_route": false
+            }
+          ],
+          "total_routes": 6,
+          "connectable_routes": 4,
+          "invalid_capacity_routes_excluded": 2
+        },
+        {
+          "tgi": "296678F7-A966883F-5753A300",
+          "decoded_bytes": 431,
+          "sha256": "270de5c64994b0389796a5b036f78689c2e32ace25c05ad4af31743b0c2b3557",
+          "format": "1.2",
+          "terrain": 0,
+          "routes": [
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  3.2,
+                  15.0
+                ],
+                [
+                  -3.2,
+                  -8.0,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_2_3_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  -3.2,
+                  15.0
+                ],
+                [
+                  3.2,
+                  -8.0,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_2_3_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  -8.0,
+                  7.5
+                ],
+                [
+                  8.0,
+                  3.2,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_3_2_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  -8.0,
+                  7.5
+                ],
+                [
+                  8.0,
+                  -3.2,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_3_2_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 3,
+              "exit": 0,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  -8.0,
+                  0.0
+                ],
+                [
+                  -8.0,
+                  -3.2,
+                  0.0
+                ]
+              ],
+              "native_comment": "Car_a_3_0",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 2,
+              "entry": 3,
+              "exit": 0,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  -8.0,
+                  0.0
+                ],
+                [
+                  -8.0,
+                  3.2,
+                  0.0
+                ]
+              ],
+              "native_comment": "Car_b_3_0",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 2,
+              "lane": 1,
+              "entry": 3,
+              "exit": 0,
+              "compatibility": 0,
+              "points": [
+                [
+                  7.3,
+                  -8.0,
+                  0.0
+                ],
+                [
+                  -8.0,
+                  7.3,
+                  0.0
+                ]
+              ],
+              "native_comment": "Sim_a_3_0",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            }
+          ],
+          "total_routes": 7,
+          "connectable_routes": 7,
+          "invalid_capacity_routes_excluded": 0
+        },
+        {
+          "tgi": "296678F7-A966883F-5753A305",
+          "decoded_bytes": 610,
+          "sha256": "d412f766bfaa836a6cfdb090f943fe1e0b972bd68da1e7840aa599dd1df8ec25",
+          "format": "1.2",
+          "terrain": 0,
+          "routes": [
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  3.2,
+                  15.0
+                ],
+                [
+                  -3.2,
+                  -8.0,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_2_3_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  -3.2,
+                  15.0
+                ],
+                [
+                  3.2,
+                  -8.0,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_2_3_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  -8.0,
+                  7.5
+                ],
+                [
+                  8.0,
+                  3.2,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_3_2_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  -8.0,
+                  7.5
+                ],
+                [
+                  8.0,
+                  -3.2,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_3_2_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 2,
+              "lane": 1,
+              "entry": 2,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  7.3,
+                  0.0
+                ],
+                [
+                  7.3,
+                  8.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "Sim_a_2_1",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 2,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  3.2,
+                  0.0
+                ],
+                [
+                  3.2,
+                  8.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "Car_a_2_1",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 2,
+              "entry": 2,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  -3.2,
+                  0.0
+                ],
+                [
+                  -3.2,
+                  8.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "Car_b_2_1",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 0,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  -8.0,
+                  3.2,
+                  0.0
+                ],
+                [
+                  3.2,
+                  -8.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "Car_a_0_3",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 2,
+              "entry": 0,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  -8.0,
+                  -3.2,
+                  0.0
+                ],
+                [
+                  -3.2,
+                  -8.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "Car_b_0_3",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 2,
+              "lane": 1,
+              "entry": 0,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  -8.0,
+                  -7.3,
+                  0.0
+                ],
+                [
+                  -7.3,
+                  -8.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "Sim_a_0_3",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            }
+          ],
+          "total_routes": 10,
+          "connectable_routes": 10,
+          "invalid_capacity_routes_excluded": 0
+        },
+        {
+          "tgi": "296678F7-A966883F-5753A380",
+          "decoded_bytes": 431,
+          "sha256": "58c9f8c294ad726e1ea74e5ce45fe51fbfa30460e6f68d95fd474c506535fd49",
+          "format": "1.2",
+          "terrain": 0,
+          "routes": [
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  -8.0,
+                  15.0
+                ],
+                [
+                  8.0,
+                  -3.2,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_3_2_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  -8.0,
+                  15.0
+                ],
+                [
+                  8.0,
+                  3.2,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_3_2_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  3.2,
+                  7.5
+                ],
+                [
+                  -3.2,
+                  -8.0,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_2_3_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  -3.2,
+                  7.5
+                ],
+                [
+                  3.2,
+                  -8.0,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_2_3_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 3,
+              "exit": 0,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  -8.0,
+                  0.0
+                ],
+                [
+                  -8.0,
+                  -3.2,
+                  0.0
+                ]
+              ],
+              "native_comment": "Car_a_3_0",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 2,
+              "entry": 3,
+              "exit": 0,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  -8.0,
+                  0.0
+                ],
+                [
+                  -8.0,
+                  3.2,
+                  0.0
+                ]
+              ],
+              "native_comment": "Car_b_3_0",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 2,
+              "lane": 1,
+              "entry": 3,
+              "exit": 0,
+              "compatibility": 0,
+              "points": [
+                [
+                  7.3,
+                  -8.0,
+                  0.0
+                ],
+                [
+                  -8.0,
+                  7.3,
+                  0.0
+                ]
+              ],
+              "native_comment": "Sim_a_3_0",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            }
+          ],
+          "total_routes": 7,
+          "connectable_routes": 7,
+          "invalid_capacity_routes_excluded": 0
+        },
+        {
+          "tgi": "296678F7-A966883F-5753A385",
+          "decoded_bytes": 610,
+          "sha256": "4c66afdf9d570ba273d1d2290cd643d8e27434229fe0ad0b2365aa31653534a9",
+          "format": "1.2",
+          "terrain": 0,
+          "routes": [
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  -8.0,
+                  15.0
+                ],
+                [
+                  8.0,
+                  -3.2,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_3_2_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  -8.0,
+                  15.0
+                ],
+                [
+                  8.0,
+                  3.2,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_3_2_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  3.2,
+                  7.5
+                ],
+                [
+                  -3.2,
+                  -8.0,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_2_3_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  -3.2,
+                  7.5
+                ],
+                [
+                  3.2,
+                  -8.0,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_2_3_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 2,
+              "lane": 1,
+              "entry": 2,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  7.3,
+                  0.0
+                ],
+                [
+                  7.3,
+                  8.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "Sim_a_2_1",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 2,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  3.2,
+                  0.0
+                ],
+                [
+                  3.2,
+                  8.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "Car_a_2_1",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 2,
+              "entry": 2,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  -3.2,
+                  0.0
+                ],
+                [
+                  -3.2,
+                  8.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "Car_b_2_1",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 0,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  -8.0,
+                  3.2,
+                  0.0
+                ],
+                [
+                  3.2,
+                  -8.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "Car_a_0_3",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 2,
+              "entry": 0,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  -8.0,
+                  -3.2,
+                  0.0
+                ],
+                [
+                  -3.2,
+                  -8.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "Car_b_0_3",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 2,
+              "lane": 1,
+              "entry": 0,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  -8.0,
+                  -7.3,
+                  0.0
+                ],
+                [
+                  -7.3,
+                  -8.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "Sim_a_0_3",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            }
+          ],
+          "total_routes": 10,
+          "connectable_routes": 10,
+          "invalid_capacity_routes_excluded": 0
+        }
+      ],
+      "measured_models": [
+        {
+          "tgi": "5AD0E817-BADB57F1-57530200",
+          "decoded_bytes": 2687,
+          "sha256": "4eb082b8329ddf70be7333f3343c4f1a621985d3992b17ca624eef79dc0ee4a8",
+          "mesh_count": 6,
+          "meshes": [
+            {
+              "name": "Top Deck",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656854629516602,
+                  8.0
+                ],
+                "y_vertical": [
+                  15.0,
+                  15.0
+                ],
+                "z": [
+                  -9.656854629516602,
+                  8.0
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431466251178157,
+                11.31370849898476
+              ],
+              "first_frame_vertices": [
+                [
+                  8.0,
+                  15.0,
+                  8.0
+                ],
+                [
+                  8.0,
+                  15.0,
+                  -8.0
+                ],
+                [
+                  -8.0,
+                  15.0,
+                  8.0
+                ],
+                [
+                  6.34314489364624,
+                  15.0,
+                  -9.656854629516602
+                ],
+                [
+                  -9.656854629516602,
+                  15.0,
+                  6.34314489364624
+                ]
+              ]
+            },
+            {
+              "name": "Substructure",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.655854225158691,
+                  6.344145774841309
+                ],
+                "y_vertical": [
+                  14.00100040435791,
+                  15.00100040435791
+                ],
+                "z": [
+                  -9.655854225158691,
+                  6.344145774841309
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.341731502532214,
+                -2.341731502532214
+              ]
+            },
+            {
+              "name": "Barriers",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.655853271484375,
+                  6.929718971252441
+                ],
+                "y_vertical": [
+                  15.00100040435791,
+                  16.391624450683594
+                ],
+                "z": [
+                  -9.655853271484375,
+                  6.929718971252441
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3417308281826377,
+                -1.5136059464054257
+              ]
+            },
+            {
+              "name": "Bottom Deck",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656854629516602,
+                  8.0
+                ],
+                "y_vertical": [
+                  7.5,
+                  7.5
+                ],
+                "z": [
+                  -9.656854629516602,
+                  8.0
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431466251178157,
+                11.31370849898476
+              ],
+              "first_frame_vertices": [
+                [
+                  8.0,
+                  7.5,
+                  8.0
+                ],
+                [
+                  8.0,
+                  7.5,
+                  -8.0
+                ],
+                [
+                  -8.0,
+                  7.5,
+                  8.0
+                ],
+                [
+                  6.34314489364624,
+                  7.5,
+                  -9.656854629516602
+                ],
+                [
+                  -9.656854629516602,
+                  7.5,
+                  6.34314489364624
+                ]
+              ]
+            },
+            {
+              "name": "Substructure",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.655854225158691,
+                  6.344145774841309
+                ],
+                "y_vertical": [
+                  6.500999927520752,
+                  7.500999927520752
+                ],
+                "z": [
+                  -9.655854225158691,
+                  6.344145774841309
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.341731502532214,
+                -2.341731502532214
+              ]
+            },
+            {
+              "name": "Barriers",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.655853271484375,
+                  6.929718971252441
+                ],
+                "y_vertical": [
+                  7.500999927520752,
+                  8.89162540435791
+                ],
+                "z": [
+                  -9.655853271484375,
+                  6.929718971252441
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3417308281826377,
+                -1.5136059464054257
+              ]
+            }
+          ],
+          "limits": "These are stored vertices and geometric bounds. Transparent or textured triangle coverage is not a measured paved-road width, a vehicle envelope, or a physical collision result."
+        },
+        {
+          "tgi": "5AD0E817-BADB57F1-5753A300",
+          "decoded_bytes": 2690,
+          "sha256": "7509d29d6e36aa20c1b01689808ac30bf4a063fb6be8a0affd04b09a4643aef9",
+          "mesh_count": 7,
+          "meshes": [
+            {
+              "name": "Top Deck",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656854629516602,
+                  8.0
+                ],
+                "y_vertical": [
+                  15.0,
+                  15.0
+                ],
+                "z": [
+                  -9.656854629516602,
+                  8.0
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431466251178157,
+                11.31370849898476
+              ],
+              "first_frame_vertices": [
+                [
+                  8.0,
+                  15.0,
+                  8.0
+                ],
+                [
+                  8.0,
+                  15.0,
+                  -8.0
+                ],
+                [
+                  -8.0,
+                  15.0,
+                  8.0
+                ],
+                [
+                  6.34314489364624,
+                  15.0,
+                  -9.656854629516602
+                ],
+                [
+                  -9.656854629516602,
+                  15.0,
+                  6.34314489364624
+                ]
+              ]
+            },
+            {
+              "name": "Substructure",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656854629516602,
+                  6.343145847320557
+                ],
+                "y_vertical": [
+                  14.0,
+                  15.0
+                ],
+                "z": [
+                  -9.656854629516602,
+                  6.343145847320557
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431459507682395,
+                -2.3431459507682395
+              ]
+            },
+            {
+              "name": "Barriers",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656853675842285,
+                  6.9287190437316895
+                ],
+                "y_vertical": [
+                  15.0,
+                  16.390625
+                ],
+                "z": [
+                  -9.656853675842285,
+                  6.9287190437316895
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431452764186633,
+                -1.5150203946414513
+              ]
+            },
+            {
+              "name": "Bottom Deck",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656854629516602,
+                  8.0
+                ],
+                "y_vertical": [
+                  7.5,
+                  7.5
+                ],
+                "z": [
+                  -9.656854629516602,
+                  8.0
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431466251178157,
+                11.31370849898476
+              ],
+              "first_frame_vertices": [
+                [
+                  8.0,
+                  7.5,
+                  8.0
+                ],
+                [
+                  8.0,
+                  7.5,
+                  -8.0
+                ],
+                [
+                  -8.0,
+                  7.5,
+                  8.0
+                ],
+                [
+                  6.34314489364624,
+                  7.5,
+                  -9.656854629516602
+                ],
+                [
+                  -9.656854629516602,
+                  7.5,
+                  6.34314489364624
+                ]
+              ]
+            },
+            {
+              "name": "Substructure",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656854629516602,
+                  6.343145847320557
+                ],
+                "y_vertical": [
+                  6.5,
+                  7.5
+                ],
+                "z": [
+                  -9.656854629516602,
+                  6.343145847320557
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431459507682395,
+                -2.3431459507682395
+              ]
+            },
+            {
+              "name": "Barriers",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656853675842285,
+                  6.9287190437316895
+                ],
+                "y_vertical": [
+                  7.5,
+                  8.890625
+                ],
+                "z": [
+                  -9.656853675842285,
+                  6.9287190437316895
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431452764186633,
+                -1.5150203946414513
+              ]
+            },
+            {
+              "name": "Avenue",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -8.0,
+                  8.0
+                ],
+                "y_vertical": [
+                  0.0,
+                  0.0
+                ],
+                "z": [
+                  -8.0,
+                  8.0
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -11.31370849898476,
+                11.31370849898476
+              ],
+              "first_frame_vertices": [
+                [
+                  -8.0,
+                  0.0,
+                  -8.0
+                ],
+                [
+                  8.0,
+                  0.0,
+                  8.0
+                ],
+                [
+                  -8.0,
+                  0.0,
+                  8.0
+                ]
+              ]
+            }
+          ],
+          "limits": "These are stored vertices and geometric bounds. Transparent or textured triangle coverage is not a measured paved-road width, a vehicle envelope, or a physical collision result."
+        },
+        {
+          "tgi": "5AD0E817-BADB57F1-5753A305",
+          "decoded_bytes": 2702,
+          "sha256": "952d02ab4a523747cd4b049c56d7b7091a2d253a59530ebf96207d9691d99c40",
+          "mesh_count": 7,
+          "meshes": [
+            {
+              "name": "Top Deck",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656854629516602,
+                  8.0
+                ],
+                "y_vertical": [
+                  15.0,
+                  15.0
+                ],
+                "z": [
+                  -9.656854629516602,
+                  8.0
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431466251178157,
+                11.31370849898476
+              ],
+              "first_frame_vertices": [
+                [
+                  8.0,
+                  15.0,
+                  8.0
+                ],
+                [
+                  8.0,
+                  15.0,
+                  -8.0
+                ],
+                [
+                  -8.0,
+                  15.0,
+                  8.0
+                ],
+                [
+                  6.34314489364624,
+                  15.0,
+                  -9.656854629516602
+                ],
+                [
+                  -9.656854629516602,
+                  15.0,
+                  6.34314489364624
+                ]
+              ]
+            },
+            {
+              "name": "Substructure",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656854629516602,
+                  6.343145847320557
+                ],
+                "y_vertical": [
+                  14.0,
+                  15.0
+                ],
+                "z": [
+                  -9.656854629516602,
+                  6.343145847320557
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431459507682395,
+                -2.3431459507682395
+              ]
+            },
+            {
+              "name": "Barriers",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656853675842285,
+                  6.9287190437316895
+                ],
+                "y_vertical": [
+                  15.0,
+                  16.390625
+                ],
+                "z": [
+                  -9.656853675842285,
+                  6.9287190437316895
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431452764186633,
+                -1.5150203946414513
+              ]
+            },
+            {
+              "name": "Bottom Deck",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656854629516602,
+                  8.0
+                ],
+                "y_vertical": [
+                  7.5,
+                  7.5
+                ],
+                "z": [
+                  -9.656854629516602,
+                  8.0
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431466251178157,
+                11.31370849898476
+              ],
+              "first_frame_vertices": [
+                [
+                  8.0,
+                  7.5,
+                  8.0
+                ],
+                [
+                  8.0,
+                  7.5,
+                  -8.0
+                ],
+                [
+                  -8.0,
+                  7.5,
+                  8.0
+                ],
+                [
+                  6.34314489364624,
+                  7.5,
+                  -9.656854629516602
+                ],
+                [
+                  -9.656854629516602,
+                  7.5,
+                  6.34314489364624
+                ]
+              ]
+            },
+            {
+              "name": "Substructure",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656854629516602,
+                  6.343145847320557
+                ],
+                "y_vertical": [
+                  6.5,
+                  7.5
+                ],
+                "z": [
+                  -9.656854629516602,
+                  6.343145847320557
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431459507682395,
+                -2.3431459507682395
+              ]
+            },
+            {
+              "name": "Barriers",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -9.656853675842285,
+                  6.9287190437316895
+                ],
+                "y_vertical": [
+                  7.5,
+                  8.890625
+                ],
+                "z": [
+                  -9.656853675842285,
+                  6.9287190437316895
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -2.3431452764186633,
+                -1.5150203946414513
+              ]
+            },
+            {
+              "name": "Avenue",
+              "stored_coordinate_bounds_m": {
+                "x": [
+                  -8.0,
+                  8.0
+                ],
+                "y_vertical": [
+                  0.0,
+                  0.0
+                ],
+                "z": [
+                  -8.0,
+                  8.0
+                ]
+              },
+              "x_plus_z_projection_m": [
+                -11.31370849898476,
+                11.31370849898476
+              ],
+              "first_frame_vertices": [
+                [
+                  8.0,
+                  0.0,
+                  -8.0
+                ],
+                [
+                  -8.0,
+                  0.0,
+                  -8.0
+                ],
+                [
+                  8.0,
+                  0.0,
+                  8.0
+                ],
+                [
+                  -8.0,
+                  0.0,
+                  8.0
+                ]
+              ]
+            }
+          ],
+          "limits": "These are stored vertices and geometric bounds. Transparent or textured triangle coverage is not a measured paved-road width, a vehicle envelope, or a physical collision result."
+        }
+      ],
+      "ramp_candidate_scan": {
+        "instance_prefix": "5783",
+        "scope": "Every PATH resource with a 5783 instance prefix in this archive; this is a bounded candidate scan, not proof that no suitable donor exists elsewhere.",
+        "candidates": 80,
+        "candidates_with_changing_height_route": 0,
+        "resource_instances": [
+          "57830059",
+          "5783005A",
+          "578300D9",
+          "578300DA",
+          "57830159",
+          "5783015A",
+          "578301D9",
+          "578301DA",
+          "57830259",
+          "5783025A",
+          "578302D9",
+          "578302DA",
+          "57830359",
+          "5783035A",
+          "578303D9",
+          "578303DA",
+          "57830759",
+          "5783075A",
+          "578307D9",
+          "578307DA",
+          "57830859",
+          "5783085A",
+          "578308D9",
+          "578308DA",
+          "57830959",
+          "5783095A",
+          "578309D9",
+          "578309DA",
+          "57830A59",
+          "57830A5A",
+          "57830AD9",
+          "57830ADA",
+          "57831059",
+          "5783105A",
+          "578310D9",
+          "578310DA",
+          "57831159",
+          "5783115A",
+          "578311D9",
+          "578311DA",
+          "57831259",
+          "5783125A",
+          "578312D9",
+          "578312DA",
+          "57831359",
+          "5783135A",
+          "578313D9",
+          "578313DA",
+          "57831459",
+          "5783145A",
+          "578314D9",
+          "578314DA",
+          "57831559",
+          "5783155A",
+          "578315D9",
+          "578315DA",
+          "57831959",
+          "5783195A",
+          "578319D9",
+          "578319DA",
+          "57831A59",
+          "57831A5A",
+          "57831AD9",
+          "57831ADA",
+          "57831B59",
+          "57831B5A",
+          "57831BD9",
+          "57831BDA",
+          "57831C59",
+          "57831C5A",
+          "57831CD9",
+          "57831CDA",
+          "57831D59",
+          "57831D5A",
+          "57831DD9",
+          "57831DDA",
+          "57831E59",
+          "57831E5A",
+          "57831ED9",
+          "57831EDA"
+        ],
+        "height_sets_m": [
+          [
+            7.5
+          ],
+          [
+            7.5,
+            15.0
+          ],
+          [
+            15.0
+          ]
+        ],
+        "sampled_records": [
+          {
+            "tgi": "296678F7-A966883F-57830059",
+            "sha256": "7735279b147fdaf1a627fa750f19729f7e29299a805c79d04b2080553bc5dd79",
+            "routes": 7,
+            "connectable_routes": 5,
+            "heights_m": [
+              7.5,
+              15.0
+            ],
+            "has_route_changing_height": false,
+            "external_direction_pairs": [
+              [
+                1,
+                3
+              ],
+              [
+                3,
+                1
+              ]
+            ]
+          },
+          {
+            "tgi": "296678F7-A966883F-5783005A",
+            "sha256": "1f68fa731672036905da2e338c0303465d43306c986cac37e7fce96d9f31acb6",
+            "routes": 7,
+            "connectable_routes": 5,
+            "heights_m": [
+              7.5,
+              15.0
+            ],
+            "has_route_changing_height": false,
+            "external_direction_pairs": [
+              [
+                1,
+                3
+              ],
+              [
+                3,
+                1
+              ]
+            ]
+          },
+          {
+            "tgi": "296678F7-A966883F-57830259",
+            "sha256": "dcad9f20d3a60043edb30bb5d8b22037080c0ef108f438ead23d65a5d0065e3a",
+            "routes": 7,
+            "connectable_routes": 5,
+            "heights_m": [
+              7.5,
+              15.0
+            ],
+            "has_route_changing_height": false,
+            "external_direction_pairs": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                3,
+                1
+              ]
+            ]
+          },
+          {
+            "tgi": "296678F7-A966883F-5783025A",
+            "sha256": "9c5b4402a76fb62c5c4cb29945316c8193b5831b411e91a901041a4266938f48",
+            "routes": 7,
+            "connectable_routes": 5,
+            "heights_m": [
+              7.5,
+              15.0
+            ],
+            "has_route_changing_height": false,
+            "external_direction_pairs": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                3,
+                1
+              ]
+            ]
+          },
+          {
+            "tgi": "296678F7-A966883F-57830A59",
+            "sha256": "19d520452e0411540c005131a49b9443f3b92d28aa8e90d03d10a2f5a4ebc58a",
+            "routes": 1,
+            "connectable_routes": 1,
+            "heights_m": [
+              15.0
+            ],
+            "has_route_changing_height": false,
+            "external_direction_pairs": [
+              [
+                3,
+                1
+              ]
+            ]
+          },
+          {
+            "tgi": "296678F7-A966883F-57830A5A",
+            "sha256": "344139092e889bbb96e2908735a4937090c4dc965a763920ba0a4dee7c393055",
+            "routes": 1,
+            "connectable_routes": 1,
+            "heights_m": [
+              7.5
+            ],
+            "has_route_changing_height": false,
+            "external_direction_pairs": [
+              [
+                3,
+                1
+              ]
+            ]
+          }
+        ],
+        "all_candidates_have_constant_height_routes": true
+      }
+    },
+    {
+      "filename": "RealHighway_Core.dat",
+      "sha256": "8a172e4d7f628e09af3e153ef2effb34a2bcf876ff3c8f76210cb48d660aa191",
+      "archive_bytes": 652796,
+      "resource_count": 886,
+      "resource_types": {
+        "296678F7": 156,
+        "5AD0E817": 329,
+        "6534284A": 178,
+        "7AB50E44": 9,
+        "856DDBAC": 20,
+        "AA5C3144": 4,
+        "CA63E2A3": 2,
+        "E86B1EEF": 1,
+        "EA5118B0": 187
+      },
+      "measured_paths": [
+        {
+          "tgi": "296678F7-A966883F-57F53600",
+          "decoded_bytes": 409,
+          "sha256": "e888625d239fe19f546f36f58bed998359440e889904fa4976c3aec355640eb1",
+          "format": "1.2",
+          "terrain": 0,
+          "routes": [
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  3.2,
+                  15.0
+                ],
+                [
+                  -3.2,
+                  -8.0,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_2_3_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  -3.2,
+                  15.0
+                ],
+                [
+                  3.2,
+                  -8.0,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_2_3_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  -8.0,
+                  7.5
+                ],
+                [
+                  8.0,
+                  -3.2,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_3_2_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  -8.0,
+                  7.5
+                ],
+                [
+                  8.0,
+                  3.2,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_3_2_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 0,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  -7.0,
+                  -7.1,
+                  0.0
+                ],
+                [
+                  -7.1,
+                  -7.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "car_0_3",
+              "classification": "native_invalid_capacity_path",
+              "included_as_connectable_route": false
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  7.0,
+                  7.1,
+                  0.0
+                ],
+                [
+                  7.1,
+                  7.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "car_2_1",
+              "classification": "native_invalid_capacity_path",
+              "included_as_connectable_route": false
+            }
+          ],
+          "total_routes": 6,
+          "connectable_routes": 4,
+          "invalid_capacity_routes_excluded": 2
+        },
+        {
+          "tgi": "296678F7-A966883F-57F53900",
+          "decoded_bytes": 407,
+          "sha256": "bd5435abd7e1f8360b3b8704eab474112330d8b7719333863e5bd264216415ce",
+          "format": "1.2",
+          "terrain": 0,
+          "routes": [
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  -8.0,
+                  15.0
+                ],
+                [
+                  8.0,
+                  -3.2,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_3_2_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  -8.0,
+                  15.0
+                ],
+                [
+                  8.0,
+                  3.2,
+                  15.0
+                ]
+              ],
+              "native_comment": "Car_3_2_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  3.2,
+                  7.5
+                ],
+                [
+                  -3.2,
+                  -8.0,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_2_3_a",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  -3.2,
+                  7.5
+                ],
+                [
+                  3.2,
+                  -8.0,
+                  7.5
+                ]
+              ],
+              "native_comment": "Car_2_3_b",
+              "classification": "native_saved_route",
+              "included_as_connectable_route": true
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 0,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  -7.0,
+                  -7.1,
+                  0.0
+                ],
+                [
+                  -7.1,
+                  -7.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "car_0_3",
+              "classification": "native_invalid_capacity_path",
+              "included_as_connectable_route": false
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  7.0,
+                  7.1,
+                  0.0
+                ],
+                [
+                  7.1,
+                  7.0,
+                  0.0
+                ]
+              ],
+              "native_comment": "car_2_1",
+              "classification": "native_invalid_capacity_path",
+              "included_as_connectable_route": false
+            }
+          ],
+          "total_routes": 6,
+          "connectable_routes": 4,
+          "invalid_capacity_routes_excluded": 2
+        }
+      ]
+    },
+    {
+      "filename": "RealHighway_Avenue_MIS_Ramp_PuzzlePieces.dat",
+      "sha256": "e0eb1f2b47327f2a65e16a099df3ea7de2ff5af0f4ef723ae8fe74cba380657a",
+      "archive_bytes": 21285,
+      "resource_count": 107,
+      "resource_types": {
+        "296678F7": 34,
+        "5AD0E817": 36,
+        "6534284A": 30,
+        "E86B1EEF": 1,
+        "EA5118B0": 6
+      }
+    },
+    {
+      "filename": "RealHighway_MIS.dat",
+      "sha256": "dec1873a357cca39a5a06de3b0722757b52b72c47c33a24d269d846779dba1a8",
+      "archive_bytes": 4462822,
+      "resource_count": 9327,
+      "resource_types": {
+        "296678F7": 3377,
+        "5AD0E817": 2809,
+        "6534284A": 3136,
+        "E86B1EEF": 1,
+        "EA5118B0": 4
+      }
+    }
+  ],
+  "native_avenue_diagonal_path": {
+    "archive_filename": "SimCity_1.dat",
+    "scope": "Only this indexed resource was read; the complete game archive is not a registered build dependency.",
+    "tgi": "296678F7-69668828-04000200",
+    "decoded_bytes": 243,
+    "sha256": "e724937d0055bd680e50c5c59066a5ca9fc45d402ae75fb877c9e10fd3f3d746",
+    "format": "1.1",
+    "terrain": 0,
+    "routes": [
+      {
+        "transport": 1,
+        "lane": 1,
+        "entry": 1,
+        "exit": 2,
+        "compatibility": null,
+        "points": [
+          [
+            3.2,
+            8.0,
+            0.0
+          ],
+          [
+            6.4,
+            4.8,
+            0.0
+          ],
+          [
+            8.0,
+            3.2,
+            0.0
+          ]
+        ],
+        "native_comment": "Car_a_1_2",
+        "classification": "native_saved_route",
+        "included_as_connectable_route": true
+      },
+      {
+        "transport": 1,
+        "lane": 2,
+        "entry": 1,
+        "exit": 2,
+        "compatibility": null,
+        "points": [
+          [
+            -3.2,
+            8.0,
+            0.0
+          ],
+          [
+            3.2,
+            1.6,
+            0.0
+          ],
+          [
+            8.0,
+            -3.2,
+            0.0
+          ]
+        ],
+        "native_comment": "Car_b_1_2",
+        "classification": "native_saved_route",
+        "included_as_connectable_route": true
+      },
+      {
+        "transport": 2,
+        "lane": 1,
+        "entry": 1,
+        "exit": 2,
+        "compatibility": null,
+        "points": [
+          [
+            -7.3,
+            8.0,
+            0.0
+          ],
+          [
+            0.0805024,
+            0.644019,
+            0.0
+          ],
+          [
+            8.0,
+            -7.3,
+            0.0
+          ]
+        ],
+        "native_comment": "Sim_a_1_2",
+        "classification": "native_saved_route",
+        "included_as_connectable_route": true
+      }
+    ],
+    "total_routes": 3,
+    "connectable_routes": 3,
+    "invalid_capacity_routes_excluded": 0
+  },
+  "native_construction": {
+    "rul0_tgi": "0A5BCF4B-AA5BCF57-10000000",
+    "native_rul0_sha256": "d2a63a6c9070857c5360343cfa07f0be13ef0559fd659e9545c57c15dda672b9",
+    "selected_families": [
+      {
+        "puzzle_id": "0x00005072",
+        "native_block_sha256": "3dac9b2366475bc98f8efbc7ff2302b011f538ad8409fbe4378f46ba6f9a0558",
+        "fields": {
+          "Piece": [
+            "0.0, 0.0, 0, 0, 0x57F53305"
+          ],
+          "PreviewEffect": [
+            "preview_filler__ddrhw4__000"
+          ],
+          "CellLayout": [
+            ".......",
+            ".......",
+            "...Z..<",
+            "...^..."
+          ],
+          "CheckType": [
+            "Z - dirtroad: 0x02000200"
+          ],
+          "ConsLayout": [
+            ".......",
+            ".......",
+            "...|..<",
+            "...^..."
+          ],
+          "AutoTileBase": [
+            "0x57F53300"
+          ],
+          "ReplacementIntersection": [
+            "0, 0"
+          ],
+          "PlaceQueryID": [
+            "0x57F53300"
+          ],
+          "Costs": [
+            "1000"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x00015072",
+        "native_block_sha256": "ac6f5383d8b248be3136cdccd735105b54c3e6813bb4b904b903086518bcbba2",
+        "fields": {
+          "CopyFrom": [
+            "0x5072"
+          ],
+          "Rotate": [
+            "1"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x00025072",
+        "native_block_sha256": "4e231809787c8d0314f0aa4c24ed345bb2f8e0cc684eae4599955214d979aece",
+        "fields": {
+          "CopyFrom": [
+            "0x5072"
+          ],
+          "Rotate": [
+            "2"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x00035072",
+        "native_block_sha256": "cf8d547ff4515b9f3b0bbc80bc1f5e816ab6a7bb1aba59bdd69b206de50c19a1",
+        "fields": {
+          "CopyFrom": [
+            "0x5072"
+          ],
+          "Rotate": [
+            "3"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x00045072",
+        "native_block_sha256": "5e3f1a58890aaee21b9f36f3068d3b334e9bc8a1a7b986c7ad2c4c247846b6bc",
+        "fields": {
+          "CopyFrom": [
+            "0x5072"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x00055072",
+        "native_block_sha256": "172f1fc11896b3cc13b877edef58bcfa257b3048045be396120fde3d3332ea72",
+        "fields": {
+          "CopyFrom": [
+            "0x15072"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x00065072",
+        "native_block_sha256": "df5555ce990023caafdd902ebd6ad9ca10ba1c761ba737f9e9339baa41030030",
+        "fields": {
+          "CopyFrom": [
+            "0x25072"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x00075072",
+        "native_block_sha256": "d76c40cdef0c04cdfe3b86a078a57383d10ce25e373f6f3288e451a0889eb3f9",
+        "fields": {
+          "CopyFrom": [
+            "0x35072"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x00085072",
+        "native_block_sha256": "b0bed3800740038a0e94965fe443d6bee60c036c5c58c331d354b2b4c1d13649",
+        "fields": {
+          "Piece": [
+            "0.0, 0.0, 0, 0, 0x57F53605"
+          ],
+          "PreviewEffect": [
+            "preview_filler__ddrhw4__001"
+          ],
+          "CellLayout": [
+            ".......",
+            ".......",
+            "...Z..<",
+            "...^..."
+          ],
+          "CheckType": [
+            "Z - dirtroad: 0x03010000"
+          ],
+          "ConsLayout": [
+            ".......",
+            ".......",
+            ".../..<",
+            "...^..."
+          ],
+          "AutoTileBase": [
+            "0x57F53600"
+          ],
+          "ReplacementIntersection": [
+            "0, 0"
+          ],
+          "PlaceQueryID": [
+            "0x57F53600"
+          ],
+          "Costs": [
+            "8"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x00095072",
+        "native_block_sha256": "b786402bf414bf205d82905d827f4a118f37cf46078330d27b55a2bee9aae86b",
+        "fields": {
+          "Piece": [
+            "0.0, 0.0, 0, 0, 0x57F53905"
+          ],
+          "PreviewEffect": [
+            "preview_filler__ddrhw4__002"
+          ],
+          "CellLayout": [
+            ".......",
+            ".......",
+            "...Z..<",
+            "...^..."
+          ],
+          "CheckType": [
+            "Z - dirtroad: 0x03010000"
+          ],
+          "ConsLayout": [
+            ".......",
+            ".......",
+            ".../..<",
+            "...^..."
+          ],
+          "AutoTileBase": [
+            "0x57F53900"
+          ],
+          "ReplacementIntersection": [
+            "0, 0"
+          ],
+          "PlaceQueryID": [
+            "0x57F53900"
+          ],
+          "Costs": [
+            "8"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x000A5072",
+        "native_block_sha256": "6e6e1444bdf5a795920f3ad2c6c397f20c90a410612a4d07457c0d095fecd6a2",
+        "fields": {
+          "CopyFrom": [
+            "0x85072"
+          ],
+          "Rotate": [
+            "1"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x000B5072",
+        "native_block_sha256": "72ae41c995fb529fd2d09be4b95ef01bf19cd4bb8f63ccc3d78f0ec6131010e6",
+        "fields": {
+          "CopyFrom": [
+            "0x95072"
+          ],
+          "Rotate": [
+            "1"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x000C5072",
+        "native_block_sha256": "1c9035b143faa42987ba76da4bfea2ec7d991b6eab1a52f5bc7a5465f1a279a0",
+        "fields": {
+          "CopyFrom": [
+            "0x85072"
+          ],
+          "Rotate": [
+            "2"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x000D5072",
+        "native_block_sha256": "c7d1a671f6c94646dfdf0afd329cb1d966a7d5fe465d964ba6c4696b55dcdb7c",
+        "fields": {
+          "CopyFrom": [
+            "0x95072"
+          ],
+          "Rotate": [
+            "2"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x000E5072",
+        "native_block_sha256": "61f256735a36ba438383e5850f4446f79b7d0ee11d91103d46c5d154d620ba53",
+        "fields": {
+          "CopyFrom": [
+            "0x85072"
+          ],
+          "Rotate": [
+            "3"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x000F5072",
+        "native_block_sha256": "31e78348d6e92f291cf0e7b9c3bb4d7852df8e1a8b5569baa1ac027d42ee9cd2",
+        "fields": {
+          "CopyFrom": [
+            "0x95072"
+          ],
+          "Rotate": [
+            "3"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x00005136",
+        "native_block_sha256": "1ecba5170844810b502e4f9884860e20ab8c8c8a4e82979af48dda899d3ad19c",
+        "fields": {
+          "Piece": [
+            "-16.0, 0.0, 0, 0, 0x5cebF005"
+          ],
+          "PreviewEffect": [
+            "preview_draggable_mis___055"
+          ],
+          "CellLayout": [
+            ".......",
+            ".......",
+            "..+c<..",
+            "..dc...",
+            "..b....",
+            ".......",
+            "...^..."
+          ],
+          "CheckType": [
+            "b - dirtroad: 0x02000200",
+            "c - dirtroad: 0x02000200",
+            "d - dirtroad: 0x02020000"
+          ],
+          "ConsLayout": [
+            ".......",
+            ".......",
+            "../|<..",
+            "../|...",
+            "..|....",
+            ".......",
+            "...^..."
+          ],
+          "AutoTileBase": [
+            "0x5cebF000"
+          ],
+          "ReplacementIntersection": [
+            "0, 0"
+          ],
+          "PlaceQueryID": [
+            "0x5cebF000"
+          ],
+          "Costs": [
+            "4000"
+          ]
+        }
+      },
+      {
+        "puzzle_id": "0x00045136",
+        "native_block_sha256": "0ff7c08978e684ddd7d5e0a555129821c7f11d942c27eaceb7f78d84e573e3f1",
+        "fields": {
+          "Piece": [
+            "-16.0, 0.0, 0, 0, 0x5cebF205"
+          ],
+          "PreviewEffect": [
+            "preview_draggable_mis___056"
+          ],
+          "CellLayout": [
+            ".......",
+            ".......",
+            "..+c<..",
+            "..dc...",
+            "..b....",
+            ".......",
+            "...^..."
+          ],
+          "CheckType": [
+            "b - dirtroad: 0x02000200",
+            "c - dirtroad: 0x02000200",
+            "d - dirtroad: 0x02020000"
+          ],
+          "ConsLayout": [
+            ".......",
+            ".......",
+            "../|<..",
+            "../|...",
+            "..|....",
+            ".......",
+            "...^..."
+          ],
+          "AutoTileBase": [
+            "0x5cebF200"
+          ],
+          "ReplacementIntersection": [
+            "0, 0"
+          ],
+          "PlaceQueryID": [
+            "0x5cebF200"
+          ],
+          "Costs": [
+            "4000"
+          ]
+        }
+      }
+    ],
+    "crossing_rul0_reference_matches": 0,
+    "rul2_tgi": "0A5BCF4B-AA5BCF57-10000002",
+    "native_rul2_sha256": "c427c7872743ca4cd9f583adf33c93a320babe37c42061fbd33c905696e7a3b1",
+    "selected_crossing_rules": [
+      {
+        "line": 240438,
+        "rule": "0x57530900,0,0,0x5700A300,2,0=0x57530900,0,0,0x5753A300,2,0"
+      },
+      {
+        "line": 240440,
+        "rule": "0x57530900,3,0,0x5700A300,0,1=0x57530900,3,0,0x5753A300,0,1"
+      },
+      {
+        "line": 240441,
+        "rule": "0x5753A300,3,0,0x5700A309,1,0=0x5753A300,3,0,0x5753A385,1,0"
+      },
+      {
+        "line": 240442,
+        "rule": "0x5753A380,3,0,0x5700A309,1,0=0x5753A380,3,0,0x5753A305,1,0"
+      },
+      {
+        "line": 240443,
+        "rule": "0x5753A300,1,1,0x5700A309,2,0=0x5753A300,1,1,0x5753A385,2,0"
+      },
+      {
+        "line": 240444,
+        "rule": "0x5753A380,1,1,0x5700A309,2,0=0x5753A380,1,1,0x5753A305,2,0"
+      },
+      {
+        "line": 240445,
+        "rule": "0x5753A305,3,0,0x5700A300,1,0=0x5753A305,3,0,0x5753A380,1,0"
+      },
+      {
+        "line": 240446,
+        "rule": "0x5753A385,3,0,0x5700A300,1,0=0x5753A385,3,0,0x5753A300,1,0"
+      },
+      {
+        "line": 240447,
+        "rule": "0x5753A305,0,0,0x5700A300,3,1=0x5753A305,0,0,0x5753A380,3,1"
+      },
+      {
+        "line": 240448,
+        "rule": "0x5753A385,0,0,0x5700A300,3,1=0x5753A385,0,0,0x5753A300,3,1"
+      },
+      {
+        "line": 266991,
+        "rule": "0x5753A300,0,0,0x57000200,2,0=0x5753A300,0,0,0x57530900,2,0"
+      },
+      {
+        "line": 266992,
+        "rule": "0x5753A300,2,1,0x57000200,1,0=0x5753A300,2,1,0x57530900,1,0"
+      }
+    ]
+  },
+  "remaining_work": [
+    "Choose and independently verify the complete diagonal crossing placement, including the paired DD and avenue cells.",
+    "Establish measured native joining seams for all intended on- and off-ramps; do not infer highway compatibility from rail ramps.",
+    "Implement and register a highway recipe, menu, connector adapter, extraction workflow, and independent saved-resource verifier before changing the domain to implemented.",
+    "Audit and register exact dependencies before a native highway build.",
+    "Build, verify, and inspect the saved game resources, then obtain separate human game observations."
+  ],
+  "game_observations": "unverified"
+}

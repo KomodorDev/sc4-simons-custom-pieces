@@ -1,0 +1,906 @@
+{
+  "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
+  "piece_id": "ddrhw-modular-lower-entry-compact",
+  "menu_name": "RHW Ramp \u2014 Lower Full Entry Ramp \u2014 Compact",
+  "display_title": "Piece - RHW Ramp \u2014 Lower Full Entry Ramp \u2014 Compact \u2014 Custom (3.00044 m) / Custom (6.74513 m) / Custom (7.5 m)",
+  "view_role": "angled",
+  "canonical_filename": "preview.png",
+  "source": {
+    "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-modular-lower-entry-compact.dat",
+    "preview_id": "7f5a8ff5",
+    "source_dat_sha256": "99dc1998a4ae06dec12855d7da26c8d3b73a00125b45d65fdd74104230673143",
+    "model_sha256": "4398ad88c96d10a5392f6d425fd8e20ab4ee1f70b61bc2d0dd342d00975e1c09"
+  },
+  "file": "previews/preview.png",
+  "sha256": "107163711f62bde128d96a43188a8051475b7ce3ae80e17063ff58bdb8fa1673",
+  "size": [
+    1600,
+    1200
+  ],
+  "azimuth_degrees": 45.0,
+  "elevation_degrees": 31.0,
+  "displayed_rotation_ccw_degrees": 0.0,
+  "coordinate_system": {
+    "scope": "Independent local grid for this reusable type at its default orientation",
+    "tile_metres": 16.0,
+    "displayed_rotation_ccw_degrees": 0.0,
+    "origin_world_m": [
+      0.0,
+      -16.0
+    ],
+    "bounds_world_m": [
+      -8.0,
+      -24.0,
+      24.0,
+      8.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "display_index_ranges": {
+      "X": [
+        0,
+        1
+      ],
+      "Y": [
+        0,
+        1
+      ]
+    },
+    "southwest_reference": "Tile centre at the southwest corner of the occupied-cell bounding rectangle",
+    "southwest_corner_occupied": true,
+    "occupied_local_tiles_en": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "construction_reference": {
+      "world_m": [
+        0.0,
+        0.0
+      ],
+      "local_tiles_en": [
+        0,
+        1
+      ],
+      "inside_displayed_grid": true,
+      "caption_visible": true,
+      "meaning": "The compiled piece reference position, expressed in this local grid; not a cursor anchor",
+      "reference_cell_occupied": true
+    },
+    "model_coordinates_changed": false,
+    "origin_marker_visible": false
+  },
+  "camera": {
+    "projection": "orthographic",
+    "image_size": [
+      1600,
+      970
+    ],
+    "azimuth_degrees": 45.0,
+    "elevation_degrees": 31.0,
+    "right_s3d": [
+      0.7071067811865476,
+      0.0,
+      -0.7071067811865475
+    ],
+    "up_s3d": [
+      -0.36418691533816433,
+      0.8571673007021123,
+      -0.3641869153381644
+    ],
+    "towards_s3d": [
+      0.6061088109378321,
+      0.5150380749100542,
+      0.6061088109378322
+    ],
+    "projected_center_m": [
+      1.7763568394002505e-15,
+      -5.826990645410629
+    ],
+    "pixels_per_metre": 31.377863415153048,
+    "padding_pixels": 90.0,
+    "bounds_world_m": [
+      -8.0,
+      -24.0,
+      24.0,
+      8.0
+    ],
+    "world_coordinates": "(east, north, height)",
+    "s3d_coordinates": "(east, height, -north)"
+  },
+  "grid": {
+    "tile_metres": 16.0,
+    "ground_height_m": 0,
+    "bounds_world_m": [
+      -8.0,
+      -24.0,
+      24.0,
+      8.0
+    ],
+    "origin_world_m": [
+      0.0,
+      -16.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "origin_marker_visible": false,
+    "display_coordinate_basis": {
+      "reference": "tile-centre offsets relative to origin_world_m",
+      "units": "tiles",
+      "east_increases": "east",
+      "north_increases": "north",
+      "east_index_formula": "(world_east_m - origin_world_m[0]) / 16",
+      "north_index_formula": "(world_north_m - origin_world_m[1]) / 16",
+      "east_index_range": [
+        0,
+        1
+      ],
+      "north_index_range": [
+        0,
+        1
+      ],
+      "nonnegative_labels_omit_plus_sign": true,
+      "authoring_world_coordinates_changed": false
+    },
+    "origin_pixel": [
+      444.99999999999994,
+      485.0
+    ],
+    "boundary_offset_from_centre_m": 8,
+    "east_boundaries_m": [
+      -8.0,
+      8.0,
+      24.0
+    ],
+    "north_boundaries_m": [
+      -24.0,
+      -8.0,
+      8.0
+    ],
+    "grid_lines": [
+      {
+        "axis": "east",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            90.0,
+            485.0
+          ],
+          [
+            799.9999999999999,
+            119.32296681386151
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            444.99999999999994,
+            667.8385165930692
+          ],
+          [
+            1155.0,
+            302.16148340693076
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 24.0,
+        "pixels": [
+          [
+            800.0,
+            850.6770331861385
+          ],
+          [
+            1510.0,
+            485.0
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -24.0,
+        "pixels": [
+          [
+            90.0,
+            485.0
+          ],
+          [
+            800.0,
+            850.6770331861385
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            444.99999999999994,
+            302.1614834069308
+          ],
+          [
+            1155.0,
+            667.8385165930692
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "north",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            799.9999999999999,
+            119.32296681386151
+          ],
+          [
+            1510.0,
+            485.0
+          ]
+        ],
+        "major": false
+      }
+    ],
+    "tile_labels": [
+      {
+        "text": "X0",
+        "axis": "X",
+        "tile_index": 0,
+        "world_m": [
+          0.0,
+          -24.0
+        ],
+        "pixel": [
+          252.3867346277256,
+          584.2031653994756
+        ]
+      },
+      {
+        "text": "X1",
+        "axis": "X",
+        "tile_index": 1,
+        "world_m": [
+          16.0,
+          -24.0
+        ],
+        "pixel": [
+          607.3867346277257,
+          767.0416819925448
+        ]
+      },
+      {
+        "text": "Y0",
+        "axis": "Y",
+        "tile_index": 0,
+        "world_m": [
+          -8.0,
+          -16.0
+        ],
+        "pixel": [
+          252.3867346277256,
+          385.79683460052445
+        ]
+      },
+      {
+        "text": "Y1",
+        "axis": "Y",
+        "tile_index": 1,
+        "world_m": [
+          -8.0,
+          0.0
+        ],
+        "pixel": [
+          607.3867346277256,
+          202.9583180074552
+        ]
+      }
+    ],
+    "direction_arrows": [
+      {
+        "direction": "E",
+        "start_pixel": [
+          1500.0,
+          100.0
+        ],
+        "end_pixel": [
+          1542.6727492864215,
+          121.97809064359795
+        ]
+      },
+      {
+        "direction": "N",
+        "start_pixel": [
+          1500.0,
+          100.0
+        ],
+        "end_pixel": [
+          1542.6727492864215,
+          78.02190935640205
+        ]
+      }
+    ],
+    "tile_scale": {
+      "metres": 16,
+      "east_pixels": 399.31807265631505,
+      "north_pixels": 399.31807265631505,
+      "caption": "1 tile = 16 m",
+      "caption_visible": false
+    },
+    "camera": {
+      "projection": "orthographic",
+      "image_size": [
+        1600,
+        970
+      ],
+      "azimuth_degrees": 45.0,
+      "elevation_degrees": 31.0,
+      "right_s3d": [
+        0.7071067811865476,
+        0.0,
+        -0.7071067811865475
+      ],
+      "up_s3d": [
+        -0.36418691533816433,
+        0.8571673007021123,
+        -0.3641869153381644
+      ],
+      "towards_s3d": [
+        0.6061088109378321,
+        0.5150380749100542,
+        0.6061088109378322
+      ],
+      "projected_center_m": [
+        1.7763568394002505e-15,
+        -5.826990645410629
+      ],
+      "pixels_per_metre": 31.377863415153048,
+      "padding_pixels": 90.0,
+      "bounds_world_m": [
+        -8.0,
+        -24.0,
+        24.0,
+        8.0
+      ],
+      "world_coordinates": "(east, north, height)",
+      "s3d_coordinates": "(east, height, -north)"
+    }
+  },
+  "header": {
+    "captions": [
+      "Piece - RHW Ramp \u2014 Lower Full Entry Ramp \u2014 Compact \u2014 Custom (3.00044 m) / Custom (6.74513 m) / Custom (7.5 m)",
+      "Clean view | Southeast view | Authored orientation: 0\u00b0",
+      "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres"
+    ],
+    "rows": [
+      {
+        "text": "Piece - RHW Ramp \u2014 Lower Full Entry Ramp \u2014 Compact \u2014 Custom (3.00044 m) / Custom (6.74513 m) / Custom (7.5 m)",
+        "colour": "#172b42",
+        "font_pixels": 27,
+        "bold": true,
+        "position": [
+          30,
+          20
+        ],
+        "bounds": [
+          30,
+          25,
+          1557,
+          50
+        ]
+      },
+      {
+        "text": "Clean view | Southeast view | Authored orientation: 0\u00b0",
+        "colour": "#176eaf",
+        "font_pixels": 22,
+        "bold": false,
+        "position": [
+          30,
+          63
+        ],
+        "bounds": [
+          30,
+          67,
+          553,
+          88
+        ]
+      },
+      {
+        "text": "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres",
+        "colour": "#586a7e",
+        "font_pixels": 22,
+        "bold": false,
+        "position": [
+          30,
+          98
+        ],
+        "bounds": [
+          30,
+          102,
+          927,
+          122
+        ]
+      }
+    ],
+    "bottom": 146,
+    "title_occurrences": 1,
+    "scale_caption_in_header_only": true
+  },
+  "viewport_offset_xy": [
+    0,
+    146
+  ],
+  "model": {
+    "all_animation_references_valid": true,
+    "all_vertex_indices_valid": true,
+    "all_primitive_ranges_valid": true,
+    "all_output_buffers_used": true,
+    "all_vertex_positions_finite": true,
+    "triangles": 7042,
+    "mesh_count": 22,
+    "bounds_xyz_m": [
+      [
+        [
+          7.144196033477783,
+          8.0
+        ],
+        [
+          5.939028263092041,
+          6.885587215423584
+        ],
+        [
+          3.894670248031616,
+          8.0
+        ]
+      ],
+      [
+        [
+          7.144196033477783,
+          8.0
+        ],
+        [
+          4.939028263092041,
+          6.885587215423584
+        ],
+        [
+          3.894670248031616,
+          8.0
+        ]
+      ],
+      [
+        [
+          7.144196033477783,
+          8.0
+        ],
+        [
+          5.956252574920654,
+          8.263766288757324
+        ],
+        [
+          3.961479425430298,
+          8.0
+        ]
+      ],
+      [
+        [
+          8.0,
+          17.43219566345215
+        ],
+        [
+          2.7503018379211426,
+          6.846323013305664
+        ],
+        [
+          -8.0,
+          8.0
+        ]
+      ],
+      [
+        [
+          8.0,
+          17.43219566345215
+        ],
+        [
+          1.750301718711853,
+          6.197542667388916
+        ],
+        [
+          -8.0,
+          6.4237380027771
+        ]
+      ],
+      [
+        [
+          8.0,
+          13.634471893310547
+        ],
+        [
+          5.197542667388916,
+          6.604485034942627
+        ],
+        [
+          5.252079486846924,
+          8.0
+        ]
+      ],
+      [
+        [
+          10.095380783081055,
+          17.43219566345215
+        ],
+        [
+          2.7503018379211426,
+          5.34921407699585
+        ],
+        [
+          -8.0,
+          -3.151946783065796
+        ]
+      ],
+      [
+        [
+          8.923412322998047,
+          15.86884593963623
+        ],
+        [
+          3.9585888385772705,
+          6.384409427642822
+        ],
+        [
+          -4.785085201263428,
+          1.1424089670181274
+        ]
+      ],
+      [
+        [
+          8.0,
+          14.762327194213867
+        ],
+        [
+          4.953805923461914,
+          7.387079238891602
+        ],
+        [
+          -0.23856067657470703,
+          5.3908162117004395
+        ]
+      ],
+      [
+        [
+          8.0,
+          13.815974235534668
+        ],
+        [
+          5.996454238891602,
+          8.021528244018555
+        ],
+        [
+          4.156137943267822,
+          8.0
+        ]
+      ],
+      [
+        [
+          3.0589792728424072,
+          8.0
+        ],
+        [
+          6.846323013305664,
+          7.5
+        ],
+        [
+          8.0,
+          24.0
+        ]
+      ],
+      [
+        [
+          3.0873916149139404,
+          8.0
+        ],
+        [
+          5.846319675445557,
+          7.5
+        ],
+        [
+          8.0,
+          24.0
+        ]
+      ],
+      [
+        [
+          3.0589792728424072,
+          3.309676170349121
+        ],
+        [
+          6.5,
+          7.5
+        ],
+        [
+          23.765750885009766,
+          24.0
+        ]
+      ],
+      [
+        [
+          5.26977014541626,
+          7.989783763885498
+        ],
+        [
+          6.846794128417969,
+          8.890625
+        ],
+        [
+          8.0,
+          16.66286849975586
+        ]
+      ],
+      [
+        [
+          3.0589792728424072,
+          6.11504602432251
+        ],
+        [
+          7.5,
+          8.890625
+        ],
+        [
+          16.495384216308594,
+          24.0
+        ]
+      ],
+      [
+        [
+          8.0,
+          13.270777702331543
+        ],
+        [
+          6.604485034942627,
+          7.5
+        ],
+        [
+          8.0,
+          20.686290740966797
+        ]
+      ],
+      [
+        [
+          8.0,
+          13.270777702331543
+        ],
+        [
+          5.604485034942627,
+          7.511224746704102
+        ],
+        [
+          8.0,
+          20.686290740966797
+        ]
+      ],
+      [
+        [
+          10.58541488647461,
+          13.270777702331543
+        ],
+        [
+          6.604485034942627,
+          8.890625
+        ],
+        [
+          8.0,
+          16.899179458618164
+        ]
+      ],
+      [
+        [
+          9.670404434204102,
+          11.349719047546387
+        ],
+        [
+          7.5,
+          8.890625
+        ],
+        [
+          16.533239364624023,
+          20.17720603942871
+        ]
+      ],
+      [
+        [
+          2.021613121032715,
+          4.686290740966797
+        ],
+        [
+          7.5,
+          7.5
+        ],
+        [
+          24.0,
+          26.664676666259766
+        ]
+      ],
+      [
+        [
+          1.0453835725784302,
+          4.686290740966797
+        ],
+        [
+          6.5,
+          7.5107035636901855
+        ],
+        [
+          24.0,
+          28.812053680419922
+        ]
+      ],
+      [
+        [
+          1.0542937517166138,
+          3.9378814697265625
+        ],
+        [
+          7.5,
+          8.890625
+        ],
+        [
+          24.0,
+          28.793773651123047
+        ]
+      ]
+    ],
+    "textures": [
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4beee",
+      "5eb4bee9",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9"
+    ]
+  },
+  "render_model_sha256": "4398ad88c96d10a5392f6d425fd8e20ab4ee1f70b61bc2d0dd342d00975e1c09",
+  "textures": [
+    {
+      "instance": "5712000e",
+      "fsh_sha256": "676fd00d3e3d608917274ed742ecf75e8253b4d6be20586a1eb19db5c3222105",
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "instance": "5eb4bee9",
+      "fsh_sha256": "d612c36b704a88126a075b851e26f9f14f2b784cee11a1f043fd97aa36d95a82",
+      "size": [
+        256,
+        64
+      ]
+    },
+    {
+      "instance": "5eb4beee",
+      "fsh_sha256": "5ca0f599eb5424118f521d47ad8fd41708ab25165b59b902cbd2ae1c9068dcc8",
+      "size": [
+        256,
+        256
+      ]
+    }
+  ],
+  "captions": [
+    "Piece - RHW Ramp \u2014 Lower Full Entry Ramp \u2014 Compact \u2014 Custom (3.00044 m) / Custom (6.74513 m) / Custom (7.5 m)",
+    "Clean view | Southeast view | Authored orientation: 0\u00b0",
+    "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres",
+    "Complete reusable piece shown at its authored orientation.",
+    "Software model preview."
+  ],
+  "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
+  "assembly_labels_visible": false,
+  "other_piece_types_drawn": false,
+  "selected_piece_geometry_hidden_or_simplified": false,
+  "in_game_evidence": false,
+  "renderer": {
+    "renderer": "indexed S3D triangles with bilinear NAM FSH textures",
+    "renderer_sha256": "91b925cd5a7d0db4492e8697cf768b5b5cce33ca0acb185e2c6c3a062449c63c",
+    "pillow_version": "10.3.0",
+    "numpy_version": "1.26.4",
+    "background": "#f7f9fb",
+    "fonts": [
+      {
+        "name": [
+          "Arial",
+          "Regular"
+        ],
+        "file_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+      },
+      {
+        "name": [
+          "Arial",
+          "Bold"
+        ],
+        "file_sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+      }
+    ],
+    "geometry_simplified": false,
+    "layout": "one canonical view with independent local city grid",
+    "layout_sha256": "66a4fd4a2ed5e14091326a3ea258a89a6071182c2fe320d28d198ed397962807",
+    "header": {
+      "source_sha256": "1afc8e0424adfdb8bd1456d221888402e68519288d0b757a5941d53ec4688a0d",
+      "row_colours": [
+        "#172b42",
+        "#176eaf",
+        "#586a7e"
+      ],
+      "rows": [
+        "Piece - source-backed piece title",
+        "view purpose, camera, and authored orientation",
+        "local grid and scale"
+      ],
+      "duplicate_grid_footer_visible": false
+    },
+    "city_grid_source_sha256": "58560c2409e7e309b9f0030b6e765840a34fd5e9859fa93e78eb55de014776e5",
+    "image_size": [
+      1600,
+      1200
+    ],
+    "view_size": [
+      1600,
+      970
+    ],
+    "views": [
+      {
+        "azimuth": 45.0,
+        "elevation": 31.0
+      }
+    ],
+    "view_role": "angled",
+    "tile_metres": 16.0,
+    "origin_marker_visible": false,
+    "top_grid_overlay": null,
+    "duplicate_grid_footer_visible": false
+  },
+  "thumbnail": {
+    "file": "previews/preview-thumb.png",
+    "sha256": "aaf908b6b0d0c03f59e4ef23844a0d6804b972090ada718bb27a4280a6edd457",
+    "size": [
+      360,
+      270
+    ]
+  },
+  "title_source_inputs": {
+    "domains/highway/00_pieces/ddrhw-modular-lower-entry-compact/piece.jsonc": "f3770c0cf31076d822ffb0b4b23e7f200836b09c13a449709c31778b5b1aa6b9",
+    "domains/highway/00_pieces/ddrhw-modular-lower-entry-compact/connections.json": "aa22eff8ebf11f2b7e5c463db53a54a30cf52269f96acfd8f942b244b2879b81",
+    "domains/highway/00_pieces/ddrhw-modular-lower-entry-compact/connector-groups.jsonc": "777f4f28eb36f716feb307ea18eb7b5082b244dcfed4eb074fbf6aa4870d5ba5",
+    "domains/highway/domain.jsonc": "8b59ed57d5af6aaefe67fdd0a16f1cae54f95e40f17723e477b3ded3a6bbd5c0"
+  },
+  "input_fingerprint": "7eb76a5ad4f642f2ed18fa45c37f9e02003099308e2be29962c0f50c4fdc26b8"
+}

@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "purpose": "Private portable primary-source reference findings for a proposed custom DD highway modular ramp kit; no engineering compliance or native NAM compatibility claim.",
+  "retrieved_at_utc": "2026-10-31T10:04:12.491746+00:00",
+  "sources": [
+    {
+      "id": "hanshin_minatomachi",
+      "title": "Hanshin Expressway technical paper: Minatomachi north entrance/exit design and construction",
+      "url": "https://www.hanshin-exp.co.jp/company/skill/data/paper/file/020/paper11.pdf",
+      "locator": "Table1, geometric structure, in the linked primary PDF",
+      "publication": "Technical report issue20, April2002; issue date confirmed in official publication index",
+      "publication_index": "https://www.hanshin-exp.co.jp/company/skill/data/paper.html",
+      "kind": "operator project case study, dense Osaka urban expressway",
+      "facts": {
+        "ramp_class": "C",
+        "design_speed_kmh": 30,
+        "entrance_minimum_radius_m": 35,
+        "exit_minimum_radius_m": 30,
+        "maximum_longitudinal_grade_percent": 9.0,
+        "lane_width_m": 3.25,
+        "shoulder_widths_m": [
+          1.75,
+          0.75
+        ]
+      },
+      "limits": "Historical project values, not a universal Japanese or Tokyo ramp standard. Road design speed is not an observed vehicle speed."
+    },
+    {
+      "id": "mlit_ramp_worked_example",
+      "title": "MLIT explanation example27: exceptional minimum ramp curve radius",
+      "url": "https://www.mlit.go.jp/common/001293306.pdf#page=23",
+      "locator": "PDF page23, example27, citing March2021 Road Structure Ordinance commentary p571",
+      "kind": "government worked example",
+      "facts": {
+        "design_speed_kmh": 35,
+        "standard_minimum_lane_centre_radius_m": 40,
+        "exceptional_minimum_radius_m": 30
+      },
+      "limits": "Hypothetical example with explicit terrain justification for exceptional radii; not an actual named interchange or blanket permission."
+    },
+    {
+      "id": "mlit_general_geometry_2024",
+      "title": "MLIT2024 Road Structure Ordinance summary, linear geometry elements",
+      "url": "https://www.mlit.go.jp/road/toukei_chousa/road_db/pdf/2024/13-2.pdf#page=2",
+      "locator": "PDF page2, section3",
+      "kind": "government general road geometric summary",
+      "facts": {
+        "speed_30_kmh": {
+          "minimum_radius_m": 30,
+          "ordinary_road_grade_percent": 8,
+          "vertical_curve_radius_crest_and_sag_m": 250
+        },
+        "speed_40_kmh": {
+          "minimum_radius_m": 60,
+          "exceptional_radius_m": 50,
+          "ordinary_road_grade_percent": 7,
+          "vertical_curve_radius_crest_and_sag_m": 450
+        }
+      },
+      "limits": "General road table, not a ramp-specific specification. Small-vehicle-only-road grade column and class-dependent exceptions must not be confused with ordinary-road values; curve radius alone does not establish safe design."
+    },
+    {
+      "id": "nam_feature_guide",
+      "title": "Official NAM RealHighway feature guide",
+      "url": "https://www.sc4nam.com/docs/feature-guides/realhighway/",
+      "locators": [
+        "Network Heights",
+        "Multi-Radius Curves",
+        "Ramp Interface Basics",
+        "Height Transitions",
+        "Fractional Angle RealHighways"
+      ],
+      "kind": "official game-mod feature documentation",
+      "facts": [
+        "Levels are spaced7.5m; DD lowerL1=7.5m and upperL2=15m.",
+        "Ramp families distinguish orthogonal, diagonal, and fractional18.4degree branches. FARHW uses18.4/71.6degree FA3 headings.",
+        "MRC radius families are R1,R2,R3,R4,R5, increasing in radius; the reviewed prose does not give exact metre radii.",
+        "FLEXHeight includes one/two-level orthogonal/diagonal variants,90degree curved transitions, a one-level MIS180degree loop, and one-level R3 45degree curved transitions.",
+        "Ramp-style transitions suit relatively level terrain; on-slope transitions require an embankment.",
+        "FLEXRamps are plopped override interfaces; DRIs use drag patterns; fractional C/F ramps require puzzle pieces."
+      ],
+      "limits": "Documented supported native families, not compatibility certification for custom6m pieces; exact native geometry and version50 support need local resource measurement."
+    },
+    {
+      "id": "nam_technical_guide",
+      "title": "Official NAM RealHighway compatibility table",
+      "url": "https://www.sc4nam.com/docs/tech-specs/realhighway/",
+      "locator": "Wide-Radius/Multi-Radius Curves and FLEXHeight Transitions",
+      "kind": "official game-mod compatibility documentation",
+      "facts": [
+        "MIS45degree R0/R1/R2/R3 are listed supported;R4/R5 have FLEX-or-puzzle-only partial support.",
+        "MIS90degree R1 is supported;R2 is FLEX-or-puzzle-only partial support.",
+        "MIS straight orthogonal/diagonal height transitions cover listed one/two-level changes."
+      ],
+      "limits": "R labels are family names, not metre radii. Do not infer DDRHW or custom model support from MIS row."
+    },
+    {
+      "id": "shutoko_baba_qualitative",
+      "title": "Metropolitan Expressway operator: steep tight large-section shield tunnels at Baba entrance/exit",
+      "url": "https://www.shutoko.jp/ss/tech-shutoko/create/daidanmen.html",
+      "kind": "official Tokyo-region operator project description",
+      "facts": [
+        "Four urban ramp tunnels face steep grades, tight curves, small cover, and proximity to operating mainline tunnels and important structures."
+      ],
+      "limits": "Reviewed text provides no numerical road radius/grade. Its7.2degree value is shield-machine articulation, NOT road heading or ramp slope. Baba is in Yokohama, not central Tokyo."
+    },
+    {
+      "id": "nexco_curvature",
+      "title": "NEXCO West official FAQ: highway curves",
+      "url": "https://www.w-nexco.co.jp/faq/13/",
+      "kind": "operator explanation",
+      "facts": [
+        "Road alignment combines straights, circular curves, and clothoid transition curves joining them smoothly."
+      ],
+      "limits": "Supports smooth transition inspiration only, not a particular radius or grade for the custom kit."
+    }
+  ],
+  "calculations": {
+    "basis": "Own arithmetic; constant-grade horizontal lower bounds before flat collars or vertical easing. SC4 tile scale16m from project and official NAM guide.",
+    "grade_definition": "100*height_change/horizontal_distance",
+    "height_change_7_5m": {
+      "8": {
+        "grade_percent": 8,
+        "minimum_constant_grade_length_m": 93.75,
+        "equivalent_16m_route_lengths": 5.859375
+      },
+      "9": {
+        "grade_percent": 9,
+        "minimum_constant_grade_length_m": 83.33333333333334,
+        "equivalent_16m_route_lengths": 5.208333333333334
+      }
+    },
+    "height_change_15m": {
+      "8": {
+        "grade_percent": 8,
+        "minimum_constant_grade_length_m": 187.5,
+        "equivalent_16m_route_lengths": 11.71875
+      },
+      "9": {
+        "grade_percent": 9,
+        "minimum_constant_grade_length_m": 166.66666666666669,
+        "equivalent_16m_route_lengths": 10.416666666666668
+      }
+    },
+    "two_orthogonal_tiles_32m_average_grade_percent": {
+      "7.5m": 23.4375,
+      "15m": 46.875
+    },
+    "two_diagonal_grid_steps_m": 45.254833995939045,
+    "two_diagonal_grid_steps_average_grade_percent": {
+      "7.5m": 16.572815184059706,
+      "15m": 33.14563036811941
+    }
+  },
+  "proposal_implications": [
+    "Use a small declared angle/radius/grade vocabulary for interchangeability; proposed24/40/56m radii are custom kit choices, not official NAM MRC metre equivalents.",
+    "Realistic-looking compact urban ramps may draw inspiration from30-35km/h project examples with30-40m radii and approximately8-9percent grades, while still requiring many tiles to lose7.5-15m height.",
+    "A two/three-tile high-deck descent must be explicitly classed as game compression, not real-world engineering compliance.",
+    "Flat standard ports are recommended for interchangeability but not mathematically required; exact matching sloped ports remain possible.",
+    "Do not use a single material slope donor as proof of a generic native FLEXHeight length or slope.",
+    "The retained6m custom width is not an automatic native MIS interface."
+  ],
+  "actions": {
+    "repository_edits": false,
+    "builds": false,
+    "installation": false,
+    "game_observations": false
+  }
+}

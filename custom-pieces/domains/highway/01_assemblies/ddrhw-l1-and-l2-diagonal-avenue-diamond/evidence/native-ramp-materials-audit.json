@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "measurement_date": "2026-10-30",
+  "purpose": "Native NAM MIS on/off-ramp surface appearance compared with the retained DD RHW-4 materials.",
+  "scope": "Audited source resources and their decoded texture identities only; custom geometry, slopes, connectivity, and in-game rendering require separate checks.",
+  "privacy": "Private archive paths and native binary payloads are omitted.",
+  "archives": [
+    {
+      "filename": "RealHighway_DD_RHW-4.dat",
+      "sha256": "ccf8dabd3930fce92d0baa872ff974e3a536ddcc40762505a2e70eafcf9c0dfb"
+    },
+    {
+      "filename": "RealHighway_MIS.dat",
+      "sha256": "dec1873a357cca39a5a06de3b0722757b52b72c47c33a24d269d846779dba1a8"
+    }
+  ],
+  "native_materials_verified": true,
+  "mis_archive_filename": "RealHighway_MIS.dat",
+  "mis_s3d_instance": "57722000",
+  "mis_s3d_sha256": "6736e259a2aeaeaf2f02f60b7b34c1782b4f8069957e31530260c072610bb1a5",
+  "dd_s3d_instance": "5753A380",
+  "textures": {
+    "highway": "5713000E",
+    "ramp": "5712000E",
+    "barrier": "5EB4BEE9",
+    "concrete": "5EB4BEEE"
+  },
+  "material_sha256": {
+    "highway": "307aba7786d4b4f11dbc499eb54f7d05d01a114001919b8a5f7d55970fbb64ca",
+    "ramp": "ed1b4a35ab986ff74a56ac79a1a33f579c31bf9630e7bb2b79ad4a4d9b6739ca",
+    "barrier": "d81e8d70e3ab9182adb393f2bc6a61608c70f8129cdb06631409a4b19c73e306",
+    "concrete": "cf4e393b8ca3a2b3d0edba0f86bb197ddf82b65e85cf73cfa13ebd4d2a8c6f6e"
+  },
+  "native_texture_repeat_plan_m": 16.0,
+  "native_mis_road_width_m": 12.0,
+  "authored_compact_road_width_m": 6.0,
+  "native_pavement_u_range": [
+    0.125,
+    0.875
+  ],
+  "authored_pavement_u_range": [
+    0.3125,
+    0.6875
+  ],
+  "native_images_copied_into_piece": false,
+  "texture_sources": [
+    {
+      "role": "ramp",
+      "filename": "US_Common_MIS_Textures.dat",
+      "tgi": "7AB50E44-1ABE787D-5712000E",
+      "fsh_sha256": "050264fbfd4aa3dbc9da4989c602b926abaab58cd18bc4747a6e19fb78a2bc8a",
+      "decoded_dimensions": [
+        128,
+        128
+      ]
+    },
+    {
+      "role": "highway",
+      "filename": "US_Common_RHW-4_Textures.dat",
+      "tgi": "7AB50E44-1ABE787D-5713000E",
+      "fsh_sha256": "25a91179a26a82ba6307777b1957c5862bee61daf55c7638c4487d64b275c7b8",
+      "decoded_dimensions": [
+        128,
+        128
+      ]
+    },
+    {
+      "role": "barrier",
+      "filename": "NetworkAddonMod_BaseContent_Textures.dat",
+      "tgi": "7AB50E44-1ABE787D-5EB4BEE9",
+      "fsh_sha256": "d612c36b704a88126a075b851e26f9f14f2b784cee11a1f043fd97aa36d95a82",
+      "decoded_dimensions": [
+        256,
+        64
+      ]
+    },
+    {
+      "role": "concrete",
+      "filename": "NetworkAddonMod_BaseContent_Textures.dat",
+      "tgi": "7AB50E44-1ABE787D-5EB4BEEE",
+      "fsh_sha256": "5ca0f599eb5424118f521d47ad8fd41708ab25165b59b902cbd2ae1c9068dcc8",
+      "decoded_dimensions": [
+        256,
+        256
+      ]
+    }
+  ],
+  "measured_mis_slope": {
+    "s3d_instance": "57722000",
+    "pavement_height_range_m": [
+      0.0,
+      7.5
+    ],
+    "pavement_plan_length_m": 16.0,
+    "substructure_edge_depth_m": 1.0,
+    "barrier_height_m": 1.390625,
+    "barrier_side_v_at_height": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.328125,
+        0.7119640111923218
+      ],
+      [
+        1.390625,
+        0.0
+      ]
+    ],
+    "barrier_top_v_range": [
+      0.32499998807907104,
+      0.625
+    ]
+  },
+  "authored_mapping": {
+    "ramp": "Central native MIS pavement strip with original physical texture scale and directed white/yellow edge markings.",
+    "high_collar": "The same continuous native MIS pavement strip as the ramp; retained native DD RHW-4 mainline faces keep their original material.",
+    "concrete": "Unmodified native substructure material with spatial UV coordinates.",
+    "barrier": "Unmodified native barrier material with measured side and top texture strips.",
+    "legacy_swatches_used": false,
+    "legacy_paint_overlays_used": false,
+    "installed_texture_pack_overrides_preserved": true,
+    "pavement_owner": "Join each directed ramp and ground-turn pair at its exact mouth, then select one connected road for each triangle and project all three vertices onto that same road.",
+    "native_dd_crop_in_authored_faces": false,
+    "ground_apron": "Use the unmarked wheel-track and grey asphalt strip of the same native MIS texture, U=0.375..0.59375 across the 3.5 m turn width; smoothly end raised-ramp edge paint over pavement heights 1.5..0 m.",
+    "converted_shoulders": "Retain native DD material bytes; spatially remap original in-plane shoulder fragments to native unmarked asphalt, and paint auxiliary separators and split areas using the native continuous white-edge strip."
+  },
+  "game_observation": false,
+  "apron_uv_regression": {
+    "scope": "Actual authored ground-apron triangles after exact planar texture subdivision, before float32 S3D encoding; the physical surface and traffic remain unchanged.",
+    "quantity": "Texture-coordinate distance divided by planar edge length, in repeats per metre.",
+    "native_straight_reference": 0.0625,
+    "reproduced_previous_maximum": 101.90299892712932,
+    "corrected_maximum": 0.39945063523065866,
+    "regression_maximum": 0.5,
+    "previous_directed_fragments": 8,
+    "corrected_connected_roads": 4,
+    "game_observation": false,
+    "checked_edges": 167424,
+    "ground_pavement_u_range": [
+      0.375,
+      0.59375
+    ],
+    "limit_scope": "A curved 6 m collar contains a tighter inner texture radius than a straight road; this bound permits its spatial variation, while rejecting the reproduced disconnected-fragment phase jump."
+  },
+  "ground_unmarked_pavement_u_range": [
+    0.375,
+    0.59375
+  ],
+  "edge_marking_taper_height_m": 1.5,
+  "ground_unmarked_pavement_width_m": 3.5,
+  "ground_texture_triangle_maximum_edge_m": 1.0,
+  "ground_texture_tessellation": {
+    "scope": "Flat authored apron asphalt only; retained native faces, physical pavement, routes, construction ownership, and resource identities are unchanged.",
+    "source_ground_triangles": 3432,
+    "textured_ground_triangles": 55808,
+    "area_before_m2": 388.109375,
+    "area_after_m2": 388.109375,
+    "absolute_area_difference_m2": 0.0,
+    "maximum_edge_m": 1.0,
+    "subdivision": "Exact edge midpoints on the existing plane, retaining the original winding and binary coordinates."
+  },
+  "shoulder_texture_measurement": {
+    "scope": "Decoded audited native RHW-4 texture5713000E; this measures source image strips, not in-game appearance or the final custom model.",
+    "texture_instance": "5713000E",
+    "continuous_white_edge_u_range": [
+      0.21484375,
+      0.22265625
+    ],
+    "unmarked_asphalt_u_range": [
+      0.26953125,
+      0.46484375
+    ],
+    "longitudinal_mapping": "Spatial V=plan distance/16 m, retaining the native texture repeat.",
+    "reason": "The continuous edge strip avoids the baked centre-lane dash; the asphalt range avoids native solid edge paint.",
+    "image_payload_copied_into_piece": false,
+    "game_observation": false
+  },
+  "shoulder_encoded_seam_audit": {
+    "scope": "Unscoped encoding-helper upper-bound audit against one prior verified v4 saved zoom per unique component; this is not a measurement of the new build. Native model calls additionally restrict repair to the requested ramp deck, traffic side, and longitudinal service interval.",
+    "baseline_build": "ddrhw-right-turn-extended-v4",
+    "unique_component_types": 13,
+    "examined_vertices": 82240,
+    "changed_vertices": 2586,
+    "maximum_vertex_displacement_m": 2.1981106894714563e-06,
+    "shared_diagonal_constant_grid_m": 1.9073486328125e-06,
+    "coordinate_grid_m": 9.5367431640625e-07,
+    "affected_height_minimum_m": 6.4,
+    "seam_selection_distance_tolerance_m": 2e-05,
+    "scope_limit": "Vertices within tolerance of the native/authored eight-metre half-deck seam only; model UVs, traffic paths, and grades are not changed by this encoding helper.",
+    "strict_pavement_checks_relaxed": false,
+    "regression": "Exact reproduced failing saved segment checked after float32 encoding in all four proper rotations."
+  }
+}

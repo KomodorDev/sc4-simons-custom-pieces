@@ -21,6 +21,27 @@ from scp.dbpf import pack_dbpf
 from scp.install import FOLDER, _owned
 
 
+# A new prefix is not an implementation claim. Keep this reviewed B roster
+# finite so another registered or misspelled recipe still stops selection.
+PARALLEL_ALIGNMENT_B_RECIPES = frozenset({
+    "highway_ddrhw_parallel_b_crossing",
+    "highway_ddrhw_parallel_b_northwest_terminal",
+    "highway_ddrhw_parallel_b_southeast_terminal",
+    "highway_ddrhw_parallel_b_lower_exit_slip",
+    "highway_ddrhw_parallel_b_lower_entry_slip",
+    "highway_ddrhw_parallel_b_upper_exit_slip",
+    "highway_ddrhw_parallel_b_upper_entry_slip",
+    "highway_ddrhw_parallel_b_lower_exit_departure",
+    "highway_ddrhw_parallel_b_lower_entry_departure",
+    "highway_ddrhw_parallel_b_upper_exit_departure",
+    "highway_ddrhw_parallel_b_upper_entry_departure",
+    "highway_ddrhw_parallel_b_lower_exit_grade",
+    "highway_ddrhw_parallel_b_lower_entry_grade",
+    "highway_ddrhw_parallel_b_upper_exit_grade",
+    "highway_ddrhw_parallel_b_upper_entry_grade",
+})
+
+
 class InstallationCancelled(ValueError):
     """Cancellation before the final owned-folder transaction."""
 
@@ -221,19 +242,37 @@ def discover_installation(selected, *, platform=None, home=None, documents=None,
     return Installation(game, plugins, extras, host, game_kind)
 
 
+def implemented_recipes_by_domain():
+    """Report exact provider declarations without accepting recipe prefixes."""
+    from scp_hsr import crossings, directional_t, directional_diagonal_t
+    from scp_hsr import hsr_components, interchange_layouts, rail_features, rail_repairs
+    from scp_highway import native, ramp_paths, modular_ramps, modular_stamp, parallel_layout, ghsr_crossing
+    hsr_recipes = {"hsr_diagonal_ghsr", "tram_under_hsr"}
+    for module in (crossings, directional_t, directional_diagonal_t, hsr_components,
+                   interchange_layouts, rail_features, rail_repairs):
+        hsr_recipes.update(getattr(module, "RECIPES", ()))
+        hsr_recipes.update(getattr(module, "INFO", {}))
+    # The module catalogue declares a finite recipe for each MODULES entry;
+    # its provider remains responsible for the recipe naming convention.
+    highway_recipes = {native.RECIPE, ghsr_crossing.RECIPE, ghsr_crossing.ALIGNMENT_B_RECIPE}
+    highway_recipes.update(('highway_ddrhw_orthogonal_l0_transition',
+                            'highway_ddrhw_orthogonal_l0_transition_mirrored'))
+    highway_recipes.update(item["recipe"] for item in ramp_paths.module_catalog()["types"])
+    highway_recipes.add(modular_stamp.RECIPE)
+    highway_recipes.update(item["recipe"] for item in modular_ramps.module_catalog()["types"])
+    highway_recipes.update(item["recipe"] for item in parallel_layout.module_catalog()["types"])
+    highway_recipes.update(PARALLEL_ALIGNMENT_B_RECIPES)
+    return {"high-speed-rail": frozenset(hsr_recipes),
+            "highway": frozenset(highway_recipes)}
+
+
 def all_implemented_ids(root):
     """Include every implemented non-draft type and reject unrecognized recipes."""
     catalog = load_catalog(root)
-    from scp_hsr import crossings, directional_t, directional_diagonal_t
-    from scp_hsr import hsr_components, interchange_layouts, rail_features, rail_repairs
-    recipes = {"hsr_diagonal_ghsr", "tram_under_hsr"}
-    for module in (crossings, directional_t, directional_diagonal_t, hsr_components,
-                   interchange_layouts, rail_features, rail_repairs):
-        recipes.update(getattr(module, "RECIPES", ()))
-        recipes.update(getattr(module, "INFO", {}))
+    recipes = implemented_recipes_by_domain()
     selected = [piece for piece in catalog["pieces"] if piece["status"] != "draft"]
     unknown = [piece["id"] for piece in selected
-               if piece["domain"] != "high-speed-rail" or piece["recipe"] not in recipes]
+               if piece["recipe"] not in recipes.get(piece["domain"], ())]
     if unknown:
         raise ValueError("The installer cannot prove an implementation for these registered pieces: " + ", ".join(unknown))
     ids = [piece["id"] for piece in selected]
@@ -279,8 +318,50 @@ def _cancelled(cancel):
         raise InstallationCancelled("Installation cancelled before the plugin-folder transaction; installed files are unchanged.")
 
 
+def _prepare_bundle_capture(record, evidence, installation, roots, target, work_root):
+    """Resolve only declared originals and keep a multi-source capture outside Plugins."""
+    from scp.resource_audit import capture_resource_bundle, inspect_resource_bundle
+    captured = evidence.get("capture", {})
+    if (evidence.get("capture_kind") != "resource-bundle"
+            or captured.get("file") != record["filename"] or captured.get("sha256") != record["sha256"]):
+        raise ValueError("Resource-bundle evidence differs from the supported capture profile")
+    sources = []
+    for descriptor in evidence.get("sources", []):
+        name = descriptor.get("filename")
+        if (not isinstance(name, str) or Path(name).name != name or "\\" in name or ":" in name):
+            raise ValueError("Bundle source filename must be one plain filename")
+        location = descriptor.get("location")
+        if location == "game":
+            source = _child(installation.game_folder, name)
+            matches = [source] if source is not None and source.is_file() else []
+        elif location == "plugins":
+            matches = [path for folder in roots for path in folder.rglob("*")
+                       if path.is_file() and path.name.casefold() == name.casefold()
+                       and not (installation.plugins / FOLDER) in path.parents]
+        else:
+            raise ValueError("Bundle source location must be game or plugins")
+        if len(matches) != 1:
+            raise ValueError(f"Expected one original {name} for the resource bundle; found {len(matches)}")
+        sources.append({**descriptor, "archive": matches[0]})
+    existing = [path for folder in roots for path in folder.rglob("*")
+                if path.is_file() and path.name.casefold() == record["filename"].casefold()
+                and not (installation.plugins / FOLDER) in path.parents]
+    if existing:
+        if (len(existing) != 1 or existing[0].is_symlink()
+                or hashlib.sha256(existing[0].read_bytes()).hexdigest() != record["sha256"]):
+            raise ValueError(f"Existing {record['filename']} is duplicated or differs from the supported source. Keep it unchanged.")
+        # An old capture cannot bypass the current original-game/NAM checks.
+        resources, _audit = inspect_resource_bundle(sources)
+        if hashlib.sha256(pack_dbpf(resources)).hexdigest() != record["sha256"]:
+            raise ValueError("Generated bundle capture fingerprint differs from the supported profile")
+        return False
+    capture_resource_bundle(sources, target, filename=record["filename"],
+                            expected_sha256=record["sha256"], root=work_root, plugins=installation.plugins)
+    return True
+
+
 def prepare_captures(root, installation, work_root, piece_ids, *, progress=None, cancel=None):
-    """Create required one-resource inputs from this user's installed originals."""
+    """Create declared single-resource or bundle inputs from the user's originals."""
     from scp.resource_audit import audit_archive, capture_resource
     catalog = load_catalog(root)
     pieces = select_pieces(catalog, piece_ids)
@@ -292,9 +373,20 @@ def prepare_captures(root, installation, work_root, piece_ids, *, progress=None,
         record = catalog["_profile"]["files"][label]
         if not record.get("audit"):
             continue
+        evidence = jsonc.load(safe_relative(root, record["audit"]))
+        capture_kind = record.get("capture_kind")
+        # Native archive audits also describe measurements; only actual
+        # single-resource evidence or an explicit bundle declares a capture.
+        if capture_kind is None and "tgi" not in evidence:
+            continue
         _cancelled(cancel)
         _notify(progress, "capture", dependency=label)
-        evidence = json.loads(safe_relative(root, record["audit"]).read_text())
+        if capture_kind == "resource-bundle":
+            if _prepare_bundle_capture(record, evidence, installation, roots, donors / label, work_root):
+                prepared.append({"label": label, "filename": record["filename"], "sha256": record["sha256"]})
+            continue
+        if capture_kind is not None:
+            raise ValueError(f"Unsupported capture kind: {capture_kind}")
         key = evidence["tgi"]
         source_name = evidence["scope"]["archive"].replace("\\", "/").rsplit("/", 1)[-1]
         existing = [path for folder in roots for path in folder.rglob("*")

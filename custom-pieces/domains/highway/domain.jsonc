@@ -1,28 +1,92 @@
 // title: "Highway domain registry"
-// summary: "Reserve the highway domain’s registry and implementation locations while no highway pieces are implemented."
+// summary: "Register independently verified highway recipes, piece definitions, and assembly layouts."
 //
-// Used when: The library loads its registered transport domains for commands such as list, inventory, or scaffold; this reserved domain currently contains no pieces, assemblies, or implementation module.
-//
-// Read by: custom-pieces/framework/scp/catalog.py load_catalog() reads this registry through project.jsonc, loads its collections file, and follows only explicitly listed subject paths; scp.providers.implementation() reads the implementation field and rejects its current null value if highway implementation is requested.
-//
-// Updated by: Contributors deliberately register highway subjects and implementation routing here; custom-pieces/scp.py scaffold --domain highway and scp.registration.apply_registration() can add draft piece entries with the header-preserving JSONC writer.
-//
-// Affects: The highway catalogue membership, collection location, future implementation routing, and scaffold dependency and menu defaults; the empty registry creates no highway model, build output, or in-game button.
-//
-// Reference: custom-pieces/domains/highway/AGENTS.md
+// Used when: Catalogue, build, documentation, or registration commands load this transport domain.
+// Read by: scp.catalog.load_catalog(), scp.providers.implementation(), scp.connector_metadata._registered_adapter(), and domain authoring tools.
+// Updated by: Contributors and domains/highway/tools/register_highway_pieces.py; the JSONC writer preserves this header.
+// Affects: Highway catalogue membership, implementation routing, build collections, and future scaffold defaults; game observations remain separate.
 {
   "schema_version": 1,
   "purpose": "Explicit registry of maintained pieces, documented assemblies, implementation and build collections for this transport domain.",
   "id": "highway",
-  "name": "Highway (reserved; no pieces implemented)",
-  "implementation": null,
-  "pieces": [],
-  "assemblies": [],
+  "name": "Highway",
+  "implementation": "scp_highway",
+  "pieces": [
+    "00_pieces/ddrhw-l1-and-l2-over-avenue-l0-crossing-diagonal-90deg/piece.jsonc",
+    "00_pieces/ddrhw-diagonal-access-core/piece.jsonc",
+    "00_pieces/ddrhw-diagonal-northwest-junction/piece.jsonc",
+    "00_pieces/ddrhw-diagonal-southeast-junction/piece.jsonc",
+    "00_pieces/ddrhw-diagonal-lower-exit-branch/piece.jsonc",
+    "00_pieces/ddrhw-diagonal-lower-entry-branch/piece.jsonc",
+    "00_pieces/ddrhw-diagonal-lower-exit-grade/piece.jsonc",
+    "00_pieces/ddrhw-diagonal-lower-entry-grade/piece.jsonc",
+    "00_pieces/ddrhw-diagonal-upper-exit-branch/piece.jsonc",
+    "00_pieces/ddrhw-diagonal-upper-entry-branch/piece.jsonc",
+    "00_pieces/ddrhw-diagonal-upper-exit-grade/piece.jsonc",
+    "00_pieces/ddrhw-diagonal-upper-entry-grade/piece.jsonc",
+    "00_pieces/ddrhw-diagonal-diagonal-half-a/piece.jsonc",
+    "00_pieces/ddrhw-diagonal-diagonal-half-b/piece.jsonc",
+    "00_pieces/ddrhw-modular-highway-stamp/piece.jsonc",
+    "00_pieces/ddrhw-modular-lower-exit-r40/piece.jsonc",
+    "00_pieces/ddrhw-modular-lower-entry-r40/piece.jsonc",
+    "00_pieces/ddrhw-modular-upper-exit-r40/piece.jsonc",
+    "00_pieces/ddrhw-modular-upper-entry-r40/piece.jsonc",
+    "00_pieces/ddrhw-modular-northwest-terminal-r40/piece.jsonc",
+    "00_pieces/ddrhw-modular-southeast-terminal-r40/piece.jsonc",
+    "00_pieces/ddrhw-modular-lower-exit-compact/piece.jsonc",
+    "00_pieces/ddrhw-modular-lower-entry-compact/piece.jsonc",
+    "00_pieces/ddrhw-modular-upper-exit-compact/piece.jsonc",
+    "00_pieces/ddrhw-modular-upper-entry-compact/piece.jsonc",
+    "00_pieces/ddrhw-parallel-crossing/piece.jsonc",
+    "00_pieces/ddrhw-parallel-northwest-terminal/piece.jsonc",
+    "00_pieces/ddrhw-parallel-southeast-terminal/piece.jsonc",
+    "00_pieces/ddrhw-parallel-lower-exit-slip/piece.jsonc",
+    "00_pieces/ddrhw-parallel-lower-entry-slip/piece.jsonc",
+    "00_pieces/ddrhw-parallel-upper-exit-slip/piece.jsonc",
+    "00_pieces/ddrhw-parallel-upper-entry-slip/piece.jsonc",
+    "00_pieces/ddrhw-parallel-lower-exit-departure/piece.jsonc",
+    "00_pieces/ddrhw-parallel-lower-entry-departure/piece.jsonc",
+    "00_pieces/ddrhw-parallel-upper-exit-departure/piece.jsonc",
+    "00_pieces/ddrhw-parallel-upper-entry-departure/piece.jsonc",
+    "00_pieces/ddrhw-parallel-lower-exit-grade/piece.jsonc",
+    "00_pieces/ddrhw-parallel-lower-entry-grade/piece.jsonc",
+    "00_pieces/ddrhw-parallel-upper-exit-grade/piece.jsonc",
+    "00_pieces/ddrhw-parallel-upper-entry-grade/piece.jsonc",
+    "00_pieces/ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg/piece.jsonc",
+    "00_pieces/ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-crossing/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-northwest-terminal/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-southeast-terminal/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-lower-exit-slip/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-lower-entry-slip/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-upper-exit-slip/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-upper-entry-slip/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-lower-exit-departure/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-lower-entry-departure/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-upper-exit-departure/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-upper-entry-departure/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-lower-exit-grade/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-lower-entry-grade/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-upper-exit-grade/piece.jsonc",
+    "00_pieces/ddrhw-parallel-b-upper-entry-grade/piece.jsonc",
+    "00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile/piece.jsonc",
+    "00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile-mirrored/piece.jsonc"
+  ],
+  "assemblies": [
+    "01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/assembly.jsonc",
+    "01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/assembly.jsonc",
+    "01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/assembly.jsonc",
+    "01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b/assembly.jsonc"
+  ],
   "collections": "collections.jsonc",
   "scaffold": {
     "dependencies": [
-      "controller"
+      "controller",
+      "dd_rhw",
+      "rhw_core",
+      "mis"
     ],
-    "menu_style": "draft"
-  }
+    "menu_style": "ddrhw-ramp"
+  },
+  "connector_adapter": "scp_highway.connections"
 }

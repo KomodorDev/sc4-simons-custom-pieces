@@ -1,0 +1,183 @@
+{
+  "artwork": {
+    "assembly_views": 6,
+    "changed_piece_types": 4,
+    "historical_render_records_preserved": true,
+    "piece_views": 8,
+    "presentation": "Same six-view order, full-name legends, badges, leaders, and ownership style as the retained HSR trumpet references."
+  },
+  "documentation": {
+    "command": "python3 -B custom-pieces/scp.py docs-check",
+    "completed_at_utc": "2026-10-30T23:22:21.355478+00:00",
+    "exit_code": 0,
+    "log_sha256": "f51026c3d7dca19e2cfa06713751a7c1eafcf577b3e194a7e21cca736ce55495",
+    "passed": true,
+    "scope": "Complete library documentation check after final canonical artwork and guide edits. A temporary pending validation-record target was present; the final record is checked again after creation.",
+    "started_at_utc": "2026-10-30T23:22:20.147941+00:00"
+  },
+  "evidence": {
+    "native-wheeltrack-colour-measurements.json": {
+      "path": "evidence/native-wheeltrack-colour-measurements.json",
+      "sha256": "2b16e11236ec30d77d00e006bcfef25207c5ed3cf0c5219d687e3c7b31641c63"
+    },
+    "native-wheeltrack-edge-encoding.json": {
+      "path": "evidence/native-wheeltrack-edge-encoding.json",
+      "sha256": "1e5e742dd6c19cc6abf1dee5fac6b674686ee1c66a236213ef8b368604e1a329"
+    },
+    "native-wheeltrack-field-encoding.json": {
+      "path": "evidence/native-wheeltrack-field-encoding.json",
+      "sha256": "3d5197758735e6a1e86ac27c4df149e76481a72a210963156bd1ceab52bd347b"
+    },
+    "native-wheeltrack-texture-providers.json": {
+      "path": "evidence/native-wheeltrack-texture-providers.json",
+      "sha256": "42a6dcabf3cce87f367396d805afddc71484409c9aa079c6a3c3625bb4967616"
+    },
+    "wheeltrack-transition-assembly-check.json": {
+      "path": "evidence/wheeltrack-transition-assembly-check.json",
+      "sha256": "6177def20a74b50d0af8e04e2f58b86401f9612f6f519f743e71f43c65745bc4"
+    },
+    "wheeltrack-transition-colour-check.json": {
+      "path": "evidence/wheeltrack-transition-colour-check.json",
+      "sha256": "0238ec3f5c4429f5b1887d10aa2f540d1386e59b290486954b2ba29640abb9f2"
+    },
+    "wheeltrack-transition-current-verification.json": {
+      "path": "evidence/wheeltrack-transition-current-verification.json",
+      "sha256": "4f7e70edf47b066e9cee7bd1dfca15f6f3d5533f6c3f79f6562a587eeb15a297"
+    },
+    "wheeltrack-transition-model-budget.json": {
+      "path": "evidence/wheeltrack-transition-model-budget.json",
+      "sha256": "6129c6c8de7297ba281c29e8e5a3f4b71654f15ff54ab36c536445738ee8a0bf"
+    },
+    "wheeltrack-transition-piece-renders.json": {
+      "path": "evidence/wheeltrack-transition-piece-renders.json",
+      "sha256": "2af69d0bd83f5ec7fb1a3d1fa125b757aff810b255801d07a8c70a34e2e25708"
+    },
+    "wheeltrack-transition-preservation.json": {
+      "path": "evidence/wheeltrack-transition-preservation.json",
+      "sha256": "fb4777c04db95644f48927e0ad04e74185cc4791d30f53d5566e05b41029b9e6"
+    },
+    "wheeltrack-transition-render.json": {
+      "path": "evidence/wheeltrack-transition-render.json",
+      "sha256": "9ea456fd77a806b4d6afe0427c46f44eac09283754963899f1b1d6bc88a8d9d4"
+    }
+  },
+  "game_operation": "unverified",
+  "implementation_and_focused_test_hashes": {
+    "domains/highway/implementation/scp_highway/assembly_verify.py": "36d2af65cbec8d1c6bae63e370977c97b7f231c8cb2efcee8968eb67e55af3ff",
+    "domains/highway/implementation/scp_highway/ramp_geometry.py": "f7093dc97cd93c329c075723f632bee55aea625d4962a7f9489095845786fb15",
+    "domains/highway/implementation/scp_highway/ramp_paths.py": "c4302863e48bea4d2e62adc06e6b8de90ec32ae290a81fb1fb3e85e295a55575",
+    "domains/highway/implementation/scp_highway/ramp_verify.py": "34992437599b66e5d97dfa16b57fa58fba5b8e1d12cd988974d9b305ac6ba4e8",
+    "domains/highway/implementation/scp_highway/shoulder_uv_verify.py": "5bb1bc1833235c61d21bfa555b21bfab447c3dd55f17eb69a6b108a668d1d237",
+    "domains/highway/implementation/scp_highway/wheeltrack_verify.py": "3ca9967f6d531a9063c16faf80c0d67949dcc0be46e42e32d2e2ef626563535e",
+    "domains/highway/implementation/scp_highway/wheeltracks.py": "b65baee151fd7b643b1dd53d92226d96e5e977b4b665830ae50d779718931b61",
+    "domains/highway/tests/test_model_audit_cache.py": "4028b7d3fbbbcb9c739c244346d043b142ec89a5fa0fd5710f4eb7bbb1e50201",
+    "domains/highway/tests/test_saved_shoulder_uvs.py": "a628c1a37cb42bf50d744d39f2e1790062b5da3d3866251a862440d425908dee",
+    "domains/highway/tests/test_saved_support_encoding.py": "f90733233af8e762ef28b2074a958193158ccbf9074d2362d9aaa17097e16128",
+    "domains/highway/tests/test_saved_wheeltracks.py": "3f39e4cf3b794490c808dc9eff4e92fffa08f3df0f9e0097437779073d2e6913",
+    "domains/highway/tests/test_wheeltrack_transition.py": "0ccb6bbb1a03c91d543d979162043e934b9cb1c2913b91cc5b8320b886bec5bd",
+    "domains/highway/tools/verify_wheeltrack_colours.py": "6c2ca5cd023c6a9d6812e00cfd62ccee8590d6e6d7f337c45ef0f682bdd1fcc9",
+    "framework/scp/verify.py": "229c38d01d2560e82a782291996a9cd87e05f714888dd00e65919d0e0d19d7ac",
+    "tests/test_highway_model_inputs.py": "4669a48d886ed1fba4c4d8d008c6d01b27442baff7be4752bb69d04d33753173"
+  },
+  "installed_during_validation": false,
+  "limits": [
+    "Native colour samples use exact selected FSH encodings and decoded base RGBA fingerprints; base/mipmap equivalence does not establish game mip selection, filtering, or lighting.",
+    "Coplanar pavement tessellation and bounded native-edge encoding preserve the approved layout; structural comparison measures coverage, planes, boundary positions, and protected immutable layers.",
+    "The physical support allowance is an explicitly bounded distance to pinned flat DD pavement for affirmative served-branch fields; strict default, height, material, and unrelated component checks remain.",
+    "Finite UV, RGB, marking, and barrier controls do not prove every continuous field point, every camera view, complete closed-solid geometry, or actual game travel.",
+    "The in-process model audit cache is bounded, success-only, and keyed by complete immutable inputs and validator context; each caller receives an independent report."
+  ],
+  "manual_observations_added": 0,
+  "native_build": {
+    "authored_DATs_changed_after_initial_native_build": false,
+    "build_label": "ddrhw-wheeltrack-transition-parts-07",
+    "current_source_freeze_sha256": "4d6d0ec57f88cf508b3a248fb20f8872ad97d1b212021dd6880b8434984fbf69",
+    "dat_files": 15,
+    "distinct_component_types": 13,
+    "initial_source_freeze_sha256": "7cf10e70435eaae1fa9301a5fe76252619321faf06c1e6ed3fa1945c063054dd",
+    "manifest_sha256": "f56c9281b02f316217d66a3c21ffed4bbd180db4e5003b0d9da7f552f0b205e0",
+    "passed": true,
+    "post_build_verifier_changes": [
+      "Project the same independently reconstructed world corridors into each branch pose for both retained decks.",
+      "Pass exact already-validated owned DAT resources to highway model checks; global resource checks remain unchanged."
+    ],
+    "resource_identities": 1086
+  },
+  "native_colour": {
+    "central_seam_pairs_checked": 28,
+    "dense_unpainted_seam_pairs_checked": 268,
+    "exterior_boundary_pairs_checked": 24,
+    "internal_half_ribbon_pairs_checked": 124,
+    "maximum_central_seam_channel_jump": 2.7053455783162548,
+    "maximum_dense_seam_channel_jump": 4.766332886358242,
+    "maximum_exterior_boundary_channel_jump": 6.856863054555554,
+    "maximum_internal_half_ribbon_channel_jump": 8.808624688125285,
+    "maximum_onset_adjacent_channel_change": 9.602565141468567,
+    "maximum_position_adjustment_m": 2.175159421264181e-08,
+    "onset_path_centres_checked": 124
+  },
+  "recorded_at_utc": "2026-10-30T23:22:36.915818+00:00",
+  "revision": "wheeltrack-transition",
+  "schema_version": 1,
+  "scope": "Compiled software checks, bounded actual-native colour measurements, structural preservation, and reviewed artwork before final packaging; no new game observation.",
+  "source_baseline_commit": "e953f94751a3cf2f95cb3644cdbfa32846670583",
+  "subject_id": "ddrhw-l1-and-l2-diagonal-avenue-diamond",
+  "tests": {
+    "native_highway": {
+      "command": "python3 -B custom-pieces/scp.py check --scope highway --verbose",
+      "environment": "Development checkout with the exact supported native NAM inputs and captured adaptive Avenue bundle.",
+      "explicit_success_records": 219,
+      "log_sha256": "03f03e634c64e28077064808b01b4bd35b34cb7bcd139ae3ba6403dccfa9d877",
+      "passed": true,
+      "reported_skip_entries": 0,
+      "reported_tests_run": 219
+    },
+    "portable_repository": {
+      "command": "python3 -B tools/run_tests.py",
+      "counting_limit": "Reported tests run, explicit successful method records, and skipped classes/subtests are different counters. No pass total is derived by subtracting skips from tests run.",
+      "environment": "Portable validation checkout without private native settings; native input and saved-build dependent checks report explicit skips.",
+      "log_sha256": "c74080fd07739e0e1008178b4acdef00a135707f1bf012afd5c2198bc11d5e19",
+      "passed": true,
+      "reported_skip_entries": 82,
+      "reported_tests_run": 1624,
+      "scopes": [
+        {
+          "explicit_success_records": 858,
+          "scope": "framework",
+          "skip_entries": 10,
+          "summary": [
+            "OK (skipped=10)"
+          ],
+          "tests_reported_run": 866
+        },
+        {
+          "explicit_success_records": 404,
+          "scope": "high-speed-rail",
+          "skip_entries": 65,
+          "summary": [
+            "OK (skipped=65)"
+          ],
+          "tests_reported_run": 428
+        },
+        {
+          "explicit_success_records": 214,
+          "scope": "highway",
+          "skip_entries": 2,
+          "summary": [
+            "OK (skipped=2)"
+          ],
+          "tests_reported_run": 214
+        },
+        {
+          "explicit_success_records": 115,
+          "scope": "hsr-trumpet-straight-stem",
+          "skip_entries": 5,
+          "summary": [
+            "OK (skipped=5)"
+          ],
+          "tests_reported_run": 116
+        }
+      ]
+    }
+  }
+}

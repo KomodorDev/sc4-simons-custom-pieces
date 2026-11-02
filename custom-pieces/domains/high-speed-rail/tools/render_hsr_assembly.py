@@ -31,8 +31,9 @@ ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc')
 sys.path.insert(0, str(ROOT / 'framework'))
 sys.dont_write_bytecode = True
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageColor
 
+from scp import jsonc
 from scp.models import pack_s3d, parse_s3d, validate_s3d, positions
 from scp.preview import (TextureLibrary, font, read_piece_preview,
                          render_fast_view, renderer_settings)
@@ -92,7 +93,7 @@ def transform_model(model, origin_m=(0., 0.), rotation_ccw_degrees=0.):
 def load_scene(path, *, default_build=None):
     path = Path(path).resolve()
     raw_scene = path.read_bytes()
-    scene = json.loads(raw_scene)
+    scene = jsonc.loads(raw_scene.decode('utf-8'))
     instances = scene.get('instances', scene.get('placements'))
     if not isinstance(instances, list) or not instances:
         raise ValueError('Scene needs a nonempty instances list')
@@ -150,6 +151,7 @@ def load_scene(path, *, default_build=None):
                      'rotation_ccw_degrees': instance.get('rotation_ccw_degrees',
                          instance.get('rotation_degrees_ccw', 0.))}
         transformed = transform_model(model, **placement)
+        first_mesh = sum(len(item[1]) for item in sources)
         sources.append((transformed, transformed['meshes'], (0., 0., 0.)))
         label = instance.get('label', f'P{number:02}')
         if not isinstance(label, str) or not label or label in labels:
@@ -181,6 +183,7 @@ def load_scene(path, *, default_build=None):
                          'display_origin_m': display_metres,
                          'label_anchor_world_m': [anchor[0], -anchor[2], anchor[1]],
                          'occupied_world_cells': cells,
+                         'render_mesh_indices': list(range(first_mesh, first_mesh + len(transformed['meshes']))),
                          'model_sha256': sha256(raw), 'render_budget': budget})
     combined = combine_meshes(sources)
     provenance = {'scene_file': path.name, 'scene_sha256': sha256(raw_scene),
@@ -242,8 +245,16 @@ def _grid_bounds(vertices, sources):
 
 
 def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top, *, title=None,
-                    colour_assignment=None):
-    """Draw exact occupied city cells. This is explicitly a plan, not model geometry."""
+                    colour_assignment=None, minimum_display_index=None,
+                    model=None, textures=None, fill_opacity=1.0, model_outlines=False):
+    """Draw exact occupied city cells, optionally over the aligned compiled model."""
+    fill_opacity = _finite(fill_opacity, 'Construction fill opacity')
+    if not 0. <= fill_opacity <= 1.:
+        raise ValueError('Construction fill opacity must be between 0 and 1')
+    if (model is None) != (textures is None):
+        raise ValueError('Construction model and textures must be supplied together')
+    if model_outlines and model is None:
+        raise ValueError('Actual component outlines require the compiled construction model')
     canvas = Image.new('RGB', (width, height), '#f7f9fb')
     draw = ImageDraw.Draw(canvas)
     header_rows = assembly_caption_rows(title or 'HSR interchange', 'Construction view', 'Top view | north up')
@@ -252,12 +263,20 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
     label_prefix = 'Piece labels'
     _caption(draw, f'{label_prefix} match the model views and guide | diamonds mark piece reference positions, not cursor anchors',
              108, 21, width, color='#586a7e')
+    if model_outlines:
+        _caption(draw, 'Thick dark outline: occupied tiles | Thin coloured outline: actual model, including overhang',
+                 143, 21, width, color='#586a7e')
     view_width, view_height = width-2*panel, height-top-115
     camera = make_camera(vertices, 0., 90., view_width, view_height,
                          bounds_world_m=bounds, padding=85)
     view, grid = make_city_grid(camera, bounds, origin_world_m=origin,
-                                font=font(18), bold_font=font(19, True))
-    vd = ImageDraw.Draw(view)
+                                font=font(18), bold_font=font(19, True),
+                                minimum_display_index=minimum_display_index)
+    if model is not None:
+        view = render_fast_view(model, textures, 0., 90., view_width, view_height,
+                                camera=camera, background_image=view)
+    fills = Image.new('RGBA', view.size, (0, 0, 0, 0))
+    fd = ImageDraw.Draw(fills)
     colours = colour_assignment or colour_assignment_for_sources(sources)
     owners = {}
     plan_sources = []
@@ -272,7 +291,8 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
             owners[key] = label
             polygon = camera.project_world([east-8, east+8, east+8, east-8],
                                             [north-8, north-8, north+8, north+8])
-            vd.polygon([tuple(p) for p in polygon], fill=fill)
+            fd.polygon([tuple(p) for p in polygon],
+                       fill=(*ImageColor.getrgb(fill), round(255 * fill_opacity)))
         copy = deepcopy(source)
         cells = source.get('occupied_world_cells', [])
         if cells:
@@ -280,6 +300,8 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
             centre = min(cells, key=lambda cell: sum((cell[i]-average[i])**2 for i in range(2)))
             copy['label_anchor_world_m'] = [*centre, 0.]
         plan_sources.append(copy)
+    view = Image.alpha_composite(view.convert('RGBA'), fills).convert('RGB')
+    vd = ImageDraw.Draw(view)
     boundaries = ownership_boundary_segments(sources)
     # Paint all halos before all dark boundaries: later strokes must not
     # erase a previous edge at a three-way junction or shared tile corner.
@@ -294,12 +316,19 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
                 first, last = segment['world_endpoints_m']
                 vd.line([tuple(camera.project_world(*first)), tuple(camera.project_world(*last))],
                         fill=colour, width=stroke)
+    model_outline_report = {'enabled': False}
+    if model_outlines:
+        from scp.model_outlines import draw_component_outlines
+        view, model_outline_report = draw_component_outlines(view, model, sources, camera, colours)
+        vd = ImageDraw.Draw(view)
     for source in sources:
         label = source['label']
         for east, north in source.get('occupied_world_cells', []):
             centre = camera.project_world(east, north)
             vd.text(tuple(centre), label, font=font(17, True),
-                    fill=colours['ownership_text_colour'], anchor='mm')
+                    fill=colours['ownership_text_colour'], anchor='mm',
+                    stroke_width=2 if model is not None else 0,
+                    stroke_fill='white')
         east, north = source['origin_m']
         x, y = camera.project_world(east, north)
         vd.polygon([(x,y-8),(x+8,y),(x,y+8),(x-8,y)], fill='white',
@@ -310,7 +339,9 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
                                  header_y=top+30, footer_y=height-140,
                                  colour_assignment=colours)
     draw = ImageDraw.Draw(canvas)
-    _caption(draw, f'{len(owners)} occupied tiles | blank squares remain empty | same P-labels in every view',
+    ownership_caption = ('unfilled squares have no construction owner' if model is not None
+                         else 'blank squares remain empty')
+    _caption(draw, f'{len(owners)} occupied tiles | {ownership_caption} | same P-labels in every view',
              height-77, 21, width, color='#586a7e')
     _caption(draw, 'Match the shown positions and rotations; reference diamonds mark model origins.',
              height-42, 20, width, color='#586a7e')
@@ -318,6 +349,17 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
                     'header_rows': list(header_rows), 'label': header_rows[1],
                     'grid': grid, 'piece_labels': labels,
                     'colour_assignment': colours,
+                    'construction_layers': {
+                        'model_underlay': model is not None,
+                        'model_underlay_uses_ownership_camera': model is not None,
+                        'ownership_fill_opacity': fill_opacity,
+                        'ownership_fill_alpha_8bit': round(255 * fill_opacity),
+                        'unowned_cells_have_no_fill': True,
+                        'boundaries_labels_and_callouts_opaque': True,
+                        'cell_label_white_stroke_pixels': 2 if model is not None else 0,
+                        'palette_contrast_scope': 'Original opaque palette; composite readability reviewed separately.',
+                    },
+                    'actual_model_outlines': model_outline_report,
                     'ownership_boundaries': {
                         'internal_grid_width_pixels': INTERNAL_GRID_WIDTH,
                         'outer_and_inter_owner_width_pixels': OWNER_BOUNDARY_WIDTH,
@@ -329,7 +371,21 @@ def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top
 
 
 def render_assembly(model, plugins, destination, *, provenance=None,
-                    width=2800, height=2100, prefix='hsr-trumpet'):
+                    width=2800, height=2100, prefix='hsr-trumpet',
+                    owned_texture_resources=None,
+                    minimum_display_index=None,
+                    construction_model_background=False,
+                    construction_fill_opacity=1.0,
+                    construction_model_outlines=False,
+                    source_caption='Actual compiled S3D track, decks, and supports | software preview',
+                    height_caption=None,
+                    footer_caption='All model geometry shown; no simulated trains, terrain, or game lighting.'):
+    """Reuse the assembly presentation with optional owning-domain facts/textures.
+
+    Defaults retain the HSR presentation. Other domains supply their own
+    measured facts and DAT-owned FSH resources without replacing any geometry,
+    annotation, camera, city-grid, or tile-ownership behaviour.
+    """
     if width < 640 or height < 480:
         raise ValueError('Assembly previews require at least 640 x 480 pixels')
     if not prefix or Path(prefix).name != prefix:
@@ -337,10 +393,18 @@ def render_assembly(model, plugins, destination, *, provenance=None,
     destination = Path(destination)
     destination.mkdir(parents=True, exist_ok=True)
     provenance = deepcopy(provenance or {})
+    for label, text in (('source_caption', source_caption),
+                        ('height_caption', height_caption),
+                        ('footer_caption', footer_caption)):
+        if text is not None and (not isinstance(text, str) or not text.strip() or '\n' in text or '\r' in text):
+            raise ValueError(f'{label} must be one nonempty caption row')
     check = validate_s3d(model)
     budget = assert_render_budget(model)
     library = TextureLibrary(plugins)
-    textures, texture_provenance = library.for_model(model)
+    if owned_texture_resources is None:
+        textures, texture_provenance = library.for_model(model)
+    else:
+        textures, texture_provenance = library.for_model(model, owned_resources=owned_texture_resources)
     vertices = [point for block in model['vertices'] for point in positions(block)]
     bounds = [[min(point[axis] for point in vertices),
                max(point[axis] for point in vertices)] for axis in range(3)]
@@ -363,13 +427,16 @@ def render_assembly(model, plugins, destination, *, provenance=None,
         header_rows = assembly_caption_rows(title, 'Component guide' if labelled else 'Clean view', label)
         _caption(draw, header_rows[0], 22, 34, width, bold=True)
         _caption(draw, header_rows[1], 72, 23, width, color='#176eaf')
-        _caption(draw, 'Actual compiled S3D track, decks, and supports | software preview',
+        _caption(draw, source_caption,
                  108, 21, width, color='#586a7e')
         if labelled:
             labels_caption = f'{len(sources)} named placements | positions in side panels'
             _caption(draw, f'X/Y tile coordinates | 1 tile = 16 m | {labels_caption}',
                      143, 20, width, color='#586a7e')
-            if provenance.get('coordinate_system', {}).get('layout') == 'hsr-trumpet-straight-stem':
+            if height_caption is not None:
+                _caption(draw, height_caption,
+                         170, 18, width, color='#586a7e')
+            elif provenance.get('coordinate_system', {}).get('layout') == 'hsr-trumpet-straight-stem':
                 _caption(draw, 'Rail-path heights: mainline and outside arms 15.5 m | upper bridge 30.5 m | northern corner joint 23 m',
                          170, 18, width, color='#586a7e')
         camera = make_camera(vertices, azimuth, elevation, view_width, view_height,
@@ -377,7 +444,8 @@ def render_assembly(model, plugins, destination, *, provenance=None,
                              padding=85 if labelled else 35)
         background, grid = make_city_grid(camera, grid_bounds, origin_world_m=origin,
                                           font=font(18 if labelled else 11),
-                                          bold_font=font(19 if labelled else 12, True))
+                                          bold_font=font(19 if labelled else 12, True),
+                                          minimum_display_index=minimum_display_index)
         view = render_fast_view(model, textures, azimuth, elevation,
                                 view_width, view_height, camera=camera,
                                 background_image=background)
@@ -386,8 +454,7 @@ def render_assembly(model, plugins, destination, *, provenance=None,
                                     view_offset=(panel, top), panel_width=panel,
                                     header_y=top+30, footer_y=height-140,
                                     colour_assignment=colours) if labelled else None
-        _caption(draw,
-                 'All model geometry shown; no simulated trains, terrain, or game lighting.',
+        _caption(draw, footer_caption,
                  height-65, 20, width, color='#586a7e')
         target = destination/f'{prefix}-{name}-xy.png'
         canvas.save(target)
@@ -408,18 +475,19 @@ def render_assembly(model, plugins, destination, *, provenance=None,
             clean_header_rows = assembly_caption_rows(title, 'Clean view', label)
             _caption(cd, clean_header_rows[0], 22, 34, width, bold=True)
             _caption(cd, clean_header_rows[1], 72, 23, width, color='#176eaf')
-            _caption(cd, 'Actual compiled S3D track, decks, and supports | software preview',
+            _caption(cd, source_caption,
                      108, 21, width, color='#586a7e')
             _caption(cd, 'X/Y tile coordinates | 1 tile = 16 m',
                      143, 20, width, color='#586a7e')
             clean_camera = make_camera(vertices, azimuth, elevation, width, view_height,
                                        bounds_world_m=grid_bounds, padding=100)
             clean_background, clean_grid = make_city_grid(clean_camera, grid_bounds,
-                origin_world_m=origin, font=font(20), bold_font=font(21, True))
+                origin_world_m=origin, font=font(20), bold_font=font(21, True),
+                minimum_display_index=minimum_display_index)
             clean_view = render_fast_view(model, textures, azimuth, elevation,
                 width, view_height, camera=clean_camera, background_image=clean_background)
             clean.paste(clean_view, (0, top))
-            _caption(cd, 'All model geometry shown; no simulated trains, terrain, or game lighting.',
+            _caption(cd, footer_caption,
                      height-65, 20, width, color='#586a7e')
             clean_target = destination/f'{prefix}-{name}-clean-xy.png'
             clean.save(clean_target)
@@ -434,7 +502,12 @@ def render_assembly(model, plugins, destination, *, provenance=None,
         plan, metadata = _placement_plan(vertices, sources, grid_bounds, origin,
                                          width, height, panel, top,
                                          title=title,
-                                         colour_assignment=colours)
+                                         colour_assignment=colours,
+                                         minimum_display_index=minimum_display_index,
+                                         model=model if construction_model_background else None,
+                                         textures=textures if construction_model_background else None,
+                                         fill_opacity=construction_fill_opacity,
+                                         model_outlines=construction_model_outlines)
         target = destination/f'{prefix}-placement-plan-xy.png'
         plan.save(target)
         images.append({'file': target.name, 'sha256': sha256(target.read_bytes()),
@@ -451,6 +524,10 @@ def render_assembly(model, plugins, destination, *, provenance=None,
     settings['assembly_renderer_sha256'] = sha256(Path(__file__).read_bytes())
     settings['city_grid_renderer_sha256'] = sha256((ROOT/'framework/scp/city_grid.py').read_bytes())
     settings['piece_annotations_renderer_sha256'] = sha256((ROOT/'domains/high-speed-rail/tools/assembly_annotations.py').read_bytes())
+    settings['presentation_captions'] = {
+        'source': source_caption, 'height': height_caption,
+        'model_footer': footer_caption,
+    }
     report = {
         'schema_version': 1, **provenance,
         'source_kind': 'actual compiled S3D geometry',

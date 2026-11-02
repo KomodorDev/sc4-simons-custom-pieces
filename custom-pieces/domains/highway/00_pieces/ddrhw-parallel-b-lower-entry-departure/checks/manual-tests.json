@@ -1,0 +1,527 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative explicit observations for individually scoped manual and software checks.",
+  "subject": {
+    "id": "ddrhw-parallel-b-lower-entry-departure",
+    "kind": "piece"
+  },
+  "authority": "Explicit user observations; generated Markdown is a read-only view.",
+  "state_policy": "Unverified, passed, failed, stale; not applicable is an explicit separate declaration.",
+  "rotation_policy": "Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.",
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f878",
+        "0004f878"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f878",
+        "0007f878"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f878",
+        "0006f878"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f878",
+        "0005f878"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ],
+  "environment_policy": "Every result applies only to its recorded platform, game version, and NAM profile.",
+  "fingerprints": {
+    "construction:ddrhw-parallel-b-lower-entry-departure": "ca24a493eeca2e94eeb9fb6f6fda502b61e6dcd4daeb45c89d1197565c136992",
+    "effect:ddrhw-parallel-b-lower-entry-departure:ea5118b0-ea5118b1-7f5caff5": "35f7d551d4a2122bcb26e4070af87402f057943488d481ad74884a9f9ff75395",
+    "exemplar:ddrhw-parallel-b-lower-entry-departure:6534284a-a8434037-7f5ca000": "83392c2e06813adf701b5f89922422185eebd317b4e6f60c20d7f10a996b0017",
+    "graph:ddrhw-parallel-b-lower-entry-departure": "70e4874fef6e4eb36ee3701fa82fe6e52dd3be115dc4b3de53b90b027736ef6f",
+    "interface:ddrhw-parallel-b-lower-entry-departure:channel-01-in": "1bc61d55df685927c0544f8c05664c7acfd38e393d38cf8fa17142477b848954",
+    "interface:ddrhw-parallel-b-lower-entry-departure:channel-02-out": "3c888f3c52c8ecd211a86eb068a7ea30d408811d9c0f0e1635a63f2302b018e9",
+    "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca000": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+    "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca001": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+    "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca002": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+    "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca003": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+    "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca004": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+    "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5caff5": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+    "path:ddrhw-parallel-b-lower-entry-departure:296678f7-a966883f-7f5ca000": "746c287f4c4cc2eed50bc0c2ce249405a8481a6809a4c54a28193aea5378c6b7",
+    "text:ddrhw-parallel-b-lower-entry-departure:2026960b-2a592fd1-7f5ca000": "00c295f4b1a3aafb07580238d0c7bb5578a25cfff23b4a68781f87b94defe360",
+    "image:ddrhw-parallel-b-lower-entry-departure:canonical-southeast": "bf2dfb7353f4f46a6e744a8d42d34ed758de5a1e3443e0d35728e1366a38babb",
+    "image:ddrhw-parallel-b-lower-entry-departure:canonical-top": "32fc4eb77873f5c0805513c527674995580b5d2ee70ec679a7f26269b854e4de",
+    "image:ddrhw-parallel-b-lower-entry-departure:connection-overview": "1c881d3b685900b04acfa15194b5f6c841e57717142882b51f1fa185ae737bd0"
+  },
+  "cases": [
+    {
+      "id": "software_resources-26f704db237c5eb2550a",
+      "kind": "software_resources",
+      "description": "Verify the actual compiled resources and construction rules.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ea89696209d5e49d6194213d5b108237295c64e92cca33791b198bdfd876e282",
+      "dependency_ref": "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2"
+    },
+    {
+      "id": "software_connectivity-26f704db237c5eb2550a",
+      "kind": "software_connectivity",
+      "description": "Verify the declared directed journeys and forbidden transfers.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d18cafebe9bdf5cd81c903170a93a36bb101ec3ff68fa4bb53a47a0ffac3f956",
+      "dependency_ref": "237fb3ba72923d8b696cd068d1f141413767b25f112899fce5f735ac11d4130f"
+    },
+    {
+      "id": "in_game_render-542d65698e990ba7b38e",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5a12890753488a59294390b71ec7df9708f81802b678702da5d8b95d243e41d7",
+      "dependency_ref": "76eb85c48981a176b57675a3b2e0cae20795f245ddd009a2d0e796d4e20cfd16"
+    },
+    {
+      "id": "in_game_placement-542d65698e990ba7b38e",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4cc39dfe7f9375b4c4fef921b5889ee50a6157c3a874af78bbd441535fd0c3b1",
+      "dependency_ref": "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2"
+    },
+    {
+      "id": "in_game_demolition-542d65698e990ba7b38e",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4cc39dfe7f9375b4c4fef921b5889ee50a6157c3a874af78bbd441535fd0c3b1",
+      "dependency_ref": "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2"
+    },
+    {
+      "id": "in_game_save_reload-542d65698e990ba7b38e",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4cc39dfe7f9375b4c4fef921b5889ee50a6157c3a874af78bbd441535fd0c3b1",
+      "dependency_ref": "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2"
+    },
+    {
+      "id": "in_game_render-ce603d8070741e7eae97",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "38c60e0e15e7730d841282fdc8d2c07af58a4a178bfcd1bc85b658cf36843e7c",
+      "dependency_ref": "76eb85c48981a176b57675a3b2e0cae20795f245ddd009a2d0e796d4e20cfd16"
+    },
+    {
+      "id": "in_game_placement-ce603d8070741e7eae97",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1188d251a515728c846c369abce103664116b97b755bdc3f82d9246d914d92b4",
+      "dependency_ref": "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2"
+    },
+    {
+      "id": "in_game_demolition-ce603d8070741e7eae97",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1188d251a515728c846c369abce103664116b97b755bdc3f82d9246d914d92b4",
+      "dependency_ref": "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2"
+    },
+    {
+      "id": "in_game_save_reload-ce603d8070741e7eae97",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1188d251a515728c846c369abce103664116b97b755bdc3f82d9246d914d92b4",
+      "dependency_ref": "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2"
+    },
+    {
+      "id": "in_game_render-ca1ffffe0adce2c09d8a",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "dc99e2e37ee532615ea173d53f7c25ef7f39cf653043b1801a8441f750c5f2b9",
+      "dependency_ref": "76eb85c48981a176b57675a3b2e0cae20795f245ddd009a2d0e796d4e20cfd16"
+    },
+    {
+      "id": "in_game_placement-ca1ffffe0adce2c09d8a",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bbdc8d1d407d8573985bfd0264dd2873e9289d3731c357c422bade1b0e68cde9",
+      "dependency_ref": "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2"
+    },
+    {
+      "id": "in_game_demolition-ca1ffffe0adce2c09d8a",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bbdc8d1d407d8573985bfd0264dd2873e9289d3731c357c422bade1b0e68cde9",
+      "dependency_ref": "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2"
+    },
+    {
+      "id": "in_game_save_reload-ca1ffffe0adce2c09d8a",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bbdc8d1d407d8573985bfd0264dd2873e9289d3731c357c422bade1b0e68cde9",
+      "dependency_ref": "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2"
+    },
+    {
+      "id": "in_game_render-fa283fd8217c8b9e93bc",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f586da292bada082c3e6e81624f945e1189d9b2a4394d5c732d2ffd636257451",
+      "dependency_ref": "76eb85c48981a176b57675a3b2e0cae20795f245ddd009a2d0e796d4e20cfd16"
+    },
+    {
+      "id": "in_game_placement-fa283fd8217c8b9e93bc",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "41426803548f4b544b343794df94823ffb6604b8727cb7a02c3280ec626e9f25",
+      "dependency_ref": "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2"
+    },
+    {
+      "id": "in_game_demolition-fa283fd8217c8b9e93bc",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "41426803548f4b544b343794df94823ffb6604b8727cb7a02c3280ec626e9f25",
+      "dependency_ref": "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2"
+    },
+    {
+      "id": "in_game_save_reload-fa283fd8217c8b9e93bc",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "41426803548f4b544b343794df94823ffb6604b8727cb7a02c3280ec626e9f25",
+      "dependency_ref": "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2"
+    },
+    {
+      "id": "in_game_route_query-94a52c304239dcc4f79c",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "journey_id": "1:channel-01-in>channel-02-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "channel-01-in",
+        "exit_port": "channel-02-out",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "72b90abb0fcb1dfd9bf361310f05f3d7b045b68b6bf04e42b5153db625920b89",
+      "dependency_ref": "237fb3ba72923d8b696cd068d1f141413767b25f112899fce5f735ac11d4130f"
+    },
+    {
+      "id": "in_game_visible_travel-94a52c304239dcc4f79c",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "journey_id": "1:channel-01-in>channel-02-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "channel-01-in",
+        "exit_port": "channel-02-out",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "72b90abb0fcb1dfd9bf361310f05f3d7b045b68b6bf04e42b5153db625920b89",
+      "dependency_ref": "237fb3ba72923d8b696cd068d1f141413767b25f112899fce5f735ac11d4130f"
+    },
+    {
+      "id": "in_game_route_query-1df7f89a884c3ead0b06",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "journey_id": "1:channel-01-in>channel-02-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "channel-01-in",
+        "exit_port": "channel-02-out",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "afff80a38d3a83789f7b677d33781a1e31d7ba9237ee3a02642673917b54bf99",
+      "dependency_ref": "237fb3ba72923d8b696cd068d1f141413767b25f112899fce5f735ac11d4130f"
+    },
+    {
+      "id": "in_game_visible_travel-1df7f89a884c3ead0b06",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "journey_id": "1:channel-01-in>channel-02-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "channel-01-in",
+        "exit_port": "channel-02-out",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "afff80a38d3a83789f7b677d33781a1e31d7ba9237ee3a02642673917b54bf99",
+      "dependency_ref": "237fb3ba72923d8b696cd068d1f141413767b25f112899fce5f735ac11d4130f"
+    },
+    {
+      "id": "in_game_route_query-5995e2bc95cfc7187635",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "journey_id": "1:channel-01-in>channel-02-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "channel-01-in",
+        "exit_port": "channel-02-out",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f0b0968e0480e2e651da7934d91e2894b7d4fb327b3417fd22fd0419dfdd1b59",
+      "dependency_ref": "237fb3ba72923d8b696cd068d1f141413767b25f112899fce5f735ac11d4130f"
+    },
+    {
+      "id": "in_game_visible_travel-5995e2bc95cfc7187635",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "journey_id": "1:channel-01-in>channel-02-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "channel-01-in",
+        "exit_port": "channel-02-out",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f0b0968e0480e2e651da7934d91e2894b7d4fb327b3417fd22fd0419dfdd1b59",
+      "dependency_ref": "237fb3ba72923d8b696cd068d1f141413767b25f112899fce5f735ac11d4130f"
+    },
+    {
+      "id": "in_game_route_query-b3cb3fec861dd1c30d23",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "journey_id": "1:channel-01-in>channel-02-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "channel-01-in",
+        "exit_port": "channel-02-out",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7948bd9044b91f4f461999d418eb01a24407cb66437bccf21ed749909b1e7355",
+      "dependency_ref": "237fb3ba72923d8b696cd068d1f141413767b25f112899fce5f735ac11d4130f"
+    },
+    {
+      "id": "in_game_visible_travel-b3cb3fec861dd1c30d23",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "journey_id": "1:channel-01-in>channel-02-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "channel-01-in",
+        "exit_port": "channel-02-out",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7948bd9044b91f4f461999d418eb01a24407cb66437bccf21ed749909b1e7355",
+      "dependency_ref": "237fb3ba72923d8b696cd068d1f141413767b25f112899fce5f735ac11d4130f"
+    },
+    {
+      "id": "preview_review-85ca770385dfeb80ed5e",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "image_key": "image:ddrhw-parallel-b-lower-entry-departure:canonical-southeast"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b0ba9afadd488692ec764b307290a0d62e0fec43881b5227b1c20322831adaf5",
+      "dependency_ref": "6519485cfab02ca3e5c39e7c3fcc459a95703697be6377fdbc2a3ba5dcc0d079"
+    },
+    {
+      "id": "preview_review-736a8c7cea5097390a7b",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "image_key": "image:ddrhw-parallel-b-lower-entry-departure:canonical-top"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ef9e577662d8d5b38098ebdfd451e5f18e331db457099c385f3fe9a689b0ec96",
+      "dependency_ref": "a0be9ec3ddefa6ee733ad5c96c2e3f4dda498ff8becd817a7b9e1163a19fd7ad"
+    },
+    {
+      "id": "preview_review-1c21252b7ccd95a77e43",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-parallel-b-lower-entry-departure",
+        "image_key": "image:ddrhw-parallel-b-lower-entry-departure:connection-overview"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0c1d8e771e2873f08b9d82e6fe0658fba525b772644a70a74b1d682e26db8bf1",
+      "dependency_ref": "2a790cbf35fc7b6f4a6e349a41e3a694559e1d4cd6364ec8624da499d26450cc"
+    }
+  ],
+  "dependency_sets": {
+    "349295a071b82c3b516387647519e68baee642c7caef5cfe51a1a218d2c25bb2": {
+      "construction:ddrhw-parallel-b-lower-entry-departure": "ca24a493eeca2e94eeb9fb6f6fda502b61e6dcd4daeb45c89d1197565c136992",
+      "effect:ddrhw-parallel-b-lower-entry-departure:ea5118b0-ea5118b1-7f5caff5": "35f7d551d4a2122bcb26e4070af87402f057943488d481ad74884a9f9ff75395",
+      "exemplar:ddrhw-parallel-b-lower-entry-departure:6534284a-a8434037-7f5ca000": "83392c2e06813adf701b5f89922422185eebd317b4e6f60c20d7f10a996b0017",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca000": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca001": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca002": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca003": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca004": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5caff5": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "path:ddrhw-parallel-b-lower-entry-departure:296678f7-a966883f-7f5ca000": "746c287f4c4cc2eed50bc0c2ce249405a8481a6809a4c54a28193aea5378c6b7"
+    },
+    "237fb3ba72923d8b696cd068d1f141413767b25f112899fce5f735ac11d4130f": {
+      "construction:ddrhw-parallel-b-lower-entry-departure": "ca24a493eeca2e94eeb9fb6f6fda502b61e6dcd4daeb45c89d1197565c136992",
+      "graph:ddrhw-parallel-b-lower-entry-departure": "70e4874fef6e4eb36ee3701fa82fe6e52dd3be115dc4b3de53b90b027736ef6f",
+      "interface:ddrhw-parallel-b-lower-entry-departure:channel-01-in": "1bc61d55df685927c0544f8c05664c7acfd38e393d38cf8fa17142477b848954",
+      "interface:ddrhw-parallel-b-lower-entry-departure:channel-02-out": "3c888f3c52c8ecd211a86eb068a7ea30d408811d9c0f0e1635a63f2302b018e9",
+      "path:ddrhw-parallel-b-lower-entry-departure:296678f7-a966883f-7f5ca000": "746c287f4c4cc2eed50bc0c2ce249405a8481a6809a4c54a28193aea5378c6b7"
+    },
+    "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a": {},
+    "76eb85c48981a176b57675a3b2e0cae20795f245ddd009a2d0e796d4e20cfd16": {
+      "effect:ddrhw-parallel-b-lower-entry-departure:ea5118b0-ea5118b1-7f5caff5": "35f7d551d4a2122bcb26e4070af87402f057943488d481ad74884a9f9ff75395",
+      "exemplar:ddrhw-parallel-b-lower-entry-departure:6534284a-a8434037-7f5ca000": "83392c2e06813adf701b5f89922422185eebd317b4e6f60c20d7f10a996b0017",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca000": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca001": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca002": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca003": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5ca004": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4",
+      "model:ddrhw-parallel-b-lower-entry-departure:5ad0e817-badb57f1-7f5caff5": "37011023d8a825272a7ecdc6cd352136f9dae8ea868cb65a2e7101319ea8caa4"
+    },
+    "6519485cfab02ca3e5c39e7c3fcc459a95703697be6377fdbc2a3ba5dcc0d079": {
+      "image:ddrhw-parallel-b-lower-entry-departure:canonical-southeast": "bf2dfb7353f4f46a6e744a8d42d34ed758de5a1e3443e0d35728e1366a38babb"
+    },
+    "a0be9ec3ddefa6ee733ad5c96c2e3f4dda498ff8becd817a7b9e1163a19fd7ad": {
+      "image:ddrhw-parallel-b-lower-entry-departure:canonical-top": "32fc4eb77873f5c0805513c527674995580b5d2ee70ec679a7f26269b854e4de"
+    },
+    "2a790cbf35fc7b6f4a6e349a41e3a694559e1d4cd6364ec8624da499d26450cc": {
+      "image:ddrhw-parallel-b-lower-entry-departure:connection-overview": "1c881d3b685900b04acfa15194b5f6c841e57717142882b51f1fa185ae737bd0"
+    }
+  }
+}

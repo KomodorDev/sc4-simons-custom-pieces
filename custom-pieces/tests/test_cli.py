@@ -79,6 +79,7 @@ class PortableCLITests(unittest.TestCase):
                                  ('blank-display-name', '   ')]:
             result = self.call('scaffold', '--id', identifier, '--name', name)
             self.assertNotEqual(result.returncode, 0)
+            self.assertFalse((self.root/'domains/high-speed-rail/00_pieces'/identifier/'piece.jsonc').exists())
             self.assertFalse((self.root/'domains/high-speed-rail/00_pieces'/identifier/'piece.json').exists())
             self.assertEqual(before, {str(path): path.read_bytes() for path in files})
             self.assertEqual(self.call('list').returncode, 0)
@@ -110,7 +111,11 @@ class PortableCLITests(unittest.TestCase):
         for path, prefix in prefixes.items():
             self.assertTrue(path.read_text(encoding='utf-8').startswith(prefix))
             self.assertFalse(path.with_suffix('.json').exists())
-        piece = json.loads((self.root / 'domains/high-speed-rail/00_pieces/future-crossing/piece.json').read_text())
+        path = self.root / 'domains/high-speed-rail/00_pieces/future-crossing/piece.jsonc'
+        piece = jsonc.load(path)
+        self.assertFalse(path.with_suffix('.json').exists())
+        for label in ('title', 'summary', 'Used when', 'Read by', 'Updated by', 'Affects'):
+            self.assertIn('// '+label+': ', path.read_text())
         ids = [int(x, 16) for x in piece['tile_ids']]
         self.assertEqual(ids, [ids[0], ids[0] + 0x100, ids[0] + 0x10, ids[0] + 0x110])
         self.assertFalse(piece['enabled_by_default'])
@@ -158,6 +163,7 @@ class PortableCLITests(unittest.TestCase):
             result = self.call('scaffold', '--id', identifier, '--name', 'Testing Symlink '+str(number))
             self.assertNotEqual(result.returncode, 0)
             self.assertEqual(before, {path: path.read_bytes() for path in paths})
+            self.assertFalse((directory/'piece.jsonc').exists())
             self.assertFalse((directory/'piece.json').exists())
             self.assertFalse((directory/'README.md').exists())
             self.assertEqual(outside.read_bytes(), b'Keep this file outside the checkout unchanged.\n')
@@ -165,7 +171,7 @@ class PortableCLITests(unittest.TestCase):
     def test_scaffold_routes_a_draft_into_the_selected_domain(self):
         result = self.call('scaffold', '--domain', 'highway', '--id', 'highway-draft', '--name', 'Highway Draft')
         self.assertEqual(result.returncode, 0, result.stderr)
-        piece = json.loads((self.root / 'domains/highway/00_pieces/highway-draft/piece.json').read_text())
+        piece = jsonc.load(self.root / 'domains/highway/00_pieces/highway-draft/piece.jsonc')
         self.assertEqual(piece['domain'], 'highway')
         self.assertFalse(piece['enabled_by_default'])
 
@@ -192,7 +198,7 @@ class PortableCLITests(unittest.TestCase):
         path.write_text(json.dumps(registry))
         result = self.call('scaffold', '--id', 'new-small-piece', '--name', 'New Small Piece')
         self.assertEqual(result.returncode, 0, result.stderr)
-        piece = json.loads((self.root / 'domains/high-speed-rail/00_pieces/new-small-piece/piece.json').read_text())
+        piece = jsonc.load(self.root / 'domains/high-speed-rail/00_pieces/new-small-piece/piece.jsonc')
         self.assertEqual(piece['footprint'], [1, 1])
         self.assertNotIn('cells', piece)
         self.assertNotIn('category', piece)

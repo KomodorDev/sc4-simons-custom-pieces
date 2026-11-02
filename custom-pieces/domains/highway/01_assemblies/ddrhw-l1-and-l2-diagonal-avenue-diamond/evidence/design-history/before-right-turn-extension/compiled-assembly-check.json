@@ -1,0 +1,1618 @@
+{
+  "schema_version": 1,
+  "subject_id": "ddrhw-l1-and-l2-diagonal-avenue-diamond",
+  "saved_resource_checks_passed": true,
+  "saved_path_and_construction_checks_passed": true,
+  "assembly_orientation_checked_ccw_degrees": 0,
+  "construction": {
+    "unique_owned_cells": 41,
+    "bounding_rectangle_tiles": [
+      8,
+      8
+    ],
+    "placements": 17,
+    "distinct_component_types": 13,
+    "physical_projection_is_separate": true
+  },
+  "paths": {
+    "passed": true,
+    "route_fragments": 162,
+    "matched_directed_lane_seams": 158,
+    "inter_component_directed_lane_seams": 82,
+    "external_native_channels": 20,
+    "pedestrian_external_channels": 4,
+    "native_through_lane_and_sidewalk_journeys": 10,
+    "required_arm_movements": 12,
+    "highway_avenue_transfers": 8,
+    "through_arm_movements": 4,
+    "reachable_arm_pairs": [
+      [
+        "AVE_NW",
+        "AVE_SE"
+      ],
+      [
+        "AVE_NW",
+        "HW_NE"
+      ],
+      [
+        "AVE_NW",
+        "HW_SW"
+      ],
+      [
+        "AVE_SE",
+        "AVE_NW"
+      ],
+      [
+        "AVE_SE",
+        "HW_NE"
+      ],
+      [
+        "AVE_SE",
+        "HW_SW"
+      ],
+      [
+        "HW_NE",
+        "AVE_NW"
+      ],
+      [
+        "HW_NE",
+        "AVE_SE"
+      ],
+      [
+        "HW_NE",
+        "HW_NE"
+      ],
+      [
+        "HW_NE",
+        "HW_SW"
+      ],
+      [
+        "HW_SW",
+        "AVE_NW"
+      ],
+      [
+        "HW_SW",
+        "AVE_SE"
+      ],
+      [
+        "HW_SW",
+        "HW_NE"
+      ],
+      [
+        "HW_SW",
+        "HW_SW"
+      ]
+    ],
+    "movement_witnesses": [
+      {
+        "from_arm": "AVE_NW",
+        "to_arm": "AVE_SE",
+        "saved_route_ids": [
+          12,
+          15,
+          42,
+          49,
+          77,
+          84,
+          106,
+          111,
+          134,
+          137
+        ]
+      },
+      {
+        "from_arm": "AVE_NW",
+        "to_arm": "HW_NE",
+        "saved_route_ids": [
+          13,
+          16,
+          43,
+          50,
+          78,
+          87,
+          110,
+          129,
+          125,
+          151,
+          150,
+          149,
+          161,
+          160
+        ]
+      },
+      {
+        "from_arm": "AVE_NW",
+        "to_arm": "HW_SW",
+        "saved_route_ids": [
+          13,
+          18,
+          47,
+          19,
+          20,
+          22,
+          27,
+          31,
+          2,
+          7
+        ]
+      },
+      {
+        "from_arm": "AVE_SE",
+        "to_arm": "AVE_NW",
+        "saved_route_ids": [
+          152,
+          133,
+          126,
+          105,
+          99,
+          76,
+          65,
+          41,
+          34,
+          11
+        ]
+      },
+      {
+        "from_arm": "AVE_SE",
+        "to_arm": "HW_NE",
+        "saved_route_ids": [
+          153,
+          132,
+          130,
+          125,
+          151,
+          150,
+          149,
+          161,
+          160
+        ]
+      },
+      {
+        "from_arm": "AVE_SE",
+        "to_arm": "HW_SW",
+        "saved_route_ids": [
+          153,
+          132,
+          127,
+          104,
+          100,
+          75,
+          69,
+          48,
+          53,
+          21,
+          22,
+          27,
+          31,
+          2,
+          7
+        ]
+      },
+      {
+        "from_arm": "HW_NE",
+        "to_arm": "AVE_NW",
+        "saved_route_ids": [
+          159,
+          143,
+          148,
+          120,
+          90,
+          63,
+          37,
+          45,
+          38,
+          10
+        ]
+      },
+      {
+        "from_arm": "HW_NE",
+        "to_arm": "AVE_SE",
+        "saved_route_ids": [
+          159,
+          143,
+          148,
+          120,
+          90,
+          64,
+          68,
+          46,
+          52,
+          78,
+          85,
+          107,
+          112,
+          135,
+          138
+        ]
+      },
+      {
+        "from_arm": "HW_NE",
+        "to_arm": "HW_SW",
+        "saved_route_ids": [
+          158,
+          144,
+          147,
+          119,
+          123,
+          94,
+          97,
+          73,
+          82,
+          57,
+          60,
+          26,
+          30,
+          3,
+          6
+        ]
+      },
+      {
+        "from_arm": "HW_SW",
+        "to_arm": "AVE_NW",
+        "saved_route_ids": [
+          8,
+          33,
+          32,
+          62,
+          89,
+          88,
+          114,
+          109,
+          102,
+          75,
+          66,
+          40,
+          35,
+          10
+        ]
+      },
+      {
+        "from_arm": "HW_SW",
+        "to_arm": "AVE_SE",
+        "saved_route_ids": [
+          8,
+          33,
+          32,
+          62,
+          89,
+          88,
+          115,
+          135,
+          138
+        ]
+      },
+      {
+        "from_arm": "HW_SW",
+        "to_arm": "HW_NE",
+        "saved_route_ids": [
+          4,
+          0,
+          28,
+          23,
+          58,
+          54,
+          80,
+          70,
+          95,
+          91,
+          121,
+          116,
+          145,
+          141,
+          156
+        ]
+      }
+    ],
+    "all_cross_deck_journeys_require_intentional_ground_junctions": true,
+    "external_ports": [
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          -8.0,
+          -115.2,
+          15.0
+        ],
+        "tangent": [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "HW_SW"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          -8.0,
+          -108.8,
+          15.0
+        ],
+        "tangent": [
+          0.7071067811865475,
+          0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "HW_SW"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          -8.0,
+          -115.2,
+          7.5
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "HW_SW"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          -8.0,
+          -108.8,
+          7.5
+        ],
+        "tangent": [
+          -0.7071067811865475,
+          -0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "HW_SW"
+      },
+      {
+        "transport": 2,
+        "direction": "out",
+        "point": [
+          23.3,
+          -8.0,
+          0.0
+        ],
+        "tangent": [
+          -0.7071067811865475,
+          0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "AVE_NW"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          19.2,
+          -8.0,
+          0.0
+        ],
+        "tangent": [
+          -0.7071067811865475,
+          0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "AVE_NW"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          12.8,
+          -8.0,
+          0.0
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "AVE_NW"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          8.0,
+          -12.8,
+          0.0
+        ],
+        "tangent": [
+          0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "AVE_NW"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          8.0,
+          -19.2,
+          0.0
+        ],
+        "tangent": [
+          0.7071067811865475,
+          -0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "AVE_NW"
+      },
+      {
+        "transport": 2,
+        "direction": "in",
+        "point": [
+          8.0,
+          -23.3,
+          0.0
+        ],
+        "tangent": [
+          0.7071067811865475,
+          -0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "AVE_NW"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          88.0,
+          -92.8,
+          0.0
+        ],
+        "tangent": [
+          0.7071067811865475,
+          -0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "AVE_SE"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          88.0,
+          -99.2,
+          0.0
+        ],
+        "tangent": [
+          0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "AVE_SE"
+      },
+      {
+        "transport": 2,
+        "direction": "out",
+        "point": [
+          88.0,
+          -103.3,
+          0.0
+        ],
+        "tangent": [
+          0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "AVE_SE"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          92.8,
+          -88.0,
+          0.0
+        ],
+        "tangent": [
+          -0.7071067811865475,
+          0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "AVE_SE"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          99.2,
+          -88.0,
+          0.0
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "AVE_SE"
+      },
+      {
+        "transport": 2,
+        "direction": "in",
+        "point": [
+          103.3,
+          -88.0,
+          0.0
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "AVE_SE"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          115.2,
+          8.0,
+          15.0
+        ],
+        "tangent": [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "HW_NE"
+      },
+      {
+        "transport": 1,
+        "direction": "out",
+        "point": [
+          108.8,
+          8.0,
+          15.0
+        ],
+        "tangent": [
+          0.7071067811865475,
+          0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "HW_NE"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          115.2,
+          8.0,
+          7.5
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "arm": "HW_NE"
+      },
+      {
+        "transport": 1,
+        "direction": "in",
+        "point": [
+          108.8,
+          8.0,
+          7.5
+        ],
+        "tangent": [
+          -0.7071067811865475,
+          -0.7071067811865475
+        ],
+        "grade": 0.0,
+        "arm": "HW_NE"
+      }
+    ]
+  },
+  "model_seams": {
+    "passed": true,
+    "car_lane_collar_samples": 360,
+    "collar_half_width_m": 1.25,
+    "surface_height_tolerance_m": 0.04,
+    "longitudinal_grade_difference_tolerance": 0.015,
+    "maximum_sampled_height_difference_m": 0.0016409875218450498,
+    "maximum_sampled_longitudinal_grade_difference": 2.8054645277331147e-05,
+    "physical_projection_cells": [
+      [
+        -1,
+        6
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        -1
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        8,
+        0
+      ]
+    ],
+    "native_overhang_cells_beyond_construction": [
+      [
+        -1,
+        6
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        -1
+      ],
+      [
+        8,
+        0
+      ]
+    ],
+    "actual_saved_model_bounds_east_north_height_m": [
+      [
+        -9.656854629516602,
+        121.6568546295166
+      ],
+      [
+        -121.6568546295166,
+        9.656854629516602
+      ],
+      [
+        0.0,
+        16.390625
+      ]
+    ],
+    "scope": "Car-lane pavement collars at inter-component joins; full barriers, supports, texture alpha, and game rendering remain separate."
+  },
+  "supports": {
+    "passed": true,
+    "actual_columns": 6,
+    "actual_vertical_triangles": 48,
+    "column_width_m": 0.8,
+    "height_interval_m": [
+      0.0,
+      15.0
+    ],
+    "actual_deck_contact_corner_samples": 48,
+    "deck_contact_samples": [
+      {
+        "cell": [
+          0,
+          6
+        ],
+        "point_m": [
+          -0.4,
+          -96.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          6
+        ],
+        "point_m": [
+          -0.4,
+          -95.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          6
+        ],
+        "point_m": [
+          0.4,
+          -96.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          6
+        ],
+        "point_m": [
+          0.4,
+          -95.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          6
+        ],
+        "point_m": [
+          -0.4,
+          -96.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          6
+        ],
+        "point_m": [
+          -0.4,
+          -95.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          6
+        ],
+        "point_m": [
+          0.4,
+          -96.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          0,
+          6
+        ],
+        "point_m": [
+          0.4,
+          -95.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          4
+        ],
+        "point_m": [
+          31.6,
+          -64.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          4
+        ],
+        "point_m": [
+          31.6,
+          -63.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          4
+        ],
+        "point_m": [
+          32.4,
+          -64.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          4
+        ],
+        "point_m": [
+          32.4,
+          -63.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          4
+        ],
+        "point_m": [
+          31.6,
+          -64.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          4
+        ],
+        "point_m": [
+          31.6,
+          -63.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          4
+        ],
+        "point_m": [
+          32.4,
+          -64.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          4
+        ],
+        "point_m": [
+          32.4,
+          -63.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          5
+        ],
+        "point_m": [
+          31.6,
+          -80.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          5
+        ],
+        "point_m": [
+          31.6,
+          -79.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          5
+        ],
+        "point_m": [
+          32.4,
+          -80.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          5
+        ],
+        "point_m": [
+          32.4,
+          -79.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          5
+        ],
+        "point_m": [
+          31.6,
+          -80.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          5
+        ],
+        "point_m": [
+          31.6,
+          -79.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          5
+        ],
+        "point_m": [
+          32.4,
+          -80.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          2,
+          5
+        ],
+        "point_m": [
+          32.4,
+          -79.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          4,
+          2
+        ],
+        "point_m": [
+          63.6,
+          -32.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          4,
+          2
+        ],
+        "point_m": [
+          63.6,
+          -31.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          4,
+          2
+        ],
+        "point_m": [
+          64.4,
+          -32.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          4,
+          2
+        ],
+        "point_m": [
+          64.4,
+          -31.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          4,
+          2
+        ],
+        "point_m": [
+          63.6,
+          -32.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          4,
+          2
+        ],
+        "point_m": [
+          63.6,
+          -31.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          4,
+          2
+        ],
+        "point_m": [
+          64.4,
+          -32.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          4,
+          2
+        ],
+        "point_m": [
+          64.4,
+          -31.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          2
+        ],
+        "point_m": [
+          79.6,
+          -32.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          2
+        ],
+        "point_m": [
+          79.6,
+          -31.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          2
+        ],
+        "point_m": [
+          80.4,
+          -32.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          2
+        ],
+        "point_m": [
+          80.4,
+          -31.6,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          2
+        ],
+        "point_m": [
+          79.6,
+          -32.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          2
+        ],
+        "point_m": [
+          79.6,
+          -31.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          2
+        ],
+        "point_m": [
+          80.4,
+          -32.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          5,
+          2
+        ],
+        "point_m": [
+          80.4,
+          -31.6,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          0
+        ],
+        "point_m": [
+          95.6,
+          -0.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          0
+        ],
+        "point_m": [
+          95.6,
+          0.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          0
+        ],
+        "point_m": [
+          96.4,
+          -0.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          0
+        ],
+        "point_m": [
+          96.4,
+          0.4,
+          7.5
+        ],
+        "measured_plane_height_m": 7.5,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          0
+        ],
+        "point_m": [
+          95.6,
+          -0.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          0
+        ],
+        "point_m": [
+          95.6,
+          0.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          0
+        ],
+        "point_m": [
+          96.4,
+          -0.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      },
+      {
+        "cell": [
+          6,
+          0
+        ],
+        "point_m": [
+          96.4,
+          0.4,
+          15.0
+        ],
+        "measured_plane_height_m": 15.0,
+        "height_difference_m": 0.0
+      }
+    ],
+    "car_segments_checked_against_columns": 14232,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "minimum_conservative_planar_clearance_m": 1.578427124746185,
+    "column_cells": [
+      [
+        0,
+        6
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        6,
+        0
+      ]
+    ],
+    "saved_model_instances": [
+      {
+        "cell": [
+          0,
+          6
+        ],
+        "piece_id": "ddrhw-diagonal-diagonal-half-a",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f597004"
+        ]
+      },
+      {
+        "cell": [
+          2,
+          4
+        ],
+        "piece_id": "ddrhw-diagonal-diagonal-half-a",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f597004"
+        ]
+      },
+      {
+        "cell": [
+          2,
+          5
+        ],
+        "piece_id": "ddrhw-diagonal-diagonal-half-b",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f598004"
+        ]
+      },
+      {
+        "cell": [
+          4,
+          2
+        ],
+        "piece_id": "ddrhw-diagonal-diagonal-half-a",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f597004"
+        ]
+      },
+      {
+        "cell": [
+          5,
+          2
+        ],
+        "piece_id": "ddrhw-diagonal-diagonal-half-b",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f598004"
+        ]
+      },
+      {
+        "cell": [
+          6,
+          0
+        ],
+        "piece_id": "ddrhw-diagonal-diagonal-half-a",
+        "model_tgi": [
+          "5ad0e817",
+          "badb57f1",
+          "7f597004"
+        ]
+      }
+    ],
+    "scope": "Saved vertical faces, indexed road-plane contacts, and conservative saved-PATH car corridors; structural load capacity and in-game collision behaviour are unverified."
+  },
+  "game_operation": "unverified",
+  "limits": [
+    "Arm reachability does not establish every possible lane-to-lane transfer or game lane choice.",
+    "Pavement seam samples do not certify complete barrier profiles, complete collision envelopes, or texture-alpha coverage.",
+    "Ground junction priority and traffic conflicts, construction overrides, shadows, bulldozing, and save/reload require separate game observations."
+  ],
+  "source": {
+    "manifest_sha256": "5d626cc4dded5e8e7e4d3c67f8b42823fc6b431c7362cea87108958900c5d7bd",
+    "asset_files": {
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-access-core.dat": "970a84692c7c288edfb175369d6d54da4999a5f77ee9345aa7f231552a95bd45",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-northwest-junction.dat": "8374d08651e7f11813504b842b4b97375be02dff7c70a76764cb2d8c9fec7ece",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-southeast-junction.dat": "e2359f12fd956ddc04bb030e9378187e0779e076f74a7eb2e63c0b1437f42be7",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-branch.dat": "7ee278bbd523ca187547f2addbd6be6b3cb9c668df7d53a2d6955b987bc8e02a",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-entry-branch.dat": "53b0f9b8d7b16d7e9cd2fc3ea696030c2c499c0d3fec15589107ad60a45d49a5",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-grade.dat": "999aa5a34a72e2eeab1fc85934b24eb05ff8ce320ab4d99bc2610e41cb5651ff",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-entry-grade.dat": "319c7d6c6253d847480f0664bd0b26a68e11dd590624495ac9d013c4fcaf1664",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-branch.dat": "5664d57581d1f7f12dcffe9bed570a5b24030e5bbef2b46e240f59faeb74808f",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-entry-branch.dat": "70f8f4dcc23056fe617d6ae755f07c9add5834714f3892316561273e57aed3b5",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-grade.dat": "608c4f01fb478d5a5e60031fa7663275dd20a7de47eda200012aabdb545be51a",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-entry-grade.dat": "3b4efc75fc9576cd895fe64430581d426e0b50d1a33b363b1a0e57889306a7a6",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-diagonal-half-a.dat": "6000abbe760169e2dfc5ee0e69c715c048479617e5d8843161697c5fb36c5a47",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-diagonal-half-b.dat": "984b41f13d5b0b0064313e51c48345b5c3617852b41413edab29562bcf6ac09b"
+    },
+    "actual_saved_dat_resources": true,
+    "scene_sha256": "d8e43c33286a504365f998223c7fb6da8c14a97703d62bc3735908cb7cb581ee"
+  }
+}

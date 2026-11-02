@@ -1,0 +1,95 @@
+// title: "Piece definition: RHW Ramp — L1 Entry Lateral Departure — Parallel"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 L1 Entry Lateral Departure \u2014 Parallel.",
+  "schema_version": 1,
+  "id": "ddrhw-parallel-lower-entry-departure",
+  "domain": "highway",
+  "name": "RHW Ramp \u2014 L1 Entry Lateral Departure \u2014 Parallel",
+  "description": "Place one l1 entry lateral departure for the close parallel diagonal diamond. Use the complete connection cards and assembly grid; heights are fixed.",
+  "recipe": "highway_ddrhw_parallel_lower_entry_departure",
+  "geometry_key": "parallel-lower-entry-departure",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f867",
+  "tile_ids": [
+    "7f5b6000"
+  ],
+  "preview_id": "7f5b6ff5",
+  "effect_name": "preview_scp_hw_f867_____001",
+  "footprint": [
+    1,
+    1
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "mis"
+  ],
+  "menu": {
+    "id": "6a47f867",
+    "order": "ffffff67",
+    "style": "ddrhw-ramp"
+  },
+  "engineering": {
+    "max_grade_percent": 30.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "pavement_path_offset_m": 0.0,
+    "model_only_cells": [],
+    "path_ownership": "Every full native and ramp fragment in each owned city cell",
+    "physical_model_function": "departure",
+    "model_overhang": true,
+    "authored_model_overhang": true,
+    "pure_ramp_model": true,
+    "native_model_transfers": [],
+    "native_avenue_cells": [],
+    "native_highway_cells": [],
+    "reuse_limit": "Outside-deck access PATHs change all four ordinary highway continuation cells; no whole existing native half is substituted",
+    "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m"
+  },
+  "shadow_mode": "model-carrier",
+  "shadow_mappings": [],
+  "provenance": {
+    "geometry": "Approved parallel physical layout and source meshes retained; explicit lower 8 m + 4 m and upper 5 m + 1 m shoulder auxiliary-lane revision.",
+    "construction": "Disjoint whole-cell traffic owners; separate physical models may overhang neighbouring cells.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "model_shadows": {
+    "schema_version": 1,
+    "sun_profile": "sc4-default-67p5-45",
+    "cells": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "cast_shadow": true,
+        "resource_base": "7f5b6800"
+      }
+    ],
+    "enabled": false
+  }
+}

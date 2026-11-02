@@ -1,0 +1,107 @@
+// title: "Piece definition: DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over Avenue Ground (0 m) — Diagonal Crossing 90°"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over Avenue Ground (0 m) \u2014 Diagonal Crossing 90\u00b0.",
+  "schema_version": 1,
+  "id": "ddrhw-l1-and-l2-over-avenue-l0-crossing-diagonal-90deg",
+  "domain": "highway",
+  "name": "DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over Avenue Ground (0 m) \u2014 Diagonal Crossing 90\u00b0",
+  "description": "Five coordinated construction tiles preserve the native stacked DD RHW-4 lanes above both directions of a diagonal avenue, including avenue pedestrians. This crossing supplies through routes; connecting access ramps are separate components.",
+  "recipe": "highway_ddrhw_diagonal_avenue_crossing",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f7a7",
+  "tile_ids": [
+    "7f504100",
+    "7f504010",
+    "7f504110",
+    "7f504210",
+    "7f504120"
+  ],
+  "preview_id": "7f504ff5",
+  "effect_name": "preview_scp_hw_f7a7_____001",
+  "footprint": [
+    3,
+    3
+  ],
+  "cells": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core"
+  ],
+  "menu": {
+    "id": "6a47f7a7",
+    "order": "ffffffa7",
+    "style": "ddrhw-crossing"
+  },
+  "shadow_mode": "generated",
+  "shadow_mappings": [
+    {
+      "tile": "7f504100",
+      "source": "7f504100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f504010",
+      "source": "7f504010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f504110",
+      "source": "7f504110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f504210",
+      "source": "7f504210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f504120",
+      "source": "7f504120",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Independently measured native NAM DD RHW-4 and Avenue channels.",
+    "construction": "Explicit five-cell RUL0 construction; measured native network flags; four proper rotations repeated.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}

@@ -1,0 +1,85 @@
+// title: "Reviewed highway connector channels"
+// summary: "Bind every measured service endpoint to its independently reviewed channel and exposed tile boundary."
+//
+// Used when: Contributors export this highway component or inspect its complete boundary cards.
+// Read by: scp.connector_metadata.load_library(), connector exports, and source-owned overview rendering.
+// Updated by: scp_highway.connections.write_connector_groups() after reviewed saved-resource extraction.
+// Affects: Highway, Avenue, ramp, and pedestrian service boundaries, signed slopes, and derived connector exports.
+{
+  "schema_version": 3,
+  "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
+  "piece_id": "ddrhw-parallel-b-upper-entry-departure",
+  "source_binding": {
+    "piece_sha256": "90e81a3181b321b4bb3d96a95c4ec01483b6770b66ed1987fedb06088c34e20d",
+    "connections_sha256": "91ed25c2a770a6f835871db2a04acdf7b99896f5d9b1fdda27e3ce8b4265631f"
+  },
+  "components": [
+    {
+      "id": "access-network-upper-on",
+      "network": "road",
+      "construction_network": "dirtroad"
+    }
+  ],
+  "channels": [
+    {
+      "id": "access-upper-on",
+      "component_id": "access-network-upper-on",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "boundary-01-access-network-upper-on-01",
+      "component_id": "access-network-upper-on",
+      "members": [
+        {
+          "id": "member-channel-01-in",
+          "source_port_id": "channel-01-in",
+          "direction": "in",
+          "channel_id": "access-upper-on",
+          "cut_id": "cut-channel-01-in"
+        }
+      ]
+    },
+    {
+      "id": "boundary-02-access-network-upper-on-01",
+      "component_id": "access-network-upper-on",
+      "members": [
+        {
+          "id": "member-channel-02-out",
+          "source_port_id": "channel-02-out",
+          "direction": "out",
+          "channel_id": "access-upper-on",
+          "cut_id": "cut-channel-02-out"
+        }
+      ]
+    }
+  ],
+  "boundary_bundles": [
+    {
+      "id": "boundary-01",
+      "source_cell": [
+        0,
+        0
+      ],
+      "edge": "west",
+      "connector_ids": [
+        "boundary-01-access-network-upper-on-01"
+      ]
+    },
+    {
+      "id": "boundary-02",
+      "source_cell": [
+        0,
+        0
+      ],
+      "edge": "north",
+      "connector_ids": [
+        "boundary-02-access-network-upper-on-01"
+      ]
+    }
+  ]
+}

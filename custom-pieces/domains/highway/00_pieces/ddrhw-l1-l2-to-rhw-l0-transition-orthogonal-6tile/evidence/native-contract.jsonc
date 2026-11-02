@@ -1,0 +1,198 @@
+// title: "Orthogonal DD-to-ground native contract"
+// summary: "Freeze native four-lane sockets, original starter solutions, and road-texture source fingerprints."
+//
+// Used when: Building, verifying, or reproducing the six-tile DD RHW-4 to L0 RHW-4 transition.
+// Read by: The NAM50 profile, highway provider, independent checks, and contributors.
+// Updated by: Contributors after independently re-auditing changed native inputs; original observations remain frozen.
+// Affects: Native socket models, traffic paths, controller rules, texture inputs, and source reproduction; game behavior remains unverified.
+{
+  "schema_version": 1,
+  "purpose": "Frozen native NAM50 inputs for the six-tile orthogonal DD RHW-4 to ground RHW-4 adapter; source measurements establish native boundaries, not game operation.",
+  "piece_id": "ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile",
+  "archives": {
+    "RealHighway_DD_RHW-4.dat": "ccf8dabd3930fce92d0baa872ff974e3a536ddcc40762505a2e70eafcf9c0dfb",
+    "RealHighway_RHW-4.dat": "e4433c0b5aea609c7b438d6451325dfa9b76bdc45f103e5a93f75d25b4ad6a96",
+    "US_Common_RHW-4_Textures.dat": "59111152b589203ae0cb4a207ba0058b628a27af07eb93e94d848ea5040be944"
+  },
+  "native_helper_measurements": {
+    "schema_version": 1,
+    "title": "Independent original NAM 50 orthogonal DD-to-L0 helper measurements",
+    "measurement_utc": "2026-11-01T16:05:48.637543+00:00",
+    "scope": "Original native dependency and rule bytes plus standalone construction adapter tests; no built transition, no installation, and no game test.",
+    "original_archives": [
+      {
+        "label": "dd_rhw",
+        "filename": "RealHighway_DD_RHW-4.dat",
+        "sha256": "ccf8dabd3930fce92d0baa872ff974e3a536ddcc40762505a2e70eafcf9c0dfb"
+      },
+      {
+        "label": "rhw4",
+        "filename": "RealHighway_RHW-4.dat",
+        "sha256": "e4433c0b5aea609c7b438d6451325dfa9b76bdc45f103e5a93f75d25b4ad6a96"
+      },
+      {
+        "label": "controller",
+        "filename": "NetworkAddonMod_Controller.dat",
+        "sha256": "d903540cdf772b4ed6a072c504e006e1cac384f8027ce58a288a5a9654f94161"
+      }
+    ],
+    "native_endpoint_resources": [
+      {
+        "tgi": "296678f7-a966883f-57030000",
+        "sha256": "8d663b22e6762fddd0a55389f23f58636f43d2582435c78a36e4933b89cc294c"
+      },
+      {
+        "tgi": "296678f7-a966883f-57530000",
+        "sha256": "e5f4c27133d0b03bae145380e151eacd0a32ac42ee7dc5f8f3a51e04ff539853"
+      },
+      {
+        "tgi": "5ad0e817-badb57f1-57030000",
+        "sha256": "81bf6080e261e2a902d8836ce480e970af8428d9f4a9b36d2290b3a8522f21dc"
+      },
+      {
+        "tgi": "5ad0e817-badb57f1-57530000",
+        "sha256": "3d94bcce2ff84c9bd06d3bbbc7a089b8eaa28cfe921c3d31e87a27300cffd3dd"
+      },
+      {
+        "tgi": "6534284a-6be08658-57530000",
+        "sha256": "a6625188affe6851b7c10797eef0170d9762e54d3f997aa6b39b7afae2fd2d67"
+      }
+    ],
+    "native_contract_audit": {
+      "native_rul0_sha256": "d2a63a6c9070857c5360343cfa07f0be13ef0559fd659e9545c57c15dda672b9",
+      "native_starters_checked": 2,
+      "native_rul1_sha256": "4e44ec44283de6fccc3cd40492fc24154d13fb16a5150e13c201c6e615bba998",
+      "existing_native_rul1_solutions_checked": 8,
+      "native_rul2_sha256": "c427c7872743ca4cd9f583adf33c93a320babe37c42061fbd33c905696e7a3b1",
+      "native_continuation_rows_checked": 8,
+      "native_rul1_unchanged": true,
+      "native_rul2_unchanged": true,
+      "game_behavior_tested": false
+    },
+    "existing_native_rul1_sections": {
+      "MonoRailDirtRoadIntersectionSolutions": [
+        [
+          16778240,
+          33554944,
+          1465057280,
+          0,
+          0
+        ],
+        [
+          262145,
+          131074,
+          1465057280,
+          1,
+          0
+        ],
+        [
+          67109120,
+          33554944,
+          1465057280,
+          2,
+          0
+        ],
+        [
+          65540,
+          131074,
+          1465057280,
+          3,
+          0
+        ]
+      ],
+      "RoadDirtRoadIntersectionSolutions": [
+        [
+          16777217,
+          33554944,
+          1459814400,
+          0,
+          0
+        ],
+        [
+          257,
+          131074,
+          1459814400,
+          1,
+          0
+        ],
+        [
+          65792,
+          33554944,
+          1459814400,
+          2,
+          0
+        ],
+        [
+          16842752,
+          131074,
+          1459814400,
+          3,
+          0
+        ]
+      ]
+    },
+    "declaration_interface": "native_orthogonal_approaches",
+    "construction_grid": {
+      "width": 4,
+      "depth": 9,
+      "modeled_origin_display_cell": [
+        0,
+        1
+      ],
+      "dd_helper_display_cell": [
+        1,
+        0
+      ],
+      "ground_helper_display_cells": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ]
+      ],
+      "caret_display_cell": [
+        0,
+        8
+      ],
+      "cons_layout_owned_cells": 12,
+      "helpers_owned": false
+    },
+    "ground_exemplar_measurement": {
+      "target": "57030000",
+      "native_exemplar_found": false,
+      "scan_scope": "All indexed installed DBPF input roots, including any managed custom installation; no matching network exemplar IID was present.",
+      "native_reference_mode": "direct",
+      "note": "Ground donor is a direct four-vertex model and two north-to-south car PATHs; no dummy exemplar is authored."
+    },
+    "tests": {
+      "command": "python3 -B -m unittest discover -s custom-pieces/domains/highway/tests -p test_orthogonal_approaches.py",
+      "passed": 15,
+      "skipped": 0
+    },
+    "game_behavior_tested": false,
+    "installed": false
+  },
+  "texture_resources": {
+    "7AB50E44-1ABE787D-5703000E": "c2b9ac53cc080ca8146f1345e13d43e91c883d9559ec3ec3293e7ff88a259e88",
+    "7AB50E44-1ABE787D-5713000E": "25a91179a26a82ba6307777b1957c5862bee61daf55c7638c4487d64b275c7b8"
+  },
+  "geometry": {
+    "native_deck_and_carriageway_width_m": 16,
+    "native_lane_lateral_offsets_m": [
+      -2.5,
+      2.5
+    ],
+    "DD_PATH_heights_m": [
+      7.5,
+      15
+    ],
+    "ground_PATH_height_m": 0,
+    "DD_source_dummy_ground_routes_excluded": true,
+    "ground_direct_lookup_has_no_network_exemplar": true
+  },
+  "construction": "Three unowned native sockets reuse the original two starter marker families, eight existing RUL1 rows, and unchanged RUL2 propagation.",
+  "human_game_observation": "unverified"
+}

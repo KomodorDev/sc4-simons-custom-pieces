@@ -1,0 +1,137 @@
+{
+  "evidence": "native-wheeltrack-texture-provider-equivalence",
+  "limits": {
+    "embedded_lower_mipmap_levels_decoded_or_compared": false,
+    "first_image_only": true,
+    "game_rendering_tested": false,
+    "game_resource_load_order_verified": false,
+    "pixel_payload_saved": false,
+    "saved_candidate_geometry_or_UV_verified_here": false,
+    "scope": "Different FSH containers supply the same decoded first 128 \u00d7 128 RGBA image for each individual texture ID. This does not claim DD and MIS are identical to each other, equivalence of lower mipmaps, equivalence under game filtering, or an in-game appearance pass.",
+    "texture_filtering_or_mipmap_selection_verified": false
+  },
+  "measurement_kind": "Read-only numeric fingerprints and full decoded first-image equality; no pixel payload.",
+  "method": {
+    "DBPF_index_source_sha256": "a0697d44eb6395e56ba1731ada58e926fc0ca88568ddd00296699586adbe2a08",
+    "Pillow_version": "10.3.0",
+    "comparison": "Compare every byte of the complete 128 \u00d7 128 RGBA first image from both providers, then compare the normalized TextureLibrary-selected image after exact byte recovery.",
+    "decoder": "scp.preview.decode_fsh: first image only",
+    "decoder_source_sha256": "30e099f296b95b1868ef047094abe242b8026524dfdbd13f9719e0a93a4dc112",
+    "numpy_version": "1.26.4",
+    "resource_group": "1abe787d",
+    "resource_reader": "scp.preview.read_resource: exactly one indexed resource per archive, decompressed before fingerprinting",
+    "resource_type": "7ab50e44",
+    "software_provider_selection": "TextureLibrary selects the final indexed provider after its existing path ordering; the embedded archive is selected for both audited IDs. This is a software resolver observation, not an observation of the game resource loader."
+  },
+  "schema_version": 1,
+  "source_scope": {
+    "earlier_colour_measurements_modified": false,
+    "network_addon_mod_version": "50",
+    "providers_discovered_by": "TextureLibrary.for_model using the framework DBPF resource index over the audited NAM root",
+    "root_placeholder": "<NAM Plugins root>",
+    "source_archives_modified": false,
+    "texture_package": "nam.textures.right-default-current-standard-US.50,49.sc4pac",
+    "variant": "US right-hand traffic"
+  },
+  "status": "passed",
+  "textures": [
+    {
+      "RGBA_channel_bytes_compared": 65536,
+      "base_and_embedded_first_image_byte_identical": true,
+      "common_decoded_first_image_rgba_sha256": "3ff0c1dcdd4e987dd50c51f240055cccad5c0531619ce626f96447b5d33d1d11",
+      "maximum_RGBA_channel_difference": 0,
+      "network_material": "DD RHW-4",
+      "provider_count": 2,
+      "providers": [
+        {
+          "archive_bytes": 27201274,
+          "archive_filename": "US_Common_RHW-4_Textures.dat",
+          "archive_path_relative_to_NAM_root": "8-textures/nam.textures.right-default-current-standard-US.50,49.sc4pac/@0=US/US_Common_RHW-4_Textures.dat",
+          "archive_sha256": "59111152b589203ae0cb4a207ba0058b628a27af07eb93e94d848ea5040be944",
+          "decoded_first_image_mode": "RGBA",
+          "decoded_first_image_rgba_bytes": 65536,
+          "decoded_first_image_rgba_sha256": "3ff0c1dcdd4e987dd50c51f240055cccad5c0531619ce626f96447b5d33d1d11",
+          "decoded_first_image_size_px": [
+            128,
+            128
+          ],
+          "decompressed_fsh_bytes": 49192,
+          "decompressed_fsh_sha256": "25a91179a26a82ba6307777b1957c5862bee61daf55c7638c4487d64b275c7b8",
+          "resource_tgi": "7ab50e44-1abe787d-5713000e",
+          "selected_by_TextureLibrary": false
+        },
+        {
+          "archive_bytes": 2419430,
+          "archive_filename": "zUS_Common_Embedded-MipMaps.dat",
+          "archive_path_relative_to_NAM_root": "8-textures/nam.textures.right-default-current-standard-US.50,49.sc4pac/@0=US/zUS_Common_Embedded-MipMaps.dat",
+          "archive_sha256": "5e7aa0ad07ce08d9880271eb88fea24d131767143d7d976c328e08f656ed15de",
+          "decoded_first_image_mode": "RGBA",
+          "decoded_first_image_rgba_bytes": 65536,
+          "decoded_first_image_rgba_sha256": "3ff0c1dcdd4e987dd50c51f240055cccad5c0531619ce626f96447b5d33d1d11",
+          "decoded_first_image_size_px": [
+            128,
+            128
+          ],
+          "decompressed_fsh_bytes": 65532,
+          "decompressed_fsh_sha256": "6539c7d6d5a33e157c842724799a326f9f392a8282b0bbe27f74a2fe96ec6e7d",
+          "resource_tgi": "7ab50e44-1abe787d-5713000e",
+          "selected_by_TextureLibrary": true
+        }
+      ],
+      "software_selected_archive_filename": "zUS_Common_Embedded-MipMaps.dat",
+      "software_selected_decoded_image_matches_both_providers": true,
+      "software_selected_fsh_sha256": "6539c7d6d5a33e157c842724799a326f9f392a8282b0bbe27f74a2fe96ec6e7d",
+      "texture_instance": "5713000e",
+      "unequal_RGBA_channel_bytes": 0
+    },
+    {
+      "RGBA_channel_bytes_compared": 65536,
+      "base_and_embedded_first_image_byte_identical": true,
+      "common_decoded_first_image_rgba_sha256": "4356005bdc0f7ed5e5b96f9bb1274acb7afbf502266360dbbad0744ef51a5210",
+      "maximum_RGBA_channel_difference": 0,
+      "network_material": "MIS",
+      "provider_count": 2,
+      "providers": [
+        {
+          "archive_bytes": 23229876,
+          "archive_filename": "US_Common_MIS_Textures.dat",
+          "archive_path_relative_to_NAM_root": "8-textures/nam.textures.right-default-current-standard-US.50,49.sc4pac/@0=US/US_Common_MIS_Textures.dat",
+          "archive_sha256": "1cf8cd7ca665c2130635750bb2f29205d7f8a46a66707fa606edb930aefb42e7",
+          "decoded_first_image_mode": "RGBA",
+          "decoded_first_image_rgba_bytes": 65536,
+          "decoded_first_image_rgba_sha256": "4356005bdc0f7ed5e5b96f9bb1274acb7afbf502266360dbbad0744ef51a5210",
+          "decoded_first_image_size_px": [
+            128,
+            128
+          ],
+          "decompressed_fsh_bytes": 65576,
+          "decompressed_fsh_sha256": "050264fbfd4aa3dbc9da4989c602b926abaab58cd18bc4747a6e19fb78a2bc8a",
+          "resource_tgi": "7ab50e44-1abe787d-5712000e",
+          "selected_by_TextureLibrary": false
+        },
+        {
+          "archive_bytes": 2419430,
+          "archive_filename": "zUS_Common_Embedded-MipMaps.dat",
+          "archive_path_relative_to_NAM_root": "8-textures/nam.textures.right-default-current-standard-US.50,49.sc4pac/@0=US/zUS_Common_Embedded-MipMaps.dat",
+          "archive_sha256": "5e7aa0ad07ce08d9880271eb88fea24d131767143d7d976c328e08f656ed15de",
+          "decoded_first_image_mode": "RGBA",
+          "decoded_first_image_rgba_bytes": 65536,
+          "decoded_first_image_rgba_sha256": "4356005bdc0f7ed5e5b96f9bb1274acb7afbf502266360dbbad0744ef51a5210",
+          "decoded_first_image_size_px": [
+            128,
+            128
+          ],
+          "decompressed_fsh_bytes": 87356,
+          "decompressed_fsh_sha256": "676fd00d3e3d608917274ed742ecf75e8253b4d6be20586a1eb19db5c3222105",
+          "resource_tgi": "7ab50e44-1abe787d-5712000e",
+          "selected_by_TextureLibrary": true
+        }
+      ],
+      "software_selected_archive_filename": "zUS_Common_Embedded-MipMaps.dat",
+      "software_selected_decoded_image_matches_both_providers": true,
+      "software_selected_fsh_sha256": "676fd00d3e3d608917274ed742ecf75e8253b4d6be20586a1eb19db5c3222105",
+      "texture_instance": "5712000e",
+      "unequal_RGBA_channel_bytes": 0
+    }
+  ]
+}

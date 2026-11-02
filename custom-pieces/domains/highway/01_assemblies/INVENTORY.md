@@ -1,11 +1,11 @@
 ---
-title: "Highway (reserved; no pieces implemented) \u2014 assembly blueprints"
+title: "Highway \u2014 assembly blueprints"
 summary: "Find each documented multi-placement assembly, a clean preview, and its per-service test coverage."
 audience: "players"
 document_type: "catalogue"
 ---
 
-# Highway (reserved; no pieces implemented) — assembly blueprints
+# Highway — assembly blueprints
 
 <!-- BEGIN DOCUMENT NAVIGATION -->
 [1. Legend](#1-legend) · [2. Assembly blueprints](#2-assembly-blueprints)
@@ -57,5 +57,7 @@ The **connection matrix summary** counts displayed matrix entries for each check
 
 | Clean preview | Blueprint | Placements / types | Preview reviewed | Renders correctly in game | Connection matrix summary |
 | --- | --- | --- | --- | --- | --- |
-
-No assembly blueprints are registered in this domain.
+| [![DD RHW-4 — Compact Diagonal Avenue Diamond](ddrhw-l1-and-l2-diagonal-avenue-diamond/previews/preview.png)](ddrhw-l1-and-l2-diagonal-avenue-diamond/previews/preview.png) | [DD RHW-4 — Compact Diagonal Avenue Diamond](ddrhw-l1-and-l2-diagonal-avenue-diamond/README.md) | 15 / 13 | [ ] 0/12 passed; 12 unverified; 0 failed; 0 stale | [ ] 0/1 passed; 1 unverified; 0 failed; 0 stale | [Open matrix](ddrhw-l1-and-l2-diagonal-avenue-diamond/README.md#4-connection-matrix)<br>Saved PATH: 0/100 confirmed; 100 not established<br>Route Query: 0/14 confirmed; 14 not established<br>Visible travel: 0/14 confirmed; 14 not established<br>Forbidden in game: 0/86 confirmed; 86 not established |
+| [![DD RHW-4 — Modular Diagonal Avenue Diamond](ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/previews/preview.png)](ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/previews/preview.png) | [DD RHW-4 — Modular Diagonal Avenue Diamond](ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/README.md) | 7 / 7 | [ ] 0/9 passed; 9 unverified; 0 failed; 0 stale | [ ] 0/1 passed; 1 unverified; 0 failed; 0 stale | [Open matrix](ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/README.md#4-connection-matrix)<br>Saved PATH: 0/100 confirmed; 100 not established<br>Route Query: 0/14 confirmed; 14 not established<br>Visible travel: 0/14 confirmed; 14 not established<br>Forbidden in game: 0/86 confirmed; 86 not established |
+| [![DD RHW-4 — Parallel Diagonal Avenue Diamond](ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/previews/preview.png)](ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/previews/preview.png) | [DD RHW-4 — Parallel Diagonal Avenue Diamond](ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/README.md) | 15 / 15 | [ ] 0/7 passed; 7 unverified; 0 failed; 0 stale | [x] 1/1 passed; 0 unverified; 0 failed; 0 stale | [Open matrix](ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/README.md#4-connection-matrix)<br>Saved PATH: 0/100 confirmed; 100 not established<br>Route Query: 14/14 confirmed<br>Visible travel: 14/14 confirmed<br>Forbidden in game: 86/86 confirmed |
+| [![DD RHW-4 — Parallel Diagonal Avenue Diamond — Alignment B](ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b/previews/preview.png)](ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b/previews/preview.png) | [DD RHW-4 — Parallel Diagonal Avenue Diamond — Alignment B](ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b/README.md) | 15 / 15 | [ ] 0/7 passed; 7 unverified; 0 failed; 0 stale | [x] 1/1 passed; 0 unverified; 0 failed; 0 stale | [Open matrix](ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b/README.md#4-connection-matrix)<br>Saved PATH: 0/100 confirmed; 100 not established<br>Route Query: 14/14 confirmed<br>Visible travel: 14/14 confirmed<br>Forbidden in game: 86/86 confirmed |

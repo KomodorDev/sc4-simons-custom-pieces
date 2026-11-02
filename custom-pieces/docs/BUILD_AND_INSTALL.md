@@ -11,9 +11,9 @@ document_type: "procedure"
 [1. Current pieces and assembly design](#1-current-pieces-and-assembly-design) · [2. Recognize SCP menu icons](#2-recognize-scp-menu-icons) · [3. Prepare local development inputs](#3-prepare-local-development-inputs) · [4. Build a selected collection](#4-build-a-selected-collection) · [5. Optional isolated native inputs](#5-optional-isolated-native-inputs) · [6. Rebuild generated development outputs](#6-rebuild-generated-development-outputs) · [7. Install, remove, or roll back a test build](#7-install-remove-or-roll-back-a-test-build) · [8. Prepare the assembly menu](#8-prepare-the-assembly-menu) · [9. Project files and future additions](#9-project-files-and-future-additions) · [10. Check and prepare distribution](#10-check-and-prepare-distribution)
 <!-- END DOCUMENT NAVIGATION -->
 
-For a graphical installation without Python or terminal commands, use the [self-contained installer](INSTALLER.md). Extract the Windows ZIP, open SCP Installer, select **Choose game folder…**, and select **Install**. It finds Plugins, builds the complete implemented catalogue, captures required Road inputs automatically from the user's existing game and NAM, prepares the assembly menu, and uses the same verified, receipt-based installation described below. The following sections document the contributor and source-command workflow.
+For a graphical installation without Python or terminal commands, use the [self-contained installer](INSTALLER.md). Extract the Windows ZIP, open SCP Installer, select **Choose game folder…**, and select **Install**. It finds Plugins, builds the complete implemented catalogue, captures required Road, adaptive Avenue, and default-lighting inputs automatically from the user's existing game and NAM, prepares the assembly menu, and uses the same verified, receipt-based installation described below. Road captures read `SimCity_3.dat`, adaptive Avenue captures read `SimCity_4.dat`, and sunlight captures for enabled model-shadow carriers read `SimCity_1.dat`. Current GHSR/DD A/B crossings and all parallel-diamond components disable those carriers and require no sunlight capture. The following sections document the contributor and source-command workflow.
 
-An expandable **SimCity 4 network-piece plugin**, version **0.6.0.dev1**. The ordinary piece-compilation stage gives each selected type its own **SCP** button in **Transportation → Rail**. Every assembly delivery then uses the [assembly-menu step](#8-prepare-the-assembly-menu) to replace its member buttons with one assembly button; **Tab** and **Shift+Tab** select its reusable components. Teal **PART** icons identify individual building pieces; purple **PNP** icons identify complete one-click junctions. Network and piece-type abbreviations are explained [below](#2-recognize-scp-menu-icons). The current trumpet is a modular assembly; its complete one-click construction is blocked by measured tile-address collisions with the current tools. New complete complex interchanges are delivered as modular rebuilding blueprints, each with its own guide and named placement renders. The two existing accepted smooth T PNP pieces remain available. NAM remains a dependency. These are experimental development pieces. Software checks and compiled-model previews do not establish game operation. The construction checks account for runtime tile addresses and empty borders in the four diagonal S-curves. Simtropolis publication has not been performed.
+An expandable **SimCity 4 network-piece plugin**, version **0.6.0.dev1**. The ordinary piece-compilation stage gives each selected type its own **SCP** button in its domain's transportation menu, except for explicitly declared [alternative-piece families](#41-build-alternative-pieces-under-one-existing-button). Every assembly delivery then uses the [assembly-menu step](#8-prepare-the-assembly-menu) to replace its member buttons with one assembly button; **Tab** and **Shift+Tab** select its reusable components. Teal **PART** icons identify individual building pieces; purple **PNP** icons identify complete one-click junctions. Network and piece-type abbreviations are explained [below](#2-recognize-scp-menu-icons). The current trumpet is a modular assembly; its complete one-click construction is blocked by measured tile-address collisions with the current tools. New complete complex interchanges are delivered as modular rebuilding blueprints, each with its own guide and named placement renders. The two existing accepted smooth T PNP pieces remain available. NAM remains a dependency. These are experimental development pieces. Software checks and compiled-model previews do not establish game operation. The construction checks account for runtime tile addresses and empty borders in the four diagonal S-curves. Simtropolis publication has not been performed.
 
 <a id="current-pieces-and-assembly-design"></a>
 
@@ -102,7 +102,7 @@ All later Python commands in this guide assume that the environment remains acti
 
 The Python tools can run on macOS, Linux, and Windows. The audited game profile is **SimCity 4 Deluxe version 1.1.641 for Windows, with NAM 50 and right-hand traffic**. Right-hand traffic means vehicles drive on the right. The profile does not establish support for the native macOS game port. See the [NAM Team's official installation instructions](https://www.sc4nam.com/docs/getting-started/installation/) for obtaining NAM and its installer, DLL, and game requirements.
 
-A NAM version label alone does not prove that its files match this project's audited inputs. The four core archive filenames and SHA-256 fingerprints are recorded under the `controller`, `hsr`, `urail`, and `glr` keys in [`config/profiles/nam50-rhd.jsonc`](../config/profiles/nam50-rhd.jsonc). Additional entries, such as `ordinary_road`, `ordinary_road_texture`, and `ordinary_sidewalk_texture`, are optional captured inputs required only by pieces that declare those dependencies. A **fingerprint** identifies exact file contents. `doctor` checks the selected dependency files and identifier conflicts; it does not inspect the game executable or certify a game platform. Do not change a recorded fingerprint merely to make a different installation pass.
+A NAM version label alone does not prove that its files match this project's audited inputs. The four core archive filenames and SHA-256 fingerprints are recorded under the `controller`, `hsr`, `urail`, and `glr` keys in [`config/profiles/nam50-rhd.jsonc`](../config/profiles/nam50-rhd.jsonc). Additional entries, such as `ordinary_road`, `ordinary_road_texture`, `ordinary_sidewalk_texture`, `adaptive_avenue`, and `model_shadow_lighting`, are optional captured inputs required only by pieces that declare those dependencies. A **fingerprint** identifies exact file contents. `doctor` checks the selected dependency files and identifier conflicts; it does not inspect the game executable or certify a game platform. Do not change a recorded fingerprint merely to make a different installation pass.
 
 | Item | Provided in Git | Local use |
 | --- | --- | --- |
@@ -113,6 +113,63 @@ A NAM version label alone does not prove that its files match this project's aud
 | Compiled builds, packages, and caches | No generated build templates | Generate them from source and matching NAM inputs. Existing `dist/` directories are convenient retained outputs, rather than prerequisites for starting source development. |
 
 For native builds, use the settings-copy command in the next section. Keep real filesystem paths in that ignored settings file. An empty `extra_plugins` list is correct only when there are no additional active Plugins directories. Builds and native tests need writable output and operating-system temporary directories; their storage and runtime depend on the selected pieces.
+
+### 3.3 Prepare adaptive Avenue inputs for source builds
+
+The compact highway diamond's three adaptive components, the modular highway stamp and two R40 terminals, and the parallel diamond's crossing and two terminals require `SCP_AdaptiveAvenue_Capture.dat`. A **capture** is a small input archive assembled from precisely identified native resources; it is not an installed plugin. The graphical installer prepares it automatically through the shared capture service. For a source build, use the thin [Avenue input command](../domains/highway/tools/prepare_adaptive_avenue_inputs.py), which calls that same resource-bundle producer:
+
+```sh
+python -B custom-pieces/domains/highway/tools/prepare_adaptive_avenue_inputs.py --plugins "<user Plugins folder>" --extra-plugins "<additional Plugins folder>" --game-dir "<folder containing SimCity_4.dat>" --output custom-pieces/local/captures/adaptive-avenue
+```
+
+Replace each angle-bracket placeholder with an existing directory. Omit `--extra-plugins` when there is no additional active Plugins directory, or repeat it for each additional directory. `--game-dir` selects the directory containing the original `SimCity_4.dat`, not its `Apps` or `Plugins` subfolder. Choose a new output directory below `custom-pieces/local/`; the command reads the game and NAM files without changing them. Its profile and [portable source audit](../domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/evidence/adaptive-avenue-capture-audit.json) require exactly forty ground textures and one native prop donor, with their recorded hashes.
+
+Add the resulting capture directory to `extra_plugins` in your ignored settings, or pass `--extra-plugins custom-pieces/local/captures/adaptive-avenue` alongside every actual Plugins root when running `doctor` and `build`. The capture remains outside the game's Plugins folder. A limited source scan of only the NAM subtree can build an isolated candidate while another experimental controller is installed, but it does not establish collision freedom across the omitted active Plugins roots. Installation still requires a complete active-root check and one coordinated controller.
+
+### 3.4 Prepare the parallel highway sunlight input for source builds
+
+A selected piece that enables model-shadow carriers requires `SCP_ModelShadow_Lighting_Capture.dat`, declared as `model_shadow_lighting` in the supported profile. This requirement is conditional: the current GHSR/DD RHW Alignments A and B and all fifteen parallel-diamond components set `model_shadows.enabled: false`, so they require no sunlight capture. The graphical installer prepares a lighting capture automatically when a selected enabled carrier declares that dependency. The Avenue command above prepares only the Avenue bundle. The [historical lighting source audit](../domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/evidence/model-shadow-lighting-capture-audit.json) identifies the single resource in the original `SimCity_1.dat` and its exact fingerprints for the earlier enabled-carrier candidate; preserve that evidence for its original scope. See [the shared enabled/disabled contract](FRAMEWORK_ENGINEERING.md#52-declare-model-shadow-generation-explicitly).
+
+If your selected source enables model-shadow carriers and requires this input, create a plain-text file named `capture_model_shadow_lighting.py` inside the ignored `custom-pieces/local/` directory, and paste the following Python code. Replace `<folder containing SimCity_1.dat>` with the original game-data directory, and replace `<actual Plugins folder>` with the Plugins directory recorded in your private settings. Use forward slashes in Windows paths, for example `C:/Games/SimCity 4 Deluxe`, and retain the quotation marks. The target below must be a new directory; change `model-shadow-lighting-01` to an unused suffix if it already exists. Run the script from the repository directory containing `custom-pieces/`.
+
+```python
+from pathlib import Path
+import json
+import sys
+
+root = Path("custom-pieces").resolve()
+game_root = Path("<folder containing SimCity_1.dat>").expanduser().resolve()
+plugins = Path("<actual Plugins folder>").expanduser().resolve()
+target = root / "local/captures/model-shadow-lighting-01"
+
+sys.path.insert(0, str(root / "framework"))
+from scp.check_bootstrap import SourcePackages
+sys.meta_path.insert(0, SourcePackages(root))
+from scp.catalog import load_catalog
+from scp.resource_audit import capture_resource_bundle
+
+record = load_catalog(root)["_profile"]["files"]["model_shadow_lighting"]
+audit = json.loads((root / record["audit"]).read_text(encoding="utf-8"))
+if (record.get("capture_kind") != "resource-bundle"
+        or audit.get("capture_kind") != "resource-bundle"
+        or audit["capture"]["file"] != record["filename"]
+        or audit["capture"]["sha256"] != record["sha256"]):
+    raise ValueError("Lighting capture evidence differs from the selected profile")
+if any(row["location"] != "game" for row in audit["sources"]):
+    raise ValueError("This lighting capture expects original game archives only")
+sources = [{**row, "archive": game_root / row["filename"]}
+           for row in audit["sources"]]
+report = capture_resource_bundle(
+    sources, target, filename=record["filename"],
+    expected_sha256=record["sha256"], root=root, plugins=plugins)
+print(json.dumps(report["capture"], indent=2))
+```
+
+```sh
+python -B custom-pieces/local/capture_model_shadow_lighting.py
+```
+
+A successful run creates exactly the capture DAT and its `resource-audit.json` in the selected private directory, without changing the game archive or installing anything. The captured DAT must have SHA-256 `0b98a1d08492773ffed27a0cab965a8cccec2998ff0b8df10cacfa841f2bd2ab`. Add `custom-pieces/local/captures/model-shadow-lighting-01` to `extra_plugins` in your private settings, or pass it as an additional `--extra-plugins` directory to `doctor` and `build`, while retaining every actual active Plugins root and the Avenue capture directory. Keep the capture outside the game's Plugins directory. Unsupported source fingerprints or active lighting overrides must be resolved rather than bypassed by changing the profile.
 
 <a id="build-a-selected-collection"></a>
 
@@ -186,6 +243,21 @@ Use a named selection or individual `--include` options to build a smaller devel
 python custom-pieces/scp.py build --set hsr-all-components --progress --output custom-pieces/dist/hsr-all-components
 python custom-pieces/scp.py verify --output custom-pieces/dist/hsr-all-components
 ```
+
+### 4.1 Build alternative pieces under one existing button
+
+An **alternative-piece family** offers different versions of one reusable function through a shared button. Each click places the selected version. For example, the DD RHW-4 over GHSR crossing has [Alignment A](../domains/highway/00_pieces/ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg/README.md) and [Alignment B](../domains/highway/00_pieces/ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b/README.md) for adjacent diagonal railway positions beneath the same directed highway. They are alternatives to choose between, rather than assembly components to place together.
+
+Run the following commands from the repository root to compile both types into a fresh normal build and verify it. If the output already exists, use an unused suffix in both commands. This example selects only A and B; a replacement installation must also retain every previously installed type in its complete source selection.
+
+```sh
+python custom-pieces/scp.py build --set ddrhw-diagonal-ghsr-crossing-alignments --output custom-pieces/dist/ddrhw-ghsr-alignments-final-01 --progress
+python custom-pieces/scp.py verify --output custom-pieces/dist/ddrhw-ghsr-alignments-final-01
+```
+
+The normal build already gives A and B one existing button in **Transportation → Highways**. Select the original **SCP | [HW] DD RHW-4 Level 1 (7.5 m) and Level 2 (15 m) over GHSR Ground (1 m) — Mixed Crossing — Both Diagonal 90°** button. **Tab** selects B, whose placement query ends with **Alignment B**; **Shift+Tab** returns to A. **Home** and **End** rotate the selected alignment. B's extra standalone button is hidden when A is included. Using only `--set ddrhw-diagonal-ghsr-crossing-alignment-b` instead builds B with its own standalone button. A's existing definition, identifiers, and geometry remain unchanged.
+
+The member's source declares `menu.family_anchor`; [the engineering contract](FRAMEWORK_ENGINEERING.md#94-alternative-piece-families-in-normal-builds) explains its validation, exact presentation changes, and reversible controller proof. A normal alternative-family build does not need `assembly-menu`. If the broader source selection also contains assemblies, that later step groups only their disjoint components and preserves the unrelated A/B family. Both stages preserve every piece DAT and construction definition; verification checks the active families, actual menu resources, and unchanged native bytes. Actual button visibility, Tab selection, placement, moving traffic, shadows, and save/reload remain separate pending game observations. Building and verifying do not install anything.
 
 <a id="optional-isolated-native-inputs"></a>
 
@@ -293,6 +365,19 @@ Removal checks its ownership receipt and saves a snapshot first. The tools do no
 
 For ordinary removal or reversal, clear placed pieces while their old resources are still installed, and save the affected cities first. A [30 October 2026 experiment](TESTING.md#6-existing-saves-after-piece-removal) found that affected tiles could also be cleared after their resources had been removed, and the reported visual artifacts disappeared after bulldozing. That result covers one reported cleanup and does not replace region backups, restore the missing pieces, or establish traffic and save/reload behavior.
 
+### 7.1 Decide whether an update needs fresh placement
+
+**Fresh placement** means selecting a component in the game and placing a new copy, which executes its construction rules. **Restart and reload** means quitting SimCity 4 completely, installing the checked update while the game is closed, starting the game again, and opening the saved city. Rebuilding compiled DAT files and rebuilding a placed assembly are different actions. State which game action a revision requires in its test handoff, using an actual comparison of the old and new saved resources.
+
+| Verified change | First game test and its reason |
+| --- | --- |
+| Only PATH data changes; resource IDs, placed network configurations, construction rules, and T21 bindings remain unchanged | Restart and reload the existing placement first. The game is expected to load the replacement PATH bytes under the same IDs; confirm the result with Route Query and visible travel. The [adaptive highway height correction](../domains/highway/NETWORK_SPEC.md#13-adaptive-path-runtime-elevation) is this bounded example, and its existing-placement result remains unverified until observed. A shared ID alone does not establish that an arbitrary update applies to an old placement. |
+| Construction rules, helper seeds, or owned cells change | Test freshly placed copies of the affected components. Reloading a city does not execute their new construction requests or create a newly added helper. The [native highway approach experiment](../domains/highway/NETWORK_SPEC.md#12-native-highway-approach-experiment) demonstrates this distinction. Preserve the original city before replacing components. |
+| T21 prop bindings or selector conditions change, including adding or removing shadow-carrier attachments | Test fresh control instances under the [adaptive-ground procedure](WORKFLOW_PIECE_CREATION.md#54-preserve-adaptive-ground-artwork-beneath-elevated-models). A fresh copy exercises the revised attachment record without an older cached object. Adding or removing an invisible carrier changes that binding even when visible models, PATH IDs, and construction IDs stay the same; the [GHSR/DD and parallel-diamond no-shadow revision](../domains/highway/NETWORK_SPEC.md#14-shadows-for-independent-elevated-modules) therefore uses fresh copies as its acceptance controls. Test older saved placements separately: neither automatic creation nor cleanup of cached attachments after restart/reload is established without a matching observation. This control requirement does not itself establish that an existing city must be rebuilt. |
+| Resource IDs change | Do not expect the old placement to become the new type automatically. Preserve IDs for retained types; a deliberately new type requires its own placement or an explicitly implemented migration. |
+
+For a PATH-only correction, keep the reported layout and all of its ramps connected during the first retest. Run the simulation until new traffic enters, inspect each affected direction and level, and record Route Query separately from actual moving vehicles. If the failure persists, preserve that result before testing a fresh copy in a disposable city. Distinguish loaded existing placements, fresh placements, and their save/reload results; success in one state does not establish the others. Resource comparison and software regressions establish the repair's scope, while the [observation workflow](TESTING.md#4-record-one-observation) records its actual game outcome.
+
 <a id="prepare-the-assembly-menu"></a>
 
 ## 8. Prepare the assembly menu
@@ -326,7 +411,51 @@ python custom-pieces/scp.py verify --output custom-pieces/dist/straight-stem-tru
 python custom-pieces/scp.py package --output custom-pieces/dist/straight-stem-trumpet-final-01 --destination custom-pieces/dist/straight-stem-trumpet-final-01.zip
 ```
 
-The domain's [menu-layout.jsonc](../domains/high-speed-rail/menu-layout.jsonc) owns the assembly selection, its single presentation ID, its Rail-menu order, its title, and its description. Each assembly layout declares `assembly_id`, `member_order: "first-use-in-assembly"`, and `cycle_button`; the button supplies `id`, `order`, `title`, and `description`. The builder derives distinct member types from the registered placement plan, checks their definitions against the verified source, and rejects identifier collisions with existing content. Repeated copies of one type share a cycle entry. The current builder prepares one assembly per final candidate and rejects an already grouped source; it does not silently combine overlapping assembly cycles. The historical `menu-test` command remains a compatibility entry point, while new delivery instructions use `assembly-menu`.
+The domain's [menu-layout.jsonc](../domains/high-speed-rail/menu-layout.jsonc) owns the assembly selection, its single presentation ID, its menu order, its title, and its description. Each assembly layout declares `assembly_id`, `member_order: "first-use-in-assembly"`, and `cycle_button`; the button supplies `id`, `order`, `title`, and `description`. An optional `cycle_button.variant_label`, such as `"Alignment A"`, appends exactly ` — Alignment A` to the canonical assembly button title. It does not rename the assembly's source title or its accepted pictures. The shared validator rejects a wrong base title, an omitted or repeated declared suffix, invalid whitespace, and a second title separator. Omit the label when the canonical title already includes it, as the parallel Alignment B title does.
+
+The builder derives distinct member types from the registered placement plan, checks their definitions against the verified source, and rejects identifier collisions with existing content. Repeated copies of one type share a cycle entry. Repeat `--layout` to prepare several disjoint assembly cycles from one normal source build. **Disjoint** means that no reusable type, menu identifier, or construction rotation state belongs to two selected assemblies. Shared members, repeated assembly identifiers, duplicate button identifiers, conflicting submenu definitions, and previously prepared assembly-menu source builds are rejected. A normal source build may contain unrelated [alternative-piece families](#41-build-alternative-pieces-under-one-existing-button); their existing buttons and ordering are preserved, and neither their anchor nor their members may enter a selected assembly cycle. The historical `menu-test` command remains a compatibility entry point; its `submenu` field exposes individual component buttons and is still rejected by assembly delivery. The optional `cycle_submenu` described below groups complete assembly buttons instead.
+
+To put related assembly buttons inside one submenu, give their layouts an identical `cycle_submenu` object containing `id`, `order`, `title`, and `description`. Use the multiple-layout command, with at least two selected layouts overall. A submenu may contain only one of its variants in a scoped selection; selecting both variants produces both buttons. The builder creates the parent once, hides the individual component buttons, and keeps every assembly's Tab cycle separate. Parent and assembly presentation identifiers are checked against one another, the selected source archives, current piece-menu identifiers, and installed content. An ungrouped assembly remains directly in its owning menu.
+
+The nested presentation requires the **Submenus DLL**, **SC4ResourceLoadingHooks DLL version 2.0.1 or later**, and **`submenu-essentials.dat`**. Follow the [Submenus DLL installation instructions](https://github.com/memo33/submenus-dll#installation): keep both DLLs directly in a supported top-level Plugins directory, and keep the essentials DAT anywhere beneath Plugins. Its [modder reference](https://github.com/memo33/submenus-dll#information-for-modders) declares Highway parent `0x31`, Rail parent `0x29`, submenu-button class `1`, and network-child class `2`. Software verification checks the emitted resources; actual DLL loading and submenu operation still require an observation in the target Windows game, including a Wine or CrossOver setup.
+
+For the compact diamond, the modular diamond, and both parallel alignments, first compile a normal source build containing their 50 distinct types: 13 compact, seven modular, 15 parallel A, and 15 parallel B. Include any other SCP types that the next installation must retain. Use the [highway menu registry](../domains/highway/menu-layout.jsonc) to select their exact layout names. With that normal build at `custom-pieces/dist/highway-parts-final-01`, run:
+
+```sh
+python custom-pieces/scp.py assembly-menu --source custom-pieces/dist/highway-parts-final-01 --output custom-pieces/dist/highway-assemblies-final-01 --domain highway --layout compact-diagonal-diamond --layout modular-diagonal-diamond --layout parallel-diagonal-diamond --layout parallel-diagonal-diamond-alignment-b
+```
+
+This produces the compact and modular buttons directly under **Transportation → Highways**, plus **SCP | DD RHW-4 — Parallel Diagonal Avenue Diamond**. Open that submenu, then choose the complete **Alignment A** or **Alignment B** assembly button. Selecting a button starts that assembly's component cycle; **Tab** and **Shift+Tab** stay within the selected alignment. All 50 piece DATs remain unchanged by menu preparation. If the normal build also contains the two GHSR/DD crossing alternatives, their existing shared button and cycle remain unchanged. The verifier checks every independent assembly cycle, the exact retained rotation states, submenu membership, construction definitions, adaptive rules, NetworkINI, and frozen normal-build proof. The combined candidate uses `docs/assembly-menus/README.md` and `docs/assembly-menus/game-checks.json`; its source proof is under `docs/assembly-menus-source/`. The Python API is `scp.menu_experiment.build_assembly_menus(..., layout_ids=[...], domain_id="highway", plugins=...)`. Building this candidate does not install it or approve its game behavior; verify and install the complete combined candidate through the same receipt-based procedure as a single assembly.
+
+To prepare assemblies from both domains in one candidate, use the Python API with explicit `selections` instead of `layout_ids` and `domain_id`. Each selection contains exactly `domain_id` and `layout_id`; the pair identifies the layout, so two domains may use the same layout name. The HSR `trumpet` layout belongs under **Transportation → Rail**. The four highway layouts belong under **Transportation → Highways**, with the parallel Alignment A and Alignment B buttons inside their shared submenu. All five cycles are prepared together from one verified normal build, with one controller and no intermediate assembly-menu candidate. Every group's members must belong to its declared domain, all groups must remain disjoint, and presentation identifiers are checked across both domains. The validator preserves the verified first member's native selector encoding and parent; NAM 50's measured Rail selector is property `0x4001` with value `0`, so a synthetic fixture's value must not replace that native measurement. Existing alternative-piece families and unrelated menu entries remain available. The new frozen proof uses schema 2 with an explicit domain on each group; the existing single-domain API and schema-1 proofs retain their previous behavior and bytes.
+
+Save the following code as `custom-pieces/local/prepare_combined_assembly_menus.py`, replace the three angle-bracket path values, and run `python3 -B custom-pieces/local/prepare_combined_assembly_menus.py` from the repository root after compiling all intended pieces into one verified normal build. The placeholders select that existing normal build, a new assembly-menu output directory, and the active player-data Plugins directory. Add any additional active Plugins or required capture directories to `extra_roots`.
+
+```python
+from pathlib import Path
+import sys
+
+root = Path("custom-pieces").resolve()
+sys.path.insert(0, str(root / "framework"))
+from scp.check_bootstrap import SourcePackages
+sys.meta_path.insert(0, SourcePackages(root))
+from scp.menu_experiment import build_assembly_menus
+
+build_assembly_menus(
+    root,
+    "<verified-normal-build>",
+    "<new-assembly-menu-output>",
+    selections=[
+        {"domain_id": "high-speed-rail", "layout_id": "trumpet"},
+        {"domain_id": "highway", "layout_id": "compact-diagonal-diamond"},
+        {"domain_id": "highway", "layout_id": "modular-diagonal-diamond"},
+        {"domain_id": "highway", "layout_id": "parallel-diagonal-diamond"},
+        {"domain_id": "highway", "layout_id": "parallel-diagonal-diamond-alignment-b"},
+    ],
+    plugins="<player-data-Plugins>",
+    extra_roots=[],
+)
+```
 
 To create a second layout, follow the [bounded HSR assembly starter](WORKFLOW_ASSEMBLY_CREATION.md#12-start-a-small-hsr-assembly-from-existing-pieces) for the ordered `assembly.json`, domain registration, `menu-layout.jsonc`, icon-adapter, and initial documentation steps. A new assembly using existing member types needs its own presentation identity, rather than copied trumpet IDs or another piece allocation.
 
@@ -334,7 +463,7 @@ The assembly owns its canonical four-state `icon.png` beside `assembly.json`; it
 
 Read `docs/assembly-menu/README.md` inside the output for the exact component order. Its adjacent `game-checks.json` is a frozen list of pending checks, not a passing observation record. The verifier reconstructs the original source build, performs its normal strict validation, and independently checks the allowed menu removal, single added button, and actual Tab ordering. The `.proof` source archives stay outside the managed plugin folder and are not additional game plugins. Candidate packaging preserves this frozen proof and rejects `package --refresh-docs`. For updated documentation, repeat the fresh normal source build and assembly-menu steps above; do not relabel an older candidate as current. Public release remains blocked until the required game evidence exists.
 
-This menu presentation uses native construction-family ordering and needs no Submenus DLL. Its actual activation, cycling, rotation controls, cancellation, placement, and save/reload still need explicit observations in a disposable city. Confirm that Rail shows one assembly entry, that its members have no duplicate individual entries, and that unrelated standalone types remain available. Record the candidate manifest fingerprint and the tested game environment; menu behavior does not establish train travel or complete-assembly approval. Building, verifying, and packaging do not install anything. When installation is intended, use the existing [receipt-based install and rollback procedure](#7-install-remove-or-roll-back-a-test-build) with the complete candidate.
+An assembly selection without `cycle_submenu` uses native construction-family ordering and needs no Submenus DLL. A selection containing `cycle_submenu` uses that same component ordering and additionally requires the three submenu dependencies above. Actual activation, cycling, rotation controls, cancellation, placement, and save/reload still need explicit observations in a disposable city. Confirm the exact top-level and nested buttons, the absence of individual member entries, and the availability of unrelated standalone types. Record the candidate manifest fingerprint and the tested game environment; menu behavior does not establish traffic or complete-assembly approval. Building, verifying, and packaging do not install anything. When installation is intended, use the existing [receipt-based install and rollback procedure](#7-install-remove-or-roll-back-a-test-build) with the complete candidate.
 
 <a id="project-files-and-future-additions"></a>
 

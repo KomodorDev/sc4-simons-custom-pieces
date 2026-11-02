@@ -1,0 +1,125 @@
+// title: "Piece definition: RHW Ramp — Lower Exit Ramp — R40"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 Lower Exit Ramp \u2014 R40.",
+  "schema_version": 1,
+  "id": "ddrhw-modular-lower-exit-r40",
+  "domain": "highway",
+  "name": "RHW Ramp \u2014 Lower Full Exit Ramp \u2014 R40",
+  "description": "Separately placed Lower Exit Ramp \u2014 R40. Includes its entire curved high throat at the highway cutout, including explicit model overhang. Construction and traffic-path ownership remain disjoint.",
+  "recipe": "highway_ddrhw_modular_lower_exit_r40",
+  "geometry_key": "lower-exit-r40",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f83d",
+  "tile_ids": [
+    "7f599100",
+    "7f599200",
+    "7f599010",
+    "7f599110"
+  ],
+  "preview_id": "7f599ff5",
+  "effect_name": "preview_scp_hw_f83d_____001",
+  "footprint": [
+    3,
+    2
+  ],
+  "cells": [
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "mis"
+  ],
+  "menu": {
+    "id": "6a47f83d",
+    "order": "ffffff3d",
+    "style": "ddrhw-ramp"
+  },
+  "engineering": {
+    "max_grade_percent": 30.0,
+    "pavement_path_offset_m": 0.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "model_only_cells": [
+      [
+        1,
+        0
+      ]
+    ],
+    "minimum_new_curve_radius_m": 40.0,
+    "retained_high_collar_m": 2.0
+  },
+  "shadow_mode": "generated",
+  "shadow_mappings": [
+    {
+      "tile": "7f599100",
+      "source": "7f599100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f599200",
+      "source": "7f599200",
+      "rotation": 0
+    },
+    {
+      "tile": "7f599010",
+      "source": "7f599010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f599110",
+      "source": "7f599110",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Retained measured highway sockets and separately attached R40 continuations.",
+    "construction": "Disjoint sparse ownership; four proper rotations repeated; no reflected traffic.",
+    "redistribution": "permission-pending",
+    "partition_review": "Corrected straight21-cell highway stamp; all four complete curved high throats belong to separate ramps. Retains puzzle, menu, preview, and reserved block identities. Uninstalled prototype local tile slots follow the reviewed new AutoTileBase grid."
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "model_overhang_source_cells": [
+    [
+      3,
+      -3
+    ],
+    [
+      2,
+      -2
+    ]
+  ],
+  "model_overhang_contract": "Retained indexed high-throat faces; construction and PATH ownership do not overlap."
+}

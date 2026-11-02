@@ -1,0 +1,85 @@
+// title: "Reviewed highway connector channels"
+// summary: "Bind every measured service endpoint to its independently reviewed channel and exposed tile boundary."
+//
+// Used when: Contributors export this highway component or inspect its complete boundary cards.
+// Read by: scp.connector_metadata.load_library(), connector exports, and source-owned overview rendering.
+// Updated by: scp_highway.connections.write_connector_groups() after reviewed saved-resource extraction.
+// Affects: Highway, Avenue, ramp, and pedestrian service boundaries, signed slopes, and derived connector exports.
+{
+  "schema_version": 3,
+  "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
+  "piece_id": "ddrhw-parallel-b-lower-exit-departure",
+  "source_binding": {
+    "piece_sha256": "3d4f3d64c26a22612635c840beb39c7aaec2553d8599163ed988aa9d21c203ce",
+    "connections_sha256": "64e58d3c70b8a79bb0b3d5cc9e498c960efe518a4770a593acdba6e6ed47dea9"
+  },
+  "components": [
+    {
+      "id": "access-network-lower-off",
+      "network": "road",
+      "construction_network": "dirtroad"
+    }
+  ],
+  "channels": [
+    {
+      "id": "access-lower-off",
+      "component_id": "access-network-lower-off",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "boundary-01-access-network-lower-off-01",
+      "component_id": "access-network-lower-off",
+      "members": [
+        {
+          "id": "member-channel-01-in",
+          "source_port_id": "channel-01-in",
+          "direction": "in",
+          "channel_id": "access-lower-off",
+          "cut_id": "cut-channel-01-in"
+        }
+      ]
+    },
+    {
+      "id": "boundary-02-access-network-lower-off-01",
+      "component_id": "access-network-lower-off",
+      "members": [
+        {
+          "id": "member-channel-02-out",
+          "source_port_id": "channel-02-out",
+          "direction": "out",
+          "channel_id": "access-lower-off",
+          "cut_id": "cut-channel-02-out"
+        }
+      ]
+    }
+  ],
+  "boundary_bundles": [
+    {
+      "id": "boundary-01",
+      "source_cell": [
+        0,
+        0
+      ],
+      "edge": "east",
+      "connector_ids": [
+        "boundary-01-access-network-lower-off-01"
+      ]
+    },
+    {
+      "id": "boundary-02",
+      "source_cell": [
+        0,
+        0
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "boundary-02-access-network-lower-off-01"
+      ]
+    }
+  ]
+}

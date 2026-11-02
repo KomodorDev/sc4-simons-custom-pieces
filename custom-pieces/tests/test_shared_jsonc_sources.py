@@ -33,6 +33,8 @@ LIBRARY_SOURCES = {
     'domains/high-speed-rail/01_assemblies/inventory.jsonc',
     'domains/highway/domain.jsonc',
     'domains/highway/collections.jsonc',
+    'domains/highway/menu-layout.jsonc',
+    'domains/highway/evidence/ddrhw-shadow-removal-20261101.jsonc',
     'domains/highway/connection-classes.jsonc',
     'domains/highway/inventory.jsonc',
     'domains/highway/00_pieces/inventory.jsonc',
@@ -79,7 +81,7 @@ class SharedJsoncSourceTests(unittest.TestCase):
     def test_real_library_source_roster_has_readable_metadata_and_valid_payloads(self):
         sources = {relative: path for relative, path in shared_files() if path.suffix == '.jsonc'}
         self.assertEqual(set(sources), LIBRARY_SOURCES)
-        self.assertEqual(len(sources), 27)
+        self.assertEqual(len(sources), 29)
         for relative, path in sources.items():
             with self.subTest(source=relative):
                 self.assert_document(path)

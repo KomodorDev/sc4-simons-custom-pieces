@@ -1,0 +1,1233 @@
+// title: "Independent diagonal DD/GHSR Alignment B native contract"
+// summary: "Freeze actual saved Alignment B paths, meshes, shadow carriers, native helper boundaries, construction, and clearance against freshly read pinned NAM inputs."
+//
+// Used when: Contributors review or reproduce this exact Alignment B crossing and its source-bound connector facts.
+// Read by: Highway connector source binding, maintainers, and agents reviewing saved-resource evidence.
+// Updated by: A maintainer after a fresh audit of the saved artifacts and pinned original native inputs; preserve prior observations.
+// Affects: Evidence for this exact native profile and source build; this file changes no game resources, installation, or manual observation.
+{
+  "schema_version": 1,
+  "title": "Independent native contract for diagonal DD RHW-4 over GHSR, Alignment B",
+  "measurement_utc": "2026-11-01T10:22:56.231644+00:00",
+  "status": "Saved-resource and native-source software evidence only; all game observations remain unverified.",
+  "in_game_tested": false,
+  "privacy": "Original proprietary resources and archives, executable bytes, absolute workstation paths, and private settings are excluded; native hashes and measured decoded paths are retained.",
+  "piece_id": "ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b",
+  "recipe": "highway_ddrhw_diagonal_ghsr_crossing_alignment_b",
+  "owned_cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ]
+  ],
+  "footprint_tiles": [
+    2,
+    1
+  ],
+  "construction_check_extent_tiles": [
+    2,
+    3
+  ],
+  "native_archives": [
+    {
+      "filename": "RealHighway_DD_RHW-4.dat",
+      "sha256": "ccf8dabd3930fce92d0baa872ff974e3a536ddcc40762505a2e70eafcf9c0dfb",
+      "bytes": 889582,
+      "resources": 1460
+    },
+    {
+      "filename": "High Speed Rail.dat",
+      "sha256": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
+      "bytes": 1529018,
+      "resources": 755
+    },
+    {
+      "filename": "NetworkAddonMod_Controller.dat",
+      "sha256": "d903540cdf772b4ed6a072c504e006e1cac384f8027ce58a288a5a9654f94161",
+      "bytes": 59179473,
+      "resources": 5
+    }
+  ],
+  "native_core_resources": [
+    {
+      "profile_label": "RealHighway_DD_RHW-4.dat",
+      "tgi": "5ad0e817-badb57f1-5753a905",
+      "sha256": "341aa73b6fc75596511883715d3edb3de91e988c3f7d1201bd02867313ee25f0"
+    },
+    {
+      "profile_label": "RealHighway_DD_RHW-4.dat",
+      "tgi": "296678f7-a966883f-5753a905",
+      "sha256": "830513d3274d30eb9934b42ef63e4b5324584af4056331fa61f5a636fe692857"
+    },
+    {
+      "profile_label": "RealHighway_DD_RHW-4.dat",
+      "tgi": "5ad0e817-badb57f1-5753a985",
+      "sha256": "1937f3d3e5e0c42995fa309d37bffb32a7a30640681b2bfa2920a67d1eb339a8"
+    },
+    {
+      "profile_label": "RealHighway_DD_RHW-4.dat",
+      "tgi": "296678f7-a966883f-5753a985",
+      "sha256": "2d262758f1f1c22cacae2ef76847de3d995f0fa4a8d82244487501e0eccbd676"
+    },
+    {
+      "profile_label": "High Speed Rail.dat",
+      "tgi": "5ad0e817-badb57f1-5dc01a00",
+      "sha256": "58e54d5d212e26564e5454c57b6fd3269067a7f48df81eec45925590c1a59fa6"
+    },
+    {
+      "profile_label": "High Speed Rail.dat",
+      "tgi": "296678f7-a966883f-5dc01a00",
+      "sha256": "978a2a8c8f8e5de89e80bd6841d0b91666407efe2e77c32c312c0ff2c6353e4a"
+    }
+  ],
+  "source_build": {
+    "directory": "dist/ghsr-dd-alignment-b-source-01",
+    "manifest_sha256": "982fca3ea3c97e57b3183a51050d3cad8a139805b654acd866869ad6a0d5f448",
+    "piece_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b.dat",
+    "piece_dat_sha256": "c38fa00b4962a393a55317299be9e71a8192dfb9f2ec91a35465de5d36f2c377",
+    "piece_dat_bytes": 6870026,
+    "controller_dat_sha256": "1897d5050518900d5f55e2e7ec524fd2e28ff288688b18ca2f1f220a58788a9c",
+    "installed_by_this_audit": false,
+    "in_game_tested_by_this_audit": false
+  },
+  "saved_cell_resources": [
+    {
+      "cell": [
+        0,
+        0
+      ],
+      "model": {
+        "tgi": "5ad0e817-badb57f1-7f5be000",
+        "sha256": "fa5e4294845ac59c42c44e030a574c9c394480bc801daede6e56ae7486c5b154",
+        "all_five_zooms_identical": true
+      },
+      "path": {
+        "tgi": "296678f7-a966883f-7f5be000",
+        "sha256": "0317b165f05ef91efb4bd535d1b04f08e709ed3959c296516733fd8e3e210ff8",
+        "decoded": {
+          "version": "1.2",
+          "terrain": 1,
+          "routes": [
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  3.2,
+                  15.0
+                ],
+                [
+                  -3.2,
+                  -8.0,
+                  15.0
+                ]
+              ]
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 2,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  -3.2,
+                  15.0
+                ],
+                [
+                  3.2,
+                  -8.0,
+                  15.0
+                ]
+              ]
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  -8.0,
+                  7.5
+                ],
+                [
+                  8.0,
+                  3.2,
+                  7.5
+                ]
+              ]
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 3,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  -8.0,
+                  7.5
+                ],
+                [
+                  8.0,
+                  -3.2,
+                  7.5
+                ]
+              ]
+            },
+            {
+              "transport": 7,
+              "lane": 0,
+              "entry": 2,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  8.0,
+                  2.9,
+                  1.0
+                ],
+                [
+                  7.29289321881,
+                  3.60710678119,
+                  1.0
+                ],
+                [
+                  5.02132034356,
+                  5.87867965644,
+                  1.0
+                ],
+                [
+                  2.9,
+                  8.0,
+                  1.0
+                ]
+              ]
+            },
+            {
+              "transport": 7,
+              "lane": 0,
+              "entry": 1,
+              "exit": 2,
+              "compatibility": 0,
+              "points": [
+                [
+                  -2.8,
+                  8.0,
+                  1.0
+                ],
+                [
+                  -0.658185254211,
+                  5.89937399932,
+                  1.0
+                ],
+                [
+                  7.29289321881,
+                  -2.19289321881,
+                  1.0
+                ],
+                [
+                  8.0,
+                  -2.9,
+                  1.0
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cell": [
+        1,
+        0
+      ],
+      "model": {
+        "tgi": "5ad0e817-badb57f1-7f5be100",
+        "sha256": "609f41f8f9f7e647ff712cf07a748849362afca38818b5142ab7b85ccb88351c",
+        "all_five_zooms_identical": true
+      },
+      "path": {
+        "tgi": "296678f7-a966883f-7f5be100",
+        "sha256": "88bfddb92442071231b47a7118286da59c8b3413fe8cf6d672ae37a3222a607a",
+        "decoded": {
+          "version": "1.2",
+          "terrain": 1,
+          "routes": [
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 1,
+              "exit": 0,
+              "compatibility": 0,
+              "points": [
+                [
+                  -3.2,
+                  8.0,
+                  15.0
+                ],
+                [
+                  -8.0,
+                  3.2,
+                  15.0
+                ]
+              ]
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 1,
+              "exit": 0,
+              "compatibility": 0,
+              "points": [
+                [
+                  3.2,
+                  8.0,
+                  15.0
+                ],
+                [
+                  -8.0,
+                  -3.2,
+                  15.0
+                ]
+              ]
+            },
+            {
+              "transport": 1,
+              "lane": 1,
+              "entry": 0,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  -8.0,
+                  -3.2,
+                  7.5
+                ],
+                [
+                  3.2,
+                  8.0,
+                  7.5
+                ]
+              ]
+            },
+            {
+              "transport": 1,
+              "lane": 0,
+              "entry": 0,
+              "exit": 1,
+              "compatibility": 0,
+              "points": [
+                [
+                  -8.0,
+                  3.2,
+                  7.5
+                ],
+                [
+                  -3.2,
+                  8.0,
+                  7.5
+                ]
+              ]
+            },
+            {
+              "transport": 7,
+              "lane": 0,
+              "entry": 0,
+              "exit": 3,
+              "compatibility": 0,
+              "points": [
+                [
+                  -8.0,
+                  -2.9,
+                  1.0
+                ],
+                [
+                  -7.29289321881,
+                  -3.60710678119,
+                  1.0
+                ],
+                [
+                  -5.02132034356,
+                  -5.87867965644,
+                  1.0
+                ],
+                [
+                  -2.9,
+                  -8.0,
+                  1.0
+                ]
+              ]
+            },
+            {
+              "transport": 7,
+              "lane": 0,
+              "entry": 3,
+              "exit": 0,
+              "compatibility": 0,
+              "points": [
+                [
+                  2.8,
+                  -8.0,
+                  1.0
+                ],
+                [
+                  0.658185254211,
+                  -5.89937399932,
+                  1.0
+                ],
+                [
+                  -7.29289321881,
+                  2.19289321881,
+                  1.0
+                ],
+                [
+                  -8.0,
+                  2.9,
+                  1.0
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "independent_path_checks": {
+    "tile_count": 2,
+    "complete_directed_journeys": 6,
+    "car_journeys": 4,
+    "ghsr_journeys": 2,
+    "matched_internal_lane_seams": 6,
+    "route_fragments_consumed": 12,
+    "complete_native_boundary_members_checked": 12,
+    "proper_rotations_checked": 4,
+    "external_ghsr_collar_length_m": 3.0,
+    "internal_ghsr_collar_length_m": 1.0,
+    "native_helper_boundary_tangents_verified": true,
+    "internal_seam_tangents_verified": true,
+    "use_path_elevation": true,
+    "no_capacity_only_paths": true,
+    "no_network_or_height_transfers": true,
+    "game_operation_tested": false,
+    "alignment": "B",
+    "fixed_directed_highway_centerline_north_minus_east_m": -8.0,
+    "railway_centerline_north_plus_east_m": 8.0,
+    "native_core_rail_exterior_endpoint_correction_m": 0.1,
+    "railway_internal_endpoint_correction_m": 0.0
+  },
+  "independent_model_checks": {
+    "native_channel_fingerprints_verified": true,
+    "model_resources_checked": 11,
+    "native_paired_deck_width_m": 16.0,
+    "deck_surface_heights_m": [
+      7.5,
+      15.0
+    ],
+    "ghsr_path_height_m": 1.0,
+    "lower_underside_height_m": 6.5,
+    "train_envelope_width_m": 5.0,
+    "train_envelope_height_m": 5.0,
+    "minimum_train_roof_clearance_m": 0.5,
+    "rail_bed_corridor_samples": 192,
+    "rail_bed_coverage_includes_native_helper_collars": true,
+    "native_overhang_preserved": true,
+    "preview_matches_all_cells": true,
+    "texture_ids": [
+      200481343,
+      1460862990,
+      1588903657,
+      1588903662
+    ],
+    "game_rendering_tested": false,
+    "model_shadow_geometry": {
+      "hosts_checked": 2,
+      "ground_only_hosts_checked": 0,
+      "hosts": [
+        {
+          "cell": [
+            0,
+            0
+          ],
+          "referenced_faces": 75,
+          "ground_or_below_faces_excluded": 12,
+          "ground_crossing_faces_clipped": 6,
+          "vertical_faces_retained": 9,
+          "clipped_elevated_triangles": 66,
+          "variants": [
+            {
+              "relative_pose": 0,
+              "mask_size": 512,
+              "actual_covered_pixels": 26879,
+              "ground_shadow_area_m2": 415.1719362745098,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 1.4568957809046879e-06,
+              "maximum_affine_corner_error_m": 3.814697265625e-06
+            },
+            {
+              "relative_pose": 1,
+              "mask_size": 512,
+              "actual_covered_pixels": 28889,
+              "ground_shadow_area_m2": 444.6357230392157,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 1.9073486328125e-06,
+              "maximum_affine_corner_error_m": 0.0
+            },
+            {
+              "relative_pose": 2,
+              "mask_size": 256,
+              "actual_covered_pixels": 30847,
+              "ground_shadow_area_m2": 475.0357843137255,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 1.1667378245761029e-06,
+              "maximum_affine_corner_error_m": 0.0
+            },
+            {
+              "relative_pose": 3,
+              "mask_size": 512,
+              "actual_covered_pixels": 26985,
+              "ground_shadow_area_m2": 417.53333333333336,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 3.074086457388603e-06,
+              "maximum_affine_corner_error_m": 0.0
+            }
+          ],
+          "proper_object_camera_poses_checked": 16,
+          "maximum_native_pose_error_m": 0.0,
+          "source_sha256": "fa5e4294845ac59c42c44e030a574c9c394480bc801daede6e56ae7486c5b154"
+        },
+        {
+          "cell": [
+            1,
+            0
+          ],
+          "referenced_faces": 75,
+          "ground_or_below_faces_excluded": 12,
+          "ground_crossing_faces_clipped": 6,
+          "vertical_faces_retained": 9,
+          "clipped_elevated_triangles": 66,
+          "variants": [
+            {
+              "relative_pose": 0,
+              "mask_size": 256,
+              "actual_covered_pixels": 30847,
+              "ground_shadow_area_m2": 475.0357843137255,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 1.1667378245761029e-06,
+              "maximum_affine_corner_error_m": 0.0
+            },
+            {
+              "relative_pose": 1,
+              "mask_size": 512,
+              "actual_covered_pixels": 26985,
+              "ground_shadow_area_m2": 417.53333333333336,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 3.074086457388603e-06,
+              "maximum_affine_corner_error_m": 0.0
+            },
+            {
+              "relative_pose": 2,
+              "mask_size": 512,
+              "actual_covered_pixels": 26879,
+              "ground_shadow_area_m2": 415.1719362745098,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 1.4568957809046879e-06,
+              "maximum_affine_corner_error_m": 3.814697265625e-06
+            },
+            {
+              "relative_pose": 3,
+              "mask_size": 512,
+              "actual_covered_pixels": 28889,
+              "ground_shadow_area_m2": 444.6357230392157,
+              "edge_on_projected_faces": 0,
+              "maximum_card_ground_error_m": 1.9073486328125e-06,
+              "maximum_affine_corner_error_m": 0.0
+            }
+          ],
+          "proper_object_camera_poses_checked": 16,
+          "maximum_native_pose_error_m": 0.0,
+          "source_sha256": "609f41f8f9f7e647ff712cf07a748849362afca38818b5142ab7b85ccb88351c"
+        }
+      ],
+      "binary_mask_edge_tolerance_texture_pixels": 1,
+      "metres_per_texture_pixel": 0.125,
+      "proper_rotations_checked": 4,
+      "camera_rotations_checked": 4,
+      "ground_clipping_checked": true,
+      "tile_clipping": false,
+      "material_texture_alpha_sampled": false,
+      "limits": [
+        "Opaque selected source materials only; original atlas coverage is a separate dependency audit.",
+        "Four proper object rotations and four camera rotations; mirrored placements are outside this contract.",
+        "Instruction-derived native projection and saved resources; no live game, lifecycle, or terrain-render pass."
+      ],
+      "in_game_tested": false
+    }
+  },
+  "independent_construction_checks": {
+    "explicit_two_cell_construction": true,
+    "native_core_flags_verified": true,
+    "owned_tiles": 2,
+    "native_helper_check_flags_verified": 4,
+    "game_construction_tested": false
+  },
+  "full_controller_checks": {
+    "original_rul0_restored": true,
+    "original_network_ini_restored": true,
+    "separate_piece_menu_roots": 1,
+    "states_per_root": 8,
+    "runtime_tile_addresses_checked": 2,
+    "ordering_sections_checked": 1,
+    "custom_rotation_rings_in_ordering": 1,
+    "native_rotation_rings_preserved": 132,
+    "adaptive_rul1_solutions_checked": 0,
+    "native_dd_approach_cells_checked": 2,
+    "native_dd_rul1_solutions_checked": 8,
+    "native_dd_dependencies_checked": 6,
+    "native_rul1_bytes_preserved": true,
+    "native_dd_game_behavior_tested": false,
+    "native_approach_cells_checked": 4,
+    "native_ghsr_approach_cells_checked": 2,
+    "native_approach_sections_checked": 2,
+    "native_approach_dependencies_checked": 9,
+    "native_ghsr_dependencies_checked": 3,
+    "native_rul1_solutions_checked": 12,
+    "native_ghsr_rul1_solutions_checked": 4
+  },
+  "runtime_model_address_checks": {
+    "cells_checked": 2,
+    "unique_byte_keys": 2,
+    "modeled_origin": [
+      0,
+      0
+    ],
+    "wrong_model_selections": 0
+  },
+  "original_mesh_semantic_pins": [
+    [
+      "8aa5a40fae1a20f98af68c8d8ee87ba9b153a70880baed037ecaa6040d5aee1e",
+      "6f14f3f112f8cb6e2f1186e5891aad9c36a4810dd573b7366be84b77d73590dd",
+      "3a4c515dc63fbd9717bb7533610baf89404ee1ef0abafd416bf7a274f1fa8099",
+      "c1ca480c6cb635033713fe564a2a4e84aea476601a10128af6d7f9365e8ae744",
+      "ec93dd2d0b7a49d59caebd87bc34bf5f5bfdc70dc9f8c5ff7006bdc8ebd56f10",
+      "938f75fff25d17c926b22985ee5553fa9942da3836078dc62a0ab7cbeaabed86",
+      "8ed80b6c2f1766c3c47de51662cc6182cfbfbb27b8c956b7b5b2a56b116e97cd"
+    ],
+    [
+      "2f907f29bd75c30707516ae2f0967ad490463efa4878045f9ab43359ae997bc6",
+      "89393e93f0bb31b26a6a99c44383f2dcdc573961e852884b3f6db8a4805e6422",
+      "fd14f8311a5e159a814da3c0234baff8aa67a6bc577609be238bc85954c73f6c",
+      "341998a8daf93b606cf4520272d4c38d8079da9de82c7189fb4edb9f1ffb2238",
+      "ee640953757a3f36aea84a1888fb62ad078ac9b5d018393fc9e2ff1c90a911b2",
+      "4f6c575c4af398202986c178279fb44e28b990360d2da947645db36b23e1b474",
+      "a7464910bc13f1ac9954bb354482ce1073783f010a811bbb9bfc7ecaad2702c0"
+    ]
+  ],
+  "independent_verifier_sources": [
+    {
+      "path": "domains/highway/implementation/scp_highway/ghsr_crossing_verify.py",
+      "sha256": "2f8621e22625b8b3be9aa7bc0a4583e24d7fa8da0604a94a88af851d09fa1938"
+    },
+    {
+      "path": "domains/highway/tests/test_ghsr_crossing_phase_b_verify.py",
+      "sha256": "6423f00f69e6267d8bf861cc0ff39a455f383a98752a7f88a094e76cc6d2fd5e"
+    }
+  ],
+  "targeted_tests": {
+    "command": "python3 -B -m unittest discover -s custom-pieces/domains/highway/tests -p 'test_ghsr_crossing*verify.py' -v",
+    "tests_run": 43,
+    "tests_skipped": 0,
+    "all_passed": true,
+    "new_alignment_b_tests": 19,
+    "existing_alignment_a_tests": 24,
+    "includes_original_native_integration": true
+  },
+  "rail_path_transition": {
+    "classification": "Authored exterior native-helper PATH transition with unchanged native visible geometry and internal endpoints.",
+    "core_donor_external_coordinates_preserved": false,
+    "core_donor_internal_coordinates_preserved": true,
+    "maximum_exterior_endpoint_shift_m": 0.10000000000000009,
+    "maximum_internal_endpoint_shift_m": 0.0,
+    "maximum_lateral_deviation_from_native_core_chord_m": 0.09983551909379279,
+    "external_coordinates_and_tangents_match_actual_complementary_native_helpers": true,
+    "internal_shared_endpoints_and_tangents_match": true,
+    "native_rail_mesh_positions_and_attributes_preserved": true,
+    "measurements": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "source_route_index": 0,
+        "source_native_rotation": 1,
+        "exterior_endpoint": "exit",
+        "original_core_exterior_endpoint_m": [
+          2.8,
+          8.0,
+          1.0
+        ],
+        "saved_helper_matching_exterior_endpoint_m": [
+          2.9,
+          8.0,
+          1.0
+        ],
+        "exterior_endpoint_shift_m": 0.10000000000000009,
+        "internal_endpoint_shift_m": 0.0,
+        "maximum_lateral_deviation_from_native_core_chord_m": 0.07002086668924713,
+        "external_native_helper_collar_m": 3.0,
+        "internal_exact_diagonal_collar_m": 1.0
+      },
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "source_route_index": 1,
+        "source_native_rotation": 1,
+        "exterior_endpoint": "entry",
+        "original_core_exterior_endpoint_m": [
+          -2.9,
+          8.0,
+          1.0
+        ],
+        "saved_helper_matching_exterior_endpoint_m": [
+          -2.8,
+          8.0,
+          1.0
+        ],
+        "exterior_endpoint_shift_m": 0.10000000000000009,
+        "internal_endpoint_shift_m": 0.0,
+        "maximum_lateral_deviation_from_native_core_chord_m": 0.09983551909379279,
+        "external_native_helper_collar_m": 3.0,
+        "internal_exact_diagonal_collar_m": 1.0
+      },
+      {
+        "cell": [
+          1,
+          0
+        ],
+        "source_route_index": 0,
+        "source_native_rotation": 3,
+        "exterior_endpoint": "exit",
+        "original_core_exterior_endpoint_m": [
+          -2.8,
+          -8.0,
+          1.0
+        ],
+        "saved_helper_matching_exterior_endpoint_m": [
+          -2.9,
+          -8.0,
+          1.0
+        ],
+        "exterior_endpoint_shift_m": 0.10000000000000009,
+        "internal_endpoint_shift_m": 0.0,
+        "maximum_lateral_deviation_from_native_core_chord_m": 0.07002086668924713,
+        "external_native_helper_collar_m": 3.0,
+        "internal_exact_diagonal_collar_m": 1.0
+      },
+      {
+        "cell": [
+          1,
+          0
+        ],
+        "source_route_index": 1,
+        "source_native_rotation": 3,
+        "exterior_endpoint": "entry",
+        "original_core_exterior_endpoint_m": [
+          2.9,
+          -8.0,
+          1.0
+        ],
+        "saved_helper_matching_exterior_endpoint_m": [
+          2.8,
+          -8.0,
+          1.0
+        ],
+        "exterior_endpoint_shift_m": 0.10000000000000009,
+        "internal_endpoint_shift_m": 0.0,
+        "maximum_lateral_deviation_from_native_core_chord_m": 0.09983551909379279,
+        "external_native_helper_collar_m": 3.0,
+        "internal_exact_diagonal_collar_m": 1.0
+      }
+    ]
+  },
+  "native_approaches": [
+    {
+      "cell": [
+        0,
+        1
+      ],
+      "end_cell": [
+        0,
+        0
+      ],
+      "end_tile_id": "7f5be000",
+      "outward_edge": 3,
+      "native_tile_id": "57530900",
+      "native_rotation": 2,
+      "section": "MonoRailDirtRoadIntersectionSolutions",
+      "networks": [
+        {
+          "name": "monorail",
+          "flags": "04000100"
+        },
+        {
+          "name": "dirtroad",
+          "flags": "00000301"
+        }
+      ],
+      "native_exemplar_group": "6be08658",
+      "native_model_reference": "rkt0",
+      "optional": true,
+      "experimental": true
+    },
+    {
+      "cell": [
+        1,
+        -1
+      ],
+      "end_cell": [
+        1,
+        0
+      ],
+      "end_tile_id": "7f5be100",
+      "outward_edge": 1,
+      "native_tile_id": "57530200",
+      "native_rotation": 0,
+      "section": "MonoRailDirtRoadIntersectionSolutions",
+      "networks": [
+        {
+          "name": "monorail",
+          "flags": "04000100"
+        },
+        {
+          "name": "dirtroad",
+          "flags": "03010000"
+        }
+      ],
+      "native_exemplar_group": "6be08658",
+      "native_model_reference": "rkt0",
+      "optional": true,
+      "experimental": true
+    },
+    {
+      "cell": [
+        0,
+        -1
+      ],
+      "end_cell": [
+        0,
+        0
+      ],
+      "end_tile_id": "7f5be000",
+      "outward_edge": 1,
+      "native_tile_id": "5dc01a00",
+      "native_rotation": 3,
+      "section": "RailMonoRailIntersectionSolutions",
+      "networks": [
+        {
+          "name": "rail",
+          "flags": "00000101"
+        },
+        {
+          "name": "monorail",
+          "flags": "01000003"
+        }
+      ],
+      "native_exemplar_group": "ebe084c2",
+      "native_model_reference": "rkt1",
+      "optional": true,
+      "experimental": true
+    },
+    {
+      "cell": [
+        1,
+        1
+      ],
+      "end_cell": [
+        1,
+        0
+      ],
+      "end_tile_id": "7f5be100",
+      "outward_edge": 3,
+      "native_tile_id": "5dc01a00",
+      "native_rotation": 1,
+      "section": "RailMonoRailIntersectionSolutions",
+      "networks": [
+        {
+          "name": "rail",
+          "flags": "01010000"
+        },
+        {
+          "name": "monorail",
+          "flags": "00030100"
+        }
+      ],
+      "native_exemplar_group": "ebe084c2",
+      "native_model_reference": "rkt1",
+      "optional": true,
+      "experimental": true
+    }
+  ],
+  "native_helper_resources": [
+    {
+      "tgi": "296678f7-a966883f-57530200",
+      "sha256": "e888625d239fe19f546f36f58bed998359440e889904fa4976c3aec355640eb1"
+    },
+    {
+      "tgi": "296678f7-a966883f-57530900",
+      "sha256": "bd5435abd7e1f8360b3b8704eab474112330d8b7719333863e5bd264216415ce"
+    },
+    {
+      "tgi": "296678f7-a966883f-5dc01a00",
+      "sha256": "978a2a8c8f8e5de89e80bd6841d0b91666407efe2e77c32c312c0ff2c6353e4a"
+    },
+    {
+      "tgi": "5ad0e817-badb57f1-57530200",
+      "sha256": "4eb082b8329ddf70be7333f3343c4f1a621985d3992b17ca624eef79dc0ee4a8"
+    },
+    {
+      "tgi": "5ad0e817-badb57f1-57530900",
+      "sha256": "d319f9bb39e21e319f5ce566c5093ba9e955c4c0ed5a5dcbb703c6afe127c93a"
+    },
+    {
+      "tgi": "5ad0e817-badb57f1-5dc01a00",
+      "sha256": "58e54d5d212e26564e5454c57b6fd3269067a7f48df81eec45925590c1a59fa6"
+    },
+    {
+      "tgi": "6534284a-6be08658-57530200",
+      "sha256": "394c783a8fedf150c93d21701e1450a520d5c31ff59245e2d1e40ebf12889b70"
+    },
+    {
+      "tgi": "6534284a-6be08658-57530900",
+      "sha256": "d8c35e3673dee409fcc007c6adafcd193d50f551bffe473b70ef11c753cb63a9"
+    },
+    {
+      "tgi": "6534284a-ebe084c2-5dc01a00",
+      "sha256": "3029157db99ce4334d588c4b6fb765ee3de84154b95b8d541df6d63546e8be56"
+    }
+  ],
+  "fresh_original_helper_path_checks": [
+    {
+      "cell": [
+        0,
+        1
+      ],
+      "native_tgi": "296678f7-a966883f-57530900",
+      "original_resource_sha256": "bd5435abd7e1f8360b3b8704eab474112330d8b7719333863e5bd264216415ce",
+      "proper_rotation": 2,
+      "complete_literal_routes_match_original_native_source": true,
+      "rotated_traffic_routes": [
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 1,
+          "exit": 0,
+          "compatibility": 0,
+          "points": [
+            [
+              -3.2,
+              8.0,
+              15.0
+            ],
+            [
+              -8.0,
+              3.2,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 1,
+          "exit": 0,
+          "compatibility": 0,
+          "points": [
+            [
+              3.2,
+              8.0,
+              15.0
+            ],
+            [
+              -8.0,
+              -3.2,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 0,
+          "exit": 1,
+          "compatibility": 0,
+          "points": [
+            [
+              -8.0,
+              -3.2,
+              7.5
+            ],
+            [
+              3.2,
+              8.0,
+              7.5
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 0,
+          "exit": 1,
+          "compatibility": 0,
+          "points": [
+            [
+              -8.0,
+              3.2,
+              7.5
+            ],
+            [
+              -3.2,
+              8.0,
+              7.5
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "cell": [
+        1,
+        -1
+      ],
+      "native_tgi": "296678f7-a966883f-57530200",
+      "original_resource_sha256": "e888625d239fe19f546f36f58bed998359440e889904fa4976c3aec355640eb1",
+      "proper_rotation": 0,
+      "complete_literal_routes_match_original_native_source": true,
+      "rotated_traffic_routes": [
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 2,
+          "exit": 3,
+          "compatibility": 0,
+          "points": [
+            [
+              8.0,
+              3.2,
+              15.0
+            ],
+            [
+              -3.2,
+              -8.0,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 2,
+          "exit": 3,
+          "compatibility": 0,
+          "points": [
+            [
+              8.0,
+              -3.2,
+              15.0
+            ],
+            [
+              3.2,
+              -8.0,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 3,
+          "exit": 2,
+          "compatibility": 0,
+          "points": [
+            [
+              3.2,
+              -8.0,
+              7.5
+            ],
+            [
+              8.0,
+              -3.2,
+              7.5
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 3,
+          "exit": 2,
+          "compatibility": 0,
+          "points": [
+            [
+              -3.2,
+              -8.0,
+              7.5
+            ],
+            [
+              8.0,
+              3.2,
+              7.5
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "cell": [
+        0,
+        -1
+      ],
+      "native_tgi": "296678f7-a966883f-5dc01a00",
+      "original_resource_sha256": "978a2a8c8f8e5de89e80bd6841d0b91666407efe2e77c32c312c0ff2c6353e4a",
+      "proper_rotation": 3,
+      "complete_literal_routes_match_original_native_source": true,
+      "rotated_traffic_routes": [
+        {
+          "transport": 7,
+          "lane": 0,
+          "entry": 0,
+          "exit": 3,
+          "compatibility": 0,
+          "points": [
+            [
+              -8.0,
+              -2.9,
+              1.0
+            ],
+            [
+              -2.8,
+              -8.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "transport": 7,
+          "lane": 0,
+          "entry": 3,
+          "exit": 0,
+          "compatibility": 0,
+          "points": [
+            [
+              2.9,
+              -8.0,
+              1.0
+            ],
+            [
+              -8.0,
+              2.9,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "cell": [
+        1,
+        1
+      ],
+      "native_tgi": "296678f7-a966883f-5dc01a00",
+      "original_resource_sha256": "978a2a8c8f8e5de89e80bd6841d0b91666407efe2e77c32c312c0ff2c6353e4a",
+      "proper_rotation": 1,
+      "complete_literal_routes_match_original_native_source": true,
+      "rotated_traffic_routes": [
+        {
+          "transport": 7,
+          "lane": 0,
+          "entry": 2,
+          "exit": 1,
+          "compatibility": 0,
+          "points": [
+            [
+              8.0,
+              2.9,
+              1.0
+            ],
+            [
+              2.8,
+              8.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "transport": 7,
+          "lane": 0,
+          "entry": 1,
+          "exit": 2,
+          "compatibility": 0,
+          "points": [
+            [
+              -2.9,
+              8.0,
+              1.0
+            ],
+            [
+              8.0,
+              -2.9,
+              1.0
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "native_core_construction_flags": [
+    {
+      "cell": [
+        0,
+        0
+      ],
+      "dirtroad": "03010000",
+      "monorail": "00030100"
+    },
+    {
+      "cell": [
+        1,
+        0
+      ],
+      "dirtroad": "00000301",
+      "monorail": "01000003"
+    }
+  ],
+  "native_rul2_continuation": {
+    "native_rul2_sha256": "c427c7872743ca4cd9f583adf33c93a320babe37c42061fbd33c905696e7a3b1",
+    "native_continuation_rows_checked": 6,
+    "native_rul2_unchanged": true,
+    "game_behavior_tested": false,
+    "authored_controller_contains_rul2_override": false
+  },
+  "limits": [
+    "Software checks do not establish live construction, draggable continuation, Route Query, moving cars or trains, shadows, save/reload, or demolition.",
+    "Two fixed owned cells occupy 2 by 1 tiles; four separate unowned helper cells require a clear 2 by 3 tile arrangement. Anchor padding is not an extra owned or helper tile.",
+    "The train verification envelope is 5 m wide and 5 m high; it is a project bound, rather than a measured in-game automaton collision box.",
+    "Proper object rotations and camera rotations are checked; mirrored placements remain outside this contract.",
+    "No diamond assembly changes or runtime observations are included in this audit."
+  ]
+}

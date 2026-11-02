@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "independent_partition_audit_passed": true,
+  "proof": {
+    "baseline_manifest_sha256": "99d984feb1899a4c9de39e504997451b94dd6a4f2066fd1860525fd52d3e6144",
+    "candidate_manifest_sha256": "7ade7532c6f5cbc62a7dec66db22692ac87121624015954d7655de366fbe8378",
+    "baseline_scene_sha256": "3dde2d9e07dfc20102693d56bc800c3aff114cd6f37cd36084ec5a9d0a195a27",
+    "candidate_scene_sha256": "3dd8852fe94640649e9ecc9a9cb755759c9faffffdad0b4acc9fac743cf9b865",
+    "default_union_passed": true,
+    "compact_union_passed": true,
+    "expected_source": "Immutable independently reviewed saved checkpoint; no writer-derived expected geometry."
+  },
+  "layouts": {
+    "default": {
+      "union": {
+        "passed": true,
+        "attributed_triangles": 518910,
+        "triangles_assigned_to_a_different_owner": 15904,
+        "expected_triangles_by_geometry_key": {
+          "lower-entry-r40": 8097,
+          "lower-exit-r40": 8439,
+          "modular-stamp": 304400,
+          "northwest-terminal-r40": 88228,
+          "southeast-terminal-r40": 88316,
+          "upper-entry-r40": 10574,
+          "upper-exit-r40": 10856
+        },
+        "material_and_non_xyz_vertex_bytes_exact": true,
+        "cyclic_winding_preserved": true,
+        "target_frame_float32_encoding_exact": true,
+        "maximum_world_vertex_translation_residual_m": 9.5367431640625e-07,
+        "scope": "One-to-one saved indexed triangles; only one exact float32 translation into the actual target host frame is accepted. Mesh regrouping and names are not geometry."
+      },
+      "owned_paths": {
+        "passed": true,
+        "unique_owned_cells": 62,
+        "every_owned_cell_path_byte_exact": true
+      },
+      "straight_stamp": {
+        "passed": true,
+        "elevated_indexed_vertex_uses": 913182,
+        "maximum_abs_native_lateral_m": 8.000000874610196,
+        "native_half_width_m": 8.0,
+        "native_encoded_boundary_tolerance_m": 2e-06,
+        "material_sha256": [
+          "307aba7786d4b4f11dbc499eb54f7d05d01a114001919b8a5f7d55970fbb64ca",
+          "b9e662590684786bfeca084538ef53fcd70c9c6beb489c2ea94f3d001ea2a6e5",
+          "cf4e393b8ca3a2b3d0edba0f86bb197ddf82b65e85cf73cfa13ebd4d2a8c6f6e",
+          "d81e8d70e3ab9182adb393f2bc6a61608c70f8129cdb06631409a4b19c73e306",
+          "e481f8838ddc4e494a5fc2854007dbc319541a70d11ea3cbfd01f03c7a57bda1"
+        ],
+        "scope": "Every elevated indexed stamp vertex stays in the straight native DD envelope; unchanged native ground Avenue triangles remain separate."
+      }
+    },
+    "compact": {
+      "union": {
+        "passed": true,
+        "attributed_triangles": 405572,
+        "triangles_assigned_to_a_different_owner": 32774,
+        "expected_triangles_by_geometry_key": {
+          "lower-entry-compact": 7042,
+          "lower-exit-compact": 7048,
+          "modular-stamp": 304400,
+          "northwest-junction": 35210,
+          "southeast-junction": 33188,
+          "upper-entry-compact": 9358,
+          "upper-exit-compact": 9326
+        },
+        "material_and_non_xyz_vertex_bytes_exact": true,
+        "cyclic_winding_preserved": true,
+        "target_frame_float32_encoding_exact": true,
+        "maximum_world_vertex_translation_residual_m": 9.5367431640625e-07,
+        "scope": "One-to-one saved indexed triangles; only one exact float32 translation into the actual target host frame is accepted. Mesh regrouping and names are not geometry."
+      },
+      "owned_paths": {
+        "passed": true,
+        "unique_owned_cells": 53,
+        "every_owned_cell_path_byte_exact": true
+      },
+      "straight_stamp": {
+        "passed": true,
+        "elevated_indexed_vertex_uses": 913182,
+        "maximum_abs_native_lateral_m": 8.000000874610196,
+        "native_half_width_m": 8.0,
+        "native_encoded_boundary_tolerance_m": 2e-06,
+        "material_sha256": [
+          "307aba7786d4b4f11dbc499eb54f7d05d01a114001919b8a5f7d55970fbb64ca",
+          "b9e662590684786bfeca084538ef53fcd70c9c6beb489c2ea94f3d001ea2a6e5",
+          "cf4e393b8ca3a2b3d0edba0f86bb197ddf82b65e85cf73cfa13ebd4d2a8c6f6e",
+          "d81e8d70e3ab9182adb393f2bc6a61608c70f8129cdb06631409a4b19c73e306",
+          "e481f8838ddc4e494a5fc2854007dbc319541a70d11ea3cbfd01f03c7a57bda1"
+        ],
+        "scope": "Every elevated indexed stamp vertex stays in the straight native DD envelope; unchanged native ground Avenue triangles remain separate."
+      }
+    }
+  },
+  "game_operation": "unverified",
+  "model_contract_sha256": "590a6da3e885eadd291d2cd0a180f85b88fd3504d05a2bd5792c65a06b0eee29"
+}

@@ -8,7 +8,8 @@ import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parent
-sys.path[:0] = [str(ROOT / 'framework'), str(ROOT / 'domains/high-speed-rail/implementation')]
+sys.path[:0] = [str(ROOT / 'framework'), str(ROOT / 'domains/high-speed-rail/implementation'),
+                str(ROOT / 'domains/highway/implementation')]
 sys.dont_write_bytecode = True
 if sys.version_info < (3, 11):
     raise SystemExit('SCP requires Python 3.11 or newer. Check with: python3 --version')
@@ -55,8 +56,8 @@ def scaffold(slug, name, width=1, depth=1, domain='high-speed-rail'):
     used_puzzles = {number(p['puzzle_id']) for p in ledger['pieces'].values()}
     puzzle = next((n for n in range(0xF7A0, 0xF900) if n not in used_puzzles), None)
     require(puzzle is not None, 'Local puzzle namespace exhausted; allocate another reviewed namespace')
-    used_blocks = {number(iid) & 0xfffff000 for p in ledger['pieces'].values()
-                   for iid in [p['preview_id'], *p['tile_ids'], *p.get('resource_blocks', [])]}
+    from scp.adaptive_network import allocation_blocks
+    used_blocks = {block for record in ledger['pieces'].values() for block in allocation_blocks(record)}
     # New drafts receive a whole 0x1000 family. Native two-dimensional
     # AutoTileBase indexing advances 0x100 across and 0x10 down the footprint.
     block = next((n for n in range(0x7F500000, 0x7F600000, 0x1000) if n not in used_blocks), None)
@@ -75,7 +76,7 @@ def scaffold(slug, name, width=1, depth=1, domain='high-speed-rail'):
                                                       'redistribution': 'permission-pending'},
                   'game_tests': {key: 'unverified' for key in piece['game_tests']}})
     piece['domain'] = domain
-    relative = Path(domains[domain]['path']) / '00_pieces' / slug / 'piece.json'
+    relative = Path(domains[domain]['path']) / '00_pieces' / slug / 'piece.jsonc'
     target = ROOT / relative
     require(not target.exists(), 'Piece manifest already exists')
     allocation = {key: piece[key] for key in ('puzzle_id', 'tile_ids', 'preview_id')}
@@ -157,12 +158,15 @@ def main():
     observations_cmd.add_argument('--all', action='store_true', help='Apply this observation maintenance operation to every registered subject')
     icons_cmd = sub.add_parser('assembly-icons', help='Refresh canonical assembly icons without building or installing game resources')
     icons_cmd.add_argument('--domain', default='high-speed-rail', help='Transport domain registered in project.jsonc')
+    icons_cmd.add_argument('--assembly', action='append', dest='icon_assemblies', help='Exact registered assembly ID; repeat to select more; defaults to the complete domain')
     for command in ('assembly-menu', 'menu-test'):
         menu_cmd = sub.add_parser(command, help=('Prepare one assembly button with Tab/Shift+Tab component cycling'
             if command == 'assembly-menu' else 'Compatibility command for assembly menu preparation'))
         menu_cmd.add_argument('--source', type=Path, default=ROOT / 'dist/current', help='Existing normal verified build; all selected piece assets are preserved')
         menu_cmd.add_argument('--output', type=Path, default=ROOT / ('dist/trumpet-assembly-menu' if command == 'assembly-menu' else 'dist/trumpet-menu-test'))
-        menu_cmd.add_argument('--layout', default='trumpet', help='Exact entry in the owning domain menu-layout.jsonc')
+        menu_cmd.add_argument('--layout', action='append' if command == 'assembly-menu' else 'store',
+                              default=None if command == 'assembly-menu' else 'trumpet',
+                              help='Exact domain menu-layout.jsonc entry; repeat for disjoint assembly menus')
         menu_cmd.add_argument('--domain', default='high-speed-rail')
         menu_cmd.add_argument('--plugins', type=Path)
         menu_cmd.add_argument('--extra-plugins', action='append', type=Path, default=None)
@@ -175,13 +179,17 @@ def main():
         return 0 if result['all_passed'] else 1
     if args.command == 'assembly-icons':
         from scp.menu_experiment import write_assembly_icons
-        result = write_assembly_icons(ROOT, domain_id=args.domain)
+        result = write_assembly_icons(ROOT, domain_id=args.domain, assembly_ids=args.icon_assemblies)
         print(json.dumps(result, indent=2))
         return 0
     if args.command in ('assembly-menu', 'menu-test'):
-        from scp.menu_experiment import build_assembly_menu, build_menu_experiment
+        from scp.menu_experiment import build_assembly_menu, build_assembly_menus, build_menu_experiment
         operation = build_assembly_menu if args.command == 'assembly-menu' else build_menu_experiment
-        result = operation(ROOT, args.source, args.output, layout_id=args.layout,
+        layouts = (args.layout or ['trumpet']) if args.command == 'assembly-menu' else [args.layout]
+        options = {'layout_ids': layouts} if len(layouts) > 1 else {'layout_id': layouts[0]}
+        if len(layouts) > 1:
+            operation = build_assembly_menus
+        result = operation(ROOT, args.source, args.output, **options,
             domain_id=args.domain, plugins=args.plugins or configured_plugins(), extra_roots=args.extra_plugins)
         print(json.dumps(result, indent=2))
         return 0

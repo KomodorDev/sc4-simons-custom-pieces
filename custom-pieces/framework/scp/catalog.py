@@ -1,12 +1,12 @@
 """Current piece registry and identifier collision checks."""
 from copy import deepcopy
-import json
 from . import jsonc
 from pathlib import Path
 import re
 
 from .dbpf import require
 from .autotile import AutoTileAddressError, validate_auto_tile_addresses
+from .subject_sources import registered_source_path
 
 
 def safe_relative(root, name):
@@ -41,6 +41,11 @@ def auto_tile_base(piece):
     do not contribute to the engine's automatically generated tile offsets.
     """
     cells = piece_cells(piece)
+    if 'adaptive_ground' in piece:
+        from .adaptive_network import fixed_cells, CURSOR_BASE
+        cells = fixed_cells(piece)
+        if not cells:
+            return CURSOR_BASE
     return tile_base(piece) + min(x for x, _ in cells) * 0x100 + min(y for _, y in cells) * 0x10
 
 
@@ -68,11 +73,10 @@ def load_catalog(root):
                 f'{slug}: duplicate piece manifest path')
         for relative in listed:
             file = safe_relative(directory, relative)
-            piece = json.loads(file.read_text())
+            piece = jsonc.load(file)
             require(isinstance(piece, dict), 'Piece must be a JSON object')
             require(piece.get('domain') == slug, f'{piece.get("id")}: unknown transport domain')
-            require(file == directory / '00_pieces' / piece['id'] / 'piece.json',
-                    f'{piece.get("id")}: manifest must be 00_pieces/<id>/piece.json in its domain')
+            registered_source_path(directory, relative, 'piece', identifier=piece.get('id'))
             paths.append((file, piece))
         collection_path = safe_relative(directory, registry['collections'])
         selection = jsonc.load(collection_path)
@@ -80,11 +84,16 @@ def load_catalog(root):
         for name, members in selection.get('collections', {}).items():
             require(name not in collections, f'Duplicate collection: {name}')
             collections[name] = members
-        for relative in registry.get('assemblies', []):
+        assembly_paths = registry.get('assemblies', [])
+        require(isinstance(assembly_paths, list) and len(assembly_paths) == len(set(assembly_paths)),
+                f'{slug}: duplicate assembly manifest path')
+        for relative in assembly_paths:
             file = safe_relative(directory, relative)
-            require(file.name == 'assembly.json' and file.parent.parent == directory / '01_assemblies',
-                    f'{slug}: assembly must be 01_assemblies/<id>/assembly.json')
-            scene = json.loads(file.read_text())
+            registered_source_path(directory, relative, 'assembly')
+            scene = jsonc.load(file)
+            require(isinstance(scene, dict), 'Assembly must be a JSON object')
+            require('id' not in scene or scene['id'] == file.parent.name,
+                    'Registered assembly identity disagrees with its source folder')
             assemblies.append({'id': file.parent.name, 'domain': slug,
                                'path': file.parent.relative_to(root).as_posix(), 'scene': scene})
     require(len(paths) == len({p for p, _ in paths}), 'Duplicate piece manifest path')
@@ -130,6 +139,12 @@ def validate_catalog(catalog):
                 allocated_resources.append((iid, slug))
                 require(not blocks or iid & 0xfffff000 in blocks,
                         'Resource lies outside its reserved families')
+            from .adaptive_network import reservation_ids
+            from .model_shadows import reservation_ids as shadow_reservations
+            for iid in reservation_ids(allocation) + shadow_reservations(allocation):
+                require(iid not in reserved, 'Adaptive or extra-model resource reservation overlap')
+                reserved.add(iid)
+                allocated_resources.append((iid, slug))
         require(all(reserved_blocks.get(iid & 0xfffff000, slug) == slug for iid, slug in allocated_resources),
                 'Resource occupies another piece\'s reserved family')
         require(set(ledger['pieces']) == {piece['id'] for piece in catalog['pieces']},
@@ -168,6 +183,9 @@ def validate_catalog(catalog):
         require(len({tuple(cell) for cell in cells}) == len(cells),
                 f'{slug}: occupied cells must be unique')
         require(len(tiles) == len(cells), f'{slug}: tile count does not match footprint cells')
+        authored_textures = piece.get('authored_texture_ids', [])
+        require(authored_textures == [] or authored_textures == tiles[:1],
+                f'{slug}: authored_texture_ids must be empty or contain exactly the first tile ID')
         base = tile_base(piece)
         require(0 <= base <= 0xffffffff and all(number(tile) == base + x * 0x100 + y * 0x10
                     for tile, (x, y) in zip(tiles, cells)), f'{slug}: tile IDs do not match AutoTileBase cell offsets')
@@ -185,6 +203,12 @@ def validate_catalog(catalog):
             require(tile_iid & 0xf == 0, 'Tile base must end in hexadecimal 0')
             allocated += list(range(tile_iid, tile_iid + 5))
         allocated.append(number(piece['preview_id']))
+        from .adaptive_network import allocation_fields, reservation_ids
+        adaptive_allocations = allocation_fields(piece)
+        allocated.extend(reservation_ids(adaptive_allocations))
+        from .model_shadows import allocation_fields as shadow_allocations, reservation_ids as shadow_reservations
+        shadow_fields = shadow_allocations(piece)
+        allocated.extend(shadow_reservations(shadow_fields))
         for iid in allocated:
             require(iid not in resources, f'Resource identifier overlap: {iid:08x} ({slug})')
             resources[iid] = slug
@@ -199,6 +223,8 @@ def validate_catalog(catalog):
         require(set(piece.get('game_tests', {})) == game_keys, f'{slug}: incomplete game test matrix')
         require(all(v in {'unverified', 'passed', 'failed'} for v in piece['game_tests'].values()), 'Invalid game test status')
         require(isinstance(piece.get('dependencies'), list) and 'controller' in piece['dependencies'], 'Missing dependencies')
+        from .native_approaches import approaches as native_approaches
+        native_approaches(piece)
         for shadow in piece.get('shadow_mappings', []):
             require(shadow.get('tile') in tiles and shadow.get('rotation') in range(4), 'Invalid shadow mapping')
             number(shadow['source'])
@@ -212,6 +238,10 @@ def validate_catalog(catalog):
             if 'cells' in allocation or 'tile_base' in allocation:
                 require(allocation.get('cells') == cells and number(allocation['tile_base']) == base,
                         f'{slug}: saved-city construction coordinates changed')
+            require(all(allocation.get(key, []) == values for key, values in adaptive_allocations.items()),
+                    f'{slug}: adaptive or extra-model IDs differ from the permanent resource reservation')
+            require(all(allocation.get(key, []) == values for key, values in shadow_fields.items()),
+                    f'{slug}: shadow IDs differ from the permanent resource reservation')
     sets = catalog.get('piece_sets', {})
     require(isinstance(sets, dict), 'Piece sets must be a JSON object')
     for name, members in sets.items():

@@ -1,0 +1,462 @@
+// title: "Parallel-diamond source-coordinate alignment comparison"
+// summary: "Bind the A/B grid comparison to independent route expectations, one unchanged source frame, and the generated image bytes."
+//
+// Used when: Explaining why adjacent diagonal Avenue positions require different whole-cell component cuts.
+// Read by: Contributors and players comparing the parallel diamond alignments.
+// Updated by: domains/highway/tools/draw_parallel_alignment_comparison.py.
+// Affects: This supplementary schematic and its reproducibility; supplies no saved-model, installation, or game observation.
+{
+  "schema_version": 1,
+  "purpose": "Supplementary source-coordinate schematic; no model surfaces are drawn.",
+  "input_kind": "Independent expected traffic route centres, not decoded candidate models or guide display coordinates.",
+  "coordinate_frame": {
+    "axes": [
+      "east_m",
+      "north_m"
+    ],
+    "city_cell_north": "-16 * source_row",
+    "tile_size_m": 16.0,
+    "cell_centres_m": "16k",
+    "cell_edges_m": "16k \u00b1 8",
+    "guide_display_origin_translations_applied": false,
+    "equal_panel_limits_east_m": [
+      -88.0,
+      104.0
+    ],
+    "equal_panel_limits_north_m": [
+      -88.0,
+      104.0
+    ]
+  },
+  "axes": {
+    "fixed_dd": "north = east - 8",
+    "avenue_a": "north = -east",
+    "avenue_b": "north = -east + 16"
+  },
+  "crossings": {
+    "A_en_m": [
+      4.0,
+      -4.0
+    ],
+    "B_en_m": [
+      12.0,
+      4.0
+    ],
+    "translation_en_m": [
+      8.0,
+      8.0
+    ],
+    "distance_along_fixed_dd_m": 11.313708498984761
+  },
+  "alignments": {
+    "A": {
+      "sha256": "e970b7ff3c89d320c4e6f3e6d683d834f818ba96ed8037b9041d0646aef2301f",
+      "cell_count": 31,
+      "route_fragment_count": 126,
+      "point_count": 2454,
+      "ramp_fragments": {
+        "lower-off": 7,
+        "lower-on": 7,
+        "upper-off": 8,
+        "upper-on": 8
+      },
+      "owned_source_city_cells": [
+        [
+          -3,
+          2
+        ],
+        [
+          -3,
+          3
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -2,
+          2
+        ],
+        [
+          -2,
+          3
+        ],
+        [
+          -2,
+          4
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          -1,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          -1,
+          3
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          -3
+        ],
+        [
+          2,
+          -2
+        ],
+        [
+          2,
+          -1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          -3
+        ],
+        [
+          3,
+          -2
+        ],
+        [
+          3,
+          -1
+        ],
+        [
+          4,
+          -3
+        ],
+        [
+          4,
+          -2
+        ]
+      ],
+      "bounding_tiles": [
+        8,
+        8
+      ],
+      "component_roles": 15,
+      "native_axis_offsets": {
+        "highway_north_minus_east_plus_8_m": [
+          -3.2,
+          3.2
+        ],
+        "avenue_north_plus_east_minus_phase_m": [
+          -11.2,
+          -4.8,
+          4.8,
+          11.2
+        ]
+      }
+    },
+    "B": {
+      "sha256": "2bac0b927afd631adfa78ae6e27f2e94a9d2a7537430603c327d6e068816352b",
+      "cell_count": 34,
+      "route_fragment_count": 132,
+      "point_count": 2474,
+      "ramp_fragments": {
+        "lower-off": 9,
+        "lower-on": 9,
+        "upper-off": 8,
+        "upper-on": 8
+      },
+      "owned_source_city_cells": [
+        [
+          -3,
+          2
+        ],
+        [
+          -3,
+          3
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -2,
+          2
+        ],
+        [
+          -2,
+          3
+        ],
+        [
+          -2,
+          4
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          -1,
+          1
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          -1,
+          3
+        ],
+        [
+          0,
+          -2
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          -3
+        ],
+        [
+          2,
+          -2
+        ],
+        [
+          2,
+          -1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          3,
+          -3
+        ],
+        [
+          3,
+          -2
+        ],
+        [
+          3,
+          -1
+        ],
+        [
+          4,
+          -4
+        ],
+        [
+          4,
+          -3
+        ],
+        [
+          4,
+          -2
+        ],
+        [
+          5,
+          -4
+        ],
+        [
+          5,
+          -3
+        ]
+      ],
+      "bounding_tiles": [
+        9,
+        9
+      ],
+      "component_roles": 15,
+      "native_axis_offsets": {
+        "highway_north_minus_east_plus_8_m": [
+          -3.2,
+          3.2
+        ],
+        "avenue_north_plus_east_minus_phase_m": [
+          -11.2,
+          -4.8,
+          4.8,
+          11.2
+        ]
+      }
+    }
+  },
+  "ordinary_b_avenue_centre": {
+    "source_city_cell": [
+      2,
+      1
+    ],
+    "included_in_custom_ownership": false
+  },
+  "whole_alignment_a_type_reused_in_b": false,
+  "necessary_whole_traffic_reuse_check": {
+    "source": "Complete independent expected route set per owner in its local cell frame",
+    "coordinate_comparison_decimals": 5,
+    "candidate_role_pairs": 225,
+    "matching_a_b_role_pairs": [],
+    "limit": "A mismatch excludes exact whole-type reuse; this does not establish broader neighbour compatibility."
+  },
+  "sources": [
+    {
+      "path": "domains/highway/tools/draw_parallel_alignment_comparison.py",
+      "bytes": 18961,
+      "sha256": "a19d609ebe68dfae44cd257b9692518182b6f266467dd8a17e123dc9f147fa8a"
+    },
+    {
+      "path": "framework/scp/check_bootstrap.py",
+      "bytes": 1863,
+      "sha256": "f10763250405ec2e0b7e8e1d6f3b02718388ebedab713341188c972a37f219f4"
+    },
+    {
+      "path": "framework/scp/jsonc.py",
+      "bytes": 6678,
+      "sha256": "5ca803292230dcbcb6ea752548743b0e2abb7ca63a0b3bfb843c2500696be95a"
+    },
+    {
+      "path": "domains/highway/implementation/scp_highway/parallel_verify.py",
+      "bytes": 98067,
+      "sha256": "29bc9e103fc8e97b895818c76bdf0ccda267b381648bf18860d5d3841ffc9e5e"
+    },
+    {
+      "path": "domains/highway/implementation/scp_highway/parallel_alignment_b_verify.py",
+      "bytes": 46147,
+      "sha256": "93bfbe26e334ff732ecd0d9ba2e6d2d565a053d81e96c78f5bdd7c34e1679ec1"
+    },
+    {
+      "path": "domains/highway/implementation/scp_highway/assembly_verify.py",
+      "bytes": 42137,
+      "sha256": "cc48835b808f24b575fd480a81284f251accccf163c4ad401a613235dd3eaed4"
+    },
+    {
+      "path": "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/evidence/parallel-ramp-review.json",
+      "bytes": 2338787,
+      "sha256": "fed3668c9c13654ca3775637c558cd85976269d4cb3f39634c8d5a1a7ff9e23e"
+    }
+  ],
+  "renderer": {
+    "python_version": "3.11.9",
+    "matplotlib_version": "3.8.4",
+    "figure_inches": [
+      15.0,
+      8.5
+    ],
+    "png_dpi": 180,
+    "png_pixels": [
+      2700,
+      1530
+    ],
+    "ramp_colours": {
+      "lower-off": "#ce7900",
+      "lower-on": "#158466",
+      "upper-off": "#c23d8f",
+      "upper-on": "#2565b8"
+    },
+    "svg_hashsalt": "scp-parallel-alignment-comparison-v1"
+  },
+  "outputs": [
+    {
+      "path": "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b/previews/alignment-comparison.png",
+      "bytes": 403848,
+      "sha256": "4e1805fdffa0919f713390bb65bb81be1f4e7721c52e369b9b359313e4bd9243"
+    },
+    {
+      "path": "domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b/previews/alignment-comparison.svg",
+      "bytes": 385761,
+      "sha256": "0f6bd574c0bb0eccc220fb9711751871889f22920e171ea802e23e0935705f91"
+    }
+  ],
+  "saved_model_verification_performed": false,
+  "installed": false,
+  "in_game_tested": false
+}

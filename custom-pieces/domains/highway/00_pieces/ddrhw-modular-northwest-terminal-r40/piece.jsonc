@@ -1,0 +1,259 @@
+// title: "Piece definition: RHW Ramp — Northwest Avenue Ramp Terminal — R40"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for RHW Ramp \u2014 Northwest Avenue Ramp Terminal \u2014 R40.",
+  "schema_version": 1,
+  "id": "ddrhw-modular-northwest-terminal-r40",
+  "domain": "highway",
+  "name": "RHW Ramp \u2014 Northwest Avenue Ramp Terminal \u2014 R40",
+  "description": "Separately placed Northwest Avenue Ramp Terminal \u2014 R40. Includes its entire curved high throat at the highway cutout, including explicit model overhang. Construction and traffic-path ownership remain disjoint.",
+  "recipe": "highway_ddrhw_modular_northwest_terminal_r40",
+  "geometry_key": "northwest-terminal-r40",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f841",
+  "tile_ids": [
+    "7f5a3000",
+    "7f5a3100",
+    "7f5a3200",
+    "7f5a3010",
+    "7f5a3110",
+    "7f5a3210",
+    "7f5a3020",
+    "7f5a3120",
+    "7f5a3220"
+  ],
+  "preview_id": "7f5a3ff5",
+  "effect_name": "preview_scp_hw_f841_____001",
+  "footprint": [
+    3,
+    3
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      2
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "mis",
+    "adaptive_avenue"
+  ],
+  "menu": {
+    "id": "6a47f841",
+    "order": "ffffff41",
+    "style": "ddrhw-ramp"
+  },
+  "engineering": {
+    "max_grade_percent": 30.0,
+    "pavement_path_offset_m": 0.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "model_only_cells": [
+      [
+        0,
+        2
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "minimum_new_curve_radius_m": 40.0,
+    "retained_high_collar_m": 2.0
+  },
+  "shadow_mode": "generated",
+  "shadow_mappings": [
+    {
+      "tile": "7f5a3000",
+      "source": "7f5a3000",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5a3100",
+      "source": "7f5a3100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5a3200",
+      "source": "7f5a3200",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5a3010",
+      "source": "7f5a3010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5a3110",
+      "source": "7f5a3110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5a3210",
+      "source": "7f5a3210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5a3020",
+      "source": "7f5a3020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5a3120",
+      "source": "7f5a3120",
+      "rotation": 0
+    },
+    {
+      "tile": "7f5a3220",
+      "source": "7f5a3220",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Retained measured highway sockets and separately attached R40 continuations.",
+    "construction": "Disjoint sparse ownership; four proper rotations repeated; no reflected traffic.",
+    "redistribution": "permission-pending",
+    "partition_review": "Corrected straight21-cell highway stamp; all four complete curved high throats belong to separate ramps. Retains puzzle, menu, preview, and reserved block identities. Uninstalled prototype local tile slots follow the reviewed new AutoTileBase grid."
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "adaptive_ground": {
+    "schema_version": 1,
+    "use_path_elevation": true,
+    "cells": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "rotation": 0,
+        "texture_donor_id": "04003800",
+        "street_flags": "04020000",
+        "avenue_flags": "01030103",
+        "prop": true,
+        "resolved_tile_id": "7f5a4000"
+      },
+      {
+        "cell": [
+          1,
+          0
+        ],
+        "rotation": 2,
+        "texture_donor_id": "04000200",
+        "street_flags": "04020000",
+        "avenue_flags": "01000003",
+        "prop": true,
+        "resolved_tile_id": "7f5a4100"
+      },
+      {
+        "cell": [
+          0,
+          1
+        ],
+        "rotation": 0,
+        "texture_donor_id": "04000200",
+        "street_flags": "04020000",
+        "avenue_flags": "00030100",
+        "prop": true,
+        "resolved_tile_id": "7f5a4200"
+      },
+      {
+        "cell": [
+          1,
+          1
+        ],
+        "rotation": 0,
+        "texture_donor_id": "04003800",
+        "street_flags": "02040000",
+        "avenue_flags": "01030103",
+        "prop": true,
+        "resolved_tile_id": "7f5a4300"
+      },
+      {
+        "cell": [
+          2,
+          1
+        ],
+        "rotation": 2,
+        "texture_donor_id": "04000200",
+        "street_flags": "02040000",
+        "avenue_flags": "01000003",
+        "prop": true,
+        "resolved_tile_id": "7f5a4400"
+      },
+      {
+        "cell": [
+          1,
+          2
+        ],
+        "rotation": 0,
+        "texture_donor_id": "04000200",
+        "street_flags": "02040000",
+        "avenue_flags": "00030100",
+        "prop": true,
+        "resolved_tile_id": "7f5a4500"
+      },
+      {
+        "cell": [
+          2,
+          2
+        ],
+        "rotation": 0,
+        "texture_donor_id": "04003800",
+        "street_flags": "04000200",
+        "avenue_flags": "01030103",
+        "prop": false,
+        "resolved_tile_id": "7f5a4600"
+      }
+    ]
+  }
+}

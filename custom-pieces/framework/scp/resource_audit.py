@@ -1,8 +1,8 @@
 """Inspect exact resources in explicitly supplied DBPF archives without loading them.
 
 The query reports every index occurrence, rather than choosing a game load-order
-winner. A separate, explicit capture writes one selected resource under the
-selected library's private local directory and preserves its stored bytes.
+winner. Explicit capture writes one selected resource or a pinned multi-source
+bundle under the library's private local directory, preserving stored bytes.
 """
 from __future__ import annotations
 
@@ -161,9 +161,7 @@ def audit_plugins(plugins, tgi):
     return _report(key, matches, errors, scope={"plugins": str(root)}, archive_count=archives)
 
 
-def capture_resource(archive, tgi, destination, *, root=None, plugins=None):
-    """Copy one unambiguous stored resource to a fresh private capture directory."""
-    key = parse_tgi(tgi)
+def _capture_target(destination, *, root=None, plugins=None):
     library = Path(root or Path(__file__).resolve().parents[2]).expanduser().resolve()
     if not library.is_dir():
         raise ValueError(f"Selected library root does not exist: {library}")
@@ -179,6 +177,29 @@ def capture_resource(archive, tgi, destination, *, root=None, plugins=None):
         raise ValueError("Capture output must not be inside a Plugins directory")
     if target.exists():
         raise ValueError(f"Capture directory already exists; choose a fresh private directory: {target}")
+    return target
+
+
+def _write_capture(target, dat_name, raw, report):
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.mkdir()  # Exclusive creation prevents an existing capture from being replaced.
+    created = []
+    try:
+        for name, payload in ((dat_name, raw), ("resource-audit.json", (json.dumps(report, indent=2) + "\n").encode("utf-8"))):
+            with (target / name).open("xb") as stream:
+                created.append(target / name)
+                stream.write(payload)
+    except Exception:
+        for output in created:
+            output.unlink(missing_ok=True)
+        target.rmdir()
+        raise
+
+
+def capture_resource(archive, tgi, destination, *, root=None, plugins=None):
+    """Copy one unambiguous stored resource to a fresh private capture directory."""
+    key = parse_tgi(tgi)
+    target = _capture_target(destination, root=root, plugins=plugins)
     path = _source_path(archive)
     matches, stored = _inspect_archive(path, key, retain_stored=True)
     if not matches:
@@ -197,19 +218,92 @@ def capture_resource(archive, tgi, destination, *, root=None, plugins=None):
         "source_index_entry_1based": matches[0]["index_entry_1based"],
         "audit_file": "resource-audit.json",
     }
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.mkdir()  # Exclusive creation prevents an existing capture from being replaced.
-    created = []
-    try:
-        for name, payload in ((dat_name, raw), ("resource-audit.json", (json.dumps(report, indent=2) + "\n").encode("utf-8"))):
-            with (target / name).open("xb") as stream:
-                created.append(target / name)
-                stream.write(payload)
-    except Exception:
-        for output in created:
-            output.unlink(missing_ok=True)
-        target.rmdir()
-        raise
+    _write_capture(target, dat_name, raw, report)
+    return report
+
+
+def inspect_resource_bundle(sources):
+    """Read exact resources from explicitly pinned archives, with one hash pass per source.
+
+    Each source supplies ``archive``, ``archive_sha256``, and ``resources``.
+    Resource rows require a ``tgi`` and may pin both resource hashes. Sources
+    can include portable ``location`` metadata for the game/Plugins locator.
+    Returned stored bytes are inputs for private capture, never installed data.
+    """
+    if not isinstance(sources, list) or not sources:
+        raise ValueError("A resource bundle needs a nonempty source list")
+    resources, measured, seen_paths = {}, [], set()
+    for source in sources:
+        path = _source_path(source["archive"])
+        if path in seen_paths:
+            raise ValueError("A bundle source archive must appear only once")
+        seen_paths.add(path)
+        expected_hash = source.get("archive_sha256")
+        if not isinstance(expected_hash, str) or not re.fullmatch(r"[0-9a-f]{64}", expected_hash):
+            raise ValueError("Every bundle source needs a pinned archive SHA-256")
+        rows = source.get("resources")
+        if not isinstance(rows, list) or not rows:
+            raise ValueError("Every bundle source needs exact resource rows")
+        keys = [parse_tgi(row["tgi"]) for row in rows]
+        if len(set(keys)) != len(keys) or set(keys) & set(resources):
+            raise ValueError("Duplicate TGI in resource bundle declaration")
+        before = _file_identity(path)
+        if source.get("archive_bytes", before[2]) != before[2]:
+            raise ValueError(f"Bundle source archive size differs: {path.name}")
+        if _archive_sha(path) != expected_hash:
+            raise ValueError(f"Bundle source archive fingerprint differs: {path.name}")
+        selected = {}
+        for entry in read_index(path):
+            key = tuple(entry[:3])
+            if key in keys:
+                selected.setdefault(key, []).append(entry)
+        details = []
+        with path.open("rb") as stream:
+            for row, key in zip(rows, keys):
+                entries = selected.get(key, [])
+                if len(entries) != 1:
+                    raise ValueError(f"Bundle needs one exact occurrence of {tgi_string(key)} in {path.name}; found {len(entries)}")
+                _, _, _, offset, length = entries[0]
+                if length > MAX_RESOURCE_BYTES:
+                    raise ValueError("Bundle resource exceeds the inspection limit")
+                stream.seek(offset)
+                stored = stream.read(length)
+                if len(stored) != length:
+                    raise ValueError("Bundle source resource was truncated during inspection")
+                decoded = decompress(stored)
+                detail = {"tgi": tgi_string(key), "stored_bytes": len(stored),
+                          "decompressed_bytes": len(decoded), "stored_resource_sha256": _sha(stored),
+                          "decompressed_resource_sha256": _sha(decoded)}
+                for field in ("stored_resource_sha256", "decompressed_resource_sha256", "stored_bytes", "decompressed_bytes"):
+                    if field in row and row[field] != detail[field]:
+                        raise ValueError(f"Bundle resource fingerprint differs: {detail['tgi']} ({field})")
+                resources[key] = stored
+                details.append(detail)
+        if _file_identity(path) != before:
+            raise ValueError(f"Archive changed during bundle inspection: {path.name}")
+        measured.append({"archive": str(path), "filename": path.name,
+                         "location": source.get("location", "explicit"), "archive_sha256": expected_hash,
+                         "archive_bytes": before[2], "resources": details})
+    return resources, {"schema_version": 1, "capture_kind": "resource-bundle",
+                       "purpose": "Exact pinned resource bundle; no load-order inference or installation",
+                       "status": "complete", "sources": measured, "source_files_modified": False}
+
+
+def capture_resource_bundle(sources, destination, *, filename, expected_sha256=None, root=None, plugins=None):
+    """Capture a deterministic multi-archive resource set without touching game inputs."""
+    if (not isinstance(filename, str) or Path(filename).name != filename or "\\" in filename
+            or ":" in filename or not filename.lower().endswith(".dat")):
+        raise ValueError("Bundle capture filename must be one plain DAT filename")
+    target = _capture_target(destination, root=root, plugins=plugins)
+    resources, report = inspect_resource_bundle(sources)
+    raw = pack_dbpf(resources)
+    if expected_sha256 is not None and _sha(raw) != expected_sha256:
+        raise ValueError("Generated bundle capture fingerprint differs from the supported profile")
+    report["capture"] = {"directory": str(target), "file": filename, "sha256": _sha(raw),
+                         "bytes": len(raw), "resource_count": len(resources),
+                         "stored_bytes_preserved": True, "resource_tgi_unchanged": True,
+                         "installed": False, "audit_file": "resource-audit.json"}
+    _write_capture(target, filename, raw, report)
     return report
 
 

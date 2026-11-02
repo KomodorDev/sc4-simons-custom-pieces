@@ -1,0 +1,421 @@
+#!/usr/bin/env python3
+"""Write the new parallel-kit player guides, preserving every generated block.
+
+Only the fifteen parallel piece guides and their new assembly guides are in
+scope. Existing retained assemblies, measurements, images, and observations
+are never rewritten by this authoring helper.
+"""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+import re
+import sys
+
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / 'framework'))
+from scp import jsonc
+
+SUBJECT = 'ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond'
+ASSEMBLY = ROOT / 'domains/highway/01_assemblies' / SUBJECT
+BUILD_NAME = 'ddrhw-parallel-diamond-slip-lanes-02'
+PARTS = f'custom-pieces/dist/{BUILD_NAME}'
+MENU = 'SCP | ASSEMBLY | DD RHW-4 — Parallel Diagonal Avenue Diamond'
+NAV_TEST = ('[1. Test scope](#1-test-scope) · [2. Test setup](#2-test-setup) · '
+            '[3. Software checks](#3-software-checks) · [4. Game checks](#4-game-checks) · '
+            '[5. Results and known issues](#5-results-and-known-issues) · [6. Design history](#6-design-history)')
+BLOCK = re.compile(r'<!-- BEGIN ([A-Z ]+) -->.*?<!-- END \1 -->', re.S)
+
+
+def preserve_write(path, text):
+    current = path.read_text() if path.exists() else ''
+    blocks = {match[1]: match[0] for match in BLOCK.finditer(current)}
+    text = BLOCK.sub(lambda match: blocks.get(match[1], match[0]), text)
+    final = text.rstrip() + '\n'
+    if final != current:
+        path.write_text(final)
+
+
+def metadata(title, summary, audience='contributors', kind='reference'):
+    return ('---\n' + '\n'.join(f'{key}: {json.dumps(value, ensure_ascii=False)}' for key, value in
+            (('title', title), ('summary', summary), ('audience', audience), ('document_type', kind))) + '\n---\n\n')
+
+
+def block(name):
+    return f'<!-- BEGIN {name} -->\n\n<!-- END {name} -->'
+
+
+def display_cells(piece, pose):
+    x, y = pose['display_origin_tiles_en']
+    return ', '.join(f'(X{x + c}, Y{y - r})' for c, r in piece['cells'])
+
+
+def details(piece):
+    key = piece['geometry_key'].removeprefix('parallel-')
+    lower = key.startswith('lower')
+    height = '7.5' if lower else '15'
+    deck = 'lower L1' if lower else 'upper L2'
+    direction = 'off-ramp' if '-exit-' in key else 'on-ramp'
+    if key == 'crossing':
+        return ('This is the central crossing of both straight highway decks over the diagonal ground Avenue. L0 means the ground pavement at 0 m, L1 is the lower deck at 7.5 m, and L2 is the upper deck at 15 m. The three occupied tiles preserve the native Avenue car and pedestrian routes and the four highway through lanes. The outside-deck upper-ramp turns also cross these city tiles, so their required traffic fragments stay with this owner.',
+                'Its sparse 2 × 2 footprint has three occupied corners and an empty local [1,1] corner. That empty corner supplies a temporary placement handle, which the supported NAM DLL removes. It is not a fourth permanent road tile. The highway model stays straight; curved high departures belong to the separate ramp modules.',
+                '0 m Avenue; 7.5 m L1; 15 m L2')
+    if key.endswith('terminal'):
+        side = 'northwest' if key.startswith('northwest') else 'southeast'
+        served = 'lower L1' if side == 'northwest' else 'upper L2'
+        return (f'This ground terminal joins the {served} on-ramp and off-ramp to the {side} Avenue arm. Each ramp approaches the Avenue at 90° and uses a finite right turn into or out of the adjacent carriageway. A carriageway is the part of a road carrying traffic in one direction. The turn has a 6 m centreline radius, labelled R6; there is no ramp movement across the opposing carriageway. The terminal asphalt keeps the 6 m-wide join to its grade, then narrows smoothly to 3.5 m over the first 3 m toward the Avenue. The remainder of the turn and its joining collar are 3.5 m wide.',
+                'Its three occupied tiles retain the native two-way Avenue and pedestrian channels. The 3.5 m asphalt leaves 0.5 m on each side of the checked 2.5 m-wide car corridor. Where a ramp runs parallel to an Avenue pedestrian centreline, the retained clearance to its asphalt edge is approximately 1.149 m; this measures a route centreline, not a promised sidewalk width. Each driveway still crosses a pedestrian route on the way into its carriageway. Adaptive pavement can appear beside that driveway, but no continuous sidewalk surface is drawn across the ramp asphalt. The visible turn models extend above some neighbouring owners, while their traffic fragments remain with the city tile they cross. All three native Avenue cells use the implemented adaptive-ground resources and rotating overlay models. The unused local [1,1] corner is the removable placement handle.',
+                '0 m ground Avenue and right-turn pavement')
+    if key.endswith('slip'):
+        taper, shoulder = ('8', '4') if lower else ('5', '1')
+        extension = ('The lower route starts 6.788225 m farther upstream, within an already owned native highway tile.' if lower else 'The upper route keeps its previous outer traffic port: a longer shoulder treatment would need traffic ownership beyond the retained 31-cell layout.')
+        return (f'This straight highway section contains the {deck} {direction} slip-lane service and its native barrier opening. A slip lane is the auxiliary lane leading between a through lane and a ramp. Both highway decks remain completely straight, with their native through routes retained. All curved roadway outside the native highway edge belongs to the separately placed lateral-departure module.',
+                f'The revised traffic route and matching white markings use the existing shoulder. Read from the highway through lane toward the ramp: the {deck} shoulder section has a {taper} m smooth sideways taper, followed by {shoulder} m straight and parallel to the highway. An on-ramp follows the reverse sequence in its direction of travel. These two lengths are measured along the straight highway axis and describe the shoulder section, not the complete ramp. {extension} The auxiliary-lane centre is 5.5 m from the highway axis. Its checked 2.5 m-wide car corridor leaves 0.421875 m to the native barrier foot at the straight shoulder section. The two occupied cells lie diagonally inside a sparse 2 × 2 rectangle. Its construction reference is an empty corner, so align both occupied preview cells instead of assuming that the reference position is a third tile. Complete boundary cards include both highway levels and every access fragment; matching only the named ramp is insufficient.',
+                f'Both highway levels: 7.5/15 m; named access at {height} m')
+    if key.endswith('departure'):
+        return (f'This separately placed {deck} {direction} contains the curved sideways departure beside the straight highway. Its pavement, 1 m underside, native Jersey barrier profiles, and connecting barrier strips belong to this ramp. The complete lateral transition stays at {height} m and changes position over 17 m measured along the highway axis. It becomes fully parallel before the adjoining grade starts to descend.',
+                'One city tile owns this component, but its curved model extends over adjacent slip-lane tiles. That model overhang does not add another traffic owner. Because traffic is stored by complete city tile, this owner also retains the beginning of the neighbouring straight grade route. Its saved traffic edge and its physical flat joining section therefore occur at different places.',
+                f'Physical departure at {height} m and 0% grade')
+    maximum = '17.911624' if lower else '28.202932'
+    length = '44.872251' if lower else '56.185959'
+    return (f'This {deck} {direction} contains the straight parallel grade between the flat high departure at {height} m and the ground terminal at 0 m. A grade is height change divided by horizontal distance: 20% means 2 m of height change over 10 m horizontally. Its physical straight run is {length} m, with a maximum source grade of approximately {maximum}%. The profile includes a 2 m change of grade at each end and a final 1 m flat ground collar.',
+            'This is a fixed-height transition, not a straight slope that can be repeated to obtain any chosen height. Its visible grade model overhangs neighbouring departure and terminal tiles. Its whole-cell traffic ownership also includes one native highway half, so the model and traffic boundaries differ. The native through PATHs and outside-deck ramp route remain with those owned cells. The visible native highway half and its centre pier instead belong to the adjacent straight slip-lane model through overhang, leaving this component’s physical model as a pure graded ramp.',
+            f'Physical grade: {height} ↔ 0 m; saved tile-edge cuts have their measured intermediate heights')
+
+
+def write_piece(piece, pose):
+    directory = ROOT / 'domains/highway/00_pieces' / piece['id']
+    name, pid = piece['name'], piece['id']
+    description, special, heights = details(piece)
+    placement = pose['instance_id']
+    x, y = pose['display_origin_tiles_en']
+    w, h = piece['footprint']
+    assembly_link = f'../../01_assemblies/{SUBJECT}'
+    adaptive = piece['geometry_key'] in ('parallel-crossing', 'parallel-northwest-terminal', 'parallel-southeast-terminal')
+    sidewalk_scope = (
+        'Adaptive sidewalks are implemented for all three Avenue cells of this component. The game selects a native Avenue pavement appearance from the surrounding development; connecting another Avenue alone does not force a sidewalk to appear. The rotating highway or ramp model is attached above that native ground artwork, and the pedestrian PATHs are separate retained traffic data. The complete new assembly still needs its own game observations. Read the [actual mechanism and limits]('
+        + assembly_link + '/TESTING.md#3-software-checks).'
+        if adaptive else
+        'This component supplies highway or ramp geometry. The three ground components P01, P02, and P03 own the implemented adaptive Avenue pavement and retained pedestrian routes. Connecting this elevated component does not itself select a sidewalk appearance. Read the [actual mechanism and limits]('
+        + assembly_link + '/TESTING.md#3-software-checks).'
+    )
+    readme = f'''# {name}
+
+Purpose: Place this functional component of the compact parallel diagonal highway diamond and match all of its measured services.
+
+<!-- PIECE README LAYOUT: 2 -->
+
+[1. Views](#1-views) · [2. Piece and placement](#2-piece-and-placement) · [3. Connection matrix](#3-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
+
+## 1. Views
+
+The canonical angled and north-up pictures show the saved model in its authored 0° orientation. The connector overview identifies complete traffic boundaries. Software images show the authored resources; appearance and travel in the game need their own observations in [TESTING.md](TESTING.md).
+
+{block('PIECE VIEWS')}
+
+## 2. Piece and placement
+
+{description}
+
+{special}
+
+{sidewalk_scope}
+
+A construction tile is a 16 × 16 m city square occupied by one component. This type owns **{len(piece['cells'])} tiles inside a {w} × {h}-tile rectangle**. Its reference position in the complete assembly is **{placement}: X{x}, Y{y}, at 0°**. Its actual occupied cells on that shared grid are **{display_cells(piece, pose)}**. The [assembly construction picture]({assembly_link}/README.md#1-views) distinguishes thick ownership borders from each real model outline, including overhang.
+
+1. Use the matching parallel-kit build with Windows SimCity 4 and NAM 50 in right-hand traffic, including supported Wine or CrossOver use. See [the build and install guide](../../../../docs/BUILD_AND_INSTALL.md); compiling a build does not install it.
+2. Open a disposable, flat test area, and follow the [complete assembly placement sequence]({assembly_link}/README.md#3-placements). The three adaptive pieces are placed P02, P01, and P03 first so each temporary helper corner starts clear.
+3. Click **Transportation → Highways**, and select **{MENU}**. Press **Tab** to cycle forward or **Shift+Tab** to cycle backward until **{name}** appears. Each click places only that selected component.
+4. Keep the authored 0° orientation for the reference plan. **Home** and **End** rotate the selected preview; use the actual occupied squares to match the table. Four proper rotations repeat across eight selection states, without reflecting traffic handedness.
+5. Position the construction reference at **X{x}, Y{y}**, check the occupied cells listed above, and click once. Add the matching components at their own reference positions; never place a second owner on an occupied city square merely because two models overlap visually.
+
+**Physical connection levels:** {heights}. Match exact positions, height profiles, directions, and every boundary service on the generated cards. Matching a visible edge or one road lane alone does not establish a compatible neighbour. These fixed pieces do not adjust to arbitrary terrain heights, and the kit does not establish that native RHW can be dragged through its occupied cells.
+
+{block('PIECE OVERVIEW')}
+
+## 3. Connection matrix
+
+Read from an entrance row to an exit column. A saved PATH is the traffic data stored in the game resource. Route Query is the route shown by the game, and Visible travel is an observed car or pedestrian completing it. The matrix describes this component's intrinsic fragments; the complete journey can pass through another component's city tile even when its physical model is visibly continuous. Physical joining sections and saved traffic cuts are checked separately.
+
+{block('PIECE CONNECTION MATRIX')}
+
+{block('CONNECTOR OVERVIEW')}
+'''
+    testing = metadata('Testing: ' + name, 'Check this parallel component against its saved resources and retain separate human game observations.') + f'''# Testing: {name}
+
+<!-- PIECE TESTING LAYOUT: 1 -->
+
+[Piece overview ↗ (README)](README.md) · {NAV_TEST}
+
+## 1. Test scope
+
+This record covers **{pid}**, used once as **{placement}** in the [parallel diamond]({assembly_link}/README.md). It has {len(piece['cells'])} occupied tiles in a {w} × {h} rectangle, the exact authored 0° reference at X{x}, Y{y}, and the functional levels described in the [piece guide](README.md#2-piece-and-placement). Saved native through routes, added access fragments, actual model support, material flags, physical joins, rotations, and adaptive resources where present have distinct software checks. Human appearance and travel observations remain separate.
+
+{block('CONNECTIONS')}
+
+## 2. Test setup
+
+Use Windows SimCity 4 with the pinned NAM 50 right-hand-traffic inputs, including through Wine or CrossOver. The shared [build guide](../../../../docs/BUILD_AND_INSTALL.md) owns private input settings and explicit installation. Use the complete fifteen-component assembly for travel tests: this individual component can expose required route fragments at more than one city-tile edge. A matching-looking isolated end is insufficient to create the whole journey.
+
+Prepare the [assembly's flat reference test area]({assembly_link}/TESTING.md#2-test-setup), keep the camera north-up for placement, and use the exact occupied cells **{display_cells(piece, pose)}**. The full core occupies 31 cells inside X1–X8 and Y1–Y8; the preserved drawing reference still shows X0–X9 and Y0–Y9. One tile is 16 m. Additional outside road approaches are separate from that core count.
+
+## 3. Software checks
+
+Run from the repository directory containing `custom-pieces/`. These commands inspect an existing build and its current source-bound connector records; they do not install anything, supply missing inputs, or approve a manual case. An absent or failing report is not a software pass.
+
+```sh
+python3 -B custom-pieces/scp.py verify --output {PARTS}
+python3 -B custom-pieces/scp.py connectors check --domain highway --piece {pid} --build dist/{BUILD_NAME}
+python3 -B custom-pieces/scp.py docs-check --piece {pid}
+```
+
+The [complete saved-assembly check]({assembly_link}/TESTING.md#3-software-checks) checks this component in all fifteen placements, including physical model overhang and the traffic fragments owned by its neighbours. The ordinary build's manifest and verification report identify the actual measured resources. Retain every software failure with its source fingerprint; rerunning a renderer cannot repair it.
+
+The current slip-lane revision changes the highway-shoulder traffic routes and their white markings within the existing construction footprint. Read outward from a through lane toward its ramp: each lower route has an 8 m smooth sideways taper and a 4 m straight shoulder section; each upper route has a 5 m taper and a 1 m straight shoulder section. The lower routes begin 6.788225 m farther upstream in already owned native highway tiles. The upper routes retain their previous outer ports because the unchanged 31-cell layout provides less shoulder distance there. These distances are measured along the straight highway axis. On-ramps follow the same profiles in reverse. The auxiliary-lane centre is 5.5 m from the highway axis; the checked 2.5 m-wide car corridor leaves 0.421875 m to the native barrier foot on the straight section. These are compressed experimental dimensions, not a real-road design standard. Native through PATHs, roadway outside the native 8 m deck edge, grades, ground terminals, permanent identifiers, and construction ownership retain their previous scope. Check the matching saved report before treating this source revision as verified. {sidewalk_scope}
+
+The earlier narrow ground mouths are retained: each terminal keeps its 6 m grade join, narrows to 3.5 m over 3 m, and stays narrow through its R6 turn and Avenue joining collar. The ramp centreline crosses the retained pedestrian-route centreline 3.258752 m from the grade join, after that 3 m ground taper is complete. The asphalt footprint reaches the pedestrian route earlier, while the ground taper is still narrowing; this is the actual driveway crossing.
+
+## 4. Game checks
+
+1. Select this exact component through the assembly button, match {placement} at **X{x}, Y{y}**, and confirm that the occupied preview squares match **{display_cells(piece, pose)}** before clicking.
+2. Place the full assembly using the order in its guide. Inspect this component's saved model from both opposing oblique views, and compare its real join with the neighbouring models; look for gaps, blocked barrier openings, misplaced supports, or a sudden pavement-colour patch.
+3. Repeat fresh placement in the four distinct proper rotations. Rotate the camera separately after placement, because camera movement and a newly rotated piece test different things.
+4. For an adaptive Avenue cell, connect ordinary Avenue outside the core, add nearby development, and compare its pavement variant with the neighbouring Avenue. Connecting the Avenue alone does not select the developed pavement appearance. Inspect both narrow driveway crossings, then check pedestrian Route Query and visible walking separately; a sidewalk image does not create a pedestrian PATH, and the crossing remains road asphalt. For a component without Avenue cells, inspect the neighbouring adaptive owners instead of expecting this piece to change pavement itself.
+5. Run every required car and pedestrian journey listed by the exact matrix. Record Route Query and visible travel separately. Also confirm that every declared forbidden transfer stays unavailable; a visually clear road surface is not traffic evidence.
+6. Inspect shadows, demolish the component, replace it, save the city, quit completely, and reload. Check that no temporary placement handle remains and that the component and its traffic neighbours remain correct.
+
+Record only explicit observations through [the shared observation workflow](../../../../docs/TESTING.md), selecting **{pid}** and its exact current cases. No observation of the older adaptive probe, R40 diamond, or another rotation automatically approves this new component.
+
+## 5. Results and known issues
+
+The implementation is experimental. The generated records below are authoritative for the current evidence scope; **all new human game observations remain unverified** until the user confirms their exact cases. In particular, outside native DD RHW connections, over-Avenue placement, Avenue redraw, temporary-handle collision behaviour, pedestrian pavement variants, moving traffic, camera rotations, demolition, and save/reload require game checks.
+
+The whole-cell traffic partition is intentionally different from the physical model split. {special} This is a limitation to understand when choosing replacement modules, not permission to discard a required boundary service.
+
+Adaptive pavement is implemented through native texture variants and correctly rotating model props, rather than a fixed sidewalk slab. Its visible appearance depends on the native development rules, and a sidewalk replacement mod needs its own compatibility check. The approximately 1.149 m clearance applies where the terminal asphalt and retained pedestrian centreline run beside one another; the actual driveway crossings are deliberately excluded. A measured route clearance does not establish visible walking, a continuous pavement strip, or a particular pedestrian-versus-car priority in the game.
+
+{block('MANUAL SUMMARY')}
+
+{block('MANUAL CHECKS')}
+
+## 6. Design history
+
+This new type implements one functional part of the human-approved close parallel layout. It preserves the [frozen source proposal](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/TESTING.md#32-close-parallel-ramps-and-perpendicular-avenue-approaches) and leaves the retained R40 and compact assemblies available with their own resource identities and evidence. This piece's exact source is [piece.jsonc](piece.jsonc); the shared placement plan is [assembly.jsonc]({assembly_link}/assembly.jsonc).
+
+The ground-mouth revision narrowed terminal asphalt while preserving the 6 m grade interfaces and its saved traffic routes. The later slip-lane revision lengthens the shoulder treatment and changes its access PATHs and white markings, while retaining all fifteen permanent types, the 31-cell union, and those narrow ground mouths. The earlier `ddrhw-parallel-diamond-parts-01` and `ddrhw-parallel-diamond-pedestrian-mouths-01` build identities retain their original scopes. The current revision uses `{BUILD_NAME}`; only its own matching saved-resource report can establish its software result.
+'''
+    preserve_write(directory / 'README.md', readme)
+    preserve_write(directory / 'TESTING.md', testing)
+
+
+def write_assembly(scene, pieces):
+    title = scene['title']
+    preservation_reference = ('[current native-slip preservation report](evidence/native-slip-preservation.json)'
+                              if (ASSEMBLY / 'evidence/native-slip-preservation.json').is_file()
+                              else 'current native-slip preservation report (not yet present)')
+    rows, placements = [], []
+    for pose in scene['placements']:
+        p = pieces[pose['piece_id']]
+        path = '../../00_pieces/' + p['id']
+        rows.append(f'| [![{p["name"]}: angled view]({path}/previews/preview-thumb.png)]({path}/previews/preview.png)<br>[Top view]({path}/previews/preview-top.png) | **[{p["name"]}]({path}/README.md)**<br>`{p["id"]}` | {pose["instance_id"]} | 1 | {len(p["cells"])} |')
+        x, y = pose['display_origin_tiles_en']
+        placements.append(f'| {pose["instance_id"]} | {p["name"]} | X{x}, Y{y} | 0° | {display_cells(p, pose)} | {details(p)[2]} |')
+    readme = metadata(title, 'Place fifteen functional modules forming a close parallel double-decker diamond in 31 occupied tiles.', 'players', 'guide') + f'''# {title}
+
+[1. Views](#1-views) · [2. Pieces](#2-pieces) · [3. Placements](#3-placements) · [4. Connection matrix](#4-connection-matrix) · [Testing ↗ (separate document)](TESTING.md)
+
+This modular blueprint crosses a diagonal ground Avenue with a completely straight NAM double-decker RHW-4 highway. The lower deck is 7.5 m above ground and carries traffic southwest; the upper deck is 15 m high and carries traffic northeast. Each deck retains its two through lanes. Four 6 m-wide elevated ramps move sideways at deck height, run close and parallel to the highway, descend or climb, and meet the Avenue through separate 90° right-turn terminals. Each ground terminal keeps the 6 m join to its grade, narrows smoothly to **3.5 m over 3 m**, and remains narrow through the turn into its Avenue carriageway.
+
+The kit uses **15 reusable types, 15 placements, and 31 occupied tiles inside an 8 × 8-tile rectangle**, or **128 × 128 m**. Each parallel ramp centre is 12 m from the highway axis, leaving a **1 m road-edge gap** between its 3 m half-width and the native highway's 8 m half-width. The drawing retains X0–X9 and Y0–Y9 from the earlier blueprint; this smaller layout occupies X1–X8 and Y1–Y8, without resetting the reference grid. Outside approach roads are additional to the 31 core tiles.
+
+The highway shoulders now provide longer traffic slip lanes and matching white markings within that same footprint. Read from a highway through lane toward its ramp: the **lower deck uses an 8 m smooth sideways taper plus 4 m straight shoulder**, or **12 m**; the **upper deck uses a 5 m taper plus 1 m straight shoulder**, or **6 m**. An on-ramp traverses that profile in reverse. The lower access routes start 6.788225 m farther upstream in already owned highway cells. The upper access routes retain their previous outer ports because their existing owned cells provide less shoulder distance; making them equally long would need a larger traffic footprint. These lengths are measured along the straight highway axis and describe only the shoulder treatment, before the separately owned curved departure.
+
+One Highways-menu assembly button cycles through the components: **Tab** moves forward, **Shift+Tab** moves backward, and **each click places one component**. This is a fixed-height experimental kit; source compilation, installation, and observed game behaviour are separate stages recorded in [TESTING.md](TESTING.md).
+
+**Adaptive sidewalks are implemented on all nine Avenue tiles**, owned by P01, P02, and P03. The game can select its native pavement appearance in response to nearby development, while attached rotating models retain the highway and ramps above it. Connecting an Avenue alone does not force the developed sidewalk appearance. This assembly has no new confirmed game observations; its [resource mechanism and exact limits](TESTING.md#3-software-checks) are documented separately from the older successful adaptive probe.
+
+| Ramp | Traffic arrives from | Traffic leaves towards |
+| --- | --- | --- |
+| Lower off-ramp | Northeast highway approach, lower deck | Northwest Avenue arm |
+| Lower on-ramp | Northwest Avenue arm | Southwest highway arm, lower deck |
+| Upper off-ramp | Southwest highway approach, upper deck | Southeast Avenue arm |
+| Upper on-ramp | Southeast Avenue arm | Northeast highway arm, upper deck |
+
+Ramp traffic uses only the adjacent Avenue carriageway, meaning the lanes carrying traffic in one direction. There is no turn across the opposing carriageway. The Avenue remains two-way, with its native pedestrian routes retained. Each ramp driveway still crosses the pedestrian route beside its own carriageway; the narrower mouth exposes more native ground artwork beside that crossing, rather than drawing a fixed sidewalk over the ramp asphalt.
+
+## 1. Views
+
+These six canonical pictures follow the HSR trumpet's exact order: clean top, clean southeast, named top, named southeast, named northwest, and construction overview. P01–P15 identify the same placements in every named picture; full menu names, colours, badges, and leaders retain that mapping. X increases east/right, Y increases north/up, and one tile is 16 × 16 m.
+
+![Clean north-up view of the close parallel diamond](previews/overview-top.png)
+
+![Clean southeast view showing both highway decks and the close parallel ramps](previews/preview.png)
+
+![Named north-up view identifying all fifteen placements](previews/named-top.png)
+
+![Named southeast view with the same fifteen placements](previews/named-southeast.png)
+
+![Named northwest view of the fifteen components from the opposite side](previews/named-northwest.png)
+
+![Construction overview showing translucent ownership over the actual top-view models, with distinct model outlines](previews/tile-ownership.png)
+
+The construction view places translucent ownership colours over the actual compiled top view. Thick boundaries show the city squares occupied by each component. Separate coloured outlines follow its real model projection, including parts drawn over another component's tile. This **model overhang** does not create a second owner or a second traffic resource in that square. It also does not establish vertical clearance by itself.
+
+The [implemented atomization drawing](previews/parallel-atomization.png) shows the saved traffic lines, structural obstacles, ownership borders, and selected functional cuts separately. The curved high departures belong to P08–P11, the straight graded ramp models to P12–P15, and the ground right turns to P02/P03. The native highway remains straight. Whole-tile traffic ownership requires native highway PATH fragments inside the grade components and small outside-deck upper-turn fragments inside P01; those necessary services cannot be replaced by an unchanged generic highway tile.
+
+## 2. Pieces
+
+Each visible thumbnail opens that type's full angled picture; **Top view** opens its north-up view. Standalone pictures show the authored 0° orientation. Every row is used once in this layout, and the table order is the assembly button's forward cycle.
+
+| Standalone angled picture | Exact menu name and permanent piece ID | Placement | Quantity | Occupied tiles |
+| --- | --- | --- | ---: | ---: |
+{chr(10).join(rows)}
+
+A **slip lane** is the auxiliary lane between a highway through lane and a ramp. A **lateral departure** is the flat curved section moving that ramp sideways. A **grade** is height change divided by horizontal distance: 20% means a 2 m change over 10 m horizontally. The grade modules are fixed transitions from 7.5 m or 15 m to ground, with approximately 17.91% lower and 28.20% upper peak slopes; they cannot be repeated indefinitely to choose arbitrary heights. Each R6 terminal turn has a 6 m horizontal centreline radius. These compressed experimental dimensions are not real-road design standards.
+
+Each new straight auxiliary-lane centre sits 5.5 m from the highway axis, within the native deck. Its checked car corridor is 2.5 m wide. The outer edge of that corridor lies 6.75 m from the axis, leaving **0.421875 m** to the native barrier foot at 7.171875 m. This is a corridor-to-barrier measurement on the straight shoulder section, rather than an added pavement width or a claim about real expressway standards. The existing physical barrier openings and separately placed ramp models stay in place.
+
+Only P02 and P03 have the revised narrow ground mouths. Their asphalt changes from 6 m at the grade join to 3.5 m after 3 m, then remains 3.5 m through the turn and its Avenue joining collar. The checked car corridor is 2.5 m wide, leaving 0.5 m of asphalt on each side at the narrowest section. Where a ramp runs beside the Avenue pedestrian centreline, the asphalt edge remains approximately 1.149 m away. That is a route-centreline clearance, not a measured sidewalk width; the actual driveway crossings are separate.
+
+## 3. Placements
+
+Prepare a flat disposable test area before following this reference plan. Choose an empty city square southwest of the junction as the picture’s **X0, Y0** square. Count city-tile steps right for X and up for Y; for example, P01’s X4, Y5 reference is four steps right and five steps up from that chosen square. These are blueprint coordinates, not coordinates displayed by the game. The 8 × 8 core uses the positions below; leave additional room outside its Avenue and highway ends for approach tests. All placements use the authored **0°** orientation. **Home** and **End** rotate the selected component, while **Tab** and **Shift+Tab** choose a different component. Match the actual occupied preview squares, especially where the construction reference lies in an empty corner. The software reference does not establish an observed mouse-click anchor for the new pieces.
+
+1. Click **Transportation → Highways**, and select **{MENU}**. Press **Tab** once from P01 to P02, and place **P02** at **X3, Y6**. Press **Shift+Tab** to return to P01, and place **P01** at **X4, Y5**. Press **Tab** twice to select P03, and place **P03** at **X5, Y4**. This sequence leaves each adaptive component's unused helper corner clear during its first placement; occupied-neighbour handling is a separate game test.
+2. Cycle forward to P04–P07, and place the four straight slip-lane sections at their table positions. Their 2 × 2 bounding squares contain only two diagonal occupied cells; the reference corner itself is empty.
+3. Place P08–P11, the four separate curved high departures. A departure can share a reference coordinate with a slip section while owning a different square. The preview's actual occupied cells decide ownership.
+4. Place P12–P15, the four parallel grade sections. Their physical models extend into adjoining components' tiles, but their occupied cells do not overlap. Inspect the layered construction picture before placing any replacement.
+5. Select **Transportation → Roads → Avenue**, and extend the exposed northwest and southeast Avenue ends outward. Start at an outside end, and drag away from the core. For the first test, leave the centre as placed; drawing a new Avenue through the whole core and placement over a prebuilt Avenue are separate tests. Check native DD RHW-4 approaches against every required deck boundary before adding the highway ends; matching only one level is insufficient.
+
+| Placement | Exact component name | Construction reference | Rotation | Actual occupied cells | Physical levels |
+| --- | --- | --- | --- | --- | --- |
+{chr(10).join(placements)}
+
+The three adaptive 2 × 2 components use their unused local **[1,1]** corner as a temporary Road placement handle. NAM's supported DLL removes that helper; it is not permanent construction ownership. All nine Avenue cells already contain the native texture variants, rules, pedestrian routes, and rotating model attachments needed for adaptive ground artwork. The native Avenue texture can respond to surrounding development, while the retained models supply the highway and ramp geometry. Visible sidewalks, pedestrian routes, Avenue redraw, and moving cars are distinct checks; none is approved merely because another one works. See [the exact game test sequence](TESTING.md#4-game-checks).
+
+{block('ASSEMBLY CONNECTION MATRIX')}
+'''
+    # Preserve the generated chapter heading if already produced; otherwise
+    # ensure the scaffold still has its required fourth chapter.
+    readme = readme.replace(block('ASSEMBLY CONNECTION MATRIX'), '<!-- BEGIN ASSEMBLY CONNECTION MATRIX -->\n\n## 4. Connection matrix\n\nThe generated matrix records exact saved journeys and separate game observations.\n\n<!-- END ASSEMBLY CONNECTION MATRIX -->')
+    testing = metadata('Testing: ' + title, 'Verify the exact compact parallel diamond while retaining unverified human game observations.') + f'''# Testing: {title}
+
+<!-- ASSEMBLY TESTING LAYOUT: 1 -->
+
+[Assembly overview ↗ (README)](README.md) · {NAV_TEST}
+
+## 1. Test scope
+
+The registered assembly **{SUBJECT}** places fifteen distinct functional types once each. The construction union contains **31 disjoint city tiles inside 8 × 8**, with the exact poses in [assembly.jsonc](assembly.jsonc). Required software coverage includes complete native L1/L2 through traffic, two-way Avenue and pedestrian routes, all four permitted right-turn access journeys, forbidden cross-Avenue transfers, 6 m elevated ramp pavement, the terminal taper from 6 m to 3.5 m, 1 m undersides, native Jersey barrier profiles, physical joining sections, eight piers, texture mapping, all nine adaptive Avenue cells, and all four proper rotations. Every PATH, permanent identifier, owned cell, R6 turn centreline, and 6 m grade interface is retained by this ground-mouth revision.
+
+{block('CONNECTIONS')}
+
+## 2. Test setup
+
+Use **Windows SimCity 4 with NAM 50 and right-hand traffic**, including supported Wine or CrossOver execution. Native macOS SimCity 4 is outside this DLL-dependent setup. Keep the exact audited DD RHW, MIS, controller, preview donor, and adaptive Avenue capture inputs specified in the [build guide](../../../../docs/BUILD_AND_INSTALL.md). Private paths and captured game files remain local; no native texture images are supplied by these public sources.
+
+A **DAT** is a game-resource archive. An **S3D** resource contains an indexed visible model, and a **PATH** resource contains directed traffic data. Car transport is class 1, and pedestrian transport is class 2. A native Avenue texture supplies visible ground appearance; a rotated retained model supplies elevated highway and ramp geometry. Neither appearance nor a preview establishes a working traffic connection.
+
+**Adaptive ground** means that the visible Avenue pavement can follow the game's native development-dependent appearance rules. A **prop** is an attached three-dimensional model, and a **T21** is the network-tile attachment record that places it. In this implementation, native ground textures supply the changing pavement; rotating props supply the retained highway and ramp geometry. A pedestrian PATH supplies the possible walking route. These are three separate resources, and all three are implemented for their declared roles.
+
+For a game test, install only the matching verified selection using the shared build/install procedure, with SimCity 4 fully closed during file replacement. The final component-cycle menu is prepared separately from the ordinary fifteen-piece build. Compiling, verifying, rendering, and packaging do not install files. Preserve the existing R40/compact installations or saved cities independently rather than treating the new identifiers as automatic replacements.
+
+1. Open a disposable city, pause the simulation, and flatten enough land for the 8 × 8 core plus outside approaches. A 14 × 14 flat test area gives three extra tiles on each side; those approach reserves are not part of the 31-cell core count.
+2. Use a north-up camera for the first layout. The reference picture labels tile centres **X0–X9** eastward and **Y0–Y9** northward. The occupied core lies at **X1–X8/Y1–Y8**. A 16 m tile's sides lie 8 m from its centre; keep this display grid distinct from the source's columns-east/rows-south coordinates.
+3. Follow the [complete placement table](README.md#3-placements), using P02, P01, and P03 first, then P04–P15. The temporary local [1,1] handles are clear in that order. Check the exact occupied squares before every click; two different model silhouettes may overlap without sharing a construction owner.
+4. Extend normal diagonal Avenue outward from the northwest and southeast mouths. Match every L1/L2 native DD RHW-4 boundary before testing external highway approaches. The exact native starter/drag sequence and external in-game compatibility still require observation; do not infer them from a software image or one matching lane.
+5. Save this fresh reference layout before changing pavement development, testing redraw, or demolishing components. Use separate copies for each destructive test so failures remain reproducible.
+
+## 3. Software checks
+
+Run these commands from the repository directory containing `custom-pieces/`. The first command inspects the existing ordinary build; the second independently checks the saved complete layout, and the third checks current documentation. A missing build or report is not a pass. Successful software checks never record a human game observation.
+
+```sh
+python3 -B custom-pieces/scp.py verify --output {PARTS}
+python3 -B custom-pieces/domains/highway/tools/verify_parallel_assembly.py --build {PARTS} --output custom-pieces/domains/highway/01_assemblies/{SUBJECT}/evidence/saved-assembly.json
+python3 -B custom-pieces/scp.py docs-check --assembly {SUBJECT}
+python3 -B tools/run_tests.py
+```
+
+The current slip-lane revision targets the distinct measured build `{BUILD_NAME}`. The [complete saved-assembly report](evidence/saved-assembly.json) identifies its exact source manifest, decoded traffic-fragment count, and actual pass fields; match that source to the current revision before using its result. The check covers the 31-cell union, every saved traffic fragment, all four proper rotations, continuous car support, each authored pavement width, eight functional physical cuts, and all eight piers. A report for `ddrhw-parallel-diamond-parts-01` or `ddrhw-parallel-diamond-pedestrian-mouths-01` establishes only its own earlier geometry. Naming the new target does not assert that its verification has already passed.
+
+The shoulder revision retains the physical ramp meshes and every route point outside the native 8 m deck edge. Within the deck, each lower access route starts 6.788225 m farther upstream, tapers smoothly sideways over 8 m, and runs straight along the shoulder for 4 m. Each upper access route keeps its old outer port, tapers over 5 m, and runs straight for 1 m. These are 12 m lower and 6 m upper shoulder sections, measured along the straight highway axis from the through lane toward the ramp; an on-ramp travels through them in reverse. The remaining smooth join meets the retained outside-deck route with its previous direction. The upper owned-cell arrangement cannot supply the lower 12 m profile without adding traffic cells, so the shorter upper profile preserves the approved 31-cell/8 × 8 footprint. Both auxiliary centres are 5.5 m from the highway axis. A checked 2.5 m car corridor reaches 6.75 m from that axis and leaves 0.421875 m to the native barrier foot at 7.171875 m on the straight section. The white markings follow the revised routes; the native through routes, physical openings, separate departures, grades, and narrower ground mouths remain in their previous positions.
+
+The [historical visual reassignment proof](evidence/native-visual-transfer.json) covers the earlier 106,350-triangle highway/paint/pier reassignment, with its original material, texture-coordinate, winding, and approximately 0.548 micrometre coordinate-drift results. A micrometre is one millionth of a metre. Its older manifest identifies that historical scope; it does not establish texture-coordinate preservation for the later shoulder revision, which intentionally changes the native tyre-wear phase. The {preservation_reference} is the separate evidence for this revision: unchanged non-DD model bodies, native texture coordinates outside the allowed shoulder mask, strict forward coverage within 2 micrometres, and source-certified positive fragments filling an earlier native-coverage hole. Each such fill must lie on its independently identified original raw native face; it cannot be justified by a general increase in tolerance. Match the report's exact manifest and actual pass fields before claiming that result. The [native highway/ramp texture-seam check](evidence/native-wheeltrack-seam-uv.json) separately records its own twenty saved joins and phase-reset negative control. Neither preservation evidence nor a software render supplies a human game pass.
+
+Texture coordinates, labelled U and V, select a position within an existing native texture image. The owning verifier reconstructs the exact approved route positions independently of the writer, checks every emitted native/access fragment, and tests the complete layout through four proper rotations. Actual indexed triangles establish continuous car support and intrusion checks, each section's authored pavement width, sampled undersides and barrier profiles, and the eight separately owned physical cuts. Bounded native float32 edge certificates address encoding residuals without broadening the road or moving a PATH. At an external native entrance collar, part of the native road width can lie beyond the owned core and must be supplied by the adjoining highway; the report identifies those bounded omissions while retaining the applicable authored width at every ramp section. Material and texture checks inspect saved flags and UV coordinates, not a renderer's colour choices. Structural load capacity and filtered game appearance remain outside these software checks.
+
+The visible terminal asphalt is 6 m wide at the unchanged grade joining section and narrows smoothly to 3.5 m over the first 3 m toward the Avenue. It stays 3.5 m through the remainder of the R6 quarter-turn and its native-lane joining collar. The ramp centreline crosses the retained pedestrian-route centreline 3.258752 m from that grade join, approximately 0.259 m after the taper ends. This measures the two route centrelines, not the first asphalt contact: the pavement footprint already crosses the pedestrian route while the taper narrows. The checked car corridor is 2.5 m wide; the narrow asphalt leaves 0.5 m on either side of that corridor. Where the terminal road and an Avenue pedestrian centreline run alongside each other, the asphalt edge is approximately 1.149 m away. This last value excludes the driveway crossings and does not measure a complete sidewalk's width.
+
+The adaptive-sidewalk resource implementation covers **P01, P02, and P03, with three Avenue cells each**. Each resolved native Avenue tile receives all four captured appearance variants at all five zoom levels. The ground Avenue meshes are removed from its attached prop, allowing those native textures to remain visible. The prop retains the highway, barriers, supports, and terminal asphalt that belong above the ground; its full-geometry rotation setting and compensated tile pose keep that model aligned as the construction rotates. The retained directed car and pedestrian PATHs are bound separately to the resolved Avenue tiles. The native rule flags, T21 selectors, and temporary local [1,1] construction helper complete that resource chain. This is implemented resource behaviour, rather than an unimplemented sidewalk placeholder.
+
+The game chooses a pavement variant according to its native surroundings and development rules; connecting ordinary Avenue alone does not force a developed sidewalk variant. The ground-mouth revision preserves the nine native texture families and the rotating-prop mechanism, and adds no fixed sidewalk slab. A driveway necessarily cuts across the retained pedestrian route before joining the adjacent carriageway. The native sidewalk can remain visible beside that driveway, while the crossing itself remains road asphalt. Actual sidewalk appearance, moving pedestrians through the crossing, overlay rotation, redraw, and persistence still require observations of this new assembly. A sidewalk replacement mod that changes only the original native texture IDs does not automatically replace the copied custom IDs; its compatibility needs its own check.
+
+A chord is the straight segment between two consecutive traffic-route points. These PATHs store coordinates to nine decimal places, while the shared connection graph samples them to six decimal places. Rounding a short segment can noticeably change its calculated direction. The reviewed `tangent` therefore retains the independently approved source-chord direction; `sampled_tangent` and the signed grade retain the actual shared-engine measurements separately. The [accepted connector measurements](checks/accepted-connector-contracts.jsonc) record the current incident full-precision saved chords and their individual nine-decimal coordinate-rounding bounds. Their exact counts and largest errors belong to the current accepted record; the earlier mouth revision's values do not establish this changed shoulder profile. No shared joining tolerance is relaxed to make the new access routes pass.
+
+Regenerate the supplementary implemented drawing only from a matching saved build, after its checks pass:
+
+```sh
+python3 -B custom-pieces/domains/highway/tools/draw_parallel_atomization.py --build {PARTS}
+```
+
+The drawing's [PNG](previews/parallel-atomization.png) and [resource provenance](evidence/parallel-atomization.json) retain actual traffic lines, ownership, model projections, structural obstacles, and selected physical cuts. The optional editable `previews/parallel-atomization.svg` is available in a Git checkout; portable source archives include the PNG and drawing generator under the existing export policy. They supplement the canonical six views rather than replacing them. The exact 15-type decomposition is crossing 3 tiles, terminals 3 tiles each, slip sections 2 tiles each, lateral departures 1 tile each, lower grades 2 tiles each, and upper grades 3 tiles each: **3 + 6 + 8 + 4 + 4 + 6 = 31**.
+
+The assembly-cycle layout is **parallel-diagonal-diamond**. Prepare its current menu candidate from the measured `{PARTS}` resources and the matching final documentation, following [Prepare the assembly menu](../../../../docs/BUILD_AND_INSTALL.md#8-prepare-the-assembly-menu). The first revision's `ddrhw-parallel-diamond-parts-01`, `ddrhw-parallel-diamond-parts-final`, and `ddrhw-parallel-diamond-menu-final` outputs, and the later `ddrhw-parallel-diamond-pedestrian-mouths-01` build, retain their original geometry and provenance. Their names do not identify this longer-slip-lane revision. Building the matching menu package remains separate from installation and game observation.
+
+## 4. Game checks
+
+All game observations below are unverified for this new assembly until the user confirms their exact cases. The older adaptive-sidewalk experiment established its own recorded observations; it does not approve this kit's new placement bounds, new terminal geometry, or new external connections.
+
+1. **Menu and placement:** find **{MENU}** in **Transportation → Highways**. Cycle all fifteen exact names forward with Tab and backward with Shift+Tab. Place each component once using the table, beginning P02 → P01 → P03, and confirm that no temporary Road helper remains.
+2. **Occupied neighbours and redraw:** in a separate saved copy, try P02 after P01 has already occupied its helper corner, try the other adaptive owners beside existing pieces, try placement over an already built normal Avenue, and try dragging Avenue through the completed ground corridor. Record each outcome separately; do not count the conservative first sequence as proof of these other behaviours.
+3. **Orientation:** repeat fresh placement in all four distinct proper rotations. Confirm that the highway remains perpendicular to the Avenue in each one. Rotate the camera separately after placement, and inspect both sides of the highway, each ramp opening, the longer lower and shorter upper shoulder markings, the small right turns, the eight piers, and all shadows.
+4. **Adaptive sidewalks and driveways:** first inspect the newly placed Avenue on undeveloped ground. Connect Avenue outside both ends, develop nearby zones until the ordinary adjoining Avenue changes its native pavement variant, and compare P01, P02, and P03. Connecting Avenue alone is not the appearance-change trigger. Check that the highway and ramp overlays remain at the correct angle while the visible ground pavement updates. Inspect the four narrow ground mouths from above: each should keep its 6 m grade join, narrow to 3.5 m, and expose native ground beside its turn. Inspect the actual pedestrian driveway crossings separately; road asphalt at those crossings is part of this design, rather than a promise of an uninterrupted pavement slab. Record each visible appearance separately from pedestrian Route Query and visible walking.
+5. **Through journeys:** provide matching outside approaches and actual origins/destinations. Check Route Query and visible travel separately for southwest → northeast on L2, northeast → southwest on L1, northwest → southeast on the Avenue, southeast → northwest on the Avenue, and the two pedestrian Avenue directions.
+6. **Right-turn ramp journeys:** test northeast highway → northwest Avenue through the lower exit; northwest Avenue → southwest highway through the lower entry; southwest highway → southeast Avenue through the upper exit; and southeast Avenue → northeast highway through the upper entry. Record the query and observed moving car for every route.
+7. **Forbidden transfers:** confirm that northeast highway → southeast Avenue, southeast Avenue → southwest highway, southwest highway → northwest Avenue, and northwest Avenue → northeast highway are unavailable. Check that no upper/lower-deck transfer or car/pedestrian transport change appears merely because two models overlap.
+8. **Persistence and demolition:** save, quit completely, reload, and repeat representative traffic and pavement checks. In a separate copy, demolish each component, inspect the neighbouring roads for leftover models or removed Avenue cells, replace it, and save/reload again.
+
+Use [the shared observation workflow](../../../../docs/TESTING.md) to record the exact assembly **{SUBJECT}**, its current cases, and the matching source/environment. A visible sidewalk is not a pedestrian-travel pass, Route Query is not visible car travel, and a rotation of the camera is not fresh placement in another orientation.
+
+## 5. Results and known issues
+
+Current generated records below retain exact evidence and observation states. No new human game pass is asserted. Resource compilation, saved route verification, actual model support, source-bound connector cards, and software renders have distinct scopes; none establishes native game placement, sidewalk appearance, external draggable connections, or moving traffic.
+
+The geometry is deliberately compressed. Each high departure moves sideways over 17 m along the highway at full deck height; descent starts only when its complete 6 m width lies outside the native deck. The straight grades are 44.872251 m lower and 56.185959 m upper, with approximately 17.911624% and 28.202932% peak source slopes, respectively. The experimental limit is 30%. The R6 terminals are custom geometry, not a claim that an existing NAM ramp has those dimensions. Fixed grade modules do not acquire arbitrary height offsets or adapt to sloping terrain.
+
+The revised shoulder sections are also constrained by this footprint. Measured along the straight highway axis, lower routes have 8 m of sideways taper and 4 m straight at the shoulder, while upper routes have 5 m and 1 m. The straight auxiliary centre is 5.5 m from the highway axis. Its 0.421875 m checked car-corridor clearance to the native barrier foot is a specific geometric measurement, not a general vehicle-size, speed, or real-road safety guarantee. The roadway beyond the native deck edge, physical barrier openings, and separate ramp modules are retained. The lower upstream extension uses an already owned highway tile; the upper section cannot be lengthened to match without expanding the traffic footprint.
+
+The three-cell crossing is the smallest coherent mixed-network owner in this layout, but it also stores upper ground-turn fragments crossing those same city tiles. The straight grade owners similarly retain PATHs in native highway half-cells traversed by outside-deck access traffic. The visible native halves, their white paint, and their centre piers belong to the adjacent slip-lane models by overhang, so the grade models remain pure ramps and the crossing/slip models form the complete straight highway stem. Consequently, none of the four ordinary highway halves from the wider study is an unchanged full-cell substitute here. Every saved traffic fragment retains one city-tile owner, while each complete curved departure or straight grade model belongs to its functional component and can overhang that boundary.
+
+All nine Avenue cells have the complete native adaptive texture variants, retained car and pedestrian paths, rotating model props, and rule bindings. Each sparse 2 × 2 adaptive owner has a removable helper at local [1,1]. The narrower terminal overlays leave more native ground visible beside the driveway, while its actual pedestrian crossing remains asphalt. The pinned DLL's helper removal does not itself prove that the game will accept every occupied-neighbour cursor situation. Avenue texture variants, redraw, overlay rotation, pedestrians, car transfer between resolved Avenue and fixed highway networks, demolition, and persistence need the focused game tests above. No successful observation of the older adaptive probe is promoted to a pass for this assembly.
+
+{block('MANUAL CHECKS')}
+
+## 6. Design history
+
+The human-approved [source proposal](../ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/TESTING.md#32-close-parallel-ramps-and-perpendicular-avenue-approaches) moved the ramps close and parallel to the highway, required perpendicular Avenue approaches, and selected the inward upper sockets. This new assembly implements that approved geometry while retaining the earlier [R40/compact modular blueprint](../ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/README.md) and its frozen evidence unchanged.
+
+The new split follows real functions: central crossing, straight slip sections, flat curved departures, straight grades, and ground right-turn terminals. Minimum construction ownership remains constrained by every complete traffic cell, not only the visible road centreline. The implementation and the [saved-model atomization drawing](previews/parallel-atomization.png) preserve that distinction for future replacement ramps and fixed-height profiles.
+
+The earlier ground-mouth revision narrowed only the terminal asphalt from 6 m to 3.5 m after a 3 m smooth taper, preserving the 6 m grade interfaces, R6 route centrelines, and its traffic PATHs. The later slip-lane revision keeps those mouths and changes the native-shoulder access PATHs and white markings: lower shoulder sections are 12 m, upper sections are 6 m, and only the lower high ports move upstream. All fifteen permanent identifiers and the 31-cell/8 × 8 ownership remain unchanged. The original measured `parts-01` and `pedestrian-mouths-01` build identities keep their earlier scopes. `{BUILD_NAME}` measures this revision independently; its own source-bound reports and refreshed artwork are required, and no human game result is inherited.
+'''
+    preserve_write(ASSEMBLY / 'README.md', readme)
+    preserve_write(ASSEMBLY / 'TESTING.md', testing)
+
+
+def main():
+    scene = jsonc.load(ASSEMBLY / 'assembly.jsonc')
+    pieces = {}
+    for pose in scene['placements']:
+        path = ROOT / 'domains/highway/00_pieces' / pose['piece_id'] / 'piece.jsonc'
+        piece = jsonc.load(path)
+        pieces[piece['id']] = piece
+        write_piece(piece, pose)
+    write_assembly(scene, pieces)
+    print(json.dumps({'piece_guides': len(pieces) * 2, 'assembly_guides': 2,
+                      'generated_blocks_preserved': True, 'manual_observations_changed': False}))
+
+
+if __name__ == '__main__':
+    main()

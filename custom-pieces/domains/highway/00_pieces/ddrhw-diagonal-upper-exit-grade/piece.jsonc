@@ -1,0 +1,107 @@
+// title: "Piece definition: DD RHW-4 — Compact Upper Diagonal Exit Grade"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Compact Upper Diagonal Exit Grade.",
+  "schema_version": 1,
+  "id": "ddrhw-diagonal-upper-exit-grade",
+  "domain": "highway",
+  "name": "DD RHW-4 \u2014 Compact Upper Diagonal Exit Grade",
+  "description": "Reusable upper exit grade component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+  "recipe": "highway_ddrhw_compact_upper_exit_grade",
+  "geometry_key": "upper-exit-grade",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f838",
+  "tile_ids": [
+    "7f595100",
+    "7f595010",
+    "7f595110",
+    "7f595020"
+  ],
+  "preview_id": "7f595ff5",
+  "effect_name": "preview_scp_hw_f838_____001",
+  "footprint": [
+    2,
+    3
+  ],
+  "cells": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      0,
+      2
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "mis"
+  ],
+  "menu": {
+    "id": "6a47f838",
+    "order": "ffffff38",
+    "style": "ddrhw-ramp"
+  },
+  "engineering": {
+    "max_grade_percent": 30.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "pavement_path_offset_m": 0.0,
+    "model_only_cells": []
+  },
+  "shadow_mode": "generated",
+  "shadow_mappings": [
+    {
+      "tile": "7f595100",
+      "source": "7f595100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f595010",
+      "source": "7f595010",
+      "rotation": 0
+    },
+    {
+      "tile": "7f595110",
+      "source": "7f595110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f595020",
+      "source": "7f595020",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+    "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+    "redistribution": "permission-pending",
+    "partition_review": "Reviewed one-diagonal-tile ramp extension and right-turn-only access. Retains piece, puzzle, menu, preview, and reserved resource-block identities; local model slots follow the revised AutoTileBase grid. Native MIS materials replace the flat atlas."
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}

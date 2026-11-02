@@ -1,0 +1,66 @@
+// title: "Highway assembly menu layouts"
+// summary: "Define independent diamond component cycles and the shared parallel-alignment submenu."
+//
+// Used when: scp.py assembly-menu prepares this assembly from a verified normal build.
+// Read by: scp.menu_experiment.build_assembly_menu().
+// Updated by: domains/highway/tools/register_highway_pieces.py after reviewing module membership.
+// Affects: Component cycling order, assembly menu buttons, and the parallel-alignment submenu; geometry and game observations are separate.
+{
+  "schema_version": 1,
+  "purpose": "One button per assembly cycles through its separately placed component types; the parallel alignments share a Highways submenu.",
+  "layouts": {
+    "compact-diagonal-diamond": {
+      "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-diamond",
+      "member_order": "first-use-in-assembly",
+      "cycle_button": {
+        "id": "6a47fee0",
+        "order": "fffffee0",
+        "title": "SCP | ASSEMBLY | DD RHW-4 \u2014 Compact Diagonal Avenue Diamond",
+        "description": "Tab and Shift+Tab select one reusable component; Home and End rotate it. Each click places one component. Follow the assembly placement table."
+      }
+    },
+    "modular-diagonal-diamond": {
+      "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond",
+      "member_order": "first-use-in-assembly",
+      "cycle_button": {
+        "id": "6a47fee1",
+        "order": "fffffee1",
+        "title": "SCP | ASSEMBLY | DD RHW-4 \u2014 Modular Diagonal Avenue Diamond",
+        "description": "Start with the highway stamp. Tab and Shift+Tab select four separate ramps and two separate Avenue terminals; Home and End rotate each part. Each click places one component. Retained compact alternatives have separate icons."
+      }
+    },
+    "parallel-diagonal-diamond": {
+      "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond",
+      "member_order": "first-use-in-assembly",
+      "cycle_button": {
+        "id": "6a47fee2",
+        "order": "fffffee2",
+        "title": "SCP | ASSEMBLY | DD RHW-4 \u2014 Parallel Diagonal Avenue Diamond — Alignment A",
+        "variant_label": "Alignment A",
+        "description": "Tab and Shift+Tab select the crossing, Avenue terminals, slip lanes, lateral departures, and straight grades; Home and End rotate each part. Each click places one component. Follow the fifteen-component placement table."
+      },
+      "cycle_submenu": {
+        "id": "6a47fee4",
+        "order": "fffffee2",
+        "title": "SCP | DD RHW-4 — Parallel Diagonal Avenue Diamond",
+        "description": "Choose Alignment A or Alignment B for the two diagonal-grid positions. Each alignment has its own isolated component cycle."
+      }
+    },
+    "parallel-diagonal-diamond-alignment-b": {
+      "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b",
+      "member_order": "first-use-in-assembly",
+      "cycle_button": {
+        "id": "6a47fee3",
+        "order": "fffffee3",
+        "title": "SCP | ASSEMBLY | DD RHW-4 — Parallel Diagonal Avenue Diamond — Alignment B",
+        "description": "Tab and Shift+Tab select only the Alignment B crossing, Avenue terminals, slip lanes, lateral departures, and straight grades; Home and End rotate each part. Each click places one component. Follow the Alignment B placement table."
+      },
+      "cycle_submenu": {
+        "id": "6a47fee4",
+        "order": "fffffee2",
+        "title": "SCP | DD RHW-4 — Parallel Diagonal Avenue Diamond",
+        "description": "Choose Alignment A or Alignment B for the two diagonal-grid positions. Each alignment has its own isolated component cycle."
+      }
+    }
+  }
+}

@@ -252,6 +252,28 @@ class IntrinsicConnectivityTests(unittest.TestCase):
         result = assembly_connectivity('graded', scene, records, {'first': first, 'last': last})
         self.assertEqual(len(result['encoded_route_joins']), 2)
 
+    def test_saved_sample_grade_rounding_joins_without_accepting_a_real_grade_step(self):
+        first, a = paired('first')
+        last, b = paired('last')
+        scene = {'placements': [{'piece_id': 'first', 'origin_m': [0., 0.]},
+                                {'piece_id': 'last', 'origin_m': [0., 16.]}]}
+        # The extended highway's saved curve has grades 0.296093548 and
+        # 0.296123295 on the two sides of one exactly coincident tile cut.
+        # Their difference exceeds positional EPS, but is only 0.002975
+        # percentage point and does not establish a different road slope.
+        rounded = deepcopy(b)
+        for port in rounded['ports']:
+            port['grade'] += 0.296123295 - 0.296093548
+        records = {'first': a, 'last': rounded}
+        result = assembly_connectivity('rounded-grade', scene, records, {'first': first, 'last': last})
+        self.assertEqual(len(result['encoded_route_joins']), 2)
+        self.assertEqual(len(result['ports']), 4)
+        for port in rounded['ports']:
+            port['grade'] += .0002
+        result = assembly_connectivity('changed-grade', scene, records, {'first': first, 'last': last})
+        self.assertEqual(result['encoded_route_joins'], [])
+        self.assertEqual(len(result['ports']), 8)
+
     def test_owned_cells_source_edges_and_lattice_poses_are_checked(self):
         spec, record = paired()
         overlapping = {'placements': [{'piece_id': 'straight', 'origin_m': [0., 0.]},

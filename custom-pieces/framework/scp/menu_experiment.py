@@ -21,6 +21,7 @@ import tempfile
 from .catalog import load_catalog, number, safe_relative
 from .dbpf import exemplar, pack_dbpf, require, tgi_string
 from .menu import MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION
+from .piece_menu_families import hidden_members
 
 
 KIND = 'assembly-parts-cycle-and-submenu-v1'
@@ -99,27 +100,36 @@ def _members(scene):
     return list(dict.fromkeys(row['piece_id'] for row in placements))
 
 
-def _layout(value):
+def _layout(value, domain='high-speed-rail'):
+    from .menu_experiment_resources import valid_menu_order
     required = {'assembly_id', 'member_order', 'cycle_button'}
-    require(isinstance(value, dict) and set(value) in (required, required | {'submenu'}),
+    require(isinstance(value, dict) and set(value) in (required, required | {'submenu'}, required | {'cycle_submenu'}),
             'Unsupported menu layout fields')
     require(isinstance(value['assembly_id'], str) and
             re.fullmatch(r'[a-z][a-z0-9-]{1,63}', value['assembly_id']), 'Invalid assembly identifier')
     require(value['member_order'] == 'first-use-in-assembly', 'Unsupported menu member order')
-    for key in (('cycle_button', 'submenu') if 'submenu' in value else ('cycle_button',)):
+    for key in ('cycle_button', *[field for field in ('submenu', 'cycle_submenu') if field in value]):
         entry = value[key]
-        require(isinstance(entry, dict) and set(entry) == {'id', 'order', 'title', 'description'},
+        fields = {'id', 'order', 'title', 'description'}
+        accepted = (fields, fields | {'variant_label'}) if key == 'cycle_button' else (fields,)
+        require(isinstance(entry, dict) and set(entry) in accepted,
                 'Menu presentation needs id, order, title, and description')
+        if 'variant_label' in entry:
+            from .assembly_presentation import validate_variant_label
+            validate_variant_label(entry['variant_label'])
         require(isinstance(entry['id'], str) and isinstance(entry['order'], str)
                 and len(entry['id']) == 8 and len(entry['order']) == 8,
                 'Menu presentation identifiers must use eight hexadecimal digits')
-        require(number(entry['id']) != 0 and 0x70000000 <= number(entry['order']) < 0x80000000,
-                'Invalid experimental Rail-menu identifier/order')
+        require(number(entry['id']) != 0 and valid_menu_order(number(entry['order']), domain),
+                'Invalid experimental domain menu identifier/order')
         require(all(isinstance(entry[field], str) and entry[field].strip()
                     and '\0' not in entry[field] for field in ('title', 'description')),
                 'Experimental menu titles and descriptions must be nonempty')
     if 'submenu' in value:
         require(value['cycle_button']['id'] != value['submenu']['id'], 'Experimental presentation IDs overlap')
+    if 'cycle_submenu' in value:
+        require(number(value['cycle_button']['id']) != number(value['cycle_submenu']['id']),
+                'Assembly cycle and submenu presentation IDs overlap')
     return deepcopy(value)
 
 
@@ -156,12 +166,22 @@ def _selected(base, scene):
 
 def _transformed(base, controller, menu, layout, scene, *, cycle_icon=None, expected_cycle_icon=None):
     from .build import RUL0, NETWORK_INI
-    from .rul0 import with_feature_sequence
+    from .piece_menu_families import with_feature_sequence_preserving_families as with_feature_sequence
     from .menu_experiment_resources import build_menu_experiment_resources
     from .verify import strict_dbpf
+    if 'variant_label' in layout['cycle_button']:
+        from .assembly_presentation import validate_cycle_title
+        validate_cycle_title(scene, layout['cycle_button'])
     pieces = _selected(base, scene)
+    from .piece_menu_families import declarations
+    alternatives = {piece['id'] for family in declarations(base['pieces']) for piece in family}
+    require(not alternatives.intersection(piece['id'] for piece in pieces),
+            'An assembly cannot consume a member of an active alternative-piece menu family')
     resources = strict_dbpf(controller)
-    require(set(resources) == {RUL0, NETWORK_INI}, 'Original controller has unexpected resources')
+    from .adaptive_network import RUL1
+    from .native_approaches import needs_rul1
+    expected_controller = {RUL0, NETWORK_INI} | ({RUL1} if needs_rul1(base['overlay']) else set())
+    require(set(resources) == expected_controller, 'Original controller has unexpected resources')
     if len(pieces) > 1:
         changed, composition = with_feature_sequence(resources[RUL0], base['overlay']['rul0'],
                                                      [number(piece['puzzle_id']) for piece in pieces])
@@ -177,9 +197,11 @@ def _transformed(base, controller, menu, layout, scene, *, cycle_icon=None, expe
 
 
 def _game_checks(pieces, *, single_button=False):
+    from .menu_experiment_resources import member_domain
+    menu_name = 'Highways' if member_domain(pieces) == 'highway' else 'Rail'
     if single_button:
         rows = [
-            {'id': 'single-assembly-entry', 'description': 'Transportation > Rail has exactly one entry for this assembly, no individual member buttons, and no assembly submenu; unrelated standalone pieces may remain.'},
+            {'id': 'single-assembly-entry', 'description': f'Transportation > {menu_name} has exactly one entry for this assembly, no individual member buttons, and no assembly submenu; unrelated standalone pieces may remain.'},
             {'id': 'first-component', 'description': 'The assembly button starts on the first listed component.'},
             {'id': 'cycle-forward', 'description': f'Tab visits all {len(pieces)} distinct component types in the listed order, then wraps.'},
             {'id': 'cycle-backward', 'description': 'Shift+Tab visits the same component types in reverse order.'},
@@ -216,19 +238,23 @@ def _game_checks(pieces, *, single_button=False):
 
 def _guide(layout, pieces):
     from .content import markdown_metadata
+    from .menu_experiment_resources import member_domain
+    highway = member_domain(pieces) == 'highway'
+    menu_name = 'Highways' if highway else 'Rail'
     if 'submenu' not in layout:
         rows = [markdown_metadata('Assembly component menu',
                 'Place reusable assembly components from one button, using Tab and Shift+Tab to change type.',
                 'Players and testers', 'guide').rstrip(), '', '# Assembly component menu', '',
                 'This assembly has one menu button. Each click places one reusable component; the button does not place the complete arrangement. The component menu presentations are replaced by this entry, while unrelated standalone piece buttons remain unchanged. Models, PATHs, shadows, and construction definitions retain their source bytes. Actual game behavior remains unverified.', '',
-                '1. Open **Transportation → Rail**.',
+                f'1. Open **Transportation → {menu_name}**.',
                 f'2. Click **{layout["cycle_button"]["title"]}**. The first component is **{pieces[0]["name"]}**.',
                 f'3. Press **Tab** to select the next of {len(pieces)} component types, or **Shift+Tab** to select the previous type. Repeated placements of one type use the same cycle entry.',
                 '4. Press **Home** or **End** to rotate the selected component. Follow the assembly placement plan, and click once to place that component.',
                 '5. Press **Escape** to cancel placement. Select the assembly button again to start on its first component.',
                 '6. Test the single entry, each type, forward and reverse cycling, rotation, cancellation, placement, and save/reload in a disposable city. Bind explicit observations to the candidate manifest and recorded game environment.', '',
                 'The menu uses native construction-family ordering and does not require Submenus DLL for this presentation. The complete original menu and controller are retained outside the installable folder as verification proof. Do not install a second controller beside an existing SCP selection; use the receipt-based installer for a complete candidate. Building and packaging do not install anything.', '',
-                'The [game-checks.json](game-checks.json) template remains unverified. Software validation does not approve menu activation, visible train operation, or the complete assembly in the game.', '',
+                ('The [game-checks.json](game-checks.json) template remains unverified. Software validation does not approve menu activation, visible vehicle operation, or the complete assembly in the game.' if highway else
+                 'The [game-checks.json](game-checks.json) template remains unverified. Software validation does not approve menu activation, visible train operation, or the complete assembly in the game.'), '',
                 '| Tab position | Component name | Permanent piece ID |', '| --- | --- | --- |']
         rows += [f'| {index} | {piece["name"]} | `{piece["id"]}` |' for index, piece in enumerate(pieces, 1)]
         return ('\n'.join(rows) + '\n').encode()
@@ -289,12 +315,21 @@ def _expected_manifest(base, layout, scene, proof, controller, menu, composition
 
 def _check_actual_resources(base_controller, base_menu, controller, menu, base, layout, pieces):
     """Inspect actual encoded facts independently of the generation functions."""
+    from .piece_menu_families import declarations
+    alternatives = {piece['id'] for family in declarations(base['pieces']) for piece in family}
+    require(not alternatives.intersection(piece['id'] for piece in pieces),
+            'An assembly cannot consume a member of an active alternative-piece menu family')
     from .build import RUL0, NETWORK_INI
     from .rul0 import ordering_span, _ring
     from .verify import strict_dbpf
     old_controller, current_controller = strict_dbpf(base_controller), strict_dbpf(controller)
-    require(set(current_controller) == set(old_controller) == {RUL0, NETWORK_INI}, 'Controller resource closure changed')
+    from .adaptive_network import RUL1
+    from .native_approaches import needs_rul1
+    expected_controller = {RUL0, NETWORK_INI} | ({RUL1} if needs_rul1(base['overlay']) else set())
+    require(set(current_controller) == set(old_controller) == expected_controller, 'Controller resource closure changed')
     require(current_controller[NETWORK_INI] == old_controller[NETWORK_INI], 'Menu experiment changed NetworkINI')
+    if RUL1 in expected_controller:
+        require(current_controller[RUL1] == old_controller[RUL1], 'Menu experiment changed adaptive RUL1')
     old = strict_dbpf(base_menu); current = strict_dbpf(menu)
     selected = {number(piece['menu']['id']) for piece in pieces}
     cycle_id = number(layout['cycle_button']['id'])
@@ -367,6 +402,9 @@ def verify_menu_experiment(output, write_report=True):
     require(not any(path.is_symlink() for path in output.rglob('*')), 'Menu experiment contains a symlink')
     manifest = _read_json(output / 'manifest.json')
     experiment = manifest.get('menu_experiment')
+    from .multi_assembly_menu import KIND as MULTI_KIND, verify as verify_multiple
+    if isinstance(experiment, dict) and experiment.get('kind') == MULTI_KIND:
+        return verify_multiple(output, write_report=write_report)
     require(isinstance(experiment, dict) and experiment.get('kind') in (KIND, ASSEMBLY_MENU_KIND)
             and experiment.get('schema_version') == 1, 'Unsupported menu experiment')
     proof = experiment.get('source_inputs')
@@ -387,7 +425,9 @@ def verify_menu_experiment(output, write_report=True):
         require(file.is_file(), f'Missing experimental source evidence: {name}')
         raw[key] = file.read_bytes()
         require(item == _record(name, raw[key]), 'Experimental source evidence fingerprint mismatch')
-    base, layout, scene = json.loads(raw['manifest']), _layout(json.loads(raw['layout'])), json.loads(raw['assembly'])
+    base, scene = json.loads(raw['manifest']), json.loads(raw['assembly'])
+    from .menu_experiment_resources import member_domain
+    layout = _layout(json.loads(raw['layout']), member_domain(_selected(base, scene)))
     require('menu_experiment' not in base, 'Nested experiment source manifest')
     pieces = _selected(base, scene)
     # PNG compression may vary between Pillow versions. Validate the saved
@@ -442,8 +482,8 @@ def verify_menu_experiment(output, write_report=True):
         'source_build_verified': True, 'all_piece_assets_preserved': True, 'piece_types_preserved': len(base['pieces']),
         'component_types_in_cycle': len(pieces), 'individual_submenu_buttons': len(pieces) if legacy else 0,
         'new_presentation_resources': 8 if legacy else 4, 'network_ini_preserved': True, 'construction_definitions_preserved': True,
-        'custom_type_families': len(base['pieces']) - len(pieces) + 1,
-        'grouped_type_rows': len(pieces), 'add_types_rows': len(pieces) - 1,
+        'custom_type_families': len(base['pieces']) - len(pieces) + 1 - len(hidden_members(base['pieces'])),
+        'grouped_type_rows': len(pieces), 'add_types_rows': len(pieces) - 1 + len(hidden_members(base['pieces'])),
         'shared_tab_family': True, 'alias_activation_and_visibility': 'unverified',
         'pending_game_cases': len(_game_checks(pieces, single_button=not legacy)['cases'])},
         'in_game_menu_tested': False,
@@ -451,7 +491,7 @@ def verify_menu_experiment(output, write_report=True):
             if legacy else 'Strict source-build validation and exact single-button menu/controller transformation; actual menu activation, Tab behavior, and game operation remain unverified.')}
     if not legacy:
         report['menu_experiment'].update(assembly_menu_buttons=1, member_buttons_hidden=len(pieces),
-                                         unrelated_piece_buttons_preserved=len(base['pieces']) - len(pieces),
+                                         unrelated_piece_buttons_preserved=len(base['pieces']) - len(pieces) - len(hidden_members(base['pieces'])),
                                          removed_member_presentation_resources=4 * len(pieces),
                                          submenus_dll_required=False)
     if write_report:
@@ -486,7 +526,7 @@ def _assembly_icon_network(assembly):
     return adapter.assembly_icon_network(assembly['id'])
 
 
-def write_assembly_icons(project_root, *, domain_id='high-speed-rail'):
+def write_assembly_icons(project_root, *, domain_id='high-speed-rail', assembly_ids=None):
     """Refresh canonical assembly icons and their source-schematic provenance."""
     from . import menu_experiment_resources
     from .menu_experiment_resources import make_assembly_icon, validate_assembly_icon
@@ -494,6 +534,13 @@ def write_assembly_icons(project_root, *, domain_id='high-speed-rail'):
     catalog = load_catalog(root)
     require(domain_id in catalog['domains'], 'Unknown assembly icon domain')
     assemblies = [assembly for assembly in catalog['_assemblies'] if assembly['domain'] == domain_id]
+    if assembly_ids is not None:
+        require(isinstance(assembly_ids, (list, tuple)) and assembly_ids
+                and all(isinstance(identifier, str) for identifier in assembly_ids)
+                and len(assembly_ids) == len(set(assembly_ids))
+                and set(assembly_ids) <= {assembly['id'] for assembly in assemblies},
+                'Assembly icon selection contains empty, duplicate, or unknown identifiers')
+        assemblies = [assembly for assembly in assemblies if assembly['id'] in assembly_ids]
     targets = [_assembly_icon_path(root, assembly) for assembly in assemblies]
     # Resolve every assembly before changing any icon; malformed source data
     # must not leave a partly refreshed selection behind.
@@ -517,7 +564,7 @@ def write_assembly_icons(project_root, *, domain_id='high-speed-rail'):
         member_ids = set(_members(assembly['scene']))
         evidence = {'schema_version': 1,
             'purpose': 'Reproduce the assembly menu schematic from the current placed source routes.',
-            'basis': 'Authored complete routes transformed by assembly.json placements; no compiled model rendering.',
+            'basis': 'Authored complete routes transformed by the registered assembly definition’s placements; no compiled model rendering.',
             'generator': 'scp.menu_experiment.write_assembly_icons',
             'generator_sha256': {'scp.menu_experiment': _sha(Path(__file__).read_bytes()),
                 'scp.menu_experiment_resources': _sha(Path(menu_experiment_resources.__file__).read_bytes())},
@@ -567,7 +614,9 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
     if layout_id == 'trumpet-menu-test' and layout_id not in config['layouts'] and 'trumpet' in config['layouts']:
         layout_id = 'trumpet'
     require(layout_id in config['layouts'], 'Unknown assembly menu layout')
-    layout = _layout(config['layouts'][layout_id])
+    layout = _layout(config['layouts'][layout_id], domain_id)
+    require('cycle_submenu' not in layout,
+            'A shared assembly submenu requires multiple selected assembly layouts')
     require(not single_button_only or 'submenu' not in layout,
             'Assembly delivery requires one cycle button; legacy submenu layouts are not supported by assembly-menu')
     assemblies = [assembly for assembly in catalog['_assemblies']
@@ -586,6 +635,8 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
             'Source must be a normal verified build; combining assembly cycles or reusing their shared types is unsupported')
     _check_source_files(source, base)
     pieces = _selected(base, scene)
+    from .menu_experiment_resources import member_domain
+    require(member_domain(pieces) == domain_id, 'Assembly members differ from the explicitly selected domain')
     current = {piece['id']: piece for piece in catalog['pieces']}
     for piece in pieces:
         require({key: value for key, value in piece.items() if key != 'asset_file'} == current.get(piece['id']),
@@ -653,3 +704,12 @@ def build_assembly_menu(project_root, source, output, *, layout_id='trumpet',
     return build_menu_experiment(project_root, source, output, layout_id=layout_id,
                                 domain_id=domain_id, plugins=plugins, extra_roots=extra_roots,
                                 single_button_only=True)
+
+
+def build_assembly_menus(project_root, source, output, *, layout_ids=None,
+                         domain_id=None, selections=None, plugins=None, extra_roots=None):
+    """Prepare disjoint assembly buttons together from one normal source build."""
+    from .multi_assembly_menu import build
+    return build(project_root, source, output, layout_ids=layout_ids, domain_id=domain_id,
+                 selections=selections,
+                 plugins=plugins, extra_roots=extra_roots)

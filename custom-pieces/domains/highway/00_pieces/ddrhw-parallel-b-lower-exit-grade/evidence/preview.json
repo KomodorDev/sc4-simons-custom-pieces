@@ -1,0 +1,962 @@
+{
+  "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
+  "piece_id": "ddrhw-parallel-b-lower-exit-grade",
+  "menu_name": "RHW Ramp \u2014 L1 Exit Parallel Grade \u2014 Parallel \u2014 Alignment B",
+  "display_title": "Piece - RHW Ramp \u2014 L1 Exit Parallel Grade \u2014 Parallel \u2014 Alignment B \u2014 Custom (0.083612 m) / Custom (15 m) / Custom (6.39058 m) / Custom (7.5 m)",
+  "view_role": "angled",
+  "canonical_filename": "preview.png",
+  "source": {
+    "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-lower-exit-grade.dat",
+    "preview_id": "7f5cdff5",
+    "source_dat_sha256": "3fa1eeb1b067654159c8352c86d074c0d03a9c99980affc0010b512514f5e450",
+    "model_sha256": "abab52f987640d8424fd21fcd34c2bec47d9ace145c4ba7c06dcb5e66affa158"
+  },
+  "file": "previews/preview.png",
+  "sha256": "397dc1ab595bc20f2b485d4e36d4dadb3d27840c4ccd70ef0ba44036eb27956e",
+  "size": [
+    1600,
+    1200
+  ],
+  "azimuth_degrees": 45.0,
+  "elevation_degrees": 31.0,
+  "displayed_rotation_ccw_degrees": 0.0,
+  "coordinate_system": {
+    "scope": "Independent local grid for this reusable type at its default orientation",
+    "tile_metres": 16.0,
+    "displayed_rotation_ccw_degrees": 0.0,
+    "origin_world_m": [
+      0.0,
+      -16.0
+    ],
+    "bounds_world_m": [
+      -8.0,
+      -24.0,
+      24.0,
+      8.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "display_index_ranges": {
+      "X": [
+        0,
+        1
+      ],
+      "Y": [
+        0,
+        1
+      ]
+    },
+    "southwest_reference": "Tile centre at the southwest corner of the occupied-cell bounding rectangle",
+    "southwest_corner_occupied": true,
+    "occupied_local_tiles_en": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "construction_reference": {
+      "world_m": [
+        0.0,
+        0.0
+      ],
+      "local_tiles_en": [
+        0,
+        1
+      ],
+      "inside_displayed_grid": true,
+      "caption_visible": true,
+      "meaning": "The compiled piece reference position, expressed in this local grid; not a cursor anchor",
+      "reference_cell_occupied": false
+    },
+    "model_coordinates_changed": false,
+    "origin_marker_visible": false
+  },
+  "camera": {
+    "projection": "orthographic",
+    "image_size": [
+      1600,
+      970
+    ],
+    "azimuth_degrees": 45.0,
+    "elevation_degrees": 31.0,
+    "right_s3d": [
+      0.7071067811865476,
+      0.0,
+      -0.7071067811865475
+    ],
+    "up_s3d": [
+      -0.36418691533816433,
+      0.8571673007021123,
+      -0.3641869153381644
+    ],
+    "towards_s3d": [
+      0.6061088109378321,
+      0.5150380749100542,
+      0.6061088109378322
+    ],
+    "projected_center_m": [
+      1.1117998090637897,
+      -5.826990645410629
+    ],
+    "pixels_per_metre": 29.90831609026148,
+    "padding_pixels": 90.0,
+    "bounds_world_m": [
+      -8.0,
+      -24.0,
+      24.0,
+      8.0
+    ],
+    "world_coordinates": "(east, north, height)",
+    "s3d_coordinates": "(east, height, -north)"
+  },
+  "grid": {
+    "tile_metres": 16.0,
+    "ground_height_m": 0,
+    "bounds_world_m": [
+      -8.0,
+      -24.0,
+      24.0,
+      8.0
+    ],
+    "origin_world_m": [
+      0.0,
+      -16.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "origin_marker_visible": false,
+    "display_coordinate_basis": {
+      "reference": "tile-centre offsets relative to origin_world_m",
+      "units": "tiles",
+      "east_increases": "east",
+      "north_increases": "north",
+      "east_index_formula": "(world_east_m - origin_world_m[0]) / 16",
+      "north_index_formula": "(world_north_m - origin_world_m[1]) / 16",
+      "east_index_range": [
+        0,
+        1
+      ],
+      "north_index_range": [
+        0,
+        1
+      ],
+      "nonnegative_labels_omit_plus_sign": true,
+      "authoring_world_coordinates_changed": false
+    },
+    "origin_pixel": [
+      428.3739699407139,
+      485.0
+    ],
+    "boundary_offset_from_centre_m": 8,
+    "east_boundaries_m": [
+      -8.0,
+      8.0,
+      24.0
+    ],
+    "north_boundaries_m": [
+      -24.0,
+      -8.0,
+      8.0
+    ],
+    "grid_lines": [
+      {
+        "axis": "east",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            90.0,
+            485.0
+          ],
+          [
+            766.7479398814278,
+            136.44904384412428
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            428.3739699407139,
+            659.2754780779379
+          ],
+          [
+            1105.1219098221418,
+            310.72452192206214
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 24.0,
+        "pixels": [
+          [
+            766.7479398814279,
+            833.5509561558757
+          ],
+          [
+            1443.4958797628558,
+            485.0
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -24.0,
+        "pixels": [
+          [
+            90.0,
+            485.0
+          ],
+          [
+            766.7479398814279,
+            833.5509561558757
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            428.3739699407139,
+            310.7245219220622
+          ],
+          [
+            1105.1219098221418,
+            659.2754780779379
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "north",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            766.7479398814278,
+            136.44904384412428
+          ],
+          [
+            1443.4958797628558,
+            485.0
+          ]
+        ],
+        "major": false
+      }
+    ],
+    "tile_labels": [
+      {
+        "text": "X0",
+        "axis": "X",
+        "tile_index": 0,
+        "world_m": [
+          0.0,
+          -24.0
+        ],
+        "pixel": [
+          244.0737195980826,
+          579.9216461419098
+        ]
+      },
+      {
+        "text": "X1",
+        "axis": "X",
+        "tile_index": 1,
+        "world_m": [
+          16.0,
+          -24.0
+        ],
+        "pixel": [
+          582.4476895387966,
+          754.1971242198476
+        ]
+      },
+      {
+        "text": "Y0",
+        "axis": "Y",
+        "tile_index": 0,
+        "world_m": [
+          -8.0,
+          -16.0
+        ],
+        "pixel": [
+          244.0737195980826,
+          390.07835385809017
+        ]
+      },
+      {
+        "text": "Y1",
+        "axis": "Y",
+        "tile_index": 1,
+        "world_m": [
+          -8.0,
+          0.0
+        ],
+        "pixel": [
+          582.4476895387966,
+          215.8028757801523
+        ]
+      }
+    ],
+    "direction_arrows": [
+      {
+        "direction": "E",
+        "start_pixel": [
+          1500.0,
+          100.0
+        ],
+        "end_pixel": [
+          1542.6727492864215,
+          121.97809064359795
+        ]
+      },
+      {
+        "direction": "N",
+        "start_pixel": [
+          1500.0,
+          100.0
+        ],
+        "end_pixel": [
+          1542.6727492864215,
+          78.02190935640205
+        ]
+      }
+    ],
+    "tile_scale": {
+      "metres": 16,
+      "east_pixels": 380.61645496842755,
+      "north_pixels": 380.61645496842743,
+      "caption": "1 tile = 16 m",
+      "caption_visible": false
+    },
+    "camera": {
+      "projection": "orthographic",
+      "image_size": [
+        1600,
+        970
+      ],
+      "azimuth_degrees": 45.0,
+      "elevation_degrees": 31.0,
+      "right_s3d": [
+        0.7071067811865476,
+        0.0,
+        -0.7071067811865475
+      ],
+      "up_s3d": [
+        -0.36418691533816433,
+        0.8571673007021123,
+        -0.3641869153381644
+      ],
+      "towards_s3d": [
+        0.6061088109378321,
+        0.5150380749100542,
+        0.6061088109378322
+      ],
+      "projected_center_m": [
+        1.1117998090637897,
+        -5.826990645410629
+      ],
+      "pixels_per_metre": 29.90831609026148,
+      "padding_pixels": 90.0,
+      "bounds_world_m": [
+        -8.0,
+        -24.0,
+        24.0,
+        8.0
+      ],
+      "world_coordinates": "(east, north, height)",
+      "s3d_coordinates": "(east, height, -north)"
+    }
+  },
+  "header": {
+    "captions": [
+      "Piece - RHW Ramp \u2014 L1 Exit Parallel Grade \u2014 Parallel \u2014 Alignment B \u2014 Custom (0.083612 m) / Custom (15 m) / Custom (6.39058 m) / Custom (7.5 m)",
+      "Clean view | Southeast view | Authored orientation: 0\u00b0",
+      "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres"
+    ],
+    "rows": [
+      {
+        "text": "Piece - RHW Ramp \u2014 L1 Exit Parallel Grade \u2014 Parallel \u2014 Alignment B \u2014 Custom (0.083612 m) / Custom (15 m) / Custom (6.39058 m) / Custom (7.5 m)",
+        "colour": "#172b42",
+        "font_pixels": 21,
+        "bold": true,
+        "position": [
+          30,
+          20
+        ],
+        "bounds": [
+          30,
+          25,
+          1520,
+          44
+        ]
+      },
+      {
+        "text": "Clean view | Southeast view | Authored orientation: 0\u00b0",
+        "colour": "#176eaf",
+        "font_pixels": 22,
+        "bold": false,
+        "position": [
+          30,
+          63
+        ],
+        "bounds": [
+          30,
+          67,
+          553,
+          88
+        ]
+      },
+      {
+        "text": "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres",
+        "colour": "#586a7e",
+        "font_pixels": 22,
+        "bold": false,
+        "position": [
+          30,
+          98
+        ],
+        "bounds": [
+          30,
+          102,
+          927,
+          122
+        ]
+      }
+    ],
+    "bottom": 146,
+    "title_occurrences": 1,
+    "scale_caption_in_header_only": true
+  },
+  "viewport_offset_xy": [
+    0,
+    146
+  ],
+  "model": {
+    "all_animation_references_valid": true,
+    "all_vertex_indices_valid": true,
+    "all_primitive_ranges_valid": true,
+    "all_output_buffers_used": true,
+    "all_vertex_positions_finite": true,
+    "triangles": 7983,
+    "mesh_count": 26,
+    "bounds_xyz_m": [
+      [
+        [
+          26.78679656982422,
+          27.144609451293945
+        ],
+        [
+          7.496790885925293,
+          7.5
+        ],
+        [
+          -8.178923606872559,
+          -8.0
+        ]
+      ],
+      [
+        [
+          26.78679656982422,
+          27.144609451293945
+        ],
+        [
+          6.496790885925293,
+          7.5
+        ],
+        [
+          -8.178923606872559,
+          -8.0
+        ]
+      ],
+      [
+        [
+          26.78679656982422,
+          27.144609451293945
+        ],
+        [
+          7.496790885925293,
+          8.604719161987305
+        ],
+        [
+          -8.178923606872559,
+          -8.0
+        ]
+      ],
+      [
+        [
+          24.0,
+          31.207942962646484
+        ],
+        [
+          5.85322904586792,
+          7.5
+        ],
+        [
+          -8.0,
+          3.272078037261963
+        ]
+      ],
+      [
+        [
+          24.0,
+          31.207942962646484
+        ],
+        [
+          4.85322904586792,
+          7.5
+        ],
+        [
+          -8.0,
+          3.272078037261963
+        ]
+      ],
+      [
+        [
+          24.0,
+          31.207942962646484
+        ],
+        [
+          6.7503557205200195,
+          8.890625
+        ],
+        [
+          -8.0,
+          -0.26955780386924744
+        ]
+      ],
+      [
+        [
+          24.0,
+          27.541635513305664
+        ],
+        [
+          5.857316970825195,
+          8.14098072052002
+        ],
+        [
+          -0.8551306128501892,
+          3.255939245223999
+        ]
+      ],
+      [
+        [
+          10.786796569824219,
+          24.0
+        ],
+        [
+          3.5809082984924316,
+          6.927926540374756
+        ],
+        [
+          -5.213203430175781,
+          8.0
+        ]
+      ],
+      [
+        [
+          10.786796569824219,
+          24.0
+        ],
+        [
+          2.5809082984924316,
+          6.927926540374756
+        ],
+        [
+          -5.213203430175781,
+          8.0
+        ]
+      ],
+      [
+        [
+          18.504318237304688,
+          24.0
+        ],
+        [
+          5.535823345184326,
+          8.270974159240723
+        ],
+        [
+          -5.213203430175781,
+          4.525117874145508
+        ]
+      ],
+      [
+        [
+          14.837801933288574,
+          22.746959686279297
+        ],
+        [
+          4.607062816619873,
+          6.926448345184326
+        ],
+        [
+          0.28247740864753723,
+          8.0
+        ]
+      ],
+      [
+        [
+          10.786796569824219,
+          19.170846939086914
+        ],
+        [
+          3.5809082984924316,
+          6.033409595489502
+        ],
+        [
+          3.9489943981170654,
+          8.0
+        ]
+      ],
+      [
+        [
+          -4.755192279815674,
+          8.0
+        ],
+        [
+          0.0,
+          2.8749887943267822
+        ],
+        [
+          10.786796569824219,
+          24.0
+        ]
+      ],
+      [
+        [
+          -4.05886173248291,
+          8.0
+        ],
+        [
+          0.0,
+          2.8749887943267822
+        ],
+        [
+          10.786796569824219,
+          24.0
+        ]
+      ],
+      [
+        [
+          -3.661113977432251,
+          -3.3322689533233643
+        ],
+        [
+          0.0,
+          0.0033351329620927572
+        ],
+        [
+          23.102386474609375,
+          23.431230545043945
+        ]
+      ],
+      [
+        [
+          2.4280529022216797,
+          8.0
+        ],
+        [
+          1.463566541671753,
+          4.21803617477417
+        ],
+        [
+          10.786796569824219,
+          20.460365295410156
+        ]
+      ],
+      [
+        [
+          -1.0974441766738892,
+          6.811713218688965
+        ],
+        [
+          0.5705278515815735,
+          2.8892531394958496
+        ],
+        [
+          16.35874366760254,
+          24.0
+        ]
+      ],
+      [
+        [
+          -3.4811224937438965,
+          3.018315076828003
+        ],
+        [
+          0.01935047283768654,
+          1.1682931184768677
+        ],
+        [
+          19.884241104125977,
+          24.0
+        ]
+      ],
+      [
+        [
+          -4.300951957702637,
+          3.272078037261963
+        ],
+        [
+          0.0,
+          0.6026679873466492
+        ],
+        [
+          24.0,
+          27.802167892456055
+        ]
+      ],
+      [
+        [
+          -2.90451979637146,
+          3.272078037261963
+        ],
+        [
+          0.0,
+          0.6026679873466492
+        ],
+        [
+          24.0,
+          27.088298797607422
+        ]
+      ],
+      [
+        [
+          0.16489695012569427,
+          3.272078037261963
+        ],
+        [
+          0.01935047283768654,
+          1.0697051286697388
+        ],
+        [
+          24.0,
+          26.477413177490234
+        ]
+      ],
+      [
+        [
+          8.0,
+          19.272077560424805
+        ],
+        [
+          1.8002912998199463,
+          4.655605792999268
+        ],
+        [
+          8.0,
+          19.272077560424805
+        ]
+      ],
+      [
+        [
+          8.0,
+          19.272077560424805
+        ],
+        [
+          0.0,
+          4.655605792999268
+        ],
+        [
+          8.0,
+          19.272077560424805
+        ]
+      ],
+      [
+        [
+          9.479046821594238,
+          19.272077560424805
+        ],
+        [
+          3.2496440410614014,
+          5.998652935028076
+        ],
+        [
+          8.0,
+          13.550390243530273
+        ]
+      ],
+      [
+        [
+          8.0,
+          13.721687316894531
+        ],
+        [
+          1.92794668674469,
+          4.6402692794799805
+        ],
+        [
+          9.30774974822998,
+          18.768125534057617
+        ]
+      ],
+      [
+        [
+          8.0,
+          8.503952026367188
+        ],
+        [
+          1.8002912998199463,
+          3.3542933464050293
+        ],
+        [
+          18.041532516479492,
+          19.272077560424805
+        ]
+      ]
+    ],
+    "textures": [
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9",
+      "5712000e",
+      "5eb4beee",
+      "5eb4bee9"
+    ]
+  },
+  "render_model_sha256": "abab52f987640d8424fd21fcd34c2bec47d9ace145c4ba7c06dcb5e66affa158",
+  "textures": [
+    {
+      "instance": "5712000e",
+      "fsh_sha256": "676fd00d3e3d608917274ed742ecf75e8253b4d6be20586a1eb19db5c3222105",
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "instance": "5eb4bee9",
+      "fsh_sha256": "d612c36b704a88126a075b851e26f9f14f2b784cee11a1f043fd97aa36d95a82",
+      "size": [
+        256,
+        64
+      ]
+    },
+    {
+      "instance": "5eb4beee",
+      "fsh_sha256": "5ca0f599eb5424118f521d47ad8fd41708ab25165b59b902cbd2ae1c9068dcc8",
+      "size": [
+        256,
+        256
+      ]
+    }
+  ],
+  "captions": [
+    "Piece - RHW Ramp \u2014 L1 Exit Parallel Grade \u2014 Parallel \u2014 Alignment B \u2014 Custom (0.083612 m) / Custom (15 m) / Custom (6.39058 m) / Custom (7.5 m)",
+    "Clean view | Southeast view | Authored orientation: 0\u00b0",
+    "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres",
+    "Complete reusable piece shown at its authored orientation.",
+    "Software model preview."
+  ],
+  "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
+  "assembly_labels_visible": false,
+  "other_piece_types_drawn": false,
+  "selected_piece_geometry_hidden_or_simplified": false,
+  "in_game_evidence": false,
+  "renderer": {
+    "renderer": "indexed S3D triangles with bilinear NAM FSH textures",
+    "renderer_sha256": "91b925cd5a7d0db4492e8697cf768b5b5cce33ca0acb185e2c6c3a062449c63c",
+    "pillow_version": "10.3.0",
+    "numpy_version": "1.26.4",
+    "background": "#f7f9fb",
+    "fonts": [
+      {
+        "name": [
+          "Arial",
+          "Regular"
+        ],
+        "file_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+      },
+      {
+        "name": [
+          "Arial",
+          "Bold"
+        ],
+        "file_sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+      }
+    ],
+    "geometry_simplified": false,
+    "layout": "one canonical view with independent local city grid",
+    "layout_sha256": "66a4fd4a2ed5e14091326a3ea258a89a6071182c2fe320d28d198ed397962807",
+    "header": {
+      "source_sha256": "1afc8e0424adfdb8bd1456d221888402e68519288d0b757a5941d53ec4688a0d",
+      "row_colours": [
+        "#172b42",
+        "#176eaf",
+        "#586a7e"
+      ],
+      "rows": [
+        "Piece - source-backed piece title",
+        "view purpose, camera, and authored orientation",
+        "local grid and scale"
+      ],
+      "duplicate_grid_footer_visible": false
+    },
+    "city_grid_source_sha256": "58560c2409e7e309b9f0030b6e765840a34fd5e9859fa93e78eb55de014776e5",
+    "image_size": [
+      1600,
+      1200
+    ],
+    "view_size": [
+      1600,
+      970
+    ],
+    "views": [
+      {
+        "azimuth": 45.0,
+        "elevation": 31.0
+      }
+    ],
+    "view_role": "angled",
+    "tile_metres": 16.0,
+    "origin_marker_visible": false,
+    "top_grid_overlay": null,
+    "duplicate_grid_footer_visible": false
+  },
+  "thumbnail": {
+    "file": "previews/preview-thumb.png",
+    "sha256": "5b1297870aa2b390c4476e3f105983a25967ba73990cb8c790df30c8b0d75c86",
+    "size": [
+      360,
+      270
+    ]
+  },
+  "title_source_inputs": {
+    "domains/highway/00_pieces/ddrhw-parallel-b-lower-exit-grade/piece.jsonc": "c7c9dc3eee1e73836f525cb6cb5bebbfc4294f3d3dc5f1de7bd074ee2fa35306",
+    "domains/highway/00_pieces/ddrhw-parallel-b-lower-exit-grade/connections.json": "e4dfc5080c6959197c8c99c1c0d5f4a0b38ce52ebe83af9728b3776805664525",
+    "domains/highway/00_pieces/ddrhw-parallel-b-lower-exit-grade/connector-groups.jsonc": "54820ce1429742e86c6c3fdffc6dc5f9f4fa1299bb031fc77f19a08dea0715b3",
+    "domains/highway/domain.jsonc": "5d8025714a77be75e6b5d3e433a92d13c07827a40114e1300f25578bbac89a6c"
+  },
+  "input_fingerprint": "9aafb77de5f4930ec6db4ce265b0128a42f2a5bc96beda1ae4c7fd0b9a7df6b2"
+}
