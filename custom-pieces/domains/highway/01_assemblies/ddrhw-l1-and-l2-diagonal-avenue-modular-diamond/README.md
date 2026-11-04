@@ -72,6 +72,8 @@ Each thumbnail opens its component's full angled preview; **Top view** opens its
 
 The Compact Modular cycle starts with the same straight stamp, C01, then lists the four full compact ramps and the two retained Avenue junctions. If you are replacing one side of an existing R40 build, remove that side’s two ramps and terminal together, then use the matching three compact components. The full compact ramps include the curved sections that connect to the stamp.
 
+In the combined menu, Compact Modular C01 and R40 P01 use the same stamp file. Compact Modular C06 and C07 use the same junction files as P02 and P03 of the [original Compact Diagonal Avenue Diamond](../ddrhw-l1-and-l2-diagonal-avenue-diamond/README.md). Separate selection IDs let the three assembly buttons keep independent Tab cycles. Each shared piece is included once. Follow the [game checks](TESTING.md#42-retained-assembly-checks) to test selection and placement from both buttons that use each piece.
+
 | Standalone angled picture | Component name and permanent piece ID | Placement | Quantity | Occupied tiles |
 | --- | --- | --- | ---: | ---: |
 | [![RHW Ramp — Lower Full Exit Ramp — Compact: canonical angled view](../../00_pieces/ddrhw-modular-lower-exit-compact/previews/preview-thumb.png)](../../00_pieces/ddrhw-modular-lower-exit-compact/previews/preview.png)<br>[Top view](../../00_pieces/ddrhw-modular-lower-exit-compact/previews/preview-top.png) | **[RHW Ramp — Lower Full Exit Ramp — Compact](../../00_pieces/ddrhw-modular-lower-exit-compact/README.md)**<br>`ddrhw-modular-lower-exit-compact` | C02 | 1 | 3 |
