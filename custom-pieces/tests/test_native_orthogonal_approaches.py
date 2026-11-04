@@ -419,7 +419,7 @@ class ActualNativeOrthogonalProofTests(unittest.TestCase):
             self.assertEqual(proof, old_proof)
         self.assertEqual(pieces, original)
 
-    def test_transition_and_all_registered_legacy_helpers_preserve_every_old_insertion(self):
+    def test_adding_original_transition_to_current_highway_roster_preserves_native_rows(self):
         pieces = [jsonc.load(path) for path in sorted((ROOT / 'domains/highway/00_pieces').glob('*/piece.jsonc'))]
         pieces = [piece for piece in pieces if piece['id'] not in (orthogonal.PIECE_ID, orthogonal.MIRRORED_PIECE_ID)]
         expected_ground = adaptive.expected_solutions(pieces)
@@ -431,9 +431,11 @@ class ActualNativeOrthogonalProofTests(unittest.TestCase):
         self.assertEqual(raw, old_raw)
         self.assertEqual(proof['schema_version'], 3)
         self.assertEqual(proof['sections'], old_proof['sections'])
+        self.assertEqual(proof['existing_native_solutions'], old_proof['existing_native_solutions'])
         report = native.verify_rul1({native.RUL1: raw}, [*pieces, specification()],
                                    {native.OVERLAY: proof, 'rul1': ground_proof}, self.donors)
-        self.assertEqual(report['existing_native_rul1_solutions_reused'], 8)
+        # The eight orthogonal rows include the Y subset. Diagonal transitions reuse eight more.
+        self.assertEqual(report['existing_native_rul1_solutions_reused'], 16)
         self.assertEqual(report['adaptive_rul1_solutions_checked'], len(expected_ground))
         self.assertFalse(report['native_dd_game_behavior_tested'])
 
