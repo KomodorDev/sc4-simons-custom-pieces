@@ -21,9 +21,9 @@ from .menu import validate_menu_resources, MENU_EXEMPLAR, ICON, TITLE, DESCRIPTI
 from .models import parse_s3d, validate_s3d, valid_frame, positions
 from .adaptive_network import (RUL1, bindings as adaptive_bindings,
     resource_keys as adaptive_resource_keys, validate_active_resources, CURSOR_BASE)
-from .native_approaches import verify_rul1, approaches as native_approaches
+from .native_approaches import DIAGONAL_TRANSITION_OVERLAY, verify_rul1, approaches as native_approaches
 from . import model_shadows
-from . import piece_menu_families
+from . import piece_menu_families, transport_menu
 
 RUL0 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000000)
 NETWORK_INI = (0, 0x8A5971C5, 0x8A5993B9)
@@ -565,9 +565,12 @@ def check_construction(resources, pieces, manifest, donors):
         fields = {}
         for key, value in rules[root]:
             fields.setdefault(key, []).append(value)
-        require(set(fields) == {'Piece', 'PreviewEffect', 'CellLayout', 'CheckType', 'ConsLayout',
-                                'AutoTileBase', 'ReplacementIntersection', 'PlaceQueryID', 'Costs'},
-                'Unexpected custom puzzle fields')
+        expected_fields = {'Piece', 'PreviewEffect', 'CellLayout', 'CheckType', 'ConsLayout',
+                           'AutoTileBase', 'ReplacementIntersection', 'PlaceQueryID', 'Costs'}
+        # Historical Alignment A builds predate the placement handle.
+        if piece.get(DIAGONAL_TRANSITION_OVERLAY) and 'HandleOffset' in fields:
+            expected_fields.add('HandleOffset')
+        require(set(fields) == expected_fields, 'Unexpected custom puzzle fields')
         require(fields['PreviewEffect'] == [piece['effect_name']] and int(fields['AutoTileBase'][0], 0) == auto_tile_base(piece) and
                 int(fields['PlaceQueryID'][0], 0) == tile, 'Wrong piece asset or preview-effect reference')
         check_emitted_runtime_addresses(fields, piece)
@@ -770,6 +773,17 @@ def verify_build(output, write_report=True):
             parsed = strict_dbpf(raw)
             require(not (set(resources) & set(parsed)), 'A resource TGI appears in more than one package DAT')
             resources.update(parsed); owners.update({key: item['path'] for key in parsed}); by_file[item['path']] = parsed
+    resource_count = len(resources)
+    roster = transport_menu.members(manifest)
+    if roster:
+        menu_path = f'{folder}/10_SCP_Menu.dat'
+        actual_menu = by_file[menu_path]
+        plain_menu = transport_menu.restore(
+            actual_menu, roster, version=transport_menu.format_version(manifest))
+        for key in actual_menu.keys() - plain_menu.keys():
+            del resources[key]
+        resources.update(plain_menu)
+        by_file[menu_path] = plain_menu
     donors, donor_report = load_local_donors(output, manifest)
     construction = check_construction(resources, pieces, manifest, donors)
     hidden_menus = piece_menu_families.hidden_members(pieces)
@@ -828,10 +842,19 @@ def verify_build(output, write_report=True):
             piece_menu_donor = domain_module(piece, 'menu').verification_donor(donors)
         else:
             piece_menu_donor = base_menu
-        menu_report = ({'presentation': 'hidden-alternative-family-member',
-                        'family_anchor': piece['menu']['family_anchor'], 'in_game_menu_tested': False}
-                       if piece['id'] in hidden_menus else
-                       validate_menu_resources(resources, piece_menu_donor, piece))
+        if piece['id'] in hidden_menus:
+            menu_report = {'presentation': 'hidden-alternative-family-member',
+                           'family_anchor': piece['menu']['family_anchor'], 'in_game_menu_tested': False}
+        elif piece.get('domain') == 'highway':
+            from .providers import domain_module
+            artwork = [row['icon_artwork'] for row in manifest.get('menu_audit', ())
+                       if row.get('piece_id') == piece['id'] and 'icon_artwork' in row]
+            require(len(artwork) <= 1 and all(isinstance(value, str) for value in artwork),
+                    'Duplicate or invalid Highway menu artwork revision')
+            menu_report = domain_module(piece, 'menu').validate_menu_resources(
+                resources, piece_menu_donor, piece, icon_artwork=artwork[0] if artwork else None)
+        else:
+            menu_report = validate_menu_resources(resources, piece_menu_donor, piece)
         try:
             paths_report = check_piece_paths(resources, piece)
             model_resources = by_file[piece['asset_file']] if piece.get('domain') == 'highway' else resources
@@ -919,13 +942,15 @@ def verify_build(output, write_report=True):
     require(shadows == expected_shadows, 'Declared shadow dependencies do not cover actual mappings')
     report = {'schema_version': 1, 'static_checks_passed': True, 'files_checked': len(file_records),
               'documentation_files_checked': len(documentation),
-              'resources_checked': len(resources), 'construction': construction, 'pieces': piece_reports,
+              'resources_checked': resource_count, 'construction': construction, 'pieces': piece_reports,
               'dependency_records_cover_all_references': True, 'external_textures': len(textures),
               'external_shadows': len(shadows), **donor_report,
               'in_game_placement_tested': False, 'in_game_menu_tested': False, 'in_game_rendering_tested': False,
               'in_game_traffic_tested': False, 'in_game_shadow_selection_tested': False,
               'in_game_bulldozing_tested': False, 'in_game_save_reload_tested': False,
               'verification_limit': 'Static archive and content audit. External NAM dependencies are declared; this does not execute SimCity 4.'}
+    if roster:
+        report[transport_menu.KEY] = {**manifest[transport_menu.KEY], 'submenus_dll_required': True}
     if write_report:
         (output / 'verification.json').write_text(json.dumps(report, indent=2) + '\n')
     return report

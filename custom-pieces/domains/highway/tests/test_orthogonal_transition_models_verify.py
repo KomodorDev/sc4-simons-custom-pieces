@@ -239,5 +239,46 @@ class MirroredTransitionSurfaceTests(unittest.TestCase):
         self.assertTrue(check.check_deck_clearance(check.canonical_surface_frame(reflected, mirrored=True))['passed'])
 
 
+class LowerBendSurfaceTests(unittest.TestCase):
+    def test_paired_floor_preserves_each_finite_parent_across_ground_clamp(self):
+        roof = ((0., 0., .8, 0., 0.), (0., 1., 1.2, 0., 1.), (1., 0., 1.4, 1., 0.))
+        parts = check._floor_parts(roof)
+        self.assertEqual(len(parts), 3)
+        projected_area = 0.
+        for part in parts:
+            projected_area += check._area(tuple((e, n, 0.) for e, n, _h, _u, _v in part))
+            for e, n, h, u, v in part:
+                self.assertAlmostEqual(h, max(0., .8+.6*e+.4*n-1.), places=14)
+                self.assertAlmostEqual(u, e, places=14)
+                self.assertAlmostEqual(v, n, places=14)
+        self.assertAlmostEqual(projected_area, .5, places=14)
+        self.assertEqual(check._floor_parts(tuple((e, n, 0., u, v) for e, n, _h, u, v in roof)), ())
+
+    def test_inner_native_shoulder_closes_before_floor_clamp(self):
+        variant = paths.LOWER_BEND_RIGHT
+        self.assertEqual(check._bounds('upper', 3., profile_reflected=True, variant=variant),
+                         (-check.DD_MAX, -check.DD_MIN))
+        self.assertGreater(paths.straight_upper_height(81.5), 1.)
+        self.assertEqual(check._bounds('upper', 81.5, profile_reflected=True, variant=variant)[0], -8.)
+        # The positive width protrusion in the rejected first encoded candidate
+        # must still fail even when its two faces make contact only at H=0.
+        lower = ((7.9999332428, 0., 0.), (8., 0., 0.), (8., 1., 0.))
+        upper = (lower[0], lower[2], (8., 0., .01022780035))
+        with self.assertRaisesRegex(ValueError, 'intersects or drops below'):
+            check.check_deck_clearance([{'role': 'upper-body', 'points': upper},
+                {'role': 'lower-pavement-native-ground', 'points': lower}], profile_reflected=True)
+
+    def test_support_contacts_use_the_new_frame_and_finite_slab_embed(self):
+        supports = {row[0]: row for row in check.support_contract(variant=paths.LOWER_BEND_RIGHT)}
+        self.assertEqual(len(supports), 14)
+        for name, bounds in (('upper-pier-12', (-9.6, -8.8)), ('upper-pier-32', (6., 6.8))):
+            for actual, expected in zip(supports[name][3:5], bounds, strict=True):
+                self.assertAlmostEqual(actual, expected, places=12)
+        top = supports['upper-cap-32'][-1]
+        roof = paths.straight_upper_height(32.) * (1.+check.DATUM['upper']/15.)
+        self.assertAlmostEqual(roof-top, .85, places=12)
+        self.assertAlmostEqual(supports['upper-pier-32'][-1], supports['upper-cap-32'][-2], places=12)
+
+
 if __name__ == '__main__':
     unittest.main()

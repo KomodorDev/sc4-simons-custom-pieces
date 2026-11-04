@@ -1,0 +1,691 @@
+// title: "Accepted first-cut diagonal DD-to-ground connector measurements"
+// summary: "Bind independent lane measurements to a checked native package without storing proprietary resource payloads."
+//
+// Used when: The selected first-cut diagonal adapter is extracted, validated, exported, or shown with connection cards.
+// Read by: scp_highway.diagonal_transition_contracts and the shared connector workflow.
+// Updated by: domains/highway/tools/freeze_diagonal_transition_connectors.py after saved native verification passes.
+// Affects: Eight directional ports, four lane journeys, twelve forbidden transfers, and every owned canonical PATH identity.
+{
+  "schema_version": 1,
+  "state": "accepted-independently-checked-saved-resources",
+  "game_operation": "unverified",
+  "subject_id": "ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a",
+  "alignment": "a",
+  "source": {
+    "build": "dist/ddrhw-diagonal-transitions-a-native-03",
+    "manifest_sha256": "c0704a429ed1cda04c557fabc4d00f67941048fccd14ff6672f17c74919e2d92",
+    "verification_passed": true
+  },
+  "contract": {
+    "reference_piece_id": "ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a",
+    "footprint": [
+      8,
+      6
+    ],
+    "cells": [
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        7,
+        2
+      ]
+    ],
+    "path_hashes_by_cell": [
+      [
+        [
+          0,
+          4
+        ],
+        "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534"
+      ],
+      [
+        [
+          1,
+          3
+        ],
+        "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534"
+      ],
+      [
+        [
+          1,
+          4
+        ],
+        "e2b4027d74a8d7bdc453c36f67fc97d7baa55fcc27ccebbd0a005010baa20017"
+      ],
+      [
+        [
+          2,
+          2
+        ],
+        "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534"
+      ],
+      [
+        [
+          2,
+          3
+        ],
+        "81012a656baa684e0d8a3f71f1578c6a185c2cc5be78b498ee2d0eab73f63bb5"
+      ],
+      [
+        [
+          2,
+          4
+        ],
+        "2ceb5592bfb48640bb52ff0927d8e150b3ada43d1799c52da67d09c6624894b9"
+      ],
+      [
+        [
+          2,
+          5
+        ],
+        "947a534432da63d40e39d3ac0bfd4c7c6c6a595e1e42234da428995a67cd2d11"
+      ],
+      [
+        [
+          3,
+          2
+        ],
+        "e9ba356447e8cded9ab31fd274c9b9e2d1b54fd71a11e703cc46df19a114f628"
+      ],
+      [
+        [
+          3,
+          3
+        ],
+        "529dcfbb9bef75380404751c22fb998f5c787d820528dc05f92fb7ea3bdfcc52"
+      ],
+      [
+        [
+          3,
+          4
+        ],
+        "9c331a5b20e13288abe8cb9f3b63aaa8849ea47044357bca9263fac67915f8b9"
+      ],
+      [
+        [
+          3,
+          5
+        ],
+        "1337530ed814eef21954d2adf0f2f493cfa1a368822ef068dbb7e39bf5cc1f04"
+      ],
+      [
+        [
+          4,
+          2
+        ],
+        "3a8ce5742b68ed1059d3766238ed4e684fe213c681ae15366c0cd9616aac59a3"
+      ],
+      [
+        [
+          4,
+          3
+        ],
+        "1df52931fe5b529f47b381048229fe2f46749d1650b48371d801cc68256530e0"
+      ],
+      [
+        [
+          4,
+          4
+        ],
+        "7a36d154371ed775e139f99c800f34ec00d895f2ba1d12d6996c3c66a3c1f77b"
+      ],
+      [
+        [
+          4,
+          5
+        ],
+        "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534"
+      ],
+      [
+        [
+          5,
+          1
+        ],
+        "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534"
+      ],
+      [
+        [
+          5,
+          2
+        ],
+        "5a7b0ce8e2205e216dc0c57285390ca77604bf392357f8969021b6646758d8f4"
+      ],
+      [
+        [
+          5,
+          3
+        ],
+        "a0dd9decc529bc7c6ffb473623147d5697ea7f6e332f27a3659d06d6af1e3a5f"
+      ],
+      [
+        [
+          5,
+          4
+        ],
+        "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534"
+      ],
+      [
+        [
+          6,
+          0
+        ],
+        "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534"
+      ],
+      [
+        [
+          6,
+          1
+        ],
+        "283bf2f9139dce9d2140d6a9a3ecc9f4c136fa35f06f70cc4e7f8196f1de4226"
+      ],
+      [
+        [
+          6,
+          2
+        ],
+        "33c6d3cf2364fef44844eafc01b9444b3904f8e576a7f97b0ca6c78c1803c44c"
+      ],
+      [
+        [
+          6,
+          3
+        ],
+        "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534"
+      ],
+      [
+        [
+          7,
+          2
+        ],
+        "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534"
+      ]
+    ],
+    "raw_path_fingerprint_status": "accepted-checked-saved-build",
+    "ports": [
+      {
+        "id": "upper-lane-01-in",
+        "direction": "in",
+        "engine_transport": 1,
+        "edge": 2,
+        "endpoint_m": [
+          104.0,
+          -12.8,
+          15.0
+        ],
+        "sampled_tangent": [
+          -0.7071067811866869,
+          -0.707106781186408
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "dd-rhw-l2",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          6,
+          1
+        ],
+        "channel_id": "upper-lane-01"
+      },
+      {
+        "id": "upper-lane-01-out",
+        "direction": "out",
+        "engine_transport": 1,
+        "edge": 3,
+        "endpoint_m": [
+          12.8,
+          -72.0,
+          0.0
+        ],
+        "sampled_tangent": [
+          -0.7071067811865269,
+          -0.7071067811865681
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "rhw-4-l0",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          1,
+          4
+        ],
+        "channel_id": "upper-lane-01"
+      },
+      {
+        "id": "upper-lane-02-in",
+        "direction": "in",
+        "engine_transport": 1,
+        "edge": 2,
+        "endpoint_m": [
+          104.0,
+          -19.2,
+          15.0
+        ],
+        "sampled_tangent": [
+          -0.7071067811865633,
+          -0.7071067811865317
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "dd-rhw-l2",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          6,
+          1
+        ],
+        "channel_id": "upper-lane-02"
+      },
+      {
+        "id": "upper-lane-02-out",
+        "direction": "out",
+        "engine_transport": 1,
+        "edge": 3,
+        "endpoint_m": [
+          19.2,
+          -72.0,
+          0.0
+        ],
+        "sampled_tangent": [
+          -0.7071067811866061,
+          -0.707106781186489
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "rhw-4-l0",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          1,
+          4
+        ],
+        "channel_id": "upper-lane-02"
+      },
+      {
+        "id": "lower-lane-01-out",
+        "direction": "out",
+        "engine_transport": 1,
+        "edge": 2,
+        "endpoint_m": [
+          104.0,
+          -19.2,
+          7.5
+        ],
+        "sampled_tangent": [
+          0.7071067811865633,
+          0.7071067811865317
+        ],
+        "tangent": [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "dd-rhw-l1",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          6,
+          1
+        ],
+        "channel_id": "lower-lane-01"
+      },
+      {
+        "id": "lower-lane-01-in",
+        "direction": "in",
+        "engine_transport": 1,
+        "edge": 3,
+        "endpoint_m": [
+          35.2,
+          -88.0,
+          0.0
+        ],
+        "sampled_tangent": [
+          0.7071067811865475,
+          0.7071067811865475
+        ],
+        "tangent": [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "rhw-4-l0",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          2,
+          5
+        ],
+        "channel_id": "lower-lane-01"
+      },
+      {
+        "id": "lower-lane-02-out",
+        "direction": "out",
+        "engine_transport": 1,
+        "edge": 2,
+        "endpoint_m": [
+          104.0,
+          -12.8,
+          7.5
+        ],
+        "sampled_tangent": [
+          0.7071067811866869,
+          0.707106781186408
+        ],
+        "tangent": [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "dd-rhw-l1",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          6,
+          1
+        ],
+        "channel_id": "lower-lane-02"
+      },
+      {
+        "id": "lower-lane-02-in",
+        "direction": "in",
+        "engine_transport": 1,
+        "edge": 3,
+        "endpoint_m": [
+          28.8,
+          -88.0,
+          0.0
+        ],
+        "sampled_tangent": [
+          0.7071067811865269,
+          0.7071067811865681
+        ],
+        "tangent": [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "rhw-4-l0",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          2,
+          5
+        ],
+        "channel_id": "lower-lane-02"
+      }
+    ],
+    "channels": [
+      {
+        "id": "upper-lane-01",
+        "component_id": "upper-carriageway",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "ports": [
+          "upper-lane-01-in",
+          "upper-lane-01-out"
+        ]
+      },
+      {
+        "id": "upper-lane-02",
+        "component_id": "upper-carriageway",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "ports": [
+          "upper-lane-02-in",
+          "upper-lane-02-out"
+        ]
+      },
+      {
+        "id": "lower-lane-01",
+        "component_id": "lower-carriageway",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "ports": [
+          "lower-lane-01-in",
+          "lower-lane-01-out"
+        ]
+      },
+      {
+        "id": "lower-lane-02",
+        "component_id": "lower-carriageway",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "ports": [
+          "lower-lane-02-in",
+          "lower-lane-02-out"
+        ]
+      }
+    ],
+    "movements": [
+      [
+        "upper-lane-01-in",
+        "upper-lane-01-out"
+      ],
+      [
+        "upper-lane-02-in",
+        "upper-lane-02-out"
+      ],
+      [
+        "lower-lane-01-in",
+        "lower-lane-01-out"
+      ],
+      [
+        "lower-lane-02-in",
+        "lower-lane-02-out"
+      ]
+    ],
+    "forbidden_transfers": [
+      [
+        "upper-lane-01-in",
+        "upper-lane-02-out"
+      ],
+      [
+        "upper-lane-01-in",
+        "lower-lane-01-out"
+      ],
+      [
+        "upper-lane-01-in",
+        "lower-lane-02-out"
+      ],
+      [
+        "upper-lane-02-in",
+        "upper-lane-01-out"
+      ],
+      [
+        "upper-lane-02-in",
+        "lower-lane-01-out"
+      ],
+      [
+        "upper-lane-02-in",
+        "lower-lane-02-out"
+      ],
+      [
+        "lower-lane-01-in",
+        "upper-lane-01-out"
+      ],
+      [
+        "lower-lane-01-in",
+        "upper-lane-02-out"
+      ],
+      [
+        "lower-lane-01-in",
+        "lower-lane-02-out"
+      ],
+      [
+        "lower-lane-02-in",
+        "upper-lane-01-out"
+      ],
+      [
+        "lower-lane-02-in",
+        "upper-lane-02-out"
+      ],
+      [
+        "lower-lane-02-in",
+        "lower-lane-01-out"
+      ]
+    ],
+    "components": [
+      {
+        "id": "upper-carriageway",
+        "network": "road",
+        "construction_network": "dirtroad"
+      },
+      {
+        "id": "lower-carriageway",
+        "network": "road",
+        "construction_network": "dirtroad"
+      }
+    ]
+  }
+}

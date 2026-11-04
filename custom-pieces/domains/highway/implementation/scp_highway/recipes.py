@@ -12,6 +12,8 @@ from scp.recipes import combine_meshes, effect_clone, label
 from scp.shadows import build_shadows
 from scp.track_paths import S3D, PATH, EXEMPLAR, EFFECT, LTEXT
 from .native import CELLS, RECIPE, build_crossing_channels
+from .orthogonal_transition_variants import LOWER_BEND_RIGHT, SUPPORTED_RECIPES as ORTHOGONAL_TRANSITION_RECIPES
+from .diagonal_transition_variants import RECIPES as DIAGONAL_TRANSITION_RECIPES
 
 EFFECT_DONOR = ((*EFFECT, 0x57F53600), 'preview_filler__ddrhw4__001', 0x57F53605)
 EFFECT_DONOR_SHA256 = '0ecbae8d051d62d8f42a583b584d167a1e976a8e21942b4b56e554e7ad1cdb9a'
@@ -65,7 +67,16 @@ def construction(spec, cells=None, checks=None, cons=None):
     lines += ['CheckType = ' + line for line in palette]
     lines += ['ConsLayout = ' + line for line in cons_rows]
     lines += [f'AutoTileBase = 0x{base:08X}', 'ReplacementIntersection = 0, 0',
-              f'PlaceQueryID = 0x{int(spec["tile_ids"][0], 16):08X}', 'Costs = 1000']
+              f'PlaceQueryID = 0x{int(spec["tile_ids"][0], 16):08X}']
+    if spec.get('recipe') in DIAGONAL_TRANSITION_RECIPES:
+        from .diagonal_transition_layout import declaration
+        from .diagonal_transition_native import socket_specs
+        layout = declaration(spec)
+        socket = next(row for row in socket_specs(layout['key']) if row.arm == 'dd')
+        x, y = [end - origin for end, origin in zip(socket.core_end_cell, layout['world_origin_cell'])]
+        require([x, y] in spec['cells'], 'Diagonal transition handle must be on the owned DD end')
+        lines.append(f'HandleOffset = {x}, {y}')
+    lines.append('Costs = 1000')
     for n in range(1, 8):
         lines += ['', f'[HighwayIntersectionInfo_0x{puzzle + n * 0x10000:08X}]',
                   f'CopyFrom = 0x{puzzle if n < 4 else puzzle + (n - 4) * 0x10000:X}']
@@ -102,21 +113,29 @@ def finish_piece(spec, context, compiled):
 
 
 def build_piece(spec, context):
-    if spec['recipe'] in ('highway_ddrhw_orthogonal_l0_transition',
-                          'highway_ddrhw_orthogonal_l0_transition_mirrored'):
+    if spec['recipe'] in DIAGONAL_TRANSITION_RECIPES:
+        from .diagonal_transition import build_piece as build_diagonal_transition
+        return build_diagonal_transition(spec, context)
+    if spec['recipe'].startswith('highway_ddrhw_y_'):
+        from .y_junction import build_piece as build_y_junction
+        return build_y_junction(spec, context)
+    if spec['recipe'] in ORTHOGONAL_TRANSITION_RECIPES:
         from .orthogonal_transition import build_channels, build_textures
         from .orthogonal_approaches import add_approaches, check_native_continuation, variant
         from .orthogonal_transition_construction import core_construction_data
         from .model_shadows import add_shadows
         check_native_continuation(context['controller'])
         texture_id = int(spec['authored_texture_ids'][0], 16)
-        variant_options = {'variant': 'mirrored'} if variant(spec) == 'mirrored' else {}
+        selected_variant = variant(spec)
+        variant_options = {} if selected_variant == 'original' else {'variant': selected_variant}
         compiled = build_channels(context, texture_id=texture_id, **variant_options)
         assets = finish_piece(spec, context, compiled)
         extra = build_textures(context, texture_id, **variant_options)
         require(not assets.keys() & extra.keys(), 'Transition texture allocation overlaps another resource')
         assets.update(extra)
-        rows, checks, cons = add_approaches(spec, *core_construction_data(compiled))
+        rows, checks, cons = add_approaches(
+            spec, *core_construction_data(compiled, mirrored=selected_variant == 'mirrored',
+                                          flat_terrain=selected_variant in ('opposite-side', 'opposite-side-mirrored', LOWER_BEND_RIGHT)))
         return add_shadows(spec, context, compiled, assets), construction(spec, rows, checks, cons)
     if spec['recipe'] in ('highway_ddrhw_diagonal_ghsr_crossing',
                           'highway_ddrhw_diagonal_ghsr_crossing_alignment_b'):

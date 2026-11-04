@@ -174,7 +174,7 @@ class InstallerApp:
                 self.undo_button.configure(state="normal" if (self.work_root / "last-installation.json").is_file() else "disabled")
                 if kind == "success":
                     self.status.set(f"Installed — {value['pieces']} pieces are ready.")
-                    self.detail.set("Start SimCity 4 and open Transportation → Rail. The trumpet has one assembly button; Tab selects its components. A backup was saved automatically.")
+                    self.detail.set("Start SimCity 4. Find the trumpet in Transportation → Rail and the Highway assemblies in Transportation → Highways → SCP → Assemblies. Tab selects components. A backup was saved automatically.")
                     if value.get("recovery_record_warning"):
                         self.undo_button.configure(state="disabled")
                         self.detail.set("Installation succeeded and its backup is saved, but Windows could not save the Undo shortcut. Open the log for the recovery details.")

@@ -29,8 +29,7 @@ sys.meta_path.insert(0, SourcePackages(ROOT))
 from scp.dbpf import entries, decompress
 from scp.models import pack_s3d
 from scp.paths import local_settings
-from scp.verify import verify_build
-from scp_highway.native import parse_paths
+from scp.verify import verify_build, parse_paths
 from scp_hsr_tools.render_hsr_assembly import load_scene, render_assembly
 
 
@@ -71,7 +70,7 @@ def saved_resources(build, manifest, piece_ids):
         for key, raw in resources.items():
             if key[:2] != (0x296678F7, 0xA966883F):
                 continue
-            for route in parse_paths(raw):
+            for route in parse_paths(raw)['routes']:
                 heights = [point[2] for point in route['points']]
                 if route['transport'] == 1 and max(heights) - min(heights) <= 1e-7:
                     levels.add(round(heights[0], 7))
@@ -118,7 +117,8 @@ def render(build, destination, *, root=ROOT, plugins=None,
     model_hash = sha(pack_s3d(model))
     piece_ids = {source['piece_id'] for source in provenance['sources']}
     owned, sources, levels = saved_resources(build, manifest, piece_ids)
-    expected_levels = [0., 7.5, 15.]
+    y_junction = assembly in ('ddrhw-compact-diagonal-y-junction', 'ddrhw-compact-diagonal-y-junction-reversed')
+    expected_levels = [7.5, 15.] if y_junction else [0., 7.5, 15.]
     if levels != expected_levels:
         raise ValueError(f'Unexpected saved flat car-path heights for the highway caption: {levels}')
     plugins = plugins or jsonc.load(local_settings(root))['plugins']
@@ -149,7 +149,9 @@ def render(build, destination, *, root=ROOT, plugins=None,
         construction_fill_opacity=0.30,
         construction_model_outlines=True,
         source_caption='Actual compiled S3D pavement, decks, barriers, and supports | software preview',
-        height_caption='Car-path pavement heights: avenue 0 m | lower deck 7.5 m | upper deck 15 m',
+        height_caption=('Car PATH heights: lower deck 7.5 m | upper deck 15 m'
+                        if y_junction else
+                        'Car-path pavement heights: avenue 0 m | lower deck 7.5 m | upper deck 15 m'),
         footer_caption='All model geometry shown; no simulated traffic, terrain, or game lighting.',
     )
     if sha(pack_s3d(model)) != model_hash or report['render_model_sha256'] != model_hash:

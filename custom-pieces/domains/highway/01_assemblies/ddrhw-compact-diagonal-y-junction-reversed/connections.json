@@ -1,0 +1,1451 @@
+{
+  "schema_version": 1,
+  "purpose": "Encoded-route reachability at saved assembly poses; complete boundary compatibility is not evaluated.",
+  "subject_id": "ddrhw-compact-diagonal-y-junction-reversed",
+  "subject_kind": "assembly",
+  "coordinate_units": "metres east,north,height; saved assembly poses",
+  "ports": [
+    {
+      "id": "external-1",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l1",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        -24.0,
+        -35.2,
+        7.5
+      ],
+      "tangent": [
+        0.7071067811865476,
+        0.7071067811865476
+      ],
+      "sampled_tangent": [
+        0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6110",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6111",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6112",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6113",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6114",
+        "path:ddrhw-y-reversed-diagonal-stem-split:296678f7-a966883f-7f5d6110",
+        "construction:ddrhw-y-reversed-diagonal-stem-split"
+      ],
+      "source_route_ids": [
+        "path-7f5d6110-route-001"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            1
+          ],
+          "edge": 0,
+          "tile_id": "7f5d6110"
+        }
+      ],
+      "connection_class": "path-interface-207fc37bf71ddd9e9cc7",
+      "source_piece_id": "ddrhw-y-reversed-diagonal-stem-split",
+      "source_port_id": "a-c-in",
+      "source_placement": "P01",
+      "source_origin_m": [
+        -32.0,
+        -16.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-2",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l2",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        -24.0,
+        -35.2,
+        15.0
+      ],
+      "tangent": [
+        -0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "sampled_tangent": [
+        -0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6110",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6111",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6112",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6113",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6114",
+        "path:ddrhw-y-reversed-diagonal-stem-split:296678f7-a966883f-7f5d6110",
+        "construction:ddrhw-y-reversed-diagonal-stem-split"
+      ],
+      "source_route_ids": [
+        "path-7f5d6110-route-003"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            1
+          ],
+          "edge": 0,
+          "tile_id": "7f5d6110"
+        }
+      ],
+      "connection_class": "path-interface-3e8c9380dd7fc6c63cb8",
+      "source_piece_id": "ddrhw-y-reversed-diagonal-stem-split",
+      "source_port_id": "c-a-out",
+      "source_placement": "P01",
+      "source_origin_m": [
+        -32.0,
+        -16.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-3",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l1",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        -24.0,
+        -28.8,
+        7.5
+      ],
+      "tangent": [
+        0.7071067811865476,
+        0.7071067811865476
+      ],
+      "sampled_tangent": [
+        0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6110",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6111",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6112",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6113",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6114",
+        "path:ddrhw-y-reversed-diagonal-stem-split:296678f7-a966883f-7f5d6110",
+        "construction:ddrhw-y-reversed-diagonal-stem-split"
+      ],
+      "source_route_ids": [
+        "path-7f5d6110-route-000"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            1
+          ],
+          "edge": 0,
+          "tile_id": "7f5d6110"
+        }
+      ],
+      "connection_class": "path-interface-f9c18bdf77622a5e27b2",
+      "source_piece_id": "ddrhw-y-reversed-diagonal-stem-split",
+      "source_port_id": "a-b-in",
+      "source_placement": "P01",
+      "source_origin_m": [
+        -32.0,
+        -16.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-4",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l2",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        -24.0,
+        -28.8,
+        15.0
+      ],
+      "tangent": [
+        -0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "sampled_tangent": [
+        -0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6110",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6111",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6112",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6113",
+        "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6114",
+        "path:ddrhw-y-reversed-diagonal-stem-split:296678f7-a966883f-7f5d6110",
+        "construction:ddrhw-y-reversed-diagonal-stem-split"
+      ],
+      "source_route_ids": [
+        "path-7f5d6110-route-002"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            1
+          ],
+          "edge": 0,
+          "tile_id": "7f5d6110"
+        }
+      ],
+      "connection_class": "path-interface-3ed34d9a11bb64d98604",
+      "source_piece_id": "ddrhw-y-reversed-diagonal-stem-split",
+      "source_port_id": "b-a-out",
+      "source_placement": "P01",
+      "source_origin_m": [
+        -32.0,
+        -16.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-5",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l1",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        -24.0,
+        28.8,
+        7.5
+      ],
+      "tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "sampled_tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7110",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7111",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7112",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7113",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7114",
+        "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7110",
+        "construction:ddrhw-y-reversed-diagonal-branch"
+      ],
+      "source_route_ids": [
+        "path-7f5d7110-route-000"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            1
+          ],
+          "edge": 0,
+          "tile_id": "7f5d7110"
+        }
+      ],
+      "connection_class": "path-interface-3ecbd7f665c425929ca6",
+      "source_piece_id": "ddrhw-y-reversed-diagonal-branch",
+      "source_port_id": "a-b-out",
+      "source_placement": "P02",
+      "source_origin_m": [
+        -32.0,
+        48.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-6",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l2",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        -24.0,
+        28.8,
+        15.0
+      ],
+      "tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "sampled_tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7110",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7111",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7112",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7113",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7114",
+        "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7110",
+        "construction:ddrhw-y-reversed-diagonal-branch"
+      ],
+      "source_route_ids": [
+        "path-7f5d7110-route-001"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            1
+          ],
+          "edge": 0,
+          "tile_id": "7f5d7110"
+        }
+      ],
+      "connection_class": "path-interface-55ad67244a3a7bbd6c4b",
+      "source_piece_id": "ddrhw-y-reversed-diagonal-branch",
+      "source_port_id": "b-a-in",
+      "source_placement": "P02",
+      "source_origin_m": [
+        -32.0,
+        48.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-7",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l1",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        -24.0,
+        35.2,
+        7.5
+      ],
+      "tangent": [
+        -0.7071067811865119,
+        0.7071067811865831
+      ],
+      "sampled_tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7110",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7111",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7112",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7113",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7114",
+        "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7110",
+        "construction:ddrhw-y-reversed-diagonal-branch"
+      ],
+      "source_route_ids": [
+        "path-7f5d7110-route-003"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            1
+          ],
+          "edge": 0,
+          "tile_id": "7f5d7110"
+        }
+      ],
+      "connection_class": "path-interface-aad60a85e4675eaba5de",
+      "source_piece_id": "ddrhw-y-reversed-diagonal-branch",
+      "source_port_id": "c-b-out",
+      "source_placement": "P02",
+      "source_origin_m": [
+        -32.0,
+        48.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-8",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l2",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 0,
+      "endpoint_m": [
+        -24.0,
+        35.2,
+        15.0
+      ],
+      "tangent": [
+        0.7071067811865119,
+        -0.7071067811865831
+      ],
+      "sampled_tangent": [
+        0.7071067811865475,
+        -0.7071067811865475
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        0.7071067811865475,
+        -0.7071067811865475
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7110",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7111",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7112",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7113",
+        "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7114",
+        "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7110",
+        "construction:ddrhw-y-reversed-diagonal-branch"
+      ],
+      "source_route_ids": [
+        "path-7f5d7110-route-002"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            1,
+            1
+          ],
+          "edge": 0,
+          "tile_id": "7f5d7110"
+        }
+      ],
+      "connection_class": "path-interface-50bfaaffb0d43ee83a9b",
+      "source_piece_id": "ddrhw-y-reversed-diagonal-branch",
+      "source_port_id": "b-c-in",
+      "source_placement": "P02",
+      "source_origin_m": [
+        -32.0,
+        48.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-9",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l1",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 2,
+      "endpoint_m": [
+        56.0,
+        -2.5,
+        7.5
+      ],
+      "tangent": [
+        1.0,
+        0.0
+      ],
+      "sampled_tangent": [
+        1.0,
+        0.0
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        1.0,
+        0.0
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8400",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8401",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8402",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8403",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8404",
+        "path:ddrhw-y-reversed-orthogonal-core:296678f7-a966883f-7f5d8400",
+        "construction:ddrhw-y-reversed-orthogonal-core"
+      ],
+      "source_route_ids": [
+        "path-7f5d8400-route-000"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            4,
+            0
+          ],
+          "edge": 2,
+          "tile_id": "7f5d8400"
+        }
+      ],
+      "connection_class": "path-interface-b2fe320b9e0bb31bdb27",
+      "source_piece_id": "ddrhw-y-reversed-orthogonal-core",
+      "source_port_id": "a-c-out",
+      "source_placement": "P03",
+      "source_origin_m": [
+        -16.0,
+        -0.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-10",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l2",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 2,
+      "endpoint_m": [
+        56.0,
+        -2.5,
+        15.0
+      ],
+      "tangent": [
+        -1.0,
+        0.0
+      ],
+      "sampled_tangent": [
+        -1.0,
+        0.0
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -1.0,
+        0.0
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8400",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8401",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8402",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8403",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8404",
+        "path:ddrhw-y-reversed-orthogonal-core:296678f7-a966883f-7f5d8400",
+        "construction:ddrhw-y-reversed-orthogonal-core"
+      ],
+      "source_route_ids": [
+        "path-7f5d8400-route-002"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            4,
+            0
+          ],
+          "edge": 2,
+          "tile_id": "7f5d8400"
+        }
+      ],
+      "connection_class": "path-interface-02def3c4ce1dd299e969",
+      "source_piece_id": "ddrhw-y-reversed-orthogonal-core",
+      "source_port_id": "c-a-in",
+      "source_placement": "P03",
+      "source_origin_m": [
+        -16.0,
+        -0.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-11",
+      "direction": "out",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l1",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 2,
+      "endpoint_m": [
+        56.0,
+        2.5,
+        7.5
+      ],
+      "tangent": [
+        1.0,
+        0.0
+      ],
+      "sampled_tangent": [
+        1.0,
+        0.0
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        1.0,
+        0.0
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8400",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8401",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8402",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8403",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8404",
+        "path:ddrhw-y-reversed-orthogonal-core:296678f7-a966883f-7f5d8400",
+        "construction:ddrhw-y-reversed-orthogonal-core"
+      ],
+      "source_route_ids": [
+        "path-7f5d8400-route-001"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            4,
+            0
+          ],
+          "edge": 2,
+          "tile_id": "7f5d8400"
+        }
+      ],
+      "connection_class": "path-interface-fddc704c2b84d595ec6f",
+      "source_piece_id": "ddrhw-y-reversed-orthogonal-core",
+      "source_port_id": "b-c-out",
+      "source_placement": "P03",
+      "source_origin_m": [
+        -16.0,
+        -0.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    },
+    {
+      "id": "external-12",
+      "direction": "in",
+      "service_network": "road",
+      "service_family": "road",
+      "variant": "dd-rhw-l2",
+      "role": "primary",
+      "channel_kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ],
+      "classification_status": "Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.",
+      "engine_transport": 1,
+      "edge": 2,
+      "endpoint_m": [
+        56.0,
+        2.5,
+        15.0
+      ],
+      "tangent": [
+        -1.0,
+        0.0
+      ],
+      "sampled_tangent": [
+        -1.0,
+        0.0
+      ],
+      "grade": 0.0,
+      "sampled_grade": 0.0,
+      "actual_saved_grade": 0.0,
+      "actual_saved_tangent": [
+        -1.0,
+        0.0
+      ],
+      "grade_basis": "actual_saved_PATH_before_graph_rounding",
+      "lane_spacing_m": null,
+      "profile": "single-directed-route-interface; physical-deck-profile-unreviewed",
+      "physical_profile_status": "unreviewed; actual PATH alignment alone does not prove deck/wall fit",
+      "endpoint_basis": "actual_saved_PATH",
+      "tangent_basis": "reviewed_contract",
+      "resource_keys": [
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8400",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8401",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8402",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8403",
+        "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8404",
+        "path:ddrhw-y-reversed-orthogonal-core:296678f7-a966883f-7f5d8400",
+        "construction:ddrhw-y-reversed-orthogonal-core"
+      ],
+      "source_route_ids": [
+        "path-7f5d8400-route-003"
+      ],
+      "boundary_sources": [
+        {
+          "cell": [
+            4,
+            0
+          ],
+          "edge": 2,
+          "tile_id": "7f5d8400"
+        }
+      ],
+      "connection_class": "path-interface-991f143956c37b818e99",
+      "source_piece_id": "ddrhw-y-reversed-orthogonal-core",
+      "source_port_id": "c-b-in",
+      "source_placement": "P03",
+      "source_origin_m": [
+        -16.0,
+        -0.0
+      ],
+      "source_rotation_ccw_degrees": 0
+    }
+  ],
+  "journeys": [
+    {
+      "id": "external-10>external-2",
+      "entry_port": "external-10",
+      "exit_port": "external-2",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-12>external-7",
+      "entry_port": "external-12",
+      "exit_port": "external-7",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-1>external-9",
+      "entry_port": "external-1",
+      "exit_port": "external-9",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-3>external-5",
+      "entry_port": "external-3",
+      "exit_port": "external-5",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-6>external-4",
+      "entry_port": "external-6",
+      "exit_port": "external-4",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    },
+    {
+      "id": "external-8>external-11",
+      "entry_port": "external-8",
+      "exit_port": "external-11",
+      "service_network": "road",
+      "role": "primary",
+      "engine_transport_classes": [
+        1
+      ],
+      "basis": "actual intrinsic saved-PATH graphs and checked directed seams at saved poses"
+    }
+  ],
+  "forbidden_transfers": [
+    {
+      "from_port": "external-1",
+      "to_port": "external-2",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-1",
+      "to_port": "external-4",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-1",
+      "to_port": "external-5",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-1",
+      "to_port": "external-7",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-1",
+      "to_port": "external-11",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-3",
+      "to_port": "external-2",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-3",
+      "to_port": "external-4",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-3",
+      "to_port": "external-7",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-3",
+      "to_port": "external-9",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-3",
+      "to_port": "external-11",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-2",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-5",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-7",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-9",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-6",
+      "to_port": "external-11",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-8",
+      "to_port": "external-2",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-8",
+      "to_port": "external-4",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-8",
+      "to_port": "external-5",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-8",
+      "to_port": "external-7",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-8",
+      "to_port": "external-9",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-10",
+      "to_port": "external-4",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-10",
+      "to_port": "external-5",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-10",
+      "to_port": "external-7",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-10",
+      "to_port": "external-9",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-10",
+      "to_port": "external-11",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-12",
+      "to_port": "external-2",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-12",
+      "to_port": "external-4",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-12",
+      "to_port": "external-5",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-12",
+      "to_port": "external-9",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    },
+    {
+      "from_port": "external-12",
+      "to_port": "external-11",
+      "from_service": "road",
+      "to_service": "road",
+      "basis": "not reachable in the saved placed encoded-route graph"
+    }
+  ],
+  "encoded_route_joins": [
+    {
+      "from_piece": "ddrhw-y-reversed-diagonal-branch",
+      "from_placement": "P02",
+      "from_port": "b-a-out",
+      "to_piece": "ddrhw-y-reversed-orthogonal-core",
+      "to_placement": "P03",
+      "to_port": "b-a-in",
+      "endpoint_m": [
+        -9.667234,
+        8.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-y-reversed-diagonal-branch",
+      "from_placement": "P02",
+      "from_port": "b-c-out",
+      "to_piece": "ddrhw-y-reversed-orthogonal-core",
+      "to_placement": "P03",
+      "to_port": "b-c-in",
+      "endpoint_m": [
+        7.700046999999998,
+        8.0,
+        12.159544
+      ]
+    },
+    {
+      "from_piece": "ddrhw-y-reversed-diagonal-stem-split",
+      "from_placement": "P01",
+      "from_port": "a-b-out",
+      "to_piece": "ddrhw-y-reversed-orthogonal-core",
+      "to_placement": "P03",
+      "to_port": "a-b-in",
+      "endpoint_m": [
+        -9.667234,
+        -8.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-y-reversed-diagonal-stem-split",
+      "from_placement": "P01",
+      "from_port": "a-c-out",
+      "to_piece": "ddrhw-y-reversed-orthogonal-core",
+      "to_placement": "P03",
+      "to_port": "a-c-in",
+      "endpoint_m": [
+        21.321807,
+        -8.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-y-reversed-orthogonal-core",
+      "from_placement": "P03",
+      "from_port": "a-b-out",
+      "to_piece": "ddrhw-y-reversed-diagonal-branch",
+      "to_placement": "P02",
+      "to_port": "a-b-in",
+      "endpoint_m": [
+        -9.667234,
+        8.0,
+        7.5
+      ]
+    },
+    {
+      "from_piece": "ddrhw-y-reversed-orthogonal-core",
+      "from_placement": "P03",
+      "from_port": "b-a-out",
+      "to_piece": "ddrhw-y-reversed-diagonal-stem-split",
+      "to_placement": "P01",
+      "to_port": "b-a-in",
+      "endpoint_m": [
+        -9.667234,
+        -8.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-y-reversed-orthogonal-core",
+      "from_placement": "P03",
+      "from_port": "c-a-out",
+      "to_piece": "ddrhw-y-reversed-diagonal-stem-split",
+      "to_placement": "P01",
+      "to_port": "c-a-in",
+      "endpoint_m": [
+        21.321807,
+        -8.0,
+        15.0
+      ]
+    },
+    {
+      "from_piece": "ddrhw-y-reversed-orthogonal-core",
+      "from_placement": "P03",
+      "from_port": "c-b-out",
+      "to_piece": "ddrhw-y-reversed-diagonal-branch",
+      "to_placement": "P02",
+      "to_port": "c-b-in",
+      "endpoint_m": [
+        30.247886,
+        8.0,
+        14.711544
+      ]
+    }
+  ],
+  "source": {
+    "basis": "intrinsic graphs measured from saved PATH resources and explicit saved assembly poses",
+    "scope": "encoded_route_graph_only",
+    "resource_fingerprints": {
+      "effect:ddrhw-y-reversed-diagonal-stem-split:ea5118b0-ea5118b1-7f5d6ff5": "67e7ee8e45fd9520d28c3853d8778137b8f5d4ab0744b74c166d4819047f70ee",
+      "exemplar:ddrhw-y-reversed-diagonal-stem-split:6534284a-a8434037-7f5d6000": "a4d56b545352ff92894683f7696e237b0fe7fb2249e00faec516728c6dd45885",
+      "exemplar:ddrhw-y-reversed-diagonal-stem-split:6534284a-a8434037-7f5d6100": "3a58608be3c3bf106f0a950d154e6c5c7f35591c848c37744387d07adb555f07",
+      "exemplar:ddrhw-y-reversed-diagonal-stem-split:6534284a-a8434037-7f5d6110": "8b6c36abd8848517099d09622868a9d69d07fb442e96d90950535e4ae1db5f79",
+      "exemplar:ddrhw-y-reversed-diagonal-stem-split:6534284a-a8434037-7f5d6120": "2375ccfbe583df7bace10a636e13d8682d1dc5b98b9c5e6b6fafac166d9c3aaa",
+      "exemplar:ddrhw-y-reversed-diagonal-stem-split:6534284a-a8434037-7f5d6200": "f11c2cf9a17b3d676e27f4f8396a61066da245e1db6d61d8243e279d84eb1269",
+      "exemplar:ddrhw-y-reversed-diagonal-stem-split:6534284a-a8434037-7f5d6210": "b74633007a2240a397a3f8a351ab62b9a5df8a767c06fcd9c0d01b6577aa4eb0",
+      "exemplar:ddrhw-y-reversed-diagonal-stem-split:6534284a-a8434037-7f5d6300": "a0d2137e73bbe2f7dd96c4e19143f94f0487799a8cad42ed0d05be0024d6c8db",
+      "exemplar:ddrhw-y-reversed-diagonal-stem-split:6534284a-a8434037-7f5d6400": "89ed30d43d9a41632d8c233dcc2f7a4f575ae19ac21c57c1ef8e38597e323bdd",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6000": "71fd7071d3d614d7473be570ce2ebd945b7043e6b10b1ec12cdad80f4bfdc99e",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6001": "71fd7071d3d614d7473be570ce2ebd945b7043e6b10b1ec12cdad80f4bfdc99e",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6002": "71fd7071d3d614d7473be570ce2ebd945b7043e6b10b1ec12cdad80f4bfdc99e",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6003": "71fd7071d3d614d7473be570ce2ebd945b7043e6b10b1ec12cdad80f4bfdc99e",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6004": "71fd7071d3d614d7473be570ce2ebd945b7043e6b10b1ec12cdad80f4bfdc99e",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6100": "7fab102507bed385c38b1d98784e7ab1094e716e9237531c159bd42c6c422abe",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6101": "7fab102507bed385c38b1d98784e7ab1094e716e9237531c159bd42c6c422abe",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6102": "7fab102507bed385c38b1d98784e7ab1094e716e9237531c159bd42c6c422abe",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6103": "7fab102507bed385c38b1d98784e7ab1094e716e9237531c159bd42c6c422abe",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6104": "7fab102507bed385c38b1d98784e7ab1094e716e9237531c159bd42c6c422abe",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6110": "d0d6dfd9d81c177e78642a4c90913f33f142c2534763e2f4c77e15665e3075c5",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6111": "d0d6dfd9d81c177e78642a4c90913f33f142c2534763e2f4c77e15665e3075c5",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6112": "d0d6dfd9d81c177e78642a4c90913f33f142c2534763e2f4c77e15665e3075c5",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6113": "d0d6dfd9d81c177e78642a4c90913f33f142c2534763e2f4c77e15665e3075c5",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6114": "d0d6dfd9d81c177e78642a4c90913f33f142c2534763e2f4c77e15665e3075c5",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6120": "56eca454586e4a2f7e8ad1df9c68d6b42aef0d48cc931d8e0ceef0af1030a08e",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6121": "56eca454586e4a2f7e8ad1df9c68d6b42aef0d48cc931d8e0ceef0af1030a08e",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6122": "56eca454586e4a2f7e8ad1df9c68d6b42aef0d48cc931d8e0ceef0af1030a08e",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6123": "56eca454586e4a2f7e8ad1df9c68d6b42aef0d48cc931d8e0ceef0af1030a08e",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6124": "56eca454586e4a2f7e8ad1df9c68d6b42aef0d48cc931d8e0ceef0af1030a08e",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6200": "183d1b9184b55efa225df315dc35d34dcd49c0c617bc8d178f8c76515f060a6b",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6201": "183d1b9184b55efa225df315dc35d34dcd49c0c617bc8d178f8c76515f060a6b",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6202": "183d1b9184b55efa225df315dc35d34dcd49c0c617bc8d178f8c76515f060a6b",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6203": "183d1b9184b55efa225df315dc35d34dcd49c0c617bc8d178f8c76515f060a6b",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6204": "183d1b9184b55efa225df315dc35d34dcd49c0c617bc8d178f8c76515f060a6b",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6210": "c1b254ed9ae1f5c34ebb8571dfb52788b53cd2541a40b872f225614fa3e0383c",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6211": "c1b254ed9ae1f5c34ebb8571dfb52788b53cd2541a40b872f225614fa3e0383c",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6212": "c1b254ed9ae1f5c34ebb8571dfb52788b53cd2541a40b872f225614fa3e0383c",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6213": "c1b254ed9ae1f5c34ebb8571dfb52788b53cd2541a40b872f225614fa3e0383c",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6214": "c1b254ed9ae1f5c34ebb8571dfb52788b53cd2541a40b872f225614fa3e0383c",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6300": "70d294790f4bd1b206a1194135899e3218cb32a8fe7f9e9e141940636a04f9ec",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6301": "70d294790f4bd1b206a1194135899e3218cb32a8fe7f9e9e141940636a04f9ec",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6302": "70d294790f4bd1b206a1194135899e3218cb32a8fe7f9e9e141940636a04f9ec",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6303": "70d294790f4bd1b206a1194135899e3218cb32a8fe7f9e9e141940636a04f9ec",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6304": "70d294790f4bd1b206a1194135899e3218cb32a8fe7f9e9e141940636a04f9ec",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6400": "864a7d252410dfabb414bba98bc2bed23ccac8998d213acf6b34c8c71ee9572f",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6401": "864a7d252410dfabb414bba98bc2bed23ccac8998d213acf6b34c8c71ee9572f",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6402": "864a7d252410dfabb414bba98bc2bed23ccac8998d213acf6b34c8c71ee9572f",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6403": "864a7d252410dfabb414bba98bc2bed23ccac8998d213acf6b34c8c71ee9572f",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6404": "864a7d252410dfabb414bba98bc2bed23ccac8998d213acf6b34c8c71ee9572f",
+      "model:ddrhw-y-reversed-diagonal-stem-split:5ad0e817-badb57f1-7f5d6ff5": "7d82f6420c607f3ce0d6daa7c8adda3c90b87ce4673693e8f40b4078b54c4730",
+      "path:ddrhw-y-reversed-diagonal-stem-split:296678f7-a966883f-7f5d6000": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+      "path:ddrhw-y-reversed-diagonal-stem-split:296678f7-a966883f-7f5d6100": "18e24582ccea1458aa9960f60b29acc520bf5ef7287bcc722ff17b9cf85a8918",
+      "path:ddrhw-y-reversed-diagonal-stem-split:296678f7-a966883f-7f5d6110": "167596087696da260dbff482758a013bbd1148c7e110ae4d598bc7b92901565e",
+      "path:ddrhw-y-reversed-diagonal-stem-split:296678f7-a966883f-7f5d6120": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+      "path:ddrhw-y-reversed-diagonal-stem-split:296678f7-a966883f-7f5d6200": "53a1ff5f520350d81a11ffdd059f37472252d2c2d8be9032ec6915eefc047ea4",
+      "path:ddrhw-y-reversed-diagonal-stem-split:296678f7-a966883f-7f5d6210": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+      "path:ddrhw-y-reversed-diagonal-stem-split:296678f7-a966883f-7f5d6300": "6748c2f1f5c1227b1a5b8116f4f2836b201c2ee8a8b0bca922c6ade26b2d0a2b",
+      "path:ddrhw-y-reversed-diagonal-stem-split:296678f7-a966883f-7f5d6400": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+      "text:ddrhw-y-reversed-diagonal-stem-split:2026960b-2a592fd1-7f5d6000": "39acd8c768117206b7913ec66f49397ea1c81a0cf973d256f23c66a8392f1f6c",
+      "text:ddrhw-y-reversed-diagonal-stem-split:2026960b-2a592fd1-7f5d6100": "39acd8c768117206b7913ec66f49397ea1c81a0cf973d256f23c66a8392f1f6c",
+      "text:ddrhw-y-reversed-diagonal-stem-split:2026960b-2a592fd1-7f5d6110": "39acd8c768117206b7913ec66f49397ea1c81a0cf973d256f23c66a8392f1f6c",
+      "text:ddrhw-y-reversed-diagonal-stem-split:2026960b-2a592fd1-7f5d6120": "39acd8c768117206b7913ec66f49397ea1c81a0cf973d256f23c66a8392f1f6c",
+      "text:ddrhw-y-reversed-diagonal-stem-split:2026960b-2a592fd1-7f5d6200": "39acd8c768117206b7913ec66f49397ea1c81a0cf973d256f23c66a8392f1f6c",
+      "text:ddrhw-y-reversed-diagonal-stem-split:2026960b-2a592fd1-7f5d6210": "39acd8c768117206b7913ec66f49397ea1c81a0cf973d256f23c66a8392f1f6c",
+      "text:ddrhw-y-reversed-diagonal-stem-split:2026960b-2a592fd1-7f5d6300": "39acd8c768117206b7913ec66f49397ea1c81a0cf973d256f23c66a8392f1f6c",
+      "text:ddrhw-y-reversed-diagonal-stem-split:2026960b-2a592fd1-7f5d6400": "39acd8c768117206b7913ec66f49397ea1c81a0cf973d256f23c66a8392f1f6c",
+      "construction:ddrhw-y-reversed-diagonal-stem-split": "028e3e48f51dc27150cf9d005d817c3b98dfbc764e4558a2d800e082c0b2f2b8",
+      "effect:ddrhw-y-reversed-diagonal-branch:ea5118b0-ea5118b1-7f5d7ff5": "ef6412d6d6998ac42c24d4385f80875cc43da7731391fb5f358e6ad90ee07709",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7020": "049dab8e71da9f431ecad517f22e7c2c97161e3e6328dc478bd985aeace2c6c4",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7100": "22eb611bbd053b41a62e3f510292127d4d6542fadcef9eb0e67774beb3b18430",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7110": "9f11a59ad761125d65cb472d79af9006a0f3870414767308e9edc2e27ac9d720",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7120": "2eba44a6aaf8702950aa59978b8df632b16fa781ddb3ee4c0e863cb3e6ace39f",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7210": "49760a7b4cd2de1f8d942d0c3b485308f301d25b2730dcc349ece090b3bd119e",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7220": "d137a3655f9e2c045904ec3ff078ae7a6849dcefc2b7a773e66852e3eb5b2fcb",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7320": "a06b28f983ef5b55a4129c913a605d515e7ff47bb2f2e07b05920ec493857e1e",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7420": "07a7f2c860d10114a7c7fe0178e55f362f9b87a7e603f0a30cb558fe971edff1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7020": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7021": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7022": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7023": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7024": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7100": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7101": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7102": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7103": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7104": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7110": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7111": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7112": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7113": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7114": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7120": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7121": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7122": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7123": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7124": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7210": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7211": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7212": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7213": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7214": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7220": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7221": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7222": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7223": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7224": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7320": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7321": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7322": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7323": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7324": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7420": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7421": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7422": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7423": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7424": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7ff5": "db318c4ea2abade7b55b5bf7efffe863a34d834dbf02c79c4989c6a1ec859bfa",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7020": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7100": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7110": "8ba87d22df77f455a93076cda9591b830c2c8da9715d41fc9f94275c0d3f563f",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7120": "e40fc0db327aa53df658dd4ceb6f65f8e5a3e4e1a06509031f7b6f72743e6062",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7210": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7220": "d0a9d154651e9959a80f772c6d939357a77c94579ab42bb256bcc60e71525370",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7320": "2c913e9edfeb4a1436ec167b4c5441b2c103f92e6fdc634df0a58a97ad0e96bf",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7420": "4196131350f1650d5c7bbb5f5c3b533cc7cd1b0baf5de028b6b5e6c9e7ae2231",
+      "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7020": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+      "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7100": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+      "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7110": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+      "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7120": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+      "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7210": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+      "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7220": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+      "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7320": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+      "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7420": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+      "construction:ddrhw-y-reversed-diagonal-branch": "f5e07caffd8d1438fddd02631212c57f189ea264d5f59bcd46fb4ccbe4165349",
+      "effect:ddrhw-y-reversed-orthogonal-core:ea5118b0-ea5118b1-7f5d8ff5": "b222f2a587b8775c4011045f623268c66524956ce73e6d5e8c39009300fb2f59",
+      "exemplar:ddrhw-y-reversed-orthogonal-core:6534284a-a8434037-7f5d8000": "09adc489e5f8018a00e3d3e39a73f85d75d631530a1021183e4585894118faf6",
+      "exemplar:ddrhw-y-reversed-orthogonal-core:6534284a-a8434037-7f5d8100": "e90fd2764d57886fdbab68dfa6b2f3c264cd8142e16f47c9108016951e6ec875",
+      "exemplar:ddrhw-y-reversed-orthogonal-core:6534284a-a8434037-7f5d8200": "f000db5db50ca0d283a7fa63455563c46c37497ee99351f436e17342e66d6689",
+      "exemplar:ddrhw-y-reversed-orthogonal-core:6534284a-a8434037-7f5d8300": "08967df42ca236d546844258fe5478a03b84b6d3f34da771700c04ebb7d404fa",
+      "exemplar:ddrhw-y-reversed-orthogonal-core:6534284a-a8434037-7f5d8400": "52eeb421bf937d3f0bade835d2f79c4c56341690e15cdfe700ee0bcc1f44d5ff",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8000": "911bc5aacd2e1b883b23072c1289877109915e1e63d2a359f151a2a9b840e6e5",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8001": "911bc5aacd2e1b883b23072c1289877109915e1e63d2a359f151a2a9b840e6e5",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8002": "911bc5aacd2e1b883b23072c1289877109915e1e63d2a359f151a2a9b840e6e5",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8003": "911bc5aacd2e1b883b23072c1289877109915e1e63d2a359f151a2a9b840e6e5",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8004": "911bc5aacd2e1b883b23072c1289877109915e1e63d2a359f151a2a9b840e6e5",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8100": "9e0ac6db56c4e7555d4040025d43713c1893c02b6432031c96d984ce2fa68e24",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8101": "9e0ac6db56c4e7555d4040025d43713c1893c02b6432031c96d984ce2fa68e24",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8102": "9e0ac6db56c4e7555d4040025d43713c1893c02b6432031c96d984ce2fa68e24",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8103": "9e0ac6db56c4e7555d4040025d43713c1893c02b6432031c96d984ce2fa68e24",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8104": "9e0ac6db56c4e7555d4040025d43713c1893c02b6432031c96d984ce2fa68e24",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8200": "8b82f06a97a3dd30e9f30f18655e3420d5354f9b91c090ba118744f7a4f107bd",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8201": "8b82f06a97a3dd30e9f30f18655e3420d5354f9b91c090ba118744f7a4f107bd",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8202": "8b82f06a97a3dd30e9f30f18655e3420d5354f9b91c090ba118744f7a4f107bd",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8203": "8b82f06a97a3dd30e9f30f18655e3420d5354f9b91c090ba118744f7a4f107bd",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8204": "8b82f06a97a3dd30e9f30f18655e3420d5354f9b91c090ba118744f7a4f107bd",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8300": "df99111d12b829bddff17d39445fe6225ac452a6075f2f7ab6ebed49a61d7f5b",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8301": "df99111d12b829bddff17d39445fe6225ac452a6075f2f7ab6ebed49a61d7f5b",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8302": "df99111d12b829bddff17d39445fe6225ac452a6075f2f7ab6ebed49a61d7f5b",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8303": "df99111d12b829bddff17d39445fe6225ac452a6075f2f7ab6ebed49a61d7f5b",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8304": "df99111d12b829bddff17d39445fe6225ac452a6075f2f7ab6ebed49a61d7f5b",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8400": "96645b0a68439e9381d762191840e6f9fb85a68d2c9ef3dd4934a9a909ffb618",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8401": "96645b0a68439e9381d762191840e6f9fb85a68d2c9ef3dd4934a9a909ffb618",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8402": "96645b0a68439e9381d762191840e6f9fb85a68d2c9ef3dd4934a9a909ffb618",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8403": "96645b0a68439e9381d762191840e6f9fb85a68d2c9ef3dd4934a9a909ffb618",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8404": "96645b0a68439e9381d762191840e6f9fb85a68d2c9ef3dd4934a9a909ffb618",
+      "model:ddrhw-y-reversed-orthogonal-core:5ad0e817-badb57f1-7f5d8ff5": "dac09bac84819118989ac97d6b7b87e2953ec458cddf379e1e8f4d84dcf799a8",
+      "path:ddrhw-y-reversed-orthogonal-core:296678f7-a966883f-7f5d8000": "aeb647cd36278ab07fe3e38e9703573ea7ae0ddfb0ff3a56104be46ab2388805",
+      "path:ddrhw-y-reversed-orthogonal-core:296678f7-a966883f-7f5d8100": "8dbcc5adb5fce4bd65c75529750a05c18596147eae0a18ebda5bc508438c4fac",
+      "path:ddrhw-y-reversed-orthogonal-core:296678f7-a966883f-7f5d8200": "2b10de22572538a9750798607f2fb5898fea1ecf986a0ffc1afca37df12645e4",
+      "path:ddrhw-y-reversed-orthogonal-core:296678f7-a966883f-7f5d8300": "38828472e89b246133dc6a72b0b5d7d7329ceb3f65ccbe21f86fbf0f50ad166f",
+      "path:ddrhw-y-reversed-orthogonal-core:296678f7-a966883f-7f5d8400": "dfab4dbf766880c22f3ade51426b7eb0b1f6ef0c84fe7bf7959cba382af7e590",
+      "text:ddrhw-y-reversed-orthogonal-core:2026960b-2a592fd1-7f5d8000": "827974425549967a6cb293a6510598291f8136def74fee42af88184ad9e35f05",
+      "text:ddrhw-y-reversed-orthogonal-core:2026960b-2a592fd1-7f5d8100": "827974425549967a6cb293a6510598291f8136def74fee42af88184ad9e35f05",
+      "text:ddrhw-y-reversed-orthogonal-core:2026960b-2a592fd1-7f5d8200": "827974425549967a6cb293a6510598291f8136def74fee42af88184ad9e35f05",
+      "text:ddrhw-y-reversed-orthogonal-core:2026960b-2a592fd1-7f5d8300": "827974425549967a6cb293a6510598291f8136def74fee42af88184ad9e35f05",
+      "text:ddrhw-y-reversed-orthogonal-core:2026960b-2a592fd1-7f5d8400": "827974425549967a6cb293a6510598291f8136def74fee42af88184ad9e35f05",
+      "construction:ddrhw-y-reversed-orthogonal-core": "cf38e6b207c5ea6312cb67ddf71aa7f25261603d724adad81fc48fb1e6fb2f15",
+      "assembly_pose:ddrhw-compact-diagonal-y-junction-reversed": "d88442dc0270a98550e1fcab7603d2a8eceeb50558fcf478c6cfa6ee3e76b2d1"
+    }
+  },
+  "software_status": {
+    "path_extraction": "passed",
+    "placed_encoded_route_joins": "passed",
+    "complete_boundary_compatibility": "not_evaluated",
+    "physical_seams": "unverified",
+    "in_game": "unverified"
+  },
+  "compatibility_policy": "Individual encoded-route seams only. Complete physical-channel boundary agreement, model seams, construction operation, and in-game behaviour require separate evidence."
+}

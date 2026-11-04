@@ -23,7 +23,7 @@ from scp.dbpf import entries, decompress, exemplar, pack_dbpf
 from scp.menu import ICON, MENU_EXEMPLAR
 from scp.paths import local_settings
 from scp.verify import check_emitted_runtime_addresses, parse_rules
-from scp_highway import ghsr_approaches, ghsr_crossing, menu, recipes, verify
+from scp_highway import ghsr_approaches, ghsr_crossing, menu, piece_icons, recipes, verify
 from scp_installer import service
 
 IDENTIFIER = ghsr_approaches.PIECE_ID
@@ -43,7 +43,8 @@ def registration_tool():
 
 
 def copy_registration_inputs(target, identifier=IDENTIFIER):
-    """Copy catalogue inputs and icons, removing the selected crossing everywhere."""
+    """Copy catalogue inputs and icons, removing selected exact subjects everywhere."""
+    identifiers = {identifier} if isinstance(identifier, str) else set(identifier)
     project = jsonc.load(ROOT / 'project.jsonc')
     selected = {'project.jsonc', project['profile'], project['allocations']}
     for domain in project['domains'].values():
@@ -53,7 +54,7 @@ def copy_registration_inputs(target, identifier=IDENTIFIER):
         registry = jsonc.load(ROOT / domain['registry'])
         selected.add(str(directory / registry['collections']))
         for relative in [*registry['pieces'], *registry.get('assemblies', [])]:
-            if identifier in Path(relative).parts:
+            if any(item in Path(relative).parts for item in identifiers):
                 continue
             selected.add(str(directory / relative))
             icon = directory / Path(relative).parent / 'icon.png'
@@ -65,18 +66,19 @@ def copy_registration_inputs(target, identifier=IDENTIFIER):
         shutil.copyfile(ROOT / relative, destination)
     ledger_path = target / project['allocations']
     ledger = jsonc.load(ledger_path)
-    ledger['pieces'].pop(identifier)
+    for item in identifiers:
+        ledger['pieces'].pop(item, None)
     ledger_path.write_text(jsonc.document(ledger, source=ledger_path.read_text()), encoding='utf-8')
     domain = project['domains']['highway']
     registry_path = target / domain['registry']
     registry = jsonc.load(registry_path)
     registry['pieces'] = [relative for relative in registry['pieces']
-                          if identifier not in Path(relative).parts]
+                          if not any(item in Path(relative).parts for item in identifiers)]
     registry_path.write_text(jsonc.document(registry, source=registry_path.read_text()), encoding='utf-8')
     collections_path = target / domain['path'] / registry['collections']
     collections = jsonc.load(collections_path)
     collections['collections'] = {key: retained for key, value in collections['collections'].items()
-                                  if (retained := [item for item in value if item != identifier])}
+                                  if (retained := [item for item in value if item not in identifiers])}
     collections_path.write_text(jsonc.document(collections, source=collections_path.read_text()), encoding='utf-8')
 
 
@@ -138,7 +140,7 @@ class GHSRCrossingRegistrationTests(unittest.TestCase):
         self.assertEqual(len(native_approaches.approaches(piece)), 4)
         self.assertNotIn('native_dd_approaches', piece)
 
-    def test_new_highways_menu_icon_is_distinct_and_both_legacy_icon_bytes_are_preserved(self):
+    def test_new_highways_menu_icon_is_distinct_and_legacy_icon_pixels_are_preserved(self):
         resources, report = menu.build_menu_resources(menu.portable_baseline(), self.piece)
         identifier = number(self.piece['menu']['id'])
         props = {int(prop['id'], 16): prop['values']
@@ -147,14 +149,15 @@ class GHSRCrossingRegistrationTests(unittest.TestCase):
         self.assertNotIn(0x4001, props)
         self.assertEqual(report['menu'], 'Highways')
         icon = resources[*ICON, identifier]
-        self.assertEqual(icon, (DIRECTORY / 'icon.png').read_bytes())
-        self.assertEqual(Image.open(io.BytesIO(icon)).size, (176, 44))
+        piece_icons.validate_piece_icon(icon, expected=(DIRECTORY / 'icon.png').read_bytes())
+        icon_pixels = Image.open(io.BytesIO(icon)).tobytes()
         for style, fingerprint in {
-            'ddrhw-crossing': '265558be331a94235cb89d765c87bf6b08a525c1f4f5ef99d6f5436ffee23785',
-            'ddrhw-ramp': 'd3d0f4cb7d9339946459d691d673cd3a5133d1a2c801429de3a73276d3386a6c',
+            'ddrhw-crossing': 'f324aed1e8375db5164892ed611ff2f8032b575772f5bbade5b3e4dbb7104f64',
+            'ddrhw-ramp': '07711d39e5cc6c7252d1b949151cd81b9e830d444d7b0d74111d09b6bc963581',
         }.items():
-            self.assertEqual(sha(menu.make_icon(style)), fingerprint)
-            self.assertNotEqual(icon, menu.make_icon(style))
+            legacy_pixels = Image.open(io.BytesIO(menu.make_icon(style))).tobytes()
+            self.assertEqual(sha(legacy_pixels), fingerprint)
+            self.assertNotEqual(icon_pixels, legacy_pixels)
 
     def test_installer_finite_recipe_selection_includes_the_crossing_and_actual_dependencies(self):
         self.assertIn(self.piece['recipe'], service.implemented_recipes_by_domain()['highway'])

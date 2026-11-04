@@ -1,0 +1,211 @@
+// title: "Piece definition: DD RHW-4 — Diagonal Two-Branch Stem — L1/L2"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Diagonal Two-Branch Stem \u2014 L1/L2.",
+  "schema_version": 1,
+  "id": "ddrhw-y-diagonal-stem-split",
+  "domain": "highway",
+  "name": "DD RHW-4 \u2014 Diagonal Two-Branch Stem \u2014 L1/L2",
+  "description": "Native diagonal two-lane split and reverse merge, with the south paired flat approaches. Place its owned cells at the matching assembly reference; every native deck retains its measured real car lanes.",
+  "recipe": "highway_ddrhw_y_diagonal_stem_split",
+  "geometry_key": "y-diagonal-stem-split",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f881",
+  "tile_ids": [
+    "7f5d3000",
+    "7f5d3100",
+    "7f5d3200",
+    "7f5d3300",
+    "7f5d3400",
+    "7f5d3110",
+    "7f5d3210",
+    "7f5d3120"
+  ],
+  "preview_id": "7f5d3ff5",
+  "effect_name": "preview_scp_hw_f881_____001",
+  "footprint": [
+    5,
+    3
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "mis"
+  ],
+  "native_y_junction_approaches": true,
+  "menu": {
+    "id": "6a47f881",
+    "order": "ffffff81",
+    "style": "ddrhw-y-stem"
+  },
+  "engineering": {
+    "world_origin_cell": [
+      -2,
+      1
+    ],
+    "physical_model_function": "Native diagonal two-lane split and reverse merge, with the south paired flat approaches",
+    "max_grade_percent": 30.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "pavement_path_offset_m": 0.001,
+    "native_pavement_datums_m": [
+      0.0009999275207519531,
+      0.0010004043579101562
+    ],
+    "standard_deck_depth_m": 1.0,
+    "native_peer_shoulder_body_depth_m": {
+      "upper": 0.9989995956420898,
+      "lower": 0.999000072479248
+    },
+    "single_lane_deck_width_m": 6.0,
+    "minimum_single_lane_deck_width_m": 5.25,
+    "single_lane_asphalt_width_m": 4.34375,
+    "minimum_single_lane_asphalt_width_m": 3.59375,
+    "graded_inner_barrier_clearance_m": 1.421875,
+    "model_only_cells": [
+      [
+        0,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "model_overhang": true,
+    "authored_model_overhang": false,
+    "path_ownership": "Every source route fragment in each owned city cell",
+    "native_phase": "first measured phase with common axis intersection (8,0) m",
+    "shadows_enabled": false
+  },
+  "shadow_mode": "model-carrier",
+  "shadow_mappings": [],
+  "model_shadows": {
+    "schema_version": 1,
+    "sun_profile": "sc4-default-67p5-45",
+    "enabled": false,
+    "cells": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          2,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          3,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          4,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          1
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          2,
+          1
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          2
+        ],
+        "cast_shadow": false
+      }
+    ]
+  },
+  "provenance": {
+    "geometry": "Native-profile DD ends and six source-bound single-lane journeys; physical pavement, closed bodies, barriers, and supporting solids are compiled together before whole-cell ownership.",
+    "construction": "Three disjoint functional owners, one native outside socket per owner, and four proper rotations repeated across eight cursor states.",
+    "granularity": "Native diagonal two-lane split and reverse merge, with the south paired flat approaches. Shared decks and route fragments in a city tile retain one coordinated owner; full custom joining boundaries are supplied by checked connector exports.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}

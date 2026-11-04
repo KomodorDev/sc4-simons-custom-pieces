@@ -1,0 +1,64 @@
+// title: "Final reversed Y development packages"
+// summary: "Identify the final normal build, single-button menu, binary archive, and portable source archive before additive installation."
+//
+// Used when: Reviewing exact package bytes and distinguishing packaging from installation.
+// Read by: Contributors, players, and the assembly testing guide.
+// Updated by: Contributors after fresh verified normal/menu builds and both archives complete.
+// Affects: Final development artifact identities; later installation and human game observations remain separate captures.
+{
+  "schema_version": 1,
+  "state": "checked-final-development-packages-before-additive-installation",
+  "outputs": {
+    "normal_manifest": {
+      "path": "dist/ddrhw-y-reversed-final-parts-03/manifest.json",
+      "sha256": "1d009019fa90bea607d59883206dcbb000efc6855f7ea9cbc96008403079fce6",
+      "bytes": 959140
+    },
+    "normal_verification": {
+      "path": "dist/ddrhw-y-reversed-final-parts-03/verification.json",
+      "sha256": "cf0532f335adbfdac8e82d4395b76406386d1a174c244771e367be510ea929a4",
+      "bytes": 212840
+    },
+    "menu_manifest": {
+      "path": "dist/ddrhw-y-reversed-menu-final-03/manifest.json",
+      "sha256": "d239e913bb5a6447e634800646f652aca443dc9458025820917ede7afba7402c",
+      "bytes": 1116792
+    },
+    "menu_verification": {
+      "path": "dist/ddrhw-y-reversed-menu-final-03/verification.json",
+      "sha256": "7be13e3a5cbc4d1f1096406237c3dd2ec0aae9cc7805286103b758a45b0315ad",
+      "bytes": 225864
+    },
+    "binary_zip": {
+      "path": "dist/ddrhw-y-reversed-menu-final-03.zip",
+      "sha256": "23a6f63260a186f9eb9f804985b16233e7a381839b0a68a7aecb7e87f75f427a",
+      "bytes": 314583884
+    },
+    "source_zip": {
+      "path": "dist/ddrhw-y-reversed-source-final-03.zip",
+      "sha256": "3e5ece2efba48a7fd340c0edf6b0509b54ccbca8bdc822b97e09c888a685b13f",
+      "bytes": 300764628
+    }
+  },
+  "piece_ids": [
+    "ddrhw-y-reversed-diagonal-stem-split",
+    "ddrhw-y-reversed-diagonal-branch",
+    "ddrhw-y-reversed-orthogonal-core"
+  ],
+  "assembly_id": "ddrhw-compact-diagonal-y-junction-reversed",
+  "assembly_button_id": "6a47fee6",
+  "placements": 3,
+  "one_click_places": "one selected component",
+  "menu_presentation": "One separate button; Tab and Shift+Tab cycle the three members.",
+  "complete_new_DAT_bytes_match_checked_normal_and_snapshot": true,
+  "canonical_compiled_resource_fingerprint": "79e2be7eaeb5c9e2ea80f74b4fe38f382097765a99a897107c1bbebace3a4075",
+  "connector_provenance": "Exports retain their exact verified native-02 source path; final-parts-03 carries identical canonical resource facts and complete DAT bytes.",
+  "software_verification": {
+    "file": "software-verification.jsonc",
+    "sha256": "e800735773a959a6cbb49e10aecd8fc8e53ac17209429cbdfdcbb2122be1889f"
+  },
+  "packaged_documentation": "Frozen before installation, with completed software checks, canonical views, connector exports/cards, and unverified human cases. Later deployment captures do not rewrite these archives.",
+  "installed_at_this_capture": false,
+  "new_variant_human_game_operation": "unverified",
+  "existing_228_piece_reinstallation_authorized": false
+}

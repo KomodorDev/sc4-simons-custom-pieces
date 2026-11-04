@@ -13,7 +13,7 @@ from scp.menu import MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION
 from scp.menu_experiment import _layout, _guide, _game_checks, _assembly_icon_network
 from scp.menu_experiment_resources import (build_menu_experiment_resources,
     validate_menu_experiment_resources, make_assembly_icon)
-from scp_highway import menu, icons
+from scp_highway import icons, menu, native
 
 
 class HighwayAssemblyMenuTests(unittest.TestCase):
@@ -25,6 +25,7 @@ class HighwayAssemblyMenuTests(unittest.TestCase):
                      'name': f'Highway component {index}', 'description': 'Synthetic Highways menu test.',
                      'puzzle_id': f'{puzzle:04x}', 'menu': {'id': f'{0x6A470000 | puzzle:08x}',
                      'order': f'{0xFFFFFF10 + index:08x}', 'style': 'ddrhw-crossing'}}
+            piece['cells'] = [list(cell) for cell in native.CELLS]
             resources, _report = menu.build_menu_resources(menu.portable_baseline(), piece)
             self.pieces.append(piece); self.resources.update(resources)
         self.layout = {'assembly_id': 'fixture-highway-assembly', 'member_order': 'first-use-in-assembly',

@@ -402,7 +402,11 @@ class ActualNativeOrthogonalProofTests(unittest.TestCase):
 
     def test_all_registered_legacy_highway_helpers_keep_native_bytes_and_schema_when_disabled(self):
         pieces = [jsonc.load(path) for path in sorted((ROOT / 'domains/highway/00_pieces').glob('*/piece.jsonc'))]
-        pieces = [piece for piece in pieces if piece['id'] not in (orthogonal.PIECE_ID, orthogonal.MIRRORED_PIECE_ID)]
+        pieces = [piece for piece in pieces if (piece.get(native.OVERLAY) or piece.get(native.GHSR_OVERLAY))
+                  and not any(piece.get(mode) for mode in (native.ORTHOGONAL_OVERLAY, native.Y_JUNCTION_OVERLAY,
+                                                           native.DIAGONAL_TRANSITION_OVERLAY))]
+        self.assertTrue(any(piece.get(native.OVERLAY) for piece in pieces))
+        self.assertTrue(any(piece.get(native.GHSR_OVERLAY) for piece in pieces))
         original = deepcopy(pieces)
         old_raw, old_proof = native.compose_rul1(self.baseline, pieces, self.donors)
         self.assertEqual(old_proof['schema_version'], 2)
@@ -415,7 +419,7 @@ class ActualNativeOrthogonalProofTests(unittest.TestCase):
             self.assertEqual(proof, old_proof)
         self.assertEqual(pieces, original)
 
-    def test_transition_and_all_registered_legacy_helpers_preserve_every_old_insertion(self):
+    def test_adding_original_transition_to_current_highway_roster_preserves_native_rows(self):
         pieces = [jsonc.load(path) for path in sorted((ROOT / 'domains/highway/00_pieces').glob('*/piece.jsonc'))]
         pieces = [piece for piece in pieces if piece['id'] not in (orthogonal.PIECE_ID, orthogonal.MIRRORED_PIECE_ID)]
         expected_ground = adaptive.expected_solutions(pieces)
@@ -427,9 +431,11 @@ class ActualNativeOrthogonalProofTests(unittest.TestCase):
         self.assertEqual(raw, old_raw)
         self.assertEqual(proof['schema_version'], 3)
         self.assertEqual(proof['sections'], old_proof['sections'])
+        self.assertEqual(proof['existing_native_solutions'], old_proof['existing_native_solutions'])
         report = native.verify_rul1({native.RUL1: raw}, [*pieces, specification()],
                                    {native.OVERLAY: proof, 'rul1': ground_proof}, self.donors)
-        self.assertEqual(report['existing_native_rul1_solutions_reused'], 8)
+        # The eight orthogonal rows include the Y subset. Diagonal transitions reuse eight more.
+        self.assertEqual(report['existing_native_rul1_solutions_reused'], 16)
         self.assertEqual(report['adaptive_rul1_solutions_checked'], len(expected_ground))
         self.assertFalse(report['native_dd_game_behavior_tested'])
 
@@ -478,7 +484,7 @@ class RegisteredOrthogonalVariantMenuTests(unittest.TestCase):
                 self.assertIn(name_fragment, piece_name_for_recipe(recipe, 'unused fallback', ROOT))
                 self.assertEqual(piece_directory(recipe, ROOT), ROOT / 'domains/highway/00_pieces' / identifier)
 
-    def test_registered_pair_uses_one_original_button_and_sixteen_unmodified_rotation_states(self):
+    def test_registered_four_member_family_preserves_original_pair_and_thirty_two_rotation_states(self):
         from scp.catalog import load_catalog
         from scp import piece_menu_families as families
         from scp.rul0 import compose_rul0
@@ -488,7 +494,16 @@ class RegisteredOrthogonalVariantMenuTests(unittest.TestCase):
         original, mirrored = (by_id[name] for name in (orthogonal.PIECE_ID, orthogonal.MIRRORED_PIECE_ID))
         self.assertNotIn('family_anchor', original['menu'])
         self.assertEqual(mirrored['menu']['family_anchor'], original['id'])
-        self.assertEqual(catalog['piece_sets']['ddrhw-orthogonal-ground-transition'], [original['id'], mirrored['id']])
+        expected_order = ['ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile',
+                          'ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile-mirrored',
+                          'ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile',
+                          'ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile-mirrored']
+        expected_roots = (0xF87F, 0xF880, 0xF887, 0xF888)
+        self.assertEqual(catalog['piece_sets']['ddrhw-orthogonal-ground-transition'], expected_order)
+        complete_family = [by_id[identifier] for identifier in expected_order]
+        self.assertEqual([int(piece['puzzle_id'], 16) for piece in complete_family], list(expected_roots))
+        for piece in complete_family[1:]:
+            self.assertEqual(piece['menu']['family_anchor'], original['id'])
         for selected in ([original, mirrored], [mirrored, original]):
             raw, metadata = compose_rul0(fixture.NATIVE, [fixture.fragment(int(piece['puzzle_id'], 16)) for piece in selected])
             menus = {key: value for piece in selected for key, value in fixture.menu_fixture.menu_resource(piece).items()}
@@ -507,6 +522,31 @@ class RegisteredOrthogonalVariantMenuTests(unittest.TestCase):
             restored, original_metadata, checked = families.verify(changed, proof, selected, record)
             self.assertEqual((restored, original_metadata), (raw, metadata))
             self.assertEqual(checked['hidden_member_buttons'], 1)
+            self.assertFalse(checked['in_game_menu_tested'])
+        selections = (((0, 1, 2, 3), (0xF87F, 0xF880, 0xF887, 0xF888)),
+                      ((3, 2, 1, 0), (0xF87F, 0xF888, 0xF887, 0xF880)),
+                      ((2, 1, 3, 0), (0xF87F, 0xF887, 0xF880, 0xF888)))
+        for indices, selected_order in selections:
+            selected = [complete_family[index] for index in indices]
+            raw, metadata = compose_rul0(fixture.NATIVE, [fixture.fragment(int(piece['puzzle_id'], 16)) for piece in selected])
+            menus = {key: value for piece in selected for key, value in fixture.menu_fixture.menu_resource(piece).items()}
+            changed, proof, presentations, record = families.apply(raw, metadata, menus, selected, available=catalog['pieces'])
+            rows = fixture.rows(proof['ordering_insertion'])
+            self.assertEqual([(kind, states[0]) for kind, states in rows],
+                             [('rotationring', selected_order[0]),
+                              *[('addtypes', root) for root in selected_order[1:]]])
+            self.assertEqual([states for _kind, states in rows],
+                             [[root + turn * 0x10000 for turn in range(8)] for root in selected_order])
+            self.assertEqual(len({state for _kind, states in rows for state in states}), 32)
+            self.assertEqual(changed[-len(metadata['suffix']):], raw[-len(metadata['suffix']):])
+            for prefix in families.PREFIXES:
+                original_key = (*prefix, int(original['menu']['id'], 16))
+                self.assertEqual(presentations[original_key], menus[original_key])
+                for piece in complete_family[1:]:
+                    self.assertNotIn((*prefix, int(piece['menu']['id'], 16)), presentations)
+            restored, original_metadata, checked = families.verify(changed, proof, selected, record)
+            self.assertEqual((restored, original_metadata), (raw, metadata))
+            self.assertEqual(checked['hidden_member_buttons'], 3)
             self.assertFalse(checked['in_game_menu_tested'])
         for selected in ([original], [mirrored]):
             raw, metadata = compose_rul0(fixture.NATIVE, [fixture.fragment(int(selected[0]['puzzle_id'], 16))])

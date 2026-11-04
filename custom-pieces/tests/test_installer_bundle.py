@@ -100,6 +100,7 @@ class InstallerBundleTests(unittest.TestCase):
                      "schemas/connector-groups.schema.jsonc", "docs/templates/assembly-starter.jsonc",
                      "config/profiles/fixture.jsonc", "config/allocations.jsonc", "config/release.jsonc",
                      "config/installer.jsonc", "domains/fixture/domain.jsonc",
+                     "domains/fixture/implementation/scp_fixture/geometry-inputs.jsonc",
                      "domains/fixture/00_pieces/inventory.jsonc", "domains/fixture/01_assemblies/inventory.jsonc",
                      "domains/fixture/00_pieces/example/geometry.json",
                      "domains/fixture/00_pieces/example/evidence/design-history/record.json"):
@@ -109,6 +110,7 @@ class InstallerBundleTests(unittest.TestCase):
                      "project.json", "schemas/connector-groups.schema.json", "config/profiles/fixture.json",
                      "config/local.example.jsonc", "domains/fixture/00_pieces/unknown/piece.json",
                      "domains/fixture/00_pieces/example/native.dat", "framework/scp/__pycache__/cache.pyc",
+                     "domains/fixture/implementation/scp_fixture/native.dat",
                      "installer/private/settings.json", "domains/fixture/local/secret.json"):
             with self.subTest(name=name):
                 self.assertFalse(allowed(name))
@@ -118,6 +120,7 @@ class InstallerBundleTests(unittest.TestCase):
         included = ("project.jsonc", "domains/fixture/domain.jsonc", "config/installer.jsonc",
                     "config/allocations.jsonc", "config/release.jsonc", "config/profiles/fixture.jsonc",
                     "schemas/connector-groups.schema.jsonc", "docs/templates/assembly-starter.jsonc",
+                    "domains/fixture/implementation/scp_fixture/geometry-inputs.jsonc",
                     "domains/fixture/inventory.jsonc", "domains/fixture/00_pieces/inventory.jsonc",
                     "domains/fixture/01_assemblies/inventory.jsonc")
         for relative in included[2:]:

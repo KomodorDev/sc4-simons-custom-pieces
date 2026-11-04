@@ -1,0 +1,1159 @@
+// title: "Compact diagonal DD RHW Y native design inputs"
+// summary: "Preserve freshly decoded native DD lane boundaries, socket poses, grid constraints, and source fingerprints for the first Y-junction candidate."
+//
+// Used when: Designing the accepted SW-stem, NW-branch, and east-branch DD RHW junction.
+// Read by: The geometry author, independent reviewer, and future subject evidence promotion.
+// Updated by: The native-boundary investigator after re-reading original inputs or correcting measured facts.
+// Affects: Candidate socket positions, exact lane classes, deck heights, native approach rules, and alignment scope; no game result is asserted.
+{
+  "schema_version": 1,
+  "title": "Compact diagonal DD RHW Y: freshly measured native input boundaries",
+  "measurement_date": "2026-11-03",
+  "scope": "Read-only decode of installed pinned NAM archives and one proposed first-alignment socket frame; no allocated subject, generated game resources, native continuation experiment, installation, or human game test.",
+  "coordinates": {
+    "positions": "east, north, height in metres",
+    "cells": "column east, row south; world cell centres = (16*column, -16*row)",
+    "native_edges": {
+      "0": "west",
+      "1": "north",
+      "2": "east",
+      "3": "south"
+    },
+    "poses": "clockwise quarter-turns in PATH east/north coordinates",
+    "proposed_common_axis_intersection_en_m": [
+      8,
+      0
+    ]
+  },
+  "archives": [
+    {
+      "filename": "RealHighway_DD_RHW-4.dat",
+      "sha256": "ccf8dabd3930fce92d0baa872ff974e3a536ddcc40762505a2e70eafcf9c0dfb"
+    },
+    {
+      "filename": "NetworkAddonMod_Controller.dat",
+      "sha256": "d903540cdf772b4ed6a072c504e006e1cac384f8027ce58a288a5a9654f94161"
+    }
+  ],
+  "native_donors": [
+    {
+      "native_tile_id": "57530000",
+      "real_car_routes": [
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 1,
+          "exit": 3,
+          "compatibility": 0,
+          "points": [
+            [
+              -2.5,
+              8.0,
+              15.0
+            ],
+            [
+              -2.5,
+              -8.0,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 1,
+          "exit": 3,
+          "compatibility": 0,
+          "points": [
+            [
+              2.5,
+              8.0,
+              15.0
+            ],
+            [
+              2.5,
+              -8.0,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 3,
+          "exit": 1,
+          "compatibility": 0,
+          "points": [
+            [
+              2.5,
+              -8.0,
+              7.5
+            ],
+            [
+              2.5,
+              8.0,
+              7.5
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 3,
+          "exit": 1,
+          "compatibility": 0,
+          "points": [
+            [
+              -2.5,
+              -8.0,
+              7.5
+            ],
+            [
+              -2.5,
+              8.0,
+              7.5
+            ]
+          ]
+        }
+      ],
+      "excluded_ground_capacity_routes": 2,
+      "resources": [
+        {
+          "tgi": "296678f7-a966883f-57530000",
+          "sha256": "e5f4c27133d0b03bae145380e151eacd0a32ac42ee7dc5f8f3a51e04ff539853"
+        },
+        {
+          "tgi": "5ad0e817-badb57f1-57530000",
+          "sha256": "3d94bcce2ff84c9bd06d3bbbc7a089b8eaa28cfe921c3d31e87a27300cffd3dd"
+        },
+        {
+          "tgi": "6534284a-6be08658-57530000",
+          "sha256": "a6625188affe6851b7c10797eef0170d9762e54d3f997aa6b39b7afae2fd2d67"
+        }
+      ],
+      "saved_native_mesh_measurements": [
+        {
+          "name": "Top Deck",
+          "vertex_count": 4,
+          "material_index": 0,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -7.999000072479248,
+              8.00100040435791
+            ],
+            [
+              15.00100040435791,
+              15.00100040435791
+            ],
+            [
+              -7.999000072479248,
+              8.00100040435791
+            ]
+          ]
+        },
+        {
+          "name": "Substructure",
+          "vertex_count": 8,
+          "material_index": 1,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -7.999000072479248,
+              8.00100040435791
+            ],
+            [
+              14.00100040435791,
+              15.00100040435791
+            ],
+            [
+              -7.999000072479248,
+              8.00100040435791
+            ]
+          ]
+        },
+        {
+          "name": "Barriers",
+          "vertex_count": 32,
+          "material_index": 2,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -7.999000072479248,
+              8.00100040435791
+            ],
+            [
+              15.00100040435791,
+              16.391624450683594
+            ],
+            [
+              -7.999000072479248,
+              8.00100040435791
+            ]
+          ]
+        },
+        {
+          "name": "Bottom Deck",
+          "vertex_count": 4,
+          "material_index": 0,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -7.999000072479248,
+              8.00100040435791
+            ],
+            [
+              7.500999927520752,
+              7.500999927520752
+            ],
+            [
+              -7.999000072479248,
+              8.00100040435791
+            ]
+          ]
+        },
+        {
+          "name": "Substructure",
+          "vertex_count": 8,
+          "material_index": 1,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -7.999000072479248,
+              8.00100040435791
+            ],
+            [
+              6.500999927520752,
+              7.500999927520752
+            ],
+            [
+              -7.999000072479248,
+              8.00100040435791
+            ]
+          ]
+        },
+        {
+          "name": "Barriers",
+          "vertex_count": 32,
+          "material_index": 2,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -7.999000072479248,
+              8.00100040435791
+            ],
+            [
+              7.500999927520752,
+              8.89162540435791
+            ],
+            [
+              -7.999000072479248,
+              8.00100040435791
+            ]
+          ]
+        }
+      ],
+      "physical_boundary_warning": "The PATH datum and visible pavement datum differ for some donors. Use actual posed native mesh, materials, texture phase, full cross-section, and overhang; numeric PATH endpoint agreement alone does not establish a physical seam."
+    },
+    {
+      "native_tile_id": "57530200",
+      "real_car_routes": [
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 2,
+          "exit": 3,
+          "compatibility": 0,
+          "points": [
+            [
+              8.0,
+              3.2,
+              15.0
+            ],
+            [
+              -3.2,
+              -8.0,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 2,
+          "exit": 3,
+          "compatibility": 0,
+          "points": [
+            [
+              8.0,
+              -3.2,
+              15.0
+            ],
+            [
+              3.2,
+              -8.0,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 3,
+          "exit": 2,
+          "compatibility": 0,
+          "points": [
+            [
+              3.2,
+              -8.0,
+              7.5
+            ],
+            [
+              8.0,
+              -3.2,
+              7.5
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 3,
+          "exit": 2,
+          "compatibility": 0,
+          "points": [
+            [
+              -3.2,
+              -8.0,
+              7.5
+            ],
+            [
+              8.0,
+              3.2,
+              7.5
+            ]
+          ]
+        }
+      ],
+      "excluded_ground_capacity_routes": 2,
+      "resources": [
+        {
+          "tgi": "296678f7-a966883f-57530200",
+          "sha256": "e888625d239fe19f546f36f58bed998359440e889904fa4976c3aec355640eb1"
+        },
+        {
+          "tgi": "5ad0e817-badb57f1-57530200",
+          "sha256": "4eb082b8329ddf70be7333f3343c4f1a621985d3992b17ca624eef79dc0ee4a8"
+        },
+        {
+          "tgi": "6534284a-6be08658-57530200",
+          "sha256": "394c783a8fedf150c93d21701e1450a520d5c31ff59245e2d1e40ebf12889b70"
+        }
+      ],
+      "saved_native_mesh_measurements": [
+        {
+          "name": "Top Deck",
+          "vertex_count": 5,
+          "material_index": 0,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -9.656854629516602,
+              8.0
+            ],
+            [
+              15.0,
+              15.0
+            ],
+            [
+              -9.656854629516602,
+              8.0
+            ]
+          ]
+        },
+        {
+          "name": "Substructure",
+          "vertex_count": 4,
+          "material_index": 1,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -9.655854225158691,
+              6.344145774841309
+            ],
+            [
+              14.00100040435791,
+              15.00100040435791
+            ],
+            [
+              -9.655854225158691,
+              6.344145774841309
+            ]
+          ]
+        },
+        {
+          "name": "Barriers",
+          "vertex_count": 16,
+          "material_index": 2,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -9.655853271484375,
+              6.929718971252441
+            ],
+            [
+              15.00100040435791,
+              16.391624450683594
+            ],
+            [
+              -9.655853271484375,
+              6.929718971252441
+            ]
+          ]
+        },
+        {
+          "name": "Bottom Deck",
+          "vertex_count": 5,
+          "material_index": 0,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -9.656854629516602,
+              8.0
+            ],
+            [
+              7.5,
+              7.5
+            ],
+            [
+              -9.656854629516602,
+              8.0
+            ]
+          ]
+        },
+        {
+          "name": "Substructure",
+          "vertex_count": 4,
+          "material_index": 1,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -9.655854225158691,
+              6.344145774841309
+            ],
+            [
+              6.500999927520752,
+              7.500999927520752
+            ],
+            [
+              -9.655854225158691,
+              6.344145774841309
+            ]
+          ]
+        },
+        {
+          "name": "Barriers",
+          "vertex_count": 16,
+          "material_index": 2,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -9.655853271484375,
+              6.929718971252441
+            ],
+            [
+              7.500999927520752,
+              8.89162540435791
+            ],
+            [
+              -9.655853271484375,
+              6.929718971252441
+            ]
+          ]
+        }
+      ],
+      "physical_boundary_warning": "The PATH datum and visible pavement datum differ for some donors. Use actual posed native mesh, materials, texture phase, full cross-section, and overhang; numeric PATH endpoint agreement alone does not establish a physical seam."
+    },
+    {
+      "native_tile_id": "57530900",
+      "real_car_routes": [
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 3,
+          "exit": 2,
+          "compatibility": 0,
+          "points": [
+            [
+              3.2,
+              -8.0,
+              15.0
+            ],
+            [
+              8.0,
+              -3.2,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 3,
+          "exit": 2,
+          "compatibility": 0,
+          "points": [
+            [
+              -3.2,
+              -8.0,
+              15.0
+            ],
+            [
+              8.0,
+              3.2,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 2,
+          "exit": 3,
+          "compatibility": 0,
+          "points": [
+            [
+              8.0,
+              3.2,
+              7.5
+            ],
+            [
+              -3.2,
+              -8.0,
+              7.5
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 2,
+          "exit": 3,
+          "compatibility": 0,
+          "points": [
+            [
+              8.0,
+              -3.2,
+              7.5
+            ],
+            [
+              3.2,
+              -8.0,
+              7.5
+            ]
+          ]
+        }
+      ],
+      "excluded_ground_capacity_routes": 2,
+      "resources": [
+        {
+          "tgi": "296678f7-a966883f-57530900",
+          "sha256": "bd5435abd7e1f8360b3b8704eab474112330d8b7719333863e5bd264216415ce"
+        },
+        {
+          "tgi": "5ad0e817-badb57f1-57530900",
+          "sha256": "d319f9bb39e21e319f5ce566c5093ba9e955c4c0ed5a5dcbb703c6afe127c93a"
+        },
+        {
+          "tgi": "6534284a-6be08658-57530900",
+          "sha256": "d8c35e3673dee409fcc007c6adafcd193d50f551bffe473b70ef11c753cb63a9"
+        }
+      ],
+      "saved_native_mesh_measurements": [
+        {
+          "name": "Top Deck",
+          "vertex_count": 5,
+          "material_index": 0,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -9.655854225158691,
+              8.00100040435791
+            ],
+            [
+              15.00100040435791,
+              15.00100040435791
+            ],
+            [
+              -9.655854225158691,
+              8.00100040435791
+            ]
+          ]
+        },
+        {
+          "name": "Substructure",
+          "vertex_count": 4,
+          "material_index": 1,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -9.655854225158691,
+              6.344145774841309
+            ],
+            [
+              14.00100040435791,
+              15.00100040435791
+            ],
+            [
+              -9.655854225158691,
+              6.344145774841309
+            ]
+          ]
+        },
+        {
+          "name": "Barriers",
+          "vertex_count": 16,
+          "material_index": 2,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -9.655853271484375,
+              6.929718971252441
+            ],
+            [
+              15.00100040435791,
+              16.391624450683594
+            ],
+            [
+              -9.655853271484375,
+              6.929718971252441
+            ]
+          ]
+        },
+        {
+          "name": "Bottom Deck",
+          "vertex_count": 5,
+          "material_index": 0,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -9.655854225158691,
+              8.00100040435791
+            ],
+            [
+              7.500999927520752,
+              7.500999927520752
+            ],
+            [
+              -9.655854225158691,
+              8.00100040435791
+            ]
+          ]
+        },
+        {
+          "name": "Substructure",
+          "vertex_count": 4,
+          "material_index": 1,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -9.655854225158691,
+              6.344145774841309
+            ],
+            [
+              6.500999927520752,
+              7.500999927520752
+            ],
+            [
+              -9.655854225158691,
+              6.344145774841309
+            ]
+          ]
+        },
+        {
+          "name": "Barriers",
+          "vertex_count": 16,
+          "material_index": 2,
+          "bounds_s3d_east_height_south_m": [
+            [
+              -9.655853271484375,
+              6.929718971252441
+            ],
+            [
+              7.500999927520752,
+              8.89162540435791
+            ],
+            [
+              -9.655853271484375,
+              6.929718971252441
+            ]
+          ]
+        }
+      ],
+      "physical_boundary_warning": "The PATH datum and visible pavement datum differ for some donors. Use actual posed native mesh, materials, texture phase, full cross-section, and overhang; numeric PATH endpoint agreement alone does not establish a physical seam."
+    }
+  ],
+  "measured_lane_offsets_m": {
+    "diagonal": [
+      -2.262741699796952,
+      2.262741699796952
+    ],
+    "orthogonal": [
+      -2.5,
+      2.5
+    ]
+  },
+  "native_controller_resources": [
+    {
+      "tgi": "0a5bcf4b-aa5bcf57-10000000",
+      "sha256": "d2a63a6c9070857c5360343cfa07f0be13ef0559fd659e9545c57c15dda672b9"
+    },
+    {
+      "tgi": "0a5bcf4b-aa5bcf57-10000001",
+      "sha256": "4e44ec44283de6fccc3cd40492fc24154d13fb16a5150e13c201c6e615bba998"
+    },
+    {
+      "tgi": "0a5bcf4b-aa5bcf57-10000002",
+      "sha256": "c427c7872743ca4cd9f583adf33c93a320babe37c42061fbd33c905696e7a3b1"
+    }
+  ],
+  "native_rul1_existing_row_counts": [
+    {
+      "family": "orthogonal",
+      "clockwise_quarter_turns": 0,
+      "row": "0x01000400,0x02000200,0x57530000,0,0",
+      "matches_in_original_native_rul1": 1
+    },
+    {
+      "family": "orthogonal",
+      "clockwise_quarter_turns": 1,
+      "row": "0x00040001,0x00020002,0x57530000,1,0",
+      "matches_in_original_native_rul1": 1
+    },
+    {
+      "family": "orthogonal",
+      "clockwise_quarter_turns": 2,
+      "row": "0x04000100,0x02000200,0x57530000,2,0",
+      "matches_in_original_native_rul1": 1
+    },
+    {
+      "family": "orthogonal",
+      "clockwise_quarter_turns": 3,
+      "row": "0x00010004,0x00020002,0x57530000,3,0",
+      "matches_in_original_native_rul1": 1
+    },
+    {
+      "family": "diagonal-upper-NE-pose0",
+      "clockwise_quarter_turns": 0,
+      "row": "0x01000400,0x03010000,0x57530900,0,0",
+      "matches_in_original_native_rul1": 0
+    },
+    {
+      "family": "diagonal-upper-NE-pose0",
+      "clockwise_quarter_turns": 1,
+      "row": "0x00040001,0x01000003,0x57530900,1,0",
+      "matches_in_original_native_rul1": 0
+    },
+    {
+      "family": "diagonal-upper-NE-pose0",
+      "clockwise_quarter_turns": 2,
+      "row": "0x04000100,0x00000301,0x57530900,2,0",
+      "matches_in_original_native_rul1": 0
+    },
+    {
+      "family": "diagonal-upper-NE-pose0",
+      "clockwise_quarter_turns": 3,
+      "row": "0x00010004,0x00030100,0x57530900,3,0",
+      "matches_in_original_native_rul1": 0
+    },
+    {
+      "family": "diagonal-upper-SW-pose0",
+      "clockwise_quarter_turns": 0,
+      "row": "0x04000100,0x03010000,0x57530200,0,0",
+      "matches_in_original_native_rul1": 0
+    },
+    {
+      "family": "diagonal-upper-SW-pose0",
+      "clockwise_quarter_turns": 1,
+      "row": "0x00010004,0x01000003,0x57530200,1,0",
+      "matches_in_original_native_rul1": 0
+    },
+    {
+      "family": "diagonal-upper-SW-pose0",
+      "clockwise_quarter_turns": 2,
+      "row": "0x01000400,0x00000301,0x57530200,2,0",
+      "matches_in_original_native_rul1": 0
+    },
+    {
+      "family": "diagonal-upper-SW-pose0",
+      "clockwise_quarter_turns": 3,
+      "row": "0x00040001,0x00030100,0x57530200,3,0",
+      "matches_in_original_native_rul1": 0
+    }
+  ],
+  "first_alignment_socket_example": [
+    {
+      "arm": "A",
+      "outside_cell_col_row": [
+        -3,
+        3
+      ],
+      "outside_world_centre_en_m": [
+        -48,
+        -48
+      ],
+      "native_tile_id": "57530900",
+      "native_clockwise_quarter_turns": 0,
+      "native_shared_edge": 2,
+      "core_shared_edge": 0,
+      "shared_axis_equation": "n = e - 8",
+      "members": [
+        {
+          "transport": 1,
+          "lane": 0,
+          "compatibility": 0,
+          "direction": "native-to-core",
+          "level": "L2",
+          "endpoint_enh_m": [
+            -40.0,
+            -51.2,
+            15.0
+          ],
+          "unit_travel_tangent_enh": [
+            0.7071067811865475,
+            0.7071067811865475,
+            0.0
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "compatibility": 0,
+          "direction": "native-to-core",
+          "level": "L2",
+          "endpoint_enh_m": [
+            -40.0,
+            -44.8,
+            15.0
+          ],
+          "unit_travel_tangent_enh": [
+            0.7071067811865476,
+            0.7071067811865476,
+            0.0
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 0,
+          "compatibility": 0,
+          "direction": "core-to-native",
+          "level": "L1",
+          "endpoint_enh_m": [
+            -40.0,
+            -44.8,
+            7.5
+          ],
+          "unit_travel_tangent_enh": [
+            -0.7071067811865476,
+            -0.7071067811865476,
+            0.0
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "compatibility": 0,
+          "direction": "core-to-native",
+          "level": "L1",
+          "endpoint_enh_m": [
+            -40.0,
+            -51.2,
+            7.5
+          ],
+          "unit_travel_tangent_enh": [
+            -0.7071067811865475,
+            -0.7071067811865475,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "arm": "B",
+      "outside_cell_col_row": [
+        -3,
+        -3
+      ],
+      "outside_world_centre_en_m": [
+        -48,
+        48
+      ],
+      "native_tile_id": "57530900",
+      "native_clockwise_quarter_turns": 3,
+      "native_shared_edge": 2,
+      "core_shared_edge": 0,
+      "shared_axis_equation": "n = -e + 8",
+      "members": [
+        {
+          "transport": 1,
+          "lane": 0,
+          "compatibility": 0,
+          "direction": "core-to-native",
+          "level": "L2",
+          "endpoint_enh_m": [
+            -40.0,
+            51.2,
+            15.0
+          ],
+          "unit_travel_tangent_enh": [
+            -0.7071067811865475,
+            0.7071067811865475,
+            0.0
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "compatibility": 0,
+          "direction": "core-to-native",
+          "level": "L2",
+          "endpoint_enh_m": [
+            -40.0,
+            44.8,
+            15.0
+          ],
+          "unit_travel_tangent_enh": [
+            -0.7071067811865476,
+            0.7071067811865476,
+            0.0
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 0,
+          "compatibility": 0,
+          "direction": "native-to-core",
+          "level": "L1",
+          "endpoint_enh_m": [
+            -40.0,
+            44.8,
+            7.5
+          ],
+          "unit_travel_tangent_enh": [
+            0.7071067811865476,
+            -0.7071067811865476,
+            0.0
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "compatibility": 0,
+          "direction": "native-to-core",
+          "level": "L1",
+          "endpoint_enh_m": [
+            -40.0,
+            51.2,
+            7.5
+          ],
+          "unit_travel_tangent_enh": [
+            0.7071067811865475,
+            -0.7071067811865475,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "arm": "C",
+      "outside_cell_col_row": [
+        5,
+        0
+      ],
+      "outside_world_centre_en_m": [
+        80,
+        0
+      ],
+      "native_tile_id": "57530000",
+      "native_clockwise_quarter_turns": 3,
+      "native_shared_edge": 0,
+      "core_shared_edge": 2,
+      "shared_axis_equation": "n = 0",
+      "members": [
+        {
+          "transport": 1,
+          "lane": 0,
+          "compatibility": 0,
+          "direction": "core-to-native",
+          "level": "L2",
+          "endpoint_enh_m": [
+            72.0,
+            -2.5,
+            15.0
+          ],
+          "unit_travel_tangent_enh": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "compatibility": 0,
+          "direction": "core-to-native",
+          "level": "L2",
+          "endpoint_enh_m": [
+            72.0,
+            2.5,
+            15.0
+          ],
+          "unit_travel_tangent_enh": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 0,
+          "compatibility": 0,
+          "direction": "native-to-core",
+          "level": "L1",
+          "endpoint_enh_m": [
+            72.0,
+            2.5,
+            7.5
+          ],
+          "unit_travel_tangent_enh": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "compatibility": 0,
+          "direction": "native-to-core",
+          "level": "L1",
+          "endpoint_enh_m": [
+            72.0,
+            -2.5,
+            7.5
+          ],
+          "unit_travel_tangent_enh": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    }
+  ],
+  "alignment_constraints": {
+    "A_SW_native_axis": "n - e = 8 (mod 16 m)",
+    "B_NW_native_axis": "n + e = 8 (mod 16 m)",
+    "C_E_native_axis": "n = 0 (mod 16 m)",
+    "common_ray_intersection_modulo16_en_m": [
+      8,
+      0
+    ],
+    "other_diagonal_axis_intersection_parity": "e = 0 (mod 16), n = 8 (mod 16); cannot lie directly on a native orthogonal row. It would require independently shaped approach geometry, rather than rigid whole-cell translation of this common-centre example.",
+    "required_selectable_variant_count": "Not established: three prebuilt axes or mandatory adjacent relative alignments have not been specified. This example establishes one native-grid-consistent candidate only.",
+    "production_boundary": "No second alignment produced."
+  },
+  "reuse_findings": {
+    "reusable_source_mechanisms": [
+      "native PATH parse and proper rotations",
+      "native material and full cross-section measurement",
+      "per-cell PATH cutting and physical ownership",
+      "explicit native approach rule proof with owner-specific binding",
+      "independent connector measurement and export framework"
+    ],
+    "existing_complete_piece_substitutions": "None established: existing continuations preserve straight two-lane travel; existing ramps serve ground Avenue or RHW ground rather than a one-lane L1-to-L2 transfer; no retained type supplies the required coordinated three-arm split.",
+    "approach_adapter_limits": [
+      "ddrhw_connections.py restricts opt-in to eight exact reviewed retained ends and donor 57530900 pose 0.",
+      "ghsr_approaches.py restricts opt-in to two exact crossing identities, while proving both diagonal native families.",
+      "orthogonal_approaches.py restricts opt-in to original and mirrored two-by-six DD-to-ground transition identities."
+    ],
+    "needed_work": "A new explicit three-arm helper binding, independent full-boundary checks, split geometry, one-lane L1-to-L2 transfer geometry, ownership partition, source registration after design, saved-resource proof, and documentation."
+  },
+  "limitations": [
+    "Numeric native PATH boundaries establish neither full S3D cross-section fit nor actual native dragging.",
+    "The first-alignment sockets are a design input example, not an optimized footprint.",
+    "No fixed piece IDs, permanent resources, or opposite alignment have been allocated or generated.",
+    "No private absolute input paths or native binary payloads are included."
+  ],
+  "native_rul2_relevant_template_counts": [
+    {
+      "row": "0x57530200,0,0,0x57000200,2,0=0x57530200,0,0,0x57530900,2,0",
+      "matches_in_original_native_rul2": 1
+    },
+    {
+      "row": "0x57530200,3,0,0x57000200,1,0=0x57530200,3,0,0x57530900,1,0",
+      "matches_in_original_native_rul2": 1
+    },
+    {
+      "row": "0x57530900,0,0,0x57000200,2,0=0x57530900,0,0,0x57530200,2,0",
+      "matches_in_original_native_rul2": 1
+    },
+    {
+      "row": "0x57530900,3,0,0x57000200,1,0=0x57530900,3,0,0x57530200,1,0",
+      "matches_in_original_native_rul2": 1
+    },
+    {
+      "row": "0x57530000,1,0,0x57000000,1,0=0x57530000,1,0,0x57530000,1,0",
+      "matches_in_original_native_rul2": 1
+    },
+    {
+      "row": "0x57530000,1,0,0x57000000,3,0=0x57530000,1,0,0x57530000,1,0",
+      "matches_in_original_native_rul2": 1
+    },
+    {
+      "row": "0x57530000,3,0,0x57000000,1,0=0x57530000,3,0,0x57530000,3,0",
+      "matches_in_original_native_rul2": 1
+    },
+    {
+      "row": "0x57530000,3,0,0x57000000,3,0=0x57530000,3,0,0x57530000,3,0",
+      "matches_in_original_native_rul2": 1
+    }
+  ],
+  "native_rul2_scope": "Eight original continuation templates freshly reread and matched once each. Their complete application to the eventual fixed owner/helper layout still needs an independent orientation and construction proof; no game dragging test.",
+  "proposed_single_lane_allocation": {
+    "scope": "Design proposal retaining native left/right lane order, not compiled route evidence. Native lane class 0 is right and 1 is left relative to travel on the selected sockets.",
+    "routes": [
+      {
+        "from_arm": "A",
+        "from_deck": "L2",
+        "from_lane": 1,
+        "to_arm": "B",
+        "to_deck": "L2",
+        "to_lane": 1
+      },
+      {
+        "from_arm": "A",
+        "from_deck": "L2",
+        "from_lane": 0,
+        "to_arm": "C",
+        "to_deck": "L2",
+        "to_lane": 0
+      },
+      {
+        "from_arm": "B",
+        "from_deck": "L1",
+        "from_lane": 0,
+        "to_arm": "A",
+        "to_deck": "L1",
+        "to_lane": 0
+      },
+      {
+        "from_arm": "C",
+        "from_deck": "L1",
+        "from_lane": 1,
+        "to_arm": "A",
+        "to_deck": "L1",
+        "to_lane": 1
+      },
+      {
+        "from_arm": "B",
+        "from_deck": "L1",
+        "from_lane": 1,
+        "to_arm": "C",
+        "to_deck": "L2",
+        "to_lane": 1
+      },
+      {
+        "from_arm": "C",
+        "from_deck": "L1",
+        "from_lane": 0,
+        "to_arm": "B",
+        "to_deck": "L2",
+        "to_lane": 0
+      }
+    ]
+  }
+}

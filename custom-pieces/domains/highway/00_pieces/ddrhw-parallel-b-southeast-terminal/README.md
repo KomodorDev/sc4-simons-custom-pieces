@@ -24,7 +24,7 @@ This is the southeast ground right-turn terminal. The ramp joins only the adjace
 
 **Permanent ID:** `ddrhw-parallel-b-southeast-terminal`. **Recipe:** `highway_ddrhw_parallel_b_southeast_terminal`. This component owns **2 city tiles** inside a **2 × 2 bounding footprint**. Its local occupied cells are **[1,0], [0,1]**, measured from the reference corner with columns increasing east and rows increasing south. Empty cells inside that rectangle remain unowned. Ground Avenue and right-turn pavement at 0 m.
 
-1. Open **Transportation → Highways → SCP | DD RHW-4 — Parallel Diagonal Avenue Diamond**, and select **SCP | ASSEMBLY | DD RHW-4 — Parallel Diagonal Avenue Diamond — Alignment B**.
+1. Open **Transportation → Highways → SCP → Assemblies**, and select **SCP | ASSEMBLY | DD RHW-4 — Parallel Diagonal Avenue Diamond — Alignment B**.
 2. Starting at P01, press **Tab 2 times** to reach **P03 — Avenue — Southeast Avenue Right-Turn Terminal — Parallel DD RHW — Alignment B**. Shift+Tab moves backward. Each click places this component, rather than the whole junction.
 3. In the [B reference layout](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b/README.md#3-placements), use **X5, Y5**, with the authored **0°** orientation. Home and End rotate the selected type. Match its actual occupied preview cells before clicking; the reference corner can itself be empty.
 4. Join only the complete matching B boundary described by its connection card and the assembly placement plan. A similar A model does not establish matching whole-cell PATH ownership. For an independent layout, check every direction, endpoint, height, angle, and grade; compatibility with an untested neighbour remains unverified.

@@ -236,6 +236,52 @@ class MultiAssemblyMenuTests(unittest.TestCase):
                 self.assertNotIn(0x4001, properties)
         self.assertTrue(self.real_verify(self.output, write_report=False)['static_checks_passed'])
 
+    def test_variant_has_its_own_tab_cycle_using_a_shared_component(self):
+        from scp.transport_menu import arrange, members
+        self.highway_fixture()
+        assembly = self.catalog['_assemblies'][0]
+        stamp, ramp = self.groups[0][0], self.normal_pieces[1]
+        assembly['scene']['alternatives'] = {'compact': {'placements': [
+            {'piece_id': stamp['id']}, {'piece_id': ramp['id']},
+        ]}}
+        variant_layout = 'fixture-compact'
+        self.layouts[variant_layout] = {
+            **self.layouts[self.layout_ids[0]], 'assembly_variant': 'compact',
+            'component_aliases': {stamp['id']: 'compact-stamp'},
+            'cycle_button': {'id': '6a47fef3', 'order': 'fffffef3', 'title': 'Fixture compact',
+                             'description': 'Tab selects a component.'},
+        }
+        self.catalog['_allocations'] = {'assembly_aliases': {'compact-stamp': {
+            'piece_id': stamp['id'], 'layout_id': variant_layout, 'puzzle_id': 'f807',
+        }}}
+        icon = self.project / assembly['path'] / 'icon-compact.png'
+        icon.write_bytes(make_assembly_icon(self.icon_routes, network_label='HW'))
+        self.write_layouts()
+        self.base['transport_menu'] = {'schema_version': 2, 'domains': ['highway']}
+        self.catalog['_domain_records'] = {'highway': {'scp_transport_menu': True}}
+        menu_path = f'{self.folder}/{MENU}'
+        self.payloads[menu_path] = pack_dbpf(arrange(strict_dbpf(self.payloads[menu_path]), members(self.base)))
+        (self.source / menu_path).write_bytes(self.payloads[menu_path])
+        self.base['files'] = [fixture.fingerprint(path, raw) for path, raw in self.payloads.items()]
+        fixture.write_json(self.source / 'manifest.json', self.base)
+        with patch('scp.menu_experiment._assembly_icon_network', return_value='HW'):
+            self.build(domain_id='highway', layout_ids=[*self.layout_ids, variant_layout])
+
+        menu = strict_dbpf((self.output / menu_path).read_bytes())
+        original = fixture.props(menu[*MENU_EXEMPLAR, 0x6A47FEF0])
+        compact = fixture.props(menu[*MENU_EXEMPLAR, 0x6A47FEF3])
+        self.assertEqual(original[0x8A2602BB], [int(stamp['menu']['id'], 16)])
+        self.assertEqual(compact[0x8A2602BB], [0x6A47F807])
+        self.assertEqual(compact[0x8A2602CA], [0x6A47FEF6])
+        self.assertNotIn((*MENU_EXEMPLAR, int(ramp['menu']['id'], 16)), menu)
+        self.assertEqual(menu[*ICON, 0x6A47FEF3], icon.read_bytes())
+        self.assertEqual((self.output / stamp['asset_file']).read_bytes(), self.payloads[stamp['asset_file']])
+        report = self.real_verify(self.output, write_report=False)
+        self.assertEqual(report['menu_experiment']['construction_aliases_checked'], 1)
+        self.assertEqual(report['menu_experiment']['member_buttons_hidden'], 7)
+        self.assertEqual(report['menu_experiment']['add_types_rows'], 4)
+        self.assertEqual(self.manifest()['assembly_selections'][-1]['assembly_variant'], 'compact')
+
     def submenu_fixture(self):
         self.highway_fixture()
         self.submenu = {'id': '6a47fef8', 'order': 'fffffef8',

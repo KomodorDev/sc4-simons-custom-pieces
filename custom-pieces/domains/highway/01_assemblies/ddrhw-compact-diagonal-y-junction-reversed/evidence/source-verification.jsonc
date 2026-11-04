@@ -1,0 +1,60 @@
+// title: "Independent reversed DD RHW Y directed-source review"
+// summary: "Check exact reversal of frozen original polylines, signed descending grades, and all twelve freshly measured native members."
+// Used when: Accepting directed source inputs before independently checking actual reversed saved models.
+// Read by: The reversed PATH verifier and integration coordinator.
+// Updated by: y_junction_reversed_verify.write_source_review() after the exact source and native measurements pass.
+// Affects: Directed source acceptance only; no physical mask, saved DAT, installation, or human game pass.
+{
+  "schema_version": 1,
+  "passed": true,
+  "scope": "Independent frozen-polyline reversal, descending grades, and fresh native endpoint matching only; physical model acceptance and game observations remain separate.",
+  "source": {
+    "design_geometry_sha256": "cd5202f1bfbf0feea4dca886756013621d8b2462414a05365ddac9dbc133972f",
+    "native_measurements_sha256": "fddf082cac2d79d6970a9fca1d99cb350a1d7e76b4d91ba2fb05870b1f1bef7b",
+    "original_geometry_sha256": "8857eae50b01d3f5c15c5b47b43319de0e72c733d5cf331bb29e14f27af6d9b3",
+    "original_independent_review_sha256": "ee77cc626e5fff20950fa86e477e2cef4eb412cb5aa01650a800b65cfacd5557"
+  },
+  "complete_directed_journeys": 6,
+  "fresh_native_members_checked": 12,
+  "routes": [
+    {
+      "journey": "A-B",
+      "source_points_checked": 682,
+      "minimum_signed_grade_percent": 0.0,
+      "maximum_signed_grade_percent": 0.0
+    },
+    {
+      "journey": "B-A",
+      "source_points_checked": 682,
+      "minimum_signed_grade_percent": 0.0,
+      "maximum_signed_grade_percent": 0.0
+    },
+    {
+      "journey": "A-C",
+      "source_points_checked": 895,
+      "minimum_signed_grade_percent": 0.0,
+      "maximum_signed_grade_percent": 0.0
+    },
+    {
+      "journey": "C-A",
+      "source_points_checked": 895,
+      "minimum_signed_grade_percent": 0.0,
+      "maximum_signed_grade_percent": 0.0
+    },
+    {
+      "journey": "B-C",
+      "source_points_checked": 917,
+      "minimum_signed_grade_percent": -25.76137326877857,
+      "maximum_signed_grade_percent": 0.0
+    },
+    {
+      "journey": "C-B",
+      "source_points_checked": 890,
+      "minimum_signed_grade_percent": -26.572453573032064,
+      "maximum_signed_grade_percent": 0.0
+    }
+  ],
+  "original_source_bytes_changed": false,
+  "physical_model_mask_accepted": false,
+  "game_operation_tested": false
+}

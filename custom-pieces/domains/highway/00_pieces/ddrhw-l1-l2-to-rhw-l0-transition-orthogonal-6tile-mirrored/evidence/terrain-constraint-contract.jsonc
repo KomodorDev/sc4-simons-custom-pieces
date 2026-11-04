@@ -1,0 +1,122 @@
+// title: "Mirrored transition native terrain-constraint contract"
+// summary: "Pin the native # all-corner equality mechanism and the mirrored adapter's independent twenty-one-vertex flat-base proof."
+// Used when: Building and reviewing the mirrored-transition-only terrain construction correction.
+// Read by: Contributors, the independent construction checker, and the focused terrain-testing guide.
+// Updated by: Contributors after the pinned read-only executable audit and independent constraint controls pass.
+// Affects: Terrain construction policy only; absolute placement height, installation, and human game outcomes remain separate.
+{
+  "schema_version": 1,
+  "passed": true,
+  "scope": "Static pinned-executable parser/consumer facts and the independent mirrored-only terrain-equality graph. This evidence does not establish the cause of every placement-specific failure or a live game repair.",
+  "reference_piece_id": "ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile-mirrored",
+  "executable": {
+    "name": "SimCity 4.exe",
+    "version": "Windows1.1.641.0",
+    "sha256": "f3c42faf44c692dcc4475b9a009f5ef139b855434c60a7befe400a0a750204a7"
+  },
+  "native_parser": {
+    "function_address": "0x0060a560",
+    "symbol": "#",
+    "parsed_code": 7,
+    "parser_handler_address": "0x0060a6d3",
+    "ignored_previous_symbol": "+",
+    "ignored_previous_code": 0
+  },
+  "native_constraint_consumer": {
+    "function_address": "0x00644710",
+    "jump_table_address": "0x00644af8",
+    "native_code": 7,
+    "zero_based_jump_table_index": 6,
+    "target_address": "0x00644a12",
+    "equality_inserter_address": "0x0065fdb0",
+    "corner_id_field_offsets": [
+      "0x00a8",
+      "0x00ac",
+      "0x00b0",
+      "0x00b4"
+    ],
+    "equalities_by_corner_index": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "loop_iterations_per_owned_cell": 3,
+    "applies_to_network_and_terrain_constraint_satisfiers": true
+  },
+  "independent_owned_core_proof": {
+    "constraint_symbol": "#",
+    "native_constraint_code": 7,
+    "owned_cells_checked": 12,
+    "inserted_equality_pairs": 36,
+    "proper_rotations_checked": 4,
+    "proper_rotations": [
+      {
+        "quarter_turns": 0,
+        "constrained_vertices": 21,
+        "flat_height_groups": 1
+      },
+      {
+        "quarter_turns": 1,
+        "constrained_vertices": 21,
+        "flat_height_groups": 1
+      },
+      {
+        "quarter_turns": 2,
+        "constrained_vertices": 21,
+        "flat_height_groups": 1
+      },
+      {
+        "quarter_turns": 3,
+        "constrained_vertices": 21,
+        "flat_height_groups": 1
+      }
+    ],
+    "absolute_world_height_fixed": false,
+    "authored_path_heights_changed": false,
+    "game_terrain_behavior_tested": false
+  },
+  "scope_preservation": {
+    "original_transition_legacy_constraint_policy": "unchanged",
+    "six_Y_component_policies": "unchanged",
+    "owned_cell_mask": "unchanged twelve cells",
+    "native_helper_cells": "unchanged and unowned; no new helper constraints",
+    "authored_traffic_heights_and_routes": "unchanged",
+    "models_and_textures": "unchanged",
+    "absolute_world_height_pinned_by_code7": false
+  },
+  "negative_controls": [
+    "The old all-plus mirrored layout is rejected.",
+    "A missing #, a replaced +, or a longitudinal-only | on any required owned cell is rejected.",
+    "Removing the corner-cell equality leaves one of the 21 city vertices disconnected in every proper rotation.",
+    "Applying this mirrored-only policy to the original transition is rejected."
+  ],
+  "tests": {
+    "module": "domains/highway/tests/test_orthogonal_transition_verify.py",
+    "reported": 27,
+    "skips": 0,
+    "passed": true
+  },
+  "source_fingerprints": {
+    "domains/highway/implementation/scp_highway/orthogonal_transition_construction.py": "24128b29c6d9b04c935347d2e425d5ee98a9f688a27fff9903a889ca93739691",
+    "domains/highway/implementation/scp_highway/orthogonal_transition_verify.py": "edc94a765b39aa18fd5da5f3a05e4b20d55d44b20b435bb6bbb8d5e6b606ed41",
+    "domains/highway/implementation/scp_highway/recipes.py": "35674df8c321dc46ec8be0471023a49da372f7c942d30be3d8837d97f57f1a9e",
+    "domains/highway/tests/test_orthogonal_transition_verify.py": "b466649c4d5ad1568b90a3dd10ee8b9f2196b8297271d1e55336695adeca596a",
+    "domains/highway/tests/test_orthogonal_approaches.py": "b363947875a86c0d653ecc59045068500613422b1786fbbe976b38acd14fc751"
+  },
+  "private_primary_audit_sha256": "3219715d4d68ce8a0ff619ebbea19c0d1c17c0d8f182c5ab4d2963ec65663425",
+  "private_bounded_instruction_trace_sha256": "b9c6e2a1ec6d0708c10885373fc6d9ab68a991192482a24b7e990d153d67e524",
+  "raw_executable_or_disassembly_included": false,
+  "absolute_world_height_fixed": false,
+  "game_placement_observed": false,
+  "terrain_hole_repair_observed": false,
+  "install_or_game_pass_supplied": false
+}

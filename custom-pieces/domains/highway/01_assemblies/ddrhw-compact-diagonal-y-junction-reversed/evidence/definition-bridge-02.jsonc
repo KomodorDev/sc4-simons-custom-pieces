@@ -1,0 +1,21 @@
+// title: "Reversed Y current definition and archive bridge"
+// summary: "Verify corrected donor-pose terminology while preserving every compiled game-archive byte."
+//
+// Used when: Comparing the initial checked build with the corrected current source definition.
+// Read by: Contributors and the reversed assembly testing guide.
+// Updated by: Contributors after a fresh current-source build and complete archive comparison.
+// Affects: Source metadata and compiled-byte provenance only; no geometry, traffic path, or installed file changes.
+{
+  "passed": true,
+  "scope": "Corrected clockwise donor-pose metadata and current source definitions; compiled game archives remain unchanged.",
+  "prior_manifest_sha256": "fb5a6c265a125b16a9c2def234e16fccc16f6f6cf8ba4d95cda57e4700a7294e",
+  "current_build": "dist/ddrhw-y-reversed-native-02",
+  "current_manifest_sha256": "c206a8ecb23069d452c716b0b5c00b2d998c807a0c54e6e1a6c8fb5984130c8a",
+  "current_verification_sha256": "25f2f427d2d4bbfc4f373ff664a6bccfd6dab43b36bfaa109401281883df4806",
+  "complete_game_archives_byte_identical": 3,
+  "canonical_snapshot": "compiled-coherent-top-02",
+  "canonical_pairs_preserved": 21,
+  "native_donor_pose_convention": "clockwise quarter turns",
+  "assembly_placement_convention": "counterclockwise degrees",
+  "installed_at_this_capture": false
+}

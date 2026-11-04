@@ -200,7 +200,7 @@ The connector measurements preserve independently reviewed finite-chord headings
 
 ## 4. Game checks
 
-1. Open **Transportation → Highways → SCP | DD RHW-4 — Parallel Diagonal Avenue Diamond**. Confirm separate Alignment A and Alignment B buttons. Select B, press Tab through all 15 named B components and back to P01, then press Shift+Tab through the reverse order. Confirm it never enters the A cycle. Select A separately, and confirm its own cycle remains available.
+1. Open **Transportation → Highways → SCP → Assemblies**. Confirm separate Alignment A and Alignment B buttons. Select B, press Tab through all 15 named B components and back to P01, then press Shift+Tab through the reverse order. Confirm it never enters the A cycle. Select A separately, and confirm its own cycle remains available.
 2. Place the complete B layout using its reference table. Repeat in four proper rotations with Home or End before placement. Confirm the Avenue remains perpendicular to both highway decks, and that props, ramp mouths, and piers rotate with it. Camera rotation alone is not another construction orientation.
 3. Connect an existing draggable DD highway at both ends, and ordinary diagonal Avenue at both ground mouths, including southeast centre X6, Y4 in the reference orientation. Test both placement orders in separate copies. A visible join or Route Query line alone does not establish vehicle passage.
 4. Supply origins and destinations beyond the highway and Avenue ends. Follow actual cars through both straight decks and all four permitted ramp journeys. Record Route Query separately from visible travel. Confirm that ramp traffic never crosses to the opposing Avenue carriageway.

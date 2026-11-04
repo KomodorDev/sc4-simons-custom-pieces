@@ -1,0 +1,264 @@
+// title: "Piece definition: DD RHW-4 — Diagonal Two-Branch Stem — L1/L2 — Reversed Traffic"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Diagonal Two-Branch Stem \u2014 L1/L2 \u2014 Reversed Traffic.",
+  "schema_version": 1,
+  "id": "ddrhw-y-reversed-diagonal-stem-split",
+  "domain": "highway",
+  "name": "DD RHW-4 \u2014 Diagonal Two-Branch Stem \u2014 L1/L2 \u2014 Reversed Traffic",
+  "description": "Native diagonal two-lane split and reverse merge, with the south paired flat approaches; all directed journeys and their driver-left markings are reversed. Place its owned cells at the matching assembly reference; every native deck retains its measured real car lanes.",
+  "recipe": "highway_ddrhw_y_reversed_diagonal_stem_split",
+  "geometry_key": "y-reversed-diagonal-stem-split",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f884",
+  "tile_ids": [
+    "7f5d6000",
+    "7f5d6100",
+    "7f5d6200",
+    "7f5d6300",
+    "7f5d6400",
+    "7f5d6110",
+    "7f5d6210",
+    "7f5d6120"
+  ],
+  "preview_id": "7f5d6ff5",
+  "effect_name": "preview_scp_hw_f884_____001",
+  "footprint": [
+    5,
+    3
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "mis"
+  ],
+  "native_y_junction_approaches": true,
+  "menu": {
+    "id": "6a47f884",
+    "order": "ffffff84",
+    "style": "ddrhw-y-stem"
+  },
+  "engineering": {
+    "world_origin_cell": [
+      -2,
+      1
+    ],
+    "physical_model_function": "Native diagonal two-lane split and reverse merge, with the south paired flat approaches; all directed journeys and their driver-left markings are reversed",
+    "max_grade_percent": 30.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "native_pavement_datums_m": [
+      0.0,
+      0.0009999275207519531,
+      0.0010004043579101562
+    ],
+    "standard_deck_depth_m": 1.0,
+    "single_lane_deck_width_m": 6.0,
+    "minimum_single_lane_deck_width_m": 5.25,
+    "single_lane_asphalt_width_m": 4.34375,
+    "minimum_single_lane_asphalt_width_m": 3.59375,
+    "graded_inner_barrier_clearance_m": 1.421875,
+    "model_only_cells": [
+      [
+        0,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "model_overhang": true,
+    "authored_model_overhang": false,
+    "path_ownership": "Every source route fragment in each owned city cell",
+    "native_phase": "Opposite directed native phase, retaining the common axis intersection (8,0) m",
+    "shadows_enabled": false,
+    "surface_datum_policy": "Nominal-height diagonal 57530200 collars and source-measured 57530000 pose 1 roofs; finite transitions retain exact source datums",
+    "native_helper_pavement_datums_by_arm_m": {
+      "A": {
+        "lower": 0.0,
+        "upper": 0.0
+      },
+      "B": {
+        "lower": 0.0,
+        "upper": 0.0
+      },
+      "C": {
+        "lower": 0.0009999275207519531,
+        "upper": 0.0010004043579101562
+      }
+    },
+    "native_C_full_width_station_m": 3.00100040435791,
+    "graded_top_plane_policy": "Pavement and raised barrier tops share the actual unchanged full-width supporting body planes; measured barrier rise is retained",
+    "graded_construction_station_frame": "Original canonical physical route IDs and ascending construction order; reverse travel uses the opposite directed ID and length minus station",
+    "graded_top_plan_boundary_crop_bound_m": 1e-09,
+    "underside_owner_mask_input_grid_m": 1e-09,
+    "native_C_owned_interface_analysis": {
+      "source_model": "57530000",
+      "outside_native_city_cell": [
+        4,
+        0
+      ],
+      "east_interval_m": [
+        55.99899959564209,
+        56.0
+      ],
+      "north_interval_m": [
+        -8.0,
+        8.0
+      ],
+      "reference_roles": [
+        "pavement",
+        "barrier"
+      ],
+      "body_reference_faces": 0,
+      "copied_into_custom_DAT": false,
+      "authored_underside_required_through_owned_east_boundary": true,
+      "pose_quarter_turns_clockwise": 1
+    },
+    "native_C_source_only_south_fringe_bounds_enh_m": [
+      [
+        52.99899959564209,
+        -8.00100040435791,
+        6.500999927520752
+      ],
+      [
+        55.99900007247925,
+        -8.0,
+        15.002500534057617
+      ]
+    ],
+    "physical_layout_reviewed": true
+  },
+  "shadow_mode": "model-carrier",
+  "shadow_mappings": [],
+  "model_shadows": {
+    "schema_version": 1,
+    "sun_profile": "sc4-default-67p5-45",
+    "enabled": false,
+    "cells": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          2,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          3,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          4,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          1
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          2,
+          1
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          2
+        ],
+        "cast_shadow": false
+      }
+    ]
+  },
+  "provenance": {
+    "geometry": "Native-profile DD ends and six source-bound single-lane journeys; physical pavement, closed bodies, barriers, and supporting solids are compiled together before whole-cell ownership.",
+    "construction": "Three disjoint functional owners, one native outside socket per owner, and four proper rotations repeated across eight cursor states.",
+    "granularity": "Native diagonal two-lane split and reverse merge, with the south paired flat approaches; all directed journeys and their driver-left markings are reversed. Shared decks and route fragments in a city tile retain one coordinated owner; full custom joining boundaries are supplied by checked connector exports.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "y_junction_variant": "reversed"
+}

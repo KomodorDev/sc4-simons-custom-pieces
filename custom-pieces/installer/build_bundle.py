@@ -116,7 +116,9 @@ def runtime_allowed(relative: str, domain_names: set[str], subjects: set[str]) -
         return False
     if len(parts) == 3:
         return path.suffix in {".json", ".jsonc", ".md"}
-    if parts[2] in {"implementation", "tools"}:
+    if parts[2] == "implementation":
+        return path.suffix in {".py", ".jsonc"}
+    if parts[2] == "tools":
         return path.suffix == ".py"
     if parts[2] == "assets":
         return path.suffix in {".png", ".svg"}
@@ -311,13 +313,15 @@ def verify_archive(path: Path) -> dict:
 def _notices(destination: Path) -> None:
     text = ["SCP Installer: bundled third-party software", "", "Python: https://docs.python.org/3/license.html",
             "Pillow: https://github.com/python-pillow/Pillow", "NumPy: https://numpy.org/doc/stable/license.html",
+            "Shapely: https://github.com/shapely/shapely/blob/main/LICENSE.txt",
+            "Bundled GEOS: see the accompanying license files under licenses/shapely.",
             "PyInstaller bootloader: https://pyinstaller.org/en/stable/license.html",
             "Tcl/Tk: https://www.tcl-lang.org/software/tcltk/license.html", "",
             "PyInstaller's licensing exception covers generated bundles; the bundled components retain their own licenses.",
             "NAM and SimCity game resources are not included. The installer reads the user's installed dependencies locally.", ""]
     licenses = destination / "licenses"
     licenses.mkdir()
-    for name in ("Pillow", "numpy", "pyinstaller", "pyinstaller-hooks-contrib", "altgraph", "packaging"):
+    for name in ("Pillow", "numpy", "shapely", "pyinstaller", "pyinstaller-hooks-contrib", "altgraph", "packaging"):
         package = importlib.metadata.distribution(name)
         text.append(f"{package.metadata['Name']} {package.version}")
         for file in package.files or ():
@@ -367,7 +371,8 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str) ->
                "--collect-submodules", "scp", "--collect-submodules", "scp_hsr",
                "--collect-submodules", "scp_highway",
                "--collect-submodules", "scp_installer", "--collect-all", "PIL",
-               "--collect-all", "numpy", "--hidden-import", "tkinter", "--hidden-import", "tkinter.ttk",
+               "--collect-all", "numpy", "--collect-all", "shapely",
+               "--hidden-import", "tkinter", "--hidden-import", "tkinter.ttk",
                "--hidden-import", "tkinter.filedialog", "--hidden-import", "tkinter.messagebox"]
     command.append(str(runtime / "installer/main.py"))
     timestamp = subprocess.run(["git", "show", "--no-patch", "--format=%ct", source_commit],

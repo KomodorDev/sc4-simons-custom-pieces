@@ -9,6 +9,8 @@ import struct
 from scp.dbpf import require
 from scp.models import parse_s3d, positions, validate_s3d
 from scp.track_paths import PATH, S3D
+from .orthogonal_transition_variants import SUPPORTED_RECIPES as ORTHOGONAL_TRANSITION_RECIPES
+from .diagonal_transition_variants import RECIPES as DIAGONAL_TRANSITION_RECIPES
 
 CORE = 'highway_ddrhw_diagonal_avenue_crossing'
 CELLS = ((1, 0), (0, 1), (1, 1), (2, 1), (1, 2))
@@ -130,8 +132,17 @@ def _journeys(parsed, cells, angle):
 
 
 def check_paths(resources, piece):
-    if piece['recipe'] in ('highway_ddrhw_orthogonal_l0_transition',
-                           'highway_ddrhw_orthogonal_l0_transition_mirrored'):
+    if piece['recipe'] in DIAGONAL_TRANSITION_RECIPES:
+        from .diagonal_transition_verify import check_paths as check_transition
+        return check_transition(resources, piece)
+    if piece['recipe'].startswith('highway_ddrhw_y_'):
+        from .y_junction_variants import variant_of, REVERSED
+        if variant_of(piece) == REVERSED:
+            from .y_junction_reversed_verify import check_paths as check_y_junction
+        else:
+            from .y_junction_verify import check_paths as check_y_junction
+        return check_y_junction(resources, piece)
+    if piece['recipe'] in ORTHOGONAL_TRANSITION_RECIPES:
         from .orthogonal_transition_verify import check_paths as check_transition
         return check_transition(resources, piece)
     if piece['recipe'] in ('highway_ddrhw_diagonal_ghsr_crossing',
@@ -168,8 +179,17 @@ def check_paths(resources, piece):
 
 
 def check_models(resources, piece, donors):
-    if piece['recipe'] in ('highway_ddrhw_orthogonal_l0_transition',
-                           'highway_ddrhw_orthogonal_l0_transition_mirrored'):
+    if piece['recipe'] in DIAGONAL_TRANSITION_RECIPES:
+        from .diagonal_transition_verify import check_models as check_transition
+        return check_transition(resources, piece, donors)
+    if piece['recipe'].startswith('highway_ddrhw_y_'):
+        from .y_junction_variants import variant_of, REVERSED
+        if variant_of(piece) == REVERSED:
+            from .y_junction_reversed_verify import check_models as check_y_junction
+        else:
+            from .y_junction_verify import check_models as check_y_junction
+        return check_y_junction(resources, piece, donors)
+    if piece['recipe'] in ORTHOGONAL_TRANSITION_RECIPES:
         from .orthogonal_transition_verify import check_models as check_transition
         return check_transition(resources, piece, donors)
     if piece['recipe'] in ('highway_ddrhw_diagonal_ghsr_crossing',
@@ -226,8 +246,23 @@ def check_models(resources, piece, donors):
 
 
 def check_construction_fields(fields, piece, resources):
-    if piece['recipe'] in ('highway_ddrhw_orthogonal_l0_transition',
-                           'highway_ddrhw_orthogonal_l0_transition_mirrored'):
+    if piece['recipe'] in DIAGONAL_TRANSITION_RECIPES:
+        from .diagonal_transition_verify import check_construction_fields as check_transition, check_placement_handle
+        from .diagonal_transition_approaches import check_construction_approaches, approaches
+        core = check_construction_approaches(fields, piece)
+        report = check_transition(core, piece, resources)
+        if 'HandleOffset' in core:
+            report['placement_handle_cell'] = check_placement_handle(core, piece)
+        report['native_diagonal_transition_outside_approaches_checked'] = len(approaches(piece))
+        return report
+    if piece['recipe'].startswith('highway_ddrhw_y_'):
+        from .y_junction_variants import variant_of, REVERSED
+        if variant_of(piece) == REVERSED:
+            from .y_junction_reversed_verify import check_construction_fields as check_y_junction
+        else:
+            from .y_junction_verify import check_construction_fields as check_y_junction
+        return check_y_junction(fields, piece, resources)
+    if piece['recipe'] in ORTHOGONAL_TRANSITION_RECIPES:
         from .orthogonal_transition_verify import check_construction_fields as check_transition
         from .orthogonal_approaches import check_construction_approaches, approaches
         core = check_construction_approaches(fields, piece)

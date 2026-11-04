@@ -1,0 +1,90 @@
+// title: "Independent actual controller candidate construction check"
+// summary: "Decode the exact candidate rules and unchanged piece PATHs through maintained native-helper and core validators."
+// Used when: Approving the bounded controller-only terrain update before installation.
+// Read by: The integration coordinator and controller transaction reviewer.
+// Updated by: A read-only candidate decode and maintained construction check.
+// Affects: Actual candidate construction evidence only; installation and human terrain repair remain unverified.
+{
+  "schema_version": 1,
+  "passed": true,
+  "candidate_manifest_sha256": "8d230a322d4eae471fe8b8822980174e55070a71552bee449fdaada97cf30016",
+  "candidate_controller_sha256": "d6fe41b14782a4f3129469870948797b493a56c8043c1fa47cf964d79bd5d334",
+  "actual_unchanged_piece_DAT_sha256": "32c60487207bc1b6d68aa6f17ed547481851096d5b3e1b9017563ba1ddcc8def",
+  "source_build_manifest_sha256": "6b1e25be0e50c9544c7a34eea540ffa430f6818509bfea00e3fb73afc8ecc9c3",
+  "actual_candidate_fields_through_native_helper_and_core_check": {
+    "occupied_cells_checked": 12,
+    "model_only_owned_cells_checked": 1,
+    "native_core_tangent_flag_words_checked": 12,
+    "core_anchor_and_cost_checked": true,
+    "native_helpers_in_scope": false,
+    "game_construction_tested": false,
+    "terrain_constraints": {
+      "constraint_symbol": "#",
+      "native_constraint_code": 7,
+      "owned_cells_checked": 12,
+      "inserted_equality_pairs": 36,
+      "proper_rotations_checked": 4,
+      "proper_rotations": [
+        {
+          "quarter_turns": 0,
+          "constrained_vertices": 21,
+          "flat_height_groups": 1
+        },
+        {
+          "quarter_turns": 1,
+          "constrained_vertices": 21,
+          "flat_height_groups": 1
+        },
+        {
+          "quarter_turns": 2,
+          "constrained_vertices": 21,
+          "flat_height_groups": 1
+        },
+        {
+          "quarter_turns": 3,
+          "constrained_vertices": 21,
+          "flat_height_groups": 1
+        }
+      ],
+      "absolute_world_height_fixed": false,
+      "authored_path_heights_changed": false,
+      "game_terrain_behavior_tested": false
+    },
+    "native_orthogonal_outside_approaches_checked": 3
+  },
+  "actual_runtime_address_check": {
+    "cells_checked": 12,
+    "unique_byte_keys": 12,
+    "modeled_origin": [
+      0,
+      0
+    ],
+    "wrong_model_selections": 0
+  },
+  "all_seven_clone_definitions_exact": true,
+  "actual_padded_cons_layout": [
+    "....",
+    "##.<",
+    "##..",
+    "##..",
+    "##..",
+    "##..",
+    "##..",
+    "....",
+    "^..."
+  ],
+  "restored_core_cons_layout": [
+    "##.<",
+    "##..",
+    "##..",
+    "##..",
+    "##..",
+    "##..",
+    "^..."
+  ],
+  "legacy_plus_and_longitudinal_only_negative_controls_rejected": true,
+  "plugins_inspected_or_modified": false,
+  "installation_performed": false,
+  "game_repair_observed": false,
+  "verifier_sha256": "edc94a765b39aa18fd5da5f3a05e4b20d55d44b20b435bb6bbb8d5e6b606ed41"
+}

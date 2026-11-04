@@ -24,10 +24,14 @@ END = ';END SIMONS CUSTOM PIECES NATIVE DD APPROACHES'
 OVERLAY = 'native_dd_approaches'
 GHSR_OVERLAY = 'native_ghsr_approaches'
 ORTHOGONAL_OVERLAY = 'native_orthogonal_approaches'
+Y_JUNCTION_OVERLAY = 'native_y_junction_approaches'
+DIAGONAL_TRANSITION_OVERLAY = 'native_diagonal_transition_approaches'
 
 
 def _provider(piece):
-    name = ('orthogonal_approaches' if piece.get(ORTHOGONAL_OVERLAY) else
+    name = ('diagonal_transition_approaches' if piece.get(DIAGONAL_TRANSITION_OVERLAY) else
+            'y_junction_approaches' if piece.get(Y_JUNCTION_OVERLAY) else
+            'orthogonal_approaches' if piece.get(ORTHOGONAL_OVERLAY) else
             'ghsr_approaches' if piece.get(GHSR_OVERLAY) else 'ddrhw_connections')
     return domain_module(piece, name)
 
@@ -54,7 +58,7 @@ def _sha(raw):
 
 def approaches(piece):
     """Absent declarations never load a new domain implementation or schema."""
-    modes = (OVERLAY, GHSR_OVERLAY, ORTHOGONAL_OVERLAY)
+    modes = (OVERLAY, GHSR_OVERLAY, ORTHOGONAL_OVERLAY, Y_JUNCTION_OVERLAY, DIAGONAL_TRANSITION_OVERLAY)
     if not any(name in piece for name in modes):
         return []
     for name in modes:
@@ -119,6 +123,7 @@ def expected_solution_sections(pieces):
                 expected[key] = value
         provider = _provider(piece)
         sections = (provider.rul1_sections(piece) if piece.get(GHSR_OVERLAY) or piece.get(ORTHOGONAL_OVERLAY)
+                    or piece.get(Y_JUNCTION_OVERLAY) or piece.get(DIAGONAL_TRANSITION_OVERLAY)
                     else {SECTION: provider.rul1_rows(piece)})
         require(isinstance(sections, dict) and sections and all(isinstance(section, str)
                 and isinstance(values, (list, tuple)) and values for section, values in sections.items()),
@@ -154,13 +159,17 @@ def expected_solution_sections(pieces):
 
 
 def _existing_solution_sections(pieces):
-    """Allow only explicitly reviewed orthogonal starters to reuse native rows."""
+    """Reuse only rows declared by explicitly reviewed native socket owners."""
     result = {}
     for piece in pieces:
-        if not piece.get(ORTHOGONAL_OVERLAY):
+        if not (piece.get(ORTHOGONAL_OVERLAY) or piece.get(Y_JUNCTION_OVERLAY) or piece.get(DIAGONAL_TRANSITION_OVERLAY)):
             continue
         provider = _provider(piece)
         declared = provider.existing_rul1_sections(piece)
+        # Each Y module owns one socket: only its orthogonal owner reuses
+        # original rows. The two diagonal owners require inserted solutions.
+        if piece.get(Y_JUNCTION_OVERLAY) and declared == {}:
+            continue
         expected = expected_solution_sections([piece])
         require(isinstance(declared, dict) and declared,
                 'Orthogonal native approaches require exact existing solutions')
@@ -179,7 +188,15 @@ def _existing_solution_sections(pieces):
                 require((a, b) not in table, 'Duplicate existing native approach marker pair')
                 table[a, b] = c, d, e
             actual[section] = table
-        require(actual == expected, 'Existing native solutions differ from the reviewed socket declarations')
+        if piece.get(DIAGONAL_TRANSITION_OVERLAY):
+            # This reviewed provider combines native ground rows with stacked
+            # DD rows inserted under distinct markers. Legacy modes retain
+            # their complete-table equality requirement below.
+            require(actual and all(section in expected and all(expected[section].get(key) == value
+                    for key,value in table.items()) for section,table in actual.items()),
+                    'Reused diagonal transition rows differ from reviewed declarations')
+        else:
+            require(actual == expected, 'Existing native solutions differ from the reviewed socket declarations')
         for section, table in actual.items():
             target = result.setdefault(section, {})
             for key, value in table.items():
@@ -208,6 +225,12 @@ def dependency_keys(pieces):
             result.update({(*S3D, target), (*PATH, target)})
             if reference != 'direct':
                 result.add((NETWORK_EXEMPLAR[0], group, target))
+        if (piece.get(Y_JUNCTION_OVERLAY) or piece.get(DIAGONAL_TRANSITION_OVERLAY)) and approaches(piece):
+            additional = _provider(piece).additional_dependency_keys(piece)
+            require(isinstance(additional, set) and all(isinstance(key, tuple) and len(key) == 3
+                    and all(type(value) is int and 0 <= value <= 0xffffffff for value in key)
+                    for key in additional), 'Invalid Y native continuation dependencies')
+            result.update(additional)
     return result
 
 
@@ -216,7 +239,9 @@ def expected_dependencies(pieces):
     for piece in pieces:
         if not approaches(piece):
             continue
-        pins = _provider(piece).NATIVE_DEPENDENCY_SHA256
+        provider = _provider(piece)
+        pins = (provider.dependency_sha256(piece) if piece.get(Y_JUNCTION_OVERLAY) or piece.get(DIAGONAL_TRANSITION_OVERLAY)
+                else provider.NATIVE_DEPENDENCY_SHA256)
         require(isinstance(pins, dict) and set(pins) == dependency_keys([piece]),
                 'Native DD domain pins do not exactly cover its target resources')
         for key, value in pins.items():
@@ -244,6 +269,16 @@ def dependency_records(pieces, resources):
                 require(key not in ignored_frames or ignored_frames[key] == frames,
                         'Conflicting reviewed native model frame inventories')
                 ignored_frames[key] = frames
+            if piece.get(Y_JUNCTION_OVERLAY) or piece.get(DIAGONAL_TRANSITION_OVERLAY):
+                additional = _provider(piece).dependency_model_references(piece)
+                require(isinstance(additional, dict) and set(additional) <= dependency_keys([piece])
+                        and all(key[:2] == NETWORK_EXEMPLAR and reference == 'rkt0'
+                                for key, reference in additional.items()),
+                        'Invalid Y native continuation model references')
+                for key, reference in additional.items():
+                    require(key not in references or references[key] == reference,
+                            'Conflicting native continuation model references')
+                    references[key] = reference
         for row in approaches(piece):
             target = int(row['native_tile_id'], 16)
             group = int(row.get('native_exemplar_group', f'{NETWORK_EXEMPLAR[1]:08x}'), 16)
@@ -461,12 +496,14 @@ def verify_rul1(resources, pieces, overlay, donors):
             'native_dd_rul1_solutions_checked': len(expected_solutions(pieces)),
             'native_dd_dependencies_checked': len(dependencies), 'native_rul1_bytes_preserved': True,
             'native_dd_game_behavior_tested': False}
-    if any(piece.get(GHSR_OVERLAY) or piece.get(ORTHOGONAL_OVERLAY) for piece in pieces):
+    if any(piece.get(GHSR_OVERLAY) or piece.get(ORTHOGONAL_OVERLAY)
+           or piece.get(Y_JUNCTION_OVERLAY) or piece.get(DIAGONAL_TRANSITION_OVERLAY) for piece in pieces):
         sections = expected_solution_sections(pieces)
         rows = [row for item in selected for row in item['approaches']]
-        dd_rows = [row for row in rows if _pair(row)[0] == SECTION]
+        dd_rows = [row for row in rows if _pair(row)[0] == SECTION and int(row['native_tile_id'],16) >> 16 != 0x5703]
         rail_rows = [row for row in rows if _pair(row)[0] == 'RailMonoRailIntersectionSolutions']
-        ground_rows = [row for row in rows if _pair(row)[0] == 'RoadDirtRoadIntersectionSolutions']
+        ground_rows = [row for row in rows if _pair(row)[0] == 'RoadDirtRoadIntersectionSolutions'
+                       or int(row['native_tile_id'],16) >> 16 == 0x5703]
         result.update(native_approach_cells_checked=len(rows),
                       native_dd_approach_cells_checked=len(dd_rows),
                       native_ghsr_approach_cells_checked=len(rail_rows),
@@ -476,9 +513,23 @@ def verify_rul1(resources, pieces, overlay, donors):
                       native_ghsr_dependencies_checked=3 * len({row['native_tile_id'] for row in rail_rows}),
                       native_rul1_solutions_checked=sum(len(table) for table in sections.values()),
                       native_ghsr_rul1_solutions_checked=len(sections.get('RailMonoRailIntersectionSolutions', {})))
-        if any(piece.get(ORTHOGONAL_OVERLAY) for piece in pieces):
+        if any(piece.get(ORTHOGONAL_OVERLAY) or piece.get(Y_JUNCTION_OVERLAY)
+               or piece.get(DIAGONAL_TRANSITION_OVERLAY) for piece in pieces):
             result.update(native_ground_rhw_approach_cells_checked=len(ground_rows),
                           existing_native_rul1_solutions_reused=sum(len(table) for table in
                               _existing_solution_sections(pieces).values()),
                           native_ground_rhw_dependencies_checked=2 * len({row['native_tile_id'] for row in ground_rows}))
+        if any(piece.get(Y_JUNCTION_OVERLAY) for piece in pieces):
+            dd_targets = {int(row['native_tile_id'], 16) for row in dd_rows}
+            dd_targets.update(key[2] for piece in pieces if piece.get(Y_JUNCTION_OVERLAY)
+                              for key in _provider(piece).additional_dependency_keys(piece))
+            result['native_dd_dependencies_checked'] = sum(key[2] in dd_targets for key in dependency_keys(pieces))
+        if any(piece.get(DIAGONAL_TRANSITION_OVERLAY) for piece in pieces):
+            keys = dependency_keys(pieces)
+            result.update(native_diagonal_transition_approach_cells_checked=sum(len(approaches(piece)) for piece in pieces
+                          if piece.get(DIAGONAL_TRANSITION_OVERLAY)),
+                          native_ground_rhw_dependencies_checked=sum(key[2] >> 16 == 0x5703 for key in keys),
+                          native_dd_dependencies_checked=sum(key[2] >> 16 == 0x5753 for key in keys),
+                          native_dd_rul1_solutions_checked=sum(value[0] >> 16 == 0x5753
+                              for table in sections.values() for value in table.values()))
     return result

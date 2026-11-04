@@ -19,7 +19,7 @@ from .rul0 import MARKER, compose_rul0
 from .adaptive_network import RUL1, bindings as adaptive_bindings, resource_keys as adaptive_resource_keys, compose_rul1
 from . import native_approaches
 from . import model_shadows
-from . import piece_menu_families
+from . import piece_menu_families, transport_menu
 
 RUL0 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000000)
 NETWORK_INI = (0, 0x8A5971C5, 0x8A5993B9)
@@ -161,8 +161,15 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
         progress({'phase':'audit','pieces':len(selected)})
     context, installed, donor_audit, roots = audit_inputs(catalog, plugins, selected, extra_roots)
     preflight_allocations(context, installed, selected)
+    hierarchy = transport_menu.plan(catalog, selected)
+    roster = transport_menu.members({'pieces': selected, transport_menu.KEY: hierarchy}) if hierarchy else {}
+    if roster:
+        used_ids = {key[2] for key in installed} | {int(piece['menu']['id'], 16) for piece in catalog['pieces']}
+        transport_menu.check_ids(roster, used_ids)
     output = _prepare_output(output, project_root, roots)
     baseline = context['controller']
+    labels = sorted({label for piece in selected for label in piece['dependencies']})
+    donors = {key: raw for label in labels for key, raw in context[label].items()}
     assets_by_piece, menu_resources, all_resources, rules, menu_audit = {}, {}, {}, [], []
     rul1_rules = []
     records = []
@@ -182,11 +189,13 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
                     piece['recipe'].startswith('rail_') and piece['recipe'].endswith('_revised')):
                 # Complex pieces must fail while their own assets are in hand,
                 # before the rest of a long matrix is compiled. The final
-                # portable check repeats these checks; its immutable model
-                # cache reuses only identical specs and encoded resources.
+                # saved-build verification executes these checks again;
+                # the framework has no complete model-report cache.
                 from .verify import check_piece_paths, check_piece_models
                 check_piece_paths(resources, record)
-                check_piece_models(resources, record, None)
+                # Native-profile geometry needs the same audited originals
+                # here as in the final saved-resource verification.
+                check_piece_models(resources, record, donors)
             from .providers import domain_module
             donor = domain_module(piece, 'menu').menu_donor(context)
             menus, metadata = build_menu_resources(donor, piece)
@@ -209,6 +218,7 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
     rul0, rul0_delta = compose_rul0(baseline[RUL0], rules)
     rul0, rul0_delta, menu_resources, menu_families = piece_menu_families.apply(
         rul0, rul0_delta, menu_resources, selected, available=catalog['pieces'])
+    menu_resources = transport_menu.arrange(menu_resources, roster)
     shadow_lines = []
     for piece in selected:
         for mapping in piece['shadow_mappings']:
@@ -224,8 +234,6 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
         controller[RUL1], rul1_delta = compose_rul1(baseline[RUL1], rul1_rules, selected)
     native_approach_delta = None
     if native_approaches.declarations(selected):
-        labels = sorted({label for piece in selected for label in piece['dependencies']})
-        donors = {key: raw for label in labels for key, raw in context[label].items()}
         controller[RUL1], native_approach_delta = native_approaches.compose_rul1(
             controller.get(RUL1, baseline[RUL1]), selected, donors)
     texture_ids = set()
@@ -268,6 +276,11 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
                      "Place the reusable components in the order and orientation shown in their assembly guide.\n"
                      "Eight highway button states repeat four proper rotations; they do not reflect traffic directions.\n"
                      "Placement, vehicle travel, custom shadows, and save/reload still need in-game inspection.\n")
+        if hierarchy:
+            placement = placement.replace('Highway components are in Transportation > Highways.',
+                                          'Highway components are in Transportation > Highways > SCP > Pieces.')
+            placement += ("Highway SCP folders require Submenus DLL, SC4ResourceLoadingHooks DLL, "
+                          "and submenu-essentials.dat.\n")
         readme = ("Simon's Custom Pieces\nDEVELOPMENT BUILD — NOT GAME-TESTED\n"
                   "Requires the exact NAM profile recorded in manifest.json.\n"
                   "Use scp.py install with an external backup folder; test in a disposable city.\n"
@@ -286,6 +299,8 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
                     'dependency_audit': {'textures': textures, 'shadows': [tgi_string(k) for k in shadows]},
                     'release': release_status(project_root, selected),
                     'installed': False, 'in_game_tested': False}
+        if hierarchy:
+            manifest[transport_menu.KEY] = hierarchy
         if rul1_delta is not None:
             manifest['overlay']['rul1'] = rul1_delta
         if native_approach_delta is not None:

@@ -1,0 +1,108 @@
+// title: "Independent final reversed Y archive audit — reviewed cutoff"
+// summary: "Accept the unchanged finished archives after distinguishing their frozen contents from the later receipt recording their own hashes."
+// Used when: Reviewing exact development ZIPs before additive installation.
+// Read by: The package and installation coordinator.
+// Updated by: A read-only archive inspection and explicit post-package cutoff review.
+// Affects: Archive integrity, content, menu/proof closure, and privacy only; physical, installation, and human game evidence remain separate.
+// Public copy: The private filesystem path is redacted. All recorded measurements come from the original capture.
+// Original capture SHA-256: e739a46c367a05a60d1a37ddcf75f86da60c0f6f37b2f06f6db1c8c682f5d02d
+{
+  "schema_version": 1,
+  "passed": true,
+  "scope": "Read-only finished binary/source ZIP inspection, including exact DATs, actual menu/family resources, manifest and proof closure, current code/tests/evidence/artwork, archive safety, and private-input exclusion. No physical rerun, install, or human game result is asserted.",
+  "receipt_sha256": "349de89541f1588c93f2c977511886ea03e2bda39d3341b37c4b93d30fdaeb8b",
+  "archives": {
+    "binary_zip": {
+      "path": "dist/ddrhw-y-reversed-menu-final-03.zip",
+      "bytes": 314583884,
+      "sha256": "23a6f63260a186f9eb9f804985b16233e7a381839b0a68a7aecb7e87f75f427a",
+      "members": 3894,
+      "regular_files_read_with_CRC": 3894,
+      "uncompressed_bytes": 504292692,
+      "public_text_files_scanned": 2883,
+      "public_text_bytes_scanned": 177202547,
+      "required_current_sources_artifacts_checked": 162,
+      "required_artifact_fingerprint": "8bf6d07daedf65a0bd51ee507633b2944971ad7d03d58042c5c45bf909cb2c75",
+      "documentation_prefix": "docs/assembly-menu-source/documentation/docs/",
+      "private_path_hits": [],
+      "raw_native_archive_hits": [],
+      "manifest_file_records_checked": 5,
+      "manifest_documentation_records_checked": 3888,
+      "installable_payloads": [
+        {
+          "bytes": 5445727,
+          "path": "zzz_Simons_Custom_Pieces/00_SCP_Controller_NAM50.dat",
+          "sha256": "3c1833cc5b19b9f0ec778faedca816aadfd4dc090141193b919de57148bbde98"
+        },
+        {
+          "bytes": 8161,
+          "path": "zzz_Simons_Custom_Pieces/10_SCP_Menu.dat",
+          "sha256": "f116db15363e5e1f9c5e9ebe38e05994d8047ea9d9e309f7940a892ee7f5535d"
+        },
+        {
+          "bytes": 9627666,
+          "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-y-reversed-diagonal-branch.dat",
+          "sha256": "8ed02ed4be5131ec7326fb8184e99d05b5d493cffc8b468859f22038f796aa39"
+        },
+        {
+          "bytes": 6505578,
+          "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-y-reversed-diagonal-stem-split.dat",
+          "sha256": "f86b412afab377c082b0d1b305ed46f5021107ec8173b547f1798ba3c846733f"
+        },
+        {
+          "bytes": 9746723,
+          "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-y-reversed-orthogonal-core.dat",
+          "sha256": "d0daf9c5f2ce93756bbdca9c593564ed9b11cb2a5f3e2ff28c50fc52bb08b37e"
+        }
+      ],
+      "one_visible_button": "6a47fee6",
+      "cycle_member_ids": [
+        "ddrhw-y-reversed-diagonal-stem-split",
+        "ddrhw-y-reversed-diagonal-branch",
+        "ddrhw-y-reversed-orthogonal-core"
+      ],
+      "actual_rotation_states": 24,
+      "RUL1_and_NetworkINI_exact_frozen_source": true,
+      "frozen_normal_proof_inputs_checked": 6,
+      "unverified_menu_game_cases": 10,
+      "new_subject_game_cases_without_observations": 422
+    },
+    "source_zip": {
+      "path": "dist/ddrhw-y-reversed-source-final-03.zip",
+      "bytes": 300764628,
+      "sha256": "3e5ece2efba48a7fd340c0edf6b0509b54ccbca8bdc822b97e09c888a685b13f",
+      "members": 3878,
+      "regular_files_read_with_CRC": 3878,
+      "uncompressed_bytes": 465409429,
+      "public_text_files_scanned": 2875,
+      "public_text_bytes_scanned": 175115752,
+      "required_current_sources_artifacts_checked": 162,
+      "required_artifact_fingerprint": "231bc62b4047e9d266ff9514d60e649d59c3a5e7c48effc1f9d89b7a94b071af",
+      "documentation_prefix": "custom-pieces/",
+      "private_path_hits": [],
+      "raw_native_archive_hits": [],
+      "new_subject_game_cases_without_observations": 422
+    }
+  },
+  "explicit_home_path_placeholder_occurrences": 2,
+  "non_placeholder_home_paths": [],
+  "issues": [],
+  "archives_modified": false,
+  "Plugins_modified": false,
+  "installed_at_this_capture": false,
+  "initial_strict_live_tree_diagnostic": {
+    "file": "redacted: private diagnostic report location",
+    "sha256": "528787f41b32838a0b6cde51762724f296ffd1d697662cd1dcd270703d372e7f",
+    "classification": "The only two differences were the same intentionally post-package self-hash receipt, created after both frozen ZIPs. No archive content, resource, privacy, or integrity failure was found."
+  },
+  "documentation_cutoff": {
+    "state": "Frozen pre-install archive documentation",
+    "post_package_self_hash_receipt": {
+      "file": "domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction-reversed/evidence/final-development-package.jsonc",
+      "sha256": "ceda4cf455421545627552622c4be6101199b004348915d92af8878247760d51",
+      "outputs_equal_exact_package_receipt": true,
+      "included_in_either_archive": false
+    },
+    "explanation": "A receipt recording the completed ZIPs own hashes is a separate later capture. It is excluded from this pre-install content comparison; all162 required files present at the packaged cutoff matched current bytes. The coordinating agent explicitly confirmed this timing distinction. Later installation captures likewise do not rewrite these archives."
+  }
+}
