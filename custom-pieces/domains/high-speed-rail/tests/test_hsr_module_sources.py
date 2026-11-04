@@ -24,22 +24,30 @@ from scp_hsr.hsr_components_verify import CONTRACTS as COMPONENT_CONTRACTS, _con
 from scp_hsr.interchange_models import EMPTY_STRUCTURAL_PATH
 
 ROOT = next(path for path in Path(__file__).resolve().parents if (path/'project.jsonc').is_file())
+LITERAL_RECIPES = (
+    'hsr_component_modular_paired_climb',
+    'hsr_component_l2_paired_fan_compact_core',
+    'hsr_component_l2_shortened_departure_curve',
+    'hsr_component_l2_shortened_return_curve',
+    'hsr_component_l2_short_opposed_merge_core',
+    'hsr_component_modular_south_junction',
+    'hsr_component_l2_short_mainline_diverge_core',
+    'hsr_component_l2_paired_straight_recessed_web',
+    'hsr_component_modular_crossing_core',
+)
 
 
 class LiteralComponentSupportMetadataTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        domain = ROOT/'domains/high-speed-rail'
-        assembly = json.loads((domain/'01_assemblies/hsr-trumpet-straight-stem/assembly.json').read_text())
         cls.sources = {}
-        for identifier in {row['piece_id'] for row in assembly['placements']}:
-            directory = domain/'00_pieces'/identifier
-            if (directory/'geometry.json').is_file():
-                cls.sources[identifier] = (
-                    json.loads((directory/'piece.json').read_text()),
-                    json.loads((directory/'geometry.json').read_text())['metadata'])
+        for recipe in LITERAL_RECIPES:
+            directory = piece_directory(recipe, ROOT)
+            piece = json.loads((directory/'piece.json').read_text())
+            cls.sources[piece['id']] = (
+                piece, json.loads((directory/'geometry.json').read_text())['metadata'])
 
-    def test_all_nine_literal_trumpet_definitions_match_geometry_and_independent_supports(self):
+    def test_all_nine_literal_component_definitions_match_geometry_and_independent_supports(self):
         self.assertEqual(len(self.sources), 9)
         for identifier, (piece, geometry) in self.sources.items():
             with self.subTest(piece=identifier):

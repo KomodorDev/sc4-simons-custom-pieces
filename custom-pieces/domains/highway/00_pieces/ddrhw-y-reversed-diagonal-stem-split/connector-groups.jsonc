@@ -1,0 +1,189 @@
+// title: "Reviewed highway connector channels"
+// summary: "Bind every measured service endpoint to its independently reviewed channel and exposed tile boundary."
+//
+// Used when: Contributors export this highway component or inspect its complete boundary cards.
+// Read by: scp.connector_metadata.load_library(), connector exports, and source-owned overview rendering.
+// Updated by: scp_highway.connections.write_connector_groups() after reviewed saved-resource extraction.
+// Affects: Highway, Avenue, ramp, and pedestrian service boundaries, signed slopes, and derived connector exports.
+{
+  "schema_version": 3,
+  "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
+  "piece_id": "ddrhw-y-reversed-diagonal-stem-split",
+  "source_binding": {
+    "piece_sha256": "53bf99c64a7e8c0565a9d9c29e22585326f90a8731e7cdf8d794acdf6e96d46f",
+    "connections_sha256": "7036fe9173e4312ad73113cb60cb2d8886f656b8cc71c5740f9b20d2da8fc448"
+  },
+  "components": [
+    {
+      "id": "dd-highway",
+      "network": "road",
+      "construction_network": "dirtroad"
+    }
+  ],
+  "channels": [
+    {
+      "id": "a-b",
+      "component_id": "dd-highway",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "b-a",
+      "component_id": "dd-highway",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "a-c",
+      "component_id": "dd-highway",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "c-a",
+      "component_id": "dd-highway",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "boundary-01-dd-highway-01",
+      "component_id": "dd-highway",
+      "members": [
+        {
+          "id": "member-a-b-out",
+          "source_port_id": "a-b-out",
+          "direction": "out",
+          "channel_id": "a-b",
+          "cut_id": "cut-a-b-out"
+        }
+      ]
+    },
+    {
+      "id": "boundary-01-dd-highway-02",
+      "component_id": "dd-highway",
+      "members": [
+        {
+          "id": "member-b-a-in",
+          "source_port_id": "b-a-in",
+          "direction": "in",
+          "channel_id": "b-a",
+          "cut_id": "cut-b-a-in"
+        }
+      ]
+    },
+    {
+      "id": "boundary-02-dd-highway-01",
+      "component_id": "dd-highway",
+      "members": [
+        {
+          "id": "member-a-b-in",
+          "source_port_id": "a-b-in",
+          "direction": "in",
+          "channel_id": "a-b",
+          "cut_id": "cut-a-b-in"
+        },
+        {
+          "id": "member-a-c-in",
+          "source_port_id": "a-c-in",
+          "direction": "in",
+          "channel_id": "a-c",
+          "cut_id": "cut-a-c-in"
+        }
+      ]
+    },
+    {
+      "id": "boundary-02-dd-highway-02",
+      "component_id": "dd-highway",
+      "members": [
+        {
+          "id": "member-b-a-out",
+          "source_port_id": "b-a-out",
+          "direction": "out",
+          "channel_id": "b-a",
+          "cut_id": "cut-b-a-out"
+        },
+        {
+          "id": "member-c-a-out",
+          "source_port_id": "c-a-out",
+          "direction": "out",
+          "channel_id": "c-a",
+          "cut_id": "cut-c-a-out"
+        }
+      ]
+    },
+    {
+      "id": "boundary-03-dd-highway-01",
+      "component_id": "dd-highway",
+      "members": [
+        {
+          "id": "member-a-c-out",
+          "source_port_id": "a-c-out",
+          "direction": "out",
+          "channel_id": "a-c",
+          "cut_id": "cut-a-c-out"
+        }
+      ]
+    },
+    {
+      "id": "boundary-03-dd-highway-02",
+      "component_id": "dd-highway",
+      "members": [
+        {
+          "id": "member-c-a-in",
+          "source_port_id": "c-a-in",
+          "direction": "in",
+          "channel_id": "c-a",
+          "cut_id": "cut-c-a-in"
+        }
+      ]
+    }
+  ],
+  "boundary_bundles": [
+    {
+      "id": "boundary-01",
+      "source_cell": [
+        1,
+        0
+      ],
+      "edge": "north",
+      "connector_ids": [
+        "boundary-01-dd-highway-01",
+        "boundary-01-dd-highway-02"
+      ]
+    },
+    {
+      "id": "boundary-02",
+      "source_cell": [
+        1,
+        1
+      ],
+      "edge": "west",
+      "connector_ids": [
+        "boundary-02-dd-highway-01",
+        "boundary-02-dd-highway-02"
+      ]
+    },
+    {
+      "id": "boundary-03",
+      "source_cell": [
+        3,
+        0
+      ],
+      "edge": "north",
+      "connector_ids": [
+        "boundary-03-dd-highway-01",
+        "boundary-03-dd-highway-02"
+      ]
+    }
+  ]
+}

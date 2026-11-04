@@ -1,0 +1,89 @@
+// title: "Compact DD RHW Y marking join verification"
+// summary: "Bind measured paint continuity and preserved road resources to the checked compact Y game files."
+// Used when: Reviewing the current edge-marking correction on the three junction approaches.
+// Read by: Contributors and players following the assembly testing guide.
+// Updated by: A new saved-resource paint comparison after the checked build.
+// Affects: Software evidence only. Human game observations have their own record.
+{
+  "schema_version": 1,
+  "scope": "Visible outer stripes sampled at the six saved DD-to-MIS fan cuts. No game appearance or continuous pixel coverage is established.",
+  "traffic_variant": "reversed",
+  "passed": true,
+  "verified_normal_build": "dist/ddrhw-y-paint-joins-six-parts-01",
+  "normal_manifest_sha256": "1d0e84dd22f997f6c7b014290a5719f2e3cc039e42937af606b476409efd8900",
+  "normal_verification_sha256": "31e27ce8b290a40ae0e87e0605bb847fef7d937c527896c00355ceecf76e1440",
+  "independent_measurement_sha256": "d997c5e10f5aab004c50112b242b4c07f265f1d50f02400ee6688937bd1e2a42",
+  "baseline_colour_rejections": 12,
+  "sample_spacing_m": 0.005,
+  "sample_depths_relative_to_fan_cut_m": [
+    -0.025,
+    0.025
+  ],
+  "canonical_models_equal_to_measured_pilot": 21,
+  "retained_PATH_payloads": 21,
+  "retained_construction_states": 24,
+  "retained_native_finite_seam_segments_checked": 86,
+  "native_and_nonpaint_faces_preserved": true,
+  "pieces": [
+    {
+      "id": "ddrhw-y-reversed-diagonal-stem-split",
+      "old_DAT_sha256": "f86b412afab377c082b0d1b305ed46f5021107ec8173b547f1798ba3c846733f",
+      "checked_DAT_sha256": "601457fef606dbbdbae9fe54206bf7644c6553166a397bbae487fd9e2a00c93c"
+    },
+    {
+      "id": "ddrhw-y-reversed-diagonal-branch",
+      "old_DAT_sha256": "8ed02ed4be5131ec7326fb8184e99d05b5d493cffc8b468859f22038f796aa39",
+      "checked_DAT_sha256": "be5682deb3ea4f758316013b5f216611a36262b94891409df3b826f3d902cdd6"
+    },
+    {
+      "id": "ddrhw-y-reversed-orthogonal-core",
+      "old_DAT_sha256": "d0daf9c5f2ce93756bbdca9c593564ed9b11cb2a5f3e2ff28c50fc52bb08b37e",
+      "checked_DAT_sha256": "d13c2b520de1c98f56452ab5cb87a4721bad5b68e14ba5662545c2beb170b23f"
+    }
+  ],
+  "samples": [
+    {
+      "arm": "A",
+      "deck": "upper",
+      "yellow_centre_displacement_m": 0.0,
+      "white_centre_displacement_m": -0.015,
+      "native_centre_divider_in_dash_gap": true
+    },
+    {
+      "arm": "A",
+      "deck": "lower",
+      "yellow_centre_displacement_m": 0.0,
+      "white_centre_displacement_m": -0.01,
+      "native_centre_divider_in_dash_gap": true
+    },
+    {
+      "arm": "B",
+      "deck": "upper",
+      "yellow_centre_displacement_m": 0.0025,
+      "white_centre_displacement_m": -0.0075,
+      "native_centre_divider_in_dash_gap": true
+    },
+    {
+      "arm": "B",
+      "deck": "lower",
+      "yellow_centre_displacement_m": 0.0025,
+      "white_centre_displacement_m": -0.0275,
+      "native_centre_divider_in_dash_gap": true
+    },
+    {
+      "arm": "C",
+      "deck": "upper",
+      "yellow_centre_displacement_m": -0.0025,
+      "white_centre_displacement_m": -0.005,
+      "native_centre_divider_in_dash_gap": true
+    },
+    {
+      "arm": "C",
+      "deck": "lower",
+      "yellow_centre_displacement_m": 0.005,
+      "white_centre_displacement_m": -0.01,
+      "native_centre_divider_in_dash_gap": true
+    }
+  ],
+  "game_appearance_observed": false
+}

@@ -1,0 +1,2882 @@
+---
+title: "Testing: DD RHW-4 — Parallel Diagonal Avenue Diamond"
+summary: "Inspect the exact parallel diamond checks, current user acceptance, and preserved historical failures."
+audience: "contributors"
+document_type: "reference"
+---
+
+# Testing: DD RHW-4 — Parallel Diagonal Avenue Diamond
+
+<!-- ASSEMBLY TESTING LAYOUT: 1 -->
+
+[Assembly overview ↗ (README)](README.md) · [1. Test scope](#1-test-scope) · [2. Test setup](#2-test-setup) · [3. Software checks](#3-software-checks) · [4. Game checks](#4-game-checks) · [5. Results and known issues](#5-results-and-known-issues) · [6. Design history](#6-design-history)
+
+## 1. Test scope
+
+The registered assembly **ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond** places fifteen distinct functional types once each. The construction union contains **31 disjoint city tiles inside 8 × 8**, with the exact poses in [assembly.jsonc](assembly.jsonc). Required software coverage includes complete native L1/L2 through traffic, two-way Avenue and pedestrian routes, all four permitted right-turn access journeys, forbidden cross-Avenue transfers, 6 m elevated ramp pavement, the terminal taper from 6 m to 3.5 m, 1 m undersides, native Jersey barrier profiles, physical joining sections, eight piers, texture mapping, all nine adaptive Avenue cells, and all four proper rotations. Every PATH, permanent identifier, owned cell, R6 turn centreline, and 6 m grade interface is retained by this ground-mouth revision.
+
+<!-- BEGIN CONNECTIONS -->
+
+### Connections and journeys
+
+Generated from [connections.json](connections.json). Coordinates are canonical east, north, and height in metres. A connection class names an encoded route interface; it does not prove visible deck/wall fit or an in-game test.
+
+Supported placement states: 0° CCW, 90° CCW, 180° CCW, 270° CCW. Human game checks use only 0° CCW; supported construction states and software rotation checks remain separate.
+
+A **port** is one directional transport-path endpoint. **Service** identifies the intended network service (for example HSR, street, or tram); **engine** is its internal traffic-class number, separate from the construction network. **Role** distinguishes primary service from auxiliary paths; sharing a traffic class does not establish service compatibility.
+
+A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** is height gained per horizontal metre. These measured facts describe this subject alone. Compatibility requires a separate comparison of the complete joining boundaries; physical seams and actual game operation require their own evidence. See the [class index](../../connection-classes.jsonc) for shared route-interface membership.
+
+| Port | Service / engine / role | Direction | Location; tangent; grade | Connection class |
+| --- | --- | --- | --- | --- |
+| `external-1` | road / 1 / primary | out | [8.0, -131.2, 7.5]; [-0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-f9c18bdf77622a5e27b2` |
+| `external-2` | road / 1 / primary | in | [8.0, -131.2, 15.0]; [0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-3ed34d9a11bb64d98604` |
+| `external-3` | road / 1 / primary | out | [8.0, -124.8, 7.5]; [-0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-207fc37bf71ddd9e9cc7` |
+| `external-4` | road / 1 / primary | in | [8.0, -124.8, 15.0]; [0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-3e8c9380dd7fc6c63cb8` |
+| `external-5` | road / 1 / primary | in | [40.0, -51.2, 0.0]; [0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-7c732cbad30c1a957476` |
+| `external-6` | road / 1 / primary | in | [40.0, -44.8, 0.0]; [0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-c97bb85824c6523bf652` |
+| `external-7` | road / 1 / primary | out | [44.8, -40.0, 0.0]; [-0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-1d22b25ce4745f800f2c` |
+| `external-8` | road / 1 / primary | out | [51.2, -40.0, 0.0]; [-0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-668896c488171c19873d` |
+| `external-9` | road / 1 / primary | out | [88.0, -99.2, 0.0]; [0.7071067811865475, -0.7071067811865477]; 0.0 | `path-interface-7c732cbad30c1a957476` |
+| `external-10` | road / 1 / primary | out | [88.0, -92.8, 0.0]; [0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-c97bb85824c6523bf652` |
+| `external-11` | road / 1 / primary | in | [92.8, -88.0, 0.0]; [-0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-1d22b25ce4745f800f2c` |
+| `external-12` | road / 1 / primary | in | [99.2, -88.0, 0.0]; [-0.7071067811865477, 0.7071067811865475]; 0.0 | `path-interface-668896c488171c19873d` |
+| `external-13` | road / 1 / primary | in | [124.8, -8.0, 7.5]; [-0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-aad60a85e4675eaba5de` |
+| `external-14` | road / 1 / primary | out | [124.8, -8.0, 15.0]; [0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-50bfaaffb0d43ee83a9b` |
+| `external-15` | road / 1 / primary | in | [131.2, -8.0, 7.5]; [-0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-3ecbd7f665c425929ca6` |
+| `external-16` | road / 1 / primary | out | [131.2, -8.0, 15.0]; [0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-55ad67244a3a7bbd6c4b` |
+| `external-17` | pedestrian / 2 / primary | in | [40.0, -55.3, 0.0]; [0.7071067811865476, -0.7071067811865476]; 0.0 | `path-interface-ef45fb4474012bf121a0` |
+| `external-18` | pedestrian / 2 / primary | out | [55.3, -40.0, 0.0]; [-0.7071067811865476, 0.7071067811865476]; 0.0 | `path-interface-2ec6b824afff9b450810` |
+| `external-19` | pedestrian / 2 / primary | out | [88.0, -103.3, 0.0]; [0.7071067811865477, -0.7071067811865475]; 0.0 | `path-interface-ef45fb4474012bf121a0` |
+| `external-20` | pedestrian / 2 / primary | in | [103.3, -88.0, 0.0]; [-0.7071067811865475, 0.7071067811865477]; 0.0 | `path-interface-2ec6b824afff9b450810` |
+
+#### Directed journeys
+
+| Service | Entry → exit | Role |
+| --- | --- | --- |
+| road | `external-11` → `external-7` | primary |
+| road | `external-12` → `external-16` | primary |
+| road | `external-12` → `external-8` | primary |
+| road | `external-13` → `external-3` | primary |
+| road | `external-13` → `external-8` | primary |
+| road | `external-15` → `external-1` | primary |
+| pedestrian | `external-17` → `external-19` | primary |
+| pedestrian | `external-20` → `external-18` | primary |
+| road | `external-2` → `external-16` | primary |
+| road | `external-2` → `external-9` | primary |
+| road | `external-4` → `external-14` | primary |
+| road | `external-5` → `external-3` | primary |
+| road | `external-5` → `external-9` | primary |
+| road | `external-6` → `external-10` | primary |
+
+#### Forbidden transfers
+
+| From service / port | To service / port | Reason |
+| --- | --- | --- |
+| road / `external-2` | road / `external-1` | not reachable in the saved placed encoded-route graph |
+| road / `external-2` | road / `external-3` | not reachable in the saved placed encoded-route graph |
+| road / `external-2` | road / `external-7` | not reachable in the saved placed encoded-route graph |
+| road / `external-2` | road / `external-8` | not reachable in the saved placed encoded-route graph |
+| road / `external-2` | road / `external-10` | not reachable in the saved placed encoded-route graph |
+| road / `external-2` | road / `external-14` | not reachable in the saved placed encoded-route graph |
+| road / `external-2` | pedestrian / `external-18` | not reachable in the saved placed encoded-route graph |
+| road / `external-2` | pedestrian / `external-19` | not reachable in the saved placed encoded-route graph |
+| road / `external-4` | road / `external-1` | not reachable in the saved placed encoded-route graph |
+| road / `external-4` | road / `external-3` | not reachable in the saved placed encoded-route graph |
+| road / `external-4` | road / `external-7` | not reachable in the saved placed encoded-route graph |
+| road / `external-4` | road / `external-8` | not reachable in the saved placed encoded-route graph |
+| road / `external-4` | road / `external-9` | not reachable in the saved placed encoded-route graph |
+| road / `external-4` | road / `external-10` | not reachable in the saved placed encoded-route graph |
+| road / `external-4` | road / `external-16` | not reachable in the saved placed encoded-route graph |
+| road / `external-4` | pedestrian / `external-18` | not reachable in the saved placed encoded-route graph |
+| road / `external-4` | pedestrian / `external-19` | not reachable in the saved placed encoded-route graph |
+| road / `external-5` | road / `external-1` | not reachable in the saved placed encoded-route graph |
+| road / `external-5` | road / `external-7` | not reachable in the saved placed encoded-route graph |
+| road / `external-5` | road / `external-8` | not reachable in the saved placed encoded-route graph |
+| road / `external-5` | road / `external-10` | not reachable in the saved placed encoded-route graph |
+| road / `external-5` | road / `external-14` | not reachable in the saved placed encoded-route graph |
+| road / `external-5` | road / `external-16` | not reachable in the saved placed encoded-route graph |
+| road / `external-5` | pedestrian / `external-18` | not reachable in the saved placed encoded-route graph |
+| road / `external-5` | pedestrian / `external-19` | not reachable in the saved placed encoded-route graph |
+| road / `external-6` | road / `external-1` | not reachable in the saved placed encoded-route graph |
+| road / `external-6` | road / `external-3` | not reachable in the saved placed encoded-route graph |
+| road / `external-6` | road / `external-7` | not reachable in the saved placed encoded-route graph |
+| road / `external-6` | road / `external-8` | not reachable in the saved placed encoded-route graph |
+| road / `external-6` | road / `external-9` | not reachable in the saved placed encoded-route graph |
+| road / `external-6` | road / `external-14` | not reachable in the saved placed encoded-route graph |
+| road / `external-6` | road / `external-16` | not reachable in the saved placed encoded-route graph |
+| road / `external-6` | pedestrian / `external-18` | not reachable in the saved placed encoded-route graph |
+| road / `external-6` | pedestrian / `external-19` | not reachable in the saved placed encoded-route graph |
+| road / `external-11` | road / `external-1` | not reachable in the saved placed encoded-route graph |
+| road / `external-11` | road / `external-3` | not reachable in the saved placed encoded-route graph |
+| road / `external-11` | road / `external-8` | not reachable in the saved placed encoded-route graph |
+| road / `external-11` | road / `external-9` | not reachable in the saved placed encoded-route graph |
+| road / `external-11` | road / `external-10` | not reachable in the saved placed encoded-route graph |
+| road / `external-11` | road / `external-14` | not reachable in the saved placed encoded-route graph |
+| road / `external-11` | road / `external-16` | not reachable in the saved placed encoded-route graph |
+| road / `external-11` | pedestrian / `external-18` | not reachable in the saved placed encoded-route graph |
+| road / `external-11` | pedestrian / `external-19` | not reachable in the saved placed encoded-route graph |
+| road / `external-12` | road / `external-1` | not reachable in the saved placed encoded-route graph |
+| road / `external-12` | road / `external-3` | not reachable in the saved placed encoded-route graph |
+| road / `external-12` | road / `external-7` | not reachable in the saved placed encoded-route graph |
+| road / `external-12` | road / `external-9` | not reachable in the saved placed encoded-route graph |
+| road / `external-12` | road / `external-10` | not reachable in the saved placed encoded-route graph |
+| road / `external-12` | road / `external-14` | not reachable in the saved placed encoded-route graph |
+| road / `external-12` | pedestrian / `external-18` | not reachable in the saved placed encoded-route graph |
+| road / `external-12` | pedestrian / `external-19` | not reachable in the saved placed encoded-route graph |
+| road / `external-13` | road / `external-1` | not reachable in the saved placed encoded-route graph |
+| road / `external-13` | road / `external-7` | not reachable in the saved placed encoded-route graph |
+| road / `external-13` | road / `external-9` | not reachable in the saved placed encoded-route graph |
+| road / `external-13` | road / `external-10` | not reachable in the saved placed encoded-route graph |
+| road / `external-13` | road / `external-14` | not reachable in the saved placed encoded-route graph |
+| road / `external-13` | road / `external-16` | not reachable in the saved placed encoded-route graph |
+| road / `external-13` | pedestrian / `external-18` | not reachable in the saved placed encoded-route graph |
+| road / `external-13` | pedestrian / `external-19` | not reachable in the saved placed encoded-route graph |
+| road / `external-15` | road / `external-3` | not reachable in the saved placed encoded-route graph |
+| road / `external-15` | road / `external-7` | not reachable in the saved placed encoded-route graph |
+| road / `external-15` | road / `external-8` | not reachable in the saved placed encoded-route graph |
+| road / `external-15` | road / `external-9` | not reachable in the saved placed encoded-route graph |
+| road / `external-15` | road / `external-10` | not reachable in the saved placed encoded-route graph |
+| road / `external-15` | road / `external-14` | not reachable in the saved placed encoded-route graph |
+| road / `external-15` | road / `external-16` | not reachable in the saved placed encoded-route graph |
+| road / `external-15` | pedestrian / `external-18` | not reachable in the saved placed encoded-route graph |
+| road / `external-15` | pedestrian / `external-19` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-17` | road / `external-1` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-17` | road / `external-3` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-17` | road / `external-7` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-17` | road / `external-8` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-17` | road / `external-9` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-17` | road / `external-10` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-17` | road / `external-14` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-17` | road / `external-16` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-17` | pedestrian / `external-18` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-20` | road / `external-1` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-20` | road / `external-3` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-20` | road / `external-7` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-20` | road / `external-8` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-20` | road / `external-9` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-20` | road / `external-10` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-20` | road / `external-14` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-20` | road / `external-16` | not reachable in the saved placed encoded-route graph |
+| pedestrian / `external-20` | pedestrian / `external-19` | not reachable in the saved placed encoded-route graph |
+
+Review the test checklist for the exact tested cases and environments.
+
+<!-- END CONNECTIONS -->
+
+## 2. Test setup
+
+This retained subject is **Alignment A**; the [Alignment B test plan](../ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b/TESTING.md) has separate resources and observations. In a candidate with the SCP folder layout, their two assembly buttons are directly in **Transportation → Highways → SCP → Assemblies**. The earlier combined candidate used the dedicated **Parallel Diagonal Avenue Diamond** submenu. Select **SCP | ASSEMBLY | DD RHW-4 — Parallel Diagonal Avenue Diamond — Alignment A** to keep Tab and Shift+Tab inside A’s component cycle. The nested presentation requires the Submenus DLL, SC4ResourceLoadingHooks DLL version 2.0.1 or later, and `submenu-essentials.dat`; it does not change A’s retained models, PATHs, placements, or existing observations. Actual submenu visibility and cycle isolation remain separate game checks.
+
+Use **Windows SimCity 4 with NAM 50 and right-hand traffic**, including supported Wine or CrossOver execution. Native macOS SimCity 4 is outside this DLL-dependent setup. Keep the exact audited DD RHW, MIS, controller, preview donor, and adaptive Avenue capture inputs specified in the [build guide](../../../../docs/BUILD_AND_INSTALL.md). Private paths and captured game files remain local; no native texture images are supplied by these public sources.
+
+A **DAT** is a game-resource archive. An **S3D** resource contains an indexed visible model, and a **PATH** resource contains directed traffic data. Car transport is class 1, and pedestrian transport is class 2. A native Avenue texture supplies visible ground appearance; a rotated retained model supplies elevated highway and ramp geometry. Neither appearance nor a preview establishes a working traffic connection.
+
+**Adaptive ground** means that the visible Avenue pavement can follow the game's native development-dependent appearance rules. A **prop** is an attached three-dimensional model, and a **T21** is the network-tile attachment record that places it. In this implementation, native ground textures supply the changing pavement; rotating props supply the retained highway and ramp geometry. A pedestrian PATH supplies the possible walking route. These are three separate resources, and all three are implemented for their declared roles.
+
+For a game test, install only the matching verified selection using the shared build/install procedure, with SimCity 4 fully closed during file replacement. The final component-cycle menu is prepared separately from the ordinary fifteen-piece build. Compiling, verifying, rendering, and packaging do not install files. Preserve the existing R40/compact installations or saved cities independently rather than treating the new identifiers as automatic replacements.
+
+1. Open a disposable city, pause the simulation, and flatten enough land for the 8 × 8 core plus outside approaches. A 14 × 14 flat test area gives three extra tiles on each side; those approach reserves are not part of the 31-cell core count.
+2. Use a north-up camera for the first layout. The reference picture labels tile centres **X0–X9** eastward and **Y0–Y9** northward. The occupied core lies at **X1–X8/Y1–Y8**. A 16 m tile's sides lie 8 m from its centre; keep this display grid distinct from the source's columns-east/rows-south coordinates.
+3. Follow the [complete placement table](README.md#3-placements), using P02, P01, and P03 first, then P04–P15. The temporary local [1,1] handles are clear in that order. Check the exact occupied squares before every click; two different model silhouettes may overlap without sharing a construction owner.
+4. Extend normal diagonal Avenue outward from the northwest and southeast mouths. Match every L1/L2 native DD RHW-4 boundary before testing external highway approaches. The exact native starter/drag sequence and external in-game compatibility still require observation; do not infer them from a software image or one matching lane.
+5. Save this fresh reference layout before changing pavement development, testing redraw, or demolishing components. Use separate copies for each destructive test so failures remain reproducible.
+
+The current appearance policy is **no cast shadows for all fifteen parallel components**. This follows the user’s report that the adjoining draggable DD highway has no visible shadow, rather than an independently measured universal native rule. The prior carrier repair and its exact evidence remain historical. Restart after installation, and use fresh placements for the current acceptance test; removal of older saved attachments on reload alone remains unverified.
+
+## 3. Software checks
+
+Run these commands from the repository directory containing `custom-pieces/`. The first command inspects the existing ordinary build; the second independently checks the saved complete layout, and the third checks current documentation. A missing build or report is not a pass. Successful software checks never record a human game observation.
+
+```sh
+python3 -B custom-pieces/scp.py verify --output custom-pieces/dist/ddrhw-parallel-diamond-slip-lanes-02
+python3 -B custom-pieces/domains/highway/tools/verify_parallel_assembly.py --build custom-pieces/dist/ddrhw-parallel-diamond-slip-lanes-02 --output custom-pieces/domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/evidence/saved-assembly.json
+python3 -B custom-pieces/scp.py docs-check --assembly ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond
+python3 -B tools/run_tests.py
+```
+
+The current slip-lane revision targets the distinct measured build `ddrhw-parallel-diamond-slip-lanes-02`. The [complete saved-assembly report](evidence/saved-assembly.json) identifies its exact source manifest, decoded traffic-fragment count, and actual pass fields; match that source to the current revision before using its result. The check covers the 31-cell union, every saved traffic fragment, all four proper rotations, continuous car support, each authored pavement width, eight functional physical cuts, and all eight piers. A report for `ddrhw-parallel-diamond-parts-01` or `ddrhw-parallel-diamond-pedestrian-mouths-01` establishes only its own earlier geometry. Naming the new target does not assert that its verification has already passed.
+
+The shoulder revision retains the physical ramp meshes and every route point outside the native 8 m deck edge. Within the deck, each lower access route starts 6.788225 m farther upstream, tapers smoothly sideways over 8 m, and runs straight along the shoulder for 4 m. Each upper access route keeps its old outer port, tapers over 5 m, and runs straight for 1 m. These are 12 m lower and 6 m upper shoulder sections, measured along the straight highway axis from the through lane toward the ramp; an on-ramp travels through them in reverse. The remaining smooth join meets the retained outside-deck route with its previous direction. The upper owned-cell arrangement cannot supply the lower 12 m profile without adding traffic cells, so the shorter upper profile preserves the approved 31-cell/8 × 8 footprint. Both auxiliary centres are 5.5 m from the highway axis. A checked 2.5 m car corridor reaches 6.75 m from that axis and leaves 0.421875 m to the native barrier foot at 7.171875 m on the straight section. The white markings follow the revised routes; the native through routes, physical openings, separate departures, grades, and narrower ground mouths remain in their previous positions.
+
+The [historical visual reassignment proof](evidence/native-visual-transfer.json) covers the earlier 106,350-triangle highway/paint/pier reassignment, with its original material, texture-coordinate, winding, and approximately 0.548 micrometre coordinate-drift results. A micrometre is one millionth of a metre. Its older manifest identifies that historical scope; it does not establish texture-coordinate preservation for the later shoulder revision, which intentionally changes the native tyre-wear phase. The [current native-slip preservation report](evidence/native-slip-preservation.json) is the separate evidence for this revision: unchanged non-DD model bodies, native texture coordinates outside the allowed shoulder mask, strict forward coverage within 2 micrometres, and source-certified positive fragments filling an earlier native-coverage hole. Each such fill must lie on its independently identified original raw native face; it cannot be justified by a general increase in tolerance. Match the report's exact manifest and actual pass fields before claiming that result. The [native highway/ramp texture-seam check](evidence/native-wheeltrack-seam-uv.json) separately records its own twenty saved joins and phase-reset negative control. Neither preservation evidence nor a software render supplies a human game pass.
+
+Texture coordinates, labelled U and V, select a position within an existing native texture image. The owning verifier reconstructs the exact approved route positions independently of the writer, checks every emitted native/access fragment, and tests the complete layout through four proper rotations. Actual indexed triangles establish continuous car support and intrusion checks, each section's authored pavement width, sampled undersides and barrier profiles, and the eight separately owned physical cuts. Bounded native float32 edge certificates address encoding residuals without broadening the road or moving a PATH. At an external native entrance collar, part of the native road width can lie beyond the owned core and must be supplied by the adjoining highway; the report identifies those bounded omissions while retaining the applicable authored width at every ramp section. Material and texture checks inspect saved flags and UV coordinates, not a renderer's colour choices. Structural load capacity and filtered game appearance remain outside these software checks.
+
+The visible terminal asphalt is 6 m wide at the unchanged grade joining section and narrows smoothly to 3.5 m over the first 3 m toward the Avenue. It stays 3.5 m through the remainder of the R6 quarter-turn and its native-lane joining collar. The ramp centreline crosses the retained pedestrian-route centreline 3.258752 m from that grade join, approximately 0.259 m after the taper ends. This measures the two route centrelines, not the first asphalt contact: the pavement footprint already crosses the pedestrian route while the taper narrows. The checked car corridor is 2.5 m wide; the narrow asphalt leaves 0.5 m on either side of that corridor. Where the terminal road and an Avenue pedestrian centreline run alongside each other, the asphalt edge is approximately 1.149 m away. This last value excludes the driveway crossings and does not measure a complete sidewalk's width.
+
+The adaptive-sidewalk resource implementation covers **P01, P02, and P03, with three Avenue cells each**. Each resolved native Avenue tile receives all four captured appearance variants at all five zoom levels. The ground Avenue meshes are removed from its attached prop, allowing those native textures to remain visible. The prop retains the highway, barriers, supports, and terminal asphalt that belong above the ground; its full-geometry rotation setting and compensated tile pose keep that model aligned as the construction rotates. The retained directed car and pedestrian PATHs are bound separately to the resolved Avenue tiles. The native rule flags, T21 selectors, and temporary local [1,1] construction helper complete that resource chain. This is implemented resource behaviour, rather than an unimplemented sidewalk placeholder.
+
+The [2026-11-01 compiled removal audit](../../evidence/ddrhw-shadow-removal-20261101.jsonc) identifies the exact no-shadow candidate and manifest. Across the complete 37-type selection, it proves 287 shadow-resource removals, three adaptive T21 changes, byte-identical remaining selected payloads, and twenty unchanged unrelated DATs. The [retained-render revalidation](evidence/shadowless-render-revalidation.jsonc) separately proves that the new visible scene equals the pre-removal installed scene and retains the original renderer’s 203,171 position, UV, and texture triangles. The raw combined-model hash differs from the original render because an earlier correction changed 168 vertex-format words from `2` to `80004001`; restoring only those words in a comparison copy reproduces the exact original bytes. The original raw hash is therefore not claimed to match. All 75 checked PNG files and the existing observation records remain preserved. No picture was rendered again, and neither audit supplies a game pass.
+
+**Historical shadow-carrier repair:** the earlier candidate replaced clipped fixed-shadow mappings with independent, invisible carriers on 25 elevated cells; the six ground-only terminal cells received none. Four relative-pose masks retained each owner’s geometry, height, and overhang, while the zero-draw proxy geometry targeted the inspected native Medium/High gates. The [native contract record](evidence/model-shadow-native-contract.json), [saved-resource audit](evidence/model-shadow-build-audit.json), and [specification chapter 14](../../NETWORK_SPEC.md#14-shadows-for-independent-elevated-modules) retain that exact resource, projection, and lifecycle scope. The current no-shadow revision removes those carrier attachments and resources instead. Verify their absence in its actual saved build, alongside the absence of fixed network-shadow mappings, while preserving visible models, adaptive Avenue props, traffic routes, identifiers, and ownership. Neither the old carrier audit nor unchanged software pictures establish a no-shadow game pass; building, menu packaging, and installation remain separate stages.
+
+The game chooses a pavement variant according to its native surroundings and development rules; connecting ordinary Avenue alone does not force a developed sidewalk variant. The ground-mouth revision preserves the nine native texture families and the rotating-prop mechanism, and adds no fixed sidewalk slab. A driveway necessarily cuts across the retained pedestrian route before joining the adjacent carriageway. The native sidewalk can remain visible beside that driveway, while the crossing itself remains road asphalt. Actual sidewalk appearance, moving pedestrians through the crossing, overlay rotation, redraw, and persistence still require observations of this new assembly. A sidewalk replacement mod that changes only the original native texture IDs does not automatically replace the copied custom IDs; its compatibility needs its own check.
+
+A chord is the straight segment between two consecutive traffic-route points. These PATHs store coordinates to nine decimal places, while the shared connection graph samples them to six decimal places. Rounding a short segment can noticeably change its calculated direction. The reviewed `tangent` therefore retains the independently approved source-chord direction; `sampled_tangent` and the signed grade retain the actual shared-engine measurements separately. The [accepted connector measurements](checks/accepted-connector-contracts.jsonc) record the current incident full-precision saved chords and their individual nine-decimal coordinate-rounding bounds. Their exact counts and largest errors belong to the current accepted record; the earlier mouth revision's values do not establish this changed shoulder profile. No shared joining tolerance is relaxed to make the new access routes pass.
+
+Regenerate the supplementary implemented drawing only from a matching saved build, after its checks pass:
+
+```sh
+python3 -B custom-pieces/domains/highway/tools/draw_parallel_atomization.py --build custom-pieces/dist/ddrhw-parallel-diamond-slip-lanes-02
+```
+
+The drawing's [PNG](previews/parallel-atomization.png) and [resource provenance](evidence/parallel-atomization.json) retain actual traffic lines, ownership, model projections, structural obstacles, and selected physical cuts. The optional editable `previews/parallel-atomization.svg` is available in a Git checkout; portable source archives include the PNG and drawing generator under the existing export policy. They supplement the canonical six views rather than replacing them. The exact 15-type decomposition is crossing 3 tiles, terminals 3 tiles each, slip sections 2 tiles each, lateral departures 1 tile each, lower grades 2 tiles each, and upper grades 3 tiles each: **3 + 6 + 8 + 4 + 4 + 6 = 31**.
+
+The assembly-cycle layout is **parallel-diagonal-diamond**. Prepare its current menu candidate from the measured `custom-pieces/dist/ddrhw-parallel-diamond-slip-lanes-02` resources and the matching final documentation, following [Prepare the assembly menu](../../../../docs/BUILD_AND_INSTALL.md#8-prepare-the-assembly-menu). The first revision's `ddrhw-parallel-diamond-parts-01`, `ddrhw-parallel-diamond-parts-final`, and `ddrhw-parallel-diamond-menu-final` outputs, and the later `ddrhw-parallel-diamond-pedestrian-mouths-01` build, retain their original geometry and provenance. Their names do not identify this longer-slip-lane revision. Building the matching menu package remains separate from installation and game observation.
+
+## 4. Game checks
+
+### 4.1 Native highway connection test
+
+This test covers the experimental outside native approaches described in [the network specification](../../NETWORK_SPEC.md#12-native-highway-approach-experiment). A **construction request** runs when a component is placed; it does not run again just because a city is loaded. Preserve the existing city, and use a disposable test city for these steps. The software checks do not establish the following game results.
+
+1. Open **Transportation → Highways → SCP → Assemblies**, choose **SCP | ASSEMBLY | DD RHW-4 — Parallel Diagonal Avenue Diamond — Alignment A**, and press **Tab** until you reach **P06 — L2 Exit Slip Lanes — Parallel**. Place a fresh copy on empty, flat land with one clear city square immediately beyond its exposed highway end. Repeat with **P07 — L2 Entry Slip Lanes — Parallel**. In the pictured 0° layout, the outside squares are (X0, Y1) beyond P06 and (X8, Y9) beyond P07. Inspect whether a native double-decker continuation appears in each outside square. Record a missing tile, a wrong angle, or an incorrect upper/lower direction separately.
+2. Use an already working NAM DDRHW-4 highway, as in the reported failing case. Extend its existing diagonal end towards the newly created outside tile with the ordinary RealHighway drawing tool. Release the mouse at the native approach tile; the fixed custom junction is not the drag target. Record whether the native DD appearance reaches the seam and remains after releasing the mouse. Repeat at the other end.
+3. In a separate empty area, reverse the order: extend an existing diagonal DD highway first, then place the fresh custom end beside it. Keep its declared outside approach square available to the native highway. Record placement acceptance and any change to the existing highway separately from step 2.
+4. Repeat fresh placement at all four orientations using **Home** or **End** before clicking. Check the upper and lower deck directions against the native highway, rather than checking the road angle alone. Turning the city camera does not count as placing another orientation. An opposite-flow native highway is a separate unsupported case until tested.
+5. Supply car origins and destinations beyond both highway ends. Use **Route Query** to inspect each deck, and observe an actual moving car through each seam. A road that looks joined does not establish traffic continuity. Repeat the assembly's four ramp journeys and the adaptive-sidewalk checks below.
+6. Save the test city, quit the game completely, reopen the city, and repeat the seam and representative traffic checks. In a separate saved copy, demolish and replace the end component, inspect the outside native tile, and repeat joining. Record whether the native continuation survives or needs reconstruction.
+7. In another disposable copy, occupy the helper square with a protected custom piece before attempting placement. Record whether placement is rejected without changing that neighbour. Do not treat the word `optional` in the source as an overwrite guarantee. Keep this collision case separate from joining to an ordinary draggable native DD tile.
+
+Record the exact build, component, orientation, placement order, deck direction, and observed outcome using [the shared observation procedure](../../../../docs/TESTING.md#4-record-one-observation). The current aggregate 0° assembly acceptance is recorded in chapter 5; additional orientations, occupied-neighbour controls, and placement-order comparisons need their own matching observations.
+
+### 4.2 Retained assembly checks
+
+
+Chapter 5 records the user's aggregate acceptance for the current 0° assembly game cases. The procedures below remain the repeatable test plan; they do not add separately described outcomes for every placement order, graphics setting, or additional orientation. The older adaptive-sidewalk experiment retains its own observations and does not supply this assembly's acceptance.
+
+1. **Menu and placement:** find **SCP | ASSEMBLY | DD RHW-4 — Parallel Diagonal Avenue Diamond — Alignment A** in **Transportation → Highways → SCP → Assemblies**. Cycle all fifteen exact names forward with Tab and backward with Shift+Tab. Place each component once using the table, beginning P02 → P01 → P03, and confirm that no temporary Road helper remains.
+2. **Occupied neighbours and redraw:** in a separate saved copy, try P02 after P01 has already occupied its helper corner, try the other adaptive owners beside existing pieces, try placement over an already built normal Avenue, and try dragging Avenue through the completed ground corridor. Record each outcome separately; do not count the conservative first sequence as proof of these other behaviours.
+3. **Orientation:** repeat fresh placement in all four distinct proper rotations. Confirm that the highway remains perpendicular to the Avenue in each one. Rotate the camera separately after placement, and inspect both sides of the highway, each ramp opening, the longer lower and shorter upper shoulder markings, the small right turns, the eight piers, and all shadows.
+4. **Adaptive sidewalks and driveways:** first inspect the newly placed Avenue on undeveloped ground. Connect Avenue outside both ends, develop nearby zones until the ordinary adjoining Avenue changes its native pavement variant, and compare P01, P02, and P03. Connecting Avenue alone is not the appearance-change trigger. Check that the highway and ramp overlays remain at the correct angle while the visible ground pavement updates. Inspect the four narrow ground mouths from above: each should keep its 6 m grade join, narrow to 3.5 m, and expose native ground beside its turn. Inspect the actual pedestrian driveway crossings separately; road asphalt at those crossings is part of this design, rather than a promise of an uninterrupted pavement slab. Record each visible appearance separately from pedestrian Route Query and visible walking.
+5. **Through journeys:** provide matching outside approaches and actual origins/destinations. Check Route Query and visible travel separately for southwest → northeast on L2, northeast → southwest on L1, northwest → southeast on the Avenue, southeast → northwest on the Avenue, and the two pedestrian Avenue directions.
+6. **Right-turn ramp journeys:** test northeast highway → northwest Avenue through the lower exit; northwest Avenue → southwest highway through the lower entry; southwest highway → southeast Avenue through the upper exit; and southeast Avenue → northeast highway through the upper entry. Record the query and observed moving car for every route.
+7. **Forbidden transfers:** confirm that northeast highway → southeast Avenue, southeast Avenue → southwest highway, southwest highway → northwest Avenue, and northwest Avenue → northeast highway are unavailable. Check that no upper/lower-deck transfer or car/pedestrian transport change appears merely because two models overlap.
+8. **Persistence and demolition:** save, quit completely, reload, and repeat representative traffic and pavement checks. In a separate copy, demolish each component, inspect the neighbouring roads for leftover models or removed Avenue cells, replace it, and save/reload again.
+
+Use [the shared observation workflow](../../../../docs/TESTING.md) to record the exact assembly **ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond**, its current cases, and the matching source/environment. A visible sidewalk is not a pedestrian-travel pass, Route Query is not visible car travel, and a rotation of the camera is not fresh placement in another orientation.
+
+### 4.3 Adaptive crossing: direct traffic on both decks
+
+This focused regression checks the runtime-height requirement in [highway specification chapter 13](../../NETWORK_SPEC.md#13-adaptive-path-runtime-elevation). A **regression test** repeats a previously failing situation after a repair. Chapter 5 records the later aggregate acceptance of the current 0° complete assembly, including its separate Route Query and visible-travel cases. The earlier failure and no-ramp control retain their original scope; additional rotations and separately described lifecycle comparisons do not inherit that acceptance.
+
+1. Use a disposable copy of the test city, and record the exact installed build and manifest hash. Quit the game completely before changing Plugins. After installing the verified candidate, start SimCity 4, open the copy, and place a fresh complete assembly using its README's placement order. Loading an older placed copy is not this fresh-placement check.
+2. Connect both outside highway ends to correctly directed native DDRHW-4, and connect both outside Avenue ends. Keep all four ramps in place, including their ground turns. Leave the Avenue's normal turning opportunities available: removing ramps or blocking the detour would change the reported test situation.
+3. Use established homes and jobs beyond the opposite highway ends so the highway has real car demand in both deck directions. At the documented 0° placement, L2 at 15 m travels southwest → northeast, and L1 at 7.5 m travels northeast → southwest. Use the corresponding rotated directions in another orientation. If no cars need either journey, record that case as inconclusive rather than passed.
+4. Select **Route Query**, and click the incoming highway outside the assembly, before traffic reaches the first exit ramp. Follow its route arrows through the central crossing to the opposite highway end. Repeat from the other incoming deck. Record each deck separately. The expected direct route stays on its elevated deck; an exit onto the Avenue followed by a U-turn and re-entry is the reported failure, even if the car eventually reaches its destination.
+5. Separately observe an actual moving car cross the central bridge on L2, and then observe one on L1. Pause if necessary to identify the deck, resume to follow the car, and record which direction completed the crossing. A Route Query arrow alone does not verify visible movement; a car using a ramp does not verify direct through traffic.
+6. Repeat fresh placement and steps 2–5 at 90°, 180°, and 270°, using **Home** or **End** to turn the selected construction before placing it. Keep a separate result for each deck and placement orientation. Turning the city camera changes the view and does not count as a new placement orientation.
+7. Save the test city, quit the game completely, reopen that city, and repeat Route Query and moving-car observations on both decks for each tested orientation. Record the before-save and after-reload results separately so cached paths do not hide a persistence problem.
+8. Inspect the adaptive Avenue pavement beneath the highway before and after nearby development changes the adjoining ordinary Avenue's pavement. Check that the highway remains at the right angle, compare the sidewalk artwork with the adjoining ordinary Avenue, and test the ground pedestrian routes. Record pavement appearance, pedestrian Route Query, and an actual walking pedestrian separately; the traffic-height repair supplies none of those game passes.
+
+Record the build, placement orientation, deck, observation method, ramp configuration, and save/reload stage using [the shared observation procedure](../../../../docs/TESTING.md#4-record-one-observation). Preserve any repeated detour, wrong-level car, or missing sidewalk as a failure with that exact scope. Do not mark the complete assembly passed from one successful deck or orientation.
+
+### 4.4 Independent module shadow test
+
+The current policy is **no cast shadows from any parallel-diamond component**. The current 0° assembly appearance case carries the aggregate acceptance recorded in chapter 5. The user did not supply a separate narrative for every camera view, graphics setting, zoom, isolated component, or old saved attachment. A **camera view** changes where you look from; a **placement orientation** changes the direction in which you build a component. Test both operations separately. The [historical carrier test plan](#historical-shadow-carrier-test-plan) is retained for the earlier repair and is no longer the current appearance target.
+
+Use the existing authoritative cases below: [placement](#case-in_game_placement-df9ef4e05aeff6621a5b), [placed appearance](#case-in_game_render-df9ef4e05aeff6621a5b), [save/reload](#case-in_game_save_reload-df9ef4e05aeff6621a5b), and [demolition](#case-in_game_demolition-df9ef4e05aeff6621a5b). Their exact scope is the 0° assembly. Keep camera view, quality, zoom, and lifecycle details with each observation, and leave untested combinations pending. Additional placement orientations and isolated-component controls need their own exact scope through the shared workflow; do not assign them to a 0° complete-assembly case.
+
+1. Record the installed build and manifest hash. Quit SimCity 4 completely before replacing Plugins files. Restart after installation, open a disposable city, and follow the README to place a **fresh complete copy on flat, empty land**. The removed carrier attachments previously affected **P01 and P04–P15**; P02/P03 already had no elevated carrier. Do not assume that a reload alone removes every old saved attachment. Retain the older assembly separately for comparison.
+2. Open the game’s graphics settings, set **Shadows** to **Medium**, and return to a daytime city view. Inspect the central bridge, all four departures, all four grades, and every joining area. The current target is no cast shadow from these components. Look for any remaining deck-shaped silhouette, clipped shadow, or detached triangular patch. Distinguish shadows belonging to native approaches, buildings, trees, or other objects.
+3. Rotate the city view through all four camera directions without changing the placed assembly. Inspect one zoom level at a time from closest to farthest, then set **Shadows** to **High**, and repeat. Record Medium and High separately. A Low-quality comparison can be recorded too; absence only at Low does not establish removal at Medium or High.
+4. In a separate clear area, place an elevated component by itself, such as **P08: L1 Exit Lateral Departure**. It should add no cast shadow, including beyond its owned square. Check P01 and the other elevated components as applicable, and inspect the ground-only P02/P03 terminals separately. Keep each isolated component’s observation distinct from the complete assembly.
+5. Repeat fresh assembly placement at **90°, 180°, and 270°**, using **Home** or **End** before placement. Repeat the quality, camera, and zoom checks for each orientation, and identify every untested combination explicitly. Camera rotation alone does not test a rotated placement.
+6. Save the fresh reference city, quit completely, reopen it, and repeat the absence check at both quality settings and all four camera views. In another saved copy, bulldoze the isolated component, inspect its former visible and shadow area, place it again, and inspect once more. Record redraw, save/reload, demolition, and replacement as separate outcomes.
+7. If testing an older saved assembly, record it as a separate upgrade/cleanup case. A fresh-copy pass does not prove that old shadow attachments disappear automatically. Preserve any remaining shadow with the exact old/new build, component, placement orientation, camera view, quality, zoom, and save/reload stage. Use [the shared observation workflow](../../../../docs/TESTING.md#4-record-one-observation); source checks and the no-ramp traffic report do not supply an appearance pass.
+
+## 5. Results and known issues
+
+**Current human acceptance, 2026-11-01:** after installing the complete 225-type candidate, the user stated, **“for the diamon parallel all checks pass.”** This aggregate confirmation covers the current parallel diamond alignments A and B. The installed manifest SHA-256 is `cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0`, on the established Windows SimCity 4 Deluxe 1.1.641.0, NAM 50, right-hand-traffic Wine or CrossOver setup. The exact runtime version, city name, fresh-versus-existing placement state, per-case screenshots, and individual graphics-setting results were not restated. Each authoritative observation preserves the actual confirmation and its current dependency fingerprint rather than inventing those details.
+
+For this Alignment A record, **118 current in-game cases pass at the required 0° assembly orientation**: placement, appearance, demolition, save/reload, 14 Route Query journeys, 14 visible-travel journeys, and 86 forbidden transfers. Its seven preview-image reviews and two software-check cases retain their previous unverified record states; the separate saved-resource reports above retain their own actual software results. No standalone component case or additional assembly orientation inherits a pass. All 529 recorded fingerprint entries match the installed candidate's relevant resources, retained construction states and adaptive rules, assembly poses, graph, and current images. The later documentation refresh changes no installed game resource.
+
+Current generated records below retain exact evidence and observation states. The earlier no-ramp control remains separate because its exact deck, rotation, and observation method were unspecified; no checklist case is passed from that control. Resource compilation, saved route verification, model support, source-bound connector cards, software renders, and the later human confirmation have distinct scopes.
+
+**Both-deck through-traffic detour reported on 2026-10-31:** the user reports that cars on both highway decks leave via a ramp, follow the Avenue, make a U-turn, and re-enter the same-direction highway instead of crossing the elevated bridge. The failed installed manifest is `188e395251c1899fb667eb0c35d6cc83284e2e2087a5c5700ad62fe0ed5fb3e9`. The [frozen runtime-elevation diagnosis](evidence/adaptive-path-elevation-20261031.json) preserves the installed receipt, executable fingerprint, and height-transform defect. The placement orientation and observation method are unspecified, and no ramp-removal control accompanied that original report. This remains a historical failure. The later aggregate acceptance above belongs to the final candidate's current 0° complete-assembly cases and does not rewrite this failed build or establish additional rotation results.
+
+**No-ramp through-highway control reported on 2026-11-01:** the user reports that the path across the highway bridge now works when the on- and off-ramps are not placed. This establishes only the reported no-ramp situation. The exact omitted component IDs, highway deck, travel direction, placement orientation, observation method (Route Query or actual moving vehicles), build fingerprint, and save/reload stage were not specified. Do not infer successful ramp connections, both decks, every orientation, or visible vehicle travel from this statement. Keep the complete-layout regression in section 4.3, with all four ramps present, separate from this control; the comparison suggests investigating the ramp configuration and its integration but does not identify a cause. This control created no exact-case pass; the later aggregate complete-layout confirmation is recorded separately above.
+
+**Reported shadow defect and historical replacement:** the supplied game screenshots showed the reported incorrect shadows around the highway and ramps. The old clipped network-shadow recipe and the later carrier repair are retained with their exact [resource diagnosis and evidence](../../NETWORK_SPEC.md#14-shadows-for-independent-elevated-modules); neither receives a retrospective game pass. The user subsequently requested removing shadows from every parallel component to match the reported appearance of the adjoining draggable DD highway. The current no-shadow resource change alone supplies no traffic or sidewalk observation. The final candidate's 0° assembly appearance and lifecycle cases now carry the later aggregate acceptance above. Every camera, quality, zoom, isolated-component, additional-orientation, and old saved-attachment combination remains without a separately described outcome under section 4.4. Historical evidence retains its original scope.
+
+**Placement crash recorded on 2026-10-31:** the user reported that **L1 Exit Slip Lanes — Parallel** (`f84a`) crashes Windows SimCity 4 1.1.641.0 with NAM 50 under Wine, both on clear ground and beside the Avenue. Both preserved reports fault at `0x00803E2E`; their exact candidate fingerprint and the identified packed vertex-format mismatch are retained in [the frozen crash record](evidence/placement-crash-20261031.json). The construction orientation and the mapping of each report to its location are unknown, so this does not assign a failure to an individual rotation case. The final candidate's 0° complete-assembly placement case now carries the user's aggregate acceptance above. The old failure remains unchanged, and neither software checks nor this aggregate result invents a standalone component rotation or placement-order report.
+
+The geometry is deliberately compressed. Each high departure moves sideways over 17 m along the highway at full deck height; descent starts only when its complete 6 m width lies outside the native deck. The straight grades are 44.872251 m lower and 56.185959 m upper, with approximately 17.911624% and 28.202932% peak source slopes, respectively. The experimental limit is 30%. The R6 terminals are custom geometry, not a claim that an existing NAM ramp has those dimensions. Fixed grade modules do not acquire arbitrary height offsets or adapt to sloping terrain.
+
+The revised shoulder sections are also constrained by this footprint. Measured along the straight highway axis, lower routes have 8 m of sideways taper and 4 m straight at the shoulder, while upper routes have 5 m and 1 m. The straight auxiliary centre is 5.5 m from the highway axis. Its 0.421875 m checked car-corridor clearance to the native barrier foot is a specific geometric measurement, not a general vehicle-size, speed, or real-road safety guarantee. The roadway beyond the native deck edge, physical barrier openings, and separate ramp modules are retained. The lower upstream extension uses an already owned highway tile; the upper section cannot be lengthened to match without expanding the traffic footprint.
+
+The three-cell crossing is the smallest coherent mixed-network owner in this layout, but it also stores upper ground-turn fragments crossing those same city tiles. The straight grade owners similarly retain PATHs in native highway half-cells traversed by outside-deck access traffic. The visible native halves, their white paint, and their centre piers belong to the adjacent slip-lane models by overhang, so the grade models remain pure ramps and the crossing/slip models form the complete straight highway stem. Consequently, none of the four ordinary highway halves from the wider study is an unchanged full-cell substitute here. Every saved traffic fragment retains one city-tile owner, while each complete curved departure or straight grade model belongs to its functional component and can overhang that boundary.
+
+All nine Avenue cells have the complete native adaptive texture variants, retained car and pedestrian paths, rotating model props, and rule bindings. Each sparse 2 × 2 adaptive owner has a removable helper at local [1,1]. The narrower terminal overlays leave more native ground visible beside the driveway, while its actual pedestrian crossing remains asphalt. The pinned DLL's helper removal does not itself prove that the game will accept every occupied-neighbour cursor situation. Avenue texture variants, redraw, overlay rotation, pedestrians, car transfer between resolved Avenue and fixed highway networks, demolition, and persistence need the focused game tests above. No successful observation of the older adaptive probe is promoted to a pass for this assembly.
+
+<!-- BEGIN MANUAL CHECKS -->
+
+### Test checklist
+
+Generated from [the authoritative record](checks/manual-tests.json). Only explicit human observations create manual passes; software and preview checks remain separate. Expand a check/service group to see its rotation table, then expand the matching exact scope to copy a case ID and inspect its pose, reviewer, environment, and evidence. Grouping changes only this view; every declared case remains separate.
+
+**States:** [x] passed; [ ] unverified, failed, or stale; N/A is an explicit inapplicable declaration. A dash means no case was declared in that column. Every pass covers only its recorded environment. T means a distinct construction-transposed state.
+
+Human game checks are required only at 0° CCW. Supported construction orientations and software rotation checks retain their separate scope; these human cases do not establish observations at the other orientations.
+
+Current totals: unverified: 9, passed: 118, failed: 0, stale: 0, not_applicable: 0.
+
+#### Record an observation
+
+Follow the [shared testing guide](../../../../docs/TESTING.md); copy [the unconfirmed example](checks/observation.example.json) to `checks/observation.json`. Case identifiers are in the expandable sections below. Do not edit generated checkboxes.
+
+From the repository folder containing `custom-pieces`, run after filling `checks/observation.json` and explicitly confirming the exact observation:
+
+```sh
+python3 -m scp.content record --record custom-pieces/domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/checks/manual-tests.json --observation custom-pieces/domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/checks/observation.json
+```
+
+#### Detailed current checks
+
+Each collapsed group shows exact case counts and states. Forbidden transfers are grouped by the directed service pair; the table inside retains every port pair and rotation.
+
+<details>
+<summary>Compiled resources — Whole subject — 1 case; unverified: 1</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Compiled resources**<br>Whole subject | <a href="#case-software_resources-3fc282b2535ab544443e">[ ] unverified</a> | — |
+
+
+<details>
+<summary>Compiled resources — Whole subject</summary>
+
+<a id="case-software_resources-3fc282b2535ab544443e"></a>
+
+**General: unverified** — `software_resources-3fc282b2535ab544443e`.
+
+Verify the actual compiled resources and construction rules.
+
+Scope: Whole subject.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Directed routing graph — Whole subject — 1 case; unverified: 1</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Directed routing graph**<br>Whole subject | <a href="#case-software_connectivity-3fc282b2535ab544443e">[ ] unverified</a> | — |
+
+
+<details>
+<summary>Directed routing graph — Whole subject</summary>
+
+<a id="case-software_connectivity-3fc282b2535ab544443e"></a>
+
+**General: unverified** — `software_connectivity-3fc282b2535ab544443e`.
+
+Verify the declared directed journeys and forbidden transfers.
+
+Scope: Whole subject.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 7 cases; unverified: 7</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:clean-southeast | <a href="#case-preview_review-9028223d7cbd64da1385">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:clean-top | <a href="#case-preview_review-3ed9b50a27ed2fd609d1">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:named-northwest | <a href="#case-preview_review-1093207b94856d9920b5">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:named-southeast | <a href="#case-preview_review-6684c022a126bcb95988">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:named-top | <a href="#case-preview_review-7adf623bde2278257523">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:parallel-atomization | <a href="#case-preview_review-e29d04b9a965b39aae7f">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:tile-ownership | <a href="#case-preview_review-efc2059eab2ca9c8cbec">[ ] unverified</a> | — |
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:clean-southeast</summary>
+
+<a id="case-preview_review-9028223d7cbd64da1385"></a>
+
+**General: unverified** — `preview_review-9028223d7cbd64da1385`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:clean-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:clean-top</summary>
+
+<a id="case-preview_review-3ed9b50a27ed2fd609d1"></a>
+
+**General: unverified** — `preview_review-3ed9b50a27ed2fd609d1`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:clean-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:named-northwest</summary>
+
+<a id="case-preview_review-1093207b94856d9920b5"></a>
+
+**General: unverified** — `preview_review-1093207b94856d9920b5`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:named-northwest.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:named-southeast</summary>
+
+<a id="case-preview_review-6684c022a126bcb95988"></a>
+
+**General: unverified** — `preview_review-6684c022a126bcb95988`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:named-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:named-top</summary>
+
+<a id="case-preview_review-7adf623bde2278257523"></a>
+
+**General: unverified** — `preview_review-7adf623bde2278257523`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:named-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:parallel-atomization</summary>
+
+<a id="case-preview_review-e29d04b9a965b39aae7f"></a>
+
+**General: unverified** — `preview_review-e29d04b9a965b39aae7f`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:parallel-atomization.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:tile-ownership</summary>
+
+<a id="case-preview_review-efc2059eab2ca9c8cbec"></a>
+
+**General: unverified** — `preview_review-efc2059eab2ca9c8cbec`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond:tile-ownership.
+
+No observation recorded.
+
+</details>
+
+</details>
+
+<details>
+<summary>In-game rendering — Whole subject — 1 case; passed: 1</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **In-game rendering**<br>Whole subject | — | <a href="#case-in_game_render-df9ef4e05aeff6621a5b">[x] passed</a> |
+
+
+<details>
+<summary>In-game rendering — Whole subject</summary>
+
+<a id="case-in_game_render-df9ef4e05aeff6621a5b"></a>
+
+**0° CCW: passed** — `in_game_render-df9ef4e05aeff6621a5b`.
+
+Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.
+
+Scope: Whole subject.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+</details>
+
+<details>
+<summary>Placement — Whole subject — 1 case; passed: 1</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Placement**<br>Whole subject | — | <a href="#case-in_game_placement-df9ef4e05aeff6621a5b">[x] passed</a> |
+
+
+<details>
+<summary>Placement — Whole subject</summary>
+
+<a id="case-in_game_placement-df9ef4e05aeff6621a5b"></a>
+
+**0° CCW: passed** — `in_game_placement-df9ef4e05aeff6621a5b`.
+
+Place this piece or complete blueprint and inspect every occupied tile.
+
+Scope: Whole subject.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+</details>
+
+<details>
+<summary>Demolition — Whole subject — 1 case; passed: 1</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Demolition**<br>Whole subject | — | <a href="#case-in_game_demolition-df9ef4e05aeff6621a5b">[x] passed</a> |
+
+
+<details>
+<summary>Demolition — Whole subject</summary>
+
+<a id="case-in_game_demolition-df9ef4e05aeff6621a5b"></a>
+
+**0° CCW: passed** — `in_game_demolition-df9ef4e05aeff6621a5b`.
+
+Bulldoze the complete placement and inspect the cleared area.
+
+Scope: Whole subject.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+</details>
+
+<details>
+<summary>Save and reload — Whole subject — 1 case; passed: 1</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Save and reload**<br>Whole subject | — | <a href="#case-in_game_save_reload-df9ef4e05aeff6621a5b">[x] passed</a> |
+
+
+<details>
+<summary>Save and reload — Whole subject</summary>
+
+<a id="case-in_game_save_reload-df9ef4e05aeff6621a5b"></a>
+
+**0° CCW: passed** — `in_game_save_reload-df9ef4e05aeff6621a5b`.
+
+Save, quit, reload, and inspect the placement and its paths.
+
+Scope: Whole subject.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+</details>
+
+<details>
+<summary>Route Query — road — 12 cases; passed: 12</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Route Query**<br>Service: road; role: primary; journey: external-11>external-7; entry: external-11; exit: external-7 | — | <a href="#case-in_game_route_query-594632d4fe383ea9b612">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: external-12>external-16; entry: external-12; exit: external-16 | — | <a href="#case-in_game_route_query-545e048a7dadf0fa6bae">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: external-12>external-8; entry: external-12; exit: external-8 | — | <a href="#case-in_game_route_query-0aa7a738ca4dcce53666">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: external-13>external-3; entry: external-13; exit: external-3 | — | <a href="#case-in_game_route_query-13fed700a7fd0118fd92">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: external-13>external-8; entry: external-13; exit: external-8 | — | <a href="#case-in_game_route_query-6b716472071f40b2272b">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: external-15>external-1; entry: external-15; exit: external-1 | — | <a href="#case-in_game_route_query-02d98a532d3f3a6e919c">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: external-2>external-16; entry: external-2; exit: external-16 | — | <a href="#case-in_game_route_query-0416e38938bce251b0fd">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: external-2>external-9; entry: external-2; exit: external-9 | — | <a href="#case-in_game_route_query-88ff90dc63dafe7621dd">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: external-4>external-14; entry: external-4; exit: external-14 | — | <a href="#case-in_game_route_query-534cfa7b2ac7ff969472">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: external-5>external-3; entry: external-5; exit: external-3 | — | <a href="#case-in_game_route_query-217f36d98365ba353cd5">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: external-5>external-9; entry: external-5; exit: external-9 | — | <a href="#case-in_game_route_query-48cae13231dfa2e77099">[x] passed</a> |
+| **Route Query**<br>Service: road; role: primary; journey: external-6>external-10; entry: external-6; exit: external-10 | — | <a href="#case-in_game_route_query-480ef7ca711e6f036c2e">[x] passed</a> |
+
+
+<details>
+<summary>Route Query — Service: road; role: primary; journey: external-11>external-7; entry: external-11; exit: external-7</summary>
+
+<a id="case-in_game_route_query-594632d4fe383ea9b612"></a>
+
+**0° CCW: passed** — `in_game_route_query-594632d4fe383ea9b612`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: external-11>external-7; entry: external-11; exit: external-7.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Route Query — Service: road; role: primary; journey: external-12>external-16; entry: external-12; exit: external-16</summary>
+
+<a id="case-in_game_route_query-545e048a7dadf0fa6bae"></a>
+
+**0° CCW: passed** — `in_game_route_query-545e048a7dadf0fa6bae`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: external-12>external-16; entry: external-12; exit: external-16.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Route Query — Service: road; role: primary; journey: external-12>external-8; entry: external-12; exit: external-8</summary>
+
+<a id="case-in_game_route_query-0aa7a738ca4dcce53666"></a>
+
+**0° CCW: passed** — `in_game_route_query-0aa7a738ca4dcce53666`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: external-12>external-8; entry: external-12; exit: external-8.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Route Query — Service: road; role: primary; journey: external-13>external-3; entry: external-13; exit: external-3</summary>
+
+<a id="case-in_game_route_query-13fed700a7fd0118fd92"></a>
+
+**0° CCW: passed** — `in_game_route_query-13fed700a7fd0118fd92`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: external-13>external-3; entry: external-13; exit: external-3.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Route Query — Service: road; role: primary; journey: external-13>external-8; entry: external-13; exit: external-8</summary>
+
+<a id="case-in_game_route_query-6b716472071f40b2272b"></a>
+
+**0° CCW: passed** — `in_game_route_query-6b716472071f40b2272b`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: external-13>external-8; entry: external-13; exit: external-8.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Route Query — Service: road; role: primary; journey: external-15>external-1; entry: external-15; exit: external-1</summary>
+
+<a id="case-in_game_route_query-02d98a532d3f3a6e919c"></a>
+
+**0° CCW: passed** — `in_game_route_query-02d98a532d3f3a6e919c`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: external-15>external-1; entry: external-15; exit: external-1.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Route Query — Service: road; role: primary; journey: external-2>external-16; entry: external-2; exit: external-16</summary>
+
+<a id="case-in_game_route_query-0416e38938bce251b0fd"></a>
+
+**0° CCW: passed** — `in_game_route_query-0416e38938bce251b0fd`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: external-2>external-16; entry: external-2; exit: external-16.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Route Query — Service: road; role: primary; journey: external-2>external-9; entry: external-2; exit: external-9</summary>
+
+<a id="case-in_game_route_query-88ff90dc63dafe7621dd"></a>
+
+**0° CCW: passed** — `in_game_route_query-88ff90dc63dafe7621dd`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: external-2>external-9; entry: external-2; exit: external-9.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Route Query — Service: road; role: primary; journey: external-4>external-14; entry: external-4; exit: external-14</summary>
+
+<a id="case-in_game_route_query-534cfa7b2ac7ff969472"></a>
+
+**0° CCW: passed** — `in_game_route_query-534cfa7b2ac7ff969472`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: external-4>external-14; entry: external-4; exit: external-14.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Route Query — Service: road; role: primary; journey: external-5>external-3; entry: external-5; exit: external-3</summary>
+
+<a id="case-in_game_route_query-217f36d98365ba353cd5"></a>
+
+**0° CCW: passed** — `in_game_route_query-217f36d98365ba353cd5`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: external-5>external-3; entry: external-5; exit: external-3.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Route Query — Service: road; role: primary; journey: external-5>external-9; entry: external-5; exit: external-9</summary>
+
+<a id="case-in_game_route_query-48cae13231dfa2e77099"></a>
+
+**0° CCW: passed** — `in_game_route_query-48cae13231dfa2e77099`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: external-5>external-9; entry: external-5; exit: external-9.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Route Query — Service: road; role: primary; journey: external-6>external-10; entry: external-6; exit: external-10</summary>
+
+<a id="case-in_game_route_query-480ef7ca711e6f036c2e"></a>
+
+**0° CCW: passed** — `in_game_route_query-480ef7ca711e6f036c2e`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: road; role: primary; journey: external-6>external-10; entry: external-6; exit: external-10.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+</details>
+
+<details>
+<summary>Visible travel — road — 12 cases; passed: 12</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Visible travel**<br>Service: road; role: primary; journey: external-11>external-7; entry: external-11; exit: external-7 | — | <a href="#case-in_game_visible_travel-594632d4fe383ea9b612">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: external-12>external-16; entry: external-12; exit: external-16 | — | <a href="#case-in_game_visible_travel-545e048a7dadf0fa6bae">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: external-12>external-8; entry: external-12; exit: external-8 | — | <a href="#case-in_game_visible_travel-0aa7a738ca4dcce53666">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: external-13>external-3; entry: external-13; exit: external-3 | — | <a href="#case-in_game_visible_travel-13fed700a7fd0118fd92">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: external-13>external-8; entry: external-13; exit: external-8 | — | <a href="#case-in_game_visible_travel-6b716472071f40b2272b">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: external-15>external-1; entry: external-15; exit: external-1 | — | <a href="#case-in_game_visible_travel-02d98a532d3f3a6e919c">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: external-2>external-16; entry: external-2; exit: external-16 | — | <a href="#case-in_game_visible_travel-0416e38938bce251b0fd">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: external-2>external-9; entry: external-2; exit: external-9 | — | <a href="#case-in_game_visible_travel-88ff90dc63dafe7621dd">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: external-4>external-14; entry: external-4; exit: external-14 | — | <a href="#case-in_game_visible_travel-534cfa7b2ac7ff969472">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: external-5>external-3; entry: external-5; exit: external-3 | — | <a href="#case-in_game_visible_travel-217f36d98365ba353cd5">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: external-5>external-9; entry: external-5; exit: external-9 | — | <a href="#case-in_game_visible_travel-48cae13231dfa2e77099">[x] passed</a> |
+| **Visible travel**<br>Service: road; role: primary; journey: external-6>external-10; entry: external-6; exit: external-10 | — | <a href="#case-in_game_visible_travel-480ef7ca711e6f036c2e">[x] passed</a> |
+
+
+<details>
+<summary>Visible travel — Service: road; role: primary; journey: external-11>external-7; entry: external-11; exit: external-7</summary>
+
+<a id="case-in_game_visible_travel-594632d4fe383ea9b612"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-594632d4fe383ea9b612`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: external-11>external-7; entry: external-11; exit: external-7.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: road; role: primary; journey: external-12>external-16; entry: external-12; exit: external-16</summary>
+
+<a id="case-in_game_visible_travel-545e048a7dadf0fa6bae"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-545e048a7dadf0fa6bae`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: external-12>external-16; entry: external-12; exit: external-16.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: road; role: primary; journey: external-12>external-8; entry: external-12; exit: external-8</summary>
+
+<a id="case-in_game_visible_travel-0aa7a738ca4dcce53666"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-0aa7a738ca4dcce53666`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: external-12>external-8; entry: external-12; exit: external-8.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: road; role: primary; journey: external-13>external-3; entry: external-13; exit: external-3</summary>
+
+<a id="case-in_game_visible_travel-13fed700a7fd0118fd92"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-13fed700a7fd0118fd92`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: external-13>external-3; entry: external-13; exit: external-3.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: road; role: primary; journey: external-13>external-8; entry: external-13; exit: external-8</summary>
+
+<a id="case-in_game_visible_travel-6b716472071f40b2272b"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-6b716472071f40b2272b`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: external-13>external-8; entry: external-13; exit: external-8.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: road; role: primary; journey: external-15>external-1; entry: external-15; exit: external-1</summary>
+
+<a id="case-in_game_visible_travel-02d98a532d3f3a6e919c"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-02d98a532d3f3a6e919c`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: external-15>external-1; entry: external-15; exit: external-1.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: road; role: primary; journey: external-2>external-16; entry: external-2; exit: external-16</summary>
+
+<a id="case-in_game_visible_travel-0416e38938bce251b0fd"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-0416e38938bce251b0fd`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: external-2>external-16; entry: external-2; exit: external-16.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: road; role: primary; journey: external-2>external-9; entry: external-2; exit: external-9</summary>
+
+<a id="case-in_game_visible_travel-88ff90dc63dafe7621dd"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-88ff90dc63dafe7621dd`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: external-2>external-9; entry: external-2; exit: external-9.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: road; role: primary; journey: external-4>external-14; entry: external-4; exit: external-14</summary>
+
+<a id="case-in_game_visible_travel-534cfa7b2ac7ff969472"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-534cfa7b2ac7ff969472`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: external-4>external-14; entry: external-4; exit: external-14.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: road; role: primary; journey: external-5>external-3; entry: external-5; exit: external-3</summary>
+
+<a id="case-in_game_visible_travel-217f36d98365ba353cd5"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-217f36d98365ba353cd5`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: external-5>external-3; entry: external-5; exit: external-3.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: road; role: primary; journey: external-5>external-9; entry: external-5; exit: external-9</summary>
+
+<a id="case-in_game_visible_travel-48cae13231dfa2e77099"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-48cae13231dfa2e77099`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: external-5>external-9; entry: external-5; exit: external-9.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: road; role: primary; journey: external-6>external-10; entry: external-6; exit: external-10</summary>
+
+<a id="case-in_game_visible_travel-480ef7ca711e6f036c2e"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-480ef7ca711e6f036c2e`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: road; role: primary; journey: external-6>external-10; entry: external-6; exit: external-10.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+</details>
+
+<details>
+<summary>Route Query — pedestrian — 2 cases; passed: 2</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Route Query**<br>Service: pedestrian; role: primary; journey: external-17>external-19; entry: external-17; exit: external-19 | — | <a href="#case-in_game_route_query-5d6ba3ff2feb9ca427f3">[x] passed</a> |
+| **Route Query**<br>Service: pedestrian; role: primary; journey: external-20>external-18; entry: external-20; exit: external-18 | — | <a href="#case-in_game_route_query-7df6e910902e03b4a1bb">[x] passed</a> |
+
+
+<details>
+<summary>Route Query — Service: pedestrian; role: primary; journey: external-17>external-19; entry: external-17; exit: external-19</summary>
+
+<a id="case-in_game_route_query-5d6ba3ff2feb9ca427f3"></a>
+
+**0° CCW: passed** — `in_game_route_query-5d6ba3ff2feb9ca427f3`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: pedestrian; role: primary; journey: external-17>external-19; entry: external-17; exit: external-19.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Route Query — Service: pedestrian; role: primary; journey: external-20>external-18; entry: external-20; exit: external-18</summary>
+
+<a id="case-in_game_route_query-7df6e910902e03b4a1bb"></a>
+
+**0° CCW: passed** — `in_game_route_query-7df6e910902e03b4a1bb`.
+
+Use Route Query in SimCity 4 to confirm this directed journey for its service network.
+
+Scope: Service: pedestrian; role: primary; journey: external-20>external-18; entry: external-20; exit: external-18.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+</details>
+
+<details>
+<summary>Visible travel — pedestrian — 2 cases; passed: 2</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Visible travel**<br>Service: pedestrian; role: primary; journey: external-17>external-19; entry: external-17; exit: external-19 | — | <a href="#case-in_game_visible_travel-5d6ba3ff2feb9ca427f3">[x] passed</a> |
+| **Visible travel**<br>Service: pedestrian; role: primary; journey: external-20>external-18; entry: external-20; exit: external-18 | — | <a href="#case-in_game_visible_travel-7df6e910902e03b4a1bb">[x] passed</a> |
+
+
+<details>
+<summary>Visible travel — Service: pedestrian; role: primary; journey: external-17>external-19; entry: external-17; exit: external-19</summary>
+
+<a id="case-in_game_visible_travel-5d6ba3ff2feb9ca427f3"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-5d6ba3ff2feb9ca427f3`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: pedestrian; role: primary; journey: external-17>external-19; entry: external-17; exit: external-19.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Visible travel — Service: pedestrian; role: primary; journey: external-20>external-18; entry: external-20; exit: external-18</summary>
+
+<a id="case-in_game_visible_travel-7df6e910902e03b4a1bb"></a>
+
+**0° CCW: passed** — `in_game_visible_travel-7df6e910902e03b4a1bb`.
+
+Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
+
+Scope: Service: pedestrian; role: primary; journey: external-20>external-18; entry: external-20; exit: external-18.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+</details>
+
+<details>
+<summary>Forbidden transfer — road → road — 52 cases; passed: 52</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Forbidden transfer**<br>from port: external-2; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-7f9e8270fd8608916edd">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-2; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-910caed083a20d7e7a84">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-2; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-2f1a48847e162e808115">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-2; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-05d825d26f483a28ec48">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-2; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-8ef7ff39f5b07466a89e">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-2; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-d35d728eaee9116ea7e6">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-4; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-f861eab51510e615fbc1">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-4; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-c5f8357eed78bb1c9018">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-4; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-84b251491b8c8723652e">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-4; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-c5d655d3ab1d53609d5a">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-4; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-494de8c83840c260f40a">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-4; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-b65dc552d3e459b7572d">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-4; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-3e32693ab51750277bd4">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-5; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-dd677a089c7b76830be0">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-5; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-a52b495f5c7b9680bebc">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-5; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-8d7b64e3610ef561d8fe">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-5; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-a6ab9b04533e16595eb5">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-5; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-59dbae0d5c744076c467">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-5; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-ea53b93312075c8b3e43">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-6; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-500048f800080c70936f">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-6; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-c7ad449f3590bef45213">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-6; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-0a0baceeec1e2068912f">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-6; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-f105ff8e4cc155e5a23e">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-6; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-4e0108db99a20a28e256">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-6; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-393ad8265653d5da19bb">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-6; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-5a5b89414c09a60faea8">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-11; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-4b749d5278607f375735">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-11; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-a2d173d460731f7d2887">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-11; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-ec62f170003cbad03fb7">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-11; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-d0b94d8a02d0a4a7bb49">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-11; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-44b01327ac6e3b44510a">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-11; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-c4a123078a21cc6b5ac8">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-11; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-01ef4f06792dbd69c981">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-12; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-edb7d19ca3838e25f80a">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-12; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-c343aaf62757b3db3833">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-12; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-7691e455744785d013ca">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-12; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-fc20335b86e977287192">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-12; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-de5d0669e19d6d68c51f">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-12; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-48d49f94217543254123">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-13; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-d095d1a070f57fdaeb74">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-13; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-79ae4fdfc85b7e8377be">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-13; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-80cce82366ed76335490">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-13; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-567a807e5990af8dd441">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-13; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-1d14f02ac0e4a99f749c">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-13; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-493f7ab41ee394612115">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-15; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-7cae2bb5ef4d85c8a0ea">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-15; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-0355f07d646b92191ff7">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-15; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-a1dfe98f161f16e086fe">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-15; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-ca71dba7164134ec8224">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-15; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-9315f4bfd55474f2545b">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-15; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-d06969267f03389dd704">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-15; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-b68ca5ef7b59736ee401">[x] passed</a> |
+
+
+<details>
+<summary>Forbidden transfer — from port: external-2; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-7f9e8270fd8608916edd"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-7f9e8270fd8608916edd`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-2; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-2; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-910caed083a20d7e7a84"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-910caed083a20d7e7a84`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-2; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-2; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-2f1a48847e162e808115"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-2f1a48847e162e808115`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-2; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-2; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-05d825d26f483a28ec48"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-05d825d26f483a28ec48`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-2; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-2; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-8ef7ff39f5b07466a89e"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-8ef7ff39f5b07466a89e`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-2; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-2; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-d35d728eaee9116ea7e6"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-d35d728eaee9116ea7e6`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-2; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-4; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-f861eab51510e615fbc1"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-f861eab51510e615fbc1`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-4; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-4; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-c5f8357eed78bb1c9018"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-c5f8357eed78bb1c9018`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-4; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-4; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-84b251491b8c8723652e"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-84b251491b8c8723652e`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-4; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-4; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-c5d655d3ab1d53609d5a"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-c5d655d3ab1d53609d5a`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-4; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-4; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-494de8c83840c260f40a"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-494de8c83840c260f40a`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-4; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-4; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-b65dc552d3e459b7572d"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-b65dc552d3e459b7572d`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-4; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-4; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-3e32693ab51750277bd4"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-3e32693ab51750277bd4`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-4; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-5; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-dd677a089c7b76830be0"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-dd677a089c7b76830be0`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-5; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-5; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-a52b495f5c7b9680bebc"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-a52b495f5c7b9680bebc`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-5; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-5; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-8d7b64e3610ef561d8fe"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-8d7b64e3610ef561d8fe`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-5; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-5; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-a6ab9b04533e16595eb5"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-a6ab9b04533e16595eb5`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-5; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-5; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-59dbae0d5c744076c467"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-59dbae0d5c744076c467`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-5; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-5; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-ea53b93312075c8b3e43"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-ea53b93312075c8b3e43`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-5; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-6; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-500048f800080c70936f"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-500048f800080c70936f`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-6; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-6; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-c7ad449f3590bef45213"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-c7ad449f3590bef45213`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-6; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-6; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-0a0baceeec1e2068912f"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-0a0baceeec1e2068912f`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-6; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-6; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-f105ff8e4cc155e5a23e"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-f105ff8e4cc155e5a23e`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-6; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-6; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-4e0108db99a20a28e256"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-4e0108db99a20a28e256`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-6; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-6; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-393ad8265653d5da19bb"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-393ad8265653d5da19bb`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-6; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-6; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-5a5b89414c09a60faea8"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-5a5b89414c09a60faea8`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-6; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-11; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-4b749d5278607f375735"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-4b749d5278607f375735`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-11; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-11; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-a2d173d460731f7d2887"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-a2d173d460731f7d2887`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-11; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-11; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-ec62f170003cbad03fb7"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-ec62f170003cbad03fb7`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-11; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-11; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-d0b94d8a02d0a4a7bb49"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-d0b94d8a02d0a4a7bb49`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-11; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-11; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-44b01327ac6e3b44510a"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-44b01327ac6e3b44510a`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-11; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-11; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-c4a123078a21cc6b5ac8"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-c4a123078a21cc6b5ac8`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-11; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-11; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-01ef4f06792dbd69c981"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-01ef4f06792dbd69c981`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-11; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-12; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-edb7d19ca3838e25f80a"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-edb7d19ca3838e25f80a`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-12; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-12; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-c343aaf62757b3db3833"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-c343aaf62757b3db3833`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-12; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-12; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-7691e455744785d013ca"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-7691e455744785d013ca`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-12; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-12; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-fc20335b86e977287192"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-fc20335b86e977287192`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-12; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-12; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-de5d0669e19d6d68c51f"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-de5d0669e19d6d68c51f`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-12; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-12; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-48d49f94217543254123"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-48d49f94217543254123`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-12; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-13; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-d095d1a070f57fdaeb74"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-d095d1a070f57fdaeb74`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-13; to port: external-1; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-13; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-79ae4fdfc85b7e8377be"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-79ae4fdfc85b7e8377be`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-13; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-13; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-80cce82366ed76335490"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-80cce82366ed76335490`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-13; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-13; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-567a807e5990af8dd441"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-567a807e5990af8dd441`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-13; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-13; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-1d14f02ac0e4a99f749c"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-1d14f02ac0e4a99f749c`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-13; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-13; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-493f7ab41ee394612115"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-493f7ab41ee394612115`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-13; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-15; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-7cae2bb5ef4d85c8a0ea"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-7cae2bb5ef4d85c8a0ea`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-15; to port: external-3; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-15; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-0355f07d646b92191ff7"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-0355f07d646b92191ff7`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-15; to port: external-7; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-15; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-a1dfe98f161f16e086fe"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-a1dfe98f161f16e086fe`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-15; to port: external-8; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-15; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-ca71dba7164134ec8224"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-ca71dba7164134ec8224`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-15; to port: external-9; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-15; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-9315f4bfd55474f2545b"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-9315f4bfd55474f2545b`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-15; to port: external-10; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-15; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-d06969267f03389dd704"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-d06969267f03389dd704`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-15; to port: external-14; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-15; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-b68ca5ef7b59736ee401"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-b68ca5ef7b59736ee401`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-15; to port: external-16; from service: road; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+</details>
+
+<details>
+<summary>Forbidden transfer — road → pedestrian — 16 cases; passed: 16</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Forbidden transfer**<br>from port: external-2; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-6e1efa5b4b947b5b6dc0">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-2; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-83c76f96b8119c034736">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-4; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-f252402a2244d6131807">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-4; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-7a21f18ccce8e9de534c">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-5; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-4cf06ae83c629354b94e">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-5; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-5b866caaa0c61ecdc0d5">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-6; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-8dd1c84805e5d5c726bc">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-6; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-5de555cead3127945fff">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-11; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-1616203b91c2d54b0075">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-11; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-cd06d722d8ca78a789f9">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-12; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-6370c5cb63101708857a">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-12; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-25cd376dd31421a6cc21">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-13; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-b632a7b7546989fcf45a">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-13; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-679a5a3b778272f8ef59">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-15; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-8dbb3121520d0a8d3e2c">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-15; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-c5447ce11e3e0325993d">[x] passed</a> |
+
+
+<details>
+<summary>Forbidden transfer — from port: external-2; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-6e1efa5b4b947b5b6dc0"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-6e1efa5b4b947b5b6dc0`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-2; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-2; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-83c76f96b8119c034736"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-83c76f96b8119c034736`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-2; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-4; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-f252402a2244d6131807"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-f252402a2244d6131807`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-4; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-4; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-7a21f18ccce8e9de534c"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-7a21f18ccce8e9de534c`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-4; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-5; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-4cf06ae83c629354b94e"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-4cf06ae83c629354b94e`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-5; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-5; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-5b866caaa0c61ecdc0d5"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-5b866caaa0c61ecdc0d5`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-5; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-6; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-8dd1c84805e5d5c726bc"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-8dd1c84805e5d5c726bc`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-6; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-6; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-5de555cead3127945fff"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-5de555cead3127945fff`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-6; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-11; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-1616203b91c2d54b0075"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-1616203b91c2d54b0075`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-11; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-11; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-cd06d722d8ca78a789f9"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-cd06d722d8ca78a789f9`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-11; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-12; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-6370c5cb63101708857a"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-6370c5cb63101708857a`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-12; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-12; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-25cd376dd31421a6cc21"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-25cd376dd31421a6cc21`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-12; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-13; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-b632a7b7546989fcf45a"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-b632a7b7546989fcf45a`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-13; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-13; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-679a5a3b778272f8ef59"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-679a5a3b778272f8ef59`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-13; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-15; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-8dbb3121520d0a8d3e2c"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-8dbb3121520d0a8d3e2c`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-15; to port: external-18; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-15; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-c5447ce11e3e0325993d"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-c5447ce11e3e0325993d`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-15; to port: external-19; from service: road; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+</details>
+
+<details>
+<summary>Forbidden transfer — pedestrian → road — 16 cases; passed: 16</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Forbidden transfer**<br>from port: external-17; to port: external-1; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-5702418065504b6eb596">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-17; to port: external-3; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-c4c4c0785240cde9a4fc">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-17; to port: external-7; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-8fdead2eb6e2c62d63cc">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-17; to port: external-8; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-f612ca9d35694d63bbeb">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-17; to port: external-9; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-4f4dbc86163b7b9ad7f6">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-17; to port: external-10; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-f22fc4afcc75fd2177b0">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-17; to port: external-14; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-d687f106963d0d31dc69">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-17; to port: external-16; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-1d0388f9771e4ccdbb29">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-20; to port: external-1; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-954053c7b47ae2346922">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-20; to port: external-3; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-ca655d0204a0ff63812f">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-20; to port: external-7; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-6ecb5f36752967e79171">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-20; to port: external-8; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-47852064fac6c2cc841e">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-20; to port: external-9; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-5088a39bae5dae73d8af">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-20; to port: external-10; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-9f817da07504ea143e86">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-20; to port: external-14; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-1ff4227b2e5b65ab4738">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-20; to port: external-16; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-26c1b51262e5bbb666f5">[x] passed</a> |
+
+
+<details>
+<summary>Forbidden transfer — from port: external-17; to port: external-1; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-5702418065504b6eb596"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-5702418065504b6eb596`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-17; to port: external-1; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-17; to port: external-3; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-c4c4c0785240cde9a4fc"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-c4c4c0785240cde9a4fc`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-17; to port: external-3; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-17; to port: external-7; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-8fdead2eb6e2c62d63cc"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-8fdead2eb6e2c62d63cc`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-17; to port: external-7; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-17; to port: external-8; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-f612ca9d35694d63bbeb"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-f612ca9d35694d63bbeb`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-17; to port: external-8; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-17; to port: external-9; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-4f4dbc86163b7b9ad7f6"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-4f4dbc86163b7b9ad7f6`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-17; to port: external-9; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-17; to port: external-10; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-f22fc4afcc75fd2177b0"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-f22fc4afcc75fd2177b0`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-17; to port: external-10; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-17; to port: external-14; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-d687f106963d0d31dc69"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-d687f106963d0d31dc69`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-17; to port: external-14; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-17; to port: external-16; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-1d0388f9771e4ccdbb29"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-1d0388f9771e4ccdbb29`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-17; to port: external-16; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-20; to port: external-1; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-954053c7b47ae2346922"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-954053c7b47ae2346922`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-20; to port: external-1; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-20; to port: external-3; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-ca655d0204a0ff63812f"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-ca655d0204a0ff63812f`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-20; to port: external-3; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-20; to port: external-7; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-6ecb5f36752967e79171"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-6ecb5f36752967e79171`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-20; to port: external-7; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-20; to port: external-8; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-47852064fac6c2cc841e"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-47852064fac6c2cc841e`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-20; to port: external-8; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-20; to port: external-9; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-5088a39bae5dae73d8af"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-5088a39bae5dae73d8af`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-20; to port: external-9; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-20; to port: external-10; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-9f817da07504ea143e86"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-9f817da07504ea143e86`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-20; to port: external-10; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-20; to port: external-14; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-1ff4227b2e5b65ab4738"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-1ff4227b2e5b65ab4738`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-20; to port: external-14; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-20; to port: external-16; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-26c1b51262e5bbb666f5"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-26c1b51262e5bbb666f5`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-20; to port: external-16; from service: pedestrian; to service: road; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+</details>
+
+<details>
+<summary>Forbidden transfer — pedestrian → pedestrian — 2 cases; passed: 2</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Forbidden transfer**<br>from port: external-17; to port: external-18; from service: pedestrian; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-01b6d8f4ed53c9d67704">[x] passed</a> |
+| **Forbidden transfer**<br>from port: external-20; to port: external-19; from service: pedestrian; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-dd290fc0f38d14f3cd5d">[x] passed</a> |
+
+
+<details>
+<summary>Forbidden transfer — from port: external-17; to port: external-18; from service: pedestrian; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-01b6d8f4ed53c9d67704"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-01b6d8f4ed53c9d67704`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-17; to port: external-18; from service: pedestrian; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+
+<details>
+<summary>Forbidden transfer — from port: external-20; to port: external-19; from service: pedestrian; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph</summary>
+
+<a id="case-in_game_forbidden_transfer-dd290fc0f38d14f3cd5d"></a>
+
+**0° CCW: passed** — `in_game_forbidden_transfer-dd290fc0f38d14f3cd5d`.
+
+Confirm this undeclared transfer is unavailable.
+
+Scope: from port: external-20; to port: external-19; from service: pedestrian; to service: pedestrian; basis: not reachable in the saved placed encoded-route graph.
+
+Recorded observations (chronological; the state above checks the relevant dependency snapshot):
+
+- result: passed; authority: user; confirmation method: explicit_user_confirmation; reviewer: User; confirmed at: 2026-11-01; evidence: [Explicit user confirmation: "for the diamon parallel all checks pass.", The confirmation follows installation of the complete 225-type candidate; manifest SHA-256 cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0.]; environment: platform: Windows SimCity 4 through Wine or CrossOver; game version: SimCity 4 Deluxe 1.1.641.0; nam profile: NAM 50, right-hand traffic; note: Aggregate user confirmation for the installed parallel diamond alignments A and B, applied to the current required 0-degree assembly game cases. No per-case screenshot, city name, placement-state description, or separate runtime version was supplied. Preview reviews, software checks, and standalone component checks retain their separate evidence.
+
+</details>
+
+</details>
+
+<!-- END MANUAL CHECKS -->
+
+## 6. Design history
+
+The human-approved [source proposal](../ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/TESTING.md#32-close-parallel-ramps-and-perpendicular-avenue-approaches) moved the ramps close and parallel to the highway, required perpendicular Avenue approaches, and selected the inward upper sockets. This new assembly implements that approved geometry while retaining the earlier [R40/compact modular blueprint](../ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/README.md) and its frozen evidence unchanged.
+
+The new split follows real functions: central crossing, straight slip sections, flat curved departures, straight grades, and ground right-turn terminals. Minimum construction ownership remains constrained by every complete traffic cell, not only the visible road centreline. The implementation and the [saved-model atomization drawing](previews/parallel-atomization.png) preserve that distinction for future replacement ramps and fixed-height profiles.
+
+The earlier ground-mouth revision narrowed only the terminal asphalt from 6 m to 3.5 m after a 3 m smooth taper, preserving the 6 m grade interfaces, R6 route centrelines, and its traffic PATHs. The later slip-lane revision keeps those mouths and changes the native-shoulder access PATHs and white markings: lower shoulder sections are 12 m, upper sections are 6 m, and only the lower high ports move upstream. All fifteen permanent identifiers and the 31-cell/8 × 8 ownership remain unchanged. The original measured `parts-01` and `pedestrian-mouths-01` build identities keep their earlier scopes. `ddrhw-parallel-diamond-slip-lanes-02` measures this revision independently; its own source-bound reports and refreshed artwork are required, and no human game result is inherited.
+
+<a id="historical-shadow-carrier-test-plan"></a>
+
+### Historical shadow-carrier test plan
+
+The following procedure is preserved from the earlier carrier-repair candidate. It describes the superseded shadow target, retains its original pending status, and must not be used as the current no-shadow acceptance plan. The exact earlier resources are identified by the [saved-resource audit](evidence/model-shadow-build-audit.json).
+
+All repaired-candidate shadow observations below remain **pending**. This procedure tests the new shadow attachments separately from traffic, adaptive sidewalk appearance, and the older no-ramp control. A **camera view** changes where you look from; a **placement orientation** changes the direction in which you build the component. Both matter because native sunlight is fixed to the screen.
+
+Use the existing authoritative cases below: [placement](#case-in_game_placement-df9ef4e05aeff6621a5b), [placed appearance](#case-in_game_render-df9ef4e05aeff6621a5b), [save/reload](#case-in_game_save_reload-df9ef4e05aeff6621a5b), and [demolition](#case-in_game_demolition-df9ef4e05aeff6621a5b). Their current exact scope is the 0° assembly. Keep camera view, quality, zoom, and lifecycle details with each recorded observation, and leave untested combinations pending. Additional placement orientations and isolated-component controls must retain their own exact scope through the shared workflow; do not assign them to a 0° complete-assembly case or maintain a competing checklist here.
+
+1. Record the installed build and manifest hash. Quit SimCity 4 completely before replacing Plugins files. After installation, open a disposable city and follow the README to place a **fresh complete copy on flat, empty land**. The changed attachments affect **P01 and P04–P15**; loading old copies does not reliably create their new carrier objects. Leave room around the assembly so shadows beyond owned squares remain visible. Keep the valuable saved-city assembly for comparison.
+2. Open the game's graphics settings, set **Shadows** to **Medium**, and return to a daytime city view. Begin with the north-up view. Inspect the central double-decker bridge, all four curved departures, all four graded ramps, and each joining area. Look for shadows cut off at invisible tile edges, disconnected triangular patches, missing elevated-deck shadows, and seams between components. A sunlight shadow can fall beside its road; it need not sit vertically below the visible deck.
+3. Use the city-view rotation controls to inspect the same placed assembly from all four camera directions. Keep the placement unchanged during this step. Shadows must remain consistent with the native sunlight in each view; their side relative to the road can change when the camera turns. Record the result for each view, rather than calling a single screenshot a four-view pass.
+4. Zoom from the closest view to the farthest view, one level at a time, and repeat the camera inspection. The source supplies five native model-zoom rows. Then set **Shadows** to **High** and repeat the view and zoom checks. Record Medium and High separately. **Low** does not select this ordinary prop-shadow path, so absence at Low is outside this repair's appearance acceptance.
+5. In a separate clear area, place one elevated component by itself, such as **P08: L1 Exit Lateral Departure**. Its shadow may extend outside its occupied square, but must follow only that component. It must not depict an absent highway, another ramp, or the complete diamond. Also inspect P02/P03 on their own: these ground-only terminals must not add a large elevated shadow.
+6. Repeat fresh assembly placement at **90°, 180°, and 270°**, using **Home** or **End** before placement. Repeat the Medium/High and four-camera checks for each orientation, and identify untested combinations explicitly. Rotating the camera alone does not test a rotated placement. Mirrored placements are outside the supported shadow contract.
+7. In a separate saved copy, select the terrain-levelling tool, and try a small height change on a clear tile immediately outside the isolated component's actual road and supports. Choose a tile within the invisible carrier's larger projected bounds, and compare it with similarly clear ground beside an ordinary native highway. The helper must not add a terrain restriction solely because of its invisible bounds; native road protections remain relevant. The [terrain-filter audit](evidence/model-shadow-terrain-contract.json) establishes a specific exemption, while this game behavior remains pending. Keep this test copy separate from the flat reference layout.
+8. Save the reference city, quit completely, reopen it, and repeat representative shadows at both quality settings and all four camera views. In another saved copy, bulldoze the isolated component, and inspect the full former shadow area, including adjacent squares. Its shadow must disappear without leaving a ghost or deleting neighbouring components' shadows. Place it again, and inspect once more. Record redraw, save/reload, removal, and replacement as separate outcomes.
+9. Record exact build, placement orientation, camera view, quality setting, zoom, terrain, and save/reload stage through [the shared observation workflow](../../../../docs/TESTING.md#4-record-one-observation). Preserve each defect with its exact scope. Source checks, the old screenshots, and the no-ramp traffic report do not turn any of these pending shadow observations into passes.

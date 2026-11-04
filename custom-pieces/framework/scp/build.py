@@ -16,6 +16,10 @@ from .dbpf import entries, decompress, index_plugins, pack_dbpf, require, tgi_st
 from .menu import build_menu_resources
 from .recipes import build_piece
 from .rul0 import MARKER, compose_rul0
+from .adaptive_network import RUL1, bindings as adaptive_bindings, resource_keys as adaptive_resource_keys, compose_rul1
+from . import native_approaches
+from . import model_shadows
+from . import piece_menu_families, transport_menu
 
 RUL0 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000000)
 NETWORK_INI = (0, 0x8A5971C5, 0x8A5993B9)
@@ -57,7 +61,7 @@ def audit_inputs(catalog, plugins, pieces, extra_roots=None):
     for index in indexes:
         for key, paths in index.items():
             installed.setdefault(key, []).extend(paths)
-    context, audit = {}, []
+    context, audit, dependency_paths = {}, [], {}
     needed = sorted({label for piece in pieces for label in piece['dependencies']})
     for label in needed:
         require(label in catalog['_profile']['files'], f'Unknown dependency: {label}')
@@ -67,13 +71,22 @@ def audit_inputs(catalog, plugins, pieces, extra_roots=None):
         path = matches[0]; raw = path.read_bytes()
         require(sha(raw) == record['sha256'], f'{path.name} changed. Re-audit this NAM version; do not just change the fingerprint.')
         context[label] = {key: decompress(value) for key, value in entries(raw).items()}
+        dependency_paths[label] = path
         audit.append({'filename': path.name, 'path': str(path), 'sha256': sha(raw)})
     native = next(Path(x['path']) for x in audit if x['filename'] == 'NetworkAddonMod_Controller.dat')
-    for key in (RUL0, NETWORK_INI):
+    shared = (RUL0, NETWORK_INI, RUL1) if any(adaptive_bindings(piece) or native_approaches.approaches(piece)
+                                              for piece in pieces) else (RUL0, NETWORK_INI)
+    required_controller = native_approaches.required_controller_resources(pieces)
+    for key in dict.fromkeys((*shared, *required_controller)):
         require(installed.get(key) == [native],
                 f'Conflicting shared NAM overlay {tgi_string(key)} in '
                 + ', '.join(str(path) for path in installed.get(key, []))
                 + '. Move the old standalone prototype out of Plugins, or merge the other custom controller first.')
+    for key, fingerprint in required_controller.items():
+        require(key in context['controller'] and sha(context['controller'][key]) == fingerprint,
+                'Native approach controller dependency changed: ' + tgi_string(key))
+    native_approaches.audit_dependencies(pieces, context, installed, dependency_paths)
+    model_shadows.audit_lighting_dependency(context, installed, pieces)
     return context, installed, audit, roots
 
 
@@ -97,8 +110,12 @@ def preflight_allocations(context, installed, selected):
             tile = int(raw_tile,16)
             planned.update({(*S3D,tile+zoom) for zoom in range(5)})
             planned.update({(*prefix,tile) for prefix in (PATH, EXEMPLAR, LTEXT)})
-            if piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
+            if piece.get('shadow_mode') == 'generated' or piece['recipe'].startswith(('rail_', 'interchange_', 'directional_', 'hsr_component_')):
                 planned.update({(0x7AB50E44,0x2BC2759A,tile+zoom) for zoom in range(5)})
+        planned.update({(0x7AB50E44, 0x1ABE787D, int(value, 16))
+                        for value in piece.get('authored_texture_ids', [])})
+        planned.update(adaptive_resource_keys(piece))
+        planned.update(model_shadows.resource_keys(piece))
     conflicts = planned & set(installed)
     require(not conflicts, 'Allocated resource identifiers collide with installed content: '
             + ', '.join(tgi_string(key) for key in sorted(conflicts)[:8]))
@@ -139,13 +156,22 @@ def _prepare_output(output, project_root, roots):
 def build_project(project_root, plugins, output, include=None, extra_roots=None, progress=None):
     catalog = load_catalog(project_root); selected = select_pieces(catalog, include)
     require(selected, 'No pieces selected')
+    piece_menu_families.declarations(selected, available=catalog['pieces'])
     if progress:
         progress({'phase':'audit','pieces':len(selected)})
     context, installed, donor_audit, roots = audit_inputs(catalog, plugins, selected, extra_roots)
     preflight_allocations(context, installed, selected)
+    hierarchy = transport_menu.plan(catalog, selected)
+    roster = transport_menu.members({'pieces': selected, transport_menu.KEY: hierarchy}) if hierarchy else {}
+    if roster:
+        used_ids = {key[2] for key in installed} | {int(piece['menu']['id'], 16) for piece in catalog['pieces']}
+        transport_menu.check_ids(roster, used_ids)
     output = _prepare_output(output, project_root, roots)
     baseline = context['controller']
+    labels = sorted({label for piece in selected for label in piece['dependencies']})
+    donors = {key: raw for label in labels for key, raw in context[label].items()}
     assets_by_piece, menu_resources, all_resources, rules, menu_audit = {}, {}, {}, [], []
+    rul1_rules = []
     records = []
     for index, piece in enumerate(selected):
         if progress:
@@ -158,15 +184,18 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
         try:
             resources, delta = build_piece(piece, context)
             record = {**deepcopy(piece), 'asset_file': f"{catalog['plugin_folder']}/20_Pieces/SCP_{piece['id']}.dat"}
-            if (piece['recipe'].startswith(('interchange_', 'directional_', 'hsr_component_')) or
+            if (piece.get('domain', 'high-speed-rail') != 'high-speed-rail' or
+                    piece['recipe'].startswith(('interchange_', 'directional_', 'hsr_component_')) or
                     piece['recipe'].startswith('rail_') and piece['recipe'].endswith('_revised')):
                 # Complex pieces must fail while their own assets are in hand,
                 # before the rest of a long matrix is compiled. The final
-                # portable check repeats these checks; its immutable model
-                # cache reuses only identical specs and encoded resources.
+                # saved-build verification executes these checks again;
+                # the framework has no complete model-report cache.
                 from .verify import check_piece_paths, check_piece_models
                 check_piece_paths(resources, record)
-                check_piece_models(resources, record, None)
+                # Native-profile geometry needs the same audited originals
+                # here as in the final saved-resource verification.
+                check_piece_models(resources, record, donors)
             from .providers import domain_module
             donor = domain_module(piece, 'menu').menu_donor(context)
             menus, metadata = build_menu_resources(donor, piece)
@@ -174,10 +203,22 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
             raise ValueError(f'{piece["id"]}: {error}') from error
         merge_resources(all_resources, resources, piece['id']); merge_resources(all_resources, menus, piece['id'])
         merge_resources(menu_resources, menus, piece['id'])
-        assets_by_piece[piece['id']] = resources; rules.append(delta); menu_audit.append(metadata)
+        if isinstance(delta, dict):
+            require(set(delta) == {'rul0', 'rul1'} and adaptive_bindings(piece)
+                    and all(isinstance(value, str) and value for value in delta.values()),
+                    'Only explicitly adaptive pieces may emit RUL0/RUL1 delta objects')
+            rules.append(delta['rul0']); rul1_rules.append(delta['rul1'])
+        else:
+            require(isinstance(delta, str) and not adaptive_bindings(piece),
+                    'Adaptive pieces must declare their RUL1 construction delta')
+            rules.append(delta)
+        assets_by_piece[piece['id']] = resources; menu_audit.append(metadata)
         records.append(record)
     require(not (set(all_resources) & set(installed)), 'Allocated resource identifiers collide with installed content')
     rul0, rul0_delta = compose_rul0(baseline[RUL0], rules)
+    rul0, rul0_delta, menu_resources, menu_families = piece_menu_families.apply(
+        rul0, rul0_delta, menu_resources, selected, available=catalog['pieces'])
+    menu_resources = transport_menu.arrange(menu_resources, roster)
     shadow_lines = []
     for piece in selected:
         for mapping in piece['shadow_mappings']:
@@ -188,6 +229,13 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
     network_ini = baseline[NETWORK_INI].replace(anchor, anchor + insertion.encode('ascii'), 1)
     require(network_ini.replace(insertion.encode('ascii'), b'', 1) == baseline[NETWORK_INI], 'Shadow patch is not reversible')
     controller = {RUL0: rul0, NETWORK_INI: network_ini}
+    rul1_delta = None
+    if rul1_rules:
+        controller[RUL1], rul1_delta = compose_rul1(baseline[RUL1], rul1_rules, selected)
+    native_approach_delta = None
+    if native_approaches.declarations(selected):
+        controller[RUL1], native_approach_delta = native_approaches.compose_rul1(
+            controller.get(RUL1, baseline[RUL1]), selected, donors)
     texture_ids = set()
     from .models import parse_s3d
     for resources in assets_by_piece.values():
@@ -197,6 +245,8 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
     textures = []
     for iid in sorted(texture_ids):
         key = (0x7AB50E44, 0x1ABE787D, iid)
+        if key in all_resources:
+            continue
         require(key in installed, f'Missing model texture {iid:08x}')
         textures.append(tgi_string(key))
     shadows = sorted({(0x7AB50E44, 0x2BC2759A, int(m['source'], 16) + zoom)
@@ -216,13 +266,25 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
             (stage / relative).write_bytes(raw)
             file_records.append({'path': relative, 'sha256': sha(raw), 'bytes': len(raw)})
         profile = {'id': catalog['_profile']['id'], 'donors': [{k: x[k] for k in ('filename', 'sha256')} for x in donor_audit]}
+        domains = {piece.get('domain', 'high-speed-rail') for piece in selected}
+        placement = ("In Transportation > Rail, find the separate SCP icons.\n"
+                     "One-way tracks are fixed click-to-place pieces. Join them to the mainline through SCP Split/Merge.\n"
+                     "Their eight button states are four rotations repeated; there are no directional reflections.\n"
+                     "Custom shadow projection and wheel/rail fit still need in-game inspection.\n"
+                     if domains == {'high-speed-rail'} else
+                     "Highway components are in Transportation > Highways. Rail components, if selected, are in Transportation > Rail.\n"
+                     "Place the reusable components in the order and orientation shown in their assembly guide.\n"
+                     "Eight highway button states repeat four proper rotations; they do not reflect traffic directions.\n"
+                     "Placement, vehicle travel, custom shadows, and save/reload still need in-game inspection.\n")
+        if hierarchy:
+            placement = placement.replace('Highway components are in Transportation > Highways.',
+                                          'Highway components are in Transportation > Highways > SCP > Pieces.')
+            placement += ("Highway SCP folders require Submenus DLL, SC4ResourceLoadingHooks DLL, "
+                          "and submenu-essentials.dat.\n")
         readme = ("Simon's Custom Pieces\nDEVELOPMENT BUILD — NOT GAME-TESTED\n"
                   "Requires the exact NAM profile recorded in manifest.json.\n"
                   "Use scp.py install with an external backup folder; test in a disposable city.\n"
-                  "In Transportation > Rail, find the separate SCP icons.\n"
-                  "One-way tracks are fixed click-to-place pieces. Join them to the mainline through SCP Split/Merge.\n"
-                  "Their eight button states are four rotations repeated; there are no directional reflections.\n"
-                  "Custom shadow projection and wheel/rail fit still need in-game inspection.\n"
+                  + placement +
                   "Use only the single coordinated controller overlay included in this build.\n"
                   "Public binary redistribution is not cleared. See framework docs/RELEASE.md.\n").encode('utf8')
         (stage / 'README.txt').write_bytes(readme)
@@ -237,6 +299,14 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
                     'dependency_audit': {'textures': textures, 'shadows': [tgi_string(k) for k in shadows]},
                     'release': release_status(project_root, selected),
                     'installed': False, 'in_game_tested': False}
+        if hierarchy:
+            manifest[transport_menu.KEY] = hierarchy
+        if rul1_delta is not None:
+            manifest['overlay']['rul1'] = rul1_delta
+        if native_approach_delta is not None:
+            manifest['overlay'][native_approaches.OVERLAY] = native_approach_delta
+        if menu_families is not None:
+            manifest[piece_menu_families.KEY] = menu_families
         from .release import assess_build
         manifest['release'] = assess_build(Path(project_root), manifest)
         write_json(stage / 'manifest.json', manifest)
@@ -257,7 +327,8 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
         if old is not None:
             shutil.rmtree(old)
         return {'output': str(output), 'pieces': [x['id'] for x in selected],
-                'separate_menu_buttons': len(selected), 'static_checks_passed': report['static_checks_passed'],
+                'separate_menu_buttons': len(selected) - len(piece_menu_families.hidden_members(selected)),
+                'static_checks_passed': report['static_checks_passed'],
                 'installed': False, 'public_release_ready': manifest['release']['public_release_ready']}
     finally:
         if stage.exists():

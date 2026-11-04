@@ -1,0 +1,94 @@
+// title: "Source metadata normalization on 2026-11-04"
+// summary: "Bind JSONC formatting and source pins without changing measured or saved geometry."
+// Used when: Reviewing the metadata cutoff between accepted normal geometry and artifact generation.
+// Read by: Contributors, documentation checks, and final delivery verification.
+// Updated by: The reviewed metadata-only integration utility after the accepted build captures.
+// Affects: Source metadata, exact provenance bindings, and test integration; no DAT or game result.
+{
+  "applied": true,
+  "build_comment_AST_unchanged": true,
+  "candidate_tests": {
+    "all_passed": true,
+    "omitted_source_rejections": 3,
+    "skips": 0,
+    "tests": 3,
+    "unexpected_source_rejections": 1
+  },
+  "checker_AST_unchanged_except_SHA_constants": true,
+  "checker_changed_SHA_constants": {
+    "domains/highway/implementation/scp_highway/diagonal_transition_models_verify.py": [
+      "COLLAR_INPUTS_SHA256",
+      "NATIVE_OBSTACLE_INPUTS_SHA256"
+    ],
+    "domains/highway/implementation/scp_highway/diagonal_transition_native.py": [
+      "MEASURED_CONTRACT_SHA256"
+    ]
+  },
+  "collar_changed_JSON_paths": [
+    [
+      "native_inputs_sha256"
+    ]
+  ],
+  "files": [
+    {
+      "after_sha256": "51e90f3db105f17f5bf9dc021c13e41e27efc1d7463ecff9391866005872786c",
+      "before_sha256": "32a0ee73d9968a03302a2b55d01e62dfe06e7f5fa2d75a3d1d1e20cacfd3bd80",
+      "path": "framework/scp/build.py"
+    },
+    {
+      "after_sha256": "66e23b0fcf12a4203ae6a9bbde4aded16315dad847a74b0f351e46cd9f0ab99f",
+      "before_sha256": "9ebcdadd8dc1d216a51510694a18f693126dff8525c0c7cc4b798883c6a03695",
+      "path": "tests/test_shared_jsonc_sources.py"
+    },
+    {
+      "after_sha256": "d76c1441dc66c87b3f8c316c5f809908fd10fc9bbc0aa01a7a1eda1383037225",
+      "before_sha256": "9795f72772c19d5656cbda643add4b0311ea3e1ad80af078f8f701f12eba6f21",
+      "path": "domains/highway/implementation/scp_highway/diagonal-transition-native-inputs.jsonc"
+    },
+    {
+      "after_sha256": "59d58dcced070032c987777b7cea72865a52127ab142286a086faa42a79cb097",
+      "before_sha256": "377eea361dba2165979e5f66f01a7d78e62b1302f87b41444476a04d0f7d33f4",
+      "path": "domains/highway/implementation/scp_highway/diagonal-transition-native-obstacle-inputs.jsonc"
+    },
+    {
+      "after_sha256": "6228bc9b0221cc53a3f03d84755ec02cd09a3b74d7ffa218699223267ddd5d1b",
+      "before_sha256": "56312d0ae24c890f5658100f3a36611f24b34a44232ec8e8ab50eb63d886affc",
+      "path": "domains/highway/implementation/scp_highway/diagonal-transition-collar-inputs.jsonc"
+    },
+    {
+      "after_sha256": "f3a6ca51b4c56db8633842e24d0b749b696b3b0d78667cff0c3bb779bbe3a61f",
+      "before_sha256": "42575921aeffa43d70c4765466533701a03fe9bdf320dc6fe95a6d9b5a178cb8",
+      "path": "domains/highway/implementation/scp_highway/diagonal_transition_native.py"
+    },
+    {
+      "after_sha256": "7bb591754fd34f3d33838b70e8b0220d99d88f055ebcc35e7f46ea23aef5d56e",
+      "before_sha256": "a3c8bc35e8fdeb536a31fb4c41b3e22f061ff34176ce5cf31534af1e5c5132bd",
+      "path": "domains/highway/implementation/scp_highway/diagonal_transition_models_verify.py"
+    }
+  ],
+  "game_operation_tested": false,
+  "later_artifact_verification_is_separate": true,
+  "native_and_obstacle_JSON_payloads_unchanged": true,
+  "new_DAT_build_claimed": false,
+  "normal_DAT_files_unchanged": 10,
+  "normal_manifest_sha256": "c0704a429ed1cda04c557fabc4d00f67941048fccd14ff6672f17c74919e2d92",
+  "normal_verification_epoch": "accepted-before-source-metadata-normalization",
+  "normal_verification_sha256": "854d3c8b584860dca3a23faf43cca17e6ed0453270f286298f6a2214d56ca960",
+  "passed": true,
+  "roster_added_sources": [
+    "domains/highway/implementation/scp_highway/diagonal-transition-native-inputs.jsonc",
+    "domains/highway/implementation/scp_highway/diagonal-transition-collar-inputs.jsonc",
+    "domains/highway/implementation/scp_highway/diagonal-transition-native-obstacle-inputs.jsonc"
+  ],
+  "roster_after_count": 32,
+  "roster_before_count": 29,
+  "schema_version": 1,
+  "source05_payload_invariance": {
+    "all_payload_sha256_unchanged": true,
+    "files_checked": 196,
+    "payload_inventory_sha256": "236d77dd510057004b954f0b4b12007541c2cb6b96e34b9e84e0271ddeebe807",
+    "snapshot_sha256": "43f0c7a936ad07b227768d21e7f1ceb183f96a728f38a50d0c9fed169cf703a6"
+  },
+  "source_metadata_only": true,
+  "stage": "applied-source-metadata-normalization"
+}

@@ -1,0 +1,2769 @@
+// title: "Saved Alignment B parallel-diamond assembly checks"
+// summary: "Record actual allocated model, traffic, native boundary, construction, and adaptive-layer checks separately from game observations."
+//
+// Used when: Reviewing a checked Alignment B source build and its complete placed assembly.
+// Read by: The assembly TESTING document and contributors assessing the current resource evidence.
+// Updated by: domains/highway/tools/verify_parallel_alignment_b_assembly.py after actual saved-resource verification.
+// Affects: The measured software scope of this saved assembly; supplies no game placement or visible-traffic pass.
+{
+  "schema_version": 1,
+  "subject_id": "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b",
+  "saved_resource_checks_passed": true,
+  "saved_path_checks_passed": true,
+  "saved_ownership_checks_passed": true,
+  "saved_path_and_construction_checks_passed": true,
+  "package_construction_checks": "passed-separate-build_project-saved-resource-verification",
+  "construction": {
+    "unique_owned_cells": 34,
+    "placements": 15,
+    "bounding_rectangle_tiles": [
+      9,
+      9
+    ],
+    "translation_east_north_m": [
+      64.0,
+      -80.0
+    ]
+  },
+  "paths": {
+    "passed": true,
+    "external_native_channels": 20,
+    "pedestrian_external_channels": 4,
+    "native_through_lane_and_sidewalk_journeys": 10,
+    "constant_height_straight_native_journeys": 10,
+    "straight_through_witnesses": [
+      [
+        6,
+        1,
+        17,
+        12,
+        33,
+        28,
+        59,
+        51,
+        74,
+        66,
+        94,
+        89,
+        109,
+        104,
+        120,
+        115,
+        126
+      ],
+      [
+        7,
+        2,
+        18,
+        13,
+        34,
+        29,
+        60,
+        52,
+        75,
+        67,
+        95,
+        90,
+        110,
+        105,
+        121,
+        116,
+        127
+      ],
+      [
+        23,
+        46,
+        55,
+        81,
+        84
+      ],
+      [
+        24,
+        47,
+        56,
+        82,
+        85
+      ],
+      [
+        25,
+        48,
+        57,
+        83,
+        86
+      ],
+      [
+        99,
+        80,
+        70,
+        45,
+        39
+      ],
+      [
+        100,
+        79,
+        71,
+        44,
+        40
+      ],
+      [
+        101,
+        78,
+        72,
+        43,
+        41
+      ],
+      [
+        128,
+        118,
+        122,
+        107,
+        111,
+        92,
+        96,
+        69,
+        76,
+        54,
+        61,
+        31,
+        35,
+        15,
+        19,
+        4,
+        8
+      ],
+      [
+        129,
+        117,
+        123,
+        106,
+        112,
+        91,
+        97,
+        68,
+        77,
+        53,
+        62,
+        30,
+        36,
+        14,
+        20,
+        3,
+        9
+      ]
+    ],
+    "matched_directed_lane_seams": 124,
+    "right_turn_transfers": 4,
+    "no_cross_avenue_transfers": true,
+    "movement_witnesses": [
+      {
+        "from_arm": "AVE_NW",
+        "to_arm": "AVE_SE",
+        "saved_route_ids": [
+          23,
+          46,
+          55,
+          81,
+          84
+        ]
+      },
+      {
+        "from_arm": "AVE_NW",
+        "to_arm": "HW_SW",
+        "saved_route_ids": [
+          24,
+          50,
+          58,
+          27,
+          32,
+          11,
+          16,
+          0,
+          5,
+          9
+        ]
+      },
+      {
+        "from_arm": "AVE_SE",
+        "to_arm": "AVE_NW",
+        "saved_route_ids": [
+          99,
+          80,
+          70,
+          45,
+          39
+        ]
+      },
+      {
+        "from_arm": "AVE_SE",
+        "to_arm": "HW_NE",
+        "saved_route_ids": [
+          102,
+          98,
+          114,
+          113,
+          125,
+          124,
+          131,
+          130
+        ]
+      },
+      {
+        "from_arm": "HW_NE",
+        "to_arm": "AVE_NW",
+        "saved_route_ids": [
+          129,
+          119,
+          103,
+          108,
+          88,
+          93,
+          65,
+          73,
+          49,
+          40
+        ]
+      },
+      {
+        "from_arm": "HW_NE",
+        "to_arm": "HW_SW",
+        "saved_route_ids": [
+          128,
+          118,
+          122,
+          107,
+          111,
+          92,
+          96,
+          69,
+          76,
+          54,
+          61,
+          31,
+          35,
+          15,
+          19,
+          4,
+          8
+        ]
+      },
+      {
+        "from_arm": "HW_SW",
+        "to_arm": "AVE_SE",
+        "saved_route_ids": [
+          10,
+          22,
+          21,
+          38,
+          37,
+          64,
+          63,
+          87
+        ]
+      },
+      {
+        "from_arm": "HW_SW",
+        "to_arm": "HW_NE",
+        "saved_route_ids": [
+          6,
+          1,
+          17,
+          12,
+          33,
+          28,
+          59,
+          51,
+          74,
+          66,
+          94,
+          89,
+          109,
+          104,
+          120,
+          115,
+          126
+        ]
+      }
+    ],
+    "reachable_arm_pairs": [
+      [
+        "AVE_NW",
+        "AVE_SE"
+      ],
+      [
+        "AVE_NW",
+        "HW_SW"
+      ],
+      [
+        "AVE_SE",
+        "AVE_NW"
+      ],
+      [
+        "AVE_SE",
+        "HW_NE"
+      ],
+      [
+        "HW_NE",
+        "AVE_NW"
+      ],
+      [
+        "HW_NE",
+        "HW_SW"
+      ],
+      [
+        "HW_SW",
+        "AVE_SE"
+      ],
+      [
+        "HW_SW",
+        "HW_NE"
+      ]
+    ]
+  },
+  "proper_rotation_paths": [
+    {
+      "quarter_turns_ccw": 0,
+      "passed": true,
+      "external_native_channels": 20,
+      "pedestrian_external_channels": 4,
+      "native_through_lane_and_sidewalk_journeys": 10,
+      "constant_height_straight_native_journeys": 10,
+      "straight_through_witnesses": [
+        [
+          6,
+          1,
+          17,
+          12,
+          33,
+          28,
+          59,
+          51,
+          74,
+          66,
+          94,
+          89,
+          109,
+          104,
+          120,
+          115,
+          126
+        ],
+        [
+          7,
+          2,
+          18,
+          13,
+          34,
+          29,
+          60,
+          52,
+          75,
+          67,
+          95,
+          90,
+          110,
+          105,
+          121,
+          116,
+          127
+        ],
+        [
+          23,
+          46,
+          55,
+          81,
+          84
+        ],
+        [
+          24,
+          47,
+          56,
+          82,
+          85
+        ],
+        [
+          25,
+          48,
+          57,
+          83,
+          86
+        ],
+        [
+          99,
+          80,
+          70,
+          45,
+          39
+        ],
+        [
+          100,
+          79,
+          71,
+          44,
+          40
+        ],
+        [
+          101,
+          78,
+          72,
+          43,
+          41
+        ],
+        [
+          128,
+          118,
+          122,
+          107,
+          111,
+          92,
+          96,
+          69,
+          76,
+          54,
+          61,
+          31,
+          35,
+          15,
+          19,
+          4,
+          8
+        ],
+        [
+          129,
+          117,
+          123,
+          106,
+          112,
+          91,
+          97,
+          68,
+          77,
+          53,
+          62,
+          30,
+          36,
+          14,
+          20,
+          3,
+          9
+        ]
+      ],
+      "matched_directed_lane_seams": 124,
+      "right_turn_transfers": 4,
+      "no_cross_avenue_transfers": true,
+      "movement_witnesses": [
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            23,
+            46,
+            55,
+            81,
+            84
+          ]
+        },
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            24,
+            50,
+            58,
+            27,
+            32,
+            11,
+            16,
+            0,
+            5,
+            9
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            99,
+            80,
+            70,
+            45,
+            39
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            102,
+            98,
+            114,
+            113,
+            125,
+            124,
+            131,
+            130
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            129,
+            119,
+            103,
+            108,
+            88,
+            93,
+            65,
+            73,
+            49,
+            40
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            128,
+            118,
+            122,
+            107,
+            111,
+            92,
+            96,
+            69,
+            76,
+            54,
+            61,
+            31,
+            35,
+            15,
+            19,
+            4,
+            8
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            10,
+            22,
+            21,
+            38,
+            37,
+            64,
+            63,
+            87
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            6,
+            1,
+            17,
+            12,
+            33,
+            28,
+            59,
+            51,
+            74,
+            66,
+            94,
+            89,
+            109,
+            104,
+            120,
+            115,
+            126
+          ]
+        }
+      ],
+      "reachable_arm_pairs": [
+        [
+          "AVE_NW",
+          "AVE_SE"
+        ],
+        [
+          "AVE_NW",
+          "HW_SW"
+        ],
+        [
+          "AVE_SE",
+          "AVE_NW"
+        ],
+        [
+          "AVE_SE",
+          "HW_NE"
+        ],
+        [
+          "HW_NE",
+          "AVE_NW"
+        ],
+        [
+          "HW_NE",
+          "HW_SW"
+        ],
+        [
+          "HW_SW",
+          "AVE_SE"
+        ],
+        [
+          "HW_SW",
+          "HW_NE"
+        ]
+      ]
+    },
+    {
+      "quarter_turns_ccw": 1,
+      "passed": true,
+      "external_native_channels": 20,
+      "pedestrian_external_channels": 4,
+      "native_through_lane_and_sidewalk_journeys": 10,
+      "constant_height_straight_native_journeys": 10,
+      "straight_through_witnesses": [
+        [
+          6,
+          1,
+          17,
+          12,
+          33,
+          28,
+          59,
+          51,
+          74,
+          66,
+          94,
+          89,
+          109,
+          104,
+          120,
+          115,
+          126
+        ],
+        [
+          7,
+          2,
+          18,
+          13,
+          34,
+          29,
+          60,
+          52,
+          75,
+          67,
+          95,
+          90,
+          110,
+          105,
+          121,
+          116,
+          127
+        ],
+        [
+          23,
+          46,
+          55,
+          81,
+          84
+        ],
+        [
+          24,
+          47,
+          56,
+          82,
+          85
+        ],
+        [
+          25,
+          48,
+          57,
+          83,
+          86
+        ],
+        [
+          99,
+          80,
+          70,
+          45,
+          39
+        ],
+        [
+          100,
+          79,
+          71,
+          44,
+          40
+        ],
+        [
+          101,
+          78,
+          72,
+          43,
+          41
+        ],
+        [
+          128,
+          118,
+          122,
+          107,
+          111,
+          92,
+          96,
+          69,
+          76,
+          54,
+          61,
+          31,
+          35,
+          15,
+          19,
+          4,
+          8
+        ],
+        [
+          129,
+          117,
+          123,
+          106,
+          112,
+          91,
+          97,
+          68,
+          77,
+          53,
+          62,
+          30,
+          36,
+          14,
+          20,
+          3,
+          9
+        ]
+      ],
+      "matched_directed_lane_seams": 124,
+      "right_turn_transfers": 4,
+      "no_cross_avenue_transfers": true,
+      "movement_witnesses": [
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            23,
+            46,
+            55,
+            81,
+            84
+          ]
+        },
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            24,
+            50,
+            58,
+            27,
+            32,
+            11,
+            16,
+            0,
+            5,
+            9
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            99,
+            80,
+            70,
+            45,
+            39
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            102,
+            98,
+            114,
+            113,
+            125,
+            124,
+            131,
+            130
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            129,
+            119,
+            103,
+            108,
+            88,
+            93,
+            65,
+            73,
+            49,
+            40
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            128,
+            118,
+            122,
+            107,
+            111,
+            92,
+            96,
+            69,
+            76,
+            54,
+            61,
+            31,
+            35,
+            15,
+            19,
+            4,
+            8
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            10,
+            22,
+            21,
+            38,
+            37,
+            64,
+            63,
+            87
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            6,
+            1,
+            17,
+            12,
+            33,
+            28,
+            59,
+            51,
+            74,
+            66,
+            94,
+            89,
+            109,
+            104,
+            120,
+            115,
+            126
+          ]
+        }
+      ],
+      "reachable_arm_pairs": [
+        [
+          "AVE_NW",
+          "AVE_SE"
+        ],
+        [
+          "AVE_NW",
+          "HW_SW"
+        ],
+        [
+          "AVE_SE",
+          "AVE_NW"
+        ],
+        [
+          "AVE_SE",
+          "HW_NE"
+        ],
+        [
+          "HW_NE",
+          "AVE_NW"
+        ],
+        [
+          "HW_NE",
+          "HW_SW"
+        ],
+        [
+          "HW_SW",
+          "AVE_SE"
+        ],
+        [
+          "HW_SW",
+          "HW_NE"
+        ]
+      ]
+    },
+    {
+      "quarter_turns_ccw": 2,
+      "passed": true,
+      "external_native_channels": 20,
+      "pedestrian_external_channels": 4,
+      "native_through_lane_and_sidewalk_journeys": 10,
+      "constant_height_straight_native_journeys": 10,
+      "straight_through_witnesses": [
+        [
+          6,
+          1,
+          17,
+          12,
+          33,
+          28,
+          59,
+          51,
+          74,
+          66,
+          94,
+          89,
+          109,
+          104,
+          120,
+          115,
+          126
+        ],
+        [
+          7,
+          2,
+          18,
+          13,
+          34,
+          29,
+          60,
+          52,
+          75,
+          67,
+          95,
+          90,
+          110,
+          105,
+          121,
+          116,
+          127
+        ],
+        [
+          23,
+          46,
+          55,
+          81,
+          84
+        ],
+        [
+          24,
+          47,
+          56,
+          82,
+          85
+        ],
+        [
+          25,
+          48,
+          57,
+          83,
+          86
+        ],
+        [
+          99,
+          80,
+          70,
+          45,
+          39
+        ],
+        [
+          100,
+          79,
+          71,
+          44,
+          40
+        ],
+        [
+          101,
+          78,
+          72,
+          43,
+          41
+        ],
+        [
+          128,
+          118,
+          122,
+          107,
+          111,
+          92,
+          96,
+          69,
+          76,
+          54,
+          61,
+          31,
+          35,
+          15,
+          19,
+          4,
+          8
+        ],
+        [
+          129,
+          117,
+          123,
+          106,
+          112,
+          91,
+          97,
+          68,
+          77,
+          53,
+          62,
+          30,
+          36,
+          14,
+          20,
+          3,
+          9
+        ]
+      ],
+      "matched_directed_lane_seams": 124,
+      "right_turn_transfers": 4,
+      "no_cross_avenue_transfers": true,
+      "movement_witnesses": [
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            23,
+            46,
+            55,
+            81,
+            84
+          ]
+        },
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            24,
+            50,
+            58,
+            27,
+            32,
+            11,
+            16,
+            0,
+            5,
+            9
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            99,
+            80,
+            70,
+            45,
+            39
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            102,
+            98,
+            114,
+            113,
+            125,
+            124,
+            131,
+            130
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            129,
+            119,
+            103,
+            108,
+            88,
+            93,
+            65,
+            73,
+            49,
+            40
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            128,
+            118,
+            122,
+            107,
+            111,
+            92,
+            96,
+            69,
+            76,
+            54,
+            61,
+            31,
+            35,
+            15,
+            19,
+            4,
+            8
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            10,
+            22,
+            21,
+            38,
+            37,
+            64,
+            63,
+            87
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            6,
+            1,
+            17,
+            12,
+            33,
+            28,
+            59,
+            51,
+            74,
+            66,
+            94,
+            89,
+            109,
+            104,
+            120,
+            115,
+            126
+          ]
+        }
+      ],
+      "reachable_arm_pairs": [
+        [
+          "AVE_NW",
+          "AVE_SE"
+        ],
+        [
+          "AVE_NW",
+          "HW_SW"
+        ],
+        [
+          "AVE_SE",
+          "AVE_NW"
+        ],
+        [
+          "AVE_SE",
+          "HW_NE"
+        ],
+        [
+          "HW_NE",
+          "AVE_NW"
+        ],
+        [
+          "HW_NE",
+          "HW_SW"
+        ],
+        [
+          "HW_SW",
+          "AVE_SE"
+        ],
+        [
+          "HW_SW",
+          "HW_NE"
+        ]
+      ]
+    },
+    {
+      "quarter_turns_ccw": 3,
+      "passed": true,
+      "external_native_channels": 20,
+      "pedestrian_external_channels": 4,
+      "native_through_lane_and_sidewalk_journeys": 10,
+      "constant_height_straight_native_journeys": 10,
+      "straight_through_witnesses": [
+        [
+          6,
+          1,
+          17,
+          12,
+          33,
+          28,
+          59,
+          51,
+          74,
+          66,
+          94,
+          89,
+          109,
+          104,
+          120,
+          115,
+          126
+        ],
+        [
+          7,
+          2,
+          18,
+          13,
+          34,
+          29,
+          60,
+          52,
+          75,
+          67,
+          95,
+          90,
+          110,
+          105,
+          121,
+          116,
+          127
+        ],
+        [
+          23,
+          46,
+          55,
+          81,
+          84
+        ],
+        [
+          24,
+          47,
+          56,
+          82,
+          85
+        ],
+        [
+          25,
+          48,
+          57,
+          83,
+          86
+        ],
+        [
+          99,
+          80,
+          70,
+          45,
+          39
+        ],
+        [
+          100,
+          79,
+          71,
+          44,
+          40
+        ],
+        [
+          101,
+          78,
+          72,
+          43,
+          41
+        ],
+        [
+          128,
+          118,
+          122,
+          107,
+          111,
+          92,
+          96,
+          69,
+          76,
+          54,
+          61,
+          31,
+          35,
+          15,
+          19,
+          4,
+          8
+        ],
+        [
+          129,
+          117,
+          123,
+          106,
+          112,
+          91,
+          97,
+          68,
+          77,
+          53,
+          62,
+          30,
+          36,
+          14,
+          20,
+          3,
+          9
+        ]
+      ],
+      "matched_directed_lane_seams": 124,
+      "right_turn_transfers": 4,
+      "no_cross_avenue_transfers": true,
+      "movement_witnesses": [
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            23,
+            46,
+            55,
+            81,
+            84
+          ]
+        },
+        {
+          "from_arm": "AVE_NW",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            24,
+            50,
+            58,
+            27,
+            32,
+            11,
+            16,
+            0,
+            5,
+            9
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            99,
+            80,
+            70,
+            45,
+            39
+          ]
+        },
+        {
+          "from_arm": "AVE_SE",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            102,
+            98,
+            114,
+            113,
+            125,
+            124,
+            131,
+            130
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "AVE_NW",
+          "saved_route_ids": [
+            129,
+            119,
+            103,
+            108,
+            88,
+            93,
+            65,
+            73,
+            49,
+            40
+          ]
+        },
+        {
+          "from_arm": "HW_NE",
+          "to_arm": "HW_SW",
+          "saved_route_ids": [
+            128,
+            118,
+            122,
+            107,
+            111,
+            92,
+            96,
+            69,
+            76,
+            54,
+            61,
+            31,
+            35,
+            15,
+            19,
+            4,
+            8
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "AVE_SE",
+          "saved_route_ids": [
+            10,
+            22,
+            21,
+            38,
+            37,
+            64,
+            63,
+            87
+          ]
+        },
+        {
+          "from_arm": "HW_SW",
+          "to_arm": "HW_NE",
+          "saved_route_ids": [
+            6,
+            1,
+            17,
+            12,
+            33,
+            28,
+            59,
+            51,
+            74,
+            66,
+            94,
+            89,
+            109,
+            104,
+            120,
+            115,
+            126
+          ]
+        }
+      ],
+      "reachable_arm_pairs": [
+        [
+          "AVE_NW",
+          "AVE_SE"
+        ],
+        [
+          "AVE_NW",
+          "HW_SW"
+        ],
+        [
+          "AVE_SE",
+          "AVE_NW"
+        ],
+        [
+          "AVE_SE",
+          "HW_NE"
+        ],
+        [
+          "HW_NE",
+          "AVE_NW"
+        ],
+        [
+          "HW_NE",
+          "HW_SW"
+        ],
+        [
+          "HW_SW",
+          "AVE_SE"
+        ],
+        [
+          "HW_SW",
+          "HW_NE"
+        ]
+      ]
+    }
+  ],
+  "native_neighbour_boundaries": {
+    "passed": true,
+    "complete_directed_native_counterparts_checked": 20,
+    "native_dd_phase_retained": true,
+    "native_avenue_phase": 1,
+    "boundaries": [
+      {
+        "cell": [
+          -3,
+          4
+        ],
+        "outside_cell": [
+          -4,
+          4
+        ],
+        "direction": "in",
+        "transport": 1,
+        "point_m": [
+          -56.0,
+          -67.2,
+          15.0
+        ]
+      },
+      {
+        "cell": [
+          -3,
+          4
+        ],
+        "outside_cell": [
+          -4,
+          4
+        ],
+        "direction": "out",
+        "transport": 1,
+        "point_m": [
+          -56.0,
+          -67.2,
+          7.5
+        ]
+      },
+      {
+        "cell": [
+          -3,
+          4
+        ],
+        "outside_cell": [
+          -4,
+          4
+        ],
+        "direction": "in",
+        "transport": 1,
+        "point_m": [
+          -56.0,
+          -60.8,
+          15.0
+        ]
+      },
+      {
+        "cell": [
+          -3,
+          4
+        ],
+        "outside_cell": [
+          -4,
+          4
+        ],
+        "direction": "out",
+        "transport": 1,
+        "point_m": [
+          -56.0,
+          -60.8,
+          7.5
+        ]
+      },
+      {
+        "cell": [
+          -1,
+          -1
+        ],
+        "outside_cell": [
+          -1,
+          -2
+        ],
+        "direction": "in",
+        "transport": 1,
+        "point_m": [
+          -12.8,
+          24.0,
+          0.0
+        ]
+      },
+      {
+        "cell": [
+          -1,
+          -1
+        ],
+        "outside_cell": [
+          -1,
+          -2
+        ],
+        "direction": "in",
+        "transport": 1,
+        "point_m": [
+          -19.2,
+          24.0,
+          0.0
+        ]
+      },
+      {
+        "cell": [
+          -1,
+          -1
+        ],
+        "outside_cell": [
+          -1,
+          -2
+        ],
+        "direction": "in",
+        "transport": 2,
+        "point_m": [
+          -23.3,
+          24.0,
+          0.0
+        ]
+      },
+      {
+        "cell": [
+          0,
+          -2
+        ],
+        "outside_cell": [
+          -1,
+          -2
+        ],
+        "direction": "out",
+        "transport": 1,
+        "point_m": [
+          -8.0,
+          28.8,
+          0.0
+        ]
+      },
+      {
+        "cell": [
+          0,
+          -2
+        ],
+        "outside_cell": [
+          -1,
+          -2
+        ],
+        "direction": "out",
+        "transport": 1,
+        "point_m": [
+          -8.0,
+          35.2,
+          0.0
+        ]
+      },
+      {
+        "cell": [
+          0,
+          -2
+        ],
+        "outside_cell": [
+          -1,
+          -2
+        ],
+        "direction": "out",
+        "transport": 2,
+        "point_m": [
+          -8.0,
+          39.3,
+          0.0
+        ]
+      },
+      {
+        "cell": [
+          1,
+          1
+        ],
+        "outside_cell": [
+          2,
+          1
+        ],
+        "direction": "out",
+        "transport": 1,
+        "point_m": [
+          24.0,
+          -12.8,
+          0.0
+        ]
+      },
+      {
+        "cell": [
+          1,
+          1
+        ],
+        "outside_cell": [
+          2,
+          1
+        ],
+        "direction": "out",
+        "transport": 1,
+        "point_m": [
+          24.0,
+          -19.2,
+          0.0
+        ]
+      },
+      {
+        "cell": [
+          1,
+          1
+        ],
+        "outside_cell": [
+          2,
+          1
+        ],
+        "direction": "out",
+        "transport": 2,
+        "point_m": [
+          24.0,
+          -23.3,
+          0.0
+        ]
+      },
+      {
+        "cell": [
+          2,
+          0
+        ],
+        "outside_cell": [
+          2,
+          1
+        ],
+        "direction": "in",
+        "transport": 1,
+        "point_m": [
+          28.8,
+          -8.0,
+          0.0
+        ]
+      },
+      {
+        "cell": [
+          2,
+          0
+        ],
+        "outside_cell": [
+          2,
+          1
+        ],
+        "direction": "in",
+        "transport": 1,
+        "point_m": [
+          35.2,
+          -8.0,
+          0.0
+        ]
+      },
+      {
+        "cell": [
+          2,
+          0
+        ],
+        "outside_cell": [
+          2,
+          1
+        ],
+        "direction": "in",
+        "transport": 2,
+        "point_m": [
+          39.3,
+          -8.0,
+          0.0
+        ]
+      },
+      {
+        "cell": [
+          5,
+          -4
+        ],
+        "outside_cell": [
+          5,
+          -5
+        ],
+        "direction": "out",
+        "transport": 1,
+        "point_m": [
+          83.2,
+          72.0,
+          15.0
+        ]
+      },
+      {
+        "cell": [
+          5,
+          -4
+        ],
+        "outside_cell": [
+          5,
+          -5
+        ],
+        "direction": "in",
+        "transport": 1,
+        "point_m": [
+          83.2,
+          72.0,
+          7.5
+        ]
+      },
+      {
+        "cell": [
+          5,
+          -4
+        ],
+        "outside_cell": [
+          5,
+          -5
+        ],
+        "direction": "out",
+        "transport": 1,
+        "point_m": [
+          76.8,
+          72.0,
+          15.0
+        ]
+      },
+      {
+        "cell": [
+          5,
+          -4
+        ],
+        "outside_cell": [
+          5,
+          -5
+        ],
+        "direction": "in",
+        "transport": 1,
+        "point_m": [
+          76.8,
+          72.0,
+          7.5
+        ]
+      }
+    ],
+    "native_dragging_observed": false
+  },
+  "native_dd_outside_approaches": {
+    "passed": true,
+    "outside_approaches_checked": 2,
+    "custom_cells_checked": 34,
+    "game_behavior_tested": false
+  },
+  "model_union": {
+    "passed": true,
+    "continuous_actual_b_car_segments_checked": 2332,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "road_support_encoding_precision": {
+      "euclidean_distance_limit_m": 2e-06,
+      "admitted_road_encoding_spans": 7,
+      "maximum_admitted_along_route_span_m": 4.960314777213099e-07,
+      "maximum_sampled_actual_face_distance_m": 1.8204380239372427e-07
+    },
+    "translated_approved_shape_checks": {
+      "passed": true,
+      "continuous_car_segments_checked": 2206,
+      "car_corridor_half_width_m": 1.25,
+      "car_corridor_height_m": 3.8,
+      "continuous_ramp_width_segments_checked": 15272,
+      "ramp_width_m": null,
+      "elevated_and_grade_ramp_width_m": 6.0,
+      "ground_mouth_width_profile": "taper-6m-to-3p5m-over-3m",
+      "native_external_boundary_width_spans_requiring_highway_neighbour": 110,
+      "maximum_saved_grade_percent": 28.202932020066847,
+      "road_support_encoding_precision": {
+        "euclidean_distance_limit_m": 2e-06,
+        "admitted_road_encoding_spans": 71,
+        "maximum_admitted_along_route_span_m": 6.151527095913633e-07,
+        "maximum_sampled_actual_face_distance_m": 2.361314784880043e-07
+      },
+      "wheeltrack_field": {
+        "passed": true,
+        "mapped_native_dd_triangles_checked": 158234,
+        "highway_slip_profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+        "maximum_vertex_u_error": 4.220188227765931e-07,
+        "maximum_vertex_v_error": 5.645283547295321e-07,
+        "vertex_uv_tolerance": 5e-06,
+        "source": "Pinned approved routes and independently reconstructed native asphalt field",
+        "nearest_finite_segment_position_tie_radius_m": 5.656854249492381e-06,
+        "game_filtering_or_colour_observed": false
+      },
+      "underside_samples_checked": 489,
+      "barrier_profile_samples_checked": 1982,
+      "shell_sample_tolerance_m": 0.002,
+      "scope": "Actual indexed triangle intervals for car support, seven longitudinal width lines per ramp, exact prism/triangle car-corridor intersections, and bounded underside/barrier-profile samples. No structural capacity or game observation is established."
+    },
+    "scope": "B-world continuous pavement and car corridors, including new flat native collars; translated approved width, underside, barrier, and wheeltrack samples. No game traffic is established."
+  },
+  "actual_model_projection": {
+    "passed": true,
+    "reviewed_owned_cells": 34,
+    "unowned_native_end_projection_cells": [
+      [
+        -4,
+        3
+      ],
+      [
+        -3,
+        5
+      ],
+      [
+        4,
+        -5
+      ],
+      [
+        6,
+        -4
+      ]
+    ],
+    "pinned_native_overhang_triangles_checked": 117,
+    "actual_model_projection_cells_by_function": {
+      "crossing": [
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "lower-entry-departure": [
+        [
+          -3,
+          2
+        ],
+        [
+          -3,
+          3
+        ],
+        [
+          -2,
+          2
+        ]
+      ],
+      "lower-entry-grade": [
+        [
+          -3,
+          2
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -2,
+          2
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          -1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "lower-entry-slip": [
+        [
+          -4,
+          3
+        ],
+        [
+          -3,
+          2
+        ],
+        [
+          -3,
+          3
+        ],
+        [
+          -2,
+          1
+        ],
+        [
+          -2,
+          2
+        ],
+        [
+          -2,
+          3
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          -1,
+          1
+        ]
+      ],
+      "lower-exit-departure": [
+        [
+          3,
+          -4
+        ],
+        [
+          3,
+          -3
+        ],
+        [
+          4,
+          -4
+        ]
+      ],
+      "lower-exit-grade": [
+        [
+          1,
+          -2
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          2,
+          -3
+        ],
+        [
+          2,
+          -2
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          3,
+          -3
+        ]
+      ],
+      "lower-exit-slip": [
+        [
+          1,
+          -2
+        ],
+        [
+          2,
+          -3
+        ],
+        [
+          2,
+          -2
+        ],
+        [
+          3,
+          -4
+        ],
+        [
+          3,
+          -3
+        ],
+        [
+          4,
+          -5
+        ],
+        [
+          4,
+          -4
+        ],
+        [
+          4,
+          -3
+        ]
+      ],
+      "northwest-terminal": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          -2
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          1,
+          -1
+        ]
+      ],
+      "southeast-terminal": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "upper-entry-departure": [
+        [
+          4,
+          -3
+        ],
+        [
+          5,
+          -4
+        ],
+        [
+          5,
+          -3
+        ]
+      ],
+      "upper-entry-grade": [
+        [
+          2,
+          -1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          -2
+        ],
+        [
+          3,
+          -1
+        ],
+        [
+          4,
+          -3
+        ],
+        [
+          4,
+          -2
+        ],
+        [
+          5,
+          -3
+        ]
+      ],
+      "upper-entry-slip": [
+        [
+          2,
+          -1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          -2
+        ],
+        [
+          3,
+          -1
+        ],
+        [
+          4,
+          -4
+        ],
+        [
+          4,
+          -3
+        ],
+        [
+          4,
+          -2
+        ],
+        [
+          5,
+          -4
+        ],
+        [
+          5,
+          -3
+        ],
+        [
+          6,
+          -4
+        ]
+      ],
+      "upper-exit-departure": [
+        [
+          -3,
+          4
+        ],
+        [
+          -2,
+          3
+        ],
+        [
+          -2,
+          4
+        ]
+      ],
+      "upper-exit-grade": [
+        [
+          -2,
+          3
+        ],
+        [
+          -2,
+          4
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          -1,
+          3
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "upper-exit-slip": [
+        [
+          -3,
+          3
+        ],
+        [
+          -3,
+          4
+        ],
+        [
+          -3,
+          5
+        ],
+        [
+          -2,
+          3
+        ],
+        [
+          -2,
+          4
+        ],
+        [
+          -1,
+          2
+        ],
+        [
+          -1,
+          3
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  },
+  "supports": {
+    "passed": true,
+    "authored_ramp_piers_checked": 4,
+    "pier_half_width_m": 0.4,
+    "actual_face_samples_checked": 208,
+    "native_centre_piers_checked": 4,
+    "native_pier_samples_checked": 112,
+    "outward_face_winding_checked": true,
+    "structural_capacity_tested": false
+  },
+  "straight_native_decks": {
+    "passed": true,
+    "native_deck_surface_samples_checked": 1720,
+    "native_deck_heights_m": [
+      7.5,
+      15.0
+    ],
+    "native_deck_width_m": 16.0,
+    "directed_highway_axis_north_minus_east_m": -8.0,
+    "surface_sample_tolerance_m": 0.002,
+    "scope": "Fixed-world indexed-surface samples on both unchanged native DD decks throughout the B owned union."
+  },
+  "physical_functional_cuts": {
+    "passed": true,
+    "functional_physical_interfaces_checked": 8,
+    "separate_owner_pavement_underside_barrier_samples": 216,
+    "physical_profiles_and_city_tile_path_ports_checked_separately": true,
+    "reference_frame": "Actual B faces inverse-translated by the measured eight metres east and north."
+  },
+  "ground_mouths": {
+    "passed": true,
+    "profile": "taper-6m-to-3p5m-over-3m",
+    "grade_cut_width_m": 6.0,
+    "Avenue_mouth_width_m": 3.5,
+    "taper_plan_length_m": 3.0,
+    "taper": "cubic smoothstep; travel order reversed for entries",
+    "continuous_flat_pavement_width_witnesses": 3458,
+    "exact_width_edge_samples": 996,
+    "actual_ground_envelope_samples": 62986,
+    "maximum_envelope_distance_m": 6.33443897707391e-07,
+    "envelope_encoding_distance_bound_m": 4e-06,
+    "edge_sample_distance_bound_m": 0.002,
+    "pedestrian_parallel_collars": [
+      {
+        "ramp_id": "lower-off",
+        "pedestrian_axis_u_m": 10.818733752154177,
+        "static_asphalt_overlap_m": 0.0,
+        "car_to_pedestrian_centre_distance_m": 2.8991378028648445,
+        "nominal_asphalt_edge_to_pedestrian_centre_m": 1.1491378028648445
+      },
+      {
+        "ramp_id": "lower-on",
+        "pedestrian_axis_u_m": -10.818733752154177,
+        "static_asphalt_overlap_m": 0.0,
+        "car_to_pedestrian_centre_distance_m": 2.8991378028648445,
+        "nominal_asphalt_edge_to_pedestrian_centre_m": 1.1491378028648445
+      },
+      {
+        "ramp_id": "upper-off",
+        "pedestrian_axis_u_m": -10.818733752154177,
+        "static_asphalt_overlap_m": 0.0,
+        "car_to_pedestrian_centre_distance_m": 2.8991378028648445,
+        "nominal_asphalt_edge_to_pedestrian_centre_m": 1.1491378028648445
+      },
+      {
+        "ramp_id": "upper-on",
+        "pedestrian_axis_u_m": 10.818733752154177,
+        "static_asphalt_overlap_m": 0.0,
+        "car_to_pedestrian_centre_distance_m": 2.8991378028648445,
+        "nominal_asphalt_edge_to_pedestrian_centre_m": 1.1491378028648445
+      }
+    ],
+    "unavoidable_driveway_crossings_removed": false,
+    "scope": "Actual saved flat MIS triangles, finite continuous width lines, exact nominal-edge samples, and no static asphalt along the four Avenue-parallel pedestrian collars. Complete sidewalk surface width and game texture selection are not established."
+  },
+  "native_wheeltrack_seam_uv": {
+    "passed": true,
+    "actual_saved_dd_mis_seam_pairs_checked": 20,
+    "transverse_uv_tolerance": 0.0001,
+    "phase_tolerance_repeats": 0.001,
+    "maximum_transverse_uv_error": 8.24664057030855e-06,
+    "maximum_phase_error_repeats": 0.00032791102077922574,
+    "controls": [
+      {
+        "ramp_id": "lower-off",
+        "highway_axis_offset_m": -2.0,
+        "dd_uv": [
+          0.722131362668986,
+          1.2013860766080522
+        ],
+        "mis_uv": [
+          0.5893169956405804,
+          1.2010736053486246
+        ],
+        "transverse_uv_error": 1.8670284056554465e-06,
+        "phase_error_repeats": 0.00031247125942757137
+      },
+      {
+        "ramp_id": "lower-off",
+        "highway_axis_offset_m": -1.0,
+        "dd_uv": [
+          0.6717177686200351,
+          1.1554204142049684
+        ],
+        "mis_uv": [
+          0.5450643282053388,
+          1.1555777134198184
+        ],
+        "transverse_uv_error": 2.0940471398001037e-06,
+        "phase_error_repeats": 0.00015729921484997078
+      },
+      {
+        "ramp_id": "lower-off",
+        "highway_axis_offset_m": 0.0,
+        "dd_uv": [
+          0.6250479606240404,
+          1.1118392542830486
+        ],
+        "mis_uv": [
+          0.5000462020516587,
+          1.1118411413526226
+        ],
+        "transverse_uv_error": 1.7585723817159504e-06,
+        "phase_error_repeats": 1.8870695739359178e-06
+      },
+      {
+        "ramp_id": "lower-off",
+        "highway_axis_offset_m": 1.0,
+        "dd_uv": [
+          0.5807698714035453,
+          1.0667510849577535
+        ],
+        "mis_uv": [
+          0.4557781180441156,
+          1.0668471653278662
+        ],
+        "transverse_uv_error": 8.24664057030855e-06,
+        "phase_error_repeats": 9.608037011266113e-05
+      },
+      {
+        "ramp_id": "lower-off",
+        "highway_axis_offset_m": 2.0,
+        "dd_uv": [
+          0.5384761655228095,
+          1.0171269267237566
+        ],
+        "mis_uv": [
+          0.4134742500763884,
+          1.017277142696209
+        ],
+        "transverse_uv_error": 1.915446421141276e-06,
+        "phase_error_repeats": 0.000150215972452461
+      },
+      {
+        "ramp_id": "lower-on",
+        "highway_axis_offset_m": -2.0,
+        "dd_uv": [
+          0.5384761169211371,
+          4.481744061158631
+        ],
+        "mis_uv": [
+          0.4134742526741422,
+          4.481593702315269
+        ],
+        "transverse_uv_error": 1.8642469948870755e-06,
+        "phase_error_repeats": 0.0001503588433617864
+      },
+      {
+        "ramp_id": "lower-on",
+        "highway_axis_offset_m": -1.0,
+        "dd_uv": [
+          0.5807698126600062,
+          4.4321200698451255
+        ],
+        "mis_uv": [
+          0.45576830492509957,
+          4.432162882198627
+        ],
+        "transverse_uv_error": 1.507734906591729e-06,
+        "phase_error_repeats": 4.2812353501453515e-05
+      },
+      {
+        "ramp_id": "lower-on",
+        "highway_axis_offset_m": 0.0,
+        "dd_uv": [
+          0.625047935399136,
+          4.387031586908798
+        ],
+        "mis_uv": [
+          0.5000462008927316,
+          4.3870297666816
+        ],
+        "transverse_uv_error": 1.7345064043938763e-06,
+        "phase_error_repeats": 1.8202271983014384e-06
+      },
+      {
+        "ramp_id": "lower-on",
+        "highway_axis_offset_m": 1.0,
+        "dd_uv": [
+          0.6717177686138454,
+          4.343450549327941
+        ],
+        "mis_uv": [
+          0.5450643298612601,
+          4.343298324050617
+        ],
+        "transverse_uv_error": 2.0921090418957178e-06,
+        "phase_error_repeats": 0.0001522252773238364
+      },
+      {
+        "ramp_id": "lower-on",
+        "highway_axis_offset_m": 2.0,
+        "dd_uv": [
+          0.7221313038770716,
+          4.297484545378378
+        ],
+        "mis_uv": [
+          0.5893169933075689,
+          4.297482708475476
+        ],
+        "transverse_uv_error": 1.8105695026582325e-06,
+        "phase_error_repeats": 1.8369029017861749e-06
+      },
+      {
+        "ramp_id": "upper-off",
+        "highway_axis_offset_m": -2.0,
+        "dd_uv": [
+          0.534068714577245,
+          0.6308713195398579
+        ],
+        "mis_uv": [
+          0.4090669384100502,
+          0.6310092808359131
+        ],
+        "transverse_uv_error": 1.77616719476692e-06,
+        "phase_error_repeats": 0.00013796129605525564
+      },
+      {
+        "ramp_id": "upper-off",
+        "highway_axis_offset_m": -1.0,
+        "dd_uv": [
+          0.5793987632877698,
+          0.6754699200884039
+        ],
+        "mis_uv": [
+          0.4543969987498963,
+          0.6754718189301061
+        ],
+        "transverse_uv_error": 1.7645378734831851e-06,
+        "phase_error_repeats": 1.8988417022081094e-06
+      },
+      {
+        "ramp_id": "upper-off",
+        "highway_axis_offset_m": 0.0,
+        "dd_uv": [
+          0.6249982802579427,
+          0.7181475682317313
+        ],
+        "mis_uv": [
+          0.4999965272675413,
+          0.7181494280168527
+        ],
+        "transverse_uv_error": 1.7529904013935393e-06,
+        "phase_error_repeats": 1.8597851213497663e-06
+      },
+      {
+        "ramp_id": "upper-off",
+        "highway_axis_offset_m": 1.0,
+        "dd_uv": [
+          0.6717177686200352,
+          0.7617288199736151
+        ],
+        "mis_uv": [
+          0.5450643282053385,
+          0.7618862293090246
+        ],
+        "transverse_uv_error": 2.0940471403552152e-06,
+        "phase_error_repeats": 0.00015740933540953073
+      },
+      {
+        "ramp_id": "upper-off",
+        "highway_axis_offset_m": 2.0,
+        "dd_uv": [
+          0.7221313626689856,
+          0.807368846480057
+        ],
+        "mis_uv": [
+          0.5893169956405799,
+          0.8073820655820809
+        ],
+        "transverse_uv_error": 1.8670284056554465e-06,
+        "phase_error_repeats": 1.3219102023898088e-05
+      },
+      {
+        "ramp_id": "upper-on",
+        "highway_axis_offset_m": -2.0,
+        "dd_uv": [
+          0.7221313038770711,
+          4.722074710795726
+        ],
+        "mis_uv": [
+          0.5893169933075684,
+          4.721746799774947
+        ],
+        "transverse_uv_error": 1.8105695027692548e-06,
+        "phase_error_repeats": 0.00032791102077922574
+      },
+      {
+        "ramp_id": "upper-on",
+        "highway_axis_offset_m": -1.0,
+        "dd_uv": [
+          0.6717177686138454,
+          4.7677145037073725
+        ],
+        "mis_uv": [
+          0.5450643298612596,
+          4.767562324495427
+        ],
+        "transverse_uv_error": 2.0921090424508293e-06,
+        "phase_error_repeats": 0.00015217921194565776
+      },
+      {
+        "ramp_id": "upper-on",
+        "highway_axis_offset_m": 0.0,
+        "dd_uv": [
+          0.6249982723533722,
+          4.811295578192595
+        ],
+        "mis_uv": [
+          0.4999965257409392,
+          4.811293716648726
+        ],
+        "transverse_uv_error": 1.74661243301788e-06,
+        "phase_error_repeats": 1.8615438683866614e-06
+      },
+      {
+        "ramp_id": "upper-on",
+        "highway_axis_offset_m": 1.0,
+        "dd_uv": [
+          0.5793987017398267,
+          4.853973425403574
+        ],
+        "mis_uv": [
+          0.4543970000747801,
+          4.853971503725439
+        ],
+        "transverse_uv_error": 1.7016650465384586e-06,
+        "phase_error_repeats": 1.9216781348418976e-06
+      },
+      {
+        "ramp_id": "upper-on",
+        "highway_axis_offset_m": 2.0,
+        "dd_uv": [
+          0.5340686632656092,
+          4.898571411222523
+        ],
+        "mis_uv": [
+          0.40906693913272074,
+          4.898433922468711
+        ],
+        "transverse_uv_error": 1.7241328884587404e-06,
+        "phase_error_repeats": 0.00013748875381214276
+      }
+    ],
+    "native_rgb_or_game_filtering_tested": false
+  },
+  "highway_slip_lanes": {
+    "passed": true,
+    "profile": "shoulder-auxiliary-lower-8m-4m-upper-5m-1m",
+    "ramps": [
+      {
+        "ramp_id": "lower-off",
+        "taper_axis_m": 8.0,
+        "parallel_axis_m": 4.0,
+        "auxiliary_axis_q_m": 5.5,
+        "continuous_sampled_parallel_chords": 32,
+        "saved_wear_controls": 8,
+        "outside_mesh_and_route_reference": "immutable approved candidate"
+      },
+      {
+        "ramp_id": "lower-on",
+        "taper_axis_m": 8.0,
+        "parallel_axis_m": 4.0,
+        "auxiliary_axis_q_m": 5.5,
+        "continuous_sampled_parallel_chords": 32,
+        "saved_wear_controls": 8,
+        "outside_mesh_and_route_reference": "immutable approved candidate"
+      },
+      {
+        "ramp_id": "upper-off",
+        "taper_axis_m": 5.0,
+        "parallel_axis_m": 1.0,
+        "auxiliary_axis_q_m": 5.5,
+        "continuous_sampled_parallel_chords": 8,
+        "saved_wear_controls": 2,
+        "outside_mesh_and_route_reference": "immutable approved candidate"
+      },
+      {
+        "ramp_id": "upper-on",
+        "taper_axis_m": 5.0,
+        "parallel_axis_m": 1.0,
+        "auxiliary_axis_q_m": 5.5,
+        "continuous_sampled_parallel_chords": 8,
+        "saved_wear_controls": 2,
+        "outside_mesh_and_route_reference": "immutable approved candidate"
+      }
+    ],
+    "actual_saved_parallel_wear_controls": 20,
+    "vertex_and_sample_uv_tolerance": 5e-06,
+    "scope": "Exact independently reconstructed saved PATHs establish real taper and parallel lengths; actual indexed DD UV controls affirm native tyre wear on all four parallel runs. Physical road-width checks remain on the immutable original mesh, and actual car-corridor checks remain separate. No game observation."
+  },
+  "authored_shape_translation_east_north_m": [
+    8.0,
+    8.0
+  ],
+  "directed_highway_axis_north_minus_east_m": -8.0,
+  "ground_avenue_axis_north_plus_east_m": 16.0,
+  "approval_sha256": "fed3668c9c13654ca3775637c558cd85976269d4cb3f39634c8d5a1a7ff9e23e",
+  "game_operation": "unverified",
+  "limits": [
+    "Native dragging, adaptive sidewalk selection, visible traffic, shadows, and save/reload require human game observations.",
+    "Width, underside, barrier, and pier samples do not establish structural load capacity."
+  ],
+  "source": {
+    "manifest_sha256": "d68b9041c139954133c260980258d729f3dc26c8b4f2674ee30e642f992d4e8a",
+    "asset_files": {
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-crossing.dat": "15386317d7be9dc70c19488cc47ae5dfb8b2ff2d25cd8a00166f138526f4e73f",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-northwest-terminal.dat": "6d8a73c48225fa95e2c3300bd653f169c0378c881b6e103c93748a7835d96b63",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-southeast-terminal.dat": "53d0f6623974121020c46ebb41f60a249b8f8600332de0c67552d9af02b9bb7d",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-lower-exit-slip.dat": "84cd6fe4c224255903ca7a434ec8f2f3801ded6588d8635443f56144fdb5fb28",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-lower-entry-slip.dat": "bb768126ace66a28d1b1d75e428be3b6464954512ff6d5c87fbe557935baf040",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-upper-exit-slip.dat": "8eeb32b30e53420c1550d3324d2731000991e7bcaa0ec33b174006325322c90b",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-upper-entry-slip.dat": "ca39a0233f8af4b0f229ce81d8e3850ea4345c03839d6b93850a859021884228",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-lower-exit-departure.dat": "0daaea54e47017c9d8ede5d5dd61c1b89f3a5d51e7220bd3d81950af6ce74d2c",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-lower-entry-departure.dat": "a3bad45b1223065c530e9e86a8ce6a9a064f194d6742af437a9654f820694e30",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-upper-exit-departure.dat": "febf63c4152bf98e0455d0d9cf83158565ffb6d07c885f801a9362890c494dd9",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-upper-entry-departure.dat": "a87cfbffaaa30ecdf2fe8898b94381b3c72a0f36c8c996b19829f4878b4a23a7",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-lower-exit-grade.dat": "3fa1eeb1b067654159c8352c86d074c0d03a9c99980affc0010b512514f5e450",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-lower-entry-grade.dat": "a9277454d0625c6fcbe25a32543a2980dcd4eca49dca3024b2e16799f4f307cc",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-upper-exit-grade.dat": "f558ff6a946c28119356b14aabfca03032672da02c0f1498075c1feb3b0ba6f8",
+      "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-upper-entry-grade.dat": "440d55788e57fbd4941c3cc9544446db0519083625885bb007ccb5939fad2f3e"
+    },
+    "actual_saved_dat_resources": true,
+    "scene_sha256": "8c7fa9092f8889c567d42247f4133ab854d5ac91894124bfd25984c9a41c5790"
+  }
+}

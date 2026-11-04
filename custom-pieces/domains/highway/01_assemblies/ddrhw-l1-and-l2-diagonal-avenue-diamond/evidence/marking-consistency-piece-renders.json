@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "purpose": "Record eight refreshed canonical views of the four saved branch types changed by the uniform-width and curve-aligned slip-lane marking repair; this is software artwork evidence.",
+  "source_build": "dist/ddrhw-marking-consistency-parts-01",
+  "source_manifest_sha256": "1b1a0da2800ce5498162b2b8470933cd719e2e104522ccb9565a66f29739311d",
+  "historical_render_preservation": "evidence/design-history/before-marking-consistency-repair/render-preservation.json",
+  "rendered_piece_count": 4,
+  "rendered_view_count": 8,
+  "selected_view_coverage_complete": true,
+  "changed_piece_selection_basis": "Actual before/after DAT and indexed-resource comparison; the other nine piece DATs are byte-identical.",
+  "unchanged_piece_views_compared_with_source_snapshot": [
+    "ddrhw-diagonal-access-core",
+    "ddrhw-diagonal-diagonal-half-a",
+    "ddrhw-diagonal-diagonal-half-b",
+    "ddrhw-diagonal-lower-entry-grade",
+    "ddrhw-diagonal-lower-exit-grade",
+    "ddrhw-diagonal-northwest-junction",
+    "ddrhw-diagonal-southeast-junction",
+    "ddrhw-diagonal-upper-entry-grade",
+    "ddrhw-diagonal-upper-exit-grade"
+  ],
+  "unchanged_artwork_and_report_files_checked": 45,
+  "source_snapshot_commit": "6768fe99c31ad81585d20a9b574f2ea4bc4b61e2",
+  "visual_review": {
+    "reviewer": "coding-agent",
+    "all_eight_canonical_views_inspected": true,
+    "method": "Each piece's canonical angled and north-up view was inspected together in a paired review sheet.",
+    "scope": "Consistent titles, camera roles, grids, and complete geometry; uniform authored white strokes, q=4.5 dash alignment, curve-aligned gore boundaries, parallel hatch angles, and retained pavement and barrier joins.",
+    "limit": "The lower deck is physically occluded in canonical top views. Separate opposite-angle serialized proof images were inspected, and independent saved-resource checks measure all four mouths. Human in-game appearance remains unverified."
+  },
+  "in_game_evidence": false,
+  "manual_game_result_changed": false,
+  "source_files": [
+    {
+      "path": "framework/scp/preview.py",
+      "sha256": "30e099f296b95b1868ef047094abe242b8026524dfdbd13f9719e0a93a4dc112"
+    },
+    {
+      "path": "framework/scp/piece_previews.py",
+      "sha256": "cb26ba733fe300a3cc832dec1696877e35976219c8e1cc4dc99394fb78c52cbe"
+    },
+    {
+      "path": "framework/scp/render_headers.py",
+      "sha256": "9f514a58400ed38c12d804ba407039824344ec097f3d1c34c398951b0c0af44e"
+    },
+    {
+      "path": "domains/highway/implementation/scp_highway/slip_lanes.py",
+      "sha256": "008febbdb4a5b3bda210f090b8cf459b909ece26db347d94b5e2fc7a10b49154"
+    }
+  ],
+  "pieces": [
+    {
+      "piece_id": "ddrhw-diagonal-lower-exit-branch",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-exit-branch.dat",
+      "source_dat_sha256": "671bd61a6d75884222b19ac5be690a521d3438e35c2630dcec86bdcb2af58e0f",
+      "views": [
+        {
+          "view_role": "angled",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/previews/preview.png",
+          "png_sha256": "0157a54987619ae07b11f6433c34f37b772d312081e4ab9f2e43fa3d396e9e9b",
+          "png_bytes": 220804,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/evidence/preview.json",
+          "report_sha256": "3a23325f3dd8bcf69586f2017d56e49c5b2705ee7d66727c1445d4e9f36fb468",
+          "saved_preview_model_sha256": "b66ef211a523f190ee5408217c2fa12ff5b6ff2b379f153bf6996cd6754d3d90",
+          "size_px": [
+            1600,
+            1200
+          ]
+        },
+        {
+          "view_role": "top-down",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/previews/preview-top.png",
+          "png_sha256": "3a6fd8b52241acaa387b1d5e0a04a2128c7209c78e0070031fc069adc4a8250c",
+          "png_bytes": 187567,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/evidence/preview-top.json",
+          "report_sha256": "a85ac4bba3316d1926bfbcd580a159b0d615a1794a84d723d5c0ba6d1fb086b5",
+          "saved_preview_model_sha256": "b66ef211a523f190ee5408217c2fa12ff5b6ff2b379f153bf6996cd6754d3d90",
+          "size_px": [
+            1600,
+            1200
+          ]
+        }
+      ],
+      "thumbnail": {
+        "png": "domains/highway/00_pieces/ddrhw-diagonal-lower-exit-branch/previews/preview-thumb.png",
+        "sha256": "1d12fce70fc2f4665095bc27fe7ab2144879f05f7b241fc733b0e9972fa832ad"
+      }
+    },
+    {
+      "piece_id": "ddrhw-diagonal-lower-entry-branch",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-lower-entry-branch.dat",
+      "source_dat_sha256": "7aca76f04a8f285e1cb7998241f60ec30e1b8aac4af2884af09cb9694884461a",
+      "views": [
+        {
+          "view_role": "angled",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/previews/preview.png",
+          "png_sha256": "04cdeac35275342f60f708430e5aabeaa851d8da2476cf52b3fe4a3dc618d5f0",
+          "png_bytes": 221486,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/evidence/preview.json",
+          "report_sha256": "04d24b73d4195ce6449d7b7691c4078032b274c6577d8ffaee147ed9f63b831e",
+          "saved_preview_model_sha256": "2133270b128b1c2f85d1e2f41dc94b56704a77999adcdd3316e7d937262db70f",
+          "size_px": [
+            1600,
+            1200
+          ]
+        },
+        {
+          "view_role": "top-down",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/previews/preview-top.png",
+          "png_sha256": "b3d5531b9f2a6610edbc1ffeae2150a207c9e5a958e8e505dcd1a5a67f9171d3",
+          "png_bytes": 189975,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/evidence/preview-top.json",
+          "report_sha256": "eda4573e152e2d67cfaf31c03f0e8ca87462c7de2cf779e64ed444e961cf75f3",
+          "saved_preview_model_sha256": "2133270b128b1c2f85d1e2f41dc94b56704a77999adcdd3316e7d937262db70f",
+          "size_px": [
+            1600,
+            1200
+          ]
+        }
+      ],
+      "thumbnail": {
+        "png": "domains/highway/00_pieces/ddrhw-diagonal-lower-entry-branch/previews/preview-thumb.png",
+        "sha256": "9b8575396ba9f35c8ebe251fad96ac13d99f0970639d27c15c4efa3e22eb398a"
+      }
+    },
+    {
+      "piece_id": "ddrhw-diagonal-upper-exit-branch",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-exit-branch.dat",
+      "source_dat_sha256": "bf50ddce1df270e1929027c691523176af6ccd384c2cc0f898813703dae91dd1",
+      "views": [
+        {
+          "view_role": "angled",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/previews/preview.png",
+          "png_sha256": "876110261c41675fc93d7760f481e802614c5aa0efa12c7d3dbe197f7493430b",
+          "png_bytes": 310111,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/evidence/preview.json",
+          "report_sha256": "298e7665dbd13cfba3e9419a89c2942824e41ae0f7db507d88c2a266c339a6f5",
+          "saved_preview_model_sha256": "31a12d2a69c2525749a844b1c96e6f731226ee5b8a67b5bbbf8675386d38db4a",
+          "size_px": [
+            1600,
+            1200
+          ]
+        },
+        {
+          "view_role": "top-down",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/previews/preview-top.png",
+          "png_sha256": "ee3b9913e5b00682e7d22b6d5c0ea979d1afdae62460a24fb468a7ca6a051fca",
+          "png_bytes": 205890,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/evidence/preview-top.json",
+          "report_sha256": "aa51fe4b560abeb8a3785a50daeee5bee15ee509fee977fcdf064eee6a8eb382",
+          "saved_preview_model_sha256": "31a12d2a69c2525749a844b1c96e6f731226ee5b8a67b5bbbf8675386d38db4a",
+          "size_px": [
+            1600,
+            1200
+          ]
+        }
+      ],
+      "thumbnail": {
+        "png": "domains/highway/00_pieces/ddrhw-diagonal-upper-exit-branch/previews/preview-thumb.png",
+        "sha256": "9374bf4e596e755d999bbef3fc77df6db5f106f9835d74734159c57219ee0a82"
+      }
+    },
+    {
+      "piece_id": "ddrhw-diagonal-upper-entry-branch",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-diagonal-upper-entry-branch.dat",
+      "source_dat_sha256": "83cff09523460b2da8862a01c010b11d2e8500d143112efd50b8263666665e67",
+      "views": [
+        {
+          "view_role": "angled",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/previews/preview.png",
+          "png_sha256": "b506730d9c275d551ca1ff40d6eb4404805740cb2f06ccbcf008dd6652cc25f5",
+          "png_bytes": 311831,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/evidence/preview.json",
+          "report_sha256": "113c110c486d3a9be7094e264c9f42f12f8ed6e204901d71eeb94e3374664717",
+          "saved_preview_model_sha256": "5f6336451a326bd4e31a2ad1d29e6753ba120713c427090f6f75b379afe74646",
+          "size_px": [
+            1600,
+            1200
+          ]
+        },
+        {
+          "view_role": "top-down",
+          "png": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/previews/preview-top.png",
+          "png_sha256": "eade58b29d2058e7b07b41d0ce8095a6ee267c008ae9cdff947c12b8bdb6e9f1",
+          "png_bytes": 200823,
+          "report": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/evidence/preview-top.json",
+          "report_sha256": "3cb9fd0d961518ad018931697195a149d4a963275e31fdf1ece5043ce92886c1",
+          "saved_preview_model_sha256": "5f6336451a326bd4e31a2ad1d29e6753ba120713c427090f6f75b379afe74646",
+          "size_px": [
+            1600,
+            1200
+          ]
+        }
+      ],
+      "thumbnail": {
+        "png": "domains/highway/00_pieces/ddrhw-diagonal-upper-entry-branch/previews/preview-thumb.png",
+        "sha256": "5a0c11df856e5dbe2b278800aba71e4703333fa1ec6d7d9ceea137bf4dd4b807"
+      }
+    }
+  ]
+}

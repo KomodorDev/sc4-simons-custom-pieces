@@ -1,0 +1,337 @@
+// title: "Assembly definition: DD RHW-4 — Compact Diagonal Avenue Diamond"
+// summary: "Define the placed reusable components and construction plan for this assembly."
+//
+// Used when: Contributors author this assembly, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: Contributors following custom-pieces/docs/WORKFLOW_ASSEMBLY_CREATION.md; scp.subject_sources.write_subject() preserves later edits.
+// Affects: Placed component positions and rotations, generated documentation, and the assembly’s component-cycle menu.
+{
+  "purpose": "Build the compact diagonal DD RHW-4 and Avenue diamond from individually placeable modules.",
+  "id": "ddrhw-l1-and-l2-diagonal-avenue-diamond",
+  "title": "DD RHW-4 \u2014 Compact Diagonal Avenue Diamond",
+  "geometry_status": "Experimental compiled modules; see TESTING.md for current software and game evidence.",
+  "coordinate_units": "metres east,north,height; rotations counterclockwise",
+  "coordinate_system": {
+    "origin_world_m": [
+      0.0,
+      -144.0
+    ],
+    "origin_name": "southwest tile-centre reference",
+    "tile_size_m": 16,
+    "tile_boundaries_offset_m": 8,
+    "axes": [
+      "east",
+      "north",
+      "height"
+    ]
+  },
+  "traffic_policy": {
+    "ramp_access": "adjacent-carriageway right turns only",
+    "required_movements": [
+      "SW->NE",
+      "NE->SW",
+      "NW->SE",
+      "SE->NW",
+      "NE->NW",
+      "NW->SW",
+      "SW->SE",
+      "SE->NE"
+    ],
+    "forbidden_cross_avenue_turns": [
+      "NE->SE",
+      "SE->SW",
+      "SW->NW",
+      "NW->NE"
+    ],
+    "ramp_extension": "One diagonal city-grid step: 16 m east/north components and 22.627416998 m along the highway."
+  },
+  "construction_rectangle_tiles": [
+    10,
+    10
+  ],
+  "occupied_tiles": 53,
+  "module_placements": 15,
+  "component_types_used": 13,
+  "separately_available_component_types": 13,
+  "placements": [
+    {
+      "instance_id": "P01",
+      "label": "P01",
+      "name": "DD RHW-4 \u2014 and Avenue Access Core at P01",
+      "menu_name": "DD RHW-4 \u2014 and Avenue Access Core",
+      "piece_id": "ddrhw-diagonal-access-core",
+      "recipe": "highway_ddrhw_compact_access_core",
+      "origin_m": [
+        48.0,
+        -48.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        3,
+        6
+      ]
+    },
+    {
+      "instance_id": "P02",
+      "label": "P02",
+      "name": "DD RHW-4 \u2014 Avenue Northwest Ramp Junction at P02",
+      "menu_name": "DD RHW-4 \u2014 Avenue Northwest Ramp Junction",
+      "piece_id": "ddrhw-diagonal-northwest-junction",
+      "recipe": "highway_ddrhw_compact_northwest_junction",
+      "origin_m": [
+        32.0,
+        -32.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        2,
+        7
+      ]
+    },
+    {
+      "instance_id": "P03",
+      "label": "P03",
+      "name": "DD RHW-4 \u2014 Avenue Southeast Ramp Junction at P03",
+      "menu_name": "DD RHW-4 \u2014 Avenue Southeast Ramp Junction",
+      "piece_id": "ddrhw-diagonal-southeast-junction",
+      "recipe": "highway_ddrhw_compact_southeast_junction",
+      "origin_m": [
+        80.0,
+        -80.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        5,
+        4
+      ]
+    },
+    {
+      "instance_id": "P04",
+      "label": "P04",
+      "name": "DD RHW-4 \u2014 Lower Diagonal Exit Branch at P04",
+      "menu_name": "DD RHW-4 \u2014 Lower Diagonal Exit Branch",
+      "piece_id": "ddrhw-diagonal-lower-exit-branch",
+      "recipe": "highway_ddrhw_compact_lower_exit_branch",
+      "origin_m": [
+        96.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        6,
+        8
+      ]
+    },
+    {
+      "instance_id": "P05",
+      "label": "P05",
+      "name": "DD RHW-4 \u2014 Lower Diagonal Entry Branch at P05",
+      "menu_name": "DD RHW-4 \u2014 Lower Diagonal Entry Branch",
+      "piece_id": "ddrhw-diagonal-lower-entry-branch",
+      "recipe": "highway_ddrhw_compact_lower_entry_branch",
+      "origin_m": [
+        16.0,
+        -96.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        1,
+        3
+      ]
+    },
+    {
+      "instance_id": "P06",
+      "label": "P06",
+      "name": "DD RHW-4 \u2014 Compact Lower Diagonal Exit Grade at P06",
+      "menu_name": "DD RHW-4 \u2014 Compact Lower Diagonal Exit Grade",
+      "piece_id": "ddrhw-diagonal-lower-exit-grade",
+      "recipe": "highway_ddrhw_compact_lower_exit_grade",
+      "origin_m": [
+        80.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        5,
+        8
+      ]
+    },
+    {
+      "instance_id": "P07",
+      "label": "P07",
+      "name": "DD RHW-4 \u2014 Compact Lower Diagonal Entry Grade at P07",
+      "menu_name": "DD RHW-4 \u2014 Compact Lower Diagonal Entry Grade",
+      "piece_id": "ddrhw-diagonal-lower-entry-grade",
+      "recipe": "highway_ddrhw_compact_lower_entry_grade",
+      "origin_m": [
+        16.0,
+        -80.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        1,
+        4
+      ]
+    },
+    {
+      "instance_id": "P08",
+      "label": "P08",
+      "name": "DD RHW-4 \u2014 Upper Diagonal Exit Branch at P08",
+      "menu_name": "DD RHW-4 \u2014 Upper Diagonal Exit Branch",
+      "piece_id": "ddrhw-diagonal-upper-exit-branch",
+      "recipe": "highway_ddrhw_compact_upper_exit_branch",
+      "origin_m": [
+        0.0,
+        -112.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        0,
+        2
+      ]
+    },
+    {
+      "instance_id": "P09",
+      "label": "P09",
+      "name": "DD RHW-4 \u2014 Upper Diagonal Entry Branch at P09",
+      "menu_name": "DD RHW-4 \u2014 Upper Diagonal Entry Branch",
+      "piece_id": "ddrhw-diagonal-upper-entry-branch",
+      "recipe": "highway_ddrhw_compact_upper_entry_branch",
+      "origin_m": [
+        112.0,
+        -0.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        7,
+        9
+      ]
+    },
+    {
+      "instance_id": "P10",
+      "label": "P10",
+      "name": "DD RHW-4 \u2014 Compact Upper Diagonal Exit Grade at P10",
+      "menu_name": "DD RHW-4 \u2014 Compact Upper Diagonal Exit Grade",
+      "piece_id": "ddrhw-diagonal-upper-exit-grade",
+      "recipe": "highway_ddrhw_compact_upper_exit_grade",
+      "origin_m": [
+        48.0,
+        -96.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        3,
+        3
+      ]
+    },
+    {
+      "instance_id": "P11",
+      "label": "P11",
+      "name": "DD RHW-4 \u2014 Compact Upper Diagonal Entry Grade at P11",
+      "menu_name": "DD RHW-4 \u2014 Compact Upper Diagonal Entry Grade",
+      "piece_id": "ddrhw-diagonal-upper-entry-grade",
+      "recipe": "highway_ddrhw_compact_upper_entry_grade",
+      "origin_m": [
+        96.0,
+        -48.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        6,
+        6
+      ]
+    },
+    {
+      "instance_id": "P12",
+      "label": "P12",
+      "name": "DD RHW-4 \u2014 Diagonal Continuation A at P12",
+      "menu_name": "DD RHW-4 \u2014 Diagonal Continuation A",
+      "piece_id": "ddrhw-diagonal-diagonal-half-a",
+      "recipe": "highway_ddrhw_compact_diagonal_half_a",
+      "origin_m": [
+        48.0,
+        -80.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        3,
+        4
+      ]
+    },
+    {
+      "instance_id": "P13",
+      "label": "P13",
+      "name": "DD RHW-4 \u2014 Diagonal Continuation B at P13",
+      "menu_name": "DD RHW-4 \u2014 Diagonal Continuation B",
+      "piece_id": "ddrhw-diagonal-diagonal-half-b",
+      "recipe": "highway_ddrhw_compact_diagonal_half_b",
+      "origin_m": [
+        48.0,
+        -96.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        3,
+        3
+      ]
+    },
+    {
+      "instance_id": "P14",
+      "label": "P14",
+      "name": "DD RHW-4 \u2014 Diagonal Continuation A at P14",
+      "menu_name": "DD RHW-4 \u2014 Diagonal Continuation A",
+      "piece_id": "ddrhw-diagonal-diagonal-half-a",
+      "recipe": "highway_ddrhw_compact_diagonal_half_a",
+      "origin_m": [
+        80.0,
+        -48.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        5,
+        6
+      ]
+    },
+    {
+      "instance_id": "P15",
+      "label": "P15",
+      "name": "DD RHW-4 \u2014 Diagonal Continuation B at P15",
+      "menu_name": "DD RHW-4 \u2014 Diagonal Continuation B",
+      "piece_id": "ddrhw-diagonal-diagonal-half-b",
+      "recipe": "highway_ddrhw_compact_diagonal_half_b",
+      "origin_m": [
+        96.0,
+        -48.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        6,
+        6
+      ]
+    }
+  ],
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}

@@ -1,0 +1,122 @@
+// title: "Mirrored transition terrain correction installation"
+// summary: "Bind the verified controller-only correction, preserved 231 pieces and menu, rollback backup, full software tests, and pending game retest."
+// Used when: Reviewing the installed terrain-policy correction and preparing fresh close-diagonal construction tests.
+// Read by: Contributors, players, and the owning testing guide.
+// Updated by: Contributors after exact saved-rule, installation, and independent post-install checks.
+// Affects: Mirrored transition construction constraints only; no human terrain or traffic pass is supplied.
+{
+  "schema_version": 1,
+  "state": "controller-correction-installed-and-independently-audited",
+  "capture_date": "2026-11-03",
+  "subject_id": "ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile-mirrored",
+  "scope": "Only the mirrored transition terrain construction policy changed. The reported diagonal-arm sinkhole has not been retested in the game.",
+  "reported_failure_evidence": "game-close-placement-20261103.jsonc",
+  "native_constraint_contract": "terrain-constraint-contract.jsonc",
+  "native_constraint_contract_sha256": "86f6307b5118239db6b526d280251ff454c2fed1ce3c86fa2da5386097828992",
+  "actual_controller_construction_evidence": "terrain-controller-candidate-verification.jsonc",
+  "actual_controller_construction_evidence_sha256": "1aab5eb7855ea4d9d8bccf45eb618c5e0ef3907f7e11fc8a1eacef2891155470",
+  "fresh_normal_build": {
+    "path": "dist/ddrhw-mirrored-transition-terrain-01",
+    "manifest_sha256": "6b1e25be0e50c9544c7a34eea540ffa430f6818509bfea00e3fb73afc8ecc9c3",
+    "verification_sha256": "561abd50831b36e2e99c13a0c3d5323aec33941659cf5d744f04d8c96156901c",
+    "static_checks_passed": true,
+    "indexed_model_triangles_checked": 36797,
+    "directed_lane_journeys_checked": 4,
+    "native_external_members_checked": 8,
+    "mirrored_DAT_sha256_unchanged": "32c60487207bc1b6d68aa6f17ed547481851096d5b3e1b9017563ba1ddcc8def",
+    "note": "The ordinary one-type build supplies exact source rules and saved-resource verification; the full retained installation is updated through the separate bounded controller candidate."
+  },
+  "controller_update": {
+    "kind": "preserved-installation-mirrored-transition-controller-update-v1",
+    "ordinary_build_verifier_supported_for_compound": false,
+    "candidate_manifest_sha256": "8d230a322d4eae471fe8b8822980174e55070a71552bee449fdaada97cf30016",
+    "candidate_independent_audit_sha256": "d413553a1826a5d486dd6e7255c9f63f25c686c504875abdb5460ba7d2792fc2",
+    "baseline_receipt_sha256": "58ea62d5171aa8d420c4084a7d948275d7e8bdadbeb1061c98011798d78fa09c",
+    "installed_receipt_sha256": "345c834b3f9574c774ab2fad5b465038cc33cdeee41ab4936a1373fe7b3bd616",
+    "installed_controller_sha256": "d6fe41b14782a4f3129469870948797b493a56c8043c1fa47cf964d79bd5d334",
+    "independent_post_install_audit_sha256": "2f362c446f42c91cdd4314c29eb9632ee60348d72e46b75c5490767ed62856bd",
+    "changed_RUL0_bytes": 12,
+    "changed_base_definition": "f880",
+    "changed_characters": "Twelve + characters become # characters in the mirrored owned-core ConsLayout.",
+    "copyfrom_clones_byte_identical": 7,
+    "all_other_RUL0_bytes_identical": true,
+    "RUL1_byte_identical": true,
+    "NetworkINI_byte_identical": true,
+    "native_profile_donors_checked": 13,
+    "plugin_scan_roots_checked": 5,
+    "game_closed_before_installation": true,
+    "write_whitelist": [
+      "00_SCP_Controller_NAM50.dat",
+      ".scp-install.json"
+    ],
+    "piece_types_before_and_after": 231,
+    "existing_piece_files_reinstalled": false,
+    "all_231_piece_files_and_menu_DAT_bytes_device_inode_size_mtime_unchanged": true,
+    "retained_DAT_file_identities_unchanged": 232,
+    "backup_id": "6b2c3063f85e47c9a61aeaff9bf61105",
+    "standard_external_rollback_backup_verified": true,
+    "persistent_transaction_journal_phase": "committed",
+    "game_or_city_files_modified": false
+  },
+  "software_checks": {
+    "full_command": "python3 -B tools/run_tests.py",
+    "full_command_scope": "Immutable maintained-source copy, excluding private settings, native game inputs, staged builds, and private captures.",
+    "source_files": 3905,
+    "source_snapshot_sha256": "fce8caf6b90511916a5371420162de87edf93c4d9aa65391b694a74fba94fe53",
+    "full_log_sha256": "94a98c6bd3c6ab5534e948181a46a1a1916ebced89f4e3dc4121df4dac25b72f",
+    "elapsed_seconds": 491.72595216706395,
+    "reported_tests": 2305,
+    "explicit_reported_skips": 95,
+    "runner_totals_note": "Use unittest-reported totals. A skipped class can cover several native methods; do not infer declared method coverage by subtraction.",
+    "suites": [
+      {
+        "scope": "framework",
+        "reported_tests": 1052,
+        "skips": 11,
+        "seconds": 220.964,
+        "passed": true
+      },
+      {
+        "scope": "high-speed-rail",
+        "reported_tests": 420,
+        "skips": 65,
+        "seconds": 106.994,
+        "passed": true
+      },
+      {
+        "scope": "highway",
+        "reported_tests": 704,
+        "skips": 14,
+        "seconds": 124.743,
+        "passed": true
+      },
+      {
+        "scope": "hsr-trumpet",
+        "reported_tests": 129,
+        "skips": 5,
+        "seconds": 26.34,
+        "passed": true
+      }
+    ],
+    "configured_focused_transition_checks": {
+      "reported_tests": 50,
+      "skips": 0,
+      "passed": true
+    },
+    "private_transaction_and_recovery_checks": {
+      "reported_tests": 13,
+      "skips": 0,
+      "passed": true,
+      "evidence_sha256": "3f1f27515a0c8608ff47c2e19b9d6157bdf16a8dfb995ea20b8c20d02669ead1"
+    },
+    "production_source_fingerprints_unchanged_after_passing_checks": true
+  },
+  "private_path_handling": "Actual Plugins, backup, executable, and transaction argument paths remain in ignored private records. Exact measured hashes and counts are preserved here without personal filesystem paths.",
+  "fresh_placement_required": true,
+  "existing_terrain_hole_automatically_repaired": false,
+  "human_corrected_close_diagonal_result": "unverified",
+  "human_corrected_straight_arm_result": "unverified",
+  "human_corrected_farther_manual_result": "unverified",
+  "moving_traffic_result_supplied_by_this_correction": false,
+  "previous_development_ZIPs": "Earlier Y and transition archives remain their frozen earlier captures; this controller update does not repack them."
+}

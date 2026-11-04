@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "subject_id": "ddrhw-l1-and-l2-diagonal-avenue-diamond",
+  "revision": "adaptive-ground-1",
+  "verified_at": "2026-10-30",
+  "status": "compiled-and-checked",
+  "repository_tests": {
+    "command": "python3 -B tools/run_tests.py",
+    "reported": 1535,
+    "executed": 1453,
+    "skipped": 82,
+    "all_executed_passed": true,
+    "suites": [
+      {
+        "name": "framework",
+        "reported": 859,
+        "skipped": 10
+      },
+      {
+        "name": "high-speed-rail",
+        "reported": 428,
+        "skipped": 65
+      },
+      {
+        "name": "highway",
+        "reported": 132,
+        "skipped": 2
+      },
+      {
+        "name": "trumpet",
+        "reported": 116,
+        "skipped": 5
+      }
+    ],
+    "limits": "Skipped cases require unavailable native inputs or retained builds; the new native candidate was additionally built and checked against its supported inputs."
+  },
+  "native_build": {
+    "profile": "nam50-rhd",
+    "dependency_labels": [
+      "adaptive_avenue",
+      "controller",
+      "dd_rhw",
+      "mis",
+      "rhw_core"
+    ],
+    "input_scope": "Explicit NAM-only source root plus one exact private capture directory; this source scan excludes other active Plugins roots. Installation requires a separate complete active-root check.",
+    "private_input_paths_redacted": true,
+    "normal_manifest_sha256": "74392448fa4891e2f246a52897a677f5057110ba656101aeb72234b66bfc5f77",
+    "normal_dat_files": 15,
+    "normal_resources_checked": 1086,
+    "menu_manifest_sha256": "1e2d81cb28b95b56b218b744b80d76a1501c90b7f5c21bba8678d32fb4474625",
+    "menu_dat_files": 15,
+    "menu_resources_checked": 1038,
+    "normal_and_menu_static_checks_passed": true,
+    "assembly_menu_buttons": 1,
+    "member_types_in_cycle": 13,
+    "rul1_preserved_in_menu": true
+  },
+  "preservation": {
+    "report": "adaptive-ground-preservation.json",
+    "sha256": "1bc7878809a8a854ad313f7cd296ebf26b5394cb1eeae45b2737de8e7b9b5531",
+    "canonical_models_and_routes_identical": true,
+    "unchanged_component_dats": 10,
+    "adaptive_components": 3,
+    "adaptive_avenue_cells": 15,
+    "native_ground_texture_copies": 300,
+    "posed_merged_path_aliases": 15,
+    "rotating_props": 14
+  },
+  "assembly": {
+    "report": "adaptive-ground-assembly-check.json",
+    "sha256": "6f3c56166f7c5b778bb762273e7b28c0b44df9547430d07eecb554c3865baef5",
+    "owned_tiles": 53,
+    "placements": 15,
+    "component_types": 13,
+    "required_arm_movements": 8,
+    "forbidden_cross_avenue_turns_absent": 4,
+    "saved_route_fragments": 172,
+    "directed_lane_seams": 164,
+    "maximum_car_grade_percent": 29.609599494824746
+  },
+  "software_views": "Existing canonical images retained unchanged; they show the approved fixed native ground reference and do not simulate surrounding-dependent sidewalk selection.",
+  "game_observations": "Unverified for the integrated diamond; the isolated rendering probe retains its own scoped passes.",
+  "installed": false,
+  "game_tested": false,
+  "published": false
+}

@@ -266,6 +266,22 @@ class MenuExperimentTests(unittest.TestCase):
                  for path in self.root.rglob('*') if path.is_file() and path not in artwork}
         self.assertEqual(after, before)
 
+    def test_exact_icon_selection_skips_unselected_assembly_artwork(self):
+        other = deepcopy(self.catalog['_assemblies'][0])
+        other['id'] = 'unselected-assembly'
+        other['path'] = 'domains/test/01_assemblies/unselected-assembly'
+        self.catalog['_assemblies'].append(other)
+        result = write_assembly_icons(self.project, assembly_ids=['fixture-assembly'])
+        self.assertEqual(result['icons'], ['domains/test/01_assemblies/fixture-assembly/icon.png'])
+        self.assertFalse((self.project / other['path']).exists())
+
+    def test_invalid_exact_icon_selection_fails_before_changing_artwork(self):
+        before = self.assembly_icon.read_bytes()
+        for identifiers in ([], ['missing'], ['fixture-assembly', 'fixture-assembly'], 'fixture-assembly'):
+            with self.subTest(identifiers=identifiers), self.assertRaisesRegex(ValueError, 'icon selection'):
+                write_assembly_icons(self.project, assembly_ids=identifiers)
+        self.assertEqual(self.assembly_icon.read_bytes(), before)
+
     def test_changed_domain_network_rejects_stale_icon_before_creating_build_output(self):
         self.prepare_single_button_layout()
         with patch('scp.menu_experiment._assembly_icon_network', return_value='GHSR'):

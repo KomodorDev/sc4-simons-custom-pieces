@@ -8,7 +8,7 @@ document_type: "guide"
 # High-speed rail player guide
 
 <!-- BEGIN DOCUMENT NAVIGATION -->
-[1. Inventories and collections](#1-inventories-and-collections) · [2. Choose the right family](#2-choose-the-right-family) · [3. Build a selected collection](#3-build-a-selected-collection) · [4. Place and rotate pieces](#4-place-and-rotate-pieces) · [5. One-way branches and height changes](#5-one-way-branches-and-height-changes) · [6. Two-track S-curves, switches and transitions](#6-two-track-s-curves-switches-and-transitions) · [7. Reference sheets and current limitations](#7-reference-sheets-and-current-limitations)
+[1. Inventories and collections](#1-inventories-and-collections) · [2. Choose the right family](#2-choose-the-right-family) · [3. Build a selected collection](#3-build-a-selected-collection) · [4. Place and rotate pieces](#4-place-and-rotate-pieces) · [5. One-way branches and height changes](#5-one-way-branches-and-height-changes) · [6. Two-track S-curves, switches, and transitions](#6-two-track-s-curves-switches-and-transitions) · [7. Current limitations](#7-current-limitations)
 <!-- END DOCUMENT NAVIGATION -->
 
 **HSR** means elevated High Speed Rail; **GHSR** means Ground High Speed Rail. Both carry the game's Monorail traffic. A **piece** is one reusable construction type, selected through a standalone button or an assembly’s component cycle. An **assembly** is a documented arrangement of several placed pieces; the trumpet is an assembly. A **collection** is a named selection of existing pieces used when building the plugin, not an extra game button.
@@ -159,7 +159,7 @@ For a ground-level start, use **GHSR Ground (1 m) — Split 90° Right from Two-
 
 <a id="two-track-s-curves-switches-and-transitions"></a>
 
-## 6. Two-track S-curves, switches and transitions
+## 6. Two-track S-curves, switches, and transitions
 
 **GHSR Ground (1 m) ↔ HSR Level 2 (15.5 m) — Two-Track Transition** joins paired elevated and ground lines across an eight-tile straight gap. Its base orientation has HSR at the north end and GHSR at the south; rotate 180° to exchange those ends. Connect matching native paired track at each outside edge. It does not join a centred one-way port.
 
@@ -173,17 +173,7 @@ Ground GHSR can pass under elevated HSR using a combined crossing. Passing below
 
 <a id="reference-sheets-and-current-limitations"></a>
 
-## 7. Reference sheets and current limitations
-
-These family sheets supplement the canonical preview in each piece README. They do not replace its exact port connections or current test status.
-
-| Reference sheet | What it shows |
-| --- | --- |
-| [HSR/GHSR crossing matrix](assets/figures/crossings/matrix.png) | The four grid/diagonal alignment combinations |
-| [One-way branches](assets/figures/one-way/branches.png) | Split, merge and branch shapes |
-| [Flyover levels and crossings](assets/figures/flyovers/levels-and-crossings.png) | Upper/lower route arrangements |
-| [Diagonal S-curves](assets/figures/s-curves/diagonal.png) | Sideways diagonal shifts |
-| [Menu icon examples](assets/figures/menu/icon-contact-sheet.png) | Category colours and lower-band abbreviations |
+## 7. Current limitations
 
 The saved [design review](junction-design-review.jsonc) covers 130 current pieces: 32 modular branches/crossovers need support-spacing review, and 98 have no objection recorded under that bounded review. No current piece has a NEEDS REDESIGN verdict. The two smooth T pieces have their own independent audits. Review flags remain visible in the inventory, affected piece READMEs/previews and newly built menu titles/tooltips; a software pass does not clear a flag.
 

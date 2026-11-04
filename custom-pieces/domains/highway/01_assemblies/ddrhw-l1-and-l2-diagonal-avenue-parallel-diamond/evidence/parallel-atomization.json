@@ -1,0 +1,610 @@
+{
+  "schema_version": 1,
+  "purpose": "Implemented saved-resource atomization drawing",
+  "assembly": "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond",
+  "manifest_sha256": "68456fbb44bd33cd7f6f3309dfc1a4245838a8bccfb4389417c4d5cfb7c6add4",
+  "assembly_definition_sha256": "2cba5c534e36d9bf036f80f37dbeea5e9647f28aab93f2f00ec963d53399a00c",
+  "generator_sha256": "a9461cb5b1dc3fab2f0354b44ce82866fc2a4fdc8ab71b1e9fe5981d848abee5",
+  "asset_inputs": [
+    {
+      "piece_id": "ddrhw-parallel-crossing",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-crossing.dat",
+      "sha256": "9d206635162e7c68916f5e96d8fae5e9b146d3c66f574dd90ecc13b4036c0105"
+    },
+    {
+      "piece_id": "ddrhw-parallel-lower-entry-departure",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-departure.dat",
+      "sha256": "8dd0d80e6e6ec74ad1b21826bc7c04be0e95b95e62919bbe351db3a645319cba"
+    },
+    {
+      "piece_id": "ddrhw-parallel-lower-entry-grade",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-grade.dat",
+      "sha256": "283a324a47fe0b9539e0f2370b0d1ac26867e2fe4cb7e3dd6f94d181334928bf"
+    },
+    {
+      "piece_id": "ddrhw-parallel-lower-entry-slip",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-entry-slip.dat",
+      "sha256": "759f9876c39de54448a561cca4480c2e5ffe8565726d164c203807a92b1efb99"
+    },
+    {
+      "piece_id": "ddrhw-parallel-lower-exit-departure",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-departure.dat",
+      "sha256": "20dbe47bb59516c6be06d632f9ceefe1ae9cff4e684a4b5439956c4b755347f6"
+    },
+    {
+      "piece_id": "ddrhw-parallel-lower-exit-grade",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-grade.dat",
+      "sha256": "9fd6ad3f7574a2361dfa69219ee9e5d7e3edb586cc417ecf2b1210df41a523c4"
+    },
+    {
+      "piece_id": "ddrhw-parallel-lower-exit-slip",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-lower-exit-slip.dat",
+      "sha256": "ac6f4e8613e86fc4efed2e3b0c344209f2c64f90f9007bd05f310fd124667bb1"
+    },
+    {
+      "piece_id": "ddrhw-parallel-northwest-terminal",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-northwest-terminal.dat",
+      "sha256": "57f704b36929ae76993e23771956099ee6a25cbc02f64d20a2fa4313518cf428"
+    },
+    {
+      "piece_id": "ddrhw-parallel-southeast-terminal",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-southeast-terminal.dat",
+      "sha256": "6a3d9f19f7a50781f64057fbd1df176799596e5a84da47066433a832d8ddf81d"
+    },
+    {
+      "piece_id": "ddrhw-parallel-upper-entry-departure",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-departure.dat",
+      "sha256": "d7d45c1d47c57896742493d3cf3c6f6464e2a0a7533b8f23fca46d14b08ba42f"
+    },
+    {
+      "piece_id": "ddrhw-parallel-upper-entry-grade",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-grade.dat",
+      "sha256": "8ca115f58a10b4bc1615da082bac4714fc425410715cd9407a226b12e077bf07"
+    },
+    {
+      "piece_id": "ddrhw-parallel-upper-entry-slip",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-entry-slip.dat",
+      "sha256": "1441e18d313b00ece4e3575d253baa58fc036c8b8496fc61cc042b80cedd43c2"
+    },
+    {
+      "piece_id": "ddrhw-parallel-upper-exit-departure",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-departure.dat",
+      "sha256": "cd99bf8f88f60440d5be481bb6218f6dd1fd387c4cb36e36a34ee490d6c13fae"
+    },
+    {
+      "piece_id": "ddrhw-parallel-upper-exit-grade",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-grade.dat",
+      "sha256": "d62818493bbf76713d1f6adad1c711aaf872b6ec41d99aebd862de55349b97db"
+    },
+    {
+      "piece_id": "ddrhw-parallel-upper-exit-slip",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-upper-exit-slip.dat",
+      "sha256": "2522a031fb91724d89ac2afb895ed19c381f27825d1487a7238b326d8c7a7add"
+    }
+  ],
+  "cells": [
+    {
+      "placement": "P09",
+      "source_city_cell": [
+        -3,
+        2
+      ],
+      "tile_id": "7F5B6000",
+      "model_sha256": "50fdf5f30b644d077618c4b0379112ddc74f17df697953f61711d2408d6e0882",
+      "path_sha256": "a6aaef3f430f3c458296bc7d5429d00e66612d7167dba484be9ac9f1cb682457"
+    },
+    {
+      "placement": "P05",
+      "source_city_cell": [
+        -3,
+        3
+      ],
+      "tile_id": "7F5B2010",
+      "model_sha256": "75ba3fd4a15fc50536b90505c9de8a8d3bb1fcef1965b5116d76f0c9f8e4a477",
+      "path_sha256": "3cbad81757e6cf4477811acd3964b0a596617b55e6f4e890d942262bc9b82fcc"
+    },
+    {
+      "placement": "P06",
+      "source_city_cell": [
+        -3,
+        4
+      ],
+      "tile_id": "7F5B3010",
+      "model_sha256": "05f2b24a1754d2e5994db8477e6cee6dd89703f0c6f0f68375ddf2aa3167a88a",
+      "path_sha256": "c37db8f710504f4cdd82b2536ec71b3347f524f8648b8dc330fd8f5276a7f843"
+    },
+    {
+      "placement": "P13",
+      "source_city_cell": [
+        -2,
+        1
+      ],
+      "tile_id": "7F5BA000",
+      "model_sha256": "0fb4ed4fa5120364756a19b01a4f9b6377f5902c91443e630f8d6963ea37964f",
+      "path_sha256": "05f1821c5403793b78022d8d942be5a6853e679a83b4b17cec1a2368ab64066f"
+    },
+    {
+      "placement": "P05",
+      "source_city_cell": [
+        -2,
+        2
+      ],
+      "tile_id": "7F5B2100",
+      "model_sha256": "1c2ce91982433b04220082e45e5f5f61db6a8d698a00b5eae88774da3eafd0ab",
+      "path_sha256": "1471e89530115ed16d5cb813709c88a1e357796cd4b22e51caaa62ddb88dfc18"
+    },
+    {
+      "placement": "P06",
+      "source_city_cell": [
+        -2,
+        3
+      ],
+      "tile_id": "7F5B3100",
+      "model_sha256": "e51200158b1734e081d5b839ef49b564eb5e5db999b5386cb3c604f9d8adbc99",
+      "path_sha256": "094b267d43117022dd4a20c2d4535d3b3120597c5fb885cd992165380a482d61"
+    },
+    {
+      "placement": "P10",
+      "source_city_cell": [
+        -2,
+        4
+      ],
+      "tile_id": "7F5B7000",
+      "model_sha256": "c0b133b1be23196550aa0fa1ba5df9287a95a0cf64f56d5fc33742cf9f954804",
+      "path_sha256": "92861ce332217d5be43265ec5aaf6d5a9fb424a5d906948a1fad134c9563d6aa"
+    },
+    {
+      "placement": "P02",
+      "source_city_cell": [
+        -1,
+        -1
+      ],
+      "tile_id": "7F5AD000",
+      "model_sha256": "5cd3ced29a0157e49ec460819099b11551e7fd681ff346a686ba5ae780f2a3fc",
+      "path_sha256": "82ec1e447b9d96193bb067bdda3164da265287a761eaa469d1e900464aebec66"
+    },
+    {
+      "placement": "P02",
+      "source_city_cell": [
+        -1,
+        0
+      ],
+      "tile_id": "7F5AD010",
+      "model_sha256": "eb780de636363b77d74a0a03488052b0bda5a042b241f0ae63132baac6691c85",
+      "path_sha256": "2d34bf92bd56fcae5bc5cbbec917395d56895e50916da73aa99e6ddcc71b728a"
+    },
+    {
+      "placement": "P13",
+      "source_city_cell": [
+        -1,
+        1
+      ],
+      "tile_id": "7F5BA100",
+      "model_sha256": "4d06065ddbdcda86d824d522384734a5e2760cf3b78792ed6b33aa17fd348881",
+      "path_sha256": "90450736d6c924112320ef5977e71ea2d04aa670e77d39222affb0913a027f63"
+    },
+    {
+      "placement": "P14",
+      "source_city_cell": [
+        -1,
+        2
+      ],
+      "tile_id": "7F5BB000",
+      "model_sha256": "5ab00e9748acfd524c20d7b096b0a7e06bfbb9be5b7a6fd33c8008480e23f873",
+      "path_sha256": "c8a51d3db01f2d13c44ed0951a8faa541d765aca2bcc6bf7839dc89ab0afc3d4"
+    },
+    {
+      "placement": "P14",
+      "source_city_cell": [
+        -1,
+        3
+      ],
+      "tile_id": "7F5BB010",
+      "model_sha256": "1fda4d83c39e5f077538cc5bd4d0e4425ece7c06408d44c505853a83ce849cec",
+      "path_sha256": "6f536714aef2ca1ff2eacf73379b96997db4f5da71d563fe2fd3b7c980e93e8b"
+    },
+    {
+      "placement": "P02",
+      "source_city_cell": [
+        0,
+        -1
+      ],
+      "tile_id": "7F5AD100",
+      "model_sha256": "599f8116e6bbd69af681e59637da16e0825501fc8c613c377082f90d7ad945f7",
+      "path_sha256": "4e356ffd414a61b007c88486a6689ff410423ec60f64fe9288508d565c62e7b0"
+    },
+    {
+      "placement": "P01",
+      "source_city_cell": [
+        0,
+        0
+      ],
+      "tile_id": "7F5AB000",
+      "model_sha256": "ee7c37dbe7a259130eead031dca99432e92fb9a37e7c9e0e1dd22870b1bd419a",
+      "path_sha256": "16daea529a42ce14980b1856f228543ace9ab2ee391e6f985f82678e57940920"
+    },
+    {
+      "placement": "P01",
+      "source_city_cell": [
+        0,
+        1
+      ],
+      "tile_id": "7F5AB010",
+      "model_sha256": "b3e59fada4a947fd7eac3b56f15eb8aba7998cc01753aa43b3da28237b70dd3d",
+      "path_sha256": "6ad84f249e22f62c516858d925e6dc33ed793beed6b44b454f1227e9a448cf2d"
+    },
+    {
+      "placement": "P14",
+      "source_city_cell": [
+        0,
+        2
+      ],
+      "tile_id": "7F5BB100",
+      "model_sha256": "856a9b25ad12386fe05a9fc9b6970c145c3af93c19a7b4bb9a4dfbbafc624f4b",
+      "path_sha256": "071b5d074bc8a5758e336b96e7bd6143724df82c5d13f0c1baac1fc572f873fb"
+    },
+    {
+      "placement": "P12",
+      "source_city_cell": [
+        1,
+        -2
+      ],
+      "tile_id": "7F5B9000",
+      "model_sha256": "b669d35c94928492c38ff7789d45485bbd1667a86eae517c0453870b6de00cda",
+      "path_sha256": "4f872a7686a7ba9aca8ff768737a1fbaa3fe97a49ac062c59700cdc79cb2964a"
+    },
+    {
+      "placement": "P12",
+      "source_city_cell": [
+        1,
+        -1
+      ],
+      "tile_id": "7F5B9010",
+      "model_sha256": "370cfbe217458e86308671569bd190ab52f96978e6aea83c461badca26ae6b0d",
+      "path_sha256": "8b5c71f2d139e4e40b3a69bcb0d98b1c88944c08a78f423a4136d2b54117df75"
+    },
+    {
+      "placement": "P01",
+      "source_city_cell": [
+        1,
+        0
+      ],
+      "tile_id": "7F5AB100",
+      "model_sha256": "2a12b793d966f00a237fa96c8ae76562c27d21fd224d3830c153e1363e70cbbb",
+      "path_sha256": "44484b24ff2f88244b4db5126bca0f1293f52efa16a10287e25a5c060f785c53"
+    },
+    {
+      "placement": "P03",
+      "source_city_cell": [
+        1,
+        1
+      ],
+      "tile_id": "7F5AF000",
+      "model_sha256": "1a05359599e4841c6576993d181d746e816ca16bcc0589438d765444dd21f58b",
+      "path_sha256": "c9e04449619e5dc295dcf35d45edb6b07dab5d90d21b453bbc1b7c33fc6af893"
+    },
+    {
+      "placement": "P03",
+      "source_city_cell": [
+        1,
+        2
+      ],
+      "tile_id": "7F5AF010",
+      "model_sha256": "f25307ccbdfb4eb35de057eec9db1c0726328ae3e63ab4008681365f787eb503",
+      "path_sha256": "5b53e2b7e406f019c9ffa09ee7ad48c6dbf21053647e1aa1cc501e9231d6ce10"
+    },
+    {
+      "placement": "P08",
+      "source_city_cell": [
+        2,
+        -3
+      ],
+      "tile_id": "7F5B5000",
+      "model_sha256": "22061a8319f64dd4165e13973b5f3664d2d81d99850d8cbf8029badfe2f4cd39",
+      "path_sha256": "e5a7b8247bd3bc47d324640ab0c06e583d032c0659fceb10908743a6976545ee"
+    },
+    {
+      "placement": "P04",
+      "source_city_cell": [
+        2,
+        -2
+      ],
+      "tile_id": "7F5B1010",
+      "model_sha256": "c710934da5efc34d88ba6c40a3c5788ee19e8f8021b07250dca9ff8f463a2753",
+      "path_sha256": "5e2056902da4a23d5f34394f6a30ff4bc0753a97c1ee83725a8c02c88cc3ddcf"
+    },
+    {
+      "placement": "P15",
+      "source_city_cell": [
+        2,
+        -1
+      ],
+      "tile_id": "7F5BC000",
+      "model_sha256": "94a595051c4ca4b327ae4f3cd1492393c6c23405b3b6e2c30e711c8fe1d56f5d",
+      "path_sha256": "a131d7a2a0c859848fb7db5d822ab0019ef18a97bcf640640ab6610efff7a160"
+    },
+    {
+      "placement": "P15",
+      "source_city_cell": [
+        2,
+        0
+      ],
+      "tile_id": "7F5BC010",
+      "model_sha256": "af1ca1c76f2765db73cb28f96990b90051f51394497beaf50b2a3a6a3ffe57a1",
+      "path_sha256": "f88ba1d777559d21c2d5fb15f637c070d2d9fea49564d497d5dad10b98b37f3a"
+    },
+    {
+      "placement": "P03",
+      "source_city_cell": [
+        2,
+        1
+      ],
+      "tile_id": "7F5AF100",
+      "model_sha256": "66544838e392c567b584e046fed5d17242eeb2363e6f021044c819849aabc5f7",
+      "path_sha256": "de59066cb6e1da112acfbd863e80f32ce877b0ca73865e095397b336d5950e7f"
+    },
+    {
+      "placement": "P04",
+      "source_city_cell": [
+        3,
+        -3
+      ],
+      "tile_id": "7F5B1100",
+      "model_sha256": "02abe7a0e4271bae1e5bb7a85dc589fce87114b2ebce98e689a771b022fb9357",
+      "path_sha256": "67c688b6fefb059accaa85b5c81a2c31ab77396154a6df7ab02a2d1a141a39d3"
+    },
+    {
+      "placement": "P07",
+      "source_city_cell": [
+        3,
+        -2
+      ],
+      "tile_id": "7F5B4010",
+      "model_sha256": "91e42355e2512b8b5c15ccaa59eeece40db3fb98b9775c6e7e63dda8356cc5ba",
+      "path_sha256": "029136598dbcf774e468eb097e5224d1f4850ca74370a3c42dcb7e246a31a920"
+    },
+    {
+      "placement": "P15",
+      "source_city_cell": [
+        3,
+        -1
+      ],
+      "tile_id": "7F5BC100",
+      "model_sha256": "a1cf97782fc282345de19cd513295d8413d564dfe8eeb1e1edcf52d257f82ef1",
+      "path_sha256": "87b50b75d7229b4cfe3fd35c3f45b3118e11a904013eb7370538d528c21311d7"
+    },
+    {
+      "placement": "P07",
+      "source_city_cell": [
+        4,
+        -3
+      ],
+      "tile_id": "7F5B4100",
+      "model_sha256": "3c92b2c8468537021db7171dbc4a171f0b16b89f94d11a87af2bfebd6910bc7e",
+      "path_sha256": "324d2ae3ba302ea774571674161b794c7cdd6447198f7172474458d2cad673d8"
+    },
+    {
+      "placement": "P11",
+      "source_city_cell": [
+        4,
+        -2
+      ],
+      "tile_id": "7F5B8000",
+      "model_sha256": "93201bbd3c95ddb685da967a8b6f3381ec3023927ef0839275afa145916c7364",
+      "path_sha256": "2cc983ffb188de62bd8717b84da6ad840980a44567af33f6e4d0d61460a04d0c"
+    }
+  ],
+  "owned_cell_count": 31,
+  "placements": 15,
+  "display_grid": {
+    "X": [
+      0,
+      9
+    ],
+    "Y": [
+      0,
+      9
+    ],
+    "occupied_X": [
+      1,
+      8
+    ],
+    "occupied_Y": [
+      1,
+      8
+    ]
+  },
+  "actual_saved_routes": 126,
+  "actual_indexed_triangles": 203171,
+  "grounded_pier_wall_triangles": 64,
+  "physical_cuts": [
+    {
+      "id": "K1",
+      "ramp": "lower-off",
+      "function": "departure / grade",
+      "point_enh_m": [
+        37.086832278,
+        46.057395026,
+        7.5
+      ],
+      "display_XY": [
+        6.317927017375,
+        7.878587189125
+      ]
+    },
+    {
+      "id": "K2",
+      "ramp": "lower-off",
+      "function": "grade / terminal",
+      "point_enh_m": [
+        5.357359313,
+        14.327922061,
+        0.0
+      ],
+      "display_XY": [
+        4.3348349570625,
+        5.8954951288125
+      ]
+    },
+    {
+      "id": "K3",
+      "ramp": "lower-on",
+      "function": "departure / grade",
+      "point_enh_m": [
+        -46.057395026,
+        -37.086832278,
+        7.5
+      ],
+      "display_XY": [
+        1.1214128108749999,
+        2.682072982625
+      ]
+    },
+    {
+      "id": "K4",
+      "ramp": "lower-on",
+      "function": "grade / terminal",
+      "point_enh_m": [
+        -14.327922061,
+        -5.357359313,
+        0.0
+      ],
+      "display_XY": [
+        3.1045048711875,
+        4.6651650429375
+      ]
+    },
+    {
+      "id": "K5",
+      "ramp": "upper-off",
+      "function": "departure / grade",
+      "point_enh_m": [
+        -37.086832278,
+        -62.057395026,
+        15.0
+      ],
+      "display_XY": [
+        1.6820729826249998,
+        1.1214128108749999
+      ]
+    },
+    {
+      "id": "K6",
+      "ramp": "upper-off",
+      "function": "grade / terminal",
+      "point_enh_m": [
+        2.642640687,
+        -22.327922061,
+        0.0
+      ],
+      "display_XY": [
+        4.1651650429375,
+        3.6045048711875003
+      ]
+    },
+    {
+      "id": "K7",
+      "ramp": "upper-on",
+      "function": "departure / grade",
+      "point_enh_m": [
+        62.057395026,
+        37.086832278,
+        15.0
+      ],
+      "display_XY": [
+        7.878587189125,
+        7.317927017375
+      ]
+    },
+    {
+      "id": "K8",
+      "ramp": "upper-on",
+      "function": "grade / terminal",
+      "point_enh_m": [
+        22.327922061,
+        -2.642640687,
+        0.0
+      ],
+      "display_XY": [
+        5.3954951288125,
+        4.8348349570625
+      ]
+    }
+  ],
+  "ramp_profiles": [
+    {
+      "id": "lower-off",
+      "straight_indices": [
+        209,
+        438
+      ],
+      "straight_length_m": 44.87225099405348,
+      "maximum_grade_percent": 17.911625133176162,
+      "traffic_direction": "high to ground"
+    },
+    {
+      "id": "lower-on",
+      "straight_indices": [
+        209,
+        438
+      ],
+      "straight_length_m": 44.87225099405348,
+      "maximum_grade_percent": 17.911625133176162,
+      "traffic_direction": "ground to high"
+    },
+    {
+      "id": "upper-off",
+      "straight_indices": [
+        154,
+        440
+      ],
+      "straight_length_m": 56.185959493038354,
+      "maximum_grade_percent": 28.202932526356737,
+      "traffic_direction": "high to ground"
+    },
+    {
+      "id": "upper-on",
+      "straight_indices": [
+        154,
+        440
+      ],
+      "straight_length_m": 56.185959493038354,
+      "maximum_grade_percent": 28.202932526356737,
+      "traffic_direction": "ground to high"
+    }
+  ],
+  "palette": {
+    "P01": "#0072b2",
+    "P02": "#c22405",
+    "P03": "#7806ea",
+    "P04": "#18862a",
+    "P05": "#188618",
+    "P06": "#062cea",
+    "P07": "#0652ea",
+    "P08": "#cc2424",
+    "P09": "#c20505",
+    "P10": "#04689a",
+    "P11": "#c205c2",
+    "P12": "#9e06ea",
+    "P13": "#c406ea",
+    "P14": "#ea0606",
+    "P15": "#ea062c"
+  },
+  "saved_assembly_verification_passed": true,
+  "artwork": {
+    "png_sha256": "10c46120dc4db9537741ba44b278018bf91d3acd0074652f1cd0a68c586ed62a",
+    "svg_sha256": "b24495b6cf9f96b8bacb8c5ec8234407956e085e77b4a2f54ddb59483ef695f2"
+  },
+  "manual_observations_changed": false,
+  "scope": "Actual selected DAT models and PATHs, nonoverlapping traffic owners, selected physical cuts, and real structural footprints. No structural capacity or game observation is established.",
+  "visual_review": {
+    "reviewer": "Coding agent confirming actual saved-resource PNG review",
+    "review_confirmed": true,
+    "scope": "Supplementary atomization drawing; no game observation is established",
+    "checks": [
+      "Actual saved routes, levels, travel arrows, owned tiles, full component names, indexed model outlines, structural obstacles, and selected physical cuts remain visible and unclipped."
+    ],
+    "image_bytes_changed_during_promotion": false,
+    "in_game_evidence": false
+  }
+}

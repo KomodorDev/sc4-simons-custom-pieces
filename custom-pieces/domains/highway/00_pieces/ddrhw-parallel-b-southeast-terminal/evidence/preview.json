@@ -1,0 +1,894 @@
+{
+  "purpose": "Provenance of this standalone compiled-model preview; not game-test evidence.",
+  "piece_id": "ddrhw-parallel-b-southeast-terminal",
+  "menu_name": "Avenue \u2014 Southeast Avenue Right-Turn Terminal \u2014 Parallel DD RHW \u2014 Alignment B",
+  "display_title": "Piece - Avenue \u2014 Southeast Avenue Right-Turn Terminal \u2014 Parallel DD RHW \u2014 Alignment B \u2014 Custom (0 m) / Custom (0.489958 m)",
+  "view_role": "angled",
+  "canonical_filename": "preview.png",
+  "source": {
+    "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-parallel-b-southeast-terminal.dat",
+    "preview_id": "7f5c3ff5",
+    "source_dat_sha256": "53d0f6623974121020c46ebb41f60a249b8f8600332de0c67552d9af02b9bb7d",
+    "model_sha256": "c01ea910a4506004cc9915192a383aada60f5f67a172322de2cb5386aa59ce9c"
+  },
+  "file": "previews/preview.png",
+  "sha256": "0b7a6f78020f0a12d97e619279d1a1e728ee64a60039a026ae9b46593877c440",
+  "size": [
+    1600,
+    1200
+  ],
+  "azimuth_degrees": 45.0,
+  "elevation_degrees": 31.0,
+  "displayed_rotation_ccw_degrees": 0.0,
+  "coordinate_system": {
+    "scope": "Independent local grid for this reusable type at its default orientation",
+    "tile_metres": 16.0,
+    "displayed_rotation_ccw_degrees": 0.0,
+    "origin_world_m": [
+      0.0,
+      -16.0
+    ],
+    "bounds_world_m": [
+      -8.0,
+      -24.0,
+      24.0,
+      8.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "display_index_ranges": {
+      "X": [
+        0,
+        1
+      ],
+      "Y": [
+        0,
+        1
+      ]
+    },
+    "southwest_reference": "Tile centre at the southwest corner of the occupied-cell bounding rectangle",
+    "southwest_corner_occupied": true,
+    "occupied_local_tiles_en": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "construction_reference": {
+      "world_m": [
+        0.0,
+        0.0
+      ],
+      "local_tiles_en": [
+        0,
+        1
+      ],
+      "inside_displayed_grid": true,
+      "caption_visible": true,
+      "meaning": "The compiled piece reference position, expressed in this local grid; not a cursor anchor",
+      "reference_cell_occupied": false
+    },
+    "model_coordinates_changed": false,
+    "origin_marker_visible": false
+  },
+  "camera": {
+    "projection": "orthographic",
+    "image_size": [
+      1600,
+      970
+    ],
+    "azimuth_degrees": 45.0,
+    "elevation_degrees": 31.0,
+    "right_s3d": [
+      0.7071067811865476,
+      0.0,
+      -0.7071067811865475
+    ],
+    "up_s3d": [
+      -0.36418691533816433,
+      0.8571673007021123,
+      -0.3641869153381644
+    ],
+    "towards_s3d": [
+      0.6061088109378321,
+      0.5150380749100542,
+      0.6061088109378322
+    ],
+    "projected_center_m": [
+      1.7763568394002505e-15,
+      -5.826990645410629
+    ],
+    "pixels_per_metre": 31.377863415153048,
+    "padding_pixels": 90.0,
+    "bounds_world_m": [
+      -8.0,
+      -24.0,
+      24.0,
+      8.0
+    ],
+    "world_coordinates": "(east, north, height)",
+    "s3d_coordinates": "(east, height, -north)"
+  },
+  "grid": {
+    "tile_metres": 16.0,
+    "ground_height_m": 0,
+    "bounds_world_m": [
+      -8.0,
+      -24.0,
+      24.0,
+      8.0
+    ],
+    "origin_world_m": [
+      0.0,
+      -16.0
+    ],
+    "display_axis_labels": {
+      "east": "X",
+      "north": "Y"
+    },
+    "origin_marker_visible": false,
+    "display_coordinate_basis": {
+      "reference": "tile-centre offsets relative to origin_world_m",
+      "units": "tiles",
+      "east_increases": "east",
+      "north_increases": "north",
+      "east_index_formula": "(world_east_m - origin_world_m[0]) / 16",
+      "north_index_formula": "(world_north_m - origin_world_m[1]) / 16",
+      "east_index_range": [
+        0,
+        1
+      ],
+      "north_index_range": [
+        0,
+        1
+      ],
+      "nonnegative_labels_omit_plus_sign": true,
+      "authoring_world_coordinates_changed": false
+    },
+    "origin_pixel": [
+      444.99999999999994,
+      485.0
+    ],
+    "boundary_offset_from_centre_m": 8,
+    "east_boundaries_m": [
+      -8.0,
+      8.0,
+      24.0
+    ],
+    "north_boundaries_m": [
+      -24.0,
+      -8.0,
+      8.0
+    ],
+    "grid_lines": [
+      {
+        "axis": "east",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            90.0,
+            485.0
+          ],
+          [
+            799.9999999999999,
+            119.32296681386151
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            444.99999999999994,
+            667.8385165930692
+          ],
+          [
+            1155.0,
+            302.16148340693076
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "east",
+        "coordinate_m": 24.0,
+        "pixels": [
+          [
+            800.0,
+            850.6770331861385
+          ],
+          [
+            1510.0,
+            485.0
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -24.0,
+        "pixels": [
+          [
+            90.0,
+            485.0
+          ],
+          [
+            800.0,
+            850.6770331861385
+          ]
+        ],
+        "major": false
+      },
+      {
+        "axis": "north",
+        "coordinate_m": -8.0,
+        "pixels": [
+          [
+            444.99999999999994,
+            302.1614834069308
+          ],
+          [
+            1155.0,
+            667.8385165930692
+          ]
+        ],
+        "major": true
+      },
+      {
+        "axis": "north",
+        "coordinate_m": 8.0,
+        "pixels": [
+          [
+            799.9999999999999,
+            119.32296681386151
+          ],
+          [
+            1510.0,
+            485.0
+          ]
+        ],
+        "major": false
+      }
+    ],
+    "tile_labels": [
+      {
+        "text": "X0",
+        "axis": "X",
+        "tile_index": 0,
+        "world_m": [
+          0.0,
+          -24.0
+        ],
+        "pixel": [
+          252.3867346277256,
+          584.2031653994756
+        ]
+      },
+      {
+        "text": "X1",
+        "axis": "X",
+        "tile_index": 1,
+        "world_m": [
+          16.0,
+          -24.0
+        ],
+        "pixel": [
+          607.3867346277257,
+          767.0416819925448
+        ]
+      },
+      {
+        "text": "Y0",
+        "axis": "Y",
+        "tile_index": 0,
+        "world_m": [
+          -8.0,
+          -16.0
+        ],
+        "pixel": [
+          252.3867346277256,
+          385.79683460052445
+        ]
+      },
+      {
+        "text": "Y1",
+        "axis": "Y",
+        "tile_index": 1,
+        "world_m": [
+          -8.0,
+          0.0
+        ],
+        "pixel": [
+          607.3867346277256,
+          202.9583180074552
+        ]
+      }
+    ],
+    "direction_arrows": [
+      {
+        "direction": "E",
+        "start_pixel": [
+          1500.0,
+          100.0
+        ],
+        "end_pixel": [
+          1542.6727492864215,
+          121.97809064359795
+        ]
+      },
+      {
+        "direction": "N",
+        "start_pixel": [
+          1500.0,
+          100.0
+        ],
+        "end_pixel": [
+          1542.6727492864215,
+          78.02190935640205
+        ]
+      }
+    ],
+    "tile_scale": {
+      "metres": 16,
+      "east_pixels": 399.31807265631505,
+      "north_pixels": 399.31807265631505,
+      "caption": "1 tile = 16 m",
+      "caption_visible": false
+    },
+    "camera": {
+      "projection": "orthographic",
+      "image_size": [
+        1600,
+        970
+      ],
+      "azimuth_degrees": 45.0,
+      "elevation_degrees": 31.0,
+      "right_s3d": [
+        0.7071067811865476,
+        0.0,
+        -0.7071067811865475
+      ],
+      "up_s3d": [
+        -0.36418691533816433,
+        0.8571673007021123,
+        -0.3641869153381644
+      ],
+      "towards_s3d": [
+        0.6061088109378321,
+        0.5150380749100542,
+        0.6061088109378322
+      ],
+      "projected_center_m": [
+        1.7763568394002505e-15,
+        -5.826990645410629
+      ],
+      "pixels_per_metre": 31.377863415153048,
+      "padding_pixels": 90.0,
+      "bounds_world_m": [
+        -8.0,
+        -24.0,
+        24.0,
+        8.0
+      ],
+      "world_coordinates": "(east, north, height)",
+      "s3d_coordinates": "(east, height, -north)"
+    }
+  },
+  "header": {
+    "captions": [
+      "Piece - Avenue \u2014 Southeast Avenue Right-Turn Terminal \u2014 Parallel DD RHW \u2014 Alignment B \u2014 Custom (0 m) / Custom (0.489958 m)",
+      "Clean view | Southeast view | Authored orientation: 0\u00b0",
+      "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres"
+    ],
+    "rows": [
+      {
+        "text": "Piece - Avenue \u2014 Southeast Avenue Right-Turn Terminal \u2014 Parallel DD RHW \u2014 Alignment B \u2014 Custom (0 m) / Custom (0.489958 m)",
+        "colour": "#172b42",
+        "font_pixels": 24,
+        "bold": true,
+        "position": [
+          30,
+          20
+        ],
+        "bounds": [
+          30,
+          25,
+          1533,
+          47
+        ]
+      },
+      {
+        "text": "Clean view | Southeast view | Authored orientation: 0\u00b0",
+        "colour": "#176eaf",
+        "font_pixels": 22,
+        "bold": false,
+        "position": [
+          30,
+          63
+        ],
+        "bounds": [
+          30,
+          67,
+          553,
+          88
+        ]
+      },
+      {
+        "text": "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres",
+        "colour": "#586a7e",
+        "font_pixels": 22,
+        "bold": false,
+        "position": [
+          30,
+          98
+        ],
+        "bounds": [
+          30,
+          102,
+          927,
+          122
+        ]
+      }
+    ],
+    "bottom": 146,
+    "title_occurrences": 1,
+    "scale_caption_in_header_only": true
+  },
+  "viewport_offset_xy": [
+    0,
+    146
+  ],
+  "model": {
+    "all_animation_references_valid": true,
+    "all_vertex_indices_valid": true,
+    "all_primitive_ranges_valid": true,
+    "all_output_buffers_used": true,
+    "all_vertex_positions_finite": true,
+    "triangles": 10772,
+    "mesh_count": 23,
+    "bounds_xyz_m": [
+      [
+        [
+          8.0,
+          14.623223304748535
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -3.200000047683716,
+          8.0
+        ]
+      ],
+      [
+        [
+          8.0,
+          19.200000762939453
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -3.519562244415283,
+          8.0
+        ]
+      ],
+      [
+        [
+          8.0,
+          10.853134155273438
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -5.456389427185059,
+          -0.404800146818161
+        ]
+      ],
+      [
+        [
+          8.0,
+          10.915011405944824
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -7.66473913192749,
+          -1.4288703203201294
+        ]
+      ],
+      [
+        [
+          8.0,
+          11.14085578918457
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -8.0,
+          -2.321040153503418
+        ]
+      ],
+      [
+        [
+          10.260215759277344,
+          24.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -5.7397847175598145,
+          8.0
+        ]
+      ],
+      [
+        [
+          11.107145309448242,
+          17.237436294555664
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.030430449172854424,
+          6.0374369621276855
+        ]
+      ],
+      [
+        [
+          10.820768356323242,
+          14.900726318359375
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -4.379701137542725,
+          1.0966541767120361
+        ]
+      ],
+      [
+        [
+          11.291345596313477,
+          16.085298538208008
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -6.595740795135498,
+          -2.760767936706543
+        ]
+      ],
+      [
+        [
+          11.647397994995117,
+          16.458011627197266
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -7.469910621643066,
+          -3.082285165786743
+        ]
+      ],
+      [
+        [
+          -8.0,
+          4.735036849975586
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          8.0,
+          11.310430526733398
+        ]
+      ],
+      [
+        [
+          -0.16217507421970367,
+          8.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          8.0,
+          11.119449615478516
+        ]
+      ],
+      [
+        [
+          0.9676302075386047,
+          8.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          8.245579719543457,
+          11.445404052734375
+        ]
+      ],
+      [
+        [
+          1.934016466140747,
+          8.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          9.88528060913086,
+          11.857215881347656
+        ]
+      ],
+      [
+        [
+          2.736464738845825,
+          8.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          11.137231826782227,
+          12.4745454788208
+        ]
+      ],
+      [
+        [
+          3.5898492336273193,
+          8.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          12.3844575881958,
+          13.44835376739502
+        ]
+      ],
+      [
+        [
+          4.269608497619629,
+          8.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          12.996363639831543,
+          14.82372760772705
+        ]
+      ],
+      [
+        [
+          -0.26926520466804504,
+          8.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          13.99925708770752,
+          24.0
+        ]
+      ],
+      [
+        [
+          -1.6459964513778687,
+          0.1651245504617691
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          14.320767402648926,
+          15.769779205322266
+        ]
+      ],
+      [
+        [
+          -7.469910621643066,
+          -2.9850332736968994
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          11.388832092285156,
+          16.458011627197266
+        ]
+      ],
+      [
+        [
+          -5.5566277503967285,
+          -1.4306485652923584
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          10.84194564819336,
+          15.546616554260254
+        ]
+      ],
+      [
+        [
+          -1.6908386945724487,
+          3.3886613845825195
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          10.820768356323242,
+          15.153058052062988
+        ]
+      ],
+      [
+        [
+          1.4116733074188232,
+          6.0374369621276855
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          12.26318645477295,
+          17.237436294555664
+        ]
+      ]
+    ],
+    "textures": [
+      "0400020e",
+      "5712000e",
+      "0400020e",
+      "5712000e"
+    ]
+  },
+  "render_model_sha256": "c01ea910a4506004cc9915192a383aada60f5f67a172322de2cb5386aa59ce9c",
+  "textures": [
+    {
+      "instance": "0400020e",
+      "fsh_sha256": "9493dfcc3821608a03c605e4938982676a8f4f66c25568117f3276dd065d4452",
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "instance": "5712000e",
+      "fsh_sha256": "676fd00d3e3d608917274ed742ecf75e8253b4d6be20586a1eb19db5c3222105",
+      "size": [
+        128,
+        128
+      ]
+    }
+  ],
+  "captions": [
+    "Piece - Avenue \u2014 Southeast Avenue Right-Turn Terminal \u2014 Parallel DD RHW \u2014 Alignment B \u2014 Custom (0 m) / Custom (0.489958 m)",
+    "Clean view | Southeast view | Authored orientation: 0\u00b0",
+    "Independent local X/Y grid / Piece reference: X0, Y1 / 1 tile = 16 m / Labels mark tile centres",
+    "Complete reusable piece shown at its authored orientation.",
+    "Software model preview."
+  ],
+  "annotation_mode": "Shared source-backed piece title and independent local X/Y grid; no assembly labels",
+  "assembly_labels_visible": false,
+  "other_piece_types_drawn": false,
+  "selected_piece_geometry_hidden_or_simplified": false,
+  "in_game_evidence": false,
+  "renderer": {
+    "renderer": "indexed S3D triangles with bilinear NAM FSH textures",
+    "renderer_sha256": "91b925cd5a7d0db4492e8697cf768b5b5cce33ca0acb185e2c6c3a062449c63c",
+    "pillow_version": "10.3.0",
+    "numpy_version": "1.26.4",
+    "background": "#f7f9fb",
+    "fonts": [
+      {
+        "name": [
+          "Arial",
+          "Regular"
+        ],
+        "file_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+      },
+      {
+        "name": [
+          "Arial",
+          "Bold"
+        ],
+        "file_sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+      }
+    ],
+    "geometry_simplified": false,
+    "layout": "one canonical view with independent local city grid",
+    "layout_sha256": "66a4fd4a2ed5e14091326a3ea258a89a6071182c2fe320d28d198ed397962807",
+    "header": {
+      "source_sha256": "1afc8e0424adfdb8bd1456d221888402e68519288d0b757a5941d53ec4688a0d",
+      "row_colours": [
+        "#172b42",
+        "#176eaf",
+        "#586a7e"
+      ],
+      "rows": [
+        "Piece - source-backed piece title",
+        "view purpose, camera, and authored orientation",
+        "local grid and scale"
+      ],
+      "duplicate_grid_footer_visible": false
+    },
+    "city_grid_source_sha256": "58560c2409e7e309b9f0030b6e765840a34fd5e9859fa93e78eb55de014776e5",
+    "image_size": [
+      1600,
+      1200
+    ],
+    "view_size": [
+      1600,
+      970
+    ],
+    "views": [
+      {
+        "azimuth": 45.0,
+        "elevation": 31.0
+      }
+    ],
+    "view_role": "angled",
+    "tile_metres": 16.0,
+    "origin_marker_visible": false,
+    "top_grid_overlay": null,
+    "duplicate_grid_footer_visible": false
+  },
+  "thumbnail": {
+    "file": "previews/preview-thumb.png",
+    "sha256": "ce86af0e4da84655aaee7fdc7362bff0ecf18fea4c7900909913642e6503b9ed",
+    "size": [
+      360,
+      270
+    ]
+  },
+  "title_source_inputs": {
+    "domains/highway/00_pieces/ddrhw-parallel-b-southeast-terminal/piece.jsonc": "ab09aa89e6f2f7be91788eff1a425eb1a28153cfb529d956cd0585b94cc943c6",
+    "domains/highway/00_pieces/ddrhw-parallel-b-southeast-terminal/connections.json": "fe79727eb3e722f67bd00c4f4a79fa1ce1544b6e4072377b80d413db7da208fc",
+    "domains/highway/00_pieces/ddrhw-parallel-b-southeast-terminal/connector-groups.jsonc": "ad7a43c5117e74293e4d0fe0fded3c5bf760e7f83cd451d419fee835ce52430f",
+    "domains/highway/domain.jsonc": "5d8025714a77be75e6b5d3e433a92d13c07827a40114e1300f25578bbac89a6c"
+  },
+  "input_fingerprint": "bdd6a268a298ca1ab6516ac4f9d73808c4f479681e1aeaa833cd084c1f93baba"
+}

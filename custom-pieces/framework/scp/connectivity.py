@@ -17,6 +17,10 @@ from .verify import parse_paths
 PATH = (0x296678f7, 0xa966883f)
 S3D = (0x5ad0e817, 0xbadb57f1)
 EPS = 2e-5
+# Separately rounded saved PATH samples can give the two finite chords at
+# an exact tile cut slightly different slopes. This dimensionless bound is
+# 0.01 percentage point; positions and travel tangents retain strict EPS.
+PLACED_ROUTE_GRADE_TOLERANCE = 1e-4
 ROTATIONS = (0, 90, 180, 270)
 
 
@@ -93,13 +97,15 @@ def _routes(piece, resources):
             continue
         parsed = parse_paths(raw)
         for index, route in enumerate(parsed['routes']):
+            saved = [(x+16.*cell[0], north-16.*cell[1], height)
+                     for x, north, height in route['points']]
             world = [_point((x+16.*cell[0], north-16.*cell[1], height))
                      for x, north, height in route['points']]
             result.append({'id': f'path-{tile:08x}-route-{index:03d}',
                            'source_route_index': index, 'source_class': route['lane'],
                            'compatibility': route['compatibility'],
                            'engine_transport': route['transport'], 'cell': list(cell),
-                           'tile_id': f'{tile:08x}', 'points': world,
+                           'tile_id': f'{tile:08x}', 'points': world, 'saved_points': saved,
                            'entry_edge': route['entry'], 'exit_edge': route['exit']})
     require(result, 'A registered piece has no actual transport routes')
     return result
@@ -126,6 +132,19 @@ def piece_connectivity(piece, resources, *, contract=None, service_classifier=No
     ports, journeys, forbidden = [], [], []
     hashes = resource_fingerprints(piece['id'], resources)
     declared = (contract or {}).get('ports', {})
+    measurement_precision = (contract or {}).get('boundary_measurement_precision', 'graph-sample')
+    require(measurement_precision in ('graph-sample', 'saved-path'),
+            'Unsupported reviewed boundary measurement precision')
+    port_transports = (contract or {}).get('port_transports')
+    port_directions = (contract or {}).get('port_directions', {})
+    if port_transports is not None:
+        require(set(port_transports) == set(declared)
+                and all(type(value) is int and value > 0 for value in port_transports.values()),
+                'Reviewed contract must declare one engine transport for every port')
+        require(set(port_directions) == set(declared)
+                and set(port_directions.values()) <= {'in','out'},
+                'Reviewed multi-transport contract must declare every port direction')
+    contract_engines = set(port_transports.values()) if port_transports is not None else {7}
     used_declared = set()
     for engine, records in sorted(by_engine.items()):
         incoming, outgoing = defaultdict(list), defaultdict(list)
@@ -163,12 +182,19 @@ def piece_connectivity(piece, resources, *, contract=None, service_classifier=No
             segment = (route['points'][0], route['points'][1]) if direction == 'in' else (route['points'][-2], route['points'][-1])
             delta = [b-a for a, b in zip(*segment)]
             sampled = _unit(delta)
-            matches = [name for name, wanted in declared.items() if engine == 7 and math.dist(point, wanted) <= EPS]
+            saved_segment = route['saved_points'][:2] if direction == 'in' else route['saved_points'][-2:]
+            saved_delta = [b-a for a, b in zip(*saved_segment)]
+            saved_tangent = _unit(saved_delta)
+            matches = [name for name, wanted in declared.items()
+                       if engine == (port_transports[name] if port_transports is not None else 7)
+                       and port_directions.get(name,direction) == direction and math.dist(point,wanted) <= EPS]
             if len(matches) > 1:
                 vectors = (contract or {}).get('port_vectors', {})
                 matches = [name for name in matches if name in vectors and
                            sum(a*b for a, b in zip(_unit(vectors[name]), sampled)) > .998]
             require(len(matches) <= 1, 'Reviewed contract gives ambiguous external port labels')
+            require(port_transports is None or engine not in contract_engines or matches,
+                    'Actual PATH endpoint differs from the reviewed transport and direction contract')
             if matches:
                 identifier = matches[0]
                 require(identifier not in used_declared, 'Reviewed port label merges distinct directional endpoint geometries')
@@ -176,7 +202,11 @@ def piece_connectivity(piece, resources, *, contract=None, service_classifier=No
             else:
                 edge = route['entry_edge'] if direction == 'in' else route['exit_edge']
                 identifier = f'{engine}-'+('W', 'N', 'E', 'S')[edge]+'-'+direction+'-'+str(index)
-            tangent = list((contract or {}).get('port_vectors', {}).get(identifier, sampled))
+            tangent = list((contract or {}).get('port_vectors', {}).get(
+                identifier, saved_tangent if measurement_precision == 'saved-path' else sampled))
+            if port_transports is not None:
+                require(sum(a*b for a,b in zip(_unit(tangent),sampled)) > .998,
+                        'Actual PATH travel tangent differs from the reviewed port vector')
             service = classify(piece, engine, point[2])
             relevant = []
             for item in incident:
@@ -186,7 +216,13 @@ def piece_connectivity(piece, resources, *, contract=None, service_classifier=No
             port = {'id': identifier, 'direction': direction, **service,
                     'engine_transport': engine, 'edge': route['entry_edge'] if direction == 'in' else route['exit_edge'], 'endpoint_m': list(point),
                     'tangent': _unit(tangent), 'sampled_tangent': sampled,
-                    'grade': round(delta[2]/math.hypot(*delta[:2]), 9),
+                    'grade': round((saved_delta[2]/math.hypot(*saved_delta[:2])) if measurement_precision == 'saved-path'
+                                   else delta[2]/math.hypot(*delta[:2]), 9),
+                    'sampled_grade': round(delta[2]/math.hypot(*delta[:2]), 9),
+                    'actual_saved_grade': round(saved_delta[2]/math.hypot(*saved_delta[:2]), 9),
+                    'actual_saved_tangent': saved_tangent,
+                    'grade_basis': ('actual_saved_PATH_before_graph_rounding' if measurement_precision == 'saved-path'
+                                    else 'six_decimal_graph_sample_retained_for_existing_contract'),
                     'lane_spacing_m': None, 'profile': 'unreviewed-physical-profile',
                     'physical_profile_status': 'unreviewed; actual PATH alignment alone does not prove deck/wall fit',
                     'endpoint_basis': 'actual_saved_PATH',
@@ -253,8 +289,10 @@ def piece_connectivity(piece, resources, *, contract=None, service_classifier=No
                     following = [item for item in following if tuple(item['cell']) == neighbour
                                  and item['entry_edge'] == (route['exit_edge']+2) % 4]
                 pending.extend(following)
-        if engine == 7 and contract and contract.get('movements'):
-            require(actual_movements == set(map(tuple, contract['movements'])),
+        if engine in contract_engines and contract and contract.get('movements'):
+            expected_movements = {tuple(pair) for pair in contract['movements']
+                                  if port_transports is None or port_transports[pair[0]] == engine}
+            require(actual_movements == expected_movements,
                     f'{piece["id"]}: actual movements differ from reviewed contract')
     if declared:
         require(used_declared == set(declared), f'{piece["id"]}: actual PATH does not expose every reviewed port')
@@ -436,21 +474,42 @@ def _placed_route_join(first, second):
     if first['instance'] == second['instance']:
         return False
     a, b = first['port'], second['port']
+    for port in (a, b):
+        # A precise witness corrects graph rounding; it is not permission to
+        # ignore a changed declared heading or grade. Retain the historical
+        # bounds while comparing each declared value in its own basis.
+        if 'actual_saved_tangent' in port and port.get('tangent_basis') != 'reviewed_contract':
+            declared = (port['actual_saved_tangent'] if port.get('grade_basis') == 'actual_saved_PATH_before_graph_rounding'
+                        else port.get('sampled_tangent', port['tangent']))
+            if math.dist(_unit(port['tangent']), _unit(declared)) > EPS:
+                return False
+        if 'actual_saved_grade' in port:
+            declared = (port['actual_saved_grade'] if port.get('grade_basis') == 'actual_saved_PATH_before_graph_rounding'
+                        else port.get('sampled_grade', port['grade']))
+            if abs(port['grade']-declared) > PLACED_ROUTE_GRADE_TOLERANCE:
+                return False
+    # Reviewed source-chord vectors remain the declared heading authority.
+    # Their exact saved witnesses receive a separate quantization proof; a
+    # tiny native cut must not replace that reviewed vector accidentally.
+    tangent_a = a['tangent'] if a.get('tangent_basis') == 'reviewed_contract' else a.get('actual_saved_tangent', a['tangent'])
+    tangent_b = b['tangent'] if b.get('tangent_basis') == 'reviewed_contract' else b.get('actual_saved_tangent', b['tangent'])
+    grade_a, grade_b = a.get('actual_saved_grade', a['grade']), b.get('actual_saved_grade', b['grade'])
     if a['direction'] != 'out' or b['direction'] != 'in' or not _same_route_service(a, b):
         return False
     if _point(a['endpoint_m']) != _point(b['endpoint_m']):
         return False
-    if math.dist(_unit(a['tangent']), _unit(b['tangent'])) > EPS or abs(a['grade']-b['grade']) > EPS:
+    if (math.dist(_unit(tangent_a), _unit(tangent_b)) > EPS
+            or abs(grade_a-grade_b) > PLACED_ROUTE_GRADE_TOLERANCE):
         return False
     for centre_a, edge_a in first['boundaries']:
         normal = _EDGE_NORMALS[edge_a]
-        if sum(x*y for x, y in zip(a['tangent'], normal)) <= EPS:
+        if sum(x*y for x, y in zip(tangent_a, normal)) <= EPS:
             continue
         neighbour = _point((centre_a[0]+16.*normal[0], centre_a[1]+16.*normal[1]))
         for centre_b, edge_b in second['boundaries']:
             if edge_b != (edge_a+2) % 4 or centre_b != neighbour:
                 continue
-            if sum(x*y for x, y in zip(b['tangent'], _EDGE_NORMALS[edge_b])) < -EPS:
+            if sum(x*y for x, y in zip(tangent_b, _EDGE_NORMALS[edge_b])) < -EPS:
                 return True
     return False
 
@@ -497,6 +556,17 @@ def assembly_connectivity(subject_id, scene, piece_records, pieces):
                     all(math.isfinite(value) for value in port['endpoint_m']) and
                     len(port['tangent']) == 2 and all(math.isfinite(value) for value in port['tangent']) and
                     math.isfinite(port['grade']), 'Assembly port has invalid measured direction or geometry')
+            require('actual_saved_grade' not in port or
+                    (type(port['actual_saved_grade']) in (int, float) and math.isfinite(port['actual_saved_grade'])),
+                    'Assembly port has an invalid exact saved grade')
+            require('sampled_grade' not in port or
+                    (type(port['sampled_grade']) in (int, float) and math.isfinite(port['sampled_grade'])),
+                    'Assembly port has an invalid sampled grade')
+            require('actual_saved_tangent' not in port or
+                    (isinstance(port['actual_saved_tangent'], (list, tuple)) and len(port['actual_saved_tangent']) == 2
+                     and all(type(value) in (int, float) and math.isfinite(value) for value in port['actual_saved_tangent'])
+                     and math.hypot(*port['actual_saved_tangent']) > 1e-12),
+                    'Assembly port has an invalid exact saved tangent')
             boundaries = []
             for cell, edge in _port_boundary_sources(original, spec):
                 local = rotate((16.*cell[0], -16.*cell[1]), angle)
@@ -507,6 +577,8 @@ def assembly_connectivity(subject_id, scene, piece_records, pieces):
             port['tangent'] = rotate(port['tangent'], angle)
             if 'sampled_tangent' in port:
                 port['sampled_tangent'] = rotate(port['sampled_tangent'], angle)
+            if 'actual_saved_tangent' in port:
+                port['actual_saved_tangent'] = rotate(port['actual_saved_tangent'], angle)
             port['edge'] = (port['edge']-angle//90) % 4
             for key in _LEGACY_COUNTERPART_FIELDS:
                 port.pop(key, None)

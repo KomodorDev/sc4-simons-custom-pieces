@@ -1,0 +1,34 @@
+// title: "Compact DD RHW Y source schematic provenance"
+// summary: "Bind the source-only drawing to its actual geometry and renderer."
+//
+// Used when: Regenerating or reviewing the first DD RHW Y source schematic.
+// Read by: Contributors reviewing the owning assembly design and testing documents.
+// Updated by: domains/highway/tools/render_ddrhw_y_design.py after source-geometry checks.
+// Affects: The source schematic only; it establishes no model, ownership, installation, or game result.
+{
+  "width_px": 1700,
+  "height_px": 1050,
+  "display_frame": {
+    "southwest_tile_centre_en_m": [
+      -32,
+      -32
+    ],
+    "x_range": [
+      0,
+      6
+    ],
+    "y_range": [
+      0,
+      4
+    ]
+  },
+  "scope": "Source-only lane curves and unclipped provisional width strips; not compiled models or construction ownership.",
+  "input_fingerprints": {
+    "design_geometry_sha256": "8857eae50b01d3f5c15c5b47b43319de0e72c733d5cf331bb29e14f27af6d9b3",
+    "renderer_sha256": "9a8bd53c0f5a176d1c71544194499b3ad864ad69a596b595a5a693e0b7b6bf7c"
+  },
+  "image": {
+    "path": "custom-pieces/domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction/previews/source-schematic.png",
+    "sha256": "ef9ca3d10c288406cf35219827a7111069532702f380e0db2af2ae790fffaa70"
+  }
+}

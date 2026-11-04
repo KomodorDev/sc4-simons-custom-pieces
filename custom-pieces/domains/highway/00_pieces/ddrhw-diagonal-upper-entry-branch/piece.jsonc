@@ -1,0 +1,133 @@
+// title: "Piece definition: DD RHW-4 — Upper Diagonal Entry Branch"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 Upper Diagonal Entry Branch.",
+  "schema_version": 1,
+  "id": "ddrhw-diagonal-upper-entry-branch",
+  "domain": "highway",
+  "native_dd_approaches": true,
+  "name": "DD RHW-4 \u2014 Upper Diagonal Entry Branch",
+  "description": "Reusable upper entry branch component of the compact diagonal double-decker highway and Avenue interchange. Place its owned tiles exactly as shown in the assembly guide; traffic uses actual car and pedestrian PATHs.",
+  "recipe": "highway_ddrhw_compact_upper_entry_branch",
+  "geometry_key": "upper-entry-branch",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f837",
+  "tile_ids": [
+    "7f594100",
+    "7f594200",
+    "7f594110",
+    "7f594210",
+    "7f594020",
+    "7f594120"
+  ],
+  "preview_id": "7f594ff5",
+  "effect_name": "preview_scp_hw_f837_____001",
+  "footprint": [
+    3,
+    3
+  ],
+  "cells": [
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "mis"
+  ],
+  "menu": {
+    "id": "6a47f837",
+    "order": "ffffff37",
+    "style": "ddrhw-ramp"
+  },
+  "engineering": {
+    "max_grade_percent": 30.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "pavement_path_offset_m": 0.0,
+    "model_only_cells": [
+      [
+        2,
+        1
+      ]
+    ]
+  },
+  "shadow_mode": "generated",
+  "shadow_mappings": [
+    {
+      "tile": "7f594100",
+      "source": "7f594100",
+      "rotation": 0
+    },
+    {
+      "tile": "7f594200",
+      "source": "7f594200",
+      "rotation": 0
+    },
+    {
+      "tile": "7f594110",
+      "source": "7f594110",
+      "rotation": 0
+    },
+    {
+      "tile": "7f594210",
+      "source": "7f594210",
+      "rotation": 0
+    },
+    {
+      "tile": "7f594020",
+      "source": "7f594020",
+      "rotation": 0
+    },
+    {
+      "tile": "7f594120",
+      "source": "7f594120",
+      "rotation": 0
+    }
+  ],
+  "provenance": {
+    "geometry": "Measured native DD RHW-4 and Avenue channels with authored compact ramps.",
+    "construction": "Reviewed exclusive tile partition; four proper rotations repeated.",
+    "redistribution": "permission-pending",
+    "partition_review": "Reviewed one-diagonal-tile ramp extension and right-turn-only access. Retains piece, puzzle, menu, preview, and reserved resource-block identities; local model slots follow the revised AutoTileBase grid. Native MIS materials replace the flat atlas."
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}

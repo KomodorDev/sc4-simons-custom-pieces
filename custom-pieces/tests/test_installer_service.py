@@ -17,6 +17,25 @@ from scp.dbpf import pack_dbpf
 from scp.install import FOLDER, RUL0, NETWORK_INI
 
 
+PARALLEL_B_RECIPES = {
+    "highway_ddrhw_parallel_b_crossing",
+    "highway_ddrhw_parallel_b_northwest_terminal",
+    "highway_ddrhw_parallel_b_southeast_terminal",
+    "highway_ddrhw_parallel_b_lower_exit_slip",
+    "highway_ddrhw_parallel_b_lower_entry_slip",
+    "highway_ddrhw_parallel_b_upper_exit_slip",
+    "highway_ddrhw_parallel_b_upper_entry_slip",
+    "highway_ddrhw_parallel_b_lower_exit_departure",
+    "highway_ddrhw_parallel_b_lower_entry_departure",
+    "highway_ddrhw_parallel_b_upper_exit_departure",
+    "highway_ddrhw_parallel_b_upper_entry_departure",
+    "highway_ddrhw_parallel_b_lower_exit_grade",
+    "highway_ddrhw_parallel_b_lower_entry_grade",
+    "highway_ddrhw_parallel_b_upper_exit_grade",
+    "highway_ddrhw_parallel_b_upper_entry_grade",
+}
+
+
 class DiscoveryTests(unittest.TestCase):
     def setUp(self):
         temporary = tempfile.TemporaryDirectory()
@@ -52,6 +71,28 @@ class DiscoveryTests(unittest.TestCase):
 
     def test_game_plugins_is_a_scan_root_not_the_install_destination(self):
         self.assertEqual(self.discover(self.game / "Plugins").plugins, self.plugins)
+
+    def test_install_reports_missing_submenu_files_before_preparation(self):
+        work = self.base / "install-work"
+        with self.assertRaises(ValueError) as raised:
+            service.run_install(ROOT, self.game, work, platform="win32", home=self.home,
+                                documents=self.documents)
+        for name in ("memo.submenus.dll", "SC4ResourceLoadingHooks.dll", "submenu-essentials.dat"):
+            self.assertIn(name, str(raised.exception))
+        self.assertFalse(work.exists())
+
+    def test_submenu_files_use_both_plugins_roots_but_dlls_must_be_at_top_level(self):
+        nested = self.plugins / "Dependencies"
+        nested.mkdir()
+        (nested / "submenu-essentials.dat").touch()
+        (self.game / "Plugins/SC4ResourceLoadingHooks.dll").touch()
+        submenu = nested / "MEMO.SUBMENUS.DLL"
+        submenu.touch()
+        plan = self.discover(self.game)
+        with self.assertRaisesRegex(ValueError, r"memo\.submenus\.dll directly inside"):
+            service._require_submenu_files(plan)
+        submenu.rename(self.plugins / submenu.name)
+        service._require_submenu_files(plan)
 
     def test_selected_data_plugins_uses_registered_game_without_writing_it(self):
         before = set(self.base.rglob("*"))
@@ -179,8 +220,96 @@ class InstallerSelectionTests(unittest.TestCase):
         self.assertEqual(actual, expected)
         self.assertIn("hsr-l2-over-road-l0-mixed-parallel-stack", actual)
         self.assertIn("hsr-l2-and-l4-two-track-curve-ramp-90deg-right", actual)
+        highway = [piece for piece in catalog["pieces"] if piece["domain"] == "highway"
+                   and piece["status"] != "draft"]
+        self.assertTrue(highway)
+        self.assertTrue(all(piece["id"] in actual for piece in highway))
+        self.assertTrue(any(not piece["enabled_by_default"] for piece in highway))
         self.assertEqual(len(actual), len(expected))
         self.assertGreater(len(actual), len([piece for piece in catalog["pieces"] if piece["enabled_by_default"]]))
+
+    def test_capabilities_use_finite_provider_recipes_for_both_domains(self):
+        from scp_highway import native, ramp_paths, modular_ramps, modular_stamp, parallel_layout, y_junction_layout
+        capabilities = service.implemented_recipes_by_domain()
+        self.assertEqual(set(capabilities), {"high-speed-rail", "highway"})
+        self.assertIsInstance(capabilities["highway"], frozenset)
+        self.assertEqual(capabilities["highway"], {native.RECIPE, modular_stamp.RECIPE,
+                                                 "highway_ddrhw_diagonal_ghsr_crossing",
+                                                 "highway_ddrhw_orthogonal_l0_transition",
+                                                 "highway_ddrhw_orthogonal_l0_transition_mirrored",
+                                                 "highway_ddrhw_orthogonal_l0_transition_opposite_side",
+                                                 "highway_ddrhw_orthogonal_l0_transition_opposite_side_mirrored",
+                                                 "highway_ddrhw_orthogonal_l0_transition_lower_bend_right",
+                                                 "highway_ddrhw_diagonal_l0_transition_a",
+                                                 "highway_ddrhw_diagonal_l0_transition_mirrored_a",
+                                                 "highway_ddrhw_diagonal_l0_transition_opposite_a",
+                                                 "highway_ddrhw_diagonal_l0_transition_opposite_mirrored_a",
+                                                 "highway_ddrhw_y_reversed_diagonal_stem_split",
+                                                 "highway_ddrhw_y_reversed_diagonal_branch",
+                                                 "highway_ddrhw_y_reversed_orthogonal_core",
+                                                 "highway_ddrhw_diagonal_ghsr_crossing_alignment_b"} | {
+            item["recipe"] for provider in (ramp_paths, modular_ramps, parallel_layout, y_junction_layout)
+            for item in provider.module_catalog()["types"]} | PARALLEL_B_RECIPES)
+        self.assertIn("hsr_diagonal_ghsr", capabilities["high-speed-rail"])
+
+    def test_parallel_b_has_exactly_fifteen_finite_recipes_and_reaches_complete_selection(self):
+        catalog = load_catalog(ROOT)
+        identifiers = set(catalog["piece_sets"]["ddrhw-parallel-diamond-alignment-b"])
+        pieces = [piece for piece in catalog["pieces"] if piece["id"] in identifiers]
+        self.assertEqual(len(pieces), 15)
+        self.assertEqual({piece["recipe"] for piece in pieces}, PARALLEL_B_RECIPES)
+        capabilities = service.implemented_recipes_by_domain()["highway"]
+        self.assertEqual({recipe for recipe in capabilities if recipe.startswith("highway_ddrhw_parallel_b_")},
+                         PARALLEL_B_RECIPES)
+        self.assertTrue(identifiers <= set(service.all_implemented_ids(ROOT)))
+
+    def test_parallel_b_update_adds_fifteen_types_and_retains_the_previous_37_without_receipt_changes(self):
+        catalog = load_catalog(ROOT)
+        retained_assemblies = {"ddrhw-l1-and-l2-diagonal-avenue-diamond",
+                               "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond",
+                               "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond"}
+        previous = {row["piece_id"] for assembly in catalog["_assemblies"]
+                    if assembly["id"] in retained_assemblies for row in assembly["scene"]["placements"]}
+        previous.update(catalog["piece_sets"]["ddrhw-diagonal-ghsr-crossing-alignments"])
+        self.assertEqual(len(previous), 37)
+        added = set(catalog["piece_sets"]["ddrhw-parallel-diamond-alignment-b"])
+        self.assertEqual(len(added), 15)
+        self.assertFalse(previous & added)
+        receipt = {"piece_ids": sorted(previous)}
+        original = deepcopy(receipt)
+        plan = service.Installation(Path("game"), Path("Plugins"), (), "win32")
+        with patch.object(service, "_owned", return_value=receipt), \
+                patch("scp.install.install_build") as install:
+            selection = service.installed_selection(ROOT, plan)
+        self.assertTrue(previous | added <= set(selection))
+        self.assertEqual(receipt, original)
+        install.assert_not_called()
+
+    def test_parallel_b_unknown_recipe_cannot_hide_behind_the_implemented_prefix(self):
+        catalog = load_catalog(ROOT)
+        for recipe in ("highway_ddrhw_parallel_b_unknown", "highway_ddrhw_parallel_b_crossing_extra",
+                       "highway_ddrhw_parallel_b_upper_entry_grade_unimplemented"):
+            with self.subTest(recipe=recipe):
+                changed = deepcopy(catalog)
+                piece = next(row for row in changed["pieces"] if row["id"] == "ddrhw-parallel-b-crossing")
+                piece["recipe"] = recipe
+                with patch.object(service, "load_catalog", return_value=changed):
+                    with self.assertRaisesRegex(ValueError, "cannot prove an implementation.*ddrhw-parallel-b-crossing"):
+                        service.all_implemented_ids(ROOT)
+
+    def test_parallel_b_draft_exclusion_and_failed_placement_guard_remain_in_force(self):
+        catalog = load_catalog(ROOT)
+        changed = deepcopy(catalog)
+        piece = next(row for row in changed["pieces"] if row["id"] == "ddrhw-parallel-b-crossing")
+        piece.update(status="draft", recipe="highway_ddrhw_parallel_b_unimplemented")
+        with patch.object(service, "load_catalog", return_value=changed):
+            self.assertNotIn(piece["id"], service.all_implemented_ids(ROOT))
+        changed = deepcopy(catalog)
+        piece = next(row for row in changed["pieces"] if row["id"] == "ddrhw-parallel-b-crossing")
+        piece["game_tests"]["placement"] = "failed"
+        with patch.object(service, "load_catalog", return_value=changed):
+            with self.assertRaisesRegex(ValueError, "failed placement"):
+                service.all_implemented_ids(ROOT)
 
     def test_non_draft_record_with_no_implementation_blocks_complete_selection(self):
         catalog = deepcopy(load_catalog(ROOT))
@@ -189,12 +318,41 @@ class InstallerSelectionTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "cannot prove an implementation"):
                 service.all_implemented_ids(ROOT)
 
-    def test_failed_placement_guard_is_not_overridden(self):
+    def test_highway_prefix_or_another_domains_recipe_does_not_prove_implementation(self):
+        catalog = load_catalog(ROOT)
+        highway = next(piece for piece in catalog["pieces"] if piece["domain"] == "highway")
+        hsr_recipe = next(piece["recipe"] for piece in catalog["pieces"]
+                          if piece["domain"] == "high-speed-rail")
+        for recipe in ("highway_ddrhw_compact_unimplemented", "highway_ddrhw_modular_unimplemented", "highway_ddrhw_parallel_unimplemented", hsr_recipe):
+            with self.subTest(recipe=recipe):
+                changed = deepcopy(catalog)
+                next(piece for piece in changed["pieces"] if piece["id"] == highway["id"])["recipe"] = recipe
+                with patch.object(service, "load_catalog", return_value=changed):
+                    with self.assertRaisesRegex(ValueError, "cannot prove an implementation.*" + highway["id"]):
+                        service.all_implemented_ids(ROOT)
+
+    def test_unknown_domain_is_rejected_even_with_a_known_recipe(self):
         catalog = deepcopy(load_catalog(ROOT))
-        catalog["pieces"][0]["game_tests"]["placement"] = "failed"
+        catalog["pieces"][0]["domain"] = "unimplemented-domain"
         with patch.object(service, "load_catalog", return_value=catalog):
-            with self.assertRaisesRegex(ValueError, "failed placement"):
+            with self.assertRaisesRegex(ValueError, "cannot prove an implementation"):
                 service.all_implemented_ids(ROOT)
+
+    def test_unknown_draft_recipe_stays_out_of_complete_selection(self):
+        catalog = deepcopy(load_catalog(ROOT))
+        draft = next(piece for piece in catalog["pieces"] if piece["domain"] == "highway")
+        draft.update(status="draft", recipe="highway_ddrhw_compact_unimplemented")
+        with patch.object(service, "load_catalog", return_value=catalog):
+            self.assertNotIn(draft["id"], service.all_implemented_ids(ROOT))
+
+    def test_failed_placement_guard_is_not_overridden(self):
+        for domain in ("high-speed-rail", "highway"):
+            with self.subTest(domain=domain):
+                catalog = deepcopy(load_catalog(ROOT))
+                next(piece for piece in catalog["pieces"] if piece["domain"] == domain)["game_tests"]["placement"] = "failed"
+                with patch.object(service, "load_catalog", return_value=catalog):
+                    with self.assertRaisesRegex(ValueError, "failed placement"):
+                        service.all_implemented_ids(ROOT)
 
     def test_update_cannot_drop_an_installed_type_missing_from_new_source(self):
         plan = service.Installation(Path("game"), Path("Plugins"), (), "win32")
@@ -272,6 +430,17 @@ class CaptureTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "exact supported ordinary_road resource"):
             self.prepare()
         self.assertFalse((self.work / "local").exists())
+
+    def test_commented_audit_sources_preserve_capture_fingerprint_checks(self):
+        audit = (self.library / "audit.json").read_text()
+        (self.library / "audit.jsonc").write_text("// Migrated source audit.\n" + audit)
+        self.record["audit"] = "audit.jsonc"
+        roots, records = self.prepare()
+        self.assertEqual(next(roots[0].rglob(self.record["filename"])).read_bytes(), self.expected)
+        self.assertEqual(records[0]["sha256"], self.record["sha256"])
+        self.source.write_bytes(pack_dbpf({self.key: b"changed"}))
+        with self.assertRaisesRegex(ValueError, "exact supported ordinary_road resource"):
+            self.prepare()
 
     def test_duplicate_source_archives_are_not_load_order_guessed(self):
         duplicate = self.plugins / "another" / self.source.name
@@ -357,6 +526,8 @@ class OrchestrationTests(unittest.TestCase):
         self.game.mkdir()
         self.extra = self.base / "GamePlugins"
         self.extra.mkdir()
+        for name in ("memo.submenus.dll", "SC4ResourceLoadingHooks.dll", "submenu-essentials.dat"):
+            (self.extra / name).write_bytes(b"synthetic submenu dependency")
         self.work = self.base / "Work"
         self.plan = service.Installation(self.game, self.plugins, (self.extra,), "win32")
         self.ids = ["first-piece", "second-piece"]
@@ -370,14 +541,27 @@ class OrchestrationTests(unittest.TestCase):
     def test_complete_selection_and_explicit_roots_reach_every_existing_stage(self):
         events = []
         with patch("scp.build.doctor") as doctor, patch("scp.build.build_project") as build, \
-                patch("scp.menu_experiment.build_assembly_menu") as menu, \
+                patch("scp.menu_experiment.build_assembly_menus") as menu, \
                 patch("scp.install.install_build", return_value={"status": "installed", "backup_id": "synthetic"}) as install:
             result = service.run_install(ROOT, self.game, self.work, progress=events.append)
         for stage in (doctor, build):
             self.assertEqual(stage.call_args.kwargs["include"], self.ids)
             self.assertEqual(stage.call_args.kwargs["extra_roots"], [self.extra])
-        self.assertEqual(menu.call_args.kwargs["layout_id"], "trumpet")
+        expected_layouts = [
+            {"domain_id": "high-speed-rail", "layout_id": "trumpet"},
+            {"domain_id": "highway", "layout_id": "compact-diagonal-diamond"},
+            {"domain_id": "highway", "layout_id": "modular-diagonal-diamond"},
+            {"domain_id": "highway", "layout_id": "compact-modular-diagonal-diamond"},
+            {"domain_id": "highway", "layout_id": "parallel-diagonal-diamond"},
+            {"domain_id": "highway", "layout_id": "parallel-diagonal-diamond-alignment-b"},
+            {"domain_id": "highway", "layout_id": "ddrhw-compact-diagonal-y-junction"},
+            {"domain_id": "highway", "layout_id": "ddrhw-compact-diagonal-y-junction-reversed"},
+        ]
+        menu.assert_called_once()
+        self.assertEqual(menu.call_args.kwargs["selections"], expected_layouts)
         self.assertEqual(menu.call_args.kwargs["extra_roots"], [self.extra])
+        install.assert_called_once()
+        self.assertEqual(install.call_args.args[0], menu.call_args.args[2])
         self.assertEqual(install.call_args.kwargs["extra_roots"], [self.extra])
         self.assertEqual(result["piece_ids"], self.ids)
         self.assertFalse(result["in_game_tested"])
@@ -390,7 +574,7 @@ class OrchestrationTests(unittest.TestCase):
         chosen_data = self.base / "Explicit Player Data"
         with patch.object(service, "discover_installation", return_value=self.plan) as discover, \
                 patch("scp.build.doctor"), patch("scp.build.build_project"), \
-                patch("scp.menu_experiment.build_assembly_menu"), \
+                patch("scp.menu_experiment.build_assembly_menus"), \
                 patch("scp.install.install_build", return_value={"status": "installed", "backup_id": "synthetic"}):
             service.run_install(ROOT, self.game, self.work, player_data=chosen_data)
         self.assertEqual(discover.call_args.args, (self.game,))
@@ -398,7 +582,7 @@ class OrchestrationTests(unittest.TestCase):
 
     def test_failed_build_never_calls_menu_or_installer(self):
         with patch("scp.build.doctor"), patch("scp.build.build_project", side_effect=ValueError("compiler rejected geometry")), \
-                patch("scp.menu_experiment.build_assembly_menu") as menu, patch("scp.install.install_build") as install:
+                patch("scp.menu_experiment.build_assembly_menus") as menu, patch("scp.install.install_build") as install:
             with self.assertRaisesRegex(ValueError, "compiler rejected geometry"):
                 service.run_install(ROOT, self.game, self.work)
         menu.assert_not_called()
@@ -426,10 +610,18 @@ class OrchestrationTests(unittest.TestCase):
 
     def test_synthetic_self_test_checks_real_installation_and_rollback(self):
         result = service.self_test(ROOT)
+        self.assertTrue(result["planar_geometry_runtime_checked"])
         self.assertTrue(result["real_receipt_install_and_rollback"])
         self.assertTrue(result["geometry_verification_mocked_for_synthetic_fixture"])
         self.assertFalse(result["live_game_modified"])
         self.assertEqual(result["implemented_pieces"], len(service.all_implemented_ids(ROOT)))
+        self.assertEqual(result["assembly_menu_layouts"], 8)
+
+    def test_synthetic_self_test_rejects_a_broken_bundled_triangulator(self):
+        from shapely import GeometryCollection
+        with patch("shapely.constrained_delaunay_triangles", return_value=GeometryCollection()):
+            with self.assertRaisesRegex(ValueError, "boundary-and-hole triangulation"):
+                service.self_test(ROOT)
 
     def test_undo_rejects_a_different_plugins_destination(self):
         self.work.mkdir()

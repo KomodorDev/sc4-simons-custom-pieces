@@ -45,7 +45,7 @@ def progress_text(event, names):
         "capture": "Reading the required resources from your installed game and NAM…",
         "audit": "Checking the installed NAM version and existing plugins…",
         "verify": "Verifying the built pieces…",
-        "menu": "Preparing the trumpet assembly button…",
+        "menu": "Preparing the Rail and Highway assembly buttons…",
         "install": "Saving a backup and installing the verified pieces…",
         "undo": "Restoring the previous installation…",
         "complete": "Installed",

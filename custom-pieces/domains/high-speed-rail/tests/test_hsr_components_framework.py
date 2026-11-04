@@ -21,7 +21,7 @@ from scp.catalog import load_catalog, select_pieces
 from scp.build import preflight_allocations
 from scp.recipes import build_piece
 from scp.verify import check_piece_paths, _check_piece_geometry
-from scp.subject_sources import piece_id_for_recipe
+from scp.subject_sources import source_path, write_subject, piece_id_for_recipe
 
 
 def registration_module():
@@ -63,7 +63,7 @@ class HSRComponentRegistrationTests(unittest.TestCase):
                      'effect_tag': 'hsrtest', 'kind': 'paired_straight'}}
 
     def manifest_path(self, piece):
-        return self.root/'domains'/piece['domain']/'00_pieces'/piece['id']/'piece.json'
+        return source_path(self.root/'domains'/piece['domain']/'00_pieces'/piece['id'], 'piece')
 
     def snapshot(self):
         return {str(path.relative_to(self.root)): path.read_bytes()
@@ -120,10 +120,10 @@ class HSRComponentRegistrationTests(unittest.TestCase):
         old_directory = self.root/'domains/high-speed-rail/00_pieces'/old_id
         new_directory = old_directory.with_name(new_id)
         old_directory.rename(new_directory)
-        path = new_directory/'piece.json'
-        piece = json.loads(path.read_text())
+        path = source_path(new_directory, 'piece')
+        piece = jsonc.load(path)
         piece['id'] = new_id
-        path.write_text(json.dumps(piece, indent=2)+'\n')
+        write_subject(new_directory, 'piece', piece)
         registry = self.root/'domains/high-speed-rail/domain.jsonc'
         registry.write_text(registry.read_text().replace(old_id, new_id))
         collections = registry.parent/'collections.jsonc'
@@ -146,9 +146,9 @@ class HSRComponentRegistrationTests(unittest.TestCase):
         self.register(info)
         piece = next(p for p in load_catalog(self.root)['pieces'] if p['recipe'] == second)
         path = self.manifest_path(piece)
-        data = json.loads(path.read_text())
+        data = jsonc.load(path)
         data['recipe'] = self.recipe
-        path.write_text(json.dumps(data, indent=2)+'\n')
+        write_subject(path.parent, 'piece', data)
         before = self.snapshot()
         with self.assertRaisesRegex(ValueError, 'Ambiguous registered recipe owner'):
             self.register()
@@ -193,7 +193,7 @@ class HSRComponentRegistrationTests(unittest.TestCase):
                 members.remove(slug)
         ledger['pieces'].pop(slug, None)
         piece_directory = self.root/'domains/high-speed-rail/00_pieces'/slug
-        (piece_directory/'piece.json').unlink(missing_ok=True)
+        source_path(piece_directory, 'piece').unlink()
         (piece_directory/'icon.png').unlink(missing_ok=True)
         jsonc.dump(registry_path, registry)
         jsonc.dump(collection_path, selections)
@@ -211,7 +211,7 @@ class HSRComponentRegistrationTests(unittest.TestCase):
                          {piece['id'] for piece in before['pieces']}, {slug})
         self.assertEqual(len(after['piece_sets']['hsr-all-components']), len(RECIPES))
         for piece in before['pieces']:
-            relative = f'domains/{piece["domain"]}/00_pieces/{piece["id"]}/piece.json'
+            relative = self.manifest_path(piece).relative_to(self.root).as_posix()
             self.assertEqual((self.root/relative).read_bytes(), files[relative])
             self.assertEqual(after['_allocations']['pieces'][piece['id']],
                              before['_allocations']['pieces'][piece['id']])

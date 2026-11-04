@@ -8,6 +8,7 @@ from pathlib import Path
 import stat
 import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 import warnings
@@ -99,6 +100,7 @@ class InstallerBundleTests(unittest.TestCase):
                      "schemas/connector-groups.schema.jsonc", "docs/templates/assembly-starter.jsonc",
                      "config/profiles/fixture.jsonc", "config/allocations.jsonc", "config/release.jsonc",
                      "config/installer.jsonc", "domains/fixture/domain.jsonc",
+                     "domains/fixture/implementation/scp_fixture/geometry-inputs.jsonc",
                      "domains/fixture/00_pieces/inventory.jsonc", "domains/fixture/01_assemblies/inventory.jsonc",
                      "domains/fixture/00_pieces/example/geometry.json",
                      "domains/fixture/00_pieces/example/evidence/design-history/record.json"):
@@ -108,6 +110,7 @@ class InstallerBundleTests(unittest.TestCase):
                      "project.json", "schemas/connector-groups.schema.json", "config/profiles/fixture.json",
                      "config/local.example.jsonc", "domains/fixture/00_pieces/unknown/piece.json",
                      "domains/fixture/00_pieces/example/native.dat", "framework/scp/__pycache__/cache.pyc",
+                     "domains/fixture/implementation/scp_fixture/native.dat",
                      "installer/private/settings.json", "domains/fixture/local/secret.json"):
             with self.subTest(name=name):
                 self.assertFalse(allowed(name))
@@ -117,6 +120,7 @@ class InstallerBundleTests(unittest.TestCase):
         included = ("project.jsonc", "domains/fixture/domain.jsonc", "config/installer.jsonc",
                     "config/allocations.jsonc", "config/release.jsonc", "config/profiles/fixture.jsonc",
                     "schemas/connector-groups.schema.jsonc", "docs/templates/assembly-starter.jsonc",
+                    "domains/fixture/implementation/scp_fixture/geometry-inputs.jsonc",
                     "domains/fixture/inventory.jsonc", "domains/fixture/00_pieces/inventory.jsonc",
                     "domains/fixture/01_assemblies/inventory.jsonc")
         for relative in included[2:]:
@@ -344,6 +348,45 @@ class InstallerBundleTests(unittest.TestCase):
         with patch.object(bundle, "host_platform", return_value="unsupported"):
             with self.assertRaisesRegex(ValueError, "run natively"):
                 bundle.build_bundle(self.directory, self.directory / "output", COMMIT, "windows-x64")
+
+    def test_freezer_collects_dynamic_highway_provider_from_runtime_source(self):
+        class CommandCaptured(Exception):
+            pass
+
+        commands = []
+
+        def run(command, **kwargs):
+            if command[:2] == ["git", "rev-parse"]:
+                return SimpleNamespace(stdout=COMMIT + "\n")
+            if command[:2] == ["git", "diff"]:
+                return SimpleNamespace(returncode=0)
+            if command[:2] == ["git", "ls-files"]:
+                return SimpleNamespace(stdout=b"")
+            if command[:2] == ["git", "show"]:
+                return SimpleNamespace(stdout="1700000000\n")
+            if command[:4] == [sys.executable, "-B", "-m", "PyInstaller"]:
+                commands.append((command, kwargs))
+                raise CommandCaptured
+            self.fail("Unexpected command before freezing: " + repr(command))
+
+        tcl = SimpleNamespace(Tcl=lambda: SimpleNamespace(eval=lambda script: "8.6"))
+        output = self.directory / "output"
+        with patch.object(bundle, "host_platform", return_value="windows-x64"), \
+                patch.object(bundle, "prepare_runtime"), \
+                patch.object(bundle.subprocess, "run", side_effect=run), \
+                patch.dict(sys.modules, {"tkinter": tcl}):
+            with self.assertRaises(CommandCaptured):
+                bundle.build_bundle(self.directory, output, COMMIT, "windows-x64")
+        self.assertEqual(len(commands), 1)
+        command, kwargs = commands[0]
+        collected = {command[index + 1] for index, token in enumerate(command)
+                     if token == "--collect-submodules"}
+        self.assertEqual(collected, {"scp", "scp_hsr", "scp_highway", "scp_installer"})
+        runtime = output / "work/runtime/custom-pieces"
+        search_paths = {command[index + 1] for index, token in enumerate(command)
+                        if token == "--paths"}
+        self.assertIn(str(runtime / "domains/highway/implementation"), search_paths)
+        self.assertEqual(kwargs["cwd"], runtime)
 
 
 if __name__ == "__main__":

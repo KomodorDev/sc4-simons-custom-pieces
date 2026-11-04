@@ -1,0 +1,102 @@
+// title: "Original DD RHW Y general human operation report"
+// summary: "Preserve the user’s exact general works statement against the installed original junction without inferring individual game-case passes."
+// Used when: Reviewing what the human user actually confirmed before requesting another yellow-line-side variant.
+// Read by: Contributors reviewing original-junction evidence and the scope of later variants.
+// Updated by: Contributors relaying an exact explicit user report and checking its installed resource binding.
+// Affects: This scoped narrative report only; authoritative manual cases, generated coverage, installed files, and frozen evidence remain unchanged.
+{
+  "schema_version": 1,
+  "subject": {
+    "id": "ddrhw-compact-diagonal-y-junction",
+    "kind": "assembly",
+    "variant": "original first native alignment"
+  },
+  "recorded_at_utc": "2026-11-03T10:19:05.404283+00:00",
+  "record_type": "general-user-report-without-individual-case-results",
+  "human_report": {
+    "authority": "explicit user statement",
+    "confirmation_date_local": "2026-11-03",
+    "confirmation_timezone": "Europe/Berlin",
+    "confirmation_time_of_day": null,
+    "verbatim_confirmation": "okay good it works.",
+    "verbatim_message_for_context": "okay good it works. but we need another variant where the yellow line is on the other side of the road for all travel decks",
+    "reported_fact": "The user reports that the original installed Y junction works.",
+    "scope": "General operation of the original installed junction; no individual journey, orientation, tool action, or environment was specified.",
+    "subsequent_variant_request_is_context_only": true,
+    "specific_manual_case_ids_confirmed": []
+  },
+  "installed_resource_binding": {
+    "installation_evidence": "additive-installation-20261103.jsonc",
+    "installation_evidence_sha256": "d644f2e87d47d4fd7a73b550364e592847ea5b383b6e1777fb0155be0dc4bae9",
+    "original_installation_evidence_sha256": "8b30cc12402ba5f9f04ef1699afd1e53f9f28da6706732baab5c03223e3014a1",
+    "compound_manifest_sha256": "8bc67ac6686b7167b3ddf7f5842ac4cc5d73f41b01b44cc34dc5838cfeeff291",
+    "installed_receipt_sha256": "2f76ff4fd3638375c12fa1f6bb55895573835161541e318c8ae0f0bfd620d090",
+    "accepted_Y_manifest_sha256": "2388f51caf6fee05e699b03279646724d357c39b97ba5d4ec391e1d9f8e417c0",
+    "current_receipt_and_five_relevant_DAT_files_rechecked_read_only": true,
+    "original_Y_piece_DATs": [
+      {
+        "piece_id": "ddrhw-y-diagonal-stem-split",
+        "relative_to_managed_plugin_folder": "20_Pieces/SCP_ddrhw-y-diagonal-stem-split.dat",
+        "bytes": 6499142,
+        "sha256": "6892d4ce98c569738fa186f902619eb34732f34f5be2c5f90acce3747a7c4a1f"
+      },
+      {
+        "piece_id": "ddrhw-y-diagonal-branch",
+        "relative_to_managed_plugin_folder": "20_Pieces/SCP_ddrhw-y-diagonal-branch.dat",
+        "bytes": 5526584,
+        "sha256": "f245e4701d3959b2ab39a426e9bccef23ceafd1a0fa28f7a0373674ab3561e8d"
+      },
+      {
+        "piece_id": "ddrhw-y-orthogonal-core",
+        "relative_to_managed_plugin_folder": "20_Pieces/SCP_ddrhw-y-orthogonal-core.dat",
+        "bytes": 7197160,
+        "sha256": "584ebb51dd1c199968a1a349ef928813ecf8bc039e9463ca091fa7e290a573fc"
+      }
+    ],
+    "shared_DATs": [
+      {
+        "relative_to_managed_plugin_folder": "00_SCP_Controller_NAM50.dat",
+        "bytes": 5916136,
+        "sha256": "26905594f0a62d002cdaafe281bb691bbbbdac006fc1ec5d08f201d2e36818cc"
+      },
+      {
+        "relative_to_managed_plugin_folder": "10_SCP_Menu.dat",
+        "bytes": 1248571,
+        "sha256": "9cd706ace1058394a1012a5d3307983e37ce923ee5896e0287a248a01b7ec4ed"
+      }
+    ],
+    "personal_filesystem_paths_omitted": true
+  },
+  "human_test_environment": {
+    "platform": null,
+    "game_version": null,
+    "NAM_profile": null,
+    "status": "Not specified in the user report; installed input fingerprints do not establish the human test conditions."
+  },
+  "individual_checks_not_established_by_this_report": [
+    "Each of the six directed journeys",
+    "All four placement rotations",
+    "Route Query",
+    "Visible vehicle travel on named journeys",
+    "Native approach dragging and construction orders",
+    "Menu cycling and cursor anchors",
+    "Detailed appearance and shadows",
+    "Demolition and save/reload",
+    "Any subsequently requested variant"
+  ],
+  "observation_workflow": {
+    "reference": "../../../../docs/TESTING.md#4-record-one-observation",
+    "existing_exact_general_works_case_found": false,
+    "reason_standard_case_recorder_not_used": "The recorder requires an existing exact-scope case, matching explicit confirmation, and the required environment. The general statement supplies none of the detailed case scopes.",
+    "authoritative_manual_case_records_changed": false,
+    "generated_checkboxes_changed": false,
+    "manual_case_record_sha256": {
+      "domains/highway/00_pieces/ddrhw-y-diagonal-stem-split/checks/manual-tests.json": "3817b0d8a40205ec9bd0dd6f1f6df6d65b821807bd24c68e985201d2512aeb3c",
+      "domains/highway/00_pieces/ddrhw-y-diagonal-branch/checks/manual-tests.json": "d92208ec402fb768096f8c203c1cc6ffc892f5d3d07f40e3c7b99e9970018da1",
+      "domains/highway/00_pieces/ddrhw-y-orthogonal-core/checks/manual-tests.json": "d5e6063023813e244fcc9cd5918fa1aa1dc6af4172036d3029404954477a2810",
+      "domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction/checks/manual-tests.json": "9c0642a7a6fa21edf7c5dae95375c912c9ccc20a9f9d0c2bfcaf4ae067ca7b0f"
+    },
+    "coverage_effect": "No individual case becomes passed; generated coverage remains unchanged."
+  },
+  "capture_history": "This later general user report does not rewrite the pre-installation package, installation audit, compiled checks, or any original DAT. Its confirmation is not transferred to another variant."
+}

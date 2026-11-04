@@ -1,0 +1,70 @@
+// title: "Reversed Y additive installation"
+// summary: "Record the committed three-type addition and independent preservation audit of all 228 existing pieces."
+//
+// Used when: Confirming which files reached the game and which earlier pieces stayed in place.
+// Read by: Contributors, players, and the assembly testing guides.
+// Updated by: Contributors after the exact private additive transaction and independent post-install audit.
+// Affects: Installed file identities, controller/menu composition, receipt, and rollback backup; no human game pass is supplied.
+{
+  "schema_version": 1,
+  "state": "installed-and-independently-audited",
+  "capture_date": "2026-11-03",
+  "transaction": "Add the three reversed Y types in place, preserving the existing 228 piece DAT files.",
+  "candidate_kind": "preserved-installation-reversed-y-addition-v1",
+  "ordinary_full_build_verifier_supported_for_compound": false,
+  "baseline_manifest_sha256": "8bc67ac6686b7167b3ddf7f5842ac4cc5d73f41b01b44cc34dc5838cfeeff291",
+  "baseline_install_receipt_sha256": "2f76ff4fd3638375c12fa1f6bb55895573835161541e318c8ae0f0bfd620d090",
+  "addition_menu_manifest_sha256": "d239e913bb5a6447e634800646f652aca443dc9458025820917ede7afba7402c",
+  "addition_menu_verification_sha256": "7be13e3a5cbc4d1f1096406237c3dd2ec0aae9cc7805286103b758a45b0315ad",
+  "addition_saved_marking_report_sha256": "81d8d1a073c1f0ee39ae178fe595dcc5893e4e52b0cc91f91b1fb81c0eb34de3",
+  "compound_manifest_sha256": "46e57970000aff61d9f160684ea9ca51cea2438a18e2446dac08387ed6b7c8fa",
+  "independent_candidate_audit_sha256": "b7eeeb5095ed788e9ab2d1499abf864668d3d476c3c3957252d0f44f458a44a1",
+  "installed_receipt_sha256": "58ea62d5171aa8d420c4084a7d948275d7e8bdadbeb1061c98011798d78fa09c",
+  "independent_post_install_audit_sha256": "57250a6208444671290c0a3ded55a70f705f5601c3e629fba1f30648c3317674",
+  "backup_id": "fc8f0833d9d443c794b24cc7192ec5ac",
+  "external_standard_rollback_backup_complete": true,
+  "persistent_partial_transaction_journal_phase": "committed",
+  "piece_types_before": 228,
+  "piece_types_after": 231,
+  "owned_DATs_after": 233,
+  "existing_piece_DATs_bytes_device_inode_size_mtime_unchanged": 228,
+  "existing_piece_DATs_reinstalled": false,
+  "new_piece_DATs_added": [
+    "20_Pieces/SCP_ddrhw-y-reversed-diagonal-branch.dat",
+    "20_Pieces/SCP_ddrhw-y-reversed-diagonal-stem-split.dat",
+    "20_Pieces/SCP_ddrhw-y-reversed-orthogonal-core.dat"
+  ],
+  "shared_DATs_updated": [
+    "00_SCP_Controller_NAM50.dat",
+    "10_SCP_Menu.dat"
+  ],
+  "receipt_updated": true,
+  "old_menu_payloads_preserved": 664,
+  "new_menu_payloads": 4,
+  "menu_payloads_after": 668,
+  "old_Ordering_and_Tab_cycles_preserved": true,
+  "old_RUL0_exactly_recoverable_by_removing_new_rows_and_definitions": true,
+  "new_construction_definitions": 24,
+  "RUL1_payload_byte_identical": true,
+  "NetworkINI_payload_byte_identical": true,
+  "native_helper_solutions_reused_uniquely": 8,
+  "new_resource_address_collisions": 0,
+  "private_transaction_tests": {
+    "reported_tests": 20,
+    "skips": 0,
+    "passed": true,
+    "evidence_sha256": "e0ea006af3e95c3d6d591d79392a77453558cc63fecfe83ab384b7f45361f874"
+  },
+  "private_composition_and_audit_sources": {
+    "composer_sha256": "e309d662fb69b4fb6fe4acfefd78f3b5815c08f68f333f5717bad2aa608eef47",
+    "independent_auditor_sha256": "00fafdf89331014a52de084ba78818899adb59284de895f8a8cc191275a87a0c",
+    "transaction_sha256": "b53e586cb51a771a635c8edcee5ab34fb9a92725a10ff315b539d1ef4b1ab82a",
+    "post_auditor_sha256": "351f82ab68ecd1ada17d746c21946b35006ddefdc3502c1ea84f55b1554f79c2"
+  },
+  "private_path_handling": "Actual Plugins, scan roots, backup paths, and complete transaction inputs remain in private local records. Public evidence reports exact measured hashes and results without personal filesystem paths.",
+  "verification_scope": "All 228 existing pieces were preserved by exact accepted-byte and filesystem-identity checks. The three new pieces also carry independent complete physical, native interface, saved PATH, and sampled driver-left marking verification. No retained piece was rebuilt or reinstalled by this transaction.",
+  "archives": "The already-frozen final development ZIPs are pre-install captures. This later installation receipt does not imply those archives were repacked.",
+  "new_variant_human_game_operation": "unverified",
+  "game_closed_before_commit": true,
+  "game_or_city_files_modified": false
+}

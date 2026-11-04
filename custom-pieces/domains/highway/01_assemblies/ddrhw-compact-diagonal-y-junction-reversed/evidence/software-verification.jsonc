@@ -1,0 +1,81 @@
+// title: "Reversed Y software validation"
+// summary: "Record the passing full portable repository suite, configured native Y checks, installer regressions, and documentation coverage."
+//
+// Used when: Reviewing software verification before final packaging and additive installation.
+// Read by: Contributors, testers, and the assembly testing guide.
+// Updated by: Contributors after the exact required command and relevant configured native checks complete.
+// Affects: Software evidence and explicit skip accounting; it supplies no human game observation.
+{
+  "schema_version": 1,
+  "passed": true,
+  "required_command": "python3 -B tools/run_tests.py",
+  "environment": "Python 3.11.9, Pillow 10.3.0, NumPy 1.26.4, and Shapely 2.2.0",
+  "capture": "Immutable maintained-source copy without private settings, native archives, or dist builds.",
+  "source_snapshot_files": 3898,
+  "source_snapshot_receipt_sha256": "bdc9435849a23a515d81b19130c5e8947e7adc3751ae179df9c2e7f29cdf3dea",
+  "test_log_sha256": "4423f6fa4bda994e3b692d3b540ceb59252252a049afb3e74f2d7d226a6c7945",
+  "elapsed_seconds": 529.4254651661031,
+  "suites": [
+    {
+      "suite": "framework",
+      "reported_tests": 1052,
+      "elapsed_seconds": 224.724,
+      "reported_skips": 11,
+      "passed": true
+    },
+    {
+      "suite": "high-speed-rail",
+      "reported_tests": 420,
+      "elapsed_seconds": 123.039,
+      "reported_skips": 65,
+      "passed": true
+    },
+    {
+      "suite": "highway",
+      "reported_tests": 700,
+      "elapsed_seconds": 141.375,
+      "reported_skips": 14,
+      "passed": true
+    },
+    {
+      "suite": "hsr-trumpet",
+      "reported_tests": 129,
+      "elapsed_seconds": 27.273,
+      "reported_skips": 5,
+      "passed": true
+    }
+  ],
+  "total_unittest_reported_tests": 2301,
+  "total_unittest_reported_skips": 95,
+  "skip_scope": "Unavailable proprietary native resources or staged game builds; class-level skips can cover several declared methods. No skipped native case is described as passed.",
+  "configured_native_Y_suite": {
+    "reported_tests": 99,
+    "reported_skips": 0,
+    "passed": true,
+    "log_sha256": "2b5d5e3db67ac4e2b9ac0ecf949407da05cd24531b2f1173de7b5b74bd83487d"
+  },
+  "installer_service_suite": {
+    "reported_tests": 53,
+    "reported_skips": 0,
+    "passed": true,
+    "log_sha256": "103bb0cc841315858d19e63371c3e4914cecc62c948e37f41cf87ed1a8647a65"
+  },
+  "documentation_check": {
+    "subjects": 238,
+    "current_layout_subjects": 86,
+    "retained_legacy_subjects": 152,
+    "documents": 201,
+    "local_links": 28888,
+    "errors": 0,
+    "passed": true,
+    "log_sha256": "81ee6cd7eda7ab2cf21830f0d321368ef58e5e41aa5c70411474123c43ecb286"
+  },
+  "earlier_capture": {
+    "passed": false,
+    "failure": "One installer capability expectation omitted the three new finite reversed recipes. The expectation was corrected; production behavior did not require a change.",
+    "log_sha256": "4292e69f49d481bdc0042269af17f293fce3e79812ba0ac95d26039dab345ff6",
+    "retained_unchanged": true
+  },
+  "manual_game_results_changed": false,
+  "installation_performed_by_these_checks": false
+}

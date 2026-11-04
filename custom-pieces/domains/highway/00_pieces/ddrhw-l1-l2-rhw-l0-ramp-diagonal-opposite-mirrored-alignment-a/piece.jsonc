@@ -1,0 +1,525 @@
+// title: "Piece definition: DD RHW-4 — L1/L2 ↔ RHW-4 L0 — Mirrored Diagonal Ramp — Opposite Upper Descent — Alignment A"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 L1/L2 \u2194 RHW-4 L0 \u2014 Mirrored Diagonal Ramp \u2014 Opposite Upper Descent \u2014 Alignment A.",
+  "schema_version": 1,
+  "domain": "highway",
+  "id": "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a",
+  "name": "DD RHW-4 \u2014 L1/L2 \u2194 RHW-4 L0 \u2014 Mirrored Diagonal Ramp \u2014 Opposite Upper Descent \u2014 Alignment A",
+  "description": "A diagonal paired ramp converts the stacked L1/L2 DD RHW-4 into two ground RHW-4 carriageways. It preserves two lanes per direction, the selected upper-road side and traffic phase, driver-left yellow markings, and explicitly measured first-cut native sockets.",
+  "recipe": "highway_ddrhw_diagonal_l0_transition_opposite_mirrored_a",
+  "diagonal_transition_variant": "opposite-side-mirrored",
+  "diagonal_transition_alignment": "a",
+  "status": "experimental",
+  "enabled_by_default": false,
+  "puzzle_id": "f88c",
+  "tile_ids": [
+    "7f5f6040",
+    "7f5f6130",
+    "7f5f6140",
+    "7f5f6220",
+    "7f5f6230",
+    "7f5f6240",
+    "7f5f6250",
+    "7f5f6320",
+    "7f5f6330",
+    "7f5f6340",
+    "7f5f6350",
+    "7f5f6420",
+    "7f5f6430",
+    "7f5f6440",
+    "7f5f6450",
+    "7f5f6510",
+    "7f5f6520",
+    "7f5f6530",
+    "7f5f6540",
+    "7f5f6600",
+    "7f5f6610",
+    "7f5f6620",
+    "7f5f6630",
+    "7f5f6720"
+  ],
+  "preview_id": "7f5f6ff5",
+  "effect_name": "preview_scp_hw_f88c_____001",
+  "footprint": [
+    8,
+    6
+  ],
+  "cells": [
+    [
+      0,
+      4
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      6,
+      2
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      7,
+      2
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "rhw4",
+    "rhw4_textures"
+  ],
+  "native_diagonal_transition_approaches": true,
+  "menu": {
+    "id": "6a47f88c",
+    "order": "ffffff8c",
+    "style": "ddrhw-diagonal-transition",
+    "family_anchor": "ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a"
+  },
+  "authored_texture_ids": [
+    "7f5f6040"
+  ],
+  "engineering": {
+    "diagonal_transition_variant": "opposite-side-mirrored",
+    "diagonal_transition_alignment": "a",
+    "source_scope": "Reviewed Alignment A source05 encoded physical geometry and ownership; normal DAT verification, installation, and game observations are separate gates",
+    "frame": {
+      "mouth_EN_m": [
+        8.0,
+        0.0
+      ],
+      "longitudinal_unit_EN": [
+        -0.7071067811865475,
+        -0.7071067811865475
+      ],
+      "transverse_unit_EN": [
+        0.7071067811865475,
+        -0.7071067811865475
+      ],
+      "DD_and_lower_axis": "E-N=8",
+      "upper_ground_axis": "E-N=-24"
+    },
+    "nominal_axis_run_m": 101.82337649086286,
+    "ground_axis_spacing_m": 22.627416997969522,
+    "native_lane_offset_m": 2.262741699796952,
+    "physical_flat_envelope_m": 8.65685458666717,
+    "source_forward_extent_m": 5.656854586667169,
+    "literal_native_collar_m": 3.0,
+    "sideways_curve_run_m": 66.0,
+    "upper_grade_ease_m": 8.0,
+    "station_step_m": 0.125,
+    "station_sampling": "0.125m source grid plus exact profile breaks and lane-dependent cut endpoints",
+    "height_integration": "Adaptive Simpson per smooth interval, absolute target2e-12, depth20",
+    "upper_normalized_grade_bound": 0.18952644028785606,
+    "lower_peak_grade": 0.17045454545454544,
+    "native_cross_section_reflected_in_canonical_frame": true,
+    "cell_transform_policy": "Fresh city-grid clipping and native reconstruction per variant; no reflected-mask equivalence",
+    "middle_body_floor_policy": "Native309 datum faded with PATH height; one metre below roof, clamped to ground",
+    "native_shoulder_depth_policy": "Reviewed first-A finite 302/309 profiles and source-only original native union; every authored floor and wall is retained, and no old exception is inherited",
+    "support_plan": {
+      "solids": 14,
+      "scope": "Fourteen complete diagonal support solids independently checked in source05 for closed faces, contact, and full clearance; normal DAT and game checks are separate",
+      "cap_contact": "Flat cap centre meets the served underside; finite own-slab embedding is checked from actual meshes"
+    },
+    "native_sockets": {
+      "dd": {
+        "outside_cell": [
+          1,
+          0
+        ],
+        "end_cell": [
+          0,
+          0
+        ],
+        "cut": [
+          "east",
+          8.0
+        ],
+        "donor": "57530200",
+        "pose": 2,
+        "outward_peer_cell": [
+          1,
+          -1
+        ],
+        "outward_peer_donor": "57530900",
+        "outward_peer_pose": 0
+      },
+      "lower_ground": {
+        "outside_cell": [
+          -4,
+          5
+        ],
+        "end_cell": [
+          -4,
+          4
+        ],
+        "cut": [
+          "north",
+          -72.0
+        ],
+        "donor": "57030900",
+        "pose": 2
+      },
+      "upper_ground": {
+        "outside_cell": [
+          -5,
+          4
+        ],
+        "end_cell": [
+          -5,
+          3
+        ],
+        "cut": [
+          "north",
+          -56.0
+        ],
+        "donor": "57030200",
+        "pose": 2
+      }
+    },
+    "in_game_status": "unverified",
+    "physical_layout_reviewed": true,
+    "native_shoulder_ownership_reviewed": true,
+    "physical_source_review": {
+      "snapshot_sha256": "43f0c7a936ad07b227768d21e7f1ceb183f96a728f38a50d0c9fed169cf703a6",
+      "verification_sha256": "cfdb0b02add5f59c7084e42d895252de26e8da076b1e79bfd94b2c10beb38f27",
+      "scope": "Independent ordered physical checks of all four choices and 196 actual encoded source payloads; no game acceptance"
+    },
+    "model_only_cells": [
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        7,
+        2
+      ]
+    ],
+    "native_DD_authored_shoulder_host_world_cells": [
+      [
+        1,
+        1
+      ]
+    ],
+    "flat_base_corner_vertices": 39,
+    "ownership_scope": "Reviewed source05 mask: 24 owned cells, 15 routed and nine model-only, with 39 terrain corners; actual native collars, source-parent shoulder hosting, and complete supports checked while all native approach corridors remain unowned",
+    "excluded_native_corridor_cells": [
+      [
+        -5,
+        4
+      ]
+    ],
+    "max_grade_percent": 20.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "pavement_path_offset_m": 0.0
+  },
+  "shadow_mode": "model-carrier",
+  "shadow_mappings": [],
+  "model_shadows": {
+    "schema_version": 1,
+    "sun_profile": "sc4-default-67p5-45",
+    "enabled": false,
+    "cells": [
+      {
+        "cell": [
+          0,
+          4
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          3
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          4
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          2,
+          2
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          2,
+          3
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          2,
+          4
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          2,
+          5
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          3,
+          2
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          3,
+          3
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          3,
+          4
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          3,
+          5
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          4,
+          2
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          4,
+          3
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          4,
+          4
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          4,
+          5
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          5,
+          1
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          5,
+          2
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          5,
+          3
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          5,
+          4
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          6,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          6,
+          1
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          6,
+          2
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          6,
+          3
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          7,
+          2
+        ],
+        "cast_shadow": false
+      }
+    ]
+  },
+  "provenance": {
+    "geometry": "Measured diagonal DD and ground RHW-4 native interfaces, an independently reviewed sparse mask, four same-lane journeys, and curve-aware height profiles. No orthogonal profile or reflected cell mask substitutes for actual diagonal measurements.",
+    "construction": "Explicit flat constraints on every reviewed owned cell; three unowned native sockets with their separately audited finite peers; four proper rotations repeated across eight cursor states.",
+    "granularity": "One independently useful coordinated DD-to-ground conversion per side/traffic choice. Interior slope and curve sections do not expose a proven standard native connection for an arbitrary split.",
+    "alignment": "First explicit longitudinal native mouth cut only. The adjacent 302/309 cut is not supplied by four rotations or inferred from the parallel transverse spacing.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}

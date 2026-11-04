@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "scope": "saved sampled geometry and declared directed graph only",
+  "compiled_resource_checks": false,
+  "game_tests": "not-run",
+  "required_distinct_arm_journeys": 12,
+  "journeys": [
+    "NE->NW",
+    "NE->SE",
+    "NE->SW",
+    "NW->NE",
+    "NW->SE",
+    "NW->SW",
+    "SE->NE",
+    "SE->NW",
+    "SE->SW",
+    "SW->NE",
+    "SW->NW",
+    "SW->SE"
+  ],
+  "possible_indirect_returns_via_avenue": [
+    "NE",
+    "SW"
+  ],
+  "surface_intersections": 2,
+  "ramps": [
+    {
+      "id": "upper-off",
+      "horizontal_length_m": 80.0,
+      "tile_length_equivalents": 5.0,
+      "max_sampled_grade_percent": 35.960245
+    },
+    {
+      "id": "upper-on",
+      "horizontal_length_m": 80.0,
+      "tile_length_equivalents": 5.0,
+      "max_sampled_grade_percent": 35.960245
+    },
+    {
+      "id": "lower-off",
+      "horizontal_length_m": 48.0,
+      "tile_length_equivalents": 3.0,
+      "max_sampled_grade_percent": 32.496593
+    },
+    {
+      "id": "lower-on",
+      "horizontal_length_m": 48.0,
+      "tile_length_equivalents": 3.0,
+      "max_sampled_grade_percent": 32.496593
+    }
+  ],
+  "provisional_lateral_envelope_clearance_m": 11.0,
+  "limits": [
+    "Widths and maximum grade are design assumptions, rather than native interface measurements.",
+    "Centre-line samples do not prove swept traffic clearance, curvature standards, or native joins.",
+    "Supports, deck solids, pavement unions, signals, construction ownership, resource encoding, and rotations are not checked.",
+    "No game placement, Route Query, visible traffic, or human observation has run."
+  ],
+  "sources": {
+    "design_sha256": "ad8d1177fe46edb79ffcd87dbb99169bd0ca4cc1a9e4f66a2e9cc5c50d754cfe",
+    "geometry_sha256": "225beb95c429759fb99189c9391b99a780d4f0d0572a7eae2d11d16d92beea1f",
+    "verifier_sha256": "4cd1e557cc5ead60f2423e95e0e1544b2764ced7a8d2f3ef4de6381d0a8f9fd5"
+  }
+}

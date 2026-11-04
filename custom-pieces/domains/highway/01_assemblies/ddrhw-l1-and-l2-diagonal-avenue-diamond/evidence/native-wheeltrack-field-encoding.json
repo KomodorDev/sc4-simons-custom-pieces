@@ -1,0 +1,189 @@
+{
+  "actual_saved_polygon_measurements": {
+    "new_safe_DD_corridor_field": {
+      "accepted_polygons": 13116,
+      "candidate_U_max": 0.7460937500000001,
+      "candidate_U_min": 0.5117187499999999,
+      "fully_inside_matching_original_triangle_count": 0,
+      "maximum_best_single_DD_neutral_endpoint_error": 0.11785718549747237,
+      "maximum_certified_same_finite_edge_radius_m": 2.2124540736237806e-06,
+      "maximum_original_affine_UV_error": 0.0,
+      "missing_finite_edge_certificates": 0,
+      "rejected_polygons": 0,
+      "residual_convex_polygons_including_saved_zoom_duplicates": 13116,
+      "summed_residual_area_m2_including_saved_zoom_duplicates": 0.0003523874501537563
+    },
+    "unchanged_original_affine_UV_field": {
+      "accepted_polygons": 91,
+      "candidate_U_max": 0.23046911961507938,
+      "candidate_U_min": 0.19921907782554626,
+      "fully_inside_matching_original_triangle_count": 0,
+      "maximum_best_single_DD_neutral_endpoint_error": 0.31249967217445374,
+      "maximum_certified_same_finite_edge_radius_m": 6.743495761743046e-07,
+      "maximum_original_affine_UV_error": 1.0874988176645672e-07,
+      "missing_finite_edge_certificates": 0,
+      "rejected_polygons": 0,
+      "residual_convex_polygons_including_saved_zoom_duplicates": 91,
+      "summed_residual_area_m2_including_saved_zoom_duplicates": 1.2586589538954307e-06
+    }
+  },
+  "count_and_area_scope": "Counts and summed areas include every saved changed-resource record, including repeated zoom slots and previews. These are sums of convex old/new face-intersection residuals, not unique physical city-surface union areas. All resource bytes and model contexts remain checked.",
+  "earlier_findings_preserved": {
+    "corrected_exact_contract_sha256": "ff34281261a82a2faa60271a5def6bed4a65dc5425d8c5497602d6be86bf3c8f",
+    "earlier_failed_global_split_report_sha256": "91da26aaf332411fcdbe862c83e17daf98f7fc9af04ae10dab76360251aba0dc",
+    "initial_wrong_height_contract_sha256": "8aa17678b0345ee4ca22169ef09bf17ba3edc7487a0ef74288d52e2780ec74c4",
+    "original_UV_partition_finding": "The unsplit global survey initially treated unchanged original white-edge UV partition slivers as new wheeltrack escape. A separate same-baseline-affine-face finite-edge proof distinguishes those binary32 partition residuals. The earlier failed reports and fingerprints remain preserved.",
+    "ownership_correction": "The first neutral export included only each nominal branch mouth. Retained native decks can contain another served mouth; the corrected export transforms the SAME exact world polygons into all four actual branch poses, retaining their original heights without growing their area."
+  },
+  "evidence": "native-wheeltrack-field-encoding",
+  "fixed_acceptance_contract": {
+    "UV_tolerance_relaxed": false,
+    "analytic_corridor_expanded": false,
+    "canonical_coordinate_absolute_XZ_limit_m": 16.0,
+    "car_PATH_support_distance_ceiling_m_unchanged_by_this_audit": 2e-06,
+    "exact_deck_datums_m": [
+      7.5,
+      15.0
+    ],
+    "field_ceiling_derivation": "The measured canonical and preview binary32 envelopes have per-component half-ULPs 2^-21 m and 2^-19 m. Two planar rounding stages give sqrt(2)*(2^-21+2^-19)=3.3717478808715227 micrometres; the approved donor shared-edge correction adds at most 1 micrometre, giving 4.371747880871523 micrometres. The fixed 5-micrometre engineering ceiling is conservative and independently requires an exact whole-polygon finite-edge certificate. This is not a universal error theorem for reconstructed curved normals.",
+    "neutral_U_limit_reason": "A q=8 ramp seam legitimately retains its dark native MIS phase. The unchanged independent native UV/RGB report checks that seam; a neutral atlas endpoint is not required there.",
+    "new_field_finite_edge_distance_ceiling_m": 5e-06,
+    "original_UV_face_finite_edge_distance_ceiling_m": 1e-06,
+    "original_face_ceiling_reason": "The retained original affine UV field must match within the unchanged UV tolerance, and its whole convex residual must remain inside the same actual baseline triangle or within one micrometre of one finite edge of that same triangle.",
+    "pinned_DD_material_sha256": "307aba7786d4b4f11dbc499eb54f7d05d01a114001919b8a5f7d55970fbb64ca",
+    "preview_coordinate_absolute_XZ_limit_m": 64.0,
+    "safe_DD_U_range": [
+      0.51171875,
+      0.74609375
+    ],
+    "unchanged_affine_UV_tolerance": 3e-06,
+    "unchanged_general_position_tolerance_m": 3e-05,
+    "universal_neutral_U_requirement": false
+  },
+  "format_measurements": {
+    "PATH_measurement_sha256": "c25e2aed729cdd7a3951876477b2ebeeff96b19cfa74021f8c7add4da1f41d1a",
+    "binary32_coordinates": {
+      "authorized_shared_donor_correction_m": 1e-06,
+      "candidate_manifest_sha256": "f56c9281b02f316217d66a3c21ffed4bbd180db4e5003b0d9da7f552f0b205e0",
+      "classes": {
+        "canonical": {
+          "max_abs_XZ_m": 9.656854629516602,
+          "max_float32_half_ULP_m": 4.76837158203125e-07,
+          "unique_models_checked": 12
+        },
+        "preview": {
+          "max_abs_XZ_m": 41.65685272216797,
+          "max_float32_half_ULP_m": 1.9073486328125e-06,
+          "unique_models_checked": 4
+        }
+      },
+      "purpose": "Numeric actual binary32 coordinate-envelope check; no model buffer included.",
+      "two_stage_XZ_rounding_bound_m": 3.3717478808715227e-06
+    },
+    "coordinate_measurement_sha256": "604489e50adaec886be23b3ee2f3dc008bf5281584d0316adab93cf1c499a1d3",
+    "saved_PATH_decimal_encoding": {
+      "candidate_manifest_sha256": "f56c9281b02f316217d66a3c21ffed4bbd180db4e5003b0d9da7f552f0b205e0",
+      "coordinate_tokens_checked": 9414,
+      "maximum_observed_decimal_fractional_places": 9,
+      "path_sources": "Exact07 branch DATs plus byte-identical remaining baseline09 DATs; all canonical/resolved PATHs are preservation-checked.",
+      "per_coordinate_decimal_rounding_limit_m": 5e-10,
+      "per_mouth": [
+        {
+          "actual_saved_route_points": 535,
+          "flat_native_deck_segments_checked": 223,
+          "maximum_planar_flat_segment_m": 15.839191898578665,
+          "minimum_planar_flat_segment_m": 0.010000000266062573,
+          "mouth": "lower-off"
+        },
+        {
+          "actual_saved_route_points": 535,
+          "flat_native_deck_segments_checked": 223,
+          "maximum_planar_flat_segment_m": 15.839191898578665,
+          "minimum_planar_flat_segment_m": 0.010000000266062573,
+          "mouth": "lower-on"
+        },
+        {
+          "actual_saved_route_points": 619,
+          "flat_native_deck_segments_checked": 307,
+          "maximum_planar_flat_segment_m": 0.24916309432546077,
+          "minimum_planar_flat_segment_m": 0.01000000026605378,
+          "mouth": "upper-off"
+        },
+        {
+          "actual_saved_route_points": 619,
+          "flat_native_deck_segments_checked": 307,
+          "maximum_planar_flat_segment_m": 0.24916309432546077,
+          "minimum_planar_flat_segment_m": 0.01000000026605378,
+          "mouth": "upper-on"
+        }
+      ],
+      "purpose": "Actual decoded saved transfer PATH segment and decimal-precision measurements, not a universal reconstructed-normal error theorem.",
+      "writer_format": "Both canonical serializers use .9f followed by trailing-zero removal.",
+      "writer_source_sha256": {
+        "domains/highway/implementation/scp_highway/ramp_paths.py": "c4302863e48bea4d2e62adc06e6b8de90ec32ae290a81fb1fb3e85e295a55575",
+        "framework/scp/track_paths.py": "cab40f75c073202ee07128fb7fc07e1b50498033794db90ca9629c8290147b51"
+      }
+    }
+  },
+  "independent_native_field_evidence": {
+    "accepted_field_wrapper_sha256": "bfbf627bdc438f70806c9d3b95fb411a9ad026b95c9c2860d99e5f1db4a8b3cc",
+    "corrected_convex_contract_sha256": "ff34281261a82a2faa60271a5def6bed4a65dc5425d8c5497602d6be86bf3c8f",
+    "coverage_limit": "The independent field report retains its fixed sampled UV, phase, and first-image native RGB limits; it does not prove continuous whole-field colour or in-game filtering.",
+    "raw_actual_native_UV_RGB_report_sha256": "0238ec3f5c4429f5b1887d10aa2f540d1386e59b290486954b2ba29640abb9f2",
+    "texture_provider_evidence_file": "native-wheeltrack-texture-providers.json",
+    "texture_provider_evidence_sha256": "42a6dcabf3cce87f367396d805afddc71484409c9aa079c6a3c3625bb4967616"
+  },
+  "limits": {
+    "canonical_artwork_promoted_by_this_evidence": false,
+    "continuous_full_field_colour_proved": false,
+    "game_rendering_or_filtering_tested": false,
+    "installation_performed": false,
+    "lower_mipmap_levels_tested": false,
+    "manual_game_observations_changed": false,
+    "pixel_or_native_model_payload_included": false,
+    "private_paths_included": false
+  },
+  "preservation_evidence": {
+    "file": "wheeltrack-transition-preservation.json",
+    "sha256": "fb4777c04db95644f48927e0ad04e74185cc4791d30f53d5566e05b41029b9e6"
+  },
+  "public_view_scope_clarification": {
+    "encoding_measurements_checks_and_thresholds_changed": false,
+    "kind": "Metadata-only wording and linked-hash update.",
+    "prior_public_encoding_sha256": "783a35795f67387ab005e2da30fa4f186c120587587ef647ffaeab54cfc87dfb",
+    "scope": "The linked preservation record distinguishes native top-pavement coplanar subdivision, which may extend outside the route ribbons, from UV remapping limited to the exact ribbons and the two explicit encoding certificates.",
+    "validation_rerun": false
+  },
+  "schema_version": 1,
+  "source_builds": {
+    "baseline_build": "ddrhw-marking-consistency-parts-01",
+    "baseline_manifest_sha256": "1b1a0da2800ce5498162b2b8470933cd719e2e104522ccb9565a66f29739311d",
+    "candidate_build": "ddrhw-wheeltrack-transition-parts-07",
+    "candidate_manifest_sha256": "f56c9281b02f316217d66a3c21ffed4bbd180db4e5003b0d9da7f552f0b205e0"
+  },
+  "status": "passed",
+  "validation": {
+    "acceptance_comparator_sha256": "c7d0b4b5fc4a5b928fdd914af65be6a8da221b0271ba5b994e3d8a42d4da8662",
+    "final_actual_full_report_sha256": "7e5f4d433be9e2aab787e33d7e92ab5218c64dabd18feb5c349fe87389c4cf84",
+    "new_adversarial_controls": {
+      "count": 22,
+      "result_sha256": "ed1256df03043f612e3a150e83ffefdd6c8419916065e060e469bd13b3aadbc5"
+    },
+    "numeric_view_creation_reran_validation": false,
+    "prior_structural_mutation_controls": {
+      "count": 17,
+      "result_sha256": "f81f47e07b8794296173445a7623e8732079ac3c38c2f3352693290331415431"
+    },
+    "report_created_from_completed_actual_run": true
+  },
+  "whole_polygon_proof": {
+    "forbidden_shortcuts": [
+      "No nearest-union vertex shortcut across holes.",
+      "No arbitrary convex hull or analytic corridor expansion.",
+      "No matching affine field on another deck.",
+      "No universal neutral-U assumption at the native ramp seam."
+    ],
+    "new_field": "For each convex residual outside the exact independently reconstructed corridor, every vertex is checked against the SAME finite original corridor-edge segment. Distance to one convex segment is convex, so the same capsule contains the entire convex polygon. Safe native DD U, exact material/datum, approved branch identity, coordinate envelope, and coherent affirmative field evidence are mandatory.",
+    "original_field": "First identify one actual baseline face with the same pinned material, mesh, and exact datum whose affine U and V match at every residual vertex within 3e-6. Require whole-triangle containment or the same entire-polygon certificate for ONE finite edge of THAT SAME original triangle."
+  }
+}

@@ -16,6 +16,7 @@ LIBRARY_SOURCES = {
     'config/local.example.jsonc',
     'config/profiles/nam50-rhd.jsonc',
     'config/release.jsonc',
+    'docs/evidence/missing-piece-upgrade-20261030.jsonc',
     'docs/templates/assembly-two-hsr-straights.jsonc',
     'schemas/connector-data.schema.jsonc',
     'schemas/connector-groups.schema.jsonc',
@@ -32,16 +33,15 @@ LIBRARY_SOURCES = {
     'domains/high-speed-rail/01_assemblies/inventory.jsonc',
     'domains/highway/domain.jsonc',
     'domains/highway/collections.jsonc',
+    'domains/highway/implementation/scp_highway/diagonal-transition-native-inputs.jsonc',
+    'domains/highway/implementation/scp_highway/diagonal-transition-collar-inputs.jsonc',
+    'domains/highway/implementation/scp_highway/diagonal-transition-native-obstacle-inputs.jsonc',
+    'domains/highway/menu-layout.jsonc',
+    'domains/highway/evidence/ddrhw-shadow-removal-20261101.jsonc',
     'domains/highway/connection-classes.jsonc',
     'domains/highway/inventory.jsonc',
     'domains/highway/00_pieces/inventory.jsonc',
     'domains/highway/01_assemblies/inventory.jsonc',
-}
-LEGACY_VIEWS = {
-    'domains/high-speed-rail/connection-classes.json',
-    'domains/highway/connection-classes.json',
-    'domains/high-speed-rail/junction-design-review.json',
-    'domains/high-speed-rail/native-diagonal-port-cap-audit.json',
 }
 GITHUB_SOURCES = {'branch-protection.jsonc', 'branch-protection-main.jsonc'}
 
@@ -84,18 +84,14 @@ class SharedJsoncSourceTests(unittest.TestCase):
     def test_real_library_source_roster_has_readable_metadata_and_valid_payloads(self):
         sources = {relative: path for relative, path in shared_files() if path.suffix == '.jsonc'}
         self.assertEqual(set(sources), LIBRARY_SOURCES)
-        self.assertEqual(len(sources), 26)
+        self.assertEqual(len(sources), 32)
         for relative, path in sources.items():
             with self.subTest(source=relative):
                 self.assert_document(path)
 
-    def test_only_declared_legacy_views_remain_strict_json_and_match_their_sources(self):
+    def test_shared_sources_have_no_strict_json_duplicates(self):
         views = {relative: path for relative, path in shared_files() if path.suffix == '.json'}
-        self.assertEqual(set(views), LEGACY_VIEWS)
-        for relative, path in views.items():
-            with self.subTest(view=relative):
-                self.assertEqual(json.loads(path.read_text(encoding='utf-8')),
-                                 jsonc.load(path.with_suffix('.jsonc')))
+        self.assertEqual(views, {})
 
     def test_actual_github_templates_export_locally_without_changing_sources(self):
         directory = ROOT.parent / '.github'

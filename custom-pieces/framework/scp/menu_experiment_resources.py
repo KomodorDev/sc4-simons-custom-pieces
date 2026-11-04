@@ -58,14 +58,34 @@ def _ltext(value):
     return struct.pack('<HH', len(raw) // 2, 0x1000) + raw
 
 
-def _definition(value, name):
+def member_domain(pieces):
+    """Require one explicit owning network across an assembly's members."""
+    require(pieces and all(isinstance(piece, dict) and isinstance(piece.get('domain', 'high-speed-rail'), str)
+                          for piece in pieces), 'Assembly menu needs valid domain-owned members')
+    domains = {piece.get('domain', 'high-speed-rail') for piece in pieces}
+    require(len(domains) == 1, 'Assembly menu cannot mix member domains')
+    domain = domains.pop()
+    require(domain in {'high-speed-rail', 'highway'}, 'Unsupported assembly menu domain')
+    return domain
+
+
+def valid_menu_order(order, domain):
+    """Use the native menu's measured ordering range for each supported domain."""
+    if domain == 'high-speed-rail':
+        return 0x70000000 <= order < 0x80000000
+    if domain == 'highway':
+        return 0xFFFF0000 <= order <= 0xFFFFFFFF
+    return False
+
+
+def _definition(value, name, domain='high-speed-rail'):
     require(isinstance(value, dict), f'{name} must be an object')
     result = dict(value)
     for key in ('id', 'order'):
         require(key in result, f'{name} requires {key}')
         result[key] = _uint(result[key], f'{name}.{key}')
-    require(0x70000000 <= result['order'] < 0x80000000,
-            f'{name}.order must be in the Rail-menu item-order range')
+    require(valid_menu_order(result['order'], domain),
+            f'{name}.order must be in its owning domain menu item-order range')
     for key in ('title', 'description'):
         require(key in result, f'{name} requires {key}')
         _ltext(result[key])
@@ -272,7 +292,7 @@ def _new_button(template, definition, *, kind, icon=None):
 
 
 def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, submenu=None,
-                                    cycle_icon=None, expected_cycle_icon=None):
+                                    cycle_icon=None, expected_cycle_icon=None, placement_aliases=None):
     """Return a new resource mapping and a byte-preservation audit.
 
     ``pieces`` is the ordered sequence of existing piece definitions. Original
@@ -294,8 +314,16 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
     require(not isinstance(pieces, (str, bytes, dict)), 'Pieces must be an ordered sequence')
     pieces = list(pieces)
     require(pieces, 'At least one piece is required')
-    cycle = _definition(cycle_button, 'cycle_button')
-    group = _definition(submenu, 'submenu') if submenu is not None else None
+    aliases = placement_aliases or {}
+    require(not aliases or (submenu is None and set(aliases) <= {piece['id'] for piece in pieces}),
+            'Placement aliases must belong to a single assembly cycle')
+    domain = member_domain(pieces)
+    require(domain == 'high-speed-rail' or submenu is None,
+            'Highway assemblies support one Highways button; no highway submenu contract is implemented')
+    require(valid_menu_order(_uint(cycle_button['order'], 'cycle order'), domain),
+            'Cycle order differs from its owning domain menu range')
+    cycle = _definition(cycle_button, 'cycle_button', domain)
+    group = _definition(submenu, 'submenu', domain) if submenu is not None else None
     require('target_id' in cycle, 'cycle_button requires target_id')
     cycle['target_id'] = _uint(cycle['target_id'], 'cycle_button.target_id')
     if group is not None:
@@ -326,6 +354,9 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
                         0x8A416A99, 0xCA416AB5):
             require(prop_id in props, f'Missing native menu property {prop_id:08x}')
         require(props[0x10]['values'] == [40], 'Expected type-40 network catalogue exemplar')
+        if domain == 'highway':
+            require(0x4005 in props and props[0x4005]['values'] == [0] and 0x4001 not in props,
+                    'Native highway cycle requires its Highways menu property 4005')
         require(props[0x8A2602BB]['values'] == [button_id] and
                 props[0x8A2602B8]['values'] == [button_id] and
                 props[0x8A416A99]['values'] == [*TITLE, button_id] and
@@ -334,11 +365,12 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
         require(ITEM_SUBMENU_PARENT_ID not in props and ITEM_BUTTON_CLASS not in props,
                 'Source already contains submenu experiment properties')
         order = _uint(piece['menu']['order'], f'{piece["id"]}.menu.order')
-        require(props[0x8A2602B9]['values'] == [order] and 0x70000000 <= order < 0x80000000,
-                'Original Rail-menu order differs from piece definition')
+        require(props[0x8A2602B9]['values'] == [order] and valid_menu_order(order, domain),
+                'Original domain menu order differs from piece definition')
         records.append((piece['id'], button_id, original))
-    require(cycle['target_id'] == records[0][1],
-            'Cycle alias must target the first selected piece\'s existing root button')
+    first_piece, first_button, _ = records[0]
+    require(cycle['target_id'] == aliases.get(first_piece, first_button),
+            'Cycle button must target the first selected construction root')
     result = dict(source_resources)
     if group is not None:
         for _, button_id, original in records:
@@ -347,22 +379,28 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
             _set(record, ITEM_BUTTON_CLASS, [2])
             result[*MENU_EXEMPLAR, button_id] = encode_exemplar(record)
     else:
-        for _, button_id, _ in records:
-            for prefix in _PRESENTATION_PREFIXES:
-                del result[*prefix, button_id]
+        for piece_id, button_id, _ in records:
+            if piece_id not in aliases:
+                for prefix in _PRESENTATION_PREFIXES:
+                    del result[*prefix, button_id]
     presentations = ((cycle, 'cycle'), (group, 'submenu')) if group is not None else ((cycle, 'cycle'),)
     for button, kind in presentations:
         result.update(_new_button(records[0][2], button, kind=kind,
                                   icon=cycle_icon if kind == 'cycle' else None))
     report = validate_menu_experiment_resources(
         result, source_resources, pieces, cycle_button=cycle, submenu=group,
-        expected_cycle_icon=expected_cycle_icon)
+        expected_cycle_icon=expected_cycle_icon, placement_aliases=aliases)
     return result, report
 
 
 def validate_menu_experiment_resources(resources, source_resources, pieces, *, cycle_button, submenu=None,
-                                       expected_cycle_icon=None):
+                                       expected_cycle_icon=None, placement_aliases=None):
     """Inspect the encoded result and reject any change outside presentation."""
+    domain = member_domain(pieces)
+    require(domain == 'high-speed-rail' or submenu is None,
+            'Highway assemblies support one Highways button; no highway submenu contract is implemented')
+    require(valid_menu_order(_uint(cycle_button['order'], 'cycle order'), domain),
+            'Cycle order differs from its owning domain menu range')
     cycle, group = cycle_button, submenu
     cycle_id = _uint(cycle['id'], 'cycle id')
     group_id = _uint(group['id'], 'submenu id') if group is not None else None
@@ -371,8 +409,9 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
                if group is not None else set())
     added = {(*prefix, button_id) for prefix in _PRESENTATION_PREFIXES
              for button_id in ((cycle_id, group_id) if group is not None else (cycle_id,))}
+    aliases = placement_aliases or {}
     removed = ({(*prefix, _uint(piece['menu']['id'], 'member id'))
-                for piece in pieces for prefix in _PRESENTATION_PREFIXES}
+                for piece in pieces if piece['id'] not in aliases for prefix in _PRESENTATION_PREFIXES}
                if group is None else set())
     require(set(resources) == (set(source_resources) - removed) | added,
             'Experiment added or removed an unexpected resource')
@@ -384,8 +423,9 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
         button_id = _uint(piece['menu']['id'], 'original id')
         key = (*MENU_EXEMPLAR, button_id)
         if group is None:
-            require(all((*prefix, button_id) not in resources for prefix in _PRESENTATION_PREFIXES),
-                    'Assembly member still has an individual menu presentation')
+            if piece['id'] not in aliases:
+                require(all((*prefix, button_id) not in resources for prefix in _PRESENTATION_PREFIXES),
+                        'Assembly member still has an individual menu presentation')
             continue
         before, after = exemplar(source_resources[key]), exemplar(resources[key])
         original, actual = _props(before), _props(after)
@@ -400,6 +440,9 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
                            'target_id': f'{button_id:08x}', 'parent_id': f'{group_id:08x}'})
     template = exemplar(source_resources[*MENU_EXEMPLAR, _uint(pieces[0]['menu']['id'], 'template id')])
     template_props = _props(template)
+    if domain == 'highway':
+        require(0x4005 in template_props and template_props[0x4005]['values'] == [0]
+                and 0x4001 not in template_props, 'Highway assembly lost its native Highways menu property')
     edited = {0x20, 0x8A2602B8, 0x8A2602B9, 0x8A2602BB, 0x8A416A99, 0xCA416AB5}
     presentations = (((cycle, cycle_id, 'cycle'), (group, group_id, 'submenu'))
                      if group is not None else ((cycle, cycle_id, 'cycle'),))
@@ -434,7 +477,7 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
                        expected_cycle_icon if kind == 'cycle' else None)
     report = {'schema_version': 1, 'individual_buttons': individual,
             'cycle_button': {'presentation_id': f'{cycle_id:08x}', 'target_id': f'{target_id:08x}',
-                             'menu': 'Rail', 'construction_alias_verified_in_game': False},
+                             'menu': 'Highways' if domain == 'highway' else 'Rail', 'construction_alias_verified_in_game': False},
             'submenu': ({'button_id': f'{group_id:08x}', 'parent_id': f'{RAIL_PARENT_ID:08x}'}
                         if group is not None else None),
             'modified_existing_exemplar_tgis': [tgi_string(key) for key in sorted(changed)],

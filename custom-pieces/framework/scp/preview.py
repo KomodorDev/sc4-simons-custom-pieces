@@ -24,6 +24,7 @@ from PIL import Image, ImageDraw, ImageFont
 from . import dbpf as read_dbpf
 from . import jsonc
 from .models import parse_s3d
+from .subject_sources import source_path
 
 S3D = (0x5ad0e817, 0xbadb57f1)
 TEXTURE = (0x7ab50e44, 0x1abe787d)
@@ -90,16 +91,39 @@ def model_texture_ids(model):
 
 
 class TextureLibrary:
-    """Index NAM once, then decode each referenced atlas once per render run."""
+    """Decode saved piece textures or installed NAM atlases once per render run."""
     def __init__(self,plugins):
         self.plugins=Path(plugins)
         self.index=None
         self.textures={}
         self.provenance={}
 
-    def for_model(self,model):
+    def for_model(self,model,owned_resources=None):
+        """Resolve piece-owned saved FSH bytes before installed NAM textures.
+
+        A cached IID may be reused only with the same exact bytes; silently
+        keeping a previous piece's atlas would render incorrect geometry.
+        """
         required=model_texture_ids(model)
-        if self.index is None:self.index=read_dbpf.index_plugins(self.plugins)
+        owned = {} if owned_resources is None else owned_resources
+        if not isinstance(owned, dict) or not all(type(iid) is int and 0 <= iid <= 0xffffffff
+                                                  and isinstance(raw, bytes) for iid,raw in owned.items()):
+            raise ValueError('Owned texture resources must map integer texture IDs to FSH bytes')
+        for texture in sorted(required & owned.keys()):
+            raw=owned[texture]
+            digest=_sha(raw)
+            if texture in self.textures:
+                if self.provenance[texture]['fsh_sha256'] != digest:
+                    raise ValueError(f'Cached texture {texture:08x} differs from the saved piece-owned FSH bytes')
+                continue
+            atlas=decode_fsh(raw)
+            pixels=np.asarray(atlas,dtype=float)/255
+            pixels.setflags(write=False)
+            self.textures[texture]=pixels
+            self.provenance[texture]={'instance':f'{texture:08x}','fsh_sha256':digest,
+                                     'size':list(atlas.size),'source':'piece-dat'}
+        if required-self.textures.keys() and self.index is None:
+            self.index=read_dbpf.index_plugins(self.plugins)
         for texture in sorted(required-self.textures.keys()):
             key=(*TEXTURE,texture)
             if key not in self.index:raise ValueError(f'Missing installed NAM texture {texture:08x}')
@@ -525,7 +549,7 @@ def _canonical_title(root, catalog, piece):
     from .connector_metadata import load_library
     resolved = load_library(root, [piece['id']], domain_id=piece['domain'])['pieces'][piece['id']]
     title = piece_title(piece['id'], title_records(resolved), piece['name'])
-    paths = [directory/name for name in ('piece.json', 'connections.json', 'connector-groups.jsonc')]
+    paths = [source_path(directory, 'piece'), directory/'connections.json', directory/'connector-groups.jsonc']
     registry = root/relative/'domain.jsonc'; paths.append(registry)
     domain_data = jsonc.load(registry)
     profiles = root/relative/domain_data.get('connector_profiles', 'connector-profiles.jsonc')
@@ -568,7 +592,9 @@ def render_catalog(outputs, plugins, destination=None, *, root, index_path=None,
         if file_record.get('sha256') and dat_hash != file_record['sha256']:
             raise ValueError(f'{slug}: actual DAT hash differs from the build manifest')
         raw = read_piece_preview(output, built); model = parse_s3d(raw)
-        textures, atlases = library.for_model(model)
+        owned = {int(iid,16):read_resource(output/built['asset_file'], (*TEXTURE,int(iid,16)))
+                 for iid in built.get('authored_texture_ids', [])}
+        textures, atlases = library.for_model(model, owned_resources=owned)
         target = (base/slug) if destination is not None else root/catalog['domains'][current['domain']]['path']/'00_pieces'/slug
         title, title_sources = _canonical_title(root, catalog, current)
         old = index['pieces'].get(slug, {})

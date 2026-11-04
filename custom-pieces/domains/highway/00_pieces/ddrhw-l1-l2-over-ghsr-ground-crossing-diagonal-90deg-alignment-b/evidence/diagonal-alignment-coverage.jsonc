@@ -1,0 +1,603 @@
+// title: "Diagonal GHSR and fixed directed DD highway alignment coverage"
+// summary: "Measure both saved crossing alignments against the original native helper paths, and prove the two adjacent diagonal grid classes without reversing either highway deck."
+//
+// Used when: Contributors assess diagonal grid alignment coverage for this crossing or learn why rotations alone were insufficient.
+// Read by: Maintainers, agents, and documentation readers reviewing the Alignment A and Alignment B repair.
+// Updated by: A maintainer after a fresh audit of the saved artifacts and pinned original native inputs; preserve prior observations.
+// Affects: Evidence for the two GHSR crossing alignments; no diamond assembly, game installation, or manual test result is changed.
+{
+  "schema_version": 1,
+  "title": "Two diagonal GHSR grid alignments beneath one fixed directed DD highway",
+  "measurement_utc": "2026-11-01T10:22:56.231644+00:00",
+  "status": "Saved-resource and original native source measurements only; no game alignment is certified.",
+  "in_game_tested": false,
+  "privacy": "Original proprietary resources and archives, executable bytes, absolute workstation paths, and private settings are excluded; native hashes and measured decoded paths are retained.",
+  "coordinate_convention": {
+    "tile_size_m": 16.0,
+    "cells": "[east, south]",
+    "path_points": "[east, north, height]",
+    "proper_rotation": "Each quarter-turn maps (east,north) to (north,-east)."
+  },
+  "alignment_a_source_build": {
+    "directory": "dist/ghsr-under-ddrhw-diagonal-source-01",
+    "manifest_sha256": "cc6db4968e1c469c689b0a039f53cd9ae0599ece2cb6233ac6860b3404f5bd44",
+    "piece_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg.dat",
+    "piece_dat_sha256": "f2b3296a49fc3d21983a3f78d8fc1748043328ccd07026f4988e85a07f9d5f73",
+    "piece_dat_bytes": 6869874,
+    "controller_dat_sha256": "d408bf21954951bbc285829fb7504545569de445cf92b5aa76a1f509bdbd9d01",
+    "installed_by_this_audit": false,
+    "in_game_tested_by_this_audit": false
+  },
+  "alignment_b_source_build": {
+    "directory": "dist/ghsr-dd-alignment-b-source-01",
+    "manifest_sha256": "982fca3ea3c97e57b3183a51050d3cad8a139805b654acd866869ad6a0d5f448",
+    "piece_dat": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b.dat",
+    "piece_dat_sha256": "c38fa00b4962a393a55317299be9e71a8192dfb9f2ec91a35465de5d36f2c377",
+    "piece_dat_bytes": 6870026,
+    "controller_dat_sha256": "1897d5050518900d5f55e2e7ec524fd2e28ff288688b18ca2f1f220a58788a9c",
+    "installed_by_this_audit": false,
+    "in_game_tested_by_this_audit": false
+  },
+  "independent_coverage_check": {
+    "alignment_classes_checked": 2,
+    "fixed_highway_centerline_north_minus_east_m": -8.0,
+    "railway_centerline_north_plus_east_m": [
+      -8.0,
+      8.0
+    ],
+    "crossing_centres_east_north_m": [
+      [
+        0.0,
+        -8.0
+      ],
+      [
+        8.0,
+        0.0
+      ]
+    ],
+    "adjacent_diagonal_railway_spacing_m": 11.31370849898476,
+    "full_grid_translation_along_highway_east_north_m": [
+      16.0,
+      16.0
+    ],
+    "railway_intercept_repeat_m": 32.0,
+    "both_highway_deck_directions_preserved": true,
+    "proper_rotations_per_alignment": 4,
+    "game_alignment_tested": false
+  },
+  "saved_paths_by_alignment": {
+    "A": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "tgi": "296678f7-a966883f-7f5bd000",
+        "sha256": "c0647202666bf828612a49fd1576276379d848a4fa3a0fb5028cf1bb995f6db3"
+      },
+      {
+        "cell": [
+          0,
+          1
+        ],
+        "tgi": "296678f7-a966883f-7f5bd010",
+        "sha256": "c053ea61baa8481a327223a057bddfb94f2fee25ed2b5137ee21d9851876422a"
+      }
+    ],
+    "B": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "tgi": "296678f7-a966883f-7f5be000",
+        "sha256": "0317b165f05ef91efb4bd535d1b04f08e709ed3959c296516733fd8e3e210ff8"
+      },
+      {
+        "cell": [
+          1,
+          0
+        ],
+        "tgi": "296678f7-a966883f-7f5be100",
+        "sha256": "88bfddb92442071231b47a7118286da59c8b3413fe8cf6d672ae37a3222a607a"
+      }
+    ]
+  },
+  "fixed_highway_preservation": {
+    "alignment_a_dat_matches_frozen_original_sha256": true,
+    "alignment_a_and_b_six_highway_mesh_semantic_pins_identical_per_cell": true,
+    "upper_deck_height_m": 15.0,
+    "upper_deck_travel_in_canonical_east_north_axes": "decreasing east and north",
+    "lower_deck_height_m": 7.5,
+    "lower_deck_travel_in_canonical_east_north_axes": "increasing east and north",
+    "proper_rotations_of_a_do_not_supply_b_with_same_directed_highway": true
+  },
+  "fresh_original_native_source_resources": [
+    {
+      "profile_label": "RealHighway_DD_RHW-4.dat",
+      "tgi": "5ad0e817-badb57f1-5753a905",
+      "sha256": "341aa73b6fc75596511883715d3edb3de91e988c3f7d1201bd02867313ee25f0"
+    },
+    {
+      "profile_label": "RealHighway_DD_RHW-4.dat",
+      "tgi": "296678f7-a966883f-5753a905",
+      "sha256": "830513d3274d30eb9934b42ef63e4b5324584af4056331fa61f5a636fe692857"
+    },
+    {
+      "profile_label": "RealHighway_DD_RHW-4.dat",
+      "tgi": "5ad0e817-badb57f1-5753a985",
+      "sha256": "1937f3d3e5e0c42995fa309d37bffb32a7a30640681b2bfa2920a67d1eb339a8"
+    },
+    {
+      "profile_label": "RealHighway_DD_RHW-4.dat",
+      "tgi": "296678f7-a966883f-5753a985",
+      "sha256": "2d262758f1f1c22cacae2ef76847de3d995f0fa4a8d82244487501e0eccbd676"
+    },
+    {
+      "profile_label": "High Speed Rail.dat",
+      "tgi": "5ad0e817-badb57f1-5dc01a00",
+      "sha256": "58e54d5d212e26564e5454c57b6fd3269067a7f48df81eec45925590c1a59fa6"
+    },
+    {
+      "profile_label": "High Speed Rail.dat",
+      "tgi": "296678f7-a966883f-5dc01a00",
+      "sha256": "978a2a8c8f8e5de89e80bd6841d0b91666407efe2e77c32c312c0ff2c6353e4a"
+    },
+    {
+      "tgi": "296678f7-a966883f-57530200",
+      "sha256": "e888625d239fe19f546f36f58bed998359440e889904fa4976c3aec355640eb1"
+    },
+    {
+      "tgi": "296678f7-a966883f-57530900",
+      "sha256": "bd5435abd7e1f8360b3b8704eab474112330d8b7719333863e5bd264216415ce"
+    },
+    {
+      "tgi": "296678f7-a966883f-5dc01a00",
+      "sha256": "978a2a8c8f8e5de89e80bd6841d0b91666407efe2e77c32c312c0ff2c6353e4a"
+    },
+    {
+      "tgi": "5ad0e817-badb57f1-57530200",
+      "sha256": "4eb082b8329ddf70be7333f3343c4f1a621985d3992b17ca624eef79dc0ee4a8"
+    },
+    {
+      "tgi": "5ad0e817-badb57f1-57530900",
+      "sha256": "d319f9bb39e21e319f5ce566c5093ba9e955c4c0ed5a5dcbb703c6afe127c93a"
+    },
+    {
+      "tgi": "5ad0e817-badb57f1-5dc01a00",
+      "sha256": "58e54d5d212e26564e5454c57b6fd3269067a7f48df81eec45925590c1a59fa6"
+    },
+    {
+      "tgi": "6534284a-6be08658-57530200",
+      "sha256": "394c783a8fedf150c93d21701e1450a520d5c31ff59245e2d1e40ebf12889b70"
+    },
+    {
+      "tgi": "6534284a-6be08658-57530900",
+      "sha256": "d8c35e3673dee409fcc007c6adafcd193d50f551bffe473b70ef11c753cb63a9"
+    },
+    {
+      "tgi": "6534284a-ebe084c2-5dc01a00",
+      "sha256": "3029157db99ce4334d588c4b6fb765ee3de84154b95b8d541df6d63546e8be56"
+    }
+  ],
+  "fresh_original_alignment_b_helper_path_checks": [
+    {
+      "cell": [
+        0,
+        1
+      ],
+      "native_tgi": "296678f7-a966883f-57530900",
+      "original_resource_sha256": "bd5435abd7e1f8360b3b8704eab474112330d8b7719333863e5bd264216415ce",
+      "proper_rotation": 2,
+      "complete_literal_routes_match_original_native_source": true,
+      "rotated_traffic_routes": [
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 1,
+          "exit": 0,
+          "compatibility": 0,
+          "points": [
+            [
+              -3.2,
+              8.0,
+              15.0
+            ],
+            [
+              -8.0,
+              3.2,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 1,
+          "exit": 0,
+          "compatibility": 0,
+          "points": [
+            [
+              3.2,
+              8.0,
+              15.0
+            ],
+            [
+              -8.0,
+              -3.2,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 0,
+          "exit": 1,
+          "compatibility": 0,
+          "points": [
+            [
+              -8.0,
+              -3.2,
+              7.5
+            ],
+            [
+              3.2,
+              8.0,
+              7.5
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 0,
+          "exit": 1,
+          "compatibility": 0,
+          "points": [
+            [
+              -8.0,
+              3.2,
+              7.5
+            ],
+            [
+              -3.2,
+              8.0,
+              7.5
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "cell": [
+        1,
+        -1
+      ],
+      "native_tgi": "296678f7-a966883f-57530200",
+      "original_resource_sha256": "e888625d239fe19f546f36f58bed998359440e889904fa4976c3aec355640eb1",
+      "proper_rotation": 0,
+      "complete_literal_routes_match_original_native_source": true,
+      "rotated_traffic_routes": [
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 2,
+          "exit": 3,
+          "compatibility": 0,
+          "points": [
+            [
+              8.0,
+              3.2,
+              15.0
+            ],
+            [
+              -3.2,
+              -8.0,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 2,
+          "exit": 3,
+          "compatibility": 0,
+          "points": [
+            [
+              8.0,
+              -3.2,
+              15.0
+            ],
+            [
+              3.2,
+              -8.0,
+              15.0
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 0,
+          "entry": 3,
+          "exit": 2,
+          "compatibility": 0,
+          "points": [
+            [
+              3.2,
+              -8.0,
+              7.5
+            ],
+            [
+              8.0,
+              -3.2,
+              7.5
+            ]
+          ]
+        },
+        {
+          "transport": 1,
+          "lane": 1,
+          "entry": 3,
+          "exit": 2,
+          "compatibility": 0,
+          "points": [
+            [
+              -3.2,
+              -8.0,
+              7.5
+            ],
+            [
+              8.0,
+              3.2,
+              7.5
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "cell": [
+        0,
+        -1
+      ],
+      "native_tgi": "296678f7-a966883f-5dc01a00",
+      "original_resource_sha256": "978a2a8c8f8e5de89e80bd6841d0b91666407efe2e77c32c312c0ff2c6353e4a",
+      "proper_rotation": 3,
+      "complete_literal_routes_match_original_native_source": true,
+      "rotated_traffic_routes": [
+        {
+          "transport": 7,
+          "lane": 0,
+          "entry": 0,
+          "exit": 3,
+          "compatibility": 0,
+          "points": [
+            [
+              -8.0,
+              -2.9,
+              1.0
+            ],
+            [
+              -2.8,
+              -8.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "transport": 7,
+          "lane": 0,
+          "entry": 3,
+          "exit": 0,
+          "compatibility": 0,
+          "points": [
+            [
+              2.9,
+              -8.0,
+              1.0
+            ],
+            [
+              -8.0,
+              2.9,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "cell": [
+        1,
+        1
+      ],
+      "native_tgi": "296678f7-a966883f-5dc01a00",
+      "original_resource_sha256": "978a2a8c8f8e5de89e80bd6841d0b91666407efe2e77c32c312c0ff2c6353e4a",
+      "proper_rotation": 1,
+      "complete_literal_routes_match_original_native_source": true,
+      "rotated_traffic_routes": [
+        {
+          "transport": 7,
+          "lane": 0,
+          "entry": 2,
+          "exit": 1,
+          "compatibility": 0,
+          "points": [
+            [
+              8.0,
+              2.9,
+              1.0
+            ],
+            [
+              2.8,
+              8.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "transport": 7,
+          "lane": 0,
+          "entry": 1,
+          "exit": 2,
+          "compatibility": 0,
+          "points": [
+            [
+              -2.9,
+              8.0,
+              1.0
+            ],
+            [
+              8.0,
+              -2.9,
+              1.0
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "alignment_b_native_helper_endpoint_correction": {
+    "classification": "Authored exterior native-helper PATH transition with unchanged native visible geometry and internal endpoints.",
+    "core_donor_external_coordinates_preserved": false,
+    "core_donor_internal_coordinates_preserved": true,
+    "maximum_exterior_endpoint_shift_m": 0.10000000000000009,
+    "maximum_internal_endpoint_shift_m": 0.0,
+    "maximum_lateral_deviation_from_native_core_chord_m": 0.09983551909379279,
+    "external_coordinates_and_tangents_match_actual_complementary_native_helpers": true,
+    "internal_shared_endpoints_and_tangents_match": true,
+    "native_rail_mesh_positions_and_attributes_preserved": true,
+    "measurements": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "source_route_index": 0,
+        "source_native_rotation": 1,
+        "exterior_endpoint": "exit",
+        "original_core_exterior_endpoint_m": [
+          2.8,
+          8.0,
+          1.0
+        ],
+        "saved_helper_matching_exterior_endpoint_m": [
+          2.9,
+          8.0,
+          1.0
+        ],
+        "exterior_endpoint_shift_m": 0.10000000000000009,
+        "internal_endpoint_shift_m": 0.0,
+        "maximum_lateral_deviation_from_native_core_chord_m": 0.07002086668924713,
+        "external_native_helper_collar_m": 3.0,
+        "internal_exact_diagonal_collar_m": 1.0
+      },
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "source_route_index": 1,
+        "source_native_rotation": 1,
+        "exterior_endpoint": "entry",
+        "original_core_exterior_endpoint_m": [
+          -2.9,
+          8.0,
+          1.0
+        ],
+        "saved_helper_matching_exterior_endpoint_m": [
+          -2.8,
+          8.0,
+          1.0
+        ],
+        "exterior_endpoint_shift_m": 0.10000000000000009,
+        "internal_endpoint_shift_m": 0.0,
+        "maximum_lateral_deviation_from_native_core_chord_m": 0.09983551909379279,
+        "external_native_helper_collar_m": 3.0,
+        "internal_exact_diagonal_collar_m": 1.0
+      },
+      {
+        "cell": [
+          1,
+          0
+        ],
+        "source_route_index": 0,
+        "source_native_rotation": 3,
+        "exterior_endpoint": "exit",
+        "original_core_exterior_endpoint_m": [
+          -2.8,
+          -8.0,
+          1.0
+        ],
+        "saved_helper_matching_exterior_endpoint_m": [
+          -2.9,
+          -8.0,
+          1.0
+        ],
+        "exterior_endpoint_shift_m": 0.10000000000000009,
+        "internal_endpoint_shift_m": 0.0,
+        "maximum_lateral_deviation_from_native_core_chord_m": 0.07002086668924713,
+        "external_native_helper_collar_m": 3.0,
+        "internal_exact_diagonal_collar_m": 1.0
+      },
+      {
+        "cell": [
+          1,
+          0
+        ],
+        "source_route_index": 1,
+        "source_native_rotation": 3,
+        "exterior_endpoint": "entry",
+        "original_core_exterior_endpoint_m": [
+          2.9,
+          -8.0,
+          1.0
+        ],
+        "saved_helper_matching_exterior_endpoint_m": [
+          2.8,
+          -8.0,
+          1.0
+        ],
+        "exterior_endpoint_shift_m": 0.10000000000000009,
+        "internal_endpoint_shift_m": 0.0,
+        "maximum_lateral_deviation_from_native_core_chord_m": 0.09983551909379279,
+        "external_native_helper_collar_m": 3.0,
+        "internal_exact_diagonal_collar_m": 1.0
+      }
+    ]
+  },
+  "independent_verifier_sources": [
+    {
+      "path": "domains/highway/implementation/scp_highway/ghsr_crossing_verify.py",
+      "sha256": "2f8621e22625b8b3be9aa7bc0a4583e24d7fa8da0604a94a88af851d09fa1938"
+    },
+    {
+      "path": "domains/highway/tests/test_ghsr_crossing_phase_b_verify.py",
+      "sha256": "6423f00f69e6267d8bf861cc0ff39a455f383a98752a7f88a094e76cc6d2fd5e"
+    }
+  ],
+  "targeted_tests": {
+    "command": "python3 -B -m unittest discover -s custom-pieces/domains/highway/tests -p 'test_ghsr_crossing*verify.py' -v",
+    "tests_run": 43,
+    "tests_skipped": 0,
+    "all_passed": true,
+    "new_alignment_b_tests": 19,
+    "existing_alignment_a_tests": 24,
+    "includes_original_native_integration": true
+  },
+  "grid_coverage_explanation": [
+    "The fixed highway design axis is north = east - 8 m. Alignment A rail design axis is north = -east - 8 m, while Alignment B is north = -east + 8 m.",
+    "The rail design-axis intercepts differ by 16 m. The perpendicular distance between those adjacent diagonal railway positions is 16 / sqrt(2), approximately 11.313708499 m.",
+    "Translating a crossing by one 16 m city-grid step both east and north keeps the highway design axis unchanged and changes the railway intercept by 32 m. The two supplied railway intercepts cover the two residue classes modulo 32 m.",
+    "A half-turn reverses the upper-deck and lower-deck travel directions relative to the fixed highway; it therefore cannot replace the missing adjacent alignment while preserving that highway direction.",
+    "Native GHSR chord endpoints contain 0.1 m asymmetries. Both alignments retain exact complementary native-helper boundary coordinates and tangents; design axes are not a substitute for those complete directed boundary checks."
+  ],
+  "limits": [
+    "Software checks do not establish live construction, draggable continuation, Route Query, moving cars or trains, shadows, save/reload, or demolition.",
+    "Two fixed owned cells occupy 2 by 1 tiles; four separate unowned helper cells require a clear 2 by 3 tile arrangement. Anchor padding is not an extra owned or helper tile.",
+    "The train verification envelope is 5 m wide and 5 m high; it is a project bound, rather than a measured in-game automaton collision box.",
+    "Proper object rotations and camera rotations are checked; mirrored placements remain outside this contract.",
+    "No diamond assembly changes or runtime observations are included in this audit."
+  ]
+}

@@ -1,0 +1,539 @@
+// title: "Retained highway stamp resource contract"
+// summary: "Pin the exact 27 inherited highway/slip-lane model and PATH cells before independently attached ramp variants."
+//
+// Used when: The modular stamp is built or its saved resources are verified.
+// Read by: scp_highway.modular_stamp and scp_highway.modular_verify.
+// Updated by: Contributors after independent review of the exact retained source candidate; never from the candidate being checked.
+// Affects: The separate highway stamp, its construction footprint, and its geometry-preservation checks.
+{
+  "schema_version": 1,
+  "purpose": "Independent frozen model/PATH identity contract for a separate highway-and-slip-lane stamp, excluding grade and Avenue terminal pieces.",
+  "accepted_manifest_sha256": "98f8c67c9f0a45d5562dd9693f2941a476dfb7514ec8ca59e77cd11df205c107",
+  "source_layout_origin_cell": [
+    -4,
+    -4
+  ],
+  "footprint": [
+    10,
+    10
+  ],
+  "cells": [
+    {
+      "cell": [
+        8,
+        0
+      ],
+      "source_world_cell": [
+        4,
+        -4
+      ],
+      "source_piece_id": "ddrhw-diagonal-upper-entry-branch",
+      "source_local_cell": [
+        1,
+        0
+      ],
+      "source_tile_id": "7f594100",
+      "model_sha256": "875840c1912b351c2c23de910cb340e8e4a3dcb287eff7ecd03a69ccaf2ef33c",
+      "path_sha256": "142fadc3028f67e2c9f7f47c3dfbb40dceeaf0d03146228bc317bbe6e3e0461c",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        9,
+        0
+      ],
+      "source_world_cell": [
+        5,
+        -4
+      ],
+      "source_piece_id": "ddrhw-diagonal-upper-entry-branch",
+      "source_local_cell": [
+        2,
+        0
+      ],
+      "source_tile_id": "7f594200",
+      "model_sha256": "3d64d5f8549936a70f560f91c2ca80a47cede13ff641a1a50196d603f0c50de1",
+      "path_sha256": "19c60771cb592f014364b62f595e1f0e8fdae98c73cf19605b2a020075d0aab7",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        6,
+        1
+      ],
+      "source_world_cell": [
+        2,
+        -3
+      ],
+      "source_piece_id": "ddrhw-diagonal-lower-exit-branch",
+      "source_local_cell": [
+        0,
+        0
+      ],
+      "source_tile_id": "7f589000",
+      "model_sha256": "5c29b0b959e01f93097ec7976f621fdfc27b33eaf6827a7839be1f53a0e0fef5",
+      "path_sha256": "4f1eb2f32e198e328bde23035c6892c308424cbeb02e70180afa46acf7d17d2d",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        7,
+        1
+      ],
+      "source_world_cell": [
+        3,
+        -3
+      ],
+      "source_piece_id": "ddrhw-diagonal-lower-exit-branch",
+      "source_local_cell": [
+        1,
+        0
+      ],
+      "source_tile_id": "7f589100",
+      "model_sha256": "c7a897f30961167a66b5d61af9faf0d12696b9c430a9a8ace81b367be6447585",
+      "path_sha256": "905c919aa01147968d7269d4e8667b36f6a9b06c167094d5fd87e6ed99b1b2cb",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        8,
+        1
+      ],
+      "source_world_cell": [
+        4,
+        -3
+      ],
+      "source_piece_id": "ddrhw-diagonal-upper-entry-branch",
+      "source_local_cell": [
+        1,
+        1
+      ],
+      "source_tile_id": "7f594110",
+      "model_sha256": "1102b4d5844a48f826dc544822632c258f3163e7b06c2a7e626ce0f576c12bdc",
+      "path_sha256": "fae9efdf0a18327b077e7ab313a4fabcd85c7ec1cd850e25ad07247d2fad5fb7",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        9,
+        1
+      ],
+      "source_world_cell": [
+        5,
+        -3
+      ],
+      "source_piece_id": "ddrhw-diagonal-upper-entry-branch",
+      "source_local_cell": [
+        2,
+        1
+      ],
+      "source_tile_id": "7f594210",
+      "model_sha256": "dd476118a8a008e3746c023cebe99ec2bb1d439f70118309d39771ed9bac0d83",
+      "path_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        6,
+        2
+      ],
+      "source_world_cell": [
+        2,
+        -2
+      ],
+      "source_piece_id": "ddrhw-diagonal-lower-exit-branch",
+      "source_local_cell": [
+        0,
+        1
+      ],
+      "source_tile_id": "7f589010",
+      "model_sha256": "42906a98f75265e11361174df5d92f1b2f192d4c51c29ecf520c62051eac26fd",
+      "path_sha256": "f9cabb30512e3505a6e00802a2a9f64d82d62de921ee25109faa129f89cb2e20",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        7,
+        2
+      ],
+      "source_world_cell": [
+        3,
+        -2
+      ],
+      "source_piece_id": "ddrhw-diagonal-upper-entry-branch",
+      "source_local_cell": [
+        0,
+        2
+      ],
+      "source_tile_id": "7f594020",
+      "model_sha256": "64bb21dc50dbeaae7366ffb9da7f6f720f25fabdf76dd911f0e9313146b65b46",
+      "path_sha256": "7d51c85f27b3d8ec5692836db135cfaea7a46171c5cba7cc146da253959a4537",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        8,
+        2
+      ],
+      "source_world_cell": [
+        4,
+        -2
+      ],
+      "source_piece_id": "ddrhw-diagonal-upper-entry-branch",
+      "source_local_cell": [
+        1,
+        2
+      ],
+      "source_tile_id": "7f594120",
+      "model_sha256": "efb8b2a1d7710647629600cb9d1ecd628eee7b3b99143e5c6e34fb3edddc43f2",
+      "path_sha256": "a24a558f39cd02653d008024a380a3757e614edf9a9f3454a4a991e7974c28bc",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        4,
+        3
+      ],
+      "source_world_cell": [
+        0,
+        -1
+      ],
+      "source_piece_id": "ddrhw-diagonal-access-core",
+      "source_local_cell": [
+        1,
+        0
+      ],
+      "source_tile_id": "7f580100",
+      "model_sha256": "e166ee3fe408f6f9f3a38ff9393cadda81cc5c7ea8b1b997eed73947b8fce911",
+      "path_sha256": "de59066cb6e1da112acfbd863e80f32ce877b0ca73865e095397b336d5950e7f",
+      "inherited_model_sha256": "8852a3310aaed987d506fab3a6da9d11904e998fc91b7b6761e66a506741c0c6",
+      "model_source": "Independently pinned pristine native crossing Avenue-only model, restoring complete Avenue pavement and removing the legacy compact apron."
+    },
+    {
+      "cell": [
+        5,
+        3
+      ],
+      "source_world_cell": [
+        1,
+        -1
+      ],
+      "source_piece_id": "ddrhw-diagonal-diagonal-half-a",
+      "source_local_cell": [
+        0,
+        0
+      ],
+      "source_tile_id": "7f597000",
+      "model_sha256": "0acc2fb1fe1aed0ed35e66bfc8cca777d5889de0415a08daabbe75ca30e9e4a3",
+      "path_sha256": "2ce7c9068665c8e8165fe46b6db059d867cf328e4158c3b93b18c41f49c06366",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        6,
+        3
+      ],
+      "source_world_cell": [
+        2,
+        -1
+      ],
+      "source_piece_id": "ddrhw-diagonal-diagonal-half-b",
+      "source_local_cell": [
+        0,
+        0
+      ],
+      "source_tile_id": "7f598000",
+      "model_sha256": "199695052b07c0c9717741a2d96918c9e6aa4ab532486bd6cf59a96405f75586",
+      "path_sha256": "7d51c85f27b3d8ec5692836db135cfaea7a46171c5cba7cc146da253959a4537",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        3,
+        4
+      ],
+      "source_world_cell": [
+        -1,
+        0
+      ],
+      "source_piece_id": "ddrhw-diagonal-access-core",
+      "source_local_cell": [
+        0,
+        1
+      ],
+      "source_tile_id": "7f580010",
+      "model_sha256": "fa49cb4d40b8890ae23cc993ac31ae89191ff15a7daa3bf48ca657ddca2aa06b",
+      "path_sha256": "5b53e2b7e406f019c9ffa09ee7ad48c6dbf21053647e1aa1cc501e9231d6ce10",
+      "inherited_model_sha256": "e13f47f708342aebda5620a18c58e510f247f6ebc489793d5b1bf6669715df75",
+      "model_source": "Independently pinned pristine native crossing Avenue-only model, restoring complete Avenue pavement and removing the legacy compact apron."
+    },
+    {
+      "cell": [
+        4,
+        4
+      ],
+      "source_world_cell": [
+        0,
+        0
+      ],
+      "source_piece_id": "ddrhw-diagonal-access-core",
+      "source_local_cell": [
+        1,
+        1
+      ],
+      "source_tile_id": "7f580110",
+      "model_sha256": "ee7c37dbe7a259130eead031dca99432e92fb9a37e7c9e0e1dd22870b1bd419a",
+      "path_sha256": "16daea529a42ce14980b1856f228543ace9ab2ee391e6f985f82678e57940920",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        5,
+        4
+      ],
+      "source_world_cell": [
+        1,
+        0
+      ],
+      "source_piece_id": "ddrhw-diagonal-access-core",
+      "source_local_cell": [
+        2,
+        1
+      ],
+      "source_tile_id": "7f580210",
+      "model_sha256": "5c36e47942a024f5c9e165c520829430895c922f380cbf4278951f8ceb8f5d75",
+      "path_sha256": "ee36092e710452baeeb92452ec5af336ecafa815acdc247d82619cadfe708729",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        3,
+        5
+      ],
+      "source_world_cell": [
+        -1,
+        1
+      ],
+      "source_piece_id": "ddrhw-diagonal-diagonal-half-a",
+      "source_local_cell": [
+        0,
+        0
+      ],
+      "source_tile_id": "7f597000",
+      "model_sha256": "0acc2fb1fe1aed0ed35e66bfc8cca777d5889de0415a08daabbe75ca30e9e4a3",
+      "path_sha256": "2ce7c9068665c8e8165fe46b6db059d867cf328e4158c3b93b18c41f49c06366",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        4,
+        5
+      ],
+      "source_world_cell": [
+        0,
+        1
+      ],
+      "source_piece_id": "ddrhw-diagonal-access-core",
+      "source_local_cell": [
+        1,
+        2
+      ],
+      "source_tile_id": "7f580120",
+      "model_sha256": "c039d989e33fe40b1fb4aeacce4fb03159c7be9ca8f2e5a1a1168ec96920b861",
+      "path_sha256": "fc9f353752d5bf421bbdab0c14ad2cf4c9db144c8ba330a400dd9f561fdae674",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        1,
+        6
+      ],
+      "source_world_cell": [
+        -3,
+        2
+      ],
+      "source_piece_id": "ddrhw-diagonal-lower-entry-branch",
+      "source_local_cell": [
+        0,
+        0
+      ],
+      "source_tile_id": "7f58a000",
+      "model_sha256": "e356789c937fcce016b9a65b4df52bf01e1be4b0a804ff395b3631b3266b0f44",
+      "path_sha256": "05a51765d54450bb4bf7c39ef1afa91d6388556aff2e68b98d417b149e6ca40e",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        2,
+        6
+      ],
+      "source_world_cell": [
+        -2,
+        2
+      ],
+      "source_piece_id": "ddrhw-diagonal-lower-entry-branch",
+      "source_local_cell": [
+        1,
+        0
+      ],
+      "source_tile_id": "7f58a100",
+      "model_sha256": "4ff334bc8edbf7d9ac1dfdcb1721e6ff661ff87f9838dea1753e4b59a88c1ca4",
+      "path_sha256": "9204a4df3690bd66a58bc53b66124101c5b578a15ef12c1a09162c58e5c590bb",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        3,
+        6
+      ],
+      "source_world_cell": [
+        -1,
+        2
+      ],
+      "source_piece_id": "ddrhw-diagonal-diagonal-half-b",
+      "source_local_cell": [
+        0,
+        0
+      ],
+      "source_tile_id": "7f598000",
+      "model_sha256": "199695052b07c0c9717741a2d96918c9e6aa4ab532486bd6cf59a96405f75586",
+      "path_sha256": "7d51c85f27b3d8ec5692836db135cfaea7a46171c5cba7cc146da253959a4537",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        1,
+        7
+      ],
+      "source_world_cell": [
+        -3,
+        3
+      ],
+      "source_piece_id": "ddrhw-diagonal-lower-entry-branch",
+      "source_local_cell": [
+        0,
+        1
+      ],
+      "source_tile_id": "7f58a010",
+      "model_sha256": "bdc707dba2556d1c271ab36e37c3e74b609860a91d95f973c5734becb9d0c50a",
+      "path_sha256": "5cbaa6d065dd83a904f59a42d65fdbae314c365905da23da27b5735e0339c8d2",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        2,
+        7
+      ],
+      "source_world_cell": [
+        -2,
+        3
+      ],
+      "source_piece_id": "ddrhw-diagonal-upper-exit-branch",
+      "source_local_cell": [
+        2,
+        0
+      ],
+      "source_tile_id": "7f593200",
+      "model_sha256": "73641c42c7a4536f69d3030d83574af1fac557ffa6a8e6e55eb0d1b9b4b73637",
+      "path_sha256": "7d51c85f27b3d8ec5692836db135cfaea7a46171c5cba7cc146da253959a4537",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        0,
+        8
+      ],
+      "source_world_cell": [
+        -4,
+        4
+      ],
+      "source_piece_id": "ddrhw-diagonal-upper-exit-branch",
+      "source_local_cell": [
+        0,
+        1
+      ],
+      "source_tile_id": "7f593010",
+      "model_sha256": "c1930da3fe7dc978eae2aeec070c9fa9f9f9b3e29ed831fbb7672a4675f14acc",
+      "path_sha256": "ca778555d463410658d025d163aa62ab0f1058b5004985e469858d511628d616",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        1,
+        8
+      ],
+      "source_world_cell": [
+        -3,
+        4
+      ],
+      "source_piece_id": "ddrhw-diagonal-upper-exit-branch",
+      "source_local_cell": [
+        1,
+        1
+      ],
+      "source_tile_id": "7f593110",
+      "model_sha256": "cf1832488e2e44c2cd310f5bd8392326515f857ad6018f52382e2becb6c227bd",
+      "path_sha256": "2dca9e53c2d0472df7c4be4d607d2efffa703536c9f87f7e5e832cb6cad3773c",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        2,
+        8
+      ],
+      "source_world_cell": [
+        -2,
+        4
+      ],
+      "source_piece_id": "ddrhw-diagonal-upper-exit-branch",
+      "source_local_cell": [
+        2,
+        1
+      ],
+      "source_tile_id": "7f593210",
+      "model_sha256": "6a4be67c4ebdd8d196f5b723524fee318ae7950f114cf341b5974739f29db7c0",
+      "path_sha256": "dca0b5aa2dda899b0454dcfcd56ed8f0bb859a88787536b368dc9341b03f3295",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        0,
+        9
+      ],
+      "source_world_cell": [
+        -4,
+        5
+      ],
+      "source_piece_id": "ddrhw-diagonal-upper-exit-branch",
+      "source_local_cell": [
+        0,
+        2
+      ],
+      "source_tile_id": "7f593020",
+      "model_sha256": "2b4b3cdc44e663576e458a73d797739187cb0d19873bfbcbb02c2d9f6e6e9b94",
+      "path_sha256": "4a31db9781d9031d8e2775dea32e14050c85e03b22882989c6c981cf8df75629",
+      "model_source": "Exact inherited accepted canonical model."
+    },
+    {
+      "cell": [
+        1,
+        9
+      ],
+      "source_world_cell": [
+        -3,
+        5
+      ],
+      "source_piece_id": "ddrhw-diagonal-upper-exit-branch",
+      "source_local_cell": [
+        1,
+        2
+      ],
+      "source_tile_id": "7f593120",
+      "model_sha256": "7745d206d4493a89f4521bfff343ab047cceb32fd9c6ecf75193ac9e29893613",
+      "path_sha256": "41469cb48503b94f49483ac91e29dab089f2ae9b4b9310834f1f7cbc568ba1ed",
+      "model_source": "Exact inherited accepted canonical model."
+    }
+  ],
+  "coordinate_contract": "Per-tile raw models/PATHs are unchanged; local cell grid is shifted source(column,row)+(4,4). New stamp origin is assembly world(0,0).",
+  "scope": "Twenty-five retained canonical models and all 27 PATHs stay exact. Two Avenue-only cells restore independently pinned pristine native pavement without old compact-ramp aprons. Saved-resource preview, construction, routing, and adaptive checks remain separate from game observations."
+}

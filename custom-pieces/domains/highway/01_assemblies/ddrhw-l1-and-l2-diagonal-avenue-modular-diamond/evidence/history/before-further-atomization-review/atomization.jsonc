@@ -1,0 +1,111 @@
+// title: "Implemented modular highway split"
+// summary: "Record the stamp, separate ramp and terminal cuts, retained geometry, and bounded first-family limits."
+//
+// Used when: Contributors review the implemented highway stamp and independently placed attachment families.
+// Read by: Human and coding-agent reviewers following the assembly atomization workflow.
+// Updated by: Contributors after changing the declared split and rerunning the actual saved-resource checks.
+// Affects: The split decision, documented ownership, retained interfaces, and linked evidence; not runtime game observations.
+{
+  "schema_version": 1,
+  "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond",
+  "implementation_status": "first bounded modular family implemented; human game tests unverified",
+  "decision": "One highway-and-slip-lane stamp; four separately placed ramps; two separately placed Avenue terminals.",
+  "source_baseline": {
+    "branch": "codex/double-decker-diagonal-highway",
+    "commit": "06d3d430d515df230f20802872b14eb836f31a69",
+    "current_branch": "codex/ddrhw-modular-ramp-kit"
+  },
+  "retained": {
+    "old_resource_ids": true,
+    "six_compact_attachment_dat_files_byte_identical": true,
+    "old_canonical_views_unchanged": true,
+    "stamp_paths_byte_identical": 27,
+    "stamp_models_byte_identical": 25,
+    "pristine_native_avenue_models_restored_under_new_ids": 2
+  },
+  "reference_arrangements": {
+    "r40": {
+      "placements": 7,
+      "types": 7,
+      "owned_cells": 62,
+      "bounding_rectangle_tiles": [
+        10,
+        10
+      ]
+    },
+    "compact": {
+      "placements": 7,
+      "types": 7,
+      "owned_cells": 53,
+      "bounding_rectangle_tiles": [
+        10,
+        10
+      ]
+    }
+  },
+  "cuts": [
+    {
+      "boundary": "highway to ramp",
+      "count": 4,
+      "decision": "implemented",
+      "profile": "Exact retained nonzero slope, oblique tangent, complete pavement, and barriers."
+    },
+    {
+      "boundary": "ramp to Avenue terminal",
+      "count": 4,
+      "decision": "implemented",
+      "profile": "R40 grades have a flat 1 m ground chord; retained compact grades preserve their original sloped junction ends."
+    },
+    {
+      "boundary": "inside highway taper and merge",
+      "decision": "deferred",
+      "reason": "The highway/slip-lane body is deliberately one stamp; splitting it would create a different placement product."
+    },
+    {
+      "boundary": "inside graded ramp",
+      "decision": "deferred",
+      "reason": "The first family provides complete compatible continuations; arbitrary fixed-height graded building blocks need another finite interface and clearance review."
+    }
+  ],
+  "geometry_constraints": [
+    "Absolute fixed heights; no terrain-following or arbitrary vertical translation.",
+    "R40 applies to new circular sections, not the retained upper collar near R29.50.",
+    "Use matched ramp/terminal sets; matching flat heights alone is insufficient.",
+    "Barriers, support shells, road widths, all traffic services, and construction owners require separate physical validation."
+  ],
+  "evidence": {
+    "actual_route_drawing": "../previews/modular-atomization.png",
+    "vector_drawing": "../previews/modular-atomization.svg",
+    "saved_numeric_source": "../evidence/modular-atomization.json",
+    "r40_saved_check": "../evidence/saved-assembly-check.json",
+    "compact_saved_check": "../evidence/saved-compact-alternative-check.json",
+    "retained_assets": "../evidence/compact-asset-preservation.json"
+  },
+  "manual_game_results_changed": false,
+  "installed_files_changed": false,
+  "native_overhang": {
+    "source_world_cells": [
+      [
+        0,
+        2
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "assembly_cells_column_row": [
+      [
+        4,
+        6
+      ],
+      [
+        6,
+        4
+      ]
+    ],
+    "cause": "Frozen native DD pavement and concrete in the retained stamp project into these otherwise unowned cells. The old compact grades owned them; the R40 layout keeps them unoccupied.",
+    "verification": "Bind actual projected faces to exact frozen stamp models. New authored ramp and terminal faces receive no external ownership allowance.",
+    "construction_ownership_changed": false
+  }
+}

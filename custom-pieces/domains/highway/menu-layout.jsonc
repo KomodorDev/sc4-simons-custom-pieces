@@ -1,0 +1,91 @@
+// title: "Highway assembly menu layouts"
+// summary: "Define independent component cycles for Highway assembly buttons."
+//
+// Used when: scp.py assembly-menu prepares this assembly from a verified normal build.
+// Read by: The single and combined assembly-menu builders.
+// Updated by: The domain registration tools and contributors following the assembly creation workflow.
+// Affects: Component cycling order and assembly buttons inside the shared SCP Assemblies folder; geometry and game observations are separate.
+{
+  "schema_version": 1,
+  "purpose": "One button per assembly cycles through its separately placed component types; each assembly button appears directly inside Highways > SCP > Assemblies.",
+  "layouts": {
+    "compact-diagonal-diamond": {
+      "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-diamond",
+      "member_order": "first-use-in-assembly",
+      "cycle_button": {
+        "id": "6a47fee0",
+        "order": "fffffee0",
+        "title": "SCP | ASSEMBLY | DD RHW-4 \u2014 Compact Diagonal Avenue Diamond",
+        "description": "Tab and Shift+Tab select one reusable component; Home and End rotate it. Each click places one component. Follow the assembly placement table."
+      }
+    },
+    "modular-diagonal-diamond": {
+      "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond",
+      "member_order": "first-use-in-assembly",
+      "cycle_button": {
+        "id": "6a47fee1",
+        "order": "fffffee1",
+        "title": "SCP | ASSEMBLY | DD RHW-4 \u2014 Modular Diagonal Avenue Diamond",
+        "description": "Start with the highway stamp. Tab and Shift+Tab select the four full R40 ramps and two R40 Avenue terminals. Home and End rotate each part. Each click places one component."
+      }
+    },
+    "compact-modular-diagonal-diamond": {
+      "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-modular-diamond",
+      "assembly_variant": "compact",
+      "member_order": "first-use-in-assembly",
+      "component_aliases": {
+        "ddrhw-modular-highway-stamp": "compact-modular-diagonal-diamond-highway-stamp",
+        "ddrhw-diagonal-northwest-junction": "compact-modular-diagonal-diamond-northwest-junction",
+        "ddrhw-diagonal-southeast-junction": "compact-modular-diagonal-diamond-southeast-junction"
+      },
+      "cycle_button": {
+        "id": "6a47fee7",
+        "order": "fffffee7",
+        "title": "SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond — Compact",
+        "variant_label": "Compact",
+        "description": "Start with the highway stamp. Tab and Shift+Tab select the four full compact ramps and two compact Avenue junctions. Home and End rotate each part. Each click places one component."
+      }
+    },
+    "parallel-diagonal-diamond": {
+      "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond",
+      "member_order": "first-use-in-assembly",
+      "cycle_button": {
+        "id": "6a47fee2",
+        "order": "fffffee2",
+        "title": "SCP | ASSEMBLY | DD RHW-4 \u2014 Parallel Diagonal Avenue Diamond \u2014 Alignment A",
+        "variant_label": "Alignment A",
+        "description": "Tab and Shift+Tab select the crossing, Avenue terminals, slip lanes, lateral departures, and straight grades; Home and End rotate each part. Each click places one component. Follow the fifteen-component placement table."
+      }
+    },
+    "parallel-diagonal-diamond-alignment-b": {
+      "assembly_id": "ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b",
+      "member_order": "first-use-in-assembly",
+      "cycle_button": {
+        "id": "6a47fee3",
+        "order": "fffffee3",
+        "title": "SCP | ASSEMBLY | DD RHW-4 \u2014 Parallel Diagonal Avenue Diamond \u2014 Alignment B",
+        "description": "Tab and Shift+Tab select only the Alignment B crossing, Avenue terminals, slip lanes, lateral departures, and straight grades; Home and End rotate each part. Each click places one component. Follow the Alignment B placement table."
+      }
+    },
+    "ddrhw-compact-diagonal-y-junction": {
+      "assembly_id": "ddrhw-compact-diagonal-y-junction",
+      "member_order": "first-use-in-assembly",
+      "cycle_button": {
+        "id": "6a47fee5",
+        "order": "fffffee5",
+        "title": "SCP | ASSEMBLY | DD RHW-4 \u2014 Compact Y-Junction \u2014 Diagonal Stem",
+        "description": "Tab and Shift+Tab select the diagonal stem, diagonal branch, and orthogonal core. Home and End rotate each component. Each click places one component; follow the three-placement table."
+      }
+    },
+    "ddrhw-compact-diagonal-y-junction-reversed": {
+      "assembly_id": "ddrhw-compact-diagonal-y-junction-reversed",
+      "member_order": "first-use-in-assembly",
+      "cycle_button": {
+        "id": "6a47fee6",
+        "order": "fffffee6",
+        "title": "SCP | ASSEMBLY | DD RHW-4 \u2014 Compact Y-Junction \u2014 Diagonal Stem \u2014 Reversed Traffic",
+        "description": "Tab and Shift+Tab select the diagonal stem, diagonal branch, and orthogonal core. Home and End rotate each component. Each click places one component; follow the three-placement table."
+      }
+    }
+  }
+}

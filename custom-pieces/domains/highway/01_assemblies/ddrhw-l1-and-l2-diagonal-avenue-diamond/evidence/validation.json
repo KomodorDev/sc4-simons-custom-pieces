@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "purpose": "Generated validation summary for the final unregistered short-ramp geometry prototype.",
+  "status": "source-only; no compiled game resources or installation",
+  "repository_command": "python3 -B tools/run_tests.py",
+  "test_environment": "Portable source snapshot of tracked and newly authored files, excluding ignored private settings, native game inputs, and staged builds.",
+  "suite_results": [
+    {
+      "scope": "framework",
+      "tests_run": 779,
+      "skipped": 10,
+      "passed": true
+    },
+    {
+      "scope": "high-speed-rail",
+      "tests_run": 426,
+      "skipped": 65,
+      "passed": true
+    },
+    {
+      "scope": "highway",
+      "tests_run": 23,
+      "skipped": 0,
+      "passed": true
+    },
+    {
+      "scope": "hsr-trumpet-straight-stem",
+      "tests_run": 116,
+      "skipped": 5,
+      "passed": true
+    }
+  ],
+  "total_tests_run": 1344,
+  "total_skipped": 80,
+  "total_failed": 0,
+  "skip_reasons": {
+    "Audited NAM donors unavailable": 1,
+    "Audited NAM donors unavailable; set SCP_TEST_NAM_PLUGINS": 2,
+    "Audited NAM unavailable; set SCP_TEST_NAM_PLUGINS": 2,
+    "Audited local HSR native donor unavailable": 43,
+    "Audited local NAM donor is unavailable": 1,
+    "Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS": 1,
+    "Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS to enable integration tests": 1,
+    "Audited local native HSR donor unavailable": 5,
+    "Audited local native HSR model donor unavailable": 10,
+    "Exact native HSR, ordinary Road PATH, and opaque sidewalk capture are unavailable; supply SCP_TEST_NAM_PLUGINS, local/settings.jsonc, legacy local/settings.json, or local/validation-inputs/Plugins.": 1,
+    "Historical actual staged build absent; no saved-resource claim made": 2,
+    "Needs the saved, protected two-piece build": 7,
+    "Optional audited native HSR donor is unavailable": 1,
+    "Renamed assembly has no current-ID resource capture; unchanged historical proof is preserved separately": 3
+  },
+  "log_sha256": "f2ec94588716f0b27606d4409907272d7706a52c05c20eaa7391d1313da2d097",
+  "tested_highway_source_sha256": {
+    "custom-pieces/domains/highway/tools/diagonal_diamond_geometry.py": "303178479ed36738fa7db703b7dc2c68bb998cc975aeb8a018130e379d3457bc",
+    "custom-pieces/domains/highway/tools/verify_diagonal_diamond.py": "4cd1e557cc5ead60f2423e95e0e1544b2764ced7a8d2f3ef4de6381d0a8f9fd5",
+    "custom-pieces/domains/highway/tests/test_diagonal_diamond_geometry.py": "8984b4ae716c96ba41a4cb83992d97b251059501b68e068422cf3094f217d6b1",
+    "custom-pieces/domains/highway/tests/test_diagonal_diamond_verifier.py": "de4c6c245d37a649763a122f06a3a6ea84c639402ba0a8010d8c53f02f0687fe"
+  },
+  "documentation": {
+    "passed": true,
+    "registered_subjects_checked": 167,
+    "maintained_documents_checked": 58,
+    "prototype_local_links_checked": 27
+  },
+  "render_review": {
+    "all_four_images_visually_inspected": true,
+    "source_and_image_hashes_match": true,
+    "matches_saved_sampled_geometry": true,
+    "compiled_model": false
+  },
+  "native_input_checks": {
+    "donor_audit": "evidence/native-audit.json",
+    "audit_is_donor_only": true,
+    "optional_full_native_suite": "Stopped before completion after framework checks; the unmodified native HSR model suite was still running. No complete native-suite pass is claimed."
+  },
+  "manual_game_observations_changed": false,
+  "installed": false
+}

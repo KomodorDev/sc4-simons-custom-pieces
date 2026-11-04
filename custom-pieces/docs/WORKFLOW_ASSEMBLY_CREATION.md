@@ -15,6 +15,8 @@ Use this process for Simon's Custom Pieces interchanges. It records the method d
 
 Chapters 1–9 describe the design, verification, review, and delivery sequence. Chapters 10–11 explain the required guide and show a worked example. Chapter 12 supplies concrete HSR authoring and registration commands for the implementation stage; chapters 13–19 provide supporting reference material. Choose the reading route for the task:
 
+Agents must adapt the [task execution checklist](AGENT_TASK_CHECKLIST.md) to the actual assembly, member types, requested design/revision stage, and delivery scope. Track member checks and whole-layout checks separately, integrate parallel work before final evidence, and audit every item through the [handoff gate](AGENT_TASK_CHECKLIST.md#9-final-handoff-gate).
+
 | Task | Reading route |
 | --- | --- |
 | Design a new junction | Read [terms and evidence](#1-terms-and-evidence), then start with [the brief and rough layout](#2-establish-the-brief-and-draw-a-rough-layout-in-chat) and follow the design sequence. |
@@ -35,7 +37,9 @@ Apply the selected transport domain's `AGENTS.md` additions to the parent instru
 - A **one-click interchange** is one selectable piece that constructs the complete junction. It needs its own construction and address checks.
 - A **DAT** is the game's resource archive. **PATH** resources describe traffic routes; **S3D** resources contain the visible model; **FSH** resources contain artwork, including textures and shadows.
 
-**Assembly menu policy: every assembly has exactly one menu button, with Tab cycling forward through its reusable components and Shift+Tab cycling backward.** Each click places the selected component; the placement table describes the complete arrangement. Package the compiled components through the [assembly-menu step](BUILD_AND_INSTALL.md#8-prepare-the-assembly-menu), hide their duplicate member buttons in that assembly package, and keep unrelated standalone piece buttons unchanged. Every component remains selectable through the cycle. New complete complex interchanges are modular blueprints with their own README and TESTING documents.
+**Each assembly layout has exactly one menu button.** In a migrated category, put it directly in **SCP → Assemblies** beneath the native transportation category. Tab cycles forward through its reusable components, Shift+Tab cycles backward, and each click places one selected component. The placement table describes the complete arrangement. Package the compiled components through the [assembly-menu step](BUILD_AND_INSTALL.md#8-prepare-the-assembly-menu), hide their duplicate member buttons, and retain unrelated standalone presentations under **Pieces**. An alternative layout gets its own assembly button in the same leaf. Every component remains selectable through its own assembly cycle. New complete complex interchanges are modular blueprints with their own README and TESTING documents.
+
+An **assembly component alias** gives one existing piece a separate selection identity in another Tab cycle. Both selections place the same piece and use its one DAT. Use the [shared-component packaging steps](#shared-component-packaging) when a Highway alternative shares a piece with another cycle or needs to leave that piece's standalone selection available.
 
 Apply the mandatory [piece-versus-assembly decision](WORKFLOW_PIECE_CREATION.md#1-decide-between-a-piece-and-an-assembly) before allocating types or producing detailed geometry, including requests phrased as a single “piece.” For an existing-piece assembly, read that decision chapter and return to the reading route above; continue into the remaining piece-authoring steps only when a missing or changed reusable type requires them. When the design belongs here, announce that delivery is an assembly and that the complete junction will not be provided as one selectable piece. Record the reusable functions and granularity rationale in the assembly's TESTING document, then prove the modules through chapters 4–6. A large diagonal X with central and branching regions is an assembly-design task; neither successful one-piece compilation nor internal mesh chunking proves a reusable-parts design. Preserve existing accepted types and treat the current trial's single-piece model as feasibility evidence, rather than claiming that a modular replacement already exists.
 
@@ -66,6 +70,7 @@ Write a short brief before creating detailed geometry:
 3. State which crossings must be separated vertically. Identify intended merges and splits, where routes are allowed to meet at the same height.
 4. Record the external connection heights, interface widths, and native network ends for each service. Name any intermediate custom height explicitly.
 5. Record the desired footprint, straight/diagonal orientation, symmetry, terrain assumptions, and modular placement method. Distinguish requirements from preferences and unresolved questions. Plan a dedicated rebuilding guide rather than an unimplemented complete-interchange button.
+6. For every network family and combination in the assembly, identify required grid-alignment variants under the [shared alignment procedure](WORKFLOW_PIECE_CREATION.md#56-cover-diagonal-grid-alignments); this is a grid-placement concern across networks, and the measured family determines whether multiple variants are needed. Where two are needed, record their [staged production order](WORKFLOW_PIECE_CREATION.md#alignment-production-order): Alignment A first unless the user explicitly requests another order, then user acceptance of that exact first candidate before producing the other. Measure both positions during investigation, and keep the second alignment deferred in the task checklist until that acceptance is recorded.
 
 Then present an editable in-chat chart using the available visualization tools. Show north, the city grid, labelled arms, direction arrows, a consistent colour per movement, and height labels wherever lines cross or change level. Include a legend and an explicit **schematic** label. Until dimensions are checked, state that sizes and radii are provisional.
 
@@ -82,6 +87,8 @@ Use the user's comments to revise the chart. Resolve the arrangement of loops, b
 Keep the movement colours, arm names, and coordinate origin stable between iterations. Explain what changed and why. If a requested shape conflicts with a height transition or matching network end, show the specific conflict and a small alternative.
 
 Once the intended shape is clear, carry out routine implementation decisions without repeatedly asking for confirmation. Return to this layout discussion when feasibility requires a material change to the agreed shape or movements.
+
+Routine implementation stays within the current alignment stage. Agreement on a schematic or a request for both alignments does not replace user acceptance of the completed first candidate under the [alignment production rule](WORKFLOW_PIECE_CREATION.md#alignment-production-order). Reuse matching acceptance already given for that candidate and scope.
 
 **Output:** the agreed current layout, with any remaining assumptions marked.
 
@@ -100,6 +107,8 @@ Create a parts table with one row per required functional module:
 
 For each connection, check the exact three-dimensional endpoint, travel heading, permitted direction for each service, required interface spacing, visible profile, and construction-grid alignment. Write these expected connections independently of the generator. Keep visual fit and traffic-path compatibility separate.
 
+For a new assembly or substantial functional revision, apply the [atomization and future-reuse review](#162-check-expandability-and-future-reuse) before freezing its parts. Identify independently useful modules, intended extension points, and concrete uses in other arrangements; carry their actual acceptance evidence into the task checklist and final handoff.
+
 Also assign every occupied city tile to exactly one module. Upper and lower routes sharing a tile generally need a coordinated module containing both routes; independently placing another piece there can overwrite the first. Check sparse footprints, empty construction-origin cells, rotations, and the runtime tile-address rules before relying on an apparent fit.
 
 Check runtime addressing for each independently placed module. Keep the complete arrangement as a blueprint; a safe component allocation does not imply that merging all components into one construction is safe.
@@ -112,6 +121,8 @@ Check runtime addressing for each independently placed module. Keep the complete
 
 Implement only the missing modules needed for the agreed design. Start with the smallest useful crossing, split, merge, adapter, or curved ramp that tests an uncertain connection.
 
+For two required alignment variants, apply the [Alignment A first sequence and approval gate](WORKFLOW_PIECE_CREATION.md#alignment-production-order) to the assembly and its missing modules. Complete the current alignment's applicable build, whole-layout checks, renders, and documentation before presenting its candidate. Give parallel contributors the same stage boundary; do not produce modules or artwork for the deferred alignment while awaiting the user's acceptance.
+
 Each new functional module needs:
 
 1. Its own current manifest, unique identifiers, descriptive SCP menu name, and icon, so the user can place it independently.
@@ -121,6 +132,8 @@ Each new functional module needs:
 5. Its own canonical artwork, connection overview, manual records, and inventory row under the shared [documentation-generation workflow](WORKFLOW_DOCUMENTATION_GENERATION.md), including both angled and north-up views for a new or geometrically revised type.
 
 Use the existing piece-authoring guide for the commands and allocation rules. Test a small changed selection first. Reuse already verified results only when every relevant specification and binary input is identical.
+
+For a module combining adaptive ground with elevated traffic, complete the [active PATH height-retention step](WORKFLOW_PIECE_CREATION.md#54-preserve-adaptive-ground-artwork-beneath-elevated-models) before extending it across the assembly. A saved-coordinate journey graph and a correct elevated prop do not establish the selected paths' runtime heights. Include direct through travel with the ramps still connected in the first routed test, and state the [restart or fresh-placement requirement](BUILD_AND_INSTALL.md#71-decide-whether-an-update-needs-fresh-placement) for each revision.
 
 **Rotation is required for every independently placeable module:** check 0°, 90°, 180°, and 270° for its emitted construction rules, occupied cells, actual model, PATH entry/exit directions, ports, preview, and shadows. A **proper rotation** turns a piece without reflecting it. Do not mirror a one-way route to create extra states; repeat the four rotations if the menu needs eight states. A diagonal variant is a separately authored 45-degree layout with native diagonal ports, not an extra 45-degree rotation of a straight piece. Record file-check evidence separately from all-four-rotation placement and traffic tests in the game.
 
@@ -132,7 +145,7 @@ Useful wider variants remain separate current pieces. Add a clearly named compac
 
 ## 6. Assemble actual compiled pieces and check the whole interchange
 
-Choose the new assembly's folder identifier and readable name through the shared [naming conventions](NAMING_CONVENTIONS.md). Its identifier is the folder basename under `01_assemblies/`; store its readable name in `assembly.json` as `title`, without adding an `id` field. Keep this layout identity separate from the reusable piece IDs and placement labels. Preserve existing assembly identifiers when revising a retained layout.
+Choose the new assembly's folder identifier and readable name through the shared [naming conventions](NAMING_CONVENTIONS.md). Its identifier is the folder basename under `01_assemblies/`; store its readable name in the new `assembly.jsonc` as `title`, without adding an `id` field. Keep this layout identity separate from the reusable piece IDs and placement labels. Preserve existing assembly identifiers when revising a retained layout.
 
 Make a machine-readable placement plan. Record a stable module label such as `P01`, its exact piece ID and descriptive SCP menu name, translation, rotation, occupied cells, and source DAT fingerprint. Give repeated copies separate instance labels: four copies of one straight are `P05`, `P06`, `P07`, and `P08`, even though their menu name and piece ID match. Preserve those labels through all views and revisions. A fingerprint is a hash identifying the exact file bytes.
 
@@ -156,6 +169,8 @@ If a module is missing or wrong, return to **chapter 5**, then rebuild and reche
 ## 7. Review coordinate-labelled renders with the user
 
 Generate the accepted layout's actual compiled-model pictures using [WORKFLOW: Documentation Generation](WORKFLOW_DOCUMENTATION_GENERATION.md#7-assembly-picture-set-and-in-picture-identification). Start each render's first row with `Assembly - ` and the assembly name; start its second row with `Clean view`, `Component guide`, or `Construction view`, followed by the camera direction. Apply the fixed [coordinate contract](WORKFLOW_DOCUMENTATION_GENERATION.md#5-coordinate-contract-for-charts-and-renders), six-image set, exact menu-name callouts, and ownership colours. Use the current machine-readable placement plan and verified builds; check the documented renderer scope before running a command. Add a close-up where a join, crossing, or support needs discussion.
+
+Match the [trumpet presentation reference](WORKFLOW_DOCUMENTATION_GENERATION.md#trumpet-presentation-reference), including its exact six-picture README order, header and camera wording, full-name side-card legends, coloured placement badges, and leader lines. Every assembly construction overview must follow the [required layered construction-view standard](WORKFLOW_DOCUMENTATION_GENERATION.md#73-required-assembly-construction-overviews): the actual compiled top model beneath ownership colours at 30% opacity, with solid grid lines, boundaries, labels, diamonds, and legend cards. Compare each staged PNG with the corresponding trumpet PNG before promotion; six output filenames or P-labels alone do not establish the required presentation. Adapt the measured subject facts and necessary canvas size through the shared contract.
 
 Review the shape, symmetry, route clarity, joins, supports, and space use with the user on that same fixed grid. Geometry feedback returns to **chapter 5**; layout feedback returns to **chapter 3**. Do not change approved geometry solely to improve a camera view. Keep software preview approval separate from game-test evidence.
 
@@ -187,7 +202,18 @@ Build the complete intended installed selection with **one shared controller and
 
 Package the individually placeable components, the one-button assembly cycle, and the README/TESTING documents. The assembly button selects components through Tab; it does not construct the complete arrangement with one click. Do not mark that component cycle as PNP or describe it as a Plop & Paint stamp. The current whole-trumpet address collisions remain even if its components are packaged together. A future one-click research project must satisfy the policy in **Terms and evidence** before it can change this delivery method.
 
+<a id="shared-component-packaging"></a>
+
+A shared piece needs an alias when its original selection must stay available in a different cycle or under **Pieces**. Multiple placements of that piece in the same blueprint use one cycle entry. The current alias workflow supports documented Highway alternatives.
+
+1. In the assembly's `assembly.jsonc`, put the alternative's placement list under `alternatives.<name>.placements`. Use the existing piece IDs for shared components so the geometry, placement, and connection checks continue to refer to the same types.
+2. In the Highway domain's `menu-layout.jsonc`, give the alternative its own layout key and cycle button. Set `assembly_variant` to the alternative's name. In `component_aliases`, map each reused piece that needs a separate selection to a distinct, stable reservation key. Leave pieces that belong exclusively to this cycle on their original selections.
+3. In `config/allocations.jsonc`, add each key to `assembly_aliases` with the new `layout_id`, the existing `piece_id`, and an unused four-digit hexadecimal `puzzle_id`. That ID identifies a construction selection in the controller. Retain the original piece definition, tile and resource IDs, and DAT.
+4. Compile the unique piece IDs once in a normal build. Prepare the affected layouts together by repeating `--layout`, and verify each button's component order, the new selection states, and the unchanged piece DATs. Follow the [assembly-menu build and verification commands](BUILD_AND_INSTALL.md#8-prepare-the-assembly-menu). The [Compact Modular example](../domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/README.md#22-full-compact-alternatives) reuses the R40 layout's stamp and the original Compact layout's two Avenue junctions.
+
 To establish game operation, use a disposable flat city and the exact installed version. Test placement and every intended movement with real traffic demand and the observations required by the declared test plan. **Route Query** is the game's tool for showing assigned traffic routes; **visible travel** means watching traffic complete the stated directed journey. When the plan declares both checks, record them as separate observations for each service and direction; neither establishes the other. Also test forbidden transfers at same-network crossings and parallel edges at different heights. Use the declared reference layout for human checks; inspect zooms, shadows, joins, demolition, save/reload, and the claimed terrain behaviour. Require additional manual orientations only when the test plan identifies a specific reason; automatic software rotation checks keep their own coverage. Record the game/platform, file hashes, city layout, observations, and screenshots. Return defects to the appropriate earlier step.
+
+For each shared component, select the first assembly button and place that component on clear ground. Select the other assembly button and repeat in a separate test area. Check **Tab**, **Shift+Tab**, **Home**, **End**, and the resulting placement from each button. Record the observed result for each cycle separately.
 
 Keep untested behaviours explicitly unverified. Public distribution has additional requirements documented separately in `docs/RELEASE.md`.
 
@@ -215,24 +241,24 @@ Follow the [creation checklist](WORKFLOW_DOCUMENTATION_GENERATION.md#3-creation-
 
 ### 12.1 Copy the unregistered placement template
 
-The [starter JSONC](templates/assembly-two-hsr-straights.jsonc) lives outside the domain registry. Merely downloading or editing that template creates no registered assembly. JSONC is JSON with comments; the following command parses the commented template and writes a strict-JSON assembly plan because individual assembly files have not migrated yet. It refuses to replace an existing `two-tile-hsr-starter` directory; choose another lowercase hyphenated slug and replace that slug consistently in the plan, registry, menu layout, icon identity, and commands.
+The [starter JSONC](templates/assembly-two-hsr-straights.jsonc) lives outside the domain registry. Merely downloading or editing that template creates no registered assembly. JSONC is JSON with comments; the following command parses the template and writes a new `assembly.jsonc` plan with the complete introductory comment header. It refuses to replace an existing `two-tile-hsr-starter` directory; choose another lowercase hyphenated slug and replace that slug consistently in the plan, registry, menu layout, icon identity, and commands.
 
-Future maintained assembly sources must follow the [JSONC source convention](../STRUCTURE.md#51-shared-jsonc-sources-and-strict-json-exports), including its complete introductory comment header. The example below documents the current `assembly.json` tooling. Before creating a JSONC replacement, update the readers, writers, registry paths, tests, and this example together. Retain existing subjects and frozen evidence in their current formats until deliberately migrated.
+New maintained assembly sources follow the [JSONC source convention](../STRUCTURE.md#51-shared-jsonc-sources-and-strict-json-exports). Existing subjects and frozen evidence retain their current formats. The registry names the actual `.jsonc` or retained `.json` file; keeping both maintained copies in one assembly folder is rejected.
 
 ```sh
 python3 - <<'PY'
-import json
 from pathlib import Path
 from scp import jsonc
+from scp.subject_sources import new_subject_document
 target = Path('custom-pieces/domains/high-speed-rail/01_assemblies/two-tile-hsr-starter')
 plan = jsonc.load('custom-pieces/docs/templates/assembly-two-hsr-straights.jsonc')
 target.mkdir()
-with (target / 'assembly.json').open('x', encoding='utf-8') as stream:
-    stream.write(json.dumps(plan, indent=2, allow_nan=False) + '\n')
+with (target / 'assembly.jsonc').open('x', encoding='utf-8') as stream:
+    stream.write(new_subject_document(plan, 'assembly'))
 PY
 ```
 
-Open the copied `assembly.json`. `P01` is at metre position `[0, 0]`, and `P02` is at `[0, 16]`; both use `rotation_degrees_ccw: 0`. **Counterclockwise** means turning left when viewed from above; accepted proper rotations are 0°, 90°, 180°, and 270°. A placement's `piece_id` names the existing type, whereas `instance_id` and `label` identify that copy. `origin_m` stores the technical east/north translation in metres. The separately stored display positions are `(X0, Y0)` and `(X0, Y1)`, using the shared southwest tile-centre reference. The construction reference is not a promise about the untested game cursor.
+Open the copied `assembly.jsonc`. `P01` is at metre position `[0, 0]`, and `P02` is at `[0, 16]`; both use `rotation_degrees_ccw: 0`. **Counterclockwise** means turning left when viewed from above; accepted proper rotations are 0°, 90°, 180°, and 270°. A placement's `piece_id` names the existing type, whereas `instance_id` and `label` identify that copy. `origin_m` stores the technical east/north translation in metres. The separately stored display positions are `(X0, Y0)` and `(X0, Y1)`, using the shared southwest tile-centre reference. The construction reference is not a promise about the untested game cursor.
 
 The template's external-port positions are authored expectations from that exact type: south at northing −8 m and north at northing 24 m, with opposing track centres at easting ±2 m and height 15.5 m. Its count fields describe the intended placement plan. Leave `geometry_status` explicitly unverified until real checks justify a more specific statement. Do not paste the trumpet's dimensions, source hashes, or observations into this new subject.
 
@@ -247,9 +273,9 @@ python3 - <<'PY'
 from pathlib import Path
 from scp import jsonc
 domain = Path('custom-pieces/domains/high-speed-rail')
-relative = '01_assemblies/two-tile-hsr-starter/assembly.json'
+relative = '01_assemblies/two-tile-hsr-starter/assembly.jsonc'
 if not (domain / relative).is_file():
-    raise SystemExit('Create the assembly.json plan first.')
+    raise SystemExit('Create the assembly.jsonc plan first.')
 path = domain / 'domain.jsonc'
 registry = jsonc.load(path)
 assemblies = registry.setdefault('assemblies', [])
@@ -261,7 +287,7 @@ print('Registered ' + relative)
 PY
 ```
 
-The folder name supplies the assembly ID `two-tile-hsr-starter`. The registry entry is relative to the domain directory; it must have the form `01_assemblies/<assembly-id>/assembly.json`. Do not run the piece scaffold for this assembly: its member type already owns the piece's game-resource identities.
+The folder name supplies the assembly ID `two-tile-hsr-starter`. The registry entry is relative to the domain directory; it must have the form `01_assemblies/<assembly-id>/assembly.jsonc` for a new assembly. Do not run the piece scaffold for this assembly: its member type already owns the piece's game-resource identities.
 
 <a id="3-add-its-separate-menu-layout"></a>
 
@@ -325,7 +351,7 @@ networks = {
 }
 ```
 
-This is a deliberate domain-adapter edit: the current API receives an assembly ID and does not read an arbitrary network field from `assembly.json`. It selects the truthful network code for the button; it changes no track geometry or piece identities. The HSR route artwork helper currently supports its authored component recipes, including this straight. Another family or network needs its owning adapter implemented and checked before this artwork/menu path applies.
+This is a deliberate domain-adapter edit: the current API receives an assembly ID and does not read an arbitrary network field from the registered assembly definition. It selects the truthful network code for the button; it changes no track geometry or piece identities. The HSR route artwork helper currently supports its authored component recipes, including this straight. Another family or network needs its owning adapter implemented and checked before this artwork/menu path applies.
 
 Generate the canonical assembly icon from the source placements:
 
@@ -355,10 +381,19 @@ Open the new assembly's generated `README.md` and `TESTING.md`, plus `connection
 
 ### 12.6 Complete the views, authored instructions, and checks
 
-Stage the actual-model review pictures from that verified build:
+Stage the actual-model review pictures from that verified build using the [current assembly-rendering example](WORKFLOW_DOCUMENTATION_GENERATION.md#render-required-assembly-construction-overviews). Save its script as instructed, retain `construction_model_background=True` and `construction_fill_opacity=0.30`, replace the Plugins placeholder with the actual texture directory, and set these four variables:
+
+| Variable | Exact starter value |
+| --- | --- |
+| `scene` | `library / "domains/high-speed-rail/01_assemblies/two-tile-hsr-starter/assembly.jsonc"` |
+| `build` | `library / "dist/two-tile-hsr-parts-review-01"` |
+| `destination` | `library / "local/two-tile-hsr-review"` |
+| `prefix` | `"reviewed-two-tile"` |
+
+Run the saved script from the repository root:
 
 ```sh
-python3 custom-pieces/domains/high-speed-rail/tools/render_hsr_assembly.py --scene custom-pieces/domains/high-speed-rail/01_assemblies/two-tile-hsr-starter/assembly.json --build custom-pieces/dist/two-tile-hsr-parts-review-01 --plugins '/path/to/SimCity 4/Plugins' --output-dir custom-pieces/local/two-tile-hsr-review --prefix reviewed-two-tile
+python3 custom-pieces/local/render-assembly-review.py
 ```
 
 Follow the shared [six-image review and canonical filename mapping](WORKFLOW_DOCUMENTATION_GENERATION.md#81-promote-the-staged-assembly-pictures). The renderer stages images and their real report under `local/`; it does not install canonical source images automatically. Inspect the pictures, retain their actual source and output fingerprints, and deliberately integrate the accepted images under the assembly's `previews/` and the render report under `evidence/`. Complete README chapters 1–3 with links, the one-type/two-placement quantities, P01/P02 positions, 0° rotations, 15.5 m connections, and the Tab/component instructions. Complete TESTING with real preparation, the checks actually performed, the remaining physical/game limitations, and design history. Add a link to this assembly from the owning domain's human README. Keep authored text outside generated blocks, and record no game pass without a matching human observation.
@@ -444,6 +479,17 @@ Use the following decision legend, or equally explicit wording, inside the drawi
 | **Unverified** | Required inputs or checks are missing. State what must be measured before deciding; an attractive line fit is insufficient. |
 
 Show the diagram directly in the user review, and persist it with the owning piece or assembly under the shared [atomization review artwork rule](WORKFLOW_DOCUMENTATION_GENERATION.md#41-atomization-review-artwork). Link the measured decisions and evidence from that subject's existing TESTING document, using chapter 3 for the current analysis and chapter 6 for historical proposals. If the user authorizes an implementation, update or supplement the drawing to identify the final split and its checked inputs. Preserve any retained earlier proposal with its original coordinates and clearly historical scope. A drawing records an explanation; actual saved-resource verification and human game observations retain their separate authority.
+
+### 16.2 Check expandability and future reuse
+
+**Expandability** means that specified modules can extend or replace parts of the arrangement while preserving its required services and movements. **Future usefulness** means that a reusable type has a concrete function in another placement or assembly, rather than existing only for one diagram label. Review both alongside atomization for a new assembly or substantial functional revision. A useful module can occupy several tiles when its routes, deck, construction, or supports need that coordinated space. This design review does not reopen accepted geometry during a prose-only refresh or authorize speculative variants outside the requested task.
+
+1. **Identify reusable functions and tradeoffs.** For each proposed module, state its independent purpose, existing exact types considered, and why a new type or retained larger block is necessary. Compare distinct type count, required placements, owned footprint, actual physical overhang, support reservations, and keep-clear space before and after a proposed split. A smaller owned-cell count alone does not establish a smaller usable site. Preserve the [cut evidence and required atomization drawing](#161-required-line-drawing-for-user-requested-atomization) when that review is requested.
+2. **Describe concrete reuse cases.** Identify an alternate assembly context or practical repeated/extended use for each proposed reusable type. Examples include extending a stem with a compatible straight, reusing a height transition in a different approach, or replacing one compatible terminal arrangement. Name existing candidates where known, and identify a missing adapter or type explicitly. Explain the benefit, such as fewer distinct types, independent ramp choice, or reuse of one measured interface. Rotating the same placement or inventing another compass-direction name does not establish a new reusable function. A genuinely new function need not already belong to a second registered assembly.
+3. **Specify the expansion interfaces.** Name the exact extension or replacement location, participating services, allowed directions, height, heading, grade, physical cross-section, and construction-grid relationship using the existing [connector system](CONNECTOR_METADATA.md). Choose angles, radii, slopes, and transition conventions from measured existing types or the owning network specification; justify any new standard there. A matching level or profile name does not establish a complete joining boundary, and a general desire for reuse does not justify changing an accepted native interface.
+4. **Check that expansion is physically and constructively possible.** Identify the extension's occupied cells, real model projections, supports, and required surrounding space under the intended placements and rotations. An unowned overhang is not reserved land. Check complete traffic boundaries, walls and clearances, tile ownership, and the actual native-draggable, FLEX, or fixed-piece connection method. An open-looking end does not establish that the player can drag a network into it or place another module beside it.
+5. **Bound and verify the claims.** Record each reuse or extension case as a proposal, a conditional case with a named missing dependency, or an actually checked combination. For a case implemented or claimed compatible in the current deliverable, independently inspect the selected saved resources and placed arrangement, retain the base assembly's required journeys and forbidden transfers, and state the tested poses and evidence limits. Keep software checks and human game observations separate. Future ideas outside the requested delivery need no speculative implementation, but they cannot be presented as verified compatibility; missing evidence for a required claim remains open in the task checklist.
+6. **Make the result usable by the next author.** Keep reusable functions, extension instructions, exact compatible type IDs where established, missing adapters, and limitations in the existing piece/assembly README and TESTING owners, with cut decisions in the existing atomization record. Link measured interface standards to the owning network specification. Include the design tradeoff and reuse/expansion evidence in the [task checklist's final audit](AGENT_TASK_CHECKLIST.md#9-final-handoff-gate), rather than declaring an arrangement reusable merely because it was split into many files.
 
 <a id="persist-atomization-decisions-and-coordinate-parallel-work"></a>
 

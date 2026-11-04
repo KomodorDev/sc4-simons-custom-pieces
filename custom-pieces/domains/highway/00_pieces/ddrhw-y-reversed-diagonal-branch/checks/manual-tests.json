@@ -1,0 +1,2093 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative explicit observations for individually scoped manual and software checks.",
+  "subject": {
+    "id": "ddrhw-y-reversed-diagonal-branch",
+    "kind": "piece"
+  },
+  "authority": "Explicit user observations; generated Markdown is a read-only view.",
+  "state_policy": "Unverified, passed, failed, stale; not applicable is an explicit separate declaration.",
+  "rotation_policy": "Four proper rotations are covered. No additional reflected state is established by this record; repeated construction aliases do not create new orientations.",
+  "supported_orientations": [
+    {
+      "rotation_ccw_degrees": 0,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0000f885",
+        "0004f885"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 90,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0003f885",
+        "0007f885"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 180,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0002f885",
+        "0006f885"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    },
+    {
+      "rotation_ccw_degrees": 270,
+      "construction_transposed": false,
+      "construction_section_ids": [
+        "0001f885",
+        "0005f885"
+      ],
+      "basis": "actual emitted CopyFrom/Rotate/Transpose rules"
+    }
+  ],
+  "environment_policy": "Every result applies only to its recorded platform, game version, and NAM profile.",
+  "fingerprints": {
+    "construction:ddrhw-y-reversed-diagonal-branch": "f5e07caffd8d1438fddd02631212c57f189ea264d5f59bcd46fb4ccbe4165349",
+    "effect:ddrhw-y-reversed-diagonal-branch:ea5118b0-ea5118b1-7f5d7ff5": "ef6412d6d6998ac42c24d4385f80875cc43da7731391fb5f358e6ad90ee07709",
+    "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7020": "049dab8e71da9f431ecad517f22e7c2c97161e3e6328dc478bd985aeace2c6c4",
+    "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7100": "22eb611bbd053b41a62e3f510292127d4d6542fadcef9eb0e67774beb3b18430",
+    "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7110": "9f11a59ad761125d65cb472d79af9006a0f3870414767308e9edc2e27ac9d720",
+    "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7120": "2eba44a6aaf8702950aa59978b8df632b16fa781ddb3ee4c0e863cb3e6ace39f",
+    "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7210": "49760a7b4cd2de1f8d942d0c3b485308f301d25b2730dcc349ece090b3bd119e",
+    "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7220": "d137a3655f9e2c045904ec3ff078ae7a6849dcefc2b7a773e66852e3eb5b2fcb",
+    "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7320": "a06b28f983ef5b55a4129c913a605d515e7ff47bb2f2e07b05920ec493857e1e",
+    "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7420": "07a7f2c860d10114a7c7fe0178e55f362f9b87a7e603f0a30cb558fe971edff1",
+    "graph:ddrhw-y-reversed-diagonal-branch": "0cad4ae74b7dd2c274d7f23993c498ebaf6b191208526d5ad0f41d29617d2885",
+    "image:ddrhw-y-reversed-diagonal-branch:canonical-southeast": "18a6c7c6def38ee2c44afa32e9fe405d8955c2d40a4051e3e7fa289aa22bfd17",
+    "image:ddrhw-y-reversed-diagonal-branch:canonical-top": "26f2488ddeff7f661c0edeb70d79fbaa60e235eeef311156d246db21b11bb3f4",
+    "image:ddrhw-y-reversed-diagonal-branch:connection-overview": "b46e391c704632ff43b8e5559cbdce1e9237b16b7af6df9054f726258192e663",
+    "interface:ddrhw-y-reversed-diagonal-branch:a-b-in": "a777ca019f318bc06074b5b0feec1dafca273db6774131600d3eae90e62c4af1",
+    "interface:ddrhw-y-reversed-diagonal-branch:a-b-out": "595ec22ba9e3bb59156f0f4c6b25ec59f0e68260e06395d9a88c4a1d6634318a",
+    "interface:ddrhw-y-reversed-diagonal-branch:b-a-in": "999b5eaf423a6bb1f75896da42d90897169b743b0cea90bd2e7f5aa15d454c0d",
+    "interface:ddrhw-y-reversed-diagonal-branch:b-a-out": "d4cadc334c82089846246e8823052a55d276b5fa88c51a15e91213609f33c5e4",
+    "interface:ddrhw-y-reversed-diagonal-branch:b-c-in": "3fe45425fe27fbc257a6ef36c0b4529545d786a3017f26422cd334f049eefc84",
+    "interface:ddrhw-y-reversed-diagonal-branch:b-c-out": "cc3d253a41e9d0dfe2f424cba2ad2ee29b1a497f390c601752ae11eb6c64f6f4",
+    "interface:ddrhw-y-reversed-diagonal-branch:c-b-in": "7cebae06bb75d276ae9d7c077990281b2c60384211e2d0e44ddb3ea69d0f5afa",
+    "interface:ddrhw-y-reversed-diagonal-branch:c-b-out": "a146d8ac99ecb906962520bf5f75d3a164021956e8a04feb1374bd7e0e601f5e",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7020": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7021": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7022": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7023": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7024": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7100": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7101": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7102": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7103": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7104": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7110": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7111": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7112": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7113": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7114": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7120": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7121": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7122": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7123": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7124": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7210": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7211": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7212": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7213": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7214": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7220": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7221": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7222": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7223": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7224": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7320": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7321": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7322": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7323": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7324": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7420": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7421": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7422": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7423": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7424": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+    "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7ff5": "db318c4ea2abade7b55b5bf7efffe863a34d834dbf02c79c4989c6a1ec859bfa",
+    "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7020": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+    "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7100": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+    "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7110": "8ba87d22df77f455a93076cda9591b830c2c8da9715d41fc9f94275c0d3f563f",
+    "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7120": "e40fc0db327aa53df658dd4ceb6f65f8e5a3e4e1a06509031f7b6f72743e6062",
+    "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7210": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+    "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7220": "d0a9d154651e9959a80f772c6d939357a77c94579ab42bb256bcc60e71525370",
+    "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7320": "2c913e9edfeb4a1436ec167b4c5441b2c103f92e6fdc634df0a58a97ad0e96bf",
+    "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7420": "4196131350f1650d5c7bbb5f5c3b533cc7cd1b0baf5de028b6b5e6c9e7ae2231",
+    "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7020": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+    "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7100": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+    "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7110": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+    "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7120": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+    "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7210": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+    "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7220": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+    "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7320": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601",
+    "text:ddrhw-y-reversed-diagonal-branch:2026960b-2a592fd1-7f5d7420": "2e27b752fe2dab6978c272ff04bdaa21c558bcfe6e81d2d2e9b2ed591d52d601"
+  },
+  "cases": [
+    {
+      "id": "software_resources-57323e34f361fdf22946",
+      "kind": "software_resources",
+      "description": "Verify the actual compiled resources and construction rules.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "39e035fcedfe99304218cca8fab81d5e2f2d3d3154d22ffa428b3522dcb9000b",
+      "dependency_ref": "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b"
+    },
+    {
+      "id": "software_connectivity-57323e34f361fdf22946",
+      "kind": "software_connectivity",
+      "description": "Verify the declared directed journeys and forbidden transfers.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "86e4c471019f472ea4aba503644d67501974de6a0b3d72204db9cd2774f877f3",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_render-447c7a13cf1d9e80c747",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b08de2f297a24e33ede03d66880cefce85b15342a4fcf2c4952258a9d9952db6",
+      "dependency_ref": "b04a1c0b4156ec578067991876c5e19890ae0340202aa6818a1c11ccfef4fa09"
+    },
+    {
+      "id": "in_game_placement-447c7a13cf1d9e80c747",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "62130a6d7428cf42ab9666ce2aea8d185f9fe6e48b8600096be45187c25aa1a6",
+      "dependency_ref": "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b"
+    },
+    {
+      "id": "in_game_demolition-447c7a13cf1d9e80c747",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "62130a6d7428cf42ab9666ce2aea8d185f9fe6e48b8600096be45187c25aa1a6",
+      "dependency_ref": "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b"
+    },
+    {
+      "id": "in_game_save_reload-447c7a13cf1d9e80c747",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "62130a6d7428cf42ab9666ce2aea8d185f9fe6e48b8600096be45187c25aa1a6",
+      "dependency_ref": "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b"
+    },
+    {
+      "id": "in_game_render-1e52c5b5e777b0bfc41f",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4ecd12400998ea3f45bbd8b2ede8e130ef4198c5482bd9a56318c9a28001fa36",
+      "dependency_ref": "b04a1c0b4156ec578067991876c5e19890ae0340202aa6818a1c11ccfef4fa09"
+    },
+    {
+      "id": "in_game_placement-1e52c5b5e777b0bfc41f",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a1e71e4cfd90d61ac0cac27a948012df17368e5a16d3af84725093c6de171869",
+      "dependency_ref": "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b"
+    },
+    {
+      "id": "in_game_demolition-1e52c5b5e777b0bfc41f",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a1e71e4cfd90d61ac0cac27a948012df17368e5a16d3af84725093c6de171869",
+      "dependency_ref": "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b"
+    },
+    {
+      "id": "in_game_save_reload-1e52c5b5e777b0bfc41f",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a1e71e4cfd90d61ac0cac27a948012df17368e5a16d3af84725093c6de171869",
+      "dependency_ref": "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b"
+    },
+    {
+      "id": "in_game_render-cae3b47a25b783fdef34",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "08ffe952cffc8b4f9653050a1d244c0b043d655dbf48e72ef4209a84ebad2850",
+      "dependency_ref": "b04a1c0b4156ec578067991876c5e19890ae0340202aa6818a1c11ccfef4fa09"
+    },
+    {
+      "id": "in_game_placement-cae3b47a25b783fdef34",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "58a80ce7c36fc47867c64864a9bfcfa4ba94290fc5a2fba515e7fc3e7b4159be",
+      "dependency_ref": "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b"
+    },
+    {
+      "id": "in_game_demolition-cae3b47a25b783fdef34",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "58a80ce7c36fc47867c64864a9bfcfa4ba94290fc5a2fba515e7fc3e7b4159be",
+      "dependency_ref": "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b"
+    },
+    {
+      "id": "in_game_save_reload-cae3b47a25b783fdef34",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "58a80ce7c36fc47867c64864a9bfcfa4ba94290fc5a2fba515e7fc3e7b4159be",
+      "dependency_ref": "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b"
+    },
+    {
+      "id": "in_game_render-bd8df5144fafd13ba975",
+      "kind": "in_game_render",
+      "description": "Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b8d7da262d5f58774c1b9527102b1c438f78d996c09397984d3ec02a3aad3d51",
+      "dependency_ref": "b04a1c0b4156ec578067991876c5e19890ae0340202aa6818a1c11ccfef4fa09"
+    },
+    {
+      "id": "in_game_placement-bd8df5144fafd13ba975",
+      "kind": "in_game_placement",
+      "description": "Place this piece or complete blueprint and inspect every occupied tile.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c2d84a1968df6b61b3ea99d4b42bb418bc16602b1e328a21b56700ee7c40486e",
+      "dependency_ref": "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b"
+    },
+    {
+      "id": "in_game_demolition-bd8df5144fafd13ba975",
+      "kind": "in_game_demolition",
+      "description": "Bulldoze the complete placement and inspect the cleared area.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c2d84a1968df6b61b3ea99d4b42bb418bc16602b1e328a21b56700ee7c40486e",
+      "dependency_ref": "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b"
+    },
+    {
+      "id": "in_game_save_reload-bd8df5144fafd13ba975",
+      "kind": "in_game_save_reload",
+      "description": "Save, quit, reload, and inspect the placement and its paths.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c2d84a1968df6b61b3ea99d4b42bb418bc16602b1e328a21b56700ee7c40486e",
+      "dependency_ref": "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b"
+    },
+    {
+      "id": "in_game_route_query-2fb57bfef973150ac18c",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-a-in>b-a-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-a-in",
+        "exit_port": "b-a-out",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3cd7cbc5625ac7247eb6ce6baf32d95af189fe7be2e5c358818da3d02c8eabca",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-2fb57bfef973150ac18c",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-a-in>b-a-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-a-in",
+        "exit_port": "b-a-out",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3cd7cbc5625ac7247eb6ce6baf32d95af189fe7be2e5c358818da3d02c8eabca",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-ccafcefe0bb19aa44abc",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-a-in>b-a-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-a-in",
+        "exit_port": "b-a-out",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "414181096e6b4f8cd4f4fa1e7c1c293475eaefec3e812f1d7b116af5be16fc0a",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-ccafcefe0bb19aa44abc",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-a-in>b-a-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-a-in",
+        "exit_port": "b-a-out",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "414181096e6b4f8cd4f4fa1e7c1c293475eaefec3e812f1d7b116af5be16fc0a",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-fb7996c675f04cfcc104",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-a-in>b-a-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-a-in",
+        "exit_port": "b-a-out",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7a3322bd5f8fa92b5eed783ebd53b8dbe52177a7c35348c39830b41babf546f0",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-fb7996c675f04cfcc104",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-a-in>b-a-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-a-in",
+        "exit_port": "b-a-out",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "7a3322bd5f8fa92b5eed783ebd53b8dbe52177a7c35348c39830b41babf546f0",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-f56249eff3e788fa4d4f",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-a-in>b-a-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-a-in",
+        "exit_port": "b-a-out",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d3a751dd41b4e82b5d83b5a87453d5c4643583a969a108e92740d64d9cc85b0b",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-f56249eff3e788fa4d4f",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-a-in>b-a-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-a-in",
+        "exit_port": "b-a-out",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d3a751dd41b4e82b5d83b5a87453d5c4643583a969a108e92740d64d9cc85b0b",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-1171de4be78e95449eac",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-c-in>b-c-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-c-in",
+        "exit_port": "b-c-out",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "dd46e4e0e76f1e47fb4c0c2019fbad1b2321f3a0136e3b866247eef238cd6f4e",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-1171de4be78e95449eac",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-c-in>b-c-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-c-in",
+        "exit_port": "b-c-out",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "dd46e4e0e76f1e47fb4c0c2019fbad1b2321f3a0136e3b866247eef238cd6f4e",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-a625ff5705dfb5561e04",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-c-in>b-c-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-c-in",
+        "exit_port": "b-c-out",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ede3de4e03027fef0a2b41bd6cb5cc5deba81e9d0325cb0f5ad0cb79a7745142",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-a625ff5705dfb5561e04",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-c-in>b-c-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-c-in",
+        "exit_port": "b-c-out",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ede3de4e03027fef0a2b41bd6cb5cc5deba81e9d0325cb0f5ad0cb79a7745142",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-8a6b8f66706b8d8acfce",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-c-in>b-c-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-c-in",
+        "exit_port": "b-c-out",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9c2b4a510bf7f341f19783ba0086f508f3325d041f72f4dea9f3c459f7964aa1",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-8a6b8f66706b8d8acfce",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-c-in>b-c-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-c-in",
+        "exit_port": "b-c-out",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9c2b4a510bf7f341f19783ba0086f508f3325d041f72f4dea9f3c459f7964aa1",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-fba17b22249461580017",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-c-in>b-c-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-c-in",
+        "exit_port": "b-c-out",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4107f8156fad396f282e9c840508ca18cf8265218e3d6579bfba2b659786a4ac",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-fba17b22249461580017",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:b-c-in>b-c-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "b-c-in",
+        "exit_port": "b-c-out",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "4107f8156fad396f282e9c840508ca18cf8265218e3d6579bfba2b659786a4ac",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-aff745d54901ffc59b95",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:a-b-in>a-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "a-b-in",
+        "exit_port": "a-b-out",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "df6a5c7b874657790663917872596f4c5feac4cd5c0314f09277e4d3aabb88c9",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-aff745d54901ffc59b95",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:a-b-in>a-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "a-b-in",
+        "exit_port": "a-b-out",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "df6a5c7b874657790663917872596f4c5feac4cd5c0314f09277e4d3aabb88c9",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-88512eaa5a4d4079ad61",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:a-b-in>a-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "a-b-in",
+        "exit_port": "a-b-out",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "04897d45ef815b360a6083cc03616d681de62a4cdc36b9313d1bbdd9d0704a84",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-88512eaa5a4d4079ad61",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:a-b-in>a-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "a-b-in",
+        "exit_port": "a-b-out",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "04897d45ef815b360a6083cc03616d681de62a4cdc36b9313d1bbdd9d0704a84",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-cbcb06559452b70cbcf4",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:a-b-in>a-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "a-b-in",
+        "exit_port": "a-b-out",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0fd45ad9f6434e49844b4db4d5aa51ef26f881beb2584b0bf71dd1cbfef690a3",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-cbcb06559452b70cbcf4",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:a-b-in>a-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "a-b-in",
+        "exit_port": "a-b-out",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0fd45ad9f6434e49844b4db4d5aa51ef26f881beb2584b0bf71dd1cbfef690a3",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-ceb233708ab909d44870",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:a-b-in>a-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "a-b-in",
+        "exit_port": "a-b-out",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "aa3fcb03025b0616ed37223d741204acf998b31345980cabcee6ce7682465e21",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-ceb233708ab909d44870",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:a-b-in>a-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "a-b-in",
+        "exit_port": "a-b-out",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "aa3fcb03025b0616ed37223d741204acf998b31345980cabcee6ce7682465e21",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-612cbbaade0e3379ddde",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:c-b-in>c-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "c-b-in",
+        "exit_port": "c-b-out",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "65c2e42a6e8d6a6e0f7ff4386fb2024e27168e9f0af9121a644a6c1dce24bf3f",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-612cbbaade0e3379ddde",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:c-b-in>c-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "c-b-in",
+        "exit_port": "c-b-out",
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "65c2e42a6e8d6a6e0f7ff4386fb2024e27168e9f0af9121a644a6c1dce24bf3f",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-dae2961b56054165d84b",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:c-b-in>c-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "c-b-in",
+        "exit_port": "c-b-out",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "edb2dd03373bee5dbebdfc545a60e7305ced5730f74c18225cad9eaa987cc2f8",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-dae2961b56054165d84b",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:c-b-in>c-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "c-b-in",
+        "exit_port": "c-b-out",
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "edb2dd03373bee5dbebdfc545a60e7305ced5730f74c18225cad9eaa987cc2f8",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-bb62921c49a44a9570dd",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:c-b-in>c-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "c-b-in",
+        "exit_port": "c-b-out",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2153d7163843f632b7037b1e89e1c83bfb1b1cbc0351f0a1859928b4258542bc",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-bb62921c49a44a9570dd",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:c-b-in>c-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "c-b-in",
+        "exit_port": "c-b-out",
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2153d7163843f632b7037b1e89e1c83bfb1b1cbc0351f0a1859928b4258542bc",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_route_query-94343963515c63e0b43c",
+      "kind": "in_game_route_query",
+      "description": "Use Route Query in SimCity 4 to confirm this directed journey for its service network.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:c-b-in>c-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "c-b-in",
+        "exit_port": "c-b-out",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "80729b965313e7ccb33da54171d99f9bdb72d6e5b99e6abce64d32bf86024713",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_visible_travel-94343963515c63e0b43c",
+      "kind": "in_game_visible_travel",
+      "description": "Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "journey_id": "1:c-b-in>c-b-out",
+        "service_network": "road",
+        "role": "primary",
+        "entry_port": "c-b-in",
+        "exit_port": "c-b-out",
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "80729b965313e7ccb33da54171d99f9bdb72d6e5b99e6abce64d32bf86024713",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-66198faf2f1dbfa7d2b1",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-a-in",
+          "to_port": "a-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bd8e0fd867f32bc850dc4cc863c846925ffe79a96758652b7140c4cfebd1f55e",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b54a552e00f84f5a8754",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-a-in",
+          "to_port": "a-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "963c6def2b41e0a50fd86abfd80af96a8ba11686858feaf33ce0ec82127269a0",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-cd5493e6a98372bcc913",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-a-in",
+          "to_port": "a-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3ba717b2ee6a5fcf700a3bf351d5a4df923da1e57d8eebd47e8942663286fd03",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-2150234ae3b64ee31e03",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-a-in",
+          "to_port": "a-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "48c414170bf223876c88830b0ea87d70df3e028fe9dea37f95ac1bb084f673b4",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-f50d8231f2a0e4acee68",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-a-in",
+          "to_port": "c-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6247297b07baa82dd3d28195df422b35740ad27f2adf0fe724c528933ad06afd",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5807f29175303aa932e7",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-a-in",
+          "to_port": "c-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "15d7ba928cd32c081b172036171190dbff06f3ee9bc9df6aaee5fbcb9731b67d",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-976df7c0f527c36053c0",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-a-in",
+          "to_port": "c-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "0def10596e39ddf067e663cbe2ae38e009c8b00f0c9aa9f91526bcace06fed48",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-79e27d6a72b0a0836f9c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-a-in",
+          "to_port": "c-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "12be2488e516cbcd5c8ebbe722fcac894f7808dc08e66acadb28d0f3457e65ae",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-05c1c07221a586ce207b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-a-in",
+          "to_port": "b-c-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c7fad8f5e4bf04d53015e6d9437ed9d603e0c9461e37fb5a60a858cfbbd002c4",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-693050cee9fc96ef9ec8",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-a-in",
+          "to_port": "b-c-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3d51b7090c44edb450fbf495162ea781f99bf2149d6f590f9b0698293de47f42",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-88a664473a6d9ef93cd2",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-a-in",
+          "to_port": "b-c-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1ce6ef05d4cd4db10dd7495ef9f2aaa8ce3a32cbada16cdb0af1fcf74f20de52",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-57d27143278c8075f6ef",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-a-in",
+          "to_port": "b-c-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "343d9fe192b6dfddec6b3ed8e389f06f5775382622e93b7625fbcbb922ee5c64",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-ca7683a3fa6fadfc7f25",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-c-in",
+          "to_port": "a-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "281dd685952222aab5b3d2040f7067ea3d13d13a40fa1245e6e04161f7868f30",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-6b3506f32ef307bfbea0",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-c-in",
+          "to_port": "a-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "8b1a0e66f2f8cda388509f4e17d6e57b7f4f72175b4eb7186da2d3482076f67b",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-b43915fa21cad5e545cb",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-c-in",
+          "to_port": "a-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "eefdc67b1fc5e2b4fbf88f4748aa35fb2cad7db6bb32a8a927c3f22c65b63bc0",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-00ebcbb13416c4032b50",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-c-in",
+          "to_port": "a-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "12e3afab2b6acf59d61ec6a48f388ff66c3609776556da80719bc3b181fdbe6f",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-008e4678e9390ee5499f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-c-in",
+          "to_port": "c-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5fb4dc54a91578f010394716962fbba179c819887a7cf925c8220ed52b068940",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5f5e89a6c78624b87774",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-c-in",
+          "to_port": "c-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6b31be2fe020c377cc163291512b0bc89fe7744ef7535b306b7719209f0a79a5",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-92713c53e8d90a4157a6",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-c-in",
+          "to_port": "c-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c2f697f6937548bc752795ecba9f8f166af7fb76ad3f342e43806e0eec52bf83",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-c5a6389c9cdc8cdf8691",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-c-in",
+          "to_port": "c-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "70bddb46b2f0c20f1895e80e61bdbde7554d5ca8b5ab92220a73eb57933043bc",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9f45f2cdd07fd4ef124d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-c-in",
+          "to_port": "b-a-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "45ee7ed581138ac0e38898cbfa272cafde8a0d6a98e59790832a3f06f4c410c9",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-6e81c2fa83ecdbd2f917",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-c-in",
+          "to_port": "b-a-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "69b3585d01083f2bf05d971192adab4ade37e13021ec6df93f58b727cb66aa96",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-5d4c1b03ce35ed7ed62a",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-c-in",
+          "to_port": "b-a-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "3a1eb7a89728b7306b9965972fce391aa55aeb1b1809e6336e02e67db3806adb",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-8704e40d826eddf06c96",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "b-c-in",
+          "to_port": "b-a-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a9c06fb74cb6556cc0c5495c2e92868de3adc23827fc6ed7ff1344b0e31e6ff0",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-0d0be5bb23098ce41614",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "a-b-in",
+          "to_port": "c-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a75bc2d130eeabb316a8b8adce97e6d48cf1a25fb64c545a896bdac2a5fc6ebe",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-bcbbc6784dc7d3158ebc",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "a-b-in",
+          "to_port": "c-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "11a0cbdda899d0db7258372c0addf0d512335e896e543b2d6a10de82c558dd1a",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-3eb238586ef90b30210f",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "a-b-in",
+          "to_port": "c-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "67d8012e668834eddae6abd680f8bada32f288cfc2918ac515d5c9871f130726",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-331f450ec7ee6edbd036",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "a-b-in",
+          "to_port": "c-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "f7fbb214fbf3a5dcabaab4239db6508f84e9f57a4298ffa6040d838c50cfe53a",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-dcd20699a45ff596565d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "a-b-in",
+          "to_port": "b-a-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "ef8ecf262f272686edf6d1cd1cba92458e11e2563d9c5b9e9552020f9500be98",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-80269ca77ab6ecbe6090",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "a-b-in",
+          "to_port": "b-a-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c1c5a87b0c5d1131210541115c4b1331d3ebebe1c7d6c26cd68f463886ccb9bc",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-cf23dcc0fed6514cbdcd",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "a-b-in",
+          "to_port": "b-a-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "013333444a705b3afbfb69b500b9ca6bf260d1b251d196f307051c0b3ac8effc",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-114d43aab3786c15939b",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "a-b-in",
+          "to_port": "b-a-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "84ab74c85184f01e77782f33eb4ff02a1e8540500e22e41d164c638968c1f7ba",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-41ae8fa9a32ed6a15149",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "a-b-in",
+          "to_port": "b-c-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "d8805dc3adaf69b4e09defb16d755e295688f49610d07a183e343f719bce4de7",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-a336c5990c81fa399092",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "a-b-in",
+          "to_port": "b-c-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "1f5ec7ba6336acd687487f458e7158bdb2b9ac0e7f1f7d597e3eb7035b8e5e6a",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4737b4fafa88b0f0fd92",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "a-b-in",
+          "to_port": "b-c-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "144abe7a832290d2830787067d3d741514036a74c82fd9a812a49093dc8a6c04",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-9872eb8df9e4c8849ce6",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "a-b-in",
+          "to_port": "b-c-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "460f54020ac436759f382673bd9cb710871e1fb396c3617f3ae8e48e9ea60c6c",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-32d01874c935eb5bd023",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "c-b-in",
+          "to_port": "a-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "c8092392a932934295f5b50766a45bcfd478db685fa981bf909e8d0481e1a019",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-31d87c003e0b0b7ad02c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "c-b-in",
+          "to_port": "a-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "9f85c82f952c9f86d5b0ea7f370a2d7a5c057fb294d8b79405b89664ba411b01",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-886c55a7facac7a3b559",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "c-b-in",
+          "to_port": "a-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "fe8878d4b2c7632c969d29fd1e7bc7873fcb13c6e40d8910b718fa21ed632901",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-0ba23b95bc3730dd1dc1",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "c-b-in",
+          "to_port": "a-b-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bd8f2637cf3a6be0a7d78193f0dc7db88a5b71852d724340ace9b319ce7a10e5",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-29bfda7588b5a9b07c95",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "c-b-in",
+          "to_port": "b-a-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "a78e8966684cba050fcdf78150497ea17de25c678a883ee44fd608560b8f71b7",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-037928940519be1d957c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "c-b-in",
+          "to_port": "b-a-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "51bea5bf5ec2058811dcbed37ae6a01065309aa58f44ad33db4293172d6d188f",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-fc8c23fb8cc3c529e14d",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "c-b-in",
+          "to_port": "b-a-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "408d4dad72bae8bcbce7fcf2d2cdee6110bd862192f91c152ae20e12e3b0f9d5",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-adc636249e8c88c01849",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "c-b-in",
+          "to_port": "b-a-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "13f77923ae88d8b233a780a7ad1fc136045d824b1aeace48b737fb5c51f94706",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-e194a91bd60c4dba2a6c",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "c-b-in",
+          "to_port": "b-c-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 0
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "39545e80eb401102a232f70ed07ce035256c4df05faea890c345683f5a33eedd",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-72e3ba0a3b4eab61a853",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "c-b-in",
+          "to_port": "b-c-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 90
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "b4e8602a3a2f7d5e3180212819297556efbf516851c5daecf328fa26481f9ea3",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-4dede67a629eb0eb67e3",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "c-b-in",
+          "to_port": "b-c-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 180
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "5b5da243ed4cc30e921748db67176e511ee8f56be1a2eadc1dbf0f96aa50d520",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "in_game_forbidden_transfer-96243c5fc325c7d58ae6",
+      "kind": "in_game_forbidden_transfer",
+      "description": "Confirm this undeclared transfer is unavailable.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "forbidden_transfer": {
+          "from_port": "c-b-in",
+          "to_port": "b-c-out",
+          "from_service": "road",
+          "to_service": "road",
+          "basis": "not reachable in actual saved PATH graph"
+        },
+        "rotation_ccw_degrees": 270
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "e685bd2738d439076e543386d4e05ea678fe78bece7935fd574e850c678018c3",
+      "dependency_ref": "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9"
+    },
+    {
+      "id": "preview_review-b7a1079d4a2aaa9a2673",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "image_key": "image:ddrhw-y-reversed-diagonal-branch:canonical-southeast"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "bd6120015bc167793ef6d03fd790c34dcce645dbe261e113f1b37c975e077afe",
+      "dependency_ref": "379c578eb82cf5158193dc71e651f8e04af7a19647f90fb5e30012537657c69b"
+    },
+    {
+      "id": "preview_review-b50e7477434ee9a5ea30",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "image_key": "image:ddrhw-y-reversed-diagonal-branch:canonical-top"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "6a4ff247742add95ade9b492073053ae1f177cd035fadea43d63dd8716902821",
+      "dependency_ref": "80f40b9ab203cba4d4f0d556c92b28f27ea54efe35c8461cb2885360ea4b5602"
+    },
+    {
+      "id": "preview_review-b6fdb141ed359c9a4473",
+      "kind": "preview_review",
+      "description": "Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.",
+      "scope": {
+        "subject_id": "ddrhw-y-reversed-diagonal-branch",
+        "image_key": "image:ddrhw-y-reversed-diagonal-branch:connection-overview"
+      },
+      "applicability": "applicable",
+      "observations": [],
+      "dependency_snapshot": "2494ced90c3b70b8d2eefe0ead35252c179c307f894330de0f57ab2ccdb43ca9",
+      "dependency_ref": "8bde297ede188b943e17a656229e243ccf940f9aa34661ab9b12693b36ebc069"
+    }
+  ],
+  "dependency_sets": {
+    "16d279ecc0e9506f0193a53b192a36761823aabcd447985d60284709e429bf9b": {
+      "construction:ddrhw-y-reversed-diagonal-branch": "f5e07caffd8d1438fddd02631212c57f189ea264d5f59bcd46fb4ccbe4165349",
+      "effect:ddrhw-y-reversed-diagonal-branch:ea5118b0-ea5118b1-7f5d7ff5": "ef6412d6d6998ac42c24d4385f80875cc43da7731391fb5f358e6ad90ee07709",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7020": "049dab8e71da9f431ecad517f22e7c2c97161e3e6328dc478bd985aeace2c6c4",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7100": "22eb611bbd053b41a62e3f510292127d4d6542fadcef9eb0e67774beb3b18430",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7110": "9f11a59ad761125d65cb472d79af9006a0f3870414767308e9edc2e27ac9d720",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7120": "2eba44a6aaf8702950aa59978b8df632b16fa781ddb3ee4c0e863cb3e6ace39f",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7210": "49760a7b4cd2de1f8d942d0c3b485308f301d25b2730dcc349ece090b3bd119e",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7220": "d137a3655f9e2c045904ec3ff078ae7a6849dcefc2b7a773e66852e3eb5b2fcb",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7320": "a06b28f983ef5b55a4129c913a605d515e7ff47bb2f2e07b05920ec493857e1e",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7420": "07a7f2c860d10114a7c7fe0178e55f362f9b87a7e603f0a30cb558fe971edff1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7020": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7021": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7022": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7023": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7024": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7100": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7101": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7102": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7103": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7104": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7110": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7111": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7112": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7113": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7114": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7120": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7121": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7122": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7123": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7124": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7210": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7211": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7212": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7213": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7214": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7220": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7221": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7222": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7223": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7224": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7320": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7321": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7322": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7323": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7324": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7420": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7421": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7422": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7423": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7424": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7ff5": "db318c4ea2abade7b55b5bf7efffe863a34d834dbf02c79c4989c6a1ec859bfa",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7020": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7100": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7110": "8ba87d22df77f455a93076cda9591b830c2c8da9715d41fc9f94275c0d3f563f",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7120": "e40fc0db327aa53df658dd4ceb6f65f8e5a3e4e1a06509031f7b6f72743e6062",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7210": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7220": "d0a9d154651e9959a80f772c6d939357a77c94579ab42bb256bcc60e71525370",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7320": "2c913e9edfeb4a1436ec167b4c5441b2c103f92e6fdc634df0a58a97ad0e96bf",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7420": "4196131350f1650d5c7bbb5f5c3b533cc7cd1b0baf5de028b6b5e6c9e7ae2231"
+    },
+    "c529cb2477abb6987ad14d3267bbdca3294666dce604340524397bf2e9dbc6c9": {
+      "construction:ddrhw-y-reversed-diagonal-branch": "f5e07caffd8d1438fddd02631212c57f189ea264d5f59bcd46fb4ccbe4165349",
+      "graph:ddrhw-y-reversed-diagonal-branch": "0cad4ae74b7dd2c274d7f23993c498ebaf6b191208526d5ad0f41d29617d2885",
+      "interface:ddrhw-y-reversed-diagonal-branch:a-b-in": "a777ca019f318bc06074b5b0feec1dafca273db6774131600d3eae90e62c4af1",
+      "interface:ddrhw-y-reversed-diagonal-branch:a-b-out": "595ec22ba9e3bb59156f0f4c6b25ec59f0e68260e06395d9a88c4a1d6634318a",
+      "interface:ddrhw-y-reversed-diagonal-branch:b-a-in": "999b5eaf423a6bb1f75896da42d90897169b743b0cea90bd2e7f5aa15d454c0d",
+      "interface:ddrhw-y-reversed-diagonal-branch:b-a-out": "d4cadc334c82089846246e8823052a55d276b5fa88c51a15e91213609f33c5e4",
+      "interface:ddrhw-y-reversed-diagonal-branch:b-c-in": "3fe45425fe27fbc257a6ef36c0b4529545d786a3017f26422cd334f049eefc84",
+      "interface:ddrhw-y-reversed-diagonal-branch:b-c-out": "cc3d253a41e9d0dfe2f424cba2ad2ee29b1a497f390c601752ae11eb6c64f6f4",
+      "interface:ddrhw-y-reversed-diagonal-branch:c-b-in": "7cebae06bb75d276ae9d7c077990281b2c60384211e2d0e44ddb3ea69d0f5afa",
+      "interface:ddrhw-y-reversed-diagonal-branch:c-b-out": "a146d8ac99ecb906962520bf5f75d3a164021956e8a04feb1374bd7e0e601f5e",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7020": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7100": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7110": "8ba87d22df77f455a93076cda9591b830c2c8da9715d41fc9f94275c0d3f563f",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7120": "e40fc0db327aa53df658dd4ceb6f65f8e5a3e4e1a06509031f7b6f72743e6062",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7210": "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7220": "d0a9d154651e9959a80f772c6d939357a77c94579ab42bb256bcc60e71525370",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7320": "2c913e9edfeb4a1436ec167b4c5441b2c103f92e6fdc634df0a58a97ad0e96bf",
+      "path:ddrhw-y-reversed-diagonal-branch:296678f7-a966883f-7f5d7420": "4196131350f1650d5c7bbb5f5c3b533cc7cd1b0baf5de028b6b5e6c9e7ae2231"
+    },
+    "b91e011d98f9a1075457fb095a11cefb3b161e2c0cc31498bf412a90fb080f4b": {
+      "image:ddrhw-y-reversed-diagonal-branch:canonical-southeast": "4fae97f33ff69c40f60f773eefce78da0fae87f2c0f227018521d6ab7a9ed5c8"
+    },
+    "9f9104d7d69d1de4ab43368933701ab86d444ae737bb7146a53f98a795fb08b1": {
+      "image:ddrhw-y-reversed-diagonal-branch:canonical-top": "48f9d0b407434a5849b9226b6dfcf325ea52e881d4aed49e57dd8f4f25ab9d13"
+    },
+    "602fd3f5bd0ba70970af5c55eab71b17e71a185fe5de7557ddec9c10a468cf52": {
+      "image:ddrhw-y-reversed-diagonal-branch:connection-overview": "32ac90a5edf601a2f23570932b4d735fa086ef26357e82704d680bc8d2d305d4"
+    },
+    "b04a1c0b4156ec578067991876c5e19890ae0340202aa6818a1c11ccfef4fa09": {
+      "effect:ddrhw-y-reversed-diagonal-branch:ea5118b0-ea5118b1-7f5d7ff5": "ef6412d6d6998ac42c24d4385f80875cc43da7731391fb5f358e6ad90ee07709",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7020": "049dab8e71da9f431ecad517f22e7c2c97161e3e6328dc478bd985aeace2c6c4",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7100": "22eb611bbd053b41a62e3f510292127d4d6542fadcef9eb0e67774beb3b18430",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7110": "9f11a59ad761125d65cb472d79af9006a0f3870414767308e9edc2e27ac9d720",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7120": "2eba44a6aaf8702950aa59978b8df632b16fa781ddb3ee4c0e863cb3e6ace39f",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7210": "49760a7b4cd2de1f8d942d0c3b485308f301d25b2730dcc349ece090b3bd119e",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7220": "d137a3655f9e2c045904ec3ff078ae7a6849dcefc2b7a773e66852e3eb5b2fcb",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7320": "a06b28f983ef5b55a4129c913a605d515e7ff47bb2f2e07b05920ec493857e1e",
+      "exemplar:ddrhw-y-reversed-diagonal-branch:6534284a-a8434037-7f5d7420": "07a7f2c860d10114a7c7fe0178e55f362f9b87a7e603f0a30cb558fe971edff1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7020": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7021": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7022": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7023": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7024": "a482159c52a7d59976f87d568581cde3087031458b794db796889b6545000c12",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7100": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7101": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7102": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7103": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7104": "d83d53d66dae44df743f70d35a9d80766dcb4c98c746583ad6585e12c6016c63",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7110": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7111": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7112": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7113": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7114": "d8dd0273f379445b172e024f5270287746f29c73f03074b2a150736a803624c1",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7120": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7121": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7122": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7123": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7124": "eae86d69829e1beb0e4cf5dca7356b8b4f1e11e089c395a82842f1b0b2ece28d",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7210": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7211": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7212": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7213": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7214": "824505cd4ebb49bd59466fc6f40f9a0de83e12ac641f83d0d81ea182d7c04c01",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7220": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7221": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7222": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7223": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7224": "1a19cba071b7b2b06b64500ac75dcac1c8833d5e0768568ac1bf3a4cda41364a",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7320": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7321": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7322": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7323": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7324": "472a109b54b4231565f149e8afdcd08d4033975dc55a5be64435e67d19902ba4",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7420": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7421": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7422": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7423": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7424": "874bdf14e71563f8fc4da6e02310f07d293c95db418e936124e1c447abc7242f",
+      "model:ddrhw-y-reversed-diagonal-branch:5ad0e817-badb57f1-7f5d7ff5": "db318c4ea2abade7b55b5bf7efffe863a34d834dbf02c79c4989c6a1ec859bfa"
+    },
+    "379c578eb82cf5158193dc71e651f8e04af7a19647f90fb5e30012537657c69b": {
+      "image:ddrhw-y-reversed-diagonal-branch:canonical-southeast": "18a6c7c6def38ee2c44afa32e9fe405d8955c2d40a4051e3e7fa289aa22bfd17"
+    },
+    "80f40b9ab203cba4d4f0d556c92b28f27ea54efe35c8461cb2885360ea4b5602": {
+      "image:ddrhw-y-reversed-diagonal-branch:canonical-top": "26f2488ddeff7f661c0edeb70d79fbaa60e235eeef311156d246db21b11bb3f4"
+    },
+    "8bde297ede188b943e17a656229e243ccf940f9aa34661ab9b12693b36ebc069": {
+      "image:ddrhw-y-reversed-diagonal-branch:connection-overview": "b46e391c704632ff43b8e5559cbdce1e9237b16b7af6df9054f726258192e663"
+    }
+  }
+}

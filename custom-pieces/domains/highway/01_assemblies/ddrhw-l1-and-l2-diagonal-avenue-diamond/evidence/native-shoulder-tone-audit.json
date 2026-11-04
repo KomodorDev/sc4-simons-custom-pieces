@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "purpose": "Measured native DD asphalt and UV references supporting the bounded old-edge repaint; measurements contain no native texture pixels or mesh payloads.",
+  "source_build": {
+    "name": "ddrhw-pavement-tone-parts-01",
+    "manifest_sha256": "a7332064e2c0aeda4f38d8ff54bff5d4ced68493ab08ba4c78e686a743396328"
+  },
+  "native_models": {
+    "archive": "RealHighway_DD_RHW-4.dat",
+    "donors": [
+      {
+        "resource_key": "5ad0e817-badb57f1-5753a380",
+        "sha256": "ec9d3b09e7c80b8edc921ad5022a26905b92b0de99804e2ac257bb381cf8bf8c",
+        "native_top_meshes": [
+          "Top Deck",
+          "Bottom Deck"
+        ]
+      },
+      {
+        "resource_key": "5ad0e817-badb57f1-5753a300",
+        "sha256": "7509d29d6e36aa20c1b01689808ac30bf4a063fb6be8a0affd04b09a4643aef9",
+        "native_top_meshes": [
+          "Top Deck",
+          "Bottom Deck"
+        ]
+      },
+      {
+        "resource_key": "5ad0e817-badb57f1-5753a305",
+        "sha256": "952d02ab4a523747cd4b049c56d7b7091a2d253a59530ebf96207d9691d99c40",
+        "native_top_meshes": [
+          "Top Deck",
+          "Bottom Deck"
+        ]
+      }
+    ],
+    "raw_crossing_field": {
+      "coordinates": "Native S3D x points east, z points south, and y is height; crossing reference centre is east=4 m, north=-4 m.",
+      "lateral_v_m": "(-z - x + 8) / sqrt(2)",
+      "q_m": "served_side * lateral_v_m",
+      "original_u": "0.5 - q_m / 16",
+      "fitted_vertices": [
+        {
+          "mesh": "Top Deck",
+          "height_m": 15.0,
+          "served_side": -1,
+          "vertices_checked": 5,
+          "maximum_affine_u_error": 3.9348099956093563e-07
+        },
+        {
+          "mesh": "Bottom Deck",
+          "height_m": 7.5,
+          "served_side": 1,
+          "vertices_checked": 5,
+          "maximum_affine_u_error": 3.9348099956093563e-07
+        }
+      ]
+    }
+  },
+  "native_texture": {
+    "archive": "US_Common_RHW-4_Textures.dat",
+    "resource_key": "7ab50e44-1abe787d-5713000e",
+    "fsh_sha256": "25a91179a26a82ba6307777b1957c5862bee61daf55c7638c4487d64b275c7b8",
+    "base_image_size_px": [
+      128,
+      128
+    ],
+    "sample_scope": "Integer RGB values of all 128 rows at the listed zero-based base-image columns; game filtering, mipmaps, and lighting are unverified.",
+    "columns": [
+      {
+        "zero_based_column": 25,
+        "centre_u": 0.19921875,
+        "minimum_rgb": [
+          63,
+          62,
+          55
+        ],
+        "maximum_rgb": [
+          63,
+          62,
+          55
+        ],
+        "mean_rgb": [
+          63.0,
+          62.0,
+          55.0
+        ],
+        "distinct_rgb_values": 1
+      },
+      {
+        "zero_based_column": 26,
+        "centre_u": 0.20703125,
+        "minimum_rgb": [
+          78,
+          77,
+          78
+        ],
+        "maximum_rgb": [
+          87,
+          89,
+          87
+        ],
+        "mean_rgb": [
+          85.875,
+          87.0,
+          85.875
+        ],
+        "distinct_rgb_values": 4
+      },
+      {
+        "zero_based_column": 27,
+        "centre_u": 0.21484375,
+        "minimum_rgb": [
+          103,
+          103,
+          103
+        ],
+        "maximum_rgb": [
+          129,
+          131,
+          129
+        ],
+        "mean_rgb": [
+          121.898438,
+          121.359375,
+          121.828125
+        ],
+        "distinct_rgb_values": 9
+      },
+      {
+        "zero_based_column": 28,
+        "centre_u": 0.22265625,
+        "minimum_rgb": [
+          98,
+          96,
+          95
+        ],
+        "maximum_rgb": [
+          129,
+          131,
+          129
+        ],
+        "mean_rgb": [
+          119.921875,
+          119.226562,
+          119.59375
+        ],
+        "distinct_rgb_values": 10
+      },
+      {
+        "zero_based_column": 29,
+        "centre_u": 0.23046875,
+        "minimum_rgb": [
+          60,
+          55,
+          51
+        ],
+        "maximum_rgb": [
+          70,
+          65,
+          63
+        ],
+        "mean_rgb": [
+          61.5625,
+          59.523438,
+          53.445312
+        ],
+        "distinct_rgb_values": 29
+      }
+    ]
+  },
+  "bounded_repaint": {
+    "old_white_edge_columns": [
+      26,
+      27,
+      28
+    ],
+    "u_boundary_centres": [
+      0.19921875,
+      0.23046875
+    ],
+    "q_interval_m": [
+      4.3125,
+      4.8125
+    ],
+    "width_m": 0.5,
+    "replacement_u": 0.23046875,
+    "replacement_v": "Preserve the original native V at every resulting native pavement vertex.",
+    "outside_band": "Preserve the original native U and V; partition existing coplanar top triangles only.",
+    "inner_boundary": "Replacement U equals native U exactly at q=4.3125 m.",
+    "outer_boundary_rgb_difference_maximum_by_channel": [
+      7,
+      7,
+      8
+    ],
+    "longitudinal_scope": "Retain the pre-existing per-ramp shoulder footprint interval.",
+    "unchanged_authored_material": "Existing authored MIS asphalt 5712000e is retained; this audit does not assert that every native-DD-to-MIS colour boundary is invisible."
+  },
+  "software_evidence_only": true,
+  "manual_game_result_changed": false,
+  "private_inputs_included": false
+}

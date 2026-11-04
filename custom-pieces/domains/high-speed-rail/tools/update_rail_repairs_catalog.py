@@ -7,7 +7,7 @@ import sys
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 from scp import jsonc
-from scp.catalog import load_catalog, number
+from scp.catalog import load_catalog, reserved_puzzle_ids
 from scp.dbpf import require
 from scp_hsr.icons import make_icon
 from scp.inventory import write_inventories
@@ -20,9 +20,9 @@ def main():
     project = jsonc.load(ROOT/'project.jsonc')
     ledger = jsonc.load(ROOT/'config/allocations.jsonc')
     current = {piece['id']:piece for piece in catalog['pieces']}
-    used_puzzles = {number(p['puzzle_id']) for p in ledger['pieces'].values()}
-    used_blocks = {number(value)&0xfffff000 for p in ledger['pieces'].values()
-                   for value in [p['preview_id'], *p['tile_ids'], *p.get('resource_blocks', [])]}
+    used_puzzles = reserved_puzzle_ids(ledger)
+    from scp.adaptive_network import allocation_blocks
+    used_blocks = {block for record in ledger['pieces'].values() for block in allocation_blocks(record)}
     additions, identifiers = [], []
     for recipe in RECIPES:
         info = INFO[recipe]

@@ -123,6 +123,40 @@ class CatalogTests(unittest.TestCase):
     def _catalog(self):
         return load_catalog(self.root)
 
+    def test_registered_jsonc_piece_and_assembly_sources_load_without_legacy_copies(self):
+        before = self._catalog()
+        route = self.project['domains']['high-speed-rail']
+        registry = deepcopy(self.registries['high-speed-rail'])
+        for kind, key in (('piece', 'pieces'), ('assembly', 'assemblies')):
+            original = registry[key][0]
+            path = self.root/route['path']/original
+            target = path.with_suffix('.jsonc')
+            value = jsonc.load(path)
+            path.rename(target)
+            from scp.subject_sources import new_subject_document
+            target.write_text(new_subject_document(value, kind), encoding='utf-8')
+            registry[key][0] = target.relative_to(self.root/route['path']).as_posix()
+        self._write(route['registry'], registry)
+        after = self._catalog()
+        self.assertEqual(before['pieces'], after['pieces'])
+        self.assertEqual(before['_assemblies'], after['_assemblies'])
+
+    def test_catalog_rejects_parallel_subject_sources(self):
+        path = self.root/self.piece_paths[0]
+        path.with_suffix('.jsonc').write_bytes(path.read_bytes())
+        with self.assertRaisesRegex(ValueError, 'Only one maintained'):
+            self._catalog()
+
+    def test_authored_texture_uses_only_the_existing_first_tile_reservation(self):
+        catalog = self._catalog()
+        piece = catalog['pieces'][0]
+        piece['authored_texture_ids'] = [piece['tile_ids'][0]]
+        validate_catalog(catalog)
+        for ids in (None, '7f500000', [piece['preview_id']], piece['tile_ids']+[piece['preview_id']]):
+            piece['authored_texture_ids'] = ids
+            with self.subTest(ids=ids), self.assertRaisesRegex(ValueError, 'authored_texture_ids'):
+                validate_catalog(catalog)
+
     def test_domain_guides_are_required(self):
         (self.root / 'domains/high-speed-rail/AGENTS.md').unlink()
         with self.assertRaisesRegex(ValueError, 'requires agent and human guides'):
