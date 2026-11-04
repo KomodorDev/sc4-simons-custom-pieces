@@ -13,7 +13,7 @@ sys.path[:0] = [str(ROOT / 'framework'), str(ROOT / 'domains/high-speed-rail/imp
 sys.dont_write_bytecode = True
 if sys.version_info < (3, 11):
     raise SystemExit('SCP requires Python 3.11 or newer. Check with: python3 --version')
-from scp.catalog import load_catalog, select_pieces, inspect_pieces, release_status, number, piece_cells, tile_base
+from scp.catalog import load_catalog, select_pieces, inspect_pieces, release_status, number, piece_cells, tile_base, reserved_puzzle_ids
 from scp.build import build_project, doctor, verify_build, package_build
 from scp.dbpf import require
 from scp import jsonc
@@ -53,7 +53,7 @@ def scaffold(slug, name, width=1, depth=1, domain='high-speed-rail'):
     ledger_path = ROOT / 'config/allocations.jsonc'
     ledger = jsonc.load(ledger_path)
     require(slug not in ledger['pieces'], 'This id is already allocated to a current piece. Choose a different id.')
-    used_puzzles = {number(p['puzzle_id']) for p in ledger['pieces'].values()}
+    used_puzzles = reserved_puzzle_ids(ledger)
     puzzle = next((n for n in range(0xF7A0, 0xF900) if n not in used_puzzles), None)
     require(puzzle is not None, 'Local puzzle namespace exhausted; allocate another reviewed namespace')
     from scp.adaptive_network import allocation_blocks

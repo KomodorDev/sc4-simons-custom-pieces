@@ -103,8 +103,19 @@ def _members(scene):
 def _layout(value, domain='high-speed-rail'):
     from .menu_experiment_resources import valid_menu_order
     required = {'assembly_id', 'member_order', 'cycle_button'}
-    require(isinstance(value, dict) and set(value) in (required, required | {'submenu'}, required | {'cycle_submenu'}),
+    variant = {'assembly_variant', 'component_aliases'}
+    require(isinstance(value, dict) and set(value) in (
+        required, required | {'submenu'}, required | {'cycle_submenu'}, required | variant),
             'Unsupported menu layout fields')
+    if 'assembly_variant' in value:
+        require(domain == 'highway' and isinstance(value['assembly_variant'], str)
+                and re.fullmatch(r'[a-z][a-z0-9-]*', value['assembly_variant']),
+                'Invalid Highway assembly menu variant')
+        aliases = value['component_aliases']
+        require(isinstance(aliases, dict) and aliases and all(
+            isinstance(key, str) and isinstance(alias, str) and re.fullmatch(r'[a-z][a-z0-9-]*', alias)
+            for key, alias in aliases.items()) and len(aliases) == len(set(aliases.values())),
+            'Invalid assembly component alias map')
     require(isinstance(value['assembly_id'], str) and
             re.fullmatch(r'[a-z][a-z0-9-]{1,63}', value['assembly_id']), 'Invalid assembly identifier')
     require(value['member_order'] == 'first-use-in-assembly', 'Unsupported menu member order')
@@ -514,8 +525,9 @@ def verify_menu_experiment(output, write_report=True):
     return report
 
 
-def _assembly_icon_path(root, assembly):
-    relative = assembly['path'] + '/icon.png'
+def _assembly_icon_path(root, assembly, variant=None):
+    filename = 'icon.png' if variant is None else f'icon-{variant}.png'
+    relative = assembly['path'] + '/' + filename
     path = Path(root) / relative
     require(path == safe_relative(root, relative) and
             not any(parent.is_symlink() for parent in (path, *path.parents)),
@@ -556,15 +568,28 @@ def write_assembly_icons(project_root, *, domain_id='high-speed-rail', assembly_
                 and set(assembly_ids) <= {assembly['id'] for assembly in assemblies},
                 'Assembly icon selection contains empty, duplicate, or unknown identifiers')
         assemblies = [assembly for assembly in assemblies if assembly['id'] in assembly_ids]
-    targets = [_assembly_icon_path(root, assembly) for assembly in assemblies]
+    config_path = safe_relative(root, catalog['domains'][domain_id]['path'] + '/menu-layout.jsonc')
+    variants = {}
+    if config_path.is_file():
+        for entry in _read_json(config_path)['layouts'].values():
+            if 'assembly_variant' in entry:
+                layout = _layout(entry, domain_id)
+                variants.setdefault(layout['assembly_id'], []).append(layout)
+    from .multi_assembly_menu import _scene
+    jobs = []
+    for assembly in assemblies:
+        jobs.append((assembly, None))
+        jobs.extend(({**assembly, 'scene': _scene(assembly['scene'], layout)}, layout['assembly_variant'])
+                    for layout in variants.get(assembly['id'], []))
+    targets = [_assembly_icon_path(root, assembly, variant) for assembly, variant in jobs]
     # Resolve every assembly before changing any icon; malformed source data
     # must not leave a partly refreshed selection behind.
-    routes = [_assembly_icon_routes(assembly, catalog) for assembly in assemblies]
-    networks = [_assembly_icon_network(assembly) for assembly in assemblies]
+    routes = [_assembly_icon_routes(assembly, catalog) for assembly, _ in jobs]
+    networks = [_assembly_icon_network(assembly) for assembly, _ in jobs]
     artworks = [make_assembly_icon(points, network_label=network)
                 for points, network in zip(routes, networks)]
     evidence_paths = []
-    for assembly, points, network, path, raw in zip(assemblies, routes, networks, targets, artworks):
+    for (assembly, variant), points, network, path, raw in zip(jobs, routes, networks, targets, artworks):
         current = None
         if path.is_file():
             try:
@@ -590,10 +615,12 @@ def write_assembly_icons(project_root, *, domain_id='high-speed-rail', assembly_
             'footer_ink_rows_px': [33, 37],
             'piece_definitions_sha256': {piece['id']: _sha(_json_bytes(piece))
                 for piece in catalog['pieces'] if piece['id'] in member_ids},
-            'output': {'path': 'icon.png', 'sha256': _sha(current), 'dimensions_px': [176, 44],
+            'output': {'path': path.name, 'sha256': _sha(current), 'dimensions_px': [176, 44],
                 'frame_order': ['locked', 'normal', 'selected', 'highlighted'], 'frame_size_px': [44, 44]},
             'compiled_resource_verification': 'separate', 'in_game_appearance': 'unverified'}
-        evidence_relative = assembly['path'] + '/evidence/icon.json'
+        if variant is not None:
+            evidence['assembly_variant'] = variant
+        evidence_relative = assembly['path'] + '/evidence/' + path.stem + '.json'
         evidence_path = root / evidence_relative
         require(evidence_path == safe_relative(root, evidence_relative)
                 and not any(parent.is_symlink() for parent in (evidence_path, *evidence_path.parents)),
@@ -630,6 +657,11 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
         layout_id = 'trumpet'
     require(layout_id in config['layouts'], 'Unknown assembly menu layout')
     layout = _layout(config['layouts'][layout_id], domain_id)
+    if 'assembly_variant' in layout:
+        require(single_button_only, 'Assembly variants require assembly-menu')
+        from .multi_assembly_menu import build
+        return build(root, source, output, selections=[{'domain_id': domain_id, 'layout_id': layout_id}],
+                     plugins=plugins, extra_roots=extra_roots)
     require('cycle_submenu' not in layout,
             'A shared assembly submenu requires multiple selected assembly layouts')
     require(not single_button_only or 'submenu' not in layout,

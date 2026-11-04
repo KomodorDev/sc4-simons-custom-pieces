@@ -1,15 +1,32 @@
-// title: "Permanent piece resource allocations"
-// summary: "Reserve construction and game-resource identifiers for each reusable piece so saved-city identities remain stable."
+// title: "Permanent SCP resource allocations"
+// summary: "Reserve reusable piece resources and assembly component aliases so saved-city identities remain stable."
 //
-// Used when: The catalogue is validated or a new reusable piece reserves numeric construction, model, preview, and menu identifiers.
+// Used when: The catalogue is validated or a reusable piece or assembly alias needs a new identity.
 // Read by: scp.catalog.load_catalog()/validate_catalog() and the scaffold command in custom-pieces/scp.py; domain registration tools also load its existing reservations.
-// Updated by: The scaffold command or reviewed domain registration tools through scp.registration.apply_registration(); existing retained pieces keep their numeric reservations.
-// Affects: Identifier collision checks and rejection of changes to an existing piece's saved-city resource identity or construction coordinates; this is not proof of public ID allocation.
+// Updated by: The scaffold command, reviewed domain registration tools, or contributors reserving a selection alias for a shared assembly component.
+// Affects: Identifier collision checks, saved-city resource identity, construction coordinates, and independent assembly cycles. These reservations are local.
 // Reference: custom-pieces/docs/WORKFLOW_PIECE_CREATION.md describes allocation, and custom-pieces/docs/RELEASE.md describes public identifier requirements.
 {
-  "purpose": "Permanent local resource reservations; identifiers must not change for an existing piece.",
+  "purpose": "Permanent local resource reservations for reusable pieces and assembly component aliases.",
   "schema_version": 1,
   "globally_registered": false,
+  "assembly_aliases": {
+    "compact-modular-diagonal-diamond-highway-stamp": {
+      "piece_id": "ddrhw-modular-highway-stamp",
+      "layout_id": "compact-modular-diagonal-diamond",
+      "puzzle_id": "f88e"
+    },
+    "compact-modular-diagonal-diamond-northwest-junction": {
+      "piece_id": "ddrhw-diagonal-northwest-junction",
+      "layout_id": "compact-modular-diagonal-diamond",
+      "puzzle_id": "f88f"
+    },
+    "compact-modular-diagonal-diamond-southeast-junction": {
+      "piece_id": "ddrhw-diagonal-southeast-junction",
+      "layout_id": "compact-modular-diagonal-diamond",
+      "puzzle_id": "f890"
+    }
+  },
   "pieces": {
     "hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg": {
       "puzzle_id": "f7a1",

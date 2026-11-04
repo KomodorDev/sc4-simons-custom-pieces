@@ -551,6 +551,7 @@ class OrchestrationTests(unittest.TestCase):
             {"domain_id": "high-speed-rail", "layout_id": "trumpet"},
             {"domain_id": "highway", "layout_id": "compact-diagonal-diamond"},
             {"domain_id": "highway", "layout_id": "modular-diagonal-diamond"},
+            {"domain_id": "highway", "layout_id": "compact-modular-diagonal-diamond"},
             {"domain_id": "highway", "layout_id": "parallel-diagonal-diamond"},
             {"domain_id": "highway", "layout_id": "parallel-diagonal-diamond-alignment-b"},
             {"domain_id": "highway", "layout_id": "ddrhw-compact-diagonal-y-junction"},
@@ -614,7 +615,7 @@ class OrchestrationTests(unittest.TestCase):
         self.assertTrue(result["geometry_verification_mocked_for_synthetic_fixture"])
         self.assertFalse(result["live_game_modified"])
         self.assertEqual(result["implemented_pieces"], len(service.all_implemented_ids(ROOT)))
-        self.assertEqual(result["assembly_menu_layouts"], 7)
+        self.assertEqual(result["assembly_menu_layouts"], 8)
 
     def test_synthetic_self_test_rejects_a_broken_bundled_triangulator(self):
         from shapely import GeometryCollection

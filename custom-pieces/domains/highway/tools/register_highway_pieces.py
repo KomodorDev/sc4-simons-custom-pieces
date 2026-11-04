@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path[:0] = [str(ROOT / 'framework'), str(ROOT / 'domains/highway/implementation')]
 
 from scp import jsonc
-from scp.catalog import load_catalog, number, tile_base, validate_catalog
+from scp.catalog import load_catalog, number, tile_base, validate_catalog, reserved_puzzle_ids
 from scp.registration import apply_registration
 from scp.subject_sources import new_subject_document, write_subject
 from scp_highway.menu import make_icon
@@ -238,7 +238,7 @@ def register_compact_modules(root=ROOT, *, review_partition=False, review_ramp_e
 
 
 def _allocation(ledger, cells):
-    puzzles = {number(record['puzzle_id']) for record in ledger['pieces'].values()}
+    puzzles = reserved_puzzle_ids(ledger)
     puzzle = next((value for value in range(0xF7A0, 0xF900) if value not in puzzles), None)
     if puzzle is None:
         raise ValueError('Reviewed local puzzle namespace is exhausted')

@@ -112,6 +112,11 @@ def load_catalog(root):
     return project
 
 
+def reserved_puzzle_ids(ledger):
+    return {number(record['puzzle_id']) for group in ('pieces', 'assembly_aliases')
+            for record in ledger.get(group, {}).values()}
+
+
 def validate_catalog(catalog):
     require(catalog.get('schema_version') == 1, 'Unsupported project schema')
     require(catalog.get('plugin_folder') == 'zzz_Simons_Custom_Pieces', 'Unexpected managed folder name')
@@ -148,6 +153,23 @@ def validate_catalog(catalog):
                 require(iid not in reserved, 'Adaptive or extra-model resource reservation overlap')
                 reserved.add(iid)
                 allocated_resources.append((iid, slug))
+        aliases = ledger.get('assembly_aliases', {})
+        require(isinstance(aliases, dict), 'Assembly alias reservations must be a mapping')
+        assigned = set()
+        piece_ids = {piece.get('id') for piece in catalog['pieces']}
+        for name, record in aliases.items():
+            require(isinstance(name, str) and re.fullmatch(r'[a-z][a-z0-9-]*', name)
+                    and isinstance(record, dict) and set(record) == {'piece_id', 'layout_id', 'puzzle_id'}
+                    and isinstance(record['piece_id'], str) and record['piece_id'] in piece_ids
+                    and isinstance(record['layout_id'], str) and re.fullmatch(r'[a-z][a-z0-9-]*', record['layout_id'])
+                    and isinstance(record['puzzle_id'], str) and re.fullmatch(r'[0-9a-f]{4}', record['puzzle_id']),
+                    'Invalid assembly alias reservation')
+            puzzle = number(record['puzzle_id'])
+            assignment = (record['layout_id'], record['piece_id'])
+            require(puzzle and puzzle not in reserved_puzzles and assignment not in assigned,
+                    'Assembly alias reservation collision')
+            reserved_puzzles.add(puzzle)
+            assigned.add(assignment)
         require(all(reserved_blocks.get(iid & 0xfffff000, slug) == slug for iid, slug in allocated_resources),
                 'Resource occupies another piece\'s reserved family')
         require(set(ledger['pieces']) == {piece['id'] for piece in catalog['pieces']},

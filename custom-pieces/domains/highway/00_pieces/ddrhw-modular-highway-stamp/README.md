@@ -32,7 +32,7 @@ A **construction tile** is a 16 × 16 m city square occupied by one piece. This 
 
 1. Prepare Windows SimCity 4 with the exact NAM 50 right-hand-traffic inputs in the [build guide](../../../../docs/BUILD_AND_INSTALL.md), including the adaptive Avenue capture for the stamp and terminals.
 2. Open a disposable city, and flatten the full 10 × 10-tile assembly area.
-3. Open **Transportation → Highways → SCP → Assemblies**, and select **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond**. Press **Tab** or **Shift+Tab** until **DD RHW-4 — Straight Diagonal Highway Stamp** appears. Each click places this component only.
+3. Open **Transportation → Highways → SCP → Assemblies**. Select **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond** for the R40 layout or **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond — Compact** for the compact layout. Both start with **DD RHW-4 — Straight Diagonal Highway Stamp**. Place it once.
 4. Follow the [assembly placement table](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/README.md#3-placements) for this family's reference position. Use 0° for the reference layout; **Home** and **End** rotate the selected component. Align its occupied preview cells, including sparse shapes whose construction reference cell is empty.
 5. Complete the matching seven-part layout, and connect native DD RHW-4 highway approaches and ordinary diagonal Avenue approaches at the outside ends. Placement over an existing Avenue and dragging through occupied pieces remain separate game tests.
 

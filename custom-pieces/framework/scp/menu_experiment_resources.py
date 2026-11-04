@@ -292,7 +292,7 @@ def _new_button(template, definition, *, kind, icon=None):
 
 
 def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, submenu=None,
-                                    cycle_icon=None, expected_cycle_icon=None):
+                                    cycle_icon=None, expected_cycle_icon=None, placement_aliases=None):
     """Return a new resource mapping and a byte-preservation audit.
 
     ``pieces`` is the ordered sequence of existing piece definitions. Original
@@ -314,6 +314,9 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
     require(not isinstance(pieces, (str, bytes, dict)), 'Pieces must be an ordered sequence')
     pieces = list(pieces)
     require(pieces, 'At least one piece is required')
+    aliases = placement_aliases or {}
+    require(not aliases or (submenu is None and set(aliases) <= {piece['id'] for piece in pieces}),
+            'Placement aliases must belong to a single assembly cycle')
     domain = member_domain(pieces)
     require(domain == 'high-speed-rail' or submenu is None,
             'Highway assemblies support one Highways button; no highway submenu contract is implemented')
@@ -365,8 +368,9 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
         require(props[0x8A2602B9]['values'] == [order] and valid_menu_order(order, domain),
                 'Original domain menu order differs from piece definition')
         records.append((piece['id'], button_id, original))
-    require(cycle['target_id'] == records[0][1],
-            'Cycle alias must target the first selected piece\'s existing root button')
+    first_piece, first_button, _ = records[0]
+    require(cycle['target_id'] == aliases.get(first_piece, first_button),
+            'Cycle button must target the first selected construction root')
     result = dict(source_resources)
     if group is not None:
         for _, button_id, original in records:
@@ -375,21 +379,22 @@ def build_menu_experiment_resources(source_resources, pieces, *, cycle_button, s
             _set(record, ITEM_BUTTON_CLASS, [2])
             result[*MENU_EXEMPLAR, button_id] = encode_exemplar(record)
     else:
-        for _, button_id, _ in records:
-            for prefix in _PRESENTATION_PREFIXES:
-                del result[*prefix, button_id]
+        for piece_id, button_id, _ in records:
+            if piece_id not in aliases:
+                for prefix in _PRESENTATION_PREFIXES:
+                    del result[*prefix, button_id]
     presentations = ((cycle, 'cycle'), (group, 'submenu')) if group is not None else ((cycle, 'cycle'),)
     for button, kind in presentations:
         result.update(_new_button(records[0][2], button, kind=kind,
                                   icon=cycle_icon if kind == 'cycle' else None))
     report = validate_menu_experiment_resources(
         result, source_resources, pieces, cycle_button=cycle, submenu=group,
-        expected_cycle_icon=expected_cycle_icon)
+        expected_cycle_icon=expected_cycle_icon, placement_aliases=aliases)
     return result, report
 
 
 def validate_menu_experiment_resources(resources, source_resources, pieces, *, cycle_button, submenu=None,
-                                       expected_cycle_icon=None):
+                                       expected_cycle_icon=None, placement_aliases=None):
     """Inspect the encoded result and reject any change outside presentation."""
     domain = member_domain(pieces)
     require(domain == 'high-speed-rail' or submenu is None,
@@ -404,8 +409,9 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
                if group is not None else set())
     added = {(*prefix, button_id) for prefix in _PRESENTATION_PREFIXES
              for button_id in ((cycle_id, group_id) if group is not None else (cycle_id,))}
+    aliases = placement_aliases or {}
     removed = ({(*prefix, _uint(piece['menu']['id'], 'member id'))
-                for piece in pieces for prefix in _PRESENTATION_PREFIXES}
+                for piece in pieces if piece['id'] not in aliases for prefix in _PRESENTATION_PREFIXES}
                if group is None else set())
     require(set(resources) == (set(source_resources) - removed) | added,
             'Experiment added or removed an unexpected resource')
@@ -417,8 +423,9 @@ def validate_menu_experiment_resources(resources, source_resources, pieces, *, c
         button_id = _uint(piece['menu']['id'], 'original id')
         key = (*MENU_EXEMPLAR, button_id)
         if group is None:
-            require(all((*prefix, button_id) not in resources for prefix in _PRESENTATION_PREFIXES),
-                    'Assembly member still has an individual menu presentation')
+            if piece['id'] not in aliases:
+                require(all((*prefix, button_id) not in resources for prefix in _PRESENTATION_PREFIXES),
+                        'Assembly member still has an individual menu presentation')
             continue
         before, after = exemplar(source_resources[key]), exemplar(resources[key])
         original, actual = _props(before), _props(after)

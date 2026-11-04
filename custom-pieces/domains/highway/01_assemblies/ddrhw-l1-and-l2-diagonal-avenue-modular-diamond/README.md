@@ -11,7 +11,7 @@ document_type: "guide"
 
 This modular blueprint crosses a diagonal ground Avenue with NAM's double-decker RHW-4 highway. The lower deck is 7.5 m above the pavement datum, and the upper deck is 15 m above it; their traffic travels in opposite directions. One click places the completely straight highway stamp, including both decks, their supports, inside-deck slip lanes, and four barrier cutouts. Every curved ramp surface, underside, barrier, and joining bridge belongs to one of the four separately placed full ramps. Two separately placed Avenue terminals complete the layout. A **slip lane** is the lane beside the through lanes that leads into or out of a ramp.
 
-The default layout uses seven types, seven placements, and 62 occupied tiles in a 10 × 10-tile construction rectangle (160 × 160 m). The stamp owns 21 tiles; the four full ramps own 4, 4, 6, and 6 tiles, and the terminals own 9 and 12. The assembly button cycles forward with **Tab** and backward with **Shift+Tab**; each click places only the selected component. Four full compact ramps and two retained compact Avenue junctions are separately available outside that cycle.
+The default layout uses seven types, seven placements, and 62 occupied tiles in a 10 × 10-tile construction rectangle (160 × 160 m). The stamp owns 21 tiles; the four full ramps own 4, 4, 6, and 6 tiles, and the terminals own 9 and 12. The R40 and Compact Modular layouts each have their own button under **Transportation → Highways → SCP → Assemblies**. Within the selected layout, **Tab** moves forward, **Shift+Tab** moves backward, and each click places one component.
 
 Each ramp connects only to the adjacent Avenue **carriageway**, meaning the part carrying traffic in one direction. Ramp traffic cannot cross the opposing carriageway. The Avenue stays two-way, and both highway decks retain their two through lanes.
 
@@ -70,7 +70,7 @@ Each thumbnail opens its component's full angled preview; **Top view** opens its
 
 ### 2.2 Full compact alternatives
 
-Keep the same straight stamp, C01. Replace the two matching R40 ramps and their terminal together with the corresponding full compact ramps and compact Avenue junction. These six alternative types have individual buttons outside the seven-type R40 cycle. The four old grade-only pieces omit the transferred high throats and are not substitutes for the full compact ramps listed here.
+The Compact Modular cycle starts with the same straight stamp, C01, then lists the four full compact ramps and the two retained Avenue junctions. If you are replacing one side of an existing R40 build, remove that side’s two ramps and terminal together, then use the matching three compact components. The full compact ramps include the curved sections that connect to the stamp.
 
 | Standalone angled picture | Component name and permanent piece ID | Placement | Quantity | Occupied tiles |
 | --- | --- | --- | ---: | ---: |
@@ -102,7 +102,7 @@ Keep the same straight stamp, C01. Replace the two matching R40 ramps and their 
 
 Each lower full ramp has four traffic ports and two **intrinsic route fragments**, meaning two route portions stored inside that piece. A highway-owned middle tile connects those portions. The physical ramp is continuous, but cars require the correctly placed stamp and complete matching layout. Each upper full ramp has two traffic ports and one intrinsic journey. The cards retain all these boundaries; do not discard a middle connection because the visible ramp looks like one road.
 
-To use the compact layout, keep C01 in the same position, select each named **SCP | [HW]** component button, and use this complete alternative table. Remove the group being replaced first; two components cannot own the same tile. The compact layout uses seven placements and 53 owned tiles: 21 + 3 + 3 + 6 + 6 + 6 + 8.
+For the compact layout, open **Transportation → Highways → SCP → Assemblies**, and select **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond — Compact**. Place the stamp, C01, first, or keep the existing stamp in the same position. Press **Tab** to select C02 through C07 in order, or **Shift+Tab** to move backward. Use the reference tiles below. Clear any piece you are replacing before placing its replacement so each tile has one construction owner. The compact layout uses seven placements and 53 owned tiles.
 
 | Placement | Exact component name | Reference tile | Rotation |
 | --- | --- | --- | ---: |

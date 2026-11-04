@@ -52,7 +52,8 @@ def members(manifest, groups=()):
             and sorted(set(domains)) == domains, 'Invalid SCP transportation menu domains')
     roster = {domain: {leaf: [] for leaf in LEAVES} for domain in domains}
     hidden = hidden_members(manifest['pieces']) | {
-        piece['id'] for _, _, pieces in groups for piece in pieces}
+        piece['id'] for layout, _, pieces in groups for piece in pieces
+        if piece['id'] not in layout.get('component_aliases', {})}
     for piece in manifest['pieces']:
         if piece.get('domain') in roster and piece['id'] not in hidden:
             roster[piece['domain']]['pieces'].append(number(piece['menu']['id']))

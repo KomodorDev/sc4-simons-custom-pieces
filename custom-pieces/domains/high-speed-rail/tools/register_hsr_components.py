@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT / 'framework'))
 
 from scp import jsonc
 from scp.autotile import validate_auto_tile_addresses
-from scp.catalog import load_catalog, number, piece_cells, validate_catalog
+from scp.catalog import load_catalog, piece_cells, validate_catalog, reserved_puzzle_ids
 from scp.dbpf import require
 from scp_hsr.icons import make_icon
 from scp.inventory import write_inventories
@@ -61,7 +61,7 @@ def register_components(info_by_recipe=None, recipes=None, *, root=None, selecti
     project = jsonc.load(root / 'project.jsonc')
     ledger = jsonc.load(root / 'config/allocations.jsonc')
     current = {piece['id']: piece for piece in catalog['pieces']}
-    used_puzzles = {number(piece['puzzle_id']) for piece in ledger['pieces'].values()}
+    used_puzzles = reserved_puzzle_ids(ledger)
     from scp.adaptive_network import allocation_blocks
     used_blocks = {block for record in ledger['pieces'].values() for block in allocation_blocks(record)}
     added, selected = [], []

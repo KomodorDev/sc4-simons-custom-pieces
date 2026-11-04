@@ -173,11 +173,11 @@ Review the test checklist for the exact tested cases and environments.
 The target is Windows SimCity 4 with NAM 50 and right-hand traffic, including Wine or CrossOver. Record the actual game version, compatibility layer, NAM selection, and experimental build for each observation. Native macOS SimCity 4 is outside this target.
 
 1. Save a disposable test city, and quit SimCity 4 before replacing installed test files. Follow the [shared build and installation procedure](../../../../docs/BUILD_AND_INSTALL.md); building and rendering do not install files.
-2. Select the `ddrhw-modular-ramp-kit` collection. Its assembly button cycles the seven default R40 types; the four full compact ramps and two compact Avenue junctions have separate buttons outside that cycle. The old grade-only pieces are retained historical types, rather than complete attachments for this stamp.
+2. Build the `ddrhw-modular-ramp-kit` collection and prepare the `modular-diagonal-diamond` and `compact-modular-diagonal-diamond` menu layouts. Each button selects seven types from its own placement table.
 3. Prepare flat, clear terrain. Use the README's [component and placement tables](README.md#3-placements), with one stamp and six separate attachments. Construction ownership may never overlap. A ramp model can draw above a stamp-owned tile without creating a second traffic owner.
 4. Use X0–X9 and Y0–Y9 throughout. X increases east/right, Y increases north/up, and (X0, Y0) is the southwest tile centre. Source model coordinates use east/north/height in metres; source construction rows increase south. Those source row numbers are not the displayed Y labels.
 5. Extend matching native diagonal DD RHW-4 at the southwest and northeast ends, and ordinary diagonal Avenue at the northwest and southeast ends. Provide origins and destinations outside the assembly that make each required movement useful.
-6. Test the default R40 plan first. For the compact alternative, remove a matching R40 ramp pair and its terminal, retain the stamp, and use the complete compact group. Keep layout-specific observations separate.
+6. Test the R40 and Compact Modular plans separately. To test replacing one side, remove its two R40 ramps and terminal, retain the stamp, and place the matching compact components. Record which plan and replacement sequence you tested.
 
 ## 3. Software checks
 
@@ -292,7 +292,7 @@ Record the exact build, component, orientation, placement order, deck direction,
 ### 4.2 Retained assembly checks
 
 
-1. Open **Transportation → Highways → SCP → Assemblies**, find **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond**, and cycle all seven default types with **Tab**, then backward with **Shift+Tab**. Check the six compact-alternative buttons separately.
+1. Open **Transportation → Highways → SCP → Assemblies**. Select **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond**, and use **Tab** and **Shift+Tab** to check P01–P07 against the placement table. Select **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond — Compact**, and repeat with C01–C07. For both buttons, check that the cycle wraps in each direction and that selecting the other button starts its own cycle. Place the shared stamp from both modular buttons in separate test areas. If the 15-placement Compact Diagonal Avenue Diamond is also installed, test its two Avenue junctions from both buttons that include them.
 2. Place P01 once. Both decks must be completely straight, with inside-highway slip lanes and barrier cutouts. No curved ramp slab, underside, or barrier may appear before an attachment is placed. Confirm that the ground Avenue appears under the crossing.
 3. Place P02–P07 one at a time. Each click must add only its full ramp or terminal. Inspect the four flat native-edge physical mouths from both oblique views and above: pavement, underside, Jersey profiles, and bridge strips must fit without cracks or duplicate faces. Inspect the separate traffic tile boundaries, flat R40 terminal joins, and outside Avenue joins too.
 4. Use Route Query and a separate observed car journey for every required direction. Each lower ramp must carry traffic through both owned fragments and the intervening stamp-owned tile. Confirm that no ramp car crosses the opposing Avenue carriageway. Check both pedestrian directions with suitable demand.

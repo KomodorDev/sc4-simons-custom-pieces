@@ -52,7 +52,7 @@ Review the test checklist for the exact tested cases and environments.
 
 Use Windows SimCity 4 with NAM 50 and right-hand traffic, including Wine or CrossOver. Follow the [shared build guide](../../../../docs/BUILD_AND_INSTALL.md) for exact dependency hashes and the captured Avenue input. Build the `ddrhw-modular-ramp-kit` set, and prepare the `modular-diagonal-diamond` Highways menu. Building and rendering do not install game files. Use flat terrain in a disposable city, and follow the [piece placement instructions](README.md#2-piece-and-placement).
 
-The default assembly cycles seven R40 components. The four full compact ramps and two retained compact Avenue junctions have separate buttons outside that cycle. Replace a matching ramp pair and its terminal together; the old compact grade-only types do not contain the transferred curved throats.
+The R40 assembly button cycles seven R40 components. The separate Compact Modular button selects the shared stamp, four full compact ramps, and two compact Avenue junctions. To replace one side of the R40 plan, swap its two ramps and terminal as a group.
 
 ## 3. Software checks
 

@@ -7,7 +7,7 @@ import sys
 ROOT=next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
 from scp import jsonc
-from scp.catalog import load_catalog,number
+from scp.catalog import load_catalog, reserved_puzzle_ids
 from scp.dbpf import require
 from scp_hsr.icons import make_icon
 from scp.inventory import write_inventories
@@ -20,7 +20,7 @@ def register_examples(info_by_recipe,recipes,selection_name):
     project=jsonc.load(ROOT/'project.jsonc')
     ledger=jsonc.load(ROOT/'config/allocations.jsonc')
     current={p['id']:p for p in catalog['pieces']}
-    used_puzzles={number(p['puzzle_id']) for p in ledger['pieces'].values()}
+    used_puzzles=reserved_puzzle_ids(ledger)
     from scp.adaptive_network import allocation_blocks
     used_blocks={block for record in ledger['pieces'].values() for block in allocation_blocks(record)}
     selected=[];added=[]
