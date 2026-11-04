@@ -116,7 +116,10 @@ class OrthogonalApproachTests(unittest.TestCase):
         self.assertGreaterEqual(len(files), 38)
         for path in files:
             piece = jsonc.load(path)
-            if piece['id'] not in (approaches.PIECE_ID, approaches.MIRRORED_PIECE_ID):
+            if piece['id'] not in (approaches.PIECE_ID, approaches.MIRRORED_PIECE_ID,
+                                    'ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile',
+                                    'ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile-mirrored',
+                                    'ddrhw-l1-l2-rhw-l0-orthogonal-lower-right-6tile'):
                 with self.subTest(piece=piece['id']):
                     self.assertEqual(approaches.approaches(piece), [])
                     self.assertEqual(approaches.rul1_sections(piece), {})
@@ -333,11 +336,20 @@ class MirroredOrthogonalApproachTests(unittest.TestCase):
         piece = specification('mirrored'); resources, _ = socket_fixture(piece)
         compiled = [(tuple(cell), b'model', resources[0x296678F7, 0xA966883F, int(tile, 16)])
                     for cell, tile in zip(piece['cells'], piece['tile_ids'])]
-        rows, checks, cons = core_construction_data(compiled)
+        rows, checks, cons = core_construction_data(compiled, mirrored=True)
         self.assertEqual(rows[0], 'ab.<')
         self.assertEqual(checks[0], 'a - dirtroad: 0x02000200')
         self.assertEqual(checks[1], 'b - dirtroad: 0x00000000')
-        self.assertEqual(sum(row.count('+') for row in cons), 12)
+        self.assertEqual(sum(row.count('#') for row in cons), 12)
+        self.assertFalse(any('+' in row for row in cons))
+        # The old default remains an exact construction-only preservation
+        # control; the mirrored correction changes no layout or road flags.
+        old_rows, old_checks, old_cons = core_construction_data(compiled)
+        self.assertEqual((old_rows, old_checks), (rows, checks))
+        self.assertEqual(old_cons, [row.replace('#', '+') for row in cons])
+        for invalid in (0, 1, None, 'mirrored'):
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                core_construction_data(compiled, mirrored=invalid)
 
 
 class ActualNativeOrthogonalContracts(unittest.TestCase):

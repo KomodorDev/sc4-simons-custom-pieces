@@ -17,6 +17,7 @@ import sys
 import tempfile
 import unittest
 import zipfile
+from unittest.mock import patch
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file())
 sys.path.insert(0, str(ROOT / 'framework'))
@@ -82,6 +83,39 @@ class AllocationPreflightTests(unittest.TestCase):
         for prefix in (S3D, (0x7AB50E44,0x2BC2759A)):
             with self.subTest(prefix=prefix), self.assertRaisesRegex(ValueError, 'collide'):
                 preflight_allocations(self.context, {(*prefix,0x7f5f0004):['other.dat']}, [self.piece])
+
+
+class EarlyNativeVerificationTests(unittest.TestCase):
+    def test_native_model_verdict_receives_audited_inputs_and_stops_before_output(self):
+        piece = {'id': 'native-verification-fixture', 'domain': 'highway',
+                 'recipe': 'native-profile-fixture', 'dependencies': ['controller', 'road'],
+                 'puzzle_id': 'f100', 'effect_name': 'fixture-preview-effect'}
+        original = (0x5AD0E817, 0xBADB57F1, 0x12340000)
+        context = {'controller': {RUL0: b'native rules'},
+                   'road': {original: b'audited native model'},
+                   'unselected': {(1, 2, 3): b'not a selected dependency'}}
+        catalog = {'pieces': [piece], 'plugin_folder': 'fixture'}
+
+        def reject(resources, record, donors):
+            self.assertEqual(resources, {})
+            self.assertEqual(record['id'], piece['id'])
+            self.assertEqual(donors, {RUL0: b'native rules', original: b'audited native model'})
+            raise ValueError('native geometry rejected before saving')
+
+        with tempfile.TemporaryDirectory() as temporary, \
+                patch('scp.build.load_catalog', return_value=catalog), \
+                patch('scp.build.select_pieces', return_value=[piece]), \
+                patch('scp.build.piece_menu_families.declarations'), \
+                patch('scp.build.audit_inputs', return_value=(context, {}, [], [])), \
+                patch('scp.build.preflight_allocations'), \
+                patch('scp.build._prepare_output', return_value=Path(temporary)), \
+                patch('scp.build.build_piece', return_value=({}, 'unused')), \
+                patch('scp.verify.check_piece_paths'), \
+                patch('scp.verify.check_piece_models', side_effect=reject) as checked:
+            with self.assertRaisesRegex(ValueError, 'native geometry rejected before saving'):
+                build_project(ROOT, 'unused-plugins', Path(temporary))
+            checked.assert_called_once()
+            self.assertEqual(list(Path(temporary).iterdir()), [])
 
 
 class RealNAMBuildTests(unittest.TestCase):

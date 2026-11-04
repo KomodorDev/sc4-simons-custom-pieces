@@ -1,0 +1,1053 @@
+// title: "Lower-right DD transition saved native verification"
+// summary: "Bind the independently checked construction, native sockets, PATHs, and physical model to the ordinary saved package."
+// Used when: Reproducing or reviewing the exact lower-deck-right orthogonal adapter.
+// Read by: The piece testing guide and contributors reviewing the verified package.
+// Updated by: Contributors extracting the accepted ordinary build verification report.
+// Affects: Software evidence for this piece; game operation requires a separate observation.
+{
+  "schema_version": 1,
+  "piece_id": "ddrhw-l1-l2-rhw-l0-orthogonal-lower-right-6tile",
+  "source": {
+    "ordinary_build": "dist/ddrhw-lower-bend-right-verified-01",
+    "manifest_sha256": "c56902467bb0953c1d87e8f552b9fd3fea4752cc8babe2eff7093ae9ec4fb3fa",
+    "verification_sha256": "da122ff1be370f914cec33d52c2a01e4145b5f6eaedb7d6281b65e08f9d27719",
+    "piece_DAT_sha256": "8de144bfe843d56e20f77b8c55e7514365cdc5d25c2797d956724095952f5072"
+  },
+  "passed": true,
+  "saved_archive_files": [
+    {
+      "bytes": 5443458,
+      "path": "zzz_Simons_Custom_Pieces/00_SCP_Controller_NAM50.dat",
+      "sha256": "5343f9bc74e7e26e5fa47af33ac4a3b8431d91d3120d613d9eaffc77e8c18938"
+    },
+    {
+      "bytes": 10785,
+      "path": "zzz_Simons_Custom_Pieces/10_SCP_Menu.dat",
+      "sha256": "ae23fffad82e483d2aaf0a365f5381e846f51bc88fdd7c5facb2ade44ca284fe"
+    },
+    {
+      "bytes": 8358122,
+      "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-l2-rhw-l0-orthogonal-lower-right-6tile.dat",
+      "sha256": "8de144bfe843d56e20f77b8c55e7514365cdc5d25c2797d956724095952f5072"
+    }
+  ],
+  "construction": {
+    "original_rul0_restored": true,
+    "original_network_ini_restored": true,
+    "separate_piece_menu_roots": 1,
+    "states_per_root": 8,
+    "runtime_tile_addresses_checked": 12,
+    "ordering_sections_checked": 1,
+    "custom_rotation_rings_in_ordering": 1,
+    "native_rotation_rings_preserved": 132,
+    "adaptive_rul1_solutions_checked": 0,
+    "native_dd_approach_cells_checked": 1,
+    "native_dd_rul1_solutions_checked": 4,
+    "native_dd_dependencies_checked": 3,
+    "native_rul1_bytes_preserved": true,
+    "native_dd_game_behavior_tested": false,
+    "native_approach_cells_checked": 3,
+    "native_ghsr_approach_cells_checked": 0,
+    "native_approach_sections_checked": 2,
+    "native_approach_dependencies_checked": 5,
+    "native_ghsr_dependencies_checked": 0,
+    "native_rul1_solutions_checked": 8,
+    "native_ghsr_rul1_solutions_checked": 0,
+    "native_ground_rhw_approach_cells_checked": 2,
+    "existing_native_rul1_solutions_reused": 8,
+    "native_ground_rhw_dependencies_checked": 2
+  },
+  "transport_menu": {
+    "domains": [
+      "highway"
+    ],
+    "schema_version": 1,
+    "submenus_dll_required": true
+  },
+  "piece_verification": {
+    "id": "ddrhw-l1-l2-rhw-l0-orthogonal-lower-right-6tile",
+    "menu": {
+      "piece_id": "ddrhw-l1-l2-rhw-l0-orthogonal-lower-right-6tile",
+      "title": "SCP | [HW] DD RHW-4 \u2014 L1/L2 \u2194 RHW-4 L0 \u2014 Orthogonal Transition \u2014 Lower Deck Bends Right \u2014 6 Tiles",
+      "menu": "Highways",
+      "menu_id": "6a47f88d",
+      "puzzle_id": "f88d",
+      "order": "ffffff8d",
+      "icon_style": "ddrhw-transition",
+      "retained_native_properties_verified": true,
+      "donor_menu_exemplar_tgi": "6534284a-2a3858e4-6a475700",
+      "resources": [
+        {
+          "tgi": "2026960b-123006aa-6a47f88d",
+          "bytes": 874,
+          "sha256": "a065845924c0efe474f1e1ec32bc96f5e7525389b9f2ecb3d3a71a98361fd841"
+        },
+        {
+          "tgi": "2026960b-123007bb-6a47f88d",
+          "bytes": 198,
+          "sha256": "92f4f9166beedfe7f217576e18b945c8982b6c22b6458b3d58e623e40e496a31"
+        },
+        {
+          "tgi": "6534284a-2a3858e4-6a47f88d",
+          "bytes": 293,
+          "sha256": "31591325a619364e211ff9267fd30254f2a571e3ddf5329316987fc8eeb39104"
+        },
+        {
+          "tgi": "856ddbac-6a386d26-6a47f88d",
+          "bytes": 4297,
+          "sha256": "2eb2a954e8e6cc8c86e2e3be2d560f3218084313a2775818290c83ed086b976c"
+        }
+      ],
+      "icon_artwork": "highway-piece-v1",
+      "in_game_menu_tested": false
+    },
+    "paths": {
+      "passed": true,
+      "tile_count": 12,
+      "model_only_cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "complete_directed_journeys": 4,
+      "complete_native_boundary_members_checked": 8,
+      "route_fragments_checked": 26,
+      "maximum_grade_percent": 19.23076960000003,
+      "maximum_coordinate_error_m": 7.988750575545076e-10,
+      "use_path_elevation": true,
+      "proper_rotations_checked": 4,
+      "proper_rotations": [
+        {
+          "quarter_turns": 0,
+          "complete_directed_journeys": 4,
+          "external_directional_members": 8,
+          "route_fragments_consumed": 26,
+          "no_lane_or_carriageway_transfers": true,
+          "journeys": [
+            {
+              "entry_port": "upper-lane-01-in",
+              "exit_port": "upper-lane-01-out",
+              "route_fragments": 6
+            },
+            {
+              "entry_port": "upper-lane-02-in",
+              "exit_port": "upper-lane-02-out",
+              "route_fragments": 6
+            },
+            {
+              "entry_port": "lower-lane-01-in",
+              "exit_port": "lower-lane-01-out",
+              "route_fragments": 7
+            },
+            {
+              "entry_port": "lower-lane-02-in",
+              "exit_port": "lower-lane-02-out",
+              "route_fragments": 7
+            }
+          ]
+        },
+        {
+          "quarter_turns": 1,
+          "complete_directed_journeys": 4,
+          "external_directional_members": 8,
+          "route_fragments_consumed": 26,
+          "no_lane_or_carriageway_transfers": true,
+          "journeys": [
+            {
+              "entry_port": "upper-lane-01-in",
+              "exit_port": "upper-lane-01-out",
+              "route_fragments": 6
+            },
+            {
+              "entry_port": "upper-lane-02-in",
+              "exit_port": "upper-lane-02-out",
+              "route_fragments": 6
+            },
+            {
+              "entry_port": "lower-lane-01-in",
+              "exit_port": "lower-lane-01-out",
+              "route_fragments": 7
+            },
+            {
+              "entry_port": "lower-lane-02-in",
+              "exit_port": "lower-lane-02-out",
+              "route_fragments": 7
+            }
+          ]
+        },
+        {
+          "quarter_turns": 2,
+          "complete_directed_journeys": 4,
+          "external_directional_members": 8,
+          "route_fragments_consumed": 26,
+          "no_lane_or_carriageway_transfers": true,
+          "journeys": [
+            {
+              "entry_port": "upper-lane-01-in",
+              "exit_port": "upper-lane-01-out",
+              "route_fragments": 6
+            },
+            {
+              "entry_port": "upper-lane-02-in",
+              "exit_port": "upper-lane-02-out",
+              "route_fragments": 6
+            },
+            {
+              "entry_port": "lower-lane-01-in",
+              "exit_port": "lower-lane-01-out",
+              "route_fragments": 7
+            },
+            {
+              "entry_port": "lower-lane-02-in",
+              "exit_port": "lower-lane-02-out",
+              "route_fragments": 7
+            }
+          ]
+        },
+        {
+          "quarter_turns": 3,
+          "complete_directed_journeys": 4,
+          "external_directional_members": 8,
+          "route_fragments_consumed": 26,
+          "no_lane_or_carriageway_transfers": true,
+          "journeys": [
+            {
+              "entry_port": "upper-lane-01-in",
+              "exit_port": "upper-lane-01-out",
+              "route_fragments": 6
+            },
+            {
+              "entry_port": "upper-lane-02-in",
+              "exit_port": "upper-lane-02-out",
+              "route_fragments": 6
+            },
+            {
+              "entry_port": "lower-lane-01-in",
+              "exit_port": "lower-lane-01-out",
+              "route_fragments": 7
+            },
+            {
+              "entry_port": "lower-lane-02-in",
+              "exit_port": "lower-lane-02-out",
+              "route_fragments": 7
+            }
+          ]
+        }
+      ],
+      "no_capacity_only_paths": true,
+      "no_lane_or_carriageway_transfers": true,
+      "native_ground_classes_preserved": true,
+      "game_operation_tested": false
+    },
+    "models": {
+      "passed": true,
+      "indexed_triangles_checked": 45754,
+      "all_five_zooms_exact": true,
+      "preview_matches_all_saved_cells": true,
+      "independent_complete_surfaces": {
+        "passed": true,
+        "reviewed_source_faces_checked": 38448,
+        "saved_indexed_faces_checked": 45754,
+        "maximum_affine_uv_error": 4.76837158203125e-07,
+        "source_face_child_overlap_pairs_checked": 11307,
+        "absolute_area_and_overlap_tolerance_m2": 2e-05,
+        "relative_area_and_overlap_tolerance": 4e-05,
+        "zero_or_sub_float32_area_faces_ignored": 1,
+        "surface_distance_tolerance_m": 6e-06,
+        "complete_closed_support_solids": 14,
+        "complete_native_barrier_sections_per_deck": 10,
+        "complete_pavement_and_closed_elevated_deck_bodies": true,
+        "measured_native_outer_overhang_m": 0.0010004043579101562
+      },
+      "continuous_saved_vehicle_corridors": {
+        "passed": true,
+        "continuous_saved_segments_checked": 1546,
+        "actual_face_prism_intersections_checked": 224825,
+        "half_width_m": 1.25,
+        "height_m": 3.8,
+        "scope": "Continuous straight graded prisms for every saved lane chord, including complete support faces; vehicle shapes, structural capacity, and game rendering remain unverified."
+      },
+      "closed_support_clearance": {
+        "passed": true,
+        "closed_support_solids_checked": 14,
+        "opposite_surface_box_intersections_checked": 0,
+        "interior_distance_tolerance_m": 6e-06,
+        "structural_capacity_tested": false
+      },
+      "complete_deck_and_barrier_clearance": {
+        "passed": true,
+        "indexed_upper_lower_surface_pairs_checked": 6691159,
+        "overlapping_plan_pairs_requiring_exact_height_comparison": 0,
+        "interior_distance_tolerance_m": 6e-06,
+        "measured_native_ground_shoulder_edge_contacts": 0,
+        "maximum_declared_ground_shoulder_contact_width_m": 6.669362386067709e-05,
+        "native_ground_edge_contact_is_outside_vehicle_lanes": true
+      },
+      "native_draggable_boundary_contract": {
+        "transition_variant": "lower-bend-right",
+        "sockets_checked": 3,
+        "boundary_members_checked": 8,
+        "proper_rotations_checked": 4,
+        "rotated_boundary_member_checks": 32,
+        "native_rul2_oriented_propagation_checks": 24,
+        "native_input_scope": "reread-pinned-native-resources",
+        "native_controller_reread": true,
+        "native_continuation": {
+          "native_rul0_sha256": "d2a63a6c9070857c5360343cfa07f0be13ef0559fd659e9545c57c15dda672b9",
+          "native_starters_checked": 2,
+          "native_rul1_sha256": "4e44ec44283de6fccc3cd40492fc24154d13fb16a5150e13c201c6e615bba998",
+          "existing_native_rul1_solutions_checked": 8,
+          "native_rul2_sha256": "c427c7872743ca4cd9f583adf33c93a320babe37c42061fbd33c905696e7a3b1",
+          "native_continuation_rows_checked": 8,
+          "native_rul1_unchanged": true,
+          "native_rul2_unchanged": true,
+          "game_behavior_tested": false
+        },
+        "sockets": [
+          {
+            "cell": [
+              1,
+              -1
+            ],
+            "end_cell": [
+              1,
+              0
+            ],
+            "native_tile_id": "57530000",
+            "native_pose": 2,
+            "boundary_members": 4,
+            "lane_classes": [
+              0,
+              1
+            ],
+            "members": [
+              {
+                "transport": 1,
+                "lane": 0,
+                "compatibility": 0,
+                "direction": "in",
+                "endpoint_m": [
+                  13.5,
+                  8.0,
+                  7.5
+                ],
+                "travel_tangent": [
+                  0.0,
+                  -1.0,
+                  0.0
+                ]
+              },
+              {
+                "transport": 1,
+                "lane": 0,
+                "compatibility": 0,
+                "direction": "out",
+                "endpoint_m": [
+                  18.5,
+                  8.0,
+                  15.0
+                ],
+                "travel_tangent": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              },
+              {
+                "transport": 1,
+                "lane": 1,
+                "compatibility": 0,
+                "direction": "in",
+                "endpoint_m": [
+                  18.5,
+                  8.0,
+                  7.5
+                ],
+                "travel_tangent": [
+                  0.0,
+                  -1.0,
+                  0.0
+                ]
+              },
+              {
+                "transport": 1,
+                "lane": 1,
+                "compatibility": 0,
+                "direction": "out",
+                "endpoint_m": [
+                  13.5,
+                  8.0,
+                  15.0
+                ],
+                "travel_tangent": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            ]
+          },
+          {
+            "cell": [
+              0,
+              6
+            ],
+            "end_cell": [
+              0,
+              5
+            ],
+            "native_tile_id": "57030000",
+            "native_pose": 0,
+            "boundary_members": 2,
+            "lane_classes": [
+              1,
+              2
+            ],
+            "members": [
+              {
+                "transport": 1,
+                "lane": 1,
+                "compatibility": 0,
+                "direction": "out",
+                "endpoint_m": [
+                  -2.5,
+                  -88.0,
+                  0.0
+                ],
+                "travel_tangent": [
+                  0.0,
+                  -1.0,
+                  0.0
+                ]
+              },
+              {
+                "transport": 1,
+                "lane": 2,
+                "compatibility": 0,
+                "direction": "out",
+                "endpoint_m": [
+                  2.5,
+                  -88.0,
+                  0.0
+                ],
+                "travel_tangent": [
+                  0.0,
+                  -1.0,
+                  0.0
+                ]
+              }
+            ]
+          },
+          {
+            "cell": [
+              1,
+              6
+            ],
+            "end_cell": [
+              1,
+              5
+            ],
+            "native_tile_id": "57030000",
+            "native_pose": 2,
+            "boundary_members": 2,
+            "lane_classes": [
+              1,
+              2
+            ],
+            "members": [
+              {
+                "transport": 1,
+                "lane": 1,
+                "compatibility": 0,
+                "direction": "in",
+                "endpoint_m": [
+                  18.5,
+                  -88.0,
+                  0.0
+                ],
+                "travel_tangent": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              },
+              {
+                "transport": 1,
+                "lane": 2,
+                "compatibility": 0,
+                "direction": "in",
+                "endpoint_m": [
+                  13.5,
+                  -88.0,
+                  0.0
+                ],
+                "travel_tangent": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            ]
+          }
+        ],
+        "oriented_propagation": [
+          {
+            "native_tile_id": "57530000",
+            "piece_rotation": 0,
+            "outside_cell": [
+              1,
+              -1
+            ],
+            "outward_step_en": [
+              0,
+              1
+            ],
+            "native_pose": 2,
+            "basic_rhw_pose": 0,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 1
+          },
+          {
+            "native_tile_id": "57530000",
+            "piece_rotation": 0,
+            "outside_cell": [
+              1,
+              -1
+            ],
+            "outward_step_en": [
+              0,
+              1
+            ],
+            "native_pose": 2,
+            "basic_rhw_pose": 2,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 3
+          },
+          {
+            "native_tile_id": "57530000",
+            "piece_rotation": 1,
+            "outside_cell": [
+              1,
+              -1
+            ],
+            "outward_step_en": [
+              1,
+              0
+            ],
+            "native_pose": 3,
+            "basic_rhw_pose": 1,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 1
+          },
+          {
+            "native_tile_id": "57530000",
+            "piece_rotation": 1,
+            "outside_cell": [
+              1,
+              -1
+            ],
+            "outward_step_en": [
+              1,
+              0
+            ],
+            "native_pose": 3,
+            "basic_rhw_pose": 3,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 3
+          },
+          {
+            "native_tile_id": "57530000",
+            "piece_rotation": 2,
+            "outside_cell": [
+              1,
+              -1
+            ],
+            "outward_step_en": [
+              0,
+              -1
+            ],
+            "native_pose": 0,
+            "basic_rhw_pose": 0,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 3
+          },
+          {
+            "native_tile_id": "57530000",
+            "piece_rotation": 2,
+            "outside_cell": [
+              1,
+              -1
+            ],
+            "outward_step_en": [
+              0,
+              -1
+            ],
+            "native_pose": 0,
+            "basic_rhw_pose": 2,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 1
+          },
+          {
+            "native_tile_id": "57530000",
+            "piece_rotation": 3,
+            "outside_cell": [
+              1,
+              -1
+            ],
+            "outward_step_en": [
+              -1,
+              0
+            ],
+            "native_pose": 1,
+            "basic_rhw_pose": 1,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 3
+          },
+          {
+            "native_tile_id": "57530000",
+            "piece_rotation": 3,
+            "outside_cell": [
+              1,
+              -1
+            ],
+            "outward_step_en": [
+              -1,
+              0
+            ],
+            "native_pose": 1,
+            "basic_rhw_pose": 3,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 1
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 0,
+            "outside_cell": [
+              0,
+              6
+            ],
+            "outward_step_en": [
+              0,
+              -1
+            ],
+            "native_pose": 0,
+            "basic_rhw_pose": 0,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 3
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 0,
+            "outside_cell": [
+              0,
+              6
+            ],
+            "outward_step_en": [
+              0,
+              -1
+            ],
+            "native_pose": 0,
+            "basic_rhw_pose": 2,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 1
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 1,
+            "outside_cell": [
+              0,
+              6
+            ],
+            "outward_step_en": [
+              -1,
+              0
+            ],
+            "native_pose": 1,
+            "basic_rhw_pose": 1,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 3
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 1,
+            "outside_cell": [
+              0,
+              6
+            ],
+            "outward_step_en": [
+              -1,
+              0
+            ],
+            "native_pose": 1,
+            "basic_rhw_pose": 3,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 1
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 2,
+            "outside_cell": [
+              0,
+              6
+            ],
+            "outward_step_en": [
+              0,
+              1
+            ],
+            "native_pose": 2,
+            "basic_rhw_pose": 0,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 1
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 2,
+            "outside_cell": [
+              0,
+              6
+            ],
+            "outward_step_en": [
+              0,
+              1
+            ],
+            "native_pose": 2,
+            "basic_rhw_pose": 2,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 3
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 3,
+            "outside_cell": [
+              0,
+              6
+            ],
+            "outward_step_en": [
+              1,
+              0
+            ],
+            "native_pose": 3,
+            "basic_rhw_pose": 1,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 1
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 3,
+            "outside_cell": [
+              0,
+              6
+            ],
+            "outward_step_en": [
+              1,
+              0
+            ],
+            "native_pose": 3,
+            "basic_rhw_pose": 3,
+            "template_native_pose": 3,
+            "template_basic_rhw_pose": 3
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 0,
+            "outside_cell": [
+              1,
+              6
+            ],
+            "outward_step_en": [
+              0,
+              -1
+            ],
+            "native_pose": 2,
+            "basic_rhw_pose": 0,
+            "template_native_pose": 1,
+            "template_basic_rhw_pose": 3
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 0,
+            "outside_cell": [
+              1,
+              6
+            ],
+            "outward_step_en": [
+              0,
+              -1
+            ],
+            "native_pose": 2,
+            "basic_rhw_pose": 2,
+            "template_native_pose": 1,
+            "template_basic_rhw_pose": 1
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 1,
+            "outside_cell": [
+              1,
+              6
+            ],
+            "outward_step_en": [
+              -1,
+              0
+            ],
+            "native_pose": 3,
+            "basic_rhw_pose": 1,
+            "template_native_pose": 1,
+            "template_basic_rhw_pose": 3
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 1,
+            "outside_cell": [
+              1,
+              6
+            ],
+            "outward_step_en": [
+              -1,
+              0
+            ],
+            "native_pose": 3,
+            "basic_rhw_pose": 3,
+            "template_native_pose": 1,
+            "template_basic_rhw_pose": 1
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 2,
+            "outside_cell": [
+              1,
+              6
+            ],
+            "outward_step_en": [
+              0,
+              1
+            ],
+            "native_pose": 0,
+            "basic_rhw_pose": 0,
+            "template_native_pose": 1,
+            "template_basic_rhw_pose": 1
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 2,
+            "outside_cell": [
+              1,
+              6
+            ],
+            "outward_step_en": [
+              0,
+              1
+            ],
+            "native_pose": 0,
+            "basic_rhw_pose": 2,
+            "template_native_pose": 1,
+            "template_basic_rhw_pose": 3
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 3,
+            "outside_cell": [
+              1,
+              6
+            ],
+            "outward_step_en": [
+              1,
+              0
+            ],
+            "native_pose": 1,
+            "basic_rhw_pose": 1,
+            "template_native_pose": 1,
+            "template_basic_rhw_pose": 1
+          },
+          {
+            "native_tile_id": "57030000",
+            "piece_rotation": 3,
+            "outside_cell": [
+              1,
+              6
+            ],
+            "outward_step_en": [
+              1,
+              0
+            ],
+            "native_pose": 1,
+            "basic_rhw_pose": 3,
+            "template_native_pose": 1,
+            "template_basic_rhw_pose": 3
+          }
+        ],
+        "paired_facing_dd_phases": [
+          {
+            "original_rotation": 0,
+            "mirrored_rotation": 2,
+            "shared_native_dd_pose": 0,
+            "directed_lane_members": 4
+          },
+          {
+            "original_rotation": 1,
+            "mirrored_rotation": 3,
+            "shared_native_dd_pose": 1,
+            "directed_lane_members": 4
+          },
+          {
+            "original_rotation": 2,
+            "mirrored_rotation": 0,
+            "shared_native_dd_pose": 2,
+            "directed_lane_members": 4
+          },
+          {
+            "original_rotation": 3,
+            "mirrored_rotation": 1,
+            "shared_native_dd_pose": 3,
+            "directed_lane_members": 4
+          }
+        ],
+        "in_game_dragging_tested": false,
+        "in_game_travel_tested": false
+      },
+      "independent_native_atlas": {
+        "passed": true,
+        "rgba_sha256": "5be4b53a54cd5cf9e34604ac65adf7b1dfa80a52c6a2ba1cd181072d0792b4b1",
+        "pixels_checked": 524288,
+        "independently_reconstructed_from_native_inputs_this_run": true,
+        "alpha_transition_height_m": 0.25,
+        "native_external_collars_unchanged": true
+      },
+      "proper_rotation_geometry_invariant": true,
+      "model_shadow_geometry": {
+        "carrier_hosts_checked": 0,
+        "model_resources_checked": 0,
+        "owned_alpha_textures_checked": 0,
+        "texture_ids": [],
+        "shadow_generation_disabled": true,
+        "permanent_reserved_resource_ids_checked": 0,
+        "retained_shadow_resources": 0,
+        "retained_t21_carrier_references": 0,
+        "game_shadow_selection_tested": false
+      },
+      "game_rendering_tested": false,
+      "structural_capacity_tested": false,
+      "model_shadow_carriers": {
+        "carrier_hosts_checked": 0,
+        "model_resources_checked": 0,
+        "owned_alpha_textures_checked": 0,
+        "shadow_generation_disabled": true,
+        "permanent_reserved_resource_ids_checked": 0,
+        "retained_shadow_resources": 0,
+        "retained_t21_carrier_references": 0,
+        "game_shadow_selection_tested": false
+      },
+      "render_groups": {
+        "all_authored_groups_within_budget": true,
+        "model_resources_checked": 61,
+        "distinct_model_payloads_checked": 13,
+        "details": [
+          {
+            "authored_frames_checked": 10,
+            "max_authored_vertices": 483,
+            "max_authored_triangles": 368,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 9,
+            "max_authored_vertices": 511,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 10,
+            "max_authored_vertices": 450,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 11,
+            "max_authored_vertices": 450,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 8,
+            "max_authored_vertices": 449,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 5,
+            "max_authored_vertices": 297,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 21,
+            "max_authored_vertices": 457,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 19,
+            "max_authored_vertices": 457,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 17,
+            "max_authored_vertices": 484,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 17,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 14,
+            "max_authored_vertices": 457,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 9,
+            "max_authored_vertices": 441,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          },
+          {
+            "authored_frames_checked": 150,
+            "max_authored_vertices": 512,
+            "max_authored_triangles": 512,
+            "vertex_budget": 512,
+            "triangle_budget": 512
+          }
+        ]
+      }
+    },
+    "shadows": {
+      "carrier_hosts_checked": 0,
+      "model_resources_checked": 0,
+      "owned_alpha_textures_checked": 0,
+      "texture_ids": [],
+      "shadow_generation_disabled": true,
+      "permanent_reserved_resource_ids_checked": 0,
+      "retained_shadow_resources": 0,
+      "retained_t21_carrier_references": 0,
+      "game_shadow_selection_tested": false
+    }
+  },
+  "human_game_observation": "unverified"
+}

@@ -1,0 +1,167 @@
+// title: "DD RHW-4 compact diagonal Y-junction design brief"
+// summary: "Record the accepted three-arm lane allocation and the limits of the first unregistered source-design experiment."
+//
+// Used when: Contributors develop the first layout before allocating missing pieces or registering the assembly.
+// Read by: The assembly-design workflow and owning source-design tools; this is not a game-build manifest or a connector export.
+// Updated by: Contributors when the agreed functional brief or its source-design evidence changes.
+// Affects: The six required journeys, native-end investigation, geometric feasibility experiment, and later component design.
+{
+  "schema_version": 1,
+  "title": "DD RHW-4 \u2014 Compact Y-Junction \u2014 Diagonal Stem",
+  "stage": "source-design",
+  "registered": false,
+  "functional_brief_agreed": "2026-11-03",
+  "coordinate_frame": {
+    "horizontal_axes": [
+      "east_m",
+      "north_m"
+    ],
+    "vertical_axis": "height_m",
+    "city_tile_size_m": 16,
+    "source_pose": "A southwest, B northwest, and C east",
+    "origin": "The first compatible native axis intersection is east 8 m, north 0 m."
+  },
+  "native_decks": {
+    "upper_m": 15,
+    "lower_m": 7.5,
+    "lanes_per_deck": 2,
+    "direction_policy": "Both lanes on each deck travel in the same direction; opposing traffic uses the other deck."
+  },
+  "arms": {
+    "A": {
+      "role": "diagonal stem",
+      "outward_unit_vector": [
+        -0.7071067811865476,
+        -0.7071067811865476
+      ],
+      "upper": "incoming",
+      "lower": "outgoing"
+    },
+    "B": {
+      "role": "diagonal branch",
+      "outward_unit_vector": [
+        -0.7071067811865476,
+        0.7071067811865476
+      ],
+      "upper": "outgoing",
+      "lower": "incoming"
+    },
+    "C": {
+      "role": "orthogonal branch",
+      "outward_unit_vector": [
+        1,
+        0
+      ],
+      "upper": "outgoing",
+      "lower": "incoming"
+    }
+  },
+  "journeys": [
+    {
+      "id": "A-B",
+      "from": "A",
+      "to": "B",
+      "lanes": 1,
+      "start_height_m": 15,
+      "end_height_m": 15,
+      "turn_degrees": 90,
+      "hand": "left"
+    },
+    {
+      "id": "B-A",
+      "from": "B",
+      "to": "A",
+      "lanes": 1,
+      "start_height_m": 7.5,
+      "end_height_m": 7.5,
+      "turn_degrees": 90,
+      "hand": "right"
+    },
+    {
+      "id": "A-C",
+      "from": "A",
+      "to": "C",
+      "lanes": 1,
+      "start_height_m": 15,
+      "end_height_m": 15,
+      "turn_degrees": 45,
+      "hand": "right"
+    },
+    {
+      "id": "C-A",
+      "from": "C",
+      "to": "A",
+      "lanes": 1,
+      "start_height_m": 7.5,
+      "end_height_m": 7.5,
+      "turn_degrees": 45,
+      "hand": "left"
+    },
+    {
+      "id": "B-C",
+      "from": "B",
+      "to": "C",
+      "lanes": 1,
+      "start_height_m": 7.5,
+      "end_height_m": 15,
+      "turn_degrees": 45,
+      "hand": "left"
+    },
+    {
+      "id": "C-B",
+      "from": "C",
+      "to": "B",
+      "lanes": 1,
+      "start_height_m": 7.5,
+      "end_height_m": 15,
+      "turn_degrees": 45,
+      "hand": "right"
+    }
+  ],
+  "forbidden_movements": [
+    "A-A",
+    "B-B",
+    "C-C"
+  ],
+  "requirements": {
+    "maximum_grade_percent": 30,
+    "compactness": "Remove avoidable space while preserving measured native joins, permitted grades, physical clearance, and useful module boundaries.",
+    "construction": "Assembly of reusable independently selectable pieces, with one eventual Tab/Shift+Tab menu cycle.",
+    "terrain_for_first_candidate": "flat",
+    "alignment_production": "First measured alignment only; investigate required phases and defer other production until acceptance of the exact first candidate."
+  },
+  "candidate_functions": [
+    {
+      "function": "Native DD two-lane end to two one-lane branches on each deck",
+      "state": "No exact existing implementation established; complementary traffic directions need separate contracts."
+    },
+    {
+      "function": "Flat paired 90-degree and 45-degree route connections",
+      "state": "Candidate reusable curves; complete boundary and physical fit remain unverified."
+    },
+    {
+      "function": "Separated single-lane lower-to-upper branch connections",
+      "state": "New geometric function; profiles, clearance, supports, and safe cuts remain unverified."
+    }
+  ],
+  "evidence_limits": [
+    "This source is not a registered assembly or a selectable game construction.",
+    "No permanent piece or game-resource identifiers are allocated by this brief.",
+    "Footprint and safe reusable cuts require the measured geometry report.",
+    "Source calculations do not establish saved PATH/S3D correctness, native dragging, placement, moving traffic, or save/reload."
+  ],
+  "geometry_parameters": {
+    "diagonal_cell": 2,
+    "orthogonal_cell": 4,
+    "handle_m": 12,
+    "bulge_m": 5,
+    "rise_start_fraction": 0.2,
+    "rise_end_fraction": 0.8,
+    "native_collar_m": 3,
+    "sampling_step_m": 0.1,
+    "vehicle_width_m": 2.5,
+    "vehicle_height_m": 3.8,
+    "provisional_pavement_width_m": 6,
+    "provisional_deck_depth_m": 1.0
+  }
+}

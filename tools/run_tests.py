@@ -17,6 +17,7 @@ def main() -> int:
     try:
         import PIL
         import numpy
+        import shapely
     except ImportError as error:
         print(f"Missing test dependency: {error}", file=sys.stderr)
         print(
@@ -26,7 +27,7 @@ def main() -> int:
         )
         return 1
 
-    print(f"Python {sys.version.split()[0]}, Pillow {PIL.__version__}, and NumPy {numpy.__version__}", flush=True)
+    print(f"Python {sys.version.split()[0]}, Pillow {PIL.__version__}, NumPy {numpy.__version__}, and Shapely {shapely.__version__}", flush=True)
     print(
         "Tests that need unavailable NAM files or a staged game build report explicit skips. "
         "Software tests do not record manual game observations.",

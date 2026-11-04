@@ -44,6 +44,7 @@ NATIVE_TEXTURE_PINS = {
 # executable below whenever the native input map is supplied.
 ATLAS_RGBA_SHA256 = '78b31c0de9afdff8563a5b3b21c4d4ebb80b7d222f56dea45b0de72e1bb9b816'
 MIRRORED_ATLAS_RGBA_SHA256 = '7561c84312f940a53296ba5fbc3e7eb15883ac42ace8b704ad3c43d2152068b0'
+LOWER_BEND_ATLAS_RGBA_SHA256 = '5be4b53a54cd5cf9e34604ac65adf7b1dfa80a52c6a2ba1cd181072d0792b4b1'
 
 
 def _sub(a, b):
@@ -66,54 +67,73 @@ def _area(points):
     return math.sqrt(_dot(n := _normal(points), n)) / 2.0
 
 
-def _height(deck, s):
-    return contract.upper_height(s) if deck == 'upper' else contract.lower_height(s)
+def _height(deck, s, *, variant='original'):
+    if deck == 'lower':
+        return contract.lower_height(s)
+    return (contract.straight_upper_height(s) if variant == contract.LOWER_BEND_RIGHT
+            else contract.upper_height(s))
 
 
-def _fade(deck, s):
-    return _height(deck, s) / (15.0 if deck == 'upper' else 7.5)
+def _fade(deck, s, *, variant='original'):
+    return _height(deck, s, variant=variant) / (15.0 if deck == 'upper' else 7.5)
 
 
-def _bounds(deck, s):
-    fade = _fade(deck, s)
-    return -8.0 + fade*(DD_MIN+8.0), 8.0 + fade*(DD_MAX-8.0)
+def _inner_upper_width_fraction(s):
+    """Close the asymmetric native shoulder before the slab reaches ground."""
+    return max(0., (contract.straight_upper_height(s)-1.1)/(15.-1.1))
 
 
-def _frame(deck, s):
+def _bounds(deck, s, *, profile_reflected=False, variant='original'):
+    fade = _fade(deck, s, variant=variant)
+    low, high = (-DD_MAX, -DD_MIN) if profile_reflected else (DD_MIN, DD_MAX)
+    west = _inner_upper_width_fraction(s) if variant == contract.LOWER_BEND_RIGHT and deck == 'upper' else fade
+    return -8.0 + west*(low+8.0), 8.0 + fade*(high-8.0)
+
+
+def _frame(deck, s, *, variant='original'):
+    if variant == contract.LOWER_BEND_RIGHT:
+        return contract.lower_bend_frame(deck, s)
     displacement, derivative, _ = contract.lateral(s) if deck == 'upper' else (0., 0., 0.)
     q = 1.0 / math.sqrt(1.0 + derivative*derivative)
     return (16.0-displacement, 8.0-s), (q, -derivative*q)
 
 
-def _position(deck, s, u, absolute_height):
-    center, normal = _frame(deck, s)
+def _position(deck, s, u, absolute_height, *, variant='original'):
+    center, normal = _frame(deck, s, variant=variant)
     return center[0] + u*normal[0], center[1] + u*normal[1], absolute_height
 
 
-def _uv(deck, s, u, role, *, mirrored=False):
+def _uv(deck, s, u, role, *, mirrored=False, variant=None):
+    phase = contract.phase_for_options(mirrored=mirrored, variant=variant)
     if role == 'atlas':
-        low, high = _bounds(deck, s)
+        low, high = _bounds(deck, s, profile_reflected=phase.native_cross_section_reflection, variant=phase.key)
         lateral = (u-low)/(high-low)
+        if phase.native_cross_section_reflection:
+            lateral = 1.0-lateral
         if deck == 'lower':
             lateral = 1.0-lateral
         return ((8.0 if deck == 'upper' else 264.0)+128.0*lateral)/512.0, (128.0+8.0*s)/1024.0
+    source_u = -u if phase.native_cross_section_reflection else u
     if role == 'native-dd':
-        result = (u-DD_MIN)/DD_WIDTH, ((16.-s if mirrored else s)-DD_OFFSET)/DD_WIDTH
+        result = (source_u-DD_MIN)/DD_WIDTH, ((16.-s if phase.traffic_reversed else s)-DD_OFFSET)/DD_WIDTH
     else:
-        result = (u+8.0)/16.0, (16.-s if mirrored else s)/16.0
+        result = (source_u+8.0)/16.0, (16.-s if phase.traffic_reversed else s)/16.0
     return result if deck == 'upper' else tuple(1.0-x for x in result)
 
 
-def support_contract():
+def support_contract(*, variant='original'):
     """Four upper pier/cap pairs and six lower piers, in exact metres."""
     rows = []
+    lower_bend = variant == contract.LOWER_BEND_RIGHT
+    embed = .15 if lower_bend else 0.
     for s in (12., 32., 52., 72.):
-        underside = _height('upper', s) + DATUM['upper']*_fade('upper', s)-1.0
-        west = -9.2 if s == 12. else -6.4
-        rows.extend(((f'upper-pier-{int(s)}', 'upper', s, west-.4, west+.4, .4, 0., underside-.3),
-                     (f'upper-cap-{int(s)}', 'upper', s, min(-7., west-.4), 7., .45, underside-.3, underside)))
+        underside = _height('upper', s, variant=variant) + DATUM['upper']*_fade('upper', s, variant=variant)-1.0
+        lateral = -9.2 if s == 12. else 6.4 if lower_bend else -6.4
+        top = underside + embed
+        rows.extend(((f'upper-pier-{int(s)}', 'upper', s, lateral-.4, lateral+.4, .4, 0., top-.3),
+                     (f'upper-cap-{int(s)}', 'upper', s, min(-7., lateral-.4), 7., .45, top-.3, top)))
     for s in (12., 32., 48.):
-        top = _height('lower', s)+DATUM['lower']*_fade('lower', s)-1.0
+        top = _height('lower', s)+DATUM['lower']*_fade('lower', s)-1.0+embed
         rows.extend((f'lower-pier-{int(s)}-{name}', 'lower', s, u-.4, u+.4, .4, 0., top)
                     for name, u in (('west', -6.4), ('east', 6.4)))
     return tuple(rows)
@@ -137,20 +157,51 @@ def _barrier_strips(deck):
     return result
 
 
-@lru_cache(maxsize=2)
-def _surface_contract(mirrored=False):
+def _floor_parts(roof):
+    """Triangulate a projected roof parent with the exact H=1 clamp cut."""
+    if max(point[2] for point in roof) == 0.:
+        return ()
+    pieces = []
+    for direction in (-1., 1.):
+        polygon = _clip_in_box(roof, 2, 1., direction)
+        if direction < 0. and all(point[2] == 1. for point in polygon):
+            continue
+        floor = [(e, n, max(0., h-1.), u, v) for e, n, h, u, v in polygon]
+        pieces.extend((floor[0], a, b) for a, b in zip(floor[1:], floor[2:]))
+    return pieces
+
+
+@lru_cache(maxsize=8)
+def _surface_contract(mirrored=False, *, variant=None):
     """Triangulated reviewed ruled surfaces; no city clipping or writer imports."""
+    phase = contract.phase_for_options(mirrored=mirrored, variant=variant)
+    lower_bend = phase.key == contract.LOWER_BEND_RIGHT
     faces = []
+
+    def triangle(role, vertices, outward=None):
+        points = tuple(vertex[:3] for vertex in vertices)
+        uvs = tuple(vertex[3:] for vertex in vertices)
+        if _area(points) <= MIN_AREA:
+            return
+        if outward is not None and _dot(_normal(points), outward) < 0.:
+            points, uvs = (points[0], points[2], points[1]), (uvs[0], uvs[2], uvs[1])
+        faces.append({'role': role, 'points': points, 'uv': uvs, 'area': _area(points)})
 
     def quad(role, vertices, outward=None):
         for indices in ((0, 1, 2), (0, 2, 3)):
-            points = tuple(vertices[i][:3] for i in indices)
-            uvs = tuple(vertices[i][3:] for i in indices)
-            if _area(points) <= MIN_AREA:
-                continue
-            if outward is not None and _dot(_normal(points), outward) < 0.:
-                points, uvs = (points[0], points[2], points[1]), (uvs[0], uvs[2], uvs[1])
-            faces.append({'role': role, 'points': points, 'uv': uvs, 'area': _area(points)})
+            triangle(role, tuple(vertices[i] for i in indices), outward)
+
+    def height(deck, s):
+        return _height(deck, s, variant=phase.key)
+
+    def fade(deck, s):
+        return _fade(deck, s, variant=phase.key)
+
+    def bounds(deck, s):
+        return _bounds(deck, s, profile_reflected=phase.native_cross_section_reflection, variant=phase.key)
+
+    def position(deck, s, u, altitude):
+        return _position(deck, s, u, altitude, variant=phase.key)
 
     for deck in ('upper', 'lower'):
         for index in range(384):
@@ -158,46 +209,72 @@ def _surface_contract(mirrored=False):
             role = 'native-dd' if b <= 3. else 'native-ground' if a >= (69. if deck == 'lower' else 93.) else 'atlas'
             rings, bottoms = [], []
             for s in (a, b):
-                low, high = _bounds(deck, s)
-                surface = _height(deck, s)+DATUM[deck]*_fade(deck, s)
-                rings.append([(*_position(deck, s, u, surface), *_uv(deck, s, u, role, mirrored=mirrored))
-                              for u in (low, -3.75, -2.5, -1.25, 0., 1.25, 2.5, 3.75, high)])
-                bottoms.append([(*_position(deck, s, u, max(0., surface-1.)), u/8., s/8.) for u in (low, high)])
+                low, high = bounds(deck, s)
+                surface = height(deck, s)+DATUM[deck]*fade(deck, s)
+                laterals = (low, -3.75, -2.5, -1.25, 0., 1.25, 2.5, 3.75, high)
+                rings.append([(*position(deck, s, u, surface), *_uv(deck, s, u, role, variant=phase.key))
+                              for u in laterals])
+                floor_laterals = laterals if lower_bend else (low, high)
+                floor_height = surface if lower_bend else max(0., surface-1.)
+                bottoms.append([(*position(deck, s, u, floor_height), u/8., s/8.) for u in floor_laterals])
             for strip in range(8):
                 quad(f'{deck}-pavement-{role}', (rings[0][strip], rings[1][strip], rings[1][strip+1], rings[0][strip+1]), (0., 0., 1.))
-            if max(_height(deck, a), _height(deck, b)) > 0.:
-                quad(f'{deck}-body', (bottoms[0][0], bottoms[0][1], bottoms[1][1], bottoms[1][0]), (0., 0., -1.))
-                for side, top_index, bottom_index in ((-1, 0, 0), (1, -1, 1)):
+                if lower_bend:
+                    floor_ring = (bottoms[0][strip], bottoms[1][strip], bottoms[1][strip+1], bottoms[0][strip+1])
+                    for indices in ((0, 1, 2), (0, 2, 3)):
+                        for floor in _floor_parts(tuple(floor_ring[i] for i in indices)):
+                            triangle(f'{deck}-body', floor, (0., 0., -1.))
+            if max(height(deck, a), height(deck, b)) > 0.:
+                if not lower_bend:
+                    quad(f'{deck}-body', (bottoms[0][0], bottoms[0][1], bottoms[1][1], bottoms[1][0]), (0., 0., -1.))
+                for side, top_index, bottom_index in ((-1, 0, 0), (1, -1, -1)):
                     top_a, top_b = rings[0][top_index], rings[1][top_index]
-                    # UVs are not needed for concrete appearance, but their
-                    # continuity is still bound to the reviewed affine field.
-                    vertices = []
-                    for p in (top_a, bottoms[0][bottom_index], bottoms[1][bottom_index], top_b):
-                        south = -p[1]
-                        vertices.append((*p[:3], south/16., (p[2]-min(top_a[2], top_b[2]))/8.))
-                    normal = _frame(deck, (a+b)/2.)[1]
-                    quad(f'{deck}-body', vertices, (side*normal[0], side*normal[1], 0.))
-        low, high = _bounds(deck, 0.)
-        surface = _height(deck, 0.)+DATUM[deck]
-        quad(f'{deck}-body', [(*_position(deck, 0., u, surface+vertical), u/8., (DATUM[deck]+vertical)/8.)
+                    normal = _frame(deck, (a+b)/2., variant=phase.key)[1]
+                    outward = (side*normal[0], side*normal[1], 0.)
+                    datum = min(top_a[2], top_b[2])
+                    def wall(points):
+                        return [(*p[:3], -p[1]/16., (p[2]-datum)/8.) for p in points]
+                    if not lower_bend:
+                        quad(f'{deck}-body',
+                             wall((top_a, bottoms[0][bottom_index], bottoms[1][bottom_index], top_b)),
+                             outward)
+                        continue
+                    cuts = [top_a, top_b]
+                    if min(top_a[2], top_b[2]) < 1. < max(top_a[2], top_b[2]):
+                        ratio = (1.-top_a[2])/(top_b[2]-top_a[2])
+                        edge = tuple(x+ratio*(y-x) for x, y in zip(top_a[:2], top_b[:2]))
+                        cuts.insert(1, (*edge, 1.))
+                    for start, end in zip(cuts, cuts[1:]):
+                        start_floor = (*start[:2], max(0., start[2]-1.))
+                        end_floor = (*end[:2], max(0., end[2]-1.))
+                        quad(f'{deck}-body', wall((start, start_floor, end_floor, end)), outward)
+        low, high = bounds(deck, 0.)
+        surface = height(deck, 0.)+DATUM[deck]
+        quad(f'{deck}-body', [(*position(deck, 0., u, surface+vertical), u/8., (DATUM[deck]+vertical)/8.)
                              for u, vertical in ((low, 0.), (low, -1.), (high, -1.), (high, 0.))], (0., 1., 0.))
         for strip in _barrier_strips(deck):
             for index in range(384):
                 a, b = index/4., (index+1)/4.
-                if _height(deck, a) == _height(deck, b) == 0.:
+                if height(deck, a) == height(deck, b) == 0.:
                     continue
                 points = []
                 for s, at in ((a, 0), (a, 1), (b, 1), (b, 0)):
                     source_x, rise, uv_a, v, uv_b = strip[at]
                     canonical = (source_x-(DD_MIN+DD_MAX)/2.)*16./DD_WIDTH
-                    u = canonical+_fade(deck, s)*(source_x-canonical)
-                    t = min(1., max(0., _height(deck, s)/2.))
-                    height = _height(deck, s)+DATUM[deck]*_fade(deck, s)+rise*t*t*(3.-2.*t)
-                    phase = ((16.-s if mirrored else s)-DD_OFFSET)/DD_WIDTH
-                    points.append((*_position(deck, s, u, height), uv_a+phase*(uv_b-uv_a), v))
+                    width_fraction = (_inner_upper_width_fraction(s) if lower_bend and deck == 'upper' and source_x > 0.
+                                      else fade(deck, s))
+                    u = canonical+width_fraction*(source_x-canonical)
+                    if phase.native_cross_section_reflection:
+                        u = -u
+                    t = min(1., max(0., height(deck, s)/2.))
+                    altitude = height(deck, s)+DATUM[deck]*fade(deck, s)+rise*t*t*(3.-2.*t)
+                    native_station = ((16.-s if phase.traffic_reversed else s)-DD_OFFSET)/DD_WIDTH
+                    points.append((*position(deck, s, u, altitude), uv_a+native_station*(uv_b-uv_a), v))
+                if phase.native_cross_section_reflection:
+                    points = [points[0], points[3], points[2], points[1]]
                 quad(f'{deck}-barrier', points)
-    for name, deck, s, low, high, half, bottom, top in support_contract():
-        center, normal = _frame(deck, s)
+    for name, deck, s, low, high, half, bottom, top in support_contract(variant=phase.key):
+        center, normal = _frame(deck, s, variant=phase.key)
         tangent = normal[1], -normal[0]
         vertices = [((center[0]+u*normal[0]+t*tangent[0]),
                      (center[1]+u*normal[1]+t*tangent[1]), height)
@@ -211,8 +288,9 @@ def _surface_contract(mirrored=False):
     return tuple(faces)
 
 
-def decode_faces(raw, cell=(0, 0), *, mirrored=False):
+def decode_faces(raw, cell=(0, 0), *, mirrored=False, variant=None):
     """Decode only referenced saved faces, retaining material and UV evidence."""
+    phase = contract.phase_for_options(mirrored=mirrored, variant=variant)
     model = parse_s3d(decompress(raw))
     validate_s3d(model)
     require(struct.unpack_from('<H', model['anim_header'])[0] == 1,
@@ -240,13 +318,13 @@ def decode_faces(raw, cell=(0, 0), *, mirrored=False):
             for at in range(first, first+size, 3):
                 source = tuple(vertices[i] for i in indices[at:at+3])
                 points = tuple((p[0]+16.*cell[0], -p[2]-16.*cell[1], p[1]) for p in source)
-                west = -8.-(DD_MAX-8.) if mirrored else -8.
-                east = 24. if mirrored else 24.+(DD_MAX-8.)
+                west = -8.-(DD_MAX-8.) if phase.traffic_reversed else -8.
+                east = 24. if phase.traffic_reversed else 24.+(DD_MAX-8.)
                 require(all(west-POSITION_EPS <= p[0] <= east+POSITION_EPS
                             and -88.-POSITION_EPS <= p[1] <= 8.+POSITION_EPS for p in points),
                         'Transition physical model leaves its reviewed 2 by 6 envelope')
-                local_west = -8.-(DD_MAX-8.) if mirrored else -8.
-                local_east = 8. if mirrored else 8.+(DD_MAX-8.)
+                local_west = -8.-(DD_MAX-8.) if phase.traffic_reversed else -8.
+                local_east = 8. if phase.traffic_reversed else 8.+(DD_MAX-8.)
                 require(all(local_west-POSITION_EPS <= p[0] <= local_east+POSITION_EPS
                             and abs(p[2]) <= 8.+POSITION_EPS for p in source),
                         'Transition cell has unowned geometry beyond its measured native overhang')
@@ -346,9 +424,9 @@ def _material(face, atlas_id):
             'Transition changes its pinned native material/alpha/wrapping settings')
 
 
-def check_complete_surfaces(faces, atlas_id, *, mirrored=False):
+def check_complete_surfaces(faces, atlas_id, *, mirrored=False, variant=None):
     """Prove saved clipped faces partition all reviewed body, barrier, and support faces."""
-    expected = _surface_contract(mirrored)
+    expected = _surface_contract(mirrored, variant=variant)
     index = defaultdict(set)
     for i, face in enumerate(expected):
         for key in _keys(face['points']):
@@ -408,7 +486,8 @@ def check_complete_surfaces(faces, atlas_id, *, mirrored=False):
             'relative_area_and_overlap_tolerance': 4e-5,
             'zero_or_sub_float32_area_faces_ignored': ignored,
             'surface_distance_tolerance_m': POSITION_EPS,
-            'complete_closed_support_solids': len(support_contract()),
+            'complete_closed_support_solids': len(support_contract(
+                variant=contract.phase_for_options(mirrored=mirrored, variant=variant).key)),
             'complete_native_barrier_sections_per_deck': 10,
             'complete_pavement_and_closed_elevated_deck_bodies': True,
             'measured_native_outer_overhang_m': DD_MAX-8.0}
@@ -423,19 +502,20 @@ def _sample_pixels(image, u, v):
                      for a, b in ((0, 0), (1, 0), (0, 1), (1, 1))) for c in range(4))
 
 
-def reconstruct_atlas(native_images, *, mirrored=False):
+def reconstruct_atlas(native_images, *, mirrored=False, variant=None):
     """Independent pixel calculation from fingerprinted native asphalt images."""
     result = bytearray(512*1024*4)
+    phase_config = contract.phase_for_options(mirrored=mirrored, variant=variant)
     dd, ground = native_images[0x5713000E].load(), native_images[0x5703000E].load()
     for deck, base in (('upper', 8), ('lower', 264)):
         for row in range(1024):
             s = (row-128+.5)/8.
-            native_station = 16.-s if mirrored else s
+            native_station = 16.-s if phase_config.traffic_reversed else s
             phase, ground_phase = (native_station-DD_OFFSET)/DD_WIDTH, native_station/16.
             if deck == 'lower':
                 phase, ground_phase = 1.-phase, 1.-ground_phase
-            rgb = 1.-_fade(deck, s)
-            t = min(1., max(0., _height(deck, s)/.25))
+            rgb = 1.-_fade(deck, s, variant=phase_config.key)
+            t = min(1., max(0., _height(deck, s, variant=phase_config.key)/.25))
             alpha = 1.-t*t*(3.-2.*t)
             for column in range(-2, 130):
                 u = ((column % 128)+.5)/128.
@@ -451,7 +531,7 @@ def check_atlas(resources, piece, donors=None):
     ids = piece.get('authored_texture_ids')
     require(ids == [piece['tile_ids'][0]], 'Transition needs its one allocated atlas at its first tile ID')
     atlas_id = contract._number(ids[0])
-    mirrored = contract._mirrored(piece)
+    phase = contract.phase_for_piece(piece)
     require((*TEXTURE, atlas_id) in resources, 'Transition atlas is missing')
     image = decode_fsh(decompress(resources[*TEXTURE, atlas_id])).convert('RGBA')
     require(image.size == (512, 1024), 'Transition atlas dimensions changed')
@@ -467,10 +547,12 @@ def check_atlas(resources, piece, donors=None):
             require(hashlib.sha256(raw).hexdigest() == pin, 'Transition native texture input changed')
             native[iid] = decode_fsh(raw).convert('RGBA')
             require(native[iid].size == (128, 128), 'Transition native texture dimensions changed')
-        require(hashlib.sha256(reconstruct_atlas(native, mirrored=mirrored)).hexdigest() == digest,
+        require(hashlib.sha256(reconstruct_atlas(native, variant=phase.key)).hexdigest() == digest,
                 'Saved transition atlas differs from independent native colour/alpha reconstruction')
         reconstructed = True
-    expected_digest = MIRRORED_ATLAS_RGBA_SHA256 if mirrored else ATLAS_RGBA_SHA256
+    expected_digest = MIRRORED_ATLAS_RGBA_SHA256 if phase.traffic_reversed else ATLAS_RGBA_SHA256
+    if phase.key == contract.LOWER_BEND_RIGHT:
+        expected_digest = LOWER_BEND_ATLAS_RGBA_SHA256
     require(expected_digest is not None and digest == expected_digest,
             'Saved transition atlas colour, alpha, wear, lane markings, or repeat gutters changed')
     return {'passed': True, 'rgba_sha256': digest, 'pixels_checked': 512*1024,
@@ -481,7 +563,9 @@ def check_atlas(resources, piece, donors=None):
 def check_corridors(faces, resources, piece):
     """Continuous triangle/prism collision and continuous pavement coverage."""
     from .ramp_verify import _covered, _intrudes
-    mirrored = piece.get('transition_variant') == 'mirrored'
+    phase = contract.phase_for_options(variant=piece.get('transition_variant', 'original'))
+    lower_bend_routes = (contract.expected_cell_routes(variant=phase.key)
+                         if phase.key == contract.LOWER_BEND_RIGHT else None)
     buckets = defaultdict(set)
     for i, face in enumerate(faces):
         for key in _keys(face['points'], size=4.):
@@ -490,13 +574,19 @@ def check_corridors(faces, resources, piece):
     for cell, tile in zip(contract.CELLS, piece['tile_ids']):
         for route in parse_paths(decompress(resources[*PATH, contract._number(tile)]))['routes']:
             points = [(p[0]+16.*cell[0], p[1]-16.*cell[1], p[2]) for p in route['points']]
-            if mirrored:
+            if phase.physical_reflection:
                 points = [(16.-p[0], p[1], p[2]) for p in points]
-            source_column = 1-cell[0] if mirrored else cell[0]
-            deck = 'lower' if source_column == 1 and all(abs(p[0]-points[0][0]) < 1e-7 for p in points) else 'upper'
-            # At the initial collar both decks have the same plan alignment.
-            if min(p[2] for p in points) > 14.9:
-                deck = 'upper'
+            if lower_bend_routes is None:
+                source_column = 1-cell[0] if phase.physical_reflection else cell[0]
+                deck = 'lower' if source_column == 1 and all(abs(p[0]-points[0][0]) < 1e-7 for p in points) else 'upper'
+                # At the initial collar both decks have the same plan alignment.
+                if min(p[2] for p in points) > 14.9:
+                    deck = 'upper'
+            else:
+                matches = [record['component'] for record in lower_bend_routes[cell]
+                           if contract._same_route(route, record)]
+                require(len(matches) == 1, 'Lower-bend corridor has no unique saved deck')
+                deck = matches[0]
             ratio = 1.+DATUM[deck]/(15. if deck == 'upper' else 7.5)
             for first, last in zip(points, points[1:]):
                 candidates = set()
@@ -540,11 +630,12 @@ def _clip_in_box(polygon, axis, bound, sign):
     return result
 
 
-def check_support_clearance(faces):
+def check_support_clearance(faces, *, variant='original'):
     """No reviewed closed support may pierce the opposite deck or barrier."""
     checked = 0
-    for name, deck, s, low, high, half, bottom, top in support_contract():
-        center, normal = _frame(deck, s)
+    supports = support_contract(variant=variant)
+    for name, deck, s, low, high, half, bottom, top in supports:
+        center, normal = _frame(deck, s, variant=variant)
         tangent = normal[1], -normal[0]
         opposite = 'lower' if deck == 'upper' else 'upper'
         for face in faces:
@@ -565,7 +656,7 @@ def check_support_clearance(faces):
                                        (2, bottom+POSITION_EPS, 1), (2, top-POSITION_EPS, -1)):
                 polygon = _clip_in_box(polygon, axis, bound, sign)
             require(not polygon, f'Transition closed support {name} intersects opposite {role}')
-    return {'passed': True, 'closed_support_solids_checked': len(support_contract()),
+    return {'passed': True, 'closed_support_solids_checked': len(supports),
             'opposite_surface_box_intersections_checked': checked,
             'interior_distance_tolerance_m': POSITION_EPS,
             'structural_capacity_tested': False}
@@ -604,7 +695,7 @@ def _plane_height(face, point):
     return a[2]-(normal[0]*(point[0]-a[0])+normal[1]*(point[1]-a[1]))/normal[2]
 
 
-def check_deck_clearance(faces):
+def check_deck_clearance(faces, *, profile_reflected=False):
     """Compare both complete deck/barrier surfaces wherever their plans overlap."""
     upper, lower = [], []
     for face in faces:
@@ -638,7 +729,7 @@ def check_deck_clearance(faces):
             # of shoulder can touch the adjacent ground shoulder. Bind that
             # exact measured ground-only boundary contact, not a free general
             # mesh-intersection tolerance or a vehicle-lane exception.
-            ground_edge = (face['role'] == 'upper-body'
+            ground_edge = (not profile_reflected and face['role'] == 'upper-body'
                            and other['role'] == 'lower-pavement-native-ground'
                            and all(abs(p[2]) <= POSITION_EPS for p in other['points'])
                            and all(8.-POSITION_EPS <= p[0] <= 8.+(DD_MAX-8.)/15.+POSITION_EPS for p in overlap)
@@ -654,7 +745,7 @@ def check_deck_clearance(faces):
             'native_ground_edge_contact_is_outside_vehicle_lanes': True}
 
 
-def canonical_surface_frame(faces, *, mirrored=False):
+def canonical_surface_frame(faces, *, mirrored=False, variant=None):
     """Put actual B triangles in the independent original geometry frame.
 
     Reflection changes handedness. Reverse each saved index winding as well
@@ -663,7 +754,8 @@ def canonical_surface_frame(faces, *, mirrored=False):
     collision prisms, and support solids. Native UV expectations separately
     select the measured original or mirrored longitudinal phase.
     """
-    if not mirrored:
+    phase = contract.phase_for_options(mirrored=mirrored, variant=variant)
+    if not phase.physical_reflection:
         return faces
     result = []
     for face in faces:
@@ -675,7 +767,7 @@ def canonical_surface_frame(faces, *, mirrored=False):
 
 def check_models(resources, piece, donors=None):
     contract._spec(piece)
-    mirrored = contract._mirrored(piece)
+    phase = contract.phase_for_piece(piece)
     atlas = check_atlas(resources, piece, donors)
     faces = []
     for cell, tile in zip(contract.CELLS, piece['tile_ids']):
@@ -684,12 +776,12 @@ def check_models(resources, piece, donors=None):
         raw = decompress(resources[*S3D, tile])
         require(all(decompress(resources[*S3D, tile+zoom]) == raw for zoom in range(5)),
                 'Transition saved zoom changes the complete physical geometry')
-        faces.extend(decode_faces(raw, cell, mirrored=mirrored))
-    faces = canonical_surface_frame(faces, mirrored=mirrored)
-    surfaces = check_complete_surfaces(faces, contract._number(piece['authored_texture_ids'][0]), mirrored=mirrored)
+        faces.extend(decode_faces(raw, cell, variant=phase.key))
+    faces = canonical_surface_frame(faces, variant=phase.key)
+    surfaces = check_complete_surfaces(faces, contract._number(piece['authored_texture_ids'][0]), variant=phase.key)
     corridors = check_corridors(faces, resources, piece)
-    supports = check_support_clearance(faces)
-    deck_clearance = check_deck_clearance(faces)
+    supports = check_support_clearance(faces, variant=phase.key)
+    deck_clearance = check_deck_clearance(faces, profile_reflected=phase.native_cross_section_reflection)
     from .modular_partition_verify import check_preview
     check_preview(resources, piece)
     from .shadow_verify import check_resources

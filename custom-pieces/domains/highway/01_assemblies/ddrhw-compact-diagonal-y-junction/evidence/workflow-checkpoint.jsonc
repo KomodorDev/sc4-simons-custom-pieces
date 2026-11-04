@@ -1,0 +1,196 @@
+// title: "Compact DD RHW Y first workflow checkpoint"
+// summary: "Record the checked source-design candidate, executed commands, explicit test skips, and remaining physical implementation."
+//
+// Used when: Reviewing the first assembly-workflow design handoff or continuing its physical implementation.
+// Read by: Contributors through the owning README and TESTING documents.
+// Updated by: Contributors after the current source, documentation, schematic, and command outcomes are audited together.
+// Affects: Evidence for the first source-design stage; no game-resource, installation, or human-observation state.
+{
+  "schema_version": 1,
+  "date": "2026-11-03",
+  "stage": "checked-source-design",
+  "registered": false,
+  "base_commit": "dcebaf4f2eab545a25fef7de9b584582e96ff399",
+  "branch": "codex/ddrhw-compact-diagonal-y-junction",
+  "candidate_files": {
+    "custom-pieces/domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction/README.md": "614b71fcfbb2b4177d6733a60d51fbbee5f08d9445ec535525eae369eabb6ec0",
+    "custom-pieces/domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction/TESTING.md": "6069e9ae2808ca3101e619d0451406c67e35952aaedbe6a3ac3d483f6af3a4b6",
+    "custom-pieces/domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction/checks/design-brief.jsonc": "6b7b5bc771b6ddc90faae5890994bc6cfedc63f3cccdd41e9520c2737a88d9a6",
+    "custom-pieces/domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction/evidence/design-geometry.jsonc": "8857eae50b01d3f5c15c5b47b43319de0e72c733d5cf331bb29e14f27af6d9b3",
+    "custom-pieces/domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction/evidence/native-design-inputs.jsonc": "eba53e48164cbad76e1e29b82a8dd79d26a5ea98b61f6a7f1031692b35c8b3d0",
+    "custom-pieces/domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction/evidence/source-schematic.jsonc": "a8cba812b9b51507726d4f6eb6d045f45887ef0623d8753d3c7263777e17dcf8",
+    "custom-pieces/domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction/evidence/source-verification.jsonc": "ee77cc626e5fff20950fa86e477e2cef4eb412cb5aa01650a800b65cfacd5557",
+    "custom-pieces/domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction/previews/source-schematic.png": "ef9ca3d10c288406cf35219827a7111069532702f380e0db2af2ae790fffaa70",
+    "custom-pieces/domains/highway/tests/test_ddrhw_y_design.py": "3db11daa4968611bd2693ebf7bbad7435f266fe5b25d1a2ced2882bcd7dc2646",
+    "custom-pieces/domains/highway/tools/ddrhw_y_geometry.py": "ad342a215bb0e73170dcccc655c771e5f0d024dea6f1e6fc8ff01f80e730484f",
+    "custom-pieces/domains/highway/tools/render_ddrhw_y_design.py": "9a8bd53c0f5a176d1c71544194499b3ad864ad69a596b595a5a693e0b7b6bf7c",
+    "custom-pieces/domains/highway/tools/verify_ddrhw_y_design.py": "ce1c2feb6b89526f470b48664e232cb974a71b19abb9f46f51d6b9f7ad7971cf"
+  },
+  "commands": {
+    "source_generation": {
+      "command": "python3 -B custom-pieces/domains/highway/tools/ddrhw_y_geometry.py --output custom-pieces/domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction/evidence",
+      "passed": true,
+      "checks": 5
+    },
+    "independent_source_verification": {
+      "command": "python3 -B custom-pieces/domains/highway/tools/verify_ddrhw_y_design.py",
+      "passed": true,
+      "native_members": 12,
+      "directed_journeys": 6,
+      "continuous_route_pairs": 15,
+      "rejected_negative_controls": 3
+    },
+    "focused_regressions": {
+      "command": "python3 -B -m unittest discover -s custom-pieces/domains/highway/tests -p test_ddrhw_y_design.py -v",
+      "passed": true,
+      "tests": 8,
+      "included_in_portable_highway_scope": true
+    },
+    "registered_documentation": {
+      "command": "python3 -B custom-pieces/scp.py docs-check",
+      "passed": true,
+      "documents_checked": 185,
+      "local_links_checked": 27111
+    },
+    "draft_documentation": {
+      "checker": "scp.documentation_check.check_local_links and check_shared_document_navigation",
+      "passed": true,
+      "documents_checked": 2,
+      "local_links_checked": 27
+    },
+    "portable_full_suite": {
+      "command": "python3 -B tools/run_tests.py",
+      "passed": true,
+      "environment": "Isolated copy of maintained source files, excluding ignored private settings, native inputs, and old builds.",
+      "code_and_numeric_inputs_match_current_candidate": true,
+      "draft_guides_checked_separately_after_prose_updates": true,
+      "tests_run": 2223,
+      "reported_skip_entries": 92,
+      "scopes": [
+        {
+          "scope": "framework",
+          "tests_run": 1050,
+          "elapsed_seconds": 249.697,
+          "reported_skip_entries": 11,
+          "passed": true
+        },
+        {
+          "scope": "high-speed-rail",
+          "tests_run": 420,
+          "elapsed_seconds": 112.098,
+          "reported_skip_entries": 65,
+          "passed": true
+        },
+        {
+          "scope": "highway",
+          "tests_run": 624,
+          "elapsed_seconds": 103.283,
+          "reported_skip_entries": 11,
+          "passed": true
+        },
+        {
+          "scope": "hsr-trumpet-straight-stem",
+          "tests_run": 129,
+          "elapsed_seconds": 44.88,
+          "reported_skip_entries": 5,
+          "passed": true
+        }
+      ],
+      "skip_reasons": [
+        {
+          "reason": "Audited NAM donors unavailable",
+          "entries": 1
+        },
+        {
+          "reason": "Audited NAM donors unavailable; set SCP_TEST_NAM_PLUGINS",
+          "entries": 2
+        },
+        {
+          "reason": "Audited NAM unavailable; set SCP_TEST_NAM_PLUGINS",
+          "entries": 2
+        },
+        {
+          "reason": "Audited local HSR native donor unavailable",
+          "entries": 43
+        },
+        {
+          "reason": "Audited local NAM donor is unavailable",
+          "entries": 1
+        },
+        {
+          "reason": "Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS",
+          "entries": 1
+        },
+        {
+          "reason": "Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS to enable integration tests",
+          "entries": 1
+        },
+        {
+          "reason": "Audited local native HSR donor unavailable",
+          "entries": 5
+        },
+        {
+          "reason": "Audited local native HSR model donor unavailable",
+          "entries": 10
+        },
+        {
+          "reason": "Exact native HSR, ordinary Road PATH, and opaque sidewalk capture are unavailable; supply SCP_TEST_NAM_PLUGINS, local/settings.jsonc, legacy local/settings.json, or local/validation-inputs/Plugins.",
+          "entries": 1
+        },
+        {
+          "reason": "Historical actual staged build absent; no saved-resource claim made",
+          "entries": 2
+        },
+        {
+          "reason": "Needs the saved, protected two-piece build",
+          "entries": 7
+        },
+        {
+          "reason": "Optional audited native HSR donor is unavailable",
+          "entries": 1
+        },
+        {
+          "reason": "Original NAM 50 inputs are unavailable in this source-only checkout",
+          "entries": 2
+        },
+        {
+          "reason": "Private NAM settings are unavailable",
+          "entries": 7
+        },
+        {
+          "reason": "Renamed assembly has no current-ID resource capture; unchanged historical proof is preserved separately",
+          "entries": 3
+        },
+        {
+          "reason": "Saved revised parallel ground-mouth build is absent; set SCP_TEST_PARALLEL_GROUND_MOUTHS_BUILD to its exact directory.",
+          "entries": 1
+        },
+        {
+          "reason": "Saved revised parallel slip build is absent; set SCP_TEST_PARALLEL_SLIP_BUILD to its exact directory.",
+          "entries": 1
+        },
+        {
+          "reason": "The independently checked native parallel build is absent; native NAM inputs and a saved candidate build are required.",
+          "entries": 1
+        }
+      ]
+    },
+    "extended_native_full_suite": {
+      "command": "python3 -B tools/run_tests.py",
+      "status": "interrupted-by-agent",
+      "passed": null,
+      "coverage_limit": "Stopped after approximately 29 minutes while checking unchanged retained HSR native models; the run did not finish. The complete portable run is reported separately."
+    }
+  },
+  "independent_review": "Numerical and integrated documentation/image reviews completed; no actionable findings remained.",
+  "remaining": [
+    "Native pavement collars, datums, marking and material continuity, and complete cross-sections.",
+    "Pavement unions, barrier openings, deck solids, supports, overhangs, and full swept vehicle bodies.",
+    "Useful reusable component cuts, unique cell ownership, runtime addresses, identifiers, and registration.",
+    "Saved-resource verification, connector extraction, native-approach construction, canonical compiled-model views, and final menu packaging.",
+    "Deliberate installation and explicit human game checks."
+  ],
+  "installed": false,
+  "game_operation_tested": false,
+  "manual_observations_changed": false
+}

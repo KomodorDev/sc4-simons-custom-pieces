@@ -13,8 +13,9 @@ MIRRORED_REFERENCE = f'domains/highway/00_pieces/{PIECE_ID}-mirrored/checks/acce
 
 
 def reference(piece):
-    from .orthogonal_transition_verify import _mirrored
-    return MIRRORED_REFERENCE if _mirrored(piece) else REFERENCE
+    from .orthogonal_transition_variants import variant_of, record_for
+    owner = record_for(variant_of(piece)).piece_id
+    return f'domains/highway/00_pieces/{owner}/checks/accepted-connector-contract.jsonc'
 
 
 def load_contract(piece, root=ROOT):

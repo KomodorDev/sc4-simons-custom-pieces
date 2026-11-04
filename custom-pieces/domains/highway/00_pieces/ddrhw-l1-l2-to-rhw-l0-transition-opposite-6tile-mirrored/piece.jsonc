@@ -1,0 +1,519 @@
+// title: "Piece definition: DD RHW-4 — L1/L2 ↔ RHW-4 L0 — Mirrored Orthogonal Transition — Opposite Upper Descent — 6 Tiles"
+// summary: "Define permanent game-resource identity and reusable construction metadata."
+//
+// Used when: Contributors author this piece, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: custom-pieces/scp.py scaffold and scp.registration.apply_registration() create this definition; contributors use scp.subject_sources.write_subject() for later edits.
+// Affects: Permanent construction, model, preview, and menu identifiers, generated documentation, and derived game resources.
+{
+  "purpose": "Authoritative build definition and permanent game-resource identity for DD RHW-4 \u2014 L1/L2 \u2194 RHW-4 L0 \u2014 Mirrored Orthogonal Transition \u2014 Opposite Upper Descent \u2014 6 Tiles.",
+  "schema_version": 1,
+  "id": "ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile-mirrored",
+  "domain": "highway",
+  "name": "DD RHW-4 \u2014 L1/L2 \u2194 RHW-4 L0 \u2014 Mirrored Orthogonal Transition \u2014 Opposite Upper Descent \u2014 6 Tiles",
+  "description": "The upper carriageway reaches ground on the opposite side of the straight lower carriageway, while retaining this base transition\u2019s DD traffic directions, two lanes per direction, native sockets, and driver-left yellow markings.",
+  "recipe": "highway_ddrhw_orthogonal_l0_transition_opposite_side_mirrored",
+  "enabled_by_default": false,
+  "status": "experimental",
+  "puzzle_id": "f888",
+  "tile_ids": [
+    "7f5ee000",
+    "7f5ee100",
+    "7f5ee010",
+    "7f5ee110",
+    "7f5ee020",
+    "7f5ee120",
+    "7f5ee030",
+    "7f5ee130",
+    "7f5ee040",
+    "7f5ee140",
+    "7f5ee050",
+    "7f5ee150"
+  ],
+  "preview_id": "7f5eeff5",
+  "effect_name": "preview_scp_hw_f888_____001",
+  "footprint": [
+    2,
+    6
+  ],
+  "cells": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      5
+    ]
+  ],
+  "orientation_count": 8,
+  "dependencies": [
+    "controller",
+    "dd_rhw",
+    "rhw_core",
+    "rhw4",
+    "rhw4_textures"
+  ],
+  "native_orthogonal_approaches": true,
+  "menu": {
+    "id": "6a47f888",
+    "order": "ffffff88",
+    "style": "ddrhw-transition",
+    "family_anchor": "ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile"
+  },
+  "authored_texture_ids": [
+    "7f5ee000"
+  ],
+  "engineering": {
+    "length_m": 96.0,
+    "width_m": 32.0,
+    "footprint_tiles": [
+      2,
+      6
+    ],
+    "cells": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        1,
+        5
+      ]
+    ],
+    "model_only_cells": [
+      [
+        0,
+        0
+      ]
+    ],
+    "entry_station_model_z_m": -8.0,
+    "exit_station_model_z_m": 88.0,
+    "native_collar_m": 3.0,
+    "lateral_and_lower_active_m": [
+      3.0,
+      69.0
+    ],
+    "upper_grade_easing_m": 12.0,
+    "path_station_step_m": 0.25,
+    "upper_normalized_grade": 0.1907977564225265,
+    "upper_height_at_complete_spread_m": 3.4257737165664643,
+    "lower_maximum_grade": 0.17045454545454544,
+    "cross_section_policy": "Flat horizontal normal sections; true lane-speed curvature compensation",
+    "path_runtime_use_elevation": true,
+    "software_resource_verification": "not supplied by the generator",
+    "in_game_status": "unverified",
+    "transition_variant": "opposite-side-mirrored",
+    "base_traffic_variant": "mirrored",
+    "physical_reflection": false,
+    "traffic_reversed": true,
+    "native_cross_section_reflection": true,
+    "canonical_lane_index_by_native_source_class": [
+      1,
+      0
+    ],
+    "geometry_transform": "Retain the canonical physical frame",
+    "directed_path_transform": "Choose travel phase independently of physical reflection; swap canonical lateral lane indices while retaining native source classes",
+    "dd_axis_east_m": 16.0,
+    "ground_lower_axis_east_m": 16.0,
+    "ground_upper_axis_east_m": 0.0,
+    "upper_travel_direction": "northbound",
+    "lower_travel_direction": "southbound",
+    "native_dd_model_sha256": "3d94bcce2ff84c9bd06d3bbbc7a089b8eaa28cfe921c3d31e87a27300cffd3dd",
+    "native_ground_model_sha256": "81bf6080e261e2a902d8836ce480e970af8428d9f4a9b36d2290b3a8522f21dc",
+    "native_texture_sha256": {
+      "5703000E": "c2b9ac53cc080ca8146f1345e13d43e91c883d9559ec3ec3293e7ff88a259e88",
+      "5713000E": "25a91179a26a82ba6307777b1957c5862bee61daf55c7638c4487d64b275c7b8"
+    },
+    "atlas_size_pixels": [
+      512,
+      1024
+    ],
+    "atlas_native_pixels_per_16m": 128,
+    "atlas_colour_blend": "One minus remaining deck-height fraction",
+    "atlas_alpha_blend": "One minus cubic smoothstep of deck height divided by 0.25 m",
+    "native_pavement_datum_offsets_m": {
+      "upper": 0.0010004043579101562,
+      "lower": 0.0009999275207519531
+    },
+    "datum_transition": "Native DD offset times remaining deck-height fraction; exact zero at ground",
+    "measured_native_outer_overhang_m": 0.0010004043579101562,
+    "tile_clipping_policy": "At most 1e-9 m input grid snap; exact half-space classification and bounded segment intersections",
+    "support_solids": [
+      {
+        "id": "upper-pier-12",
+        "deck": "upper",
+        "station_m": 12.0,
+        "lateral_range_m": [
+          -9.6,
+          -8.799999999999999
+        ],
+        "station_half_length_m": 0.4,
+        "bottom_m": 0.0,
+        "top_m": 13.118955527562903
+      },
+      {
+        "id": "upper-cap-12",
+        "deck": "upper",
+        "station_m": 12.0,
+        "lateral_range_m": [
+          -9.6,
+          7.0
+        ],
+        "station_half_length_m": 0.45,
+        "bottom_m": 13.118955527562903,
+        "top_m": 13.418955527562904
+      },
+      {
+        "id": "upper-pier-32",
+        "deck": "upper",
+        "station_m": 32.0,
+        "lateral_range_m": [
+          -6.800000000000001,
+          -6.0
+        ],
+        "station_half_length_m": 0.4,
+        "bottom_m": 0.0,
+        "top_m": 9.304088333550855
+      },
+      {
+        "id": "upper-cap-32",
+        "deck": "upper",
+        "station_m": 32.0,
+        "lateral_range_m": [
+          -7.0,
+          7.0
+        ],
+        "station_half_length_m": 0.45,
+        "bottom_m": 9.304088333550855,
+        "top_m": 9.604088333550855
+      },
+      {
+        "id": "upper-pier-52",
+        "deck": "upper",
+        "station_m": 52.0,
+        "lateral_range_m": [
+          -6.800000000000001,
+          -6.0
+        ],
+        "station_half_length_m": 0.4,
+        "bottom_m": 0.0,
+        "top_m": 5.274134705290952
+      },
+      {
+        "id": "upper-cap-52",
+        "deck": "upper",
+        "station_m": 52.0,
+        "lateral_range_m": [
+          -7.0,
+          7.0
+        ],
+        "station_half_length_m": 0.45,
+        "bottom_m": 5.274134705290952,
+        "top_m": 5.574134705290952
+      },
+      {
+        "id": "upper-pier-72",
+        "deck": "upper",
+        "station_m": 72.0,
+        "lateral_range_m": [
+          -6.800000000000001,
+          -6.0
+        ],
+        "station_half_length_m": 0.4,
+        "bottom_m": 0.0,
+        "top_m": 1.5550018281917894
+      },
+      {
+        "id": "upper-cap-72",
+        "deck": "upper",
+        "station_m": 72.0,
+        "lateral_range_m": [
+          -7.0,
+          7.0
+        ],
+        "station_half_length_m": 0.45,
+        "bottom_m": 1.5550018281917894,
+        "top_m": 1.8550018281917895
+      },
+      {
+        "id": "lower-pier-12-west",
+        "deck": "lower",
+        "station_m": 12.0,
+        "lateral_range_m": [
+          -6.800000000000001,
+          -6.0
+        ],
+        "station_half_length_m": 0.4,
+        "bottom_m": 0.0,
+        "top_m": 6.120596099490962
+      },
+      {
+        "id": "lower-pier-12-east",
+        "deck": "lower",
+        "station_m": 12.0,
+        "lateral_range_m": [
+          6.0,
+          6.800000000000001
+        ],
+        "station_half_length_m": 0.4,
+        "bottom_m": 0.0,
+        "top_m": 6.120596099490962
+      },
+      {
+        "id": "lower-pier-32-west",
+        "deck": "lower",
+        "station_m": 32.0,
+        "lateral_range_m": [
+          -6.800000000000001,
+          -6.0
+        ],
+        "station_half_length_m": 0.4,
+        "bottom_m": 0.0,
+        "top_m": 3.429069425996232
+      },
+      {
+        "id": "lower-pier-32-east",
+        "deck": "lower",
+        "station_m": 32.0,
+        "lateral_range_m": [
+          6.0,
+          6.800000000000001
+        ],
+        "station_half_length_m": 0.4,
+        "bottom_m": 0.0,
+        "top_m": 3.429069425996232
+      },
+      {
+        "id": "lower-pier-48-west",
+        "deck": "lower",
+        "station_m": 48.0,
+        "lateral_range_m": [
+          -6.800000000000001,
+          -6.0
+        ],
+        "station_half_length_m": 0.4,
+        "bottom_m": 0.0,
+        "top_m": 0.7949425070738989
+      },
+      {
+        "id": "lower-pier-48-east",
+        "deck": "lower",
+        "station_m": 48.0,
+        "lateral_range_m": [
+          6.0,
+          6.800000000000001
+        ],
+        "station_half_length_m": 0.4,
+        "bottom_m": 0.0,
+        "top_m": 0.7949425070738989
+      }
+    ],
+    "support_geometry_scope": "Closed oriented rectangular piers and caps; structural capacity unverified",
+    "shadow_policy": "disabled",
+    "pedestrian_routes": 0,
+    "native_dd_pose": 2,
+    "native_ground_upper_pose": 2,
+    "native_ground_lower_pose": 0,
+    "canonical_native_cross_section_reflected": true,
+    "native_longitudinal_sample_station_m": "16 minus authored station s",
+    "native_uv_reflection_policy": "Reflect exact source lateral XYZ and its affine UV field before the physical shape reflection; phase longitudinal samples by traffic direction",
+    "atlas_uv_policy": "Source-normal atlas pixels with one canonical lateral UV reflection",
+    "native_overhang_side": "west",
+    "model_winding_policy": "Reverse canonical reflected barrier winding and each whole-world reflected triangle separately",
+    "support_coordinate_policy": "Retain canonical complete support solids",
+    "max_grade_percent": 20.0,
+    "car_corridor_half_width_m": 1.25,
+    "car_corridor_height_m": 3.8,
+    "pavement_path_offset_m": 0.0
+  },
+  "shadow_mode": "model-carrier",
+  "shadow_mappings": [],
+  "model_shadows": {
+    "schema_version": 1,
+    "sun_profile": "sc4-default-67p5-45",
+    "enabled": false,
+    "cells": [
+      {
+        "cell": [
+          0,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          0
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          0,
+          1
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          1
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          0,
+          2
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          2
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          0,
+          3
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          3
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          0,
+          4
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          4
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          0,
+          5
+        ],
+        "cast_shadow": false
+      },
+      {
+        "cell": [
+          1,
+          5
+        ],
+        "cast_shadow": false
+      }
+    ]
+  },
+  "provenance": {
+    "geometry": "Opposite-side upper descent with separately measured physical reflection, DD traffic phase, native cross-section phase, lane classes, and marking coordinates. The retained pair remains unchanged.",
+    "construction": "Twelve row-major owners with native all-corner flat-base constraints, three optional unowned native sockets, and four proper rotations repeated across eight cursor states. Existing native RUL1 solutions are reused.",
+    "granularity": "One reusable coupled adapter. Its vertical profile depends on the lateral curve; arbitrary internal cuts do not supply standard interchangeable slope or curvature sockets.",
+    "redistribution": "permission-pending"
+  },
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  },
+  "transition_variant": "opposite-side-mirrored"
+}

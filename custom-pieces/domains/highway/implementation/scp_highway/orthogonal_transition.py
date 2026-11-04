@@ -19,6 +19,7 @@ from scp.recipes import combine_meshes
 from scp.render_meshes import assert_render_budget
 from scp.track_paths import S3D
 from . import orthogonal_transition_geometry as geometry
+from .orthogonal_transition_variants import LOWER_BEND_RIGHT
 from . import ramp_geometry, ramp_paths
 
 DD_DONOR = 0x57530000
@@ -47,32 +48,45 @@ def _require(condition, message):
         raise ValueError(message)
 
 
-def _fade(deck, station):
-    return geometry.height(deck, station) / (15.0 if deck == "upper" else 7.5)
+def _fade(deck, station, *, variant="original"):
+    return geometry.height(deck, station, variant=variant) / (15.0 if deck == "upper" else 7.5)
 
 
-def appearance_blend(deck, station):
+def appearance_blend(deck, station, *, variant="original"):
     """Blend asphalt colour continuously; expose native ground alpha only at landing."""
-    return 1.0 - _fade(deck, station), 1.0 - geometry.cubic(geometry.height(deck, station) / 0.25)
+    return (1.0 - _fade(deck, station, variant=variant),
+            1.0 - geometry.cubic(geometry.height(deck, station, variant=variant) / 0.25))
 
 
-def pavement_datum(deck, station):
-    return DATUM[deck] * _fade(deck, station)
+def pavement_datum(deck, station, *, variant="original"):
+    return DATUM[deck] * _fade(deck, station, variant=variant)
 
 
-def pavement_bounds(deck, station):
-    factor = _fade(deck, station)
-    return (-8.0 + factor * (DD_MIN + 8.0),
-            8.0 + factor * (DD_MAX - 8.0))
+def _width_fade(deck, station, *, variant, west):
+    if variant == LOWER_BEND_RIGHT and deck == "upper" and west:
+        # This inner edge must stop overhanging the adjacent ground road
+        # before the upper slab underside reaches ground.
+        altitude = geometry.height(deck, station, variant=variant)
+        return max(0.0, (altitude - 1.1) / (15.0 - 1.1))
+    return _fade(deck, station, variant=variant)
+
+
+def pavement_bounds(deck, station, *, variant="original"):
+    low, high = ((-DD_MAX, -DD_MIN) if geometry.native_cross_section_reflected(variant)
+                 else (DD_MIN, DD_MAX))
+    return (-8.0 + _width_fade(deck, station, variant=variant, west=True) * (low + 8.0),
+            8.0 + _width_fade(deck, station, variant=variant, west=False) * (high - 8.0))
 
 
 def _native_station(station, variant):
     """Native pose 2 reverses longitudinal sampling within the city tile."""
-    return 16.0 - station if geometry.is_mirrored(variant) else station
+    return 16.0 - station if geometry.traffic_reversed(variant) else station
 
 
 def _source_uv(deck, station, lateral, *, native_dd, variant="original"):
     station = _native_station(station, variant)
+    if geometry.native_cross_section_reflected(variant):
+        lateral = -lateral
     if native_dd:
         u, v = (lateral - DD_MIN) / DD_WIDTH, (station - DD_OFFSET) / DD_WIDTH
     else:
@@ -84,8 +98,12 @@ def _pavement_uv(deck, station, lateral, role, *, variant="original"):
     geometry.is_mirrored(variant)
     if role in ("native-dd", "native-ground"):
         return _source_uv(deck, station, lateral, native_dd=role == "native-dd", variant=variant)
-    low, high = pavement_bounds(deck, station)
+    low, high = pavement_bounds(deck, station, variant=variant)
     u = (lateral - low) / (high - low)
+    # Atlas pixels retain their native source lateral order. Reflect the
+    # field exactly once when the canonical cross-section is reflected.
+    if geometry.native_cross_section_reflected(variant):
+        u = 1.0 - u
     if deck == "lower":
         u = 1.0 - u
     return ((ATLAS_COLUMN[deck] + 128.0 * u) / ATLAS_SIZE[0],
@@ -108,7 +126,7 @@ def _native_models(context):
 
 
 class _Painter:
-    def __init__(self, dd, ground, texture_id):
+    def __init__(self, dd, ground, texture_id, *, variant="original"):
         self.materials = {}
         for deck in ("upper", "lower"):
             for role, material in (("native-dd", dd["materials"][0]),
@@ -117,7 +135,7 @@ class _Painter:
                 self.materials[f"{deck}-pavement-{role}"] = deepcopy(material)
             self.materials[f"{deck}-body"] = deepcopy(dd["materials"][1])
             self.materials[f"{deck}-barrier"] = deepcopy(dd["materials"][2])
-        for record in support_specifications():
+        for record in support_specifications(variant=variant):
             self.materials[record["id"]] = deepcopy(dd["materials"][1])
         self.roles = tuple(self.materials)
 
@@ -130,32 +148,79 @@ class _Painter:
         return self.roles[codes.pop()], tuple(tuple(p[:5]) for p in triangle)
 
 
-def _point(deck, station, lateral, vertical, uv, code):
-    return (*geometry.model_point(deck, station, lateral, vertical), *uv, float(code))
+def _point(deck, station, lateral, vertical, uv, code, *, variant="original"):
+    return (*geometry.model_point(deck, station, lateral, vertical, variant=variant), *uv, float(code))
 
 
 def _quad(points, normal=None):
     return ramp_geometry._triangulate(points, normal, minimum_normal_squared=1e-22)
 
 
+def _paired_body_strip(rings, offsets, first, last, normal, concrete):
+    """Use the roof's own split for the floor, with exact ground-clamp cuts."""
+    sides = []
+    body_rings = [[(*point[:3], lateral / 8.0, station / 8.0, float(concrete))
+                   for point, lateral in zip(ring, ring_offsets)]
+                  for station, ring, ring_offsets in zip((first, last), rings, offsets)]
+    before, after = body_rings
+
+    def bottom(point):
+        return (point[0], max(0.0, point[1] - 1.0), *point[2:])
+
+    for index in range(len(before) - 1):
+        corners = [before[index], after[index], after[index + 1], before[index + 1]]
+        for triangle in _quad(corners):
+            heights = [p[1] for p in triangle]
+            if max(heights) <= 0.0:
+                continue
+            polygons = ([triangle] if min(heights) >= 1.0 or max(heights) <= 1.0 else
+                        [_clip_plane(triangle, 1, 1.0, direction) for direction in (1.0, -1.0)])
+            for polygon in polygons:
+                sides += _quad([bottom(point) for point in polygon], (0.0, -1.0, 0.0))
+    for side, index in ((-1, 0), (1, -1)):
+        a, b = before[index], after[index]
+        edges = [(a, b)]
+        if min(a[1], b[1]) < 1.0 < max(a[1], b[1]):
+            fraction = (1.0 - a[1]) / (b[1] - a[1])
+            crossing = tuple(x + fraction * (y - x) for x, y in zip(a, b))
+            crossing = (crossing[0], 1.0, *crossing[2:])
+            edges = [(a, crossing), (crossing, b)]
+        for start, end in edges:
+            corners = (start, bottom(start), bottom(end), end)
+            points = [(*p[:3], p[2] / 16.0, (p[1] - min(a[1], b[1])) / 8.0,
+                       float(concrete)) for p in corners]
+            sides += _quad(points, (side * normal[0], 0.0, side * normal[1]))
+    return sides
+
+
 def _pavement_and_body(deck, painter, *, variant="original"):
     faces = []
+    paired_floor = variant == LOWER_BEND_RIGHT
+    # The four retained models are authored in the canonical plan before any
+    # whole-world reflection. The new lower curve is its own canonical plan.
+    source_variant = variant if paired_floor else "original"
     for first, last in zip(geometry.STATIONS, geometry.STATIONS[1:]):
         role = _role(deck, first, last)
         code = painter.roles.index(f"{deck}-pavement-{role}")
-        rings = []
+        rings, offsets_by_ring = [], []
         for station in (first, last):
-            low, high = pavement_bounds(deck, station)
+            low, high = pavement_bounds(deck, station, variant=variant)
             offsets = (low, -3.75, -2.5, -1.25, 0.0, 1.25, 2.5, 3.75, high)
-            rings.append([_point(deck, station, u, pavement_datum(deck, station),
-                                  _pavement_uv(deck, station, u, role, variant=variant), code) for u in offsets])
+            offsets_by_ring.append(offsets)
+            rings.append([_point(deck, station, u, pavement_datum(deck, station, variant=variant),
+                                  _pavement_uv(deck, station, u, role, variant=variant), code,
+                                  variant=source_variant) for u in offsets])
         for index in range(len(rings[0]) - 1):
             faces += _quad([rings[0][index], rings[1][index], rings[1][index + 1],
                             rings[0][index + 1]], (0.0, 1.0, 0.0))
         concrete = painter.roles.index(f"{deck}-body")
+        if paired_floor:
+            normal = geometry.frame(deck, (first + last) / 2.0, variant=source_variant)[1]
+            faces += _paired_body_strip(rings, offsets_by_ring, first, last, normal, concrete)
+            continue
         bottom = []
         for station in (first, last):
-            low, high = pavement_bounds(deck, station)
+            low, high = pavement_bounds(deck, station, variant=variant)
             altitude = geometry.height(deck, station)
             surface = altitude + pavement_datum(deck, station)
             thickness = min(1.0, surface)
@@ -174,16 +239,15 @@ def _pavement_and_body(deck, painter, *, variant="original"):
     # Close the complete authored slab, without placing artificial walls at internal tile cuts.
     concrete = painter.roles.index(f"{deck}-body")
     for station, outward in ((0.0, (0., 0., -1.)), (geometry.LENGTH, (0., 0., 1.))):
-        surface = geometry.height(deck, station) + pavement_datum(deck, station)
+        datum = pavement_datum(deck, station, variant=variant)
+        surface = geometry.height(deck, station, variant=variant) + datum
         if surface <= 0.0:
             continue
-        low, high = pavement_bounds(deck, station)
+        low, high = pavement_bounds(deck, station, variant=variant)
         points = [_point(deck, station, u, vertical,
-                         (u / 8.0, vertical / 8.0), concrete)
-                  for u, vertical in ((low, pavement_datum(deck, station)),
-                                      (low, pavement_datum(deck, station) - min(1.0, surface)),
-                                      (high, pavement_datum(deck, station) - min(1.0, surface)),
-                                      (high, pavement_datum(deck, station)))]
+                         (u / 8.0, vertical / 8.0), concrete, variant=source_variant)
+                  for u, vertical in ((low, datum), (low, datum - min(1.0, surface)),
+                                      (high, datum - min(1.0, surface)), (high, datum))]
         faces += _quad(points, outward)
     return faces
 
@@ -217,10 +281,12 @@ def _barriers(dd, deck, painter, *, variant="original"):
     code = painter.roles.index(f"{deck}-barrier")
     baseline = 15.0 if deck == "upper" else 7.5
     faces = []
+    source_variant = variant if variant == LOWER_BEND_RIGHT else "original"
     for starts, ends in _barrier_sections(dd, deck):
         side = 1.0 if starts[0][0] > 0.0 else -1.0
         for first, last in zip(geometry.STATIONS, geometry.STATIONS[1:]):
-            if geometry.height(deck, first) == geometry.height(deck, last) == 0.0:
+            if (geometry.height(deck, first, variant=variant)
+                    == geometry.height(deck, last, variant=variant) == 0.0):
                 continue
             points = []
             for station, source in ((first, 0), (first, 1), (last, 1), (last, 0)):
@@ -229,32 +295,45 @@ def _barriers(dd, deck, painter, *, variant="original"):
                 uv = (a[3] + fraction * (b[3] - a[3]), a[4])
                 # The source's sub-millimetre origin offset fades with the deck datum.
                 canonical = (a[0] - (DD_MIN + DD_MAX) / 2.0) * 16.0 / DD_WIDTH
-                lateral = canonical + _fade(deck, station) * (a[0] - canonical)
+                reflected = geometry.native_cross_section_reflected(variant)
+                west = (a[0] > 0.0) if reflected else (a[0] < 0.0)
+                lateral = canonical + _width_fade(deck, station, variant=variant, west=west) * (a[0] - canonical)
+                if reflected:
+                    lateral = -lateral
                 rise = (a[1] - baseline - DATUM[deck])
-                taper = geometry.cubic(geometry.height(deck, station) / 2.0)
-                vertical = pavement_datum(deck, station) + rise * taper
-                points.append(_point(deck, station, lateral, vertical, uv, code))
+                taper = geometry.cubic(geometry.height(deck, station, variant=variant) / 2.0)
+                vertical = pavement_datum(deck, station, variant=variant) + rise * taper
+                points.append(_point(deck, station, lateral, vertical, uv, code, variant=source_variant))
+            if geometry.native_cross_section_reflected(variant):
+                points = [points[0], points[3], points[2], points[1]]
             normal = ramp_geometry._normal(points[:3])
             # Native index winding already supplies the correct side, inner face, or crown.
             faces += _quad(points, normal)
     return faces
 
 
-@lru_cache(maxsize=1)
-def support_specifications():
+@lru_cache(maxsize=None)
+def support_specifications(*, variant="original"):
     """Explicit complete solids; dimensions are authored choices, not load ratings."""
     records = []
+    lower_bend = variant == LOWER_BEND_RIGHT
+    embed = 0.15 if lower_bend else 0.0
+
+    def support_top(deck, station):
+        return (geometry.height(deck, station, variant=variant)
+                + pavement_datum(deck, station, variant=variant) - 1.0 + embed)
+
     for station in UPPER_SUPPORT_STATIONS:
-        top = geometry.height("upper", station) + pavement_datum("upper", station) - 1.0
-        west = -9.2 if station == 12.0 else -6.4
+        top = support_top("upper", station)
+        pier = -9.2 if station == 12.0 else (6.4 if lower_bend else -6.4)
         records += [{"id": f"upper-pier-{int(station)}", "deck": "upper", "station_m": station,
-                     "lateral_range_m": [west - 0.4, west + 0.4], "station_half_length_m": 0.4,
+                     "lateral_range_m": [pier - 0.4, pier + 0.4], "station_half_length_m": 0.4,
                      "bottom_m": 0.0, "top_m": top - 0.3},
                     {"id": f"upper-cap-{int(station)}", "deck": "upper", "station_m": station,
-                     "lateral_range_m": [min(-7.0, west - 0.4), 7.0], "station_half_length_m": 0.45,
+                     "lateral_range_m": [min(-7.0, pier - 0.4), 7.0], "station_half_length_m": 0.45,
                      "bottom_m": top - 0.3, "top_m": top}]
     for station in LOWER_SUPPORT_STATIONS:
-        top = geometry.height("lower", station) + pavement_datum("lower", station) - 1.0
+        top = support_top("lower", station)
         for side in (-1, 1):
             centre = side * 6.4
             records.append({"id": f"lower-pier-{int(station)}-{'west' if side < 0 else 'east'}",
@@ -265,9 +344,9 @@ def support_specifications():
     return tuple(records)
 
 
-def _support_box(record, painter):
+def _support_box(record, painter, *, variant="original"):
     deck, station = record["deck"], record["station_m"]
-    (east, south), normal = geometry.frame(deck, station)
+    (east, south), normal = geometry.frame(deck, station, variant=variant)
     tangent = -normal[1], normal[0]
     half = record["station_half_length_m"]
     code = painter.roles.index(record["id"])
@@ -391,13 +470,14 @@ def build_channels(context, *, texture_id=None, variant="original"):
     _require(type(texture_id) is int and 0 < texture_id <= 0xFFFFFFFF,
              "Orthogonal transition requires its allocated authored texture ID")
     dd, ground = _native_models(context)
-    painter = _Painter(dd, ground, texture_id)
+    source_variant = variant if variant == LOWER_BEND_RIGHT else "original"
+    painter = _Painter(dd, ground, texture_id, variant=source_variant)
     faces = []
     for deck in ("upper", "lower"):
         faces += _pavement_and_body(deck, painter, variant=variant)
         faces += _barriers(dd, deck, painter, variant=variant)
-    for support in support_specifications():
-        faces += _support_box(support, painter)
+    for support in support_specifications(variant=source_variant):
+        faces += _support_box(support, painter, variant=source_variant)
     if mirrored:
         faces = reflect_triangles(faces)
     partition = partition_triangles(faces)
@@ -406,7 +486,8 @@ def build_channels(context, *, texture_id=None, variant="original"):
     owned = defaultdict(list)
     for cell, triangles in partition.items():
         host = min(1, max(0, cell[0])), min(5, max(0, cell[1]))
-        _require(cell == host or (cell[0] == (-1 if mirrored else 2) and 0 <= cell[1] < 6),
+        _require(cell == host or (cell[0] == (-1 if geometry.traffic_reversed(variant) else 2)
+                                 and 0 <= cell[1] < 6),
                  f"Unexpected transition model projection beyond the owned rectangle: {cell}")
         dx, dz = 16.0 * (cell[0] - host[0]), 16.0 * (cell[1] - host[1])
         owned[host].extend(tuple((p[0] + dx, p[1], p[2] + dz, *p[3:]) for p in tri)
@@ -468,7 +549,7 @@ def build_textures(context, texture_id, *, variant="original"):
             ground_phase = native_station / 16.0
             if deck == "lower":
                 phase, ground_phase = 1.0 - phase, 1.0 - ground_phase
-            blend, alpha_blend = appearance_blend(deck, station)
+            blend, alpha_blend = appearance_blend(deck, station, variant=variant)
             for column in range(-2, 130):
                 u = ((column % 128) + 0.5) / 128.0
                 first = sample(images[0x5713000E], u, phase)
@@ -492,13 +573,30 @@ def engineering_metadata(*, variant="original"):
                    "datum_transition": "Native DD offset times remaining deck-height fraction; exact zero at ground",
                    "measured_native_outer_overhang_m": DD_MAX - 8.0,
                    "tile_clipping_policy": "At most 1e-9 m input grid snap; exact half-space classification and bounded segment intersections",
-                   "support_solids": deepcopy(list(support_specifications())),
+                   "support_solids": deepcopy(list(support_specifications(variant=variant))),
                    "support_geometry_scope": "Closed oriented rectangular piers and caps; structural capacity unverified",
                    "shadow_policy": "disabled", "pedestrian_routes": 0})
-    if geometry.is_mirrored(variant):
+    if variant == "mirrored":
         result.update({"native_dd_pose": 2, "native_ground_upper_pose": 2, "native_ground_lower_pose": 0,
                        "native_longitudinal_sample_station_m": "16 minus authored station s, before each deck's native UV orientation",
                        "native_uv_reflection_policy": "Retain lateral U under geometry reflection; reverse native longitudinal sample phase for asphalt and barriers",
                        "support_coordinate_policy": "Retain canonical source roles and lateral dimensions; reflect every complete solid by east x becoming 16 minus x",
                        "model_winding_policy": "Reverse each reflected triangle's winding to preserve its outward face"})
+    if geometry.is_opposite_side(variant) or variant == LOWER_BEND_RIGHT:
+        reversed_traffic = geometry.traffic_reversed(variant)
+        result.update({"native_dd_pose": 2 if reversed_traffic else 0,
+                       "native_ground_upper_pose": 2 if reversed_traffic else 0,
+                       "native_ground_lower_pose": 0 if reversed_traffic else 2,
+                       "canonical_native_cross_section_reflected": True,
+                       "native_longitudinal_sample_station_m": "16 minus authored station s" if reversed_traffic else "Authored station s",
+                       "native_uv_reflection_policy": "Reflect exact source lateral XYZ and its affine UV field before the physical shape reflection; phase longitudinal samples by traffic direction",
+                       "atlas_uv_policy": "Source-normal atlas pixels with one canonical lateral UV reflection",
+                       "native_overhang_side": "west" if reversed_traffic else "east",
+                       "model_winding_policy": "Reverse canonical reflected barrier winding and each whole-world reflected triangle separately",
+                       "support_coordinate_policy": "Reflect complete canonical solids through east x becoming 16 minus x" if geometry.is_mirrored(variant) else "Retain canonical complete support solids"})
+    if variant == LOWER_BEND_RIGHT:
+        result.update({"underside_policy": "Paired roof triangulation, clipped at exact 1 m roof height; underside is clamped to ground",
+                       "upper_inner_overhang_fade_end_path_height_m": 1.1,
+                       "support_attachment_m": 0.15,
+                       "support_coordinate_policy": "Upper supports use the straight deck frame; lower supports follow the curved lower deck frame"})
     return result

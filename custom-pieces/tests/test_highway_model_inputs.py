@@ -75,6 +75,7 @@ class HighwayModelInputTests(unittest.TestCase):
         self.enterContext(patch.object(verify, 'validate_menu_resources', return_value={}))
         self.enterContext(patch.object(verify, 'check_piece_paths', return_value={}))
         provider = SimpleNamespace(verification_donor=lambda donors: None,
+                                   validate_menu_resources=lambda *args, **kwargs: {},
                                    validate_effect=lambda piece, effect: None)
         self.enterContext(patch('scp.providers.domain_module', return_value=provider))
 

@@ -24,7 +24,7 @@ This flat curved section moves the exit ramp sideways between its highway slip l
 
 **Permanent ID:** `ddrhw-parallel-b-lower-exit-departure`. **Recipe:** `highway_ddrhw_parallel_b_lower_exit_departure`. This component owns **1 city tiles** inside a **1 × 1 bounding footprint**. Its local occupied cells are **[0,0]**, measured from the reference corner with columns increasing east and rows increasing south. Empty cells inside that rectangle remain unowned. Flat lateral departure at 7.5 m.
 
-1. Open **Transportation → Highways → SCP | DD RHW-4 — Parallel Diagonal Avenue Diamond**, and select **SCP | ASSEMBLY | DD RHW-4 — Parallel Diagonal Avenue Diamond — Alignment B**.
+1. Open **Transportation → Highways → SCP → Assemblies**, and select **SCP | ASSEMBLY | DD RHW-4 — Parallel Diagonal Avenue Diamond — Alignment B**.
 2. Starting at P01, press **Tab 7 times** to reach **P08 — RHW Ramp — L1 Exit Lateral Departure — Parallel — Alignment B**. Shift+Tab moves backward. Each click places this component, rather than the whole junction.
 3. In the [B reference layout](../../01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b/README.md#3-placements), use **X7, Y9**, with the authored **0°** orientation. Home and End rotate the selected type. Match its actual occupied preview cells before clicking; the reference corner can itself be empty.
 4. Join only the complete matching B boundary described by its connection card and the assembly placement plan. A similar A model does not establish matching whole-cell PATH ownership. For an independent layout, check every direction, endpoint, height, angle, and grade; compatibility with an untested neighbour remains unverified.

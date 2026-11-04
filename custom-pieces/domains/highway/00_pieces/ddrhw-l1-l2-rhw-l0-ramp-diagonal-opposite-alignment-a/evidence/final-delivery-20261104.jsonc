@@ -1,0 +1,1979 @@
+// title: "First-A diagonal transition final software and installation receipt"
+// summary: "Bind the checked build, tests, actual artwork, frozen archives, and preserved additive installation."
+// Used when: Reviewing the completed four first-cut diagonal transition choices.
+// Read by: Contributors and the final delivery reviewer.
+// Updated by: The reviewed private delivery coordinator after every required live audit passes.
+// Affects: Frozen delivery evidence only; no human game, image, or Alignment B acceptance.
+{
+  "schema_version": 1,
+  "record_date": "2026-11-04",
+  "requested_first_A_choices": [
+    "ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a",
+    "ddrhw-l1-l2-rhw-l0-ramp-diagonal-mirrored-alignment-a",
+    "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a",
+    "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a"
+  ],
+  "acceptance_scope": "Completed software, saved-resource, artifact, archive, and local additive-installation checks. Human game operation, human image approval, and exact-candidate Alignment A acceptance remain unverified.",
+  "normal_eight_type_build": {
+    "build": "dist/ddrhw-diagonal-transitions-a-native-03",
+    "manifest_sha256": "c0704a429ed1cda04c557fabc4d00f67941048fccd14ff6672f17c74919e2d92",
+    "verification_sha256": "854d3c8b584860dca3a23faf43cca17e6ed0453270f286298f6a2214d56ca960",
+    "normal_DATs": 10,
+    "normal_types": 8,
+    "visible_menu_buttons": 2,
+    "diagonal_tab_family_members": [
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a",
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-mirrored-alignment-a",
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a",
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a"
+    ],
+    "normal_DAT_fingerprints": [
+      {
+        "path": "zzz_Simons_Custom_Pieces/00_SCP_Controller_NAM50.dat",
+        "sha256": "77bf16c8079bb1fa2631b6dc96dae195759fdecdbee4764f322d8c9f9b5e589c",
+        "bytes": 5458670
+      },
+      {
+        "path": "zzz_Simons_Custom_Pieces/10_SCP_Menu.dat",
+        "sha256": "5d78412137797e3dbba97a5f526b1636c69e192545a093ec864e322fea65f749",
+        "bytes": 6640
+      },
+      {
+        "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a.dat",
+        "sha256": "c11556d39a3585d47002228132a9c3e269530e78179c49cea40fe1bde9f49875",
+        "bytes": 16292761
+      },
+      {
+        "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-l2-rhw-l0-ramp-diagonal-mirrored-alignment-a.dat",
+        "sha256": "f2b597009d0759a3996d9e87f41205a73ad4f3ef3cc67670ab8bc39474d6e95c",
+        "bytes": 16288504
+      },
+      {
+        "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a.dat",
+        "sha256": "0262f199c0e3200f669f069d4e1369d5461a781cb58ebe8258873b991905b435",
+        "bytes": 16315024
+      },
+      {
+        "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a.dat",
+        "sha256": "22d3ac109902b69c28362a37ad28085ac9ab232935313bb8dc41418f09e73aa4",
+        "bytes": 16269937
+      },
+      {
+        "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile-mirrored.dat",
+        "sha256": "3344c522515adccf258f78d8e4ca4028ff42f57f5465eee91d1b3c301cf27099",
+        "bytes": 7465214
+      },
+      {
+        "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile.dat",
+        "sha256": "4911ec93b72c3d92bd403bf5911c9620e076ac2cc157923d962ab512ace532d3",
+        "bytes": 7472934
+      },
+      {
+        "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile-mirrored.dat",
+        "sha256": "32c60487207bc1b6d68aa6f17ed547481851096d5b3e1b9017563ba1ddcc8def",
+        "bytes": 7437354
+      },
+      {
+        "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile.dat",
+        "sha256": "08cc749d37cf5be772a1134541d5d47e379047622d706f699567ea964c46a73d",
+        "bytes": 7436870
+      }
+    ]
+  },
+  "normal_to_source05_correspondence": {
+    "passed": true,
+    "report_sha256": "d7bd2c883f94fd9c5826eda68568413d215a276655116fa3a70f1420810f8ce2",
+    "source_snapshot_sha256": "43f0c7a936ad07b227768d21e7f1ceb183f96a728f38a50d0c9fed169cf703a6",
+    "types": [
+      {
+        "id": "ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a",
+        "actual_DAT_sha256": "c11556d39a3585d47002228132a9c3e269530e78179c49cea40fe1bde9f49875",
+        "canonical_models_exact_after_typed_owned_material_id_normalization": 24,
+        "five_zoom_payloads_checked": 120,
+        "PATH_payloads_byte_identical": 24,
+        "FSH_payload_byte_identical": true,
+        "all_XYZ_UV_indices_material_flags_meshes_animation_and_trailing_bytes_preserved": true
+      },
+      {
+        "id": "ddrhw-l1-l2-rhw-l0-ramp-diagonal-mirrored-alignment-a",
+        "actual_DAT_sha256": "f2b597009d0759a3996d9e87f41205a73ad4f3ef3cc67670ab8bc39474d6e95c",
+        "canonical_models_exact_after_typed_owned_material_id_normalization": 24,
+        "five_zoom_payloads_checked": 120,
+        "PATH_payloads_byte_identical": 24,
+        "FSH_payload_byte_identical": true,
+        "all_XYZ_UV_indices_material_flags_meshes_animation_and_trailing_bytes_preserved": true
+      },
+      {
+        "id": "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a",
+        "actual_DAT_sha256": "0262f199c0e3200f669f069d4e1369d5461a781cb58ebe8258873b991905b435",
+        "canonical_models_exact_after_typed_owned_material_id_normalization": 24,
+        "five_zoom_payloads_checked": 120,
+        "PATH_payloads_byte_identical": 24,
+        "FSH_payload_byte_identical": true,
+        "all_XYZ_UV_indices_material_flags_meshes_animation_and_trailing_bytes_preserved": true
+      },
+      {
+        "id": "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a",
+        "actual_DAT_sha256": "22d3ac109902b69c28362a37ad28085ac9ab232935313bb8dc41418f09e73aa4",
+        "canonical_models_exact_after_typed_owned_material_id_normalization": 24,
+        "five_zoom_payloads_checked": 120,
+        "PATH_payloads_byte_identical": 24,
+        "FSH_payload_byte_identical": true,
+        "all_XYZ_UV_indices_material_flags_meshes_animation_and_trailing_bytes_preserved": true
+      }
+    ],
+    "all_source05_payload_hashes_rechecked": 196,
+    "source05_payload_inventory_sha256": "236d77dd510057004b954f0b4b12007541c2cb6b96e34b9e84e0271ddeebe807",
+    "normalization": "Only typed allocated owned-texture identifiers were normalized; model fields, PATH bytes, and FSH bytes otherwise match exactly."
+  },
+  "post_build_metadata_normalization": {
+    "passed": true,
+    "proof_sha256": "49fa53df39a8237d3dc595e5727524139b424caa8bacb09aa415d38308ffc975",
+    "files": [
+      {
+        "after_sha256": "51e90f3db105f17f5bf9dc021c13e41e27efc1d7463ecff9391866005872786c",
+        "before_sha256": "32a0ee73d9968a03302a2b55d01e62dfe06e7f5fa2d75a3d1d1e20cacfd3bd80",
+        "path": "framework/scp/build.py"
+      },
+      {
+        "after_sha256": "66e23b0fcf12a4203ae6a9bbde4aded16315dad847a74b0f351e46cd9f0ab99f",
+        "before_sha256": "9ebcdadd8dc1d216a51510694a18f693126dff8525c0c7cc4b798883c6a03695",
+        "path": "tests/test_shared_jsonc_sources.py"
+      },
+      {
+        "after_sha256": "d76c1441dc66c87b3f8c316c5f809908fd10fc9bbc0aa01a7a1eda1383037225",
+        "before_sha256": "9795f72772c19d5656cbda643add4b0311ea3e1ad80af078f8f701f12eba6f21",
+        "path": "domains/highway/implementation/scp_highway/diagonal-transition-native-inputs.jsonc"
+      },
+      {
+        "after_sha256": "59d58dcced070032c987777b7cea72865a52127ab142286a086faa42a79cb097",
+        "before_sha256": "377eea361dba2165979e5f66f01a7d78e62b1302f87b41444476a04d0f7d33f4",
+        "path": "domains/highway/implementation/scp_highway/diagonal-transition-native-obstacle-inputs.jsonc"
+      },
+      {
+        "after_sha256": "6228bc9b0221cc53a3f03d84755ec02cd09a3b74d7ffa218699223267ddd5d1b",
+        "before_sha256": "56312d0ae24c890f5658100f3a36611f24b34a44232ec8e8ab50eb63d886affc",
+        "path": "domains/highway/implementation/scp_highway/diagonal-transition-collar-inputs.jsonc"
+      },
+      {
+        "after_sha256": "f3a6ca51b4c56db8633842e24d0b749b696b3b0d78667cff0c3bb779bbe3a61f",
+        "before_sha256": "42575921aeffa43d70c4765466533701a03fe9bdf320dc6fe95a6d9b5a178cb8",
+        "path": "domains/highway/implementation/scp_highway/diagonal_transition_native.py"
+      },
+      {
+        "after_sha256": "7bb591754fd34f3d33838b70e8b0220d99d88f055ebcc35e7f46ea23aef5d56e",
+        "before_sha256": "a3c8bc35e8fdeb536a31fb4c41b3e22f061ff34176ce5cf31534af1e5c5132bd",
+        "path": "domains/highway/implementation/scp_highway/diagonal_transition_models_verify.py"
+      }
+    ],
+    "native_and_obstacle_numeric_payloads_unchanged": true,
+    "collar_changed_JSON_paths": [
+      [
+        "native_inputs_sha256"
+      ]
+    ],
+    "checker_AST_unchanged_except_exactly_three_whole_file_SHA_constants": true,
+    "shared_metadata_roster_before": 29,
+    "shared_metadata_roster_after": 32,
+    "source05_payload_invariance": {
+      "all_payload_sha256_unchanged": true,
+      "files_checked": 196,
+      "payload_inventory_sha256": "236d77dd510057004b954f0b4b12007541c2cb6b96e34b9e84e0271ddeebe807",
+      "snapshot_sha256": "43f0c7a936ad07b227768d21e7f1ceb183f96a728f38a50d0c9fed169cf703a6"
+    },
+    "normal_build_history": "The ordinary normal03 build and its immutable verification report predate this header/provenance normalization and retain their original source hashes. No later metadata hash is relabelled as an input to that earlier build.",
+    "later_artifact_verification": "After the metadata cutoff, the real normal saved-resource verifier ran again during the current artifact freeze/extraction workflow. Numeric measurements and the actual source05 payloads were unchanged; this is not a new DAT compilation.",
+    "final_portable_test_epoch": "The final portable source snapshot includes these normalized sources."
+  },
+  "required_portable_tests": {
+    "passed": true,
+    "reported_tests": 2413,
+    "explicit_skip_records": 98,
+    "class_level_skip_records": 30,
+    "module_level_skip_records": 0,
+    "count_meaning": "Unittest reports Ran counts and skip records separately. Class-level skips prevent subtraction from establishing a precise executed-case count.",
+    "suites": [
+      {
+        "scope": "framework",
+        "reported_tests": 1052,
+        "status": "OK (skipped=11)",
+        "reported_skip_count": 11,
+        "explicit_skip_records": 11,
+        "class_level_skip_records": 3,
+        "module_level_skip_records": 0
+      },
+      {
+        "scope": "high-speed-rail",
+        "reported_tests": 420,
+        "status": "OK (skipped=65)",
+        "reported_skip_count": 65,
+        "explicit_skip_records": 65,
+        "class_level_skip_records": 6,
+        "module_level_skip_records": 0
+      },
+      {
+        "scope": "highway",
+        "reported_tests": 812,
+        "status": "OK (skipped=17)",
+        "reported_skip_count": 17,
+        "explicit_skip_records": 17,
+        "class_level_skip_records": 17,
+        "module_level_skip_records": 0
+      },
+      {
+        "scope": "assemblies/hsr-trumpet-straight-stem",
+        "reported_tests": 129,
+        "status": "OK (skipped=5)",
+        "reported_skip_count": 5,
+        "explicit_skip_records": 5,
+        "class_level_skip_records": 4,
+        "module_level_skip_records": 0
+      }
+    ],
+    "skip_records": [
+      {
+        "scope": "framework",
+        "record": "setUpClass (test_build.RealNAMBuildTests)",
+        "level": "class",
+        "reason": "Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS to enable integration tests"
+      },
+      {
+        "scope": "framework",
+        "record": "test_consumer_rejects_changed_sources_and_changed_export_geometry (test_connector_metadata.ConnectorExportTests.test_consumer_rejects_changed_sources_and_changed_export_geometry)",
+        "level": "test",
+        "reason": "Needs the saved, protected two-piece build"
+      },
+      {
+        "scope": "framework",
+        "record": "test_consumer_rejects_removed_bindings_and_invalid_route_references (test_connector_metadata.ConnectorExportTests.test_consumer_rejects_removed_bindings_and_invalid_route_references)",
+        "level": "test",
+        "reason": "Needs the saved, protected two-piece build"
+      },
+      {
+        "scope": "framework",
+        "record": "test_discovery_receives_structured_missing_stale_and_invalid_failures (test_connector_metadata.ConnectorExportTests.test_discovery_receives_structured_missing_stale_and_invalid_failures)",
+        "level": "test",
+        "reason": "Needs the saved, protected two-piece build"
+      },
+      {
+        "scope": "framework",
+        "record": "test_documentation_handoff_keeps_export_fresh_but_compiled_manifest_mutations_fail (test_connector_metadata.ConnectorExportTests.test_documentation_handoff_keeps_export_fresh_but_compiled_manifest_mutations_fail)",
+        "level": "test",
+        "reason": "Needs the saved, protected two-piece build"
+      },
+      {
+        "scope": "framework",
+        "record": "test_export_is_repeatable_and_read_only (test_connector_metadata.ConnectorExportTests.test_export_is_repeatable_and_read_only)",
+        "level": "test",
+        "reason": "Needs the saved, protected two-piece build"
+      },
+      {
+        "scope": "framework",
+        "record": "test_full_curve_geometry_retains_interior_heights (test_connector_metadata.ConnectorExportTests.test_full_curve_geometry_retains_interior_heights)",
+        "level": "test",
+        "reason": "Needs the saved, protected two-piece build"
+      },
+      {
+        "scope": "framework",
+        "record": "test_published_schemas_check_actual_exports (test_connector_metadata.ConnectorExportTests.test_published_schemas_check_actual_exports)",
+        "level": "test",
+        "reason": "Needs the saved, protected two-piece build"
+      },
+      {
+        "scope": "framework",
+        "record": "setUpClass (test_extended_build.ExtendedPortablePackageTests)",
+        "level": "class",
+        "reason": "Audited NAM unavailable; set SCP_TEST_NAM_PLUGINS"
+      },
+      {
+        "scope": "framework",
+        "record": "setUpClass (test_native_orthogonal_approaches.ActualNativeOrthogonalProofTests)",
+        "level": "class",
+        "reason": "Original NAM 50 inputs are unavailable in this source-only checkout"
+      },
+      {
+        "scope": "framework",
+        "record": "Optional primary-data check; only one profile-pinned file is read.",
+        "level": "test",
+        "reason": "Audited NAM donors unavailable; set SCP_TEST_NAM_PLUGINS"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "setUpClass (test_crossings.CrossingDonorTests)",
+        "level": "class",
+        "reason": "Audited NAM donors unavailable; set SCP_TEST_NAM_PLUGINS"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_actual_model_has_complete_clear_corridors_and_37_consolidated_piers (test_directional_diagonal_t_verify.DirectionalDiagonalTVerifierTests.test_actual_model_has_complete_clear_corridors_and_37_consolidated_piers)",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_crosscell_duplicate_pier_is_rejected_even_with_rebuilt_preview (test_directional_diagonal_t_verify.DirectionalDiagonalTVerifierTests.test_crosscell_duplicate_pier_is_rejected_even_with_rebuilt_preview)",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_preview_mismatch_and_changed_path_bytes_cannot_reuse_a_model_pass (test_directional_diagonal_t_verify.DirectionalDiagonalTVerifierTests.test_preview_mismatch_and_changed_path_bytes_cannot_reuse_a_model_pass)",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_actual_duplicate_floor_faces_are_rejected_with_matching_preview (test_directional_t_verify.DirectionalTVerifierTests.test_actual_duplicate_floor_faces_are_rejected_with_matching_preview)",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_actual_models_have_five_metre_clearance_complete_bed_and_supported_decks (test_directional_t_verify.DirectionalTVerifierTests.test_actual_models_have_five_metre_clearance_complete_bed_and_supported_decks)",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_changed_uv_invalidates_cached_model_pass_and_reports_are_fresh (test_directional_t_verify.DirectionalTVerifierTests.test_changed_uv_invalidates_cached_model_pass_and_reports_are_fresh)",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_crosscell_duplicate_pier_is_rejected_with_matching_preview (test_directional_t_verify.DirectionalTVerifierTests.test_crosscell_duplicate_pier_is_rejected_with_matching_preview)",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_upper_paired_straight')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_upper_paired_to_single_adapter')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_upper_paired_curve90_right')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_oneway_curve90_right_l2_to_l4')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_oneway_curve90_right_l4_to_l2')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_upper_paired_curve90_left')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_oneway_curve90_left_l2_to_l4')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_oneway_curve90_left_l4_to_l2')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_lower_paired_straight')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_lower_oneway_straight')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_lower_zero_turn_split')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_lower_zero_turn_merge')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_lower_zero_turn_double_merge')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_lower_oneway_curve90_right_wide')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_upper_paired_curve90_right_wide')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_upper_paired_to_single_adapter_compact')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_lower_zero_turn_split_compact')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_lower_zero_turn_merge_compact')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_lower_zero_turn_split_merge')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_symmetric_graded_y')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_lower_oneway_curve90_right')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_tight_paired_curve90_l4_to_mid')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_tight_paired_curve90_mid_to_l2')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_modular_south_junction')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_modular_paired_climb')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_modular_crossing_core')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_l2_paired_fan_compact_core')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_l2_paired_straight_recessed_web')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_l2_short_mainline_diverge_core')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_l2_short_opposed_merge_core')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_l2_shortened_departure_curve')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_l2_shortened_return_curve')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets (test_hsr_components_verify.NativeComponentModelTests.test_all_actual_native_meshes_have_full_beds_clearance_contacts_and_render_budgets) (recipe='hsr_component_blind_rise_quarter_turn')",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_changed_rail_uv_cannot_reuse_a_cached_pass (test_hsr_components_verify.NativeComponentModelTests.test_changed_rail_uv_cannot_reuse_a_cached_pass)",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_duplicate_actual_support_is_rejected_across_different_cell_models (test_hsr_components_verify.NativeComponentModelTests.test_duplicate_actual_support_is_rejected_across_different_cell_models)",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_shortened_actual_support_fails_with_all_zooms_and_preview_updated (test_hsr_components_verify.NativeComponentModelTests.test_shortened_actual_support_fails_with_all_zooms_and_preview_updated)",
+        "level": "test",
+        "reason": "Audited local HSR native donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_actual_tapered_walls_and_caps_match_through_the_full_surface_dispatch (test_hsr_fan_parapet.FanParapetNativeSweepTests.test_actual_tapered_walls_and_caps_match_through_the_full_surface_dispatch)",
+        "level": "test",
+        "reason": "Optional audited native HSR donor is unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "setUpClass (test_interchange_package.InterchangePackageTests)",
+        "level": "class",
+        "reason": "Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_model_cache_returns_fresh_reports_and_invalidates_changed_bytes (test_interchange_verify.InterchangeVerifierTests.test_model_cache_returns_fresh_reports_and_invalidates_changed_bytes)",
+        "level": "test",
+        "reason": "Audited local native HSR model donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_representative_actual_models_cover_tracks_and_clear_lower_routes (test_interchange_verify.InterchangeVerifierTests.test_representative_actual_models_cover_tracks_and_clear_lower_routes) (recipe='interchange_hsr_split_90_compact')",
+        "level": "test",
+        "reason": "Audited local native HSR model donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_representative_actual_models_cover_tracks_and_clear_lower_routes (test_interchange_verify.InterchangeVerifierTests.test_representative_actual_models_cover_tracks_and_clear_lower_routes) (recipe='interchange_hsr_merge_90_compact')",
+        "level": "test",
+        "reason": "Audited local native HSR model donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_representative_actual_models_cover_tracks_and_clear_lower_routes (test_interchange_verify.InterchangeVerifierTests.test_representative_actual_models_cover_tracks_and_clear_lower_routes) (recipe='interchange_oneway_l3_diagonal')",
+        "level": "test",
+        "reason": "Audited local native HSR model donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_representative_actual_models_cover_tracks_and_clear_lower_routes (test_interchange_verify.InterchangeVerifierTests.test_representative_actual_models_cover_tracks_and_clear_lower_routes) (recipe='interchange_oneway_grade_ground_to_hsr')",
+        "level": "test",
+        "reason": "Audited local native HSR model donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_representative_actual_models_cover_tracks_and_clear_lower_routes (test_interchange_verify.InterchangeVerifierTests.test_representative_actual_models_cover_tracks_and_clear_lower_routes) (recipe='interchange_oneway_grade_hsr_to_l4')",
+        "level": "test",
+        "reason": "Audited local native HSR model donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_representative_actual_models_cover_tracks_and_clear_lower_routes (test_interchange_verify.InterchangeVerifierTests.test_representative_actual_models_cover_tracks_and_clear_lower_routes) (recipe='interchange_l4_oneway_over_ground')",
+        "level": "test",
+        "reason": "Audited local native HSR model donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_representative_actual_models_cover_tracks_and_clear_lower_routes (test_interchange_verify.InterchangeVerifierTests.test_representative_actual_models_cover_tracks_and_clear_lower_routes) (recipe='interchange_l4_oneway_over_hsr')",
+        "level": "test",
+        "reason": "Audited local native HSR model donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_support_pillar_through_a_lower_track_is_rejected (test_interchange_verify.InterchangeVerifierTests.test_support_pillar_through_a_lower_track_is_rejected)",
+        "level": "test",
+        "reason": "Audited local native HSR model donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_uv_shift_is_rejected_even_when_the_preview_and_all_zooms_agree (test_interchange_verify.InterchangeVerifierTests.test_uv_shift_is_rejected_even_when_the_preview_and_all_zooms_agree)",
+        "level": "test",
+        "reason": "Audited local native HSR model donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "setUpClass (test_rail_feature_verify.RailFeatureVerifierTests)",
+        "level": "class",
+        "reason": "Audited local NAM donor is unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "setUpClass (test_rail_features.NativeRailBuildTests)",
+        "level": "class",
+        "reason": "Audited NAM donors unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "setUpClass (test_rail_package.RailPortablePackageTests)",
+        "level": "class",
+        "reason": "Audited NAM unavailable; set SCP_TEST_NAM_PLUGINS"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_actual_crosscell_duplicate_pier_with_matching_preview_is_rejected (test_rail_repair_verify.RailRepairVerifierTests.test_actual_crosscell_duplicate_pier_with_matching_preview_is_rejected)",
+        "level": "test",
+        "reason": "Audited local native HSR donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_actual_shortened_pier_with_matching_preview_is_rejected (test_rail_repair_verify.RailRepairVerifierTests.test_actual_shortened_pier_with_matching_preview_is_rejected)",
+        "level": "test",
+        "reason": "Audited local native HSR donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_revised_models_have_wide_clearance_and_consolidated_supports (test_rail_repair_verify.RailRepairVerifierTests.test_all_actual_revised_models_have_wide_clearance_and_consolidated_supports) (recipe='rail_hsr_adjacent_scissors_revised')",
+        "level": "test",
+        "reason": "Audited local native HSR donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "  test_all_actual_revised_models_have_wide_clearance_and_consolidated_supports (test_rail_repair_verify.RailRepairVerifierTests.test_all_actual_revised_models_have_wide_clearance_and_consolidated_supports) (recipe='rail_ghsr_adjacent_scissors_revised')",
+        "level": "test",
+        "reason": "Audited local native HSR donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "test_changed_uv_and_cached_report_mutation_do_not_reuse_a_pass (test_rail_repair_verify.RailRepairVerifierTests.test_changed_uv_and_cached_report_mutation_do_not_reuse_a_pass)",
+        "level": "test",
+        "reason": "Audited local native HSR donor unavailable"
+      },
+      {
+        "scope": "high-speed-rail",
+        "record": "setUpClass (test_road_stack.NativeRoadStackTests)",
+        "level": "class",
+        "reason": "Exact native HSR, ordinary Road PATH, and opaque sidewalk capture are unavailable; supply SCP_TEST_NAM_PLUGINS, local/settings.jsonc, legacy local/settings.json, or local/validation-inputs/Plugins."
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_diagonal_transition_ground_collars.ActualDiagonalGroundCollarTests)",
+        "level": "class",
+        "reason": "Audited original NAM sources are not supplied in a portable clone"
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_diagonal_transition_native.ActualDiagonalNativeInputTests)",
+        "level": "class",
+        "reason": "Original NAM50 native inputs are not supplied in a source-only clone"
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_ghsr_crossing_alignment_integration.GHSRCrossingAlignmentBPrivateNativeIntegrationTests)",
+        "level": "class",
+        "reason": "Private NAM settings are unavailable"
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_ghsr_crossing_integration.GHSRCrossingPrivateNativeIntegrationTests)",
+        "level": "class",
+        "reason": "Private NAM settings are unavailable"
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_ghsr_crossing_phase_b.GHSRCrossingAlignmentBNativeAuthorTests)",
+        "level": "class",
+        "reason": "Private NAM settings are unavailable"
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_ghsr_crossing_phase_b_verify.GHSRAlignmentBNativeTests)",
+        "level": "class",
+        "reason": "Private NAM settings are unavailable"
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_ghsr_crossing_verify.GHSRCrossingNativeTests)",
+        "level": "class",
+        "reason": "Private NAM settings are unavailable"
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_native_crossing_resources.NativeCrossingPrivateIntegrationTests)",
+        "level": "class",
+        "reason": "Private NAM settings are unavailable"
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_orthogonal_approaches.ActualNativeOrthogonalContracts)",
+        "level": "class",
+        "reason": "Original NAM 50 inputs are unavailable in this source-only checkout"
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_orthogonal_transition_opposite_native.OppositeSideNativeTests)",
+        "level": "class",
+        "reason": "Original NAM 50 inputs unavailable in this source-only checkout"
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_parallel_ground_mouths.SavedNativeGroundMouthTests)",
+        "level": "class",
+        "reason": "Saved revised parallel ground-mouth build is absent; set SCP_TEST_PARALLEL_GROUND_MOUTHS_BUILD to its exact directory."
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_parallel_saved_models.ParallelNativeSavedModelTests)",
+        "level": "class",
+        "reason": "The independently checked native parallel build is absent; native NAM inputs and a saved candidate build are required."
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_parallel_slip_lanes.ActualSavedSlipProfileTests)",
+        "level": "class",
+        "reason": "Saved revised parallel slip build is absent; set SCP_TEST_PARALLEL_SLIP_BUILD to its exact directory."
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_ramp_native_materials.NativeRampMaterialPrivateTests)",
+        "level": "class",
+        "reason": "Private NAM settings are unavailable"
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_y_junction_approaches.ActualNativeYJunctionApproaches)",
+        "level": "class",
+        "reason": "Original NAM 50 inputs are unavailable in this checkout"
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_y_junction_reversed_source_native.ActualReversedNativeControls)",
+        "level": "class",
+        "reason": "Original NAM 50 inputs are unavailable in this checkout"
+      },
+      {
+        "scope": "highway",
+        "record": "setUpClass (test_y_junction_reversed_verify.ReversedFiniteNativePhysicalControls)",
+        "level": "class",
+        "reason": "Original NAM 50 inputs are unavailable in this checkout"
+      },
+      {
+        "scope": "assemblies/hsr-trumpet-straight-stem",
+        "record": "test_complete_saved_candidate (test_hsr_trumpet.ActualTrumpetBuildIntegration.test_complete_saved_candidate)",
+        "level": "test",
+        "reason": "Renamed assembly has no current-ID resource capture; unchanged historical proof is preserved separately"
+      },
+      {
+        "scope": "assemblies/hsr-trumpet-straight-stem",
+        "record": "setUpClass (test_hsr_trumpet.CurrentFanIntegrationSavedControls)",
+        "level": "class",
+        "reason": "Renamed assembly has no current-ID resource capture; unchanged historical proof is preserved separately"
+      },
+      {
+        "scope": "assemblies/hsr-trumpet-straight-stem",
+        "record": "setUpClass (test_hsr_trumpet.CurrentSavedResourceMutationControls)",
+        "level": "class",
+        "reason": "Renamed assembly has no current-ID resource capture; unchanged historical proof is preserved separately"
+      },
+      {
+        "scope": "assemblies/hsr-trumpet-straight-stem",
+        "record": "setUpClass (test_hsr_trumpet.HistoricalRedesignSavedResourceControls)",
+        "level": "class",
+        "reason": "Historical actual staged build absent; no saved-resource claim made"
+      },
+      {
+        "scope": "assemblies/hsr-trumpet-straight-stem",
+        "record": "setUpClass (test_hsr_trumpet.InheritedCustomCutRailControls)",
+        "level": "class",
+        "reason": "Historical actual staged build absent; no saved-resource claim made"
+      }
+    ],
+    "skip_reasons": [
+      {
+        "reason": "Audited NAM donors unavailable",
+        "records": 1
+      },
+      {
+        "reason": "Audited NAM donors unavailable; set SCP_TEST_NAM_PLUGINS",
+        "records": 2
+      },
+      {
+        "reason": "Audited NAM unavailable; set SCP_TEST_NAM_PLUGINS",
+        "records": 2
+      },
+      {
+        "reason": "Audited local HSR native donor unavailable",
+        "records": 43
+      },
+      {
+        "reason": "Audited local NAM donor is unavailable",
+        "records": 1
+      },
+      {
+        "reason": "Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS",
+        "records": 1
+      },
+      {
+        "reason": "Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS to enable integration tests",
+        "records": 1
+      },
+      {
+        "reason": "Audited local native HSR donor unavailable",
+        "records": 5
+      },
+      {
+        "reason": "Audited local native HSR model donor unavailable",
+        "records": 10
+      },
+      {
+        "reason": "Audited original NAM sources are not supplied in a portable clone",
+        "records": 1
+      },
+      {
+        "reason": "Exact native HSR, ordinary Road PATH, and opaque sidewalk capture are unavailable; supply SCP_TEST_NAM_PLUGINS, local/settings.jsonc, legacy local/settings.json, or local/validation-inputs/Plugins.",
+        "records": 1
+      },
+      {
+        "reason": "Historical actual staged build absent; no saved-resource claim made",
+        "records": 2
+      },
+      {
+        "reason": "Needs the saved, protected two-piece build",
+        "records": 7
+      },
+      {
+        "reason": "Optional audited native HSR donor is unavailable",
+        "records": 1
+      },
+      {
+        "reason": "Original NAM 50 inputs are unavailable in this checkout",
+        "records": 3
+      },
+      {
+        "reason": "Original NAM 50 inputs are unavailable in this source-only checkout",
+        "records": 2
+      },
+      {
+        "reason": "Original NAM 50 inputs unavailable in this source-only checkout",
+        "records": 1
+      },
+      {
+        "reason": "Original NAM50 native inputs are not supplied in a source-only clone",
+        "records": 1
+      },
+      {
+        "reason": "Private NAM settings are unavailable",
+        "records": 7
+      },
+      {
+        "reason": "Renamed assembly has no current-ID resource capture; unchanged historical proof is preserved separately",
+        "records": 3
+      },
+      {
+        "reason": "Saved revised parallel ground-mouth build is absent; set SCP_TEST_PARALLEL_GROUND_MOUTHS_BUILD to its exact directory.",
+        "records": 1
+      },
+      {
+        "reason": "Saved revised parallel slip build is absent; set SCP_TEST_PARALLEL_SLIP_BUILD to its exact directory.",
+        "records": 1
+      },
+      {
+        "reason": "The independently checked native parallel build is absent; native NAM inputs and a saved candidate build are required.",
+        "records": 1
+      }
+    ],
+    "command": [
+      "python3",
+      "-B",
+      "tools/run_tests.py"
+    ],
+    "private_game_inputs_in_snapshot": false,
+    "result_sha256": "08e44b230089d000f2b2491d37f6964849c2ebb4d23234bb6a15b9a7c6f0a6d7",
+    "snapshot_manifest_sha256": "de9d29f99660885e5be6352a0ab2a846c80614e6f86d6f3ef28307246412b4b3",
+    "log_sha256": "00be23aba106bff6bbc70a45240f478533b2d76475a23775f4cdb3899b8eb601",
+    "production_and_snapshot_files_rechecked": 4060,
+    "wrapper_post_run_snapshot_source_files_unchanged": true,
+    "wrapper_post_run_production_snapshot_files_unchanged": true,
+    "executed_case_count_inferred_by_subtraction": false
+  },
+  "documentation": {
+    "passed": true,
+    "report_sha256": "196bab6f3fad133e87c1b7e9103d8096dcdf409a8fe1a53b67f265e10560c91c",
+    "documents_checked": 213,
+    "local_links_checked": 29997,
+    "errors": 0,
+    "selected_artifacts": {
+      "passed": true,
+      "workflow_sha256": "987858b74137865e4641ef009fc8a92a62d1e5ee8636e28feddd6e31d2200404",
+      "actual_DAT_PNGs_inspected": 16,
+      "inspected_PNG_fingerprints": [
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a/previews/preview.png",
+          "sha256": "2a7e3efe754018ae00b4a3063935ebd697c79adaddbf83316ec52abd9b89a018",
+          "size_px": [
+            1600,
+            1200
+          ],
+          "bytes": 215707
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a/previews/preview-top.png",
+          "sha256": "805b479ebeb1ec630b5240f08720204376771ff7bb160909b0fb8e3781213deb",
+          "size_px": [
+            1600,
+            1200
+          ],
+          "bytes": 238903
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a/previews/preview-thumb.png",
+          "sha256": "152414cd4d451a7cf4332ff4ad6a5b36e6e958de0d3d68b3bb4062bbc848478e",
+          "size_px": [
+            360,
+            270
+          ],
+          "bytes": 44608
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a/previews/connection-overview.png",
+          "sha256": "f12eb00c5873cb9f45803279c81970cdfa12cdc2f7ef340f2609c60440b27ea1",
+          "size_px": [
+            2000,
+            8136
+          ],
+          "bytes": 1172468
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-mirrored-alignment-a/previews/preview.png",
+          "sha256": "082cbad9f596cedc205385e2082dd00c8d8985dcf40f05135de89eff887dbb22",
+          "size_px": [
+            1600,
+            1200
+          ],
+          "bytes": 218500
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-mirrored-alignment-a/previews/preview-top.png",
+          "sha256": "b5dc94bc264798d4ce0a51eaace2d13bce54592d6b529f460fea5a4e94c2363c",
+          "size_px": [
+            1600,
+            1200
+          ],
+          "bytes": 200657
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-mirrored-alignment-a/previews/preview-thumb.png",
+          "sha256": "e43bc7521be404ebd7c965e74b41b8295a67fa4bbdb3b0dfed6f2e077d9a928c",
+          "size_px": [
+            360,
+            270
+          ],
+          "bytes": 45956
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-mirrored-alignment-a/previews/connection-overview.png",
+          "sha256": "9c91ef61d35741b2a8065d5cca97ce98c2126ec4b1288e752502edecf8c3d511",
+          "size_px": [
+            2000,
+            8136
+          ],
+          "bytes": 1175485
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a/previews/preview.png",
+          "sha256": "9cc989b010841670a6b34905e9e9ddd52942f87f4cca412c3287babbac39a257",
+          "size_px": [
+            1600,
+            1200
+          ],
+          "bytes": 217618
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a/previews/preview-top.png",
+          "sha256": "f47f976d8dee3252af7110adc08db35b5e716c9618eada67cd812a6a993ebfef",
+          "size_px": [
+            1600,
+            1200
+          ],
+          "bytes": 200294
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a/previews/preview-thumb.png",
+          "sha256": "70289cc403289cdbca5bd857709e9c18c0c4dd3fac9ecfcc2ca1e41d7f022ec3",
+          "size_px": [
+            360,
+            270
+          ],
+          "bytes": 45603
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a/previews/connection-overview.png",
+          "sha256": "1011629d01530be02ae2e862de89f21258c1d917305e1939c999843cc5879f5f",
+          "size_px": [
+            2000,
+            8136
+          ],
+          "bytes": 1174042
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a/previews/preview.png",
+          "sha256": "15e906580e9d43f8be2a637dab96e782423f54224ab1e909854958b4545d0c61",
+          "size_px": [
+            1600,
+            1200
+          ],
+          "bytes": 215079
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a/previews/preview-top.png",
+          "sha256": "e6419a4f51728c15b9a7959072e523b70b23192628f07ba13c0ec0536ad4486b",
+          "size_px": [
+            1600,
+            1200
+          ],
+          "bytes": 237049
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a/previews/preview-thumb.png",
+          "sha256": "bcf2d6a247cfcaadca1cca5ad44c749520cb0626a82cd02b0427680bda0a8166",
+          "size_px": [
+            360,
+            270
+          ],
+          "bytes": 43521
+        },
+        {
+          "path": "domains/highway/00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a/previews/connection-overview.png",
+          "sha256": "a94facfd6cc3f7e536f2e28d052d5602dd1d37b7d0ae7063c618ee8f34350d6a",
+          "size_px": [
+            2000,
+            8136
+          ],
+          "bytes": 1172007
+        }
+      ],
+      "connector_freshness_passed": true,
+      "manual_observations_added": 0,
+      "private_retained_capture_sha256": "a4fd91ab4015b36738b9c42f4ef74289fa9da73ab41ed98d6c26ce11f3a86d69"
+    }
+  },
+  "actual_saved_native_markings": {
+    "passed": true,
+    "report_sha256": "0bfd8ed49849df52e6384160a374404e89639f83561247f245cf5bdd9311c94b",
+    "sampled_driver_left_marks": 48,
+    "encoded_wrong_side_UV_controls_rejected": 8,
+    "sampled_color_residuals": {
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a": {
+        "maximum_sample_step_m": 0.03125,
+        "minimum_interface_edge_length_m": 0.0001,
+        "position_composition_bound_m": 4e-06,
+        "sample_count": 1723,
+        "summaries": [
+          {
+            "deck": "upper",
+            "interface": "dd",
+            "samples": 475,
+            "observed_max_RGB_channel_error": 2.9618885822215617,
+            "observed_mean_RGB_channel_error": 0.1171446941407979,
+            "hard_yellow_threshold_disagreements": 0,
+            "source_yellow_samples": 8,
+            "worst_sample": {
+              "deck": "upper",
+              "interface": "dd",
+              "ENH_m": [
+                -1.965263387431269,
+                -3.677193102629288,
+                14.998246192932129
+              ],
+              "native_UV": [
+                0.22219266839649365,
+                0.043529864562594375
+              ],
+              "atlas_UV": [
+                0.071162823307235,
+                0.20044417622857413
+              ],
+              "native_RGB": [
+                107.36478424072268,
+                104.42412268597148,
+                104.54279957646912
+              ],
+              "owned_RGB": [
+                110.31078475860365,
+                107.37541922529932,
+                107.50468815869068
+              ],
+              "max_RGB_channel_error": 2.9618885822215617,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 7.106397249565113e-08
+            }
+          },
+          {
+            "deck": "upper",
+            "interface": "ground",
+            "samples": 387,
+            "observed_max_RGB_channel_error": 6.03485107421875,
+            "observed_mean_RGB_channel_error": 0.2959497420788944,
+            "hard_yellow_threshold_disagreements": 1,
+            "source_yellow_samples": 5,
+            "worst_sample": {
+              "deck": "upper",
+              "interface": "ground",
+              "ENH_m": [
+                -72.0,
+                -51.75735878944397,
+                0.0
+              ],
+              "native_UV": [
+                0.6660531759262085,
+                1.3124998807907104
+              ],
+              "atlas_UV": [
+                0.1821374148130417,
+                0.8528634309768677
+              ],
+              "native_RGB": [
+                41.0,
+                38.00006103515625,
+                33.0
+              ],
+              "owned_RGB": [
+                42.50871276855469,
+                39.38676054868847,
+                39.03485107421875
+              ],
+              "max_RGB_channel_error": 6.03485107421875,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 0.0
+            }
+          },
+          {
+            "deck": "lower",
+            "interface": "dd",
+            "samples": 474,
+            "observed_max_RGB_channel_error": 1.0965760577052777,
+            "observed_mean_RGB_channel_error": 0.08718035088515906,
+            "hard_yellow_threshold_disagreements": 0,
+            "source_yellow_samples": 8,
+            "worst_sample": {
+              "deck": "lower",
+              "interface": "dd",
+              "ENH_m": [
+                4.380359649658203,
+                -10.037214279174805,
+                7.495886325836182
+              ],
+              "native_UV": [
+                0.21629251280556555,
+                0.5428931142972864
+              ],
+              "atlas_UV": [
+                0.5697201608339553,
+                0.20044417679309845
+              ],
+              "native_RGB": [
+                124.73484230041502,
+                126.17851738307783,
+                124.17851738307785
+              ],
+              "owned_RGB": [
+                123.86904229654928,
+                125.08194132537255,
+                123.27887525559397
+              ],
+              "max_RGB_channel_error": 1.0965760577052777,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 0.0
+            }
+          },
+          {
+            "deck": "lower",
+            "interface": "ground",
+            "samples": 387,
+            "observed_max_RGB_channel_error": 5.530760158315928,
+            "observed_mean_RGB_channel_error": 0.3205252211760098,
+            "hard_yellow_threshold_disagreements": 1,
+            "source_yellow_samples": 7,
+            "worst_sample": {
+              "deck": "lower",
+              "interface": "ground",
+              "ENH_m": [
+                -61.04201351569387,
+                -62.71534547823645,
+                0.0
+              ],
+              "native_UV": [
+                0.7786227828554446,
+                0.8124999403953552
+              ],
+              "atlas_UV": [
+                0.7105323255310723,
+                0.8528634316977433
+              ],
+              "native_RGB": [
+                65.83628379450309,
+                64.67256758900618,
+                57.0
+              ],
+              "owned_RGB": [
+                71.36704395281902,
+                68.65959462472802,
+                56.41129317045369
+              ],
+              "max_RGB_channel_error": 5.530760158315928,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 9.227851903530387e-08
+            }
+          }
+        ],
+        "continuous_color_bound_proved": false
+      },
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-mirrored-alignment-a": {
+        "maximum_sample_step_m": 0.03125,
+        "minimum_interface_edge_length_m": 0.0001,
+        "position_composition_bound_m": 4e-06,
+        "sample_count": 1723,
+        "summaries": [
+          {
+            "deck": "upper",
+            "interface": "dd",
+            "samples": 475,
+            "observed_max_RGB_channel_error": 0.6316580368829534,
+            "observed_mean_RGB_channel_error": 0.05852878168904707,
+            "hard_yellow_threshold_disagreements": 0,
+            "source_yellow_samples": 8,
+            "worst_sample": {
+              "deck": "upper",
+              "interface": "dd",
+              "ENH_m": [
+                -1.2526265070205782,
+                -4.415308987222066,
+                14.998246192932129
+              ],
+              "native_UV": [
+                0.7137810006374266,
+                0.5424037284967376
+              ],
+              "atlas_UV": [
+                0.19408247856105248,
+                0.20044417679309842
+              ],
+              "native_RGB": [
+                50.47432411554419,
+                49.51835687602397,
+                48.5919042447718
+              ],
+              "owned_RGB": [
+                51.105982152427146,
+                49.48091609303549,
+                48.61068706977662
+              ],
+              "max_RGB_channel_error": 0.6316580368829534,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 4.440892098500626e-16
+            }
+          },
+          {
+            "deck": "upper",
+            "interface": "ground",
+            "samples": 387,
+            "observed_max_RGB_channel_error": 5.530691494514116,
+            "observed_mean_RGB_channel_error": 0.3205330818123889,
+            "hard_yellow_threshold_disagreements": 1,
+            "source_yellow_samples": 7,
+            "worst_sample": {
+              "deck": "upper",
+              "interface": "ground",
+              "ENH_m": [
+                -45.04201351569387,
+                -78.71534547823646,
+                0.0
+              ],
+              "native_UV": [
+                0.7786227828554446,
+                0.8124999403953552
+              ],
+              "atlas_UV": [
+                0.21053234043207092,
+                0.8528634316977484
+              ],
+              "native_RGB": [
+                65.83628379450309,
+                64.67256758900618,
+                57.0
+              ],
+              "owned_RGB": [
+                71.3669752890172,
+                68.65953359023752,
+                56.41129951921236
+              ],
+              "max_RGB_channel_error": 5.530691494514116,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 9.227851903530387e-08
+            }
+          },
+          {
+            "deck": "lower",
+            "interface": "dd",
+            "samples": 474,
+            "observed_max_RGB_channel_error": 4.71923802716708,
+            "observed_mean_RGB_channel_error": 0.12210867327866423,
+            "hard_yellow_threshold_disagreements": 0,
+            "source_yellow_samples": 8,
+            "worst_sample": {
+              "deck": "lower",
+              "interface": "dd",
+              "ENH_m": [
+                -1.9717490828555564,
+                -3.685105614040209,
+                7.495886325836182
+              ],
+              "native_UV": [
+                0.22216729884562286,
+                0.042893522621496864
+              ],
+              "atlas_UV": [
+                0.5711667528880555,
+                0.20044417667461523
+              ],
+              "native_RGB": [
+                107.64708077264973,
+                104.71869298015623,
+                104.86191739516926
+              ],
+              "owned_RGB": [
+                111.68572073437085,
+                108.74834325568642,
+                109.58115542233634
+              ],
+              "max_RGB_channel_error": 4.71923802716708,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 1.5165884336701328e-08
+            }
+          },
+          {
+            "deck": "lower",
+            "interface": "ground",
+            "samples": 387,
+            "observed_max_RGB_channel_error": 6.034912109375,
+            "observed_mean_RGB_channel_error": 0.2959456209120358,
+            "hard_yellow_threshold_disagreements": 1,
+            "source_yellow_samples": 5,
+            "worst_sample": {
+              "deck": "lower",
+              "interface": "ground",
+              "ENH_m": [
+                -56.0,
+                -67.75735878944397,
+                0.0
+              ],
+              "native_UV": [
+                0.6660531759262085,
+                1.3124998807907104
+              ],
+              "atlas_UV": [
+                0.6821374297142029,
+                0.8528634309768677
+              ],
+              "native_RGB": [
+                41.0,
+                38.00006103515625,
+                33.0
+              ],
+              "owned_RGB": [
+                42.50872802734375,
+                39.386779595166445,
+                39.034912109375
+              ],
+              "max_RGB_channel_error": 6.034912109375,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 0.0
+            }
+          }
+        ],
+        "continuous_color_bound_proved": false
+      },
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a": {
+        "maximum_sample_step_m": 0.03125,
+        "minimum_interface_edge_length_m": 0.0001,
+        "position_composition_bound_m": 4e-06,
+        "sample_count": 1723,
+        "summaries": [
+          {
+            "deck": "upper",
+            "interface": "dd",
+            "samples": 475,
+            "observed_max_RGB_channel_error": 3.693326145801592,
+            "observed_mean_RGB_channel_error": 0.16114889158201712,
+            "hard_yellow_threshold_disagreements": 0,
+            "source_yellow_samples": 8,
+            "worst_sample": {
+              "deck": "upper",
+              "interface": "dd",
+              "ENH_m": [
+                -1.9565361306287241,
+                -3.7146160671676416,
+                14.998246192932129
+              ],
+              "native_UV": [
+                0.22423222164313,
+                0.04226168957741364
+              ],
+              "atlas_UV": [
+                0.07164867519384764,
+                0.200444176775547
+              ],
+              "native_RGB": [
+                98.98753135856947,
+                95.8580539135687,
+                95.19565028292588
+              ],
+              "owned_RGB": [
+                102.19372978125776,
+                99.00960808200776,
+                98.88897642872747
+              ],
+              "max_RGB_channel_error": 3.693326145801592,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 2.322479004211094e-09
+            }
+          },
+          {
+            "deck": "upper",
+            "interface": "ground",
+            "samples": 387,
+            "observed_max_RGB_channel_error": 6.034851074218523,
+            "observed_mean_RGB_channel_error": 0.2959497420314166,
+            "hard_yellow_threshold_disagreements": 1,
+            "source_yellow_samples": 5,
+            "worst_sample": {
+              "deck": "upper",
+              "interface": "ground",
+              "ENH_m": [
+                -40.0,
+                -83.75735878944397,
+                0.0
+              ],
+              "native_UV": [
+                0.6660531759262085,
+                1.3124998807907104
+              ],
+              "atlas_UV": [
+                0.18213741481304163,
+                0.8528634309768677
+              ],
+              "native_RGB": [
+                41.0,
+                38.00006103515625,
+                33.0
+              ],
+              "owned_RGB": [
+                42.50871276855463,
+                39.3867605486884,
+                39.03485107421852
+              ],
+              "max_RGB_channel_error": 6.034851074218523,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 0.0
+            }
+          },
+          {
+            "deck": "lower",
+            "interface": "dd",
+            "samples": 474,
+            "observed_max_RGB_channel_error": 1.0965760577052777,
+            "observed_mean_RGB_channel_error": 0.08718035088544895,
+            "hard_yellow_threshold_disagreements": 0,
+            "source_yellow_samples": 8,
+            "worst_sample": {
+              "deck": "lower",
+              "interface": "dd",
+              "ENH_m": [
+                4.380359649658203,
+                -10.037214279174805,
+                7.495886325836182
+              ],
+              "native_UV": [
+                0.21629251280556555,
+                0.5428931142972864
+              ],
+              "atlas_UV": [
+                0.5697201608339553,
+                0.20044417679309845
+              ],
+              "native_RGB": [
+                124.73484230041502,
+                126.17851738307783,
+                124.17851738307785
+              ],
+              "owned_RGB": [
+                123.86904229654928,
+                125.08194132537255,
+                123.27887525559397
+              ],
+              "max_RGB_channel_error": 1.0965760577052777,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 0.0
+            }
+          },
+          {
+            "deck": "lower",
+            "interface": "ground",
+            "samples": 387,
+            "observed_max_RGB_channel_error": 5.530760159063874,
+            "observed_mean_RGB_channel_error": 0.32052522102042386,
+            "hard_yellow_threshold_disagreements": 1,
+            "source_yellow_samples": 7,
+            "worst_sample": {
+              "deck": "lower",
+              "interface": "ground",
+              "ENH_m": [
+                -61.04201351569387,
+                -62.71534547823645,
+                0.0
+              ],
+              "native_UV": [
+                0.7786227828554446,
+                0.8124999403953552
+              ],
+              "atlas_UV": [
+                0.71053232553091,
+                0.8528634316977484
+              ],
+              "native_RGB": [
+                65.83628379450309,
+                64.67256758900618,
+                57.0
+              ],
+              "owned_RGB": [
+                71.36704395356696,
+                68.65959462539286,
+                56.41129317038084
+              ],
+              "max_RGB_channel_error": 5.530760159063874,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 9.227851903530387e-08
+            }
+          }
+        ],
+        "continuous_color_bound_proved": false
+      },
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a": {
+        "maximum_sample_step_m": 0.03125,
+        "minimum_interface_edge_length_m": 0.0001,
+        "position_composition_bound_m": 4e-06,
+        "sample_count": 1723,
+        "summaries": [
+          {
+            "deck": "upper",
+            "interface": "dd",
+            "samples": 475,
+            "observed_max_RGB_channel_error": 0.6752917560913474,
+            "observed_mean_RGB_channel_error": 0.05655553900873423,
+            "hard_yellow_threshold_disagreements": 0,
+            "source_yellow_samples": 8,
+            "worst_sample": {
+              "deck": "upper",
+              "interface": "dd",
+              "ENH_m": [
+                -1.1565989481239785,
+                -4.489570071057575,
+                14.998246192932129
+              ],
+              "native_UV": [
+                0.7062552702136156,
+                0.5433656253465792
+              ],
+              "atlas_UV": [
+                0.19217699075617442,
+                0.20044417679309845
+              ],
+              "native_RGB": [
+                46.0,
+                45.90067458734279,
+                45.90067458734279
+              ],
+              "owned_RGB": [
+                46.67529175609135,
+                45.8946192671613,
+                45.8946192671613
+              ],
+              "max_RGB_channel_error": 0.6752917560913474,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 0.0
+            }
+          },
+          {
+            "deck": "upper",
+            "interface": "ground",
+            "samples": 387,
+            "observed_max_RGB_channel_error": 5.5306914937647775,
+            "observed_mean_RGB_channel_error": 0.3205330819680336,
+            "hard_yellow_threshold_disagreements": 1,
+            "source_yellow_samples": 7,
+            "worst_sample": {
+              "deck": "upper",
+              "interface": "ground",
+              "ENH_m": [
+                -77.04201351569387,
+                -46.71534547823645,
+                0.0
+              ],
+              "native_UV": [
+                0.7786227828554446,
+                0.8124999403953552
+              ],
+              "atlas_UV": [
+                0.21053234043223354,
+                0.8528634316977433
+              ],
+              "native_RGB": [
+                65.83628379450309,
+                64.67256758900618,
+                57.0
+              ],
+              "owned_RGB": [
+                71.36697528826787,
+                68.65953358957142,
+                56.41129951928535
+              ],
+              "max_RGB_channel_error": 5.5306914937647775,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 9.227851903530387e-08
+            }
+          },
+          {
+            "deck": "lower",
+            "interface": "dd",
+            "samples": 474,
+            "observed_max_RGB_channel_error": 4.719238027165844,
+            "observed_mean_RGB_channel_error": 0.12210867327881487,
+            "hard_yellow_threshold_disagreements": 0,
+            "source_yellow_samples": 8,
+            "worst_sample": {
+              "deck": "lower",
+              "interface": "dd",
+              "ENH_m": [
+                -1.9717490828555564,
+                -3.685105614040209,
+                7.495886325836182
+              ],
+              "native_UV": [
+                0.22216729884562286,
+                0.042893522621496864
+              ],
+              "atlas_UV": [
+                0.5711667528880554,
+                0.20044417667461487
+              ],
+              "native_RGB": [
+                107.64708077264973,
+                104.71869298015623,
+                104.86191739516926
+              ],
+              "owned_RGB": [
+                111.68572073436982,
+                108.74834325568546,
+                109.5811554223351
+              ],
+              "max_RGB_channel_error": 4.719238027165844,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 1.5165884336701328e-08
+            }
+          },
+          {
+            "deck": "lower",
+            "interface": "ground",
+            "samples": 387,
+            "observed_max_RGB_channel_error": 6.034912109375455,
+            "observed_mean_RGB_channel_error": 0.2959456209594621,
+            "hard_yellow_threshold_disagreements": 1,
+            "source_yellow_samples": 5,
+            "worst_sample": {
+              "deck": "lower",
+              "interface": "ground",
+              "ENH_m": [
+                -56.0,
+                -67.75735878944397,
+                0.0
+              ],
+              "native_UV": [
+                0.6660531759262085,
+                1.3124998807907104
+              ],
+              "atlas_UV": [
+                0.682137429714203,
+                0.8528634309768677
+              ],
+              "native_RGB": [
+                41.0,
+                38.00006103515625,
+                33.0
+              ],
+              "owned_RGB": [
+                42.508728027343864,
+                39.38677959516659,
+                39.034912109375455
+              ],
+              "max_RGB_channel_error": 6.034912109375455,
+              "source_yellow": false,
+              "owned_yellow": false,
+              "actual_face_distance_m": 0.0
+            }
+          }
+        ],
+        "continuous_color_bound_proved": false
+      }
+    },
+    "retained_four_complete_DATs_byte_identical": [
+      {
+        "id": "ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile",
+        "sha256": "08cc749d37cf5be772a1134541d5d47e379047622d706f699567ea964c46a73d",
+        "bytes": 7436870,
+        "equal_complete_DAT_bytes": true,
+        "baseline_receipt_sha256": "862393c6c84fb1fdbb44574dbf44ecfa97af71ab1e86bb796e25bc8355e698b3"
+      },
+      {
+        "id": "ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile-mirrored",
+        "sha256": "32c60487207bc1b6d68aa6f17ed547481851096d5b3e1b9017563ba1ddcc8def",
+        "bytes": 7437354,
+        "equal_complete_DAT_bytes": true,
+        "baseline_receipt_sha256": "862393c6c84fb1fdbb44574dbf44ecfa97af71ab1e86bb796e25bc8355e698b3"
+      },
+      {
+        "id": "ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile",
+        "sha256": "4911ec93b72c3d92bd403bf5911c9620e076ac2cc157923d962ab512ace532d3",
+        "bytes": 7472934,
+        "equal_complete_DAT_bytes": true,
+        "baseline_receipt_sha256": "862393c6c84fb1fdbb44574dbf44ecfa97af71ab1e86bb796e25bc8355e698b3"
+      },
+      {
+        "id": "ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile-mirrored",
+        "sha256": "3344c522515adccf258f78d8e4ca4028ff42f57f5465eee91d1b3c301cf27099",
+        "bytes": 7465214,
+        "equal_complete_DAT_bytes": true,
+        "baseline_receipt_sha256": "862393c6c84fb1fdbb44574dbf44ecfa97af71ab1e86bb796e25bc8355e698b3"
+      }
+    ],
+    "scope": {
+      "sampled_driver_left_only": true,
+      "observed_RGB_maxima_are_not_continuous_bounds": true,
+      "inherited_native_ground_phase_break_may_have_distinct_source_V_at_same_XYZ": true,
+      "owned_atlas_resampling_adds_small_nonzero_color_residuals": true,
+      "complete_paint_continuity_verified": false,
+      "game_appearance_verified": false,
+      "native_donor_archives_read": true,
+      "installed_custom_piece_files_read": false,
+      "Plugins_written": false,
+      "donor_locations_withheld": true,
+      "compiler_invoked": false
+    }
+  },
+  "bounded_retained_provenance_refresh": {
+    "passed": true,
+    "report_sha256": "2a65345c48f9e354f17d82a719fe806140a8a7c7d56eb28ad400b2c53a2a6fc1",
+    "old_subject_files_checked": 84,
+    "provenance_paths_changed": [
+      "domains/highway/00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile-mirrored/connector-data.json",
+      "domains/highway/00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile-mirrored/evidence/connection-overview.json",
+      "domains/highway/00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile/connector-data.json",
+      "domains/highway/00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile/evidence/connection-overview.json",
+      "domains/highway/00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile-mirrored/connector-data.json",
+      "domains/highway/00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile-mirrored/evidence/connection-overview.json",
+      "domains/highway/00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile/connector-data.json",
+      "domains/highway/00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile/evidence/connection-overview.json"
+    ],
+    "other_file_identities_unchanged": 76,
+    "canonical_preview_card_PNGs_unchanged": 16,
+    "all_old_PNGs_and_identities_unchanged": 21,
+    "measured_connector_construction_group_facts_and_complete_DATs_unchanged": true,
+    "graphics_rendered": false,
+    "manual_observations_reset": false
+  },
+  "archives": [
+    {
+      "kind": "ordinary_eight_type_binary",
+      "filename": "ddrhw-diagonal-transitions-a-eight-types-final-01.zip",
+      "sha256": "c5af6a81195c032c031819272c50b35346b6fcb4a7c83210aae7a36bfe6810d3",
+      "bytes": 350168391,
+      "members": 4051,
+      "independent_audit_passed": true
+    },
+    {
+      "kind": "portable_source",
+      "filename": "ddrhw-diagonal-transitions-a-source-final-01.zip",
+      "sha256": "340e3b62b0f6a05bdf97350353cb4c10fd8c9e8df2595323f7ab97a8eab987a8",
+      "bytes": 313845146,
+      "members": 4039,
+      "independent_audit_passed": true
+    }
+  ],
+  "archive_audit_sha256": "cc7422bf1501cc3a948e33575df9123b5410ef0d62732dca9c18b32cd10eabe3",
+  "archive_freeze_policy": "Both archives were frozen and audited before this post-package receipt. This receipt is intentionally outside both ZIPs; it does not alter compiled payloads, implementation, tests, manuals, or artwork.",
+  "additive_installation": {
+    "committed": true,
+    "candidate_manifest_sha256": "5a0ae26c48755bf541aa54d43cc52562a75665838fc1e16a002afd52d9498510",
+    "install_result_sha256": "3ccc0780b1d4c9083148adfa5313ea78d8e275ae1a3b9c7f923cd7dafa0d3538",
+    "baseline_receipt_sha256": "862393c6c84fb1fdbb44574dbf44ecfa97af71ab1e86bb796e25bc8355e698b3",
+    "installed_receipt_sha256": "eb7621af75fd41eca91900918f21a246cdf3007a2678a02e4dafbf4625f64397",
+    "new_piece_DATs": 4,
+    "retained_piece_DATs": 233,
+    "all_retained_identities_unchanged": true,
+    "retained_identity_fields": [
+      "sha256",
+      "device",
+      "inode",
+      "size",
+      "mtime_ns"
+    ],
+    "controller_DATs_changed": 1,
+    "menu_DATs_changed": 1,
+    "installation_receipts_changed": 1,
+    "atomic_target_writes": 7,
+    "piece_types_after": 237,
+    "installable_DATs_after": 239,
+    "native_profile_donors": 13,
+    "transaction_required_scan_roots": 5,
+    "native_helper_solution_rows_reused_unchanged": 16,
+    "old_menu_resource_payloads_unchanged": 668,
+    "new_menu_resources": 4,
+    "RUL1_and_NetworkINI_byte_identical": true,
+    "prior_F880_terrain_constraint_definition_preserved": true,
+    "standard_external_backup_verified": true,
+    "backup_id": "a6757d1f0bfd465da23652ddd7c6e372",
+    "backup_metadata_sha256": "764b7684045690255fe91a73c368a6e6ef9e5fe093d8e605bdb6e20c959d06c8",
+    "committed_journal_sha256": "6d0e1fe20dc56274e2988a284f5e8eba67f27dc7bebbd4316bc80b504cb753bd",
+    "committed_transaction_journal_verified": true,
+    "post_install_audit_sha256": "78b9092578cdf10dc8e4b1cc37994de93d203704c99eb0967beb0fb15801d929",
+    "independent_second_reader_sha256": "5e0d2f7be995fc4478b5ea8d6e46736e953cb6c0f8f13ea88ca93dcf0436694a",
+    "actual_live_files_backup_and_journal_rechecked": true
+  },
+  "current_evidence_sha256": {
+    "ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a": {
+      "compiled-verification.jsonc": "f6191f2b6f672a274a2bda832fcc0bba03e5d8a5ddb24cad8c4aa007e7ce0b1d",
+      "native-markings-verification.jsonc": "1c45e4d9558adddef3dc37a4e92034c07deb5020fc6577d42503ecba8e21b675",
+      "preview.json": "6cf02be18d55f0d5f34d61ae7cb89acbc9c9471b914f69ebe296d14dac107c7c",
+      "preview-top.json": "0173f24de94a2047068dedf04cf0e6f19c3f9a64571515129593f8b2f90c434d",
+      "connection-overview.json": "dbbfcaac32cd9427f75f930d4cc1b3fc87897dcd5991d57906090cfbe61e7012"
+    },
+    "ddrhw-l1-l2-rhw-l0-ramp-diagonal-mirrored-alignment-a": {
+      "compiled-verification.jsonc": "8863e1d319eadf9be7240ba3711c55726b05bffd7920e5cc57b37e3f55c98f8a",
+      "native-markings-verification.jsonc": "9cc667cdd045daecb1dfc3e935babb3f70e15fd478fdd82403a17f5cacafd2e4",
+      "preview.json": "25d12ff13b2b4268fbdc181d0fa3f49aea895b07462a64f205efaec88c3b0cea",
+      "preview-top.json": "e7306a608b275aa38e0f05170f8049860b16e236eca5f536238dbd895059fa64",
+      "connection-overview.json": "86348252da0a14bf442c3c9d62b094a0469c20bd1a6813a6b331b0fe25d2feb3"
+    },
+    "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a": {
+      "compiled-verification.jsonc": "9b8a7d1220a0b909cf504a26f3789697754f2b4459529ce37a1c30e6363efc53",
+      "native-markings-verification.jsonc": "e603f7b060c8078ea223052630b48b60ba702d66be33658ac8d781d01bb04014",
+      "preview.json": "36ea97ac6ea4597db429be30ec49e69d7916ffbbfbea36420ce37456f12a9c50",
+      "preview-top.json": "5c9e2c615976b2d6fb248ca073b95ca2e16306dfb5eed6ca714d0404c75169be",
+      "connection-overview.json": "4efc194320981abbc27bfbf7638f5df89c5ab739238e6bf1e5ebeee675a71af3"
+    },
+    "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a": {
+      "compiled-verification.jsonc": "d716188b04c29d23b5261ed975e74af764c52486a17a940801645b5edf2b1388",
+      "native-markings-verification.jsonc": "8622e901512eeeeb28bc119f9f5e7f09d12936658342392c629994359b7d42f7",
+      "preview.json": "c716fe026bc793cf4d37107fc4ab88c261686e6edfc2e54ca9e4337b0b4fb583",
+      "preview-top.json": "193bf6e1bf65421d0e60c09f15f7980f3b792afafe7395aceb6c44f1f336672f",
+      "connection-overview.json": "3b4460dac4822a5251f3dde06dc402f0e8b9207b5cfdeae1b44274ea322c406f"
+    }
+  },
+  "human_checks": {
+    "new_piece_game_operation": "unverified",
+    "new_piece_game_appearance": "unverified",
+    "human_canonical_image_approval": "unverified",
+    "exact_first_A_candidate_acceptance": "unverified",
+    "game_or_manual_observation_results_changed": false,
+    "trackers": {
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a": {
+        "tracker_sha256": "4ed3a023d293e406628c5e8a49dc73570e28be2db9308b91723c3d41813eda9e",
+        "unverified_cases": 101
+      },
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-mirrored-alignment-a": {
+        "tracker_sha256": "44149c91c4df405fbffecd1dc94f0be116b08c3a57983c26c347873892e1b599",
+        "unverified_cases": 101
+      },
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a": {
+        "tracker_sha256": "47b97eb7d79b86139ca7898abba6543ec6b9b907926c028abb46825ad448def8",
+        "unverified_cases": 101
+      },
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a": {
+        "tracker_sha256": "69ec954d7b6ea35f0b8accf01556faae2447786868bcc30fc3ed78d95ddc8f6c",
+        "unverified_cases": 101
+      }
+    },
+    "restart_required_for_new_controller_and_menu": true,
+    "fresh_placement_required_for_new_type_testing": true
+  },
+  "alignment_production": {
+    "implemented_alignment": "a",
+    "implemented_native_cut_families": 1,
+    "other_longitudinal_cut_status": "WAITING",
+    "dependency": "Do not produce another native cut or Alignment B until the user accepts this exact first-A candidate. Software tests, previews, installation, and agent review do not supply that acceptance."
+  },
+  "menu_selection": {
+    "anchor": "SCP | [HW] DD RHW-4 \u2014 L1/L2 \u2194 RHW-4 L0 \u2014 Diagonal Ramp \u2014 Alignment A",
+    "tab_presses_from_anchor": {
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a": 0,
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-mirrored-alignment-a": 1,
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a": 2,
+      "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a": 3
+    }
+  },
+  "producer_sha256": "0672660d27e032427bc9cc7b1ccd80941769217342ace90ae9d3a5e284cd1288",
+  "privacy": {
+    "personal_absolute_paths_published": false,
+    "private_locations_omitted": true,
+    "backup_identifier_is_basename_only": true,
+    "measured_results_changed_by_redaction": false
+  },
+  "externally_published": false,
+  "subject_id": "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a"
+}

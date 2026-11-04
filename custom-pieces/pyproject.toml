@@ -8,7 +8,7 @@ name = "simons-custom-pieces"
 version = "0.6.0.dev1"
 description = "SimCity 4 custom network piece authoring framework"
 requires-python = ">=3.11"
-dependencies = ["Pillow>=10,<13"]
+dependencies = ["Pillow>=10,<13", "NumPy>=1.26,<3", "Shapely>=2.2,<3"]
 
 [project.optional-dependencies]
 preview = ["NumPy>=1.26,<3"]

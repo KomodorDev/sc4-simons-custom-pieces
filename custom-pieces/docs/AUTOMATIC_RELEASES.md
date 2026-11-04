@@ -77,7 +77,7 @@ A **prerelease** is a downloadable experimental version. These installers are ma
 
 GitHub does not access your personal game folder or **Plugins folder**, where the game reads add-ons. The download excludes game and NAM archives. Players need the supported game and NAM already installed.
 
-The player extracts the ZIP, opens **SCP Installer.exe**, selects **Choose game folder…**, and selects **Install**. The installer finds Plugins, checks the original resources, builds all implemented pieces, prepares the trumpet's assembly button, verifies the result, saves a backup, and installs. Python is included; players do not need to install it or type commands. The [player guide](INSTALLER.md) covers requirements, extraction, Windows prompts, folder selection, and Undo.
+The player extracts the ZIP, opens **SCP Installer.exe**, selects **Choose game folder…**, and selects **Install**. The installer finds Plugins, checks the original resources, builds all implemented pieces, prepares the Rail trumpet and Highway assembly buttons, verifies the result, saves a backup, and installs. Python is included; players do not need to install it or type commands. The [player guide](INSTALLER.md) covers requirements, extraction, Windows prompts, folder selection, and Undo.
 
 ## 6. What if something fails?
 

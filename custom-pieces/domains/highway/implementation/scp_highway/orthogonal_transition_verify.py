@@ -12,6 +12,8 @@ from functools import lru_cache
 import hashlib
 import math
 import re
+from types import MappingProxyType
+from typing import NamedTuple
 
 from scp.dbpf import require
 from scp.track_paths import PATH
@@ -21,6 +23,32 @@ PIECE_ID = 'ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile'
 MIRRORED_PIECE_ID = PIECE_ID + '-mirrored'
 RECIPE = 'highway_ddrhw_orthogonal_l0_transition'
 MIRRORED_RECIPE = RECIPE + '_mirrored'
+OPPOSITE_SIDE_PIECE_ID = 'ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile'
+OPPOSITE_SIDE_MIRRORED_PIECE_ID = OPPOSITE_SIDE_PIECE_ID + '-mirrored'
+LOWER_BEND_RIGHT = 'lower-bend-right'
+LOWER_BEND_RIGHT_PIECE_ID = 'ddrhw-l1-l2-rhw-l0-orthogonal-lower-right-6tile'
+
+
+class TransitionPhase(NamedTuple):
+    key: str
+    piece_id: str
+    recipe: str
+    physical_reflection: bool
+    traffic_reversed: bool
+    native_cross_section_reflection: bool
+
+
+# Independently reviewed expectations, rather than the writer's variant table.
+PHASES = MappingProxyType({
+    'original': TransitionPhase('original', PIECE_ID, RECIPE, False, False, False),
+    'mirrored': TransitionPhase('mirrored', MIRRORED_PIECE_ID, MIRRORED_RECIPE, True, True, False),
+    'opposite-side': TransitionPhase('opposite-side', OPPOSITE_SIDE_PIECE_ID,
+        RECIPE+'_opposite_side', True, False, True),
+    'opposite-side-mirrored': TransitionPhase('opposite-side-mirrored', OPPOSITE_SIDE_MIRRORED_PIECE_ID,
+        RECIPE+'_opposite_side_mirrored', False, True, True),
+    LOWER_BEND_RIGHT: TransitionPhase(LOWER_BEND_RIGHT, LOWER_BEND_RIGHT_PIECE_ID,
+        RECIPE+'_lower_bend_right', False, True, True),
+})
 CELLS = tuple((column, row) for row in range(6) for column in range(2))
 LENGTH = 96.0
 STATION_STEP = 0.25
@@ -44,12 +72,28 @@ def _number(value):
     return int(value, 16) if isinstance(value, str) else value
 
 
+def phase_for_piece(piece):
+    """Bind exact identities to independently declared shape and traffic phases."""
+    key = piece.get('transition_variant', 'original')
+    require(isinstance(key, str) and key in PHASES
+            and piece.get('id') == PHASES[key].piece_id,
+            'Transition identity and explicit mirrored variant do not agree')
+    return PHASES[key]
+
+
+def phase_for_options(*, mirrored=False, variant=None):
+    """Retain the old bool API while selecting new phases explicitly."""
+    require(type(mirrored) is bool, 'Transition mirrored option must be an exact boolean')
+    if variant is None:
+        return PHASES['mirrored' if mirrored else 'original']
+    require(mirrored is False and isinstance(variant, str) and variant in PHASES,
+            'An explicit transition variant cannot mix legacy mirrored options')
+    return PHASES[variant]
+
+
 def _mirrored(piece):
-    """Independently bind each exact identity to its authored traffic variant."""
-    original = piece.get('id') == PIECE_ID and piece.get('transition_variant', 'original') == 'original'
-    reflected = piece.get('id') == MIRRORED_PIECE_ID and piece.get('transition_variant') == 'mirrored'
-    require(original or reflected, 'Transition identity and explicit mirrored variant do not agree')
-    return reflected
+    """Legacy shape accessor; native traffic phase is independently declared."""
+    return phase_for_piece(piece).physical_reflection
 
 
 def _point(point):
@@ -137,10 +181,44 @@ def lower_height(s):
     return 7.5 * (1.0 - _cubic((s - 3.0) / 66.0))
 
 
-def lane_point(component, source_class, s, *, mirrored=False):
+def straight_upper_height(s):
+    """Integrate the straight deck's cubic grade easing over its 90 m run."""
+    def eased_distance(distance):
+        t = distance / 12.0
+        return 12.0 * t**3 * (1.0 - .5*t)
+
+    if s <= 3.0:
+        return 15.0
+    if s >= 93.0:
+        return 0.0
+    if s < 15.0:
+        distance = eased_distance(s - 3.0)
+    elif s > 81.0:
+        distance = 78.0 - eased_distance(93.0 - s)
+    else:
+        distance = s - 9.0
+    return 15.0 * (1.0 - distance / 78.0)
+
+
+def lower_bend_frame(component, s):
+    """Return the new deck centre and unit cross-section normal in east/north."""
+    displacement, derivative, _ = lateral(s) if component == 'lower' else (0., 0., 0.)
+    normal = 1.0 / math.hypot(1.0, derivative)
+    return (16.0 - displacement, 8.0 - s), (normal, -derivative * normal)
+
+
+def lane_point(component, source_class, s, *, mirrored=False, variant=None):
     """Return one measured native lane in world east/north/height metres."""
     require(component in ('upper', 'lower') and source_class in (0, 1), 'Unknown transition lane')
-    if mirrored:
+    phase = phase_for_options(mirrored=mirrored, variant=variant)
+    if phase.native_cross_section_reflection:
+        source_class = 1-source_class
+    if phase.key == LOWER_BEND_RIGHT:
+        center, normal = lower_bend_frame(component, s)
+        offset = (-2.5, 2.5)[source_class] if component == 'upper' else (2.5, -2.5)[source_class]
+        height = straight_upper_height(s) if component == 'upper' else lower_height(s)
+        return center[0] + offset*normal[0], center[1] + offset*normal[1], height
+    if phase.physical_reflection:
         east, north, height = lane_point(component, source_class, s)
         return 16.0-east, north, height
     if component == 'lower':
@@ -195,27 +273,28 @@ def _slice(points, component, source_class):
     return result
 
 
-@lru_cache(maxsize=2)
-def _expected_routes(mirrored=False):
+@lru_cache(maxsize=8)
+def _expected_routes(mirrored=False, *, variant=None):
+    phase = phase_for_options(mirrored=mirrored, variant=variant)
     result = {cell: [] for cell in CELLS}
     stations = [index * STATION_STEP for index in range(round(LENGTH / STATION_STEP) + 1)]
     for component in ('upper', 'lower'):
         for source_class in (0, 1):
-            points = [lane_point(component, source_class, s, mirrored=mirrored) for s in stations]
-            if (component == 'lower') != mirrored:
+            points = [lane_point(component, source_class, s, variant=phase.key) for s in stations]
+            if (component == 'lower') != phase.traffic_reversed:
                 points.reverse()
             for fragment in _slice(points, component, source_class):
                 result[fragment['cell']].append(fragment)
     return result
 
 
-def expected_cell_routes(*, mirrored=False):
-    return deepcopy(_expected_routes(mirrored))
+def expected_cell_routes(*, mirrored=False, variant=None):
+    return deepcopy(_expected_routes(mirrored, variant=variant))
 
 
 def _spec(piece):
-    mirrored = _mirrored(piece)
-    expected_recipe = MIRRORED_RECIPE if mirrored else RECIPE
+    phase = phase_for_piece(piece)
+    expected_recipe = phase.recipe
     require(piece.get('recipe') == expected_recipe and piece.get('domain') == 'highway',
             'Wrong registered orthogonal DD transition owner or recipe')
     require(piece.get('footprint') == [2, 6] and tuple(map(tuple, piece.get('cells', ()))) == CELLS,
@@ -223,12 +302,15 @@ def _spec(piece):
     tiles = tuple(map(_number, piece.get('tile_ids', ())))
     require(len(tiles) == len(set(tiles)) == 12, 'Orthogonal transition needs twelve distinct canonical cells')
     engineering = piece.get('engineering', {})
-    empty = {cell for cell, records in _expected_routes(mirrored).items() if not records}
+    empty = {cell for cell, records in _expected_routes(variant=phase.key).items() if not records}
     require(set(map(tuple, engineering.get('model_only_cells', ()))) == empty,
             'Transition model-only cells differ from the independently reconstructed lanes')
     require(type(engineering.get('max_grade_percent')) in (float, int)
             and 0.0 < engineering['max_grade_percent'] <= 30.0,
             'Transition must retain an explicit lane-grade ceiling no greater than thirty percent')
+    if phase.native_cross_section_reflection:
+        require(engineering['max_grade_percent'] <= 20.,
+                'Opposite-side transition must retain the reviewed twenty-percent lane-grade ceiling')
     require(engineering.get('car_corridor_half_width_m') == 1.25
             and engineering.get('car_corridor_height_m') == 3.8,
             'Transition corridor must retain its declared 2.5m-by-3.8m vehicle envelope')
@@ -237,7 +319,8 @@ def _spec(piece):
     return tiles
 
 
-def external_ports(*, mirrored=False):
+def external_ports(*, mirrored=False, variant=None):
+    phase = phase_for_options(mirrored=mirrored, variant=variant)
     result = []
     for component in ('upper', 'lower'):
         for source_class in (0, 1):
@@ -245,17 +328,20 @@ def external_ports(*, mirrored=False):
             for direction in ('in', 'out'):
                 s = (0.0 if direction == 'in' else LENGTH) if component == 'upper' else (
                     LENGTH if direction == 'in' else 0.0)
-                if mirrored:
+                if phase.traffic_reversed:
                     s = LENGTH-s
-                cell = (1, 0) if s == 0.0 else ((0, 5) if component == 'upper' else (1, 5))
-                if mirrored:
+                if phase.key == LOWER_BEND_RIGHT:
+                    cell = (1, 0) if s == 0.0 else ((1, 5) if component == 'upper' else (0, 5))
+                else:
+                    cell = (1, 0) if s == 0.0 else ((0, 5) if component == 'upper' else (1, 5))
+                if phase.physical_reflection:
                     cell = 1-cell[0], cell[1]
                 tangent = -1.0 if component == 'upper' else 1.0
-                if mirrored:
+                if phase.traffic_reversed:
                     tangent = -tangent
                 result.append({'id': lane + '-' + direction, 'channel_id': lane, 'component': component,
                     'source_class': source_class, 'direction': direction, 'transport': 1,
-                    'point_m': lane_point(component, source_class, s, mirrored=mirrored), 'source_cell': list(cell),
+                    'point_m': lane_point(component, source_class, s, variant=phase.key), 'source_cell': list(cell),
                     'edge': 1 if s == 0.0 else 3,
                     'tangent': (0.0, tangent), 'grade': 0.0})
     return result
@@ -263,7 +349,7 @@ def external_ports(*, mirrored=False):
 
 def reviewed_contract(piece):
     _spec(piece)
-    ports = external_ports(mirrored=_mirrored(piece))
+    ports = external_ports(variant=phase_for_piece(piece).key)
     return {'boundary_measurement_precision': 'saved-path',
         'ports': {p['id']: list(p['point_m']) for p in ports},
         'port_vectors': {p['id']: list(p['tangent']) for p in ports},
@@ -273,15 +359,17 @@ def reviewed_contract(piece):
                       for component in ('upper', 'lower') for lane in (1, 2)]}
 
 
-def check_opposite_end_direction_pair():
+def check_opposite_end_direction_pair(*, opposite_side=False):
     """A at 0 degrees and B at 180 degrees preserve the same DD flow.
 
     Translate the rotated B by (16,16) metres solely to compare the adjoining
     DD boundary planes. This is a lane-direction proof, not a claim that the
     two optional construction helpers permit direct touching placement.
     """
-    original = [p for p in external_ports() if p['point_m'][2] > 0.]
-    mirrored = [p for p in external_ports(mirrored=True) if p['point_m'][2] > 0.]
+    require(type(opposite_side) is bool, 'Transition pair side must be an exact boolean')
+    first, second = ('opposite-side', 'opposite-side-mirrored') if opposite_side else ('original', 'mirrored')
+    original = [p for p in external_ports(variant=first) if p['point_m'][2] > 0.]
+    mirrored = [p for p in external_ports(variant=second) if p['point_m'][2] > 0.]
     checked = []
     for port in original:
         target = next(p for p in mirrored if p['channel_id'] == port['channel_id'])
@@ -305,7 +393,7 @@ def reviewed_facts(piece):
     contract = reviewed_contract(piece)
     ports = []
     channels = []
-    for p in external_ports(mirrored=_mirrored(piece)):
+    for p in external_ports(variant=phase_for_piece(piece).key):
         height = p['point_m'][2]
         ports.append({'id': p['id'], 'direction': p['direction'], 'engine_transport': 1,
             'edge': p['edge'], 'endpoint_m': list(p['point_m']),
@@ -337,7 +425,7 @@ def _same_route(actual, expected):
         math.dist(a, b) <= POSITION_TOLERANCE for a, b in zip(actual['points'], expected['points']))
 
 
-def _journeys(routes, turns, *, mirrored=False):
+def _journeys(routes, turns, *, mirrored=False, variant=None):
     starts, ends = defaultdict(list), defaultdict(list)
     for index, route in enumerate(routes):
         starts[_point(_rotate(route['points'][0], turns))].append(index)
@@ -345,7 +433,7 @@ def _journeys(routes, turns, *, mirrored=False):
     require(all(len(indices) == 1 for indices in (*starts.values(), *ends.values())),
             'Transition has an ambiguous lane/deck connection')
     incoming, outgoing = starts.keys() - ends.keys(), ends.keys() - starts.keys()
-    literal = external_ports(mirrored=mirrored)
+    literal = external_ports(mirrored=mirrored, variant=variant)
     expected_in = {_point(_rotate(p['point_m'], turns)) for p in literal if p['direction'] == 'in'}
     expected_out = {_point(_rotate(p['point_m'], turns)) for p in literal if p['direction'] == 'out'}
     require(incoming == expected_in and outgoing == expected_out,
@@ -376,8 +464,8 @@ def _journeys(routes, turns, *, mirrored=False):
 
 def check_paths(resources, piece):
     tiles = _spec(piece)
-    mirrored = _mirrored(piece)
-    expected = _expected_routes(mirrored)
+    phase = phase_for_piece(piece)
+    expected = _expected_routes(variant=phase.key)
     routes, maximum = [], 0.0
     maximum_coordinate_error = 0.0
     for cell, tile in zip(CELLS, tiles):
@@ -406,7 +494,7 @@ def check_paths(resources, piece):
                         'Saved transition PATH exceeds its declared lane-grade ceiling')
             routes.append({**actual, 'cell': cell, 'points': world})
         require(not remaining, 'Saved transition PATH omits a lane fragment')
-    rotations = [_journeys(routes, turns, mirrored=mirrored) for turns in range(4)]
+    rotations = [_journeys(routes, turns, variant=phase.key) for turns in range(4)]
     return {'passed': True, 'tile_count': 12, 'model_only_cells': [list(cell) for cell, records in expected.items() if not records],
             'complete_directed_journeys': 4, 'complete_native_boundary_members_checked': 8,
             'route_fragments_checked': len(routes), 'maximum_grade_percent': maximum,
@@ -432,16 +520,68 @@ def _construction_word(records):
     return sum(value << (8 * side) for side, value in enumerate(sides))
 
 
+def _terrain_vertex_components(constraints, turns):
+    """Expand measured native code7 equalities; this is not a height solver.
+
+    Windows641 parses '#' as7 and inserts equality(0,1), equality(0,2),
+    equality(0,3) for each such cell. Shared city vertices identify adjacent
+    cells. Rotation changes coordinates, without selecting an absolute height.
+    """
+    def rotated(point):
+        x, y = point
+        for _ in range(turns):
+            x, y = -y, x
+        return x, y
+
+    corners = {cell: tuple(rotated((cell[0]+dx, cell[1]+dy))
+                           for dx, dy in ((0, 0), (1, 0), (1, 1), (0, 1))) for cell in CELLS}
+    parents = {point: point for points in corners.values() for point in points}
+
+    def root(point):
+        while parents[point] != point:
+            point = parents[point]
+        return point
+
+    for (x, y), points in corners.items():
+        if constraints[y][x] == '#':
+            for point in points[1:]:
+                parents[root(point)] = root(points[0])
+    groups = defaultdict(list)
+    for point in parents:
+        groups[root(point)].append(point)
+    return sorted(sorted(points) for points in groups.values())
+
+
+def check_mirrored_terrain_constraints(fields, piece):
+    """Require the selected flat-base policy; retain the original's old rules."""
+    require(phase_for_piece(piece).key != 'original',
+            'Flat-base terrain policy is restricted to the mirrored transition and new opposite-side types')
+    constraints = ['##.<', '##..', '##..', '##..', '##..', '##..', '^...']
+    require(fields.get('ConsLayout') == constraints,
+            'Mirrored transition terrain constraints require native # on all twelve owned cells')
+    rotations = []
+    for turns in range(4):
+        groups = _terrain_vertex_components(fields['ConsLayout'], turns)
+        require(len(groups) == 1 and len(groups[0]) == 21,
+                'Mirrored transition terrain constraints do not join all twenty-one ground vertices')
+        rotations.append({'quarter_turns': turns, 'constrained_vertices': 21, 'flat_height_groups': 1})
+    return {'constraint_symbol': '#', 'native_constraint_code': 7, 'owned_cells_checked': 12,
+            'inserted_equality_pairs': 36, 'proper_rotations_checked': 4, 'proper_rotations': rotations,
+            'absolute_world_height_fixed': False, 'authored_path_heights_changed': False,
+            'game_terrain_behavior_tested': False}
+
+
 def check_construction_fields(fields, piece, resources):
     """Inspect the restored twelve-cell core separately from native helpers."""
     tiles = _spec(piece)
-    mirrored = _mirrored(piece)
-    expected = _expected_routes(mirrored)
-    words = MIRRORED_CORE_ROAD_WORDS if mirrored else CORE_ROAD_WORDS
+    phase = phase_for_piece(piece)
+    expected = _expected_routes(variant=phase.key)
+    words = MIRRORED_CORE_ROAD_WORDS if phase.physical_reflection else CORE_ROAD_WORDS
     require(tuple(_construction_word(expected[cell]) for cell in CELLS) == words,
             'Independent transition tangent flags disagree with the reviewed native construction words')
     layouts = ['ab.<', 'cd..', 'ef..', 'gh..', 'ij..', 'kl..', '^...']
-    constraints = ['++.<', '++..', '++..', '++..', '++..', '++..', '^...']
+    symbol = '+' if phase.key == 'original' else '#'
+    constraints = [symbol*2+'.<', *[symbol*2+'..']*5, '^...']
     require(fields.get('CellLayout') == layouts and fields.get('ConsLayout') == constraints,
             'Transition construction changes twelve-cell ownership, the model-only shoulder, or core anchors')
     require(fields.get('Costs') == ['1000'], 'Unexpected orthogonal transition construction cost')
@@ -454,9 +594,12 @@ def check_construction_fields(fields, piece, resources):
         actual = parse_paths(resources[*PATH, tile])
         require(_construction_word(actual['routes']) == word,
                 'Actual saved transition PATH directions disagree with construction flags')
-    return {'occupied_cells_checked': 12, 'model_only_owned_cells_checked': 1,
+    report = {'occupied_cells_checked': 12, 'model_only_owned_cells_checked': 1,
             'native_core_tangent_flag_words_checked': 12, 'core_anchor_and_cost_checked': True,
             'native_helpers_in_scope': False, 'game_construction_tested': False}
+    if phase.key != 'original':
+        report['terrain_constraints'] = check_mirrored_terrain_constraints(fields, piece)
+    return report
 
 
 def check_models(resources, piece, donors=None):

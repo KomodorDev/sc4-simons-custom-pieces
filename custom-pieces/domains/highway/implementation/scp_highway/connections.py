@@ -27,15 +27,27 @@ CORE = 'highway_ddrhw_diagonal_avenue_crossing'
 GHSR_RECIPES = ('highway_ddrhw_diagonal_ghsr_crossing',
                 'highway_ddrhw_diagonal_ghsr_crossing_alignment_b')
 ORTHOGONAL_TRANSITION = 'highway_ddrhw_orthogonal_l0_transition'
-ORTHOGONAL_TRANSITIONS = (ORTHOGONAL_TRANSITION, ORTHOGONAL_TRANSITION + '_mirrored')
+from .orthogonal_transition_variants import (SUPPORTED_RECIPES as ORTHOGONAL_TRANSITIONS,
+    SUPPORTED_PIECE_IDS as ORTHOGONAL_TRANSITION_IDS)
+from .diagonal_transition_variants import RECIPES as DIAGONAL_TRANSITIONS, PIECE_IDS as DIAGONAL_TRANSITION_IDS
 
 
 def connector_source_files(piece_id):
     """Bind accepted numeric measurement sources used by this piece's adapter."""
-    if piece_id in ('ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile',
-                    'ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile-mirrored'):
-        from .orthogonal_transition_contracts import REFERENCE, MIRRORED_REFERENCE
-        reference = MIRRORED_REFERENCE if piece_id.endswith('-mirrored') else REFERENCE
+    if piece_id in DIAGONAL_TRANSITION_IDS:
+        reference = f'domains/highway/00_pieces/{piece_id}/checks/accepted-connector-contract.jsonc'
+        measured = 'domains/highway/implementation/scp_highway/diagonal-transition-native-inputs.jsonc'
+        collars = 'domains/highway/implementation/scp_highway/diagonal-transition-collar-inputs.jsonc'
+        obstacles = 'domains/highway/implementation/scp_highway/diagonal-transition-native-obstacle-inputs.jsonc'
+        return [source for source in (measured, collars, obstacles, reference)
+                if (Path(__file__).resolve().parents[4] / source).is_file()]
+    from .y_junction_variants import identities_for, ORIGINAL, REVERSED
+    if piece_id in {*identities_for(ORIGINAL), *identities_for(REVERSED)}:
+        from .y_junction_contracts import reference
+        source = reference({'id': piece_id})
+        return [source] if (Path(__file__).resolve().parents[4]/source).is_file() else []
+    if piece_id in ORTHOGONAL_TRANSITION_IDS:
+        reference = f'domains/highway/00_pieces/{piece_id}/checks/accepted-connector-contract.jsonc'
         return [reference] if (Path(__file__).resolve().parents[4] / reference).is_file() else []
     if piece_id in ('ddrhw-l1-and-l2-over-ghsr-ground-mixed-crossing-diagonal-90deg',
                     'ddrhw-l1-l2-over-ghsr-ground-crossing-diagonal-90deg-alignment-b'):
@@ -107,6 +119,16 @@ def _core_contract():
 
 def reviewed_contract(piece):
     """Return reviewed intrinsic facts, never candidate-generated ramp poses."""
+    if piece['recipe'] in DIAGONAL_TRANSITIONS:
+        from .diagonal_transition_verify import reviewed_contract as transition_contract
+        return transition_contract(piece)
+    if piece['recipe'].startswith('highway_ddrhw_y_'):
+        from .y_junction_variants import variant_of, REVERSED
+        if variant_of(piece) == REVERSED:
+            from .y_junction_reversed_verify import reviewed_contract as y_contract
+        else:
+            from .y_junction_verify import reviewed_contract as y_contract
+        return y_contract(piece)
     if piece['recipe'] in ORTHOGONAL_TRANSITIONS:
         from .orthogonal_transition_verify import reviewed_contract as transition_contract
         return transition_contract(piece)
@@ -145,6 +167,18 @@ def reviewed_path_ports(piece):
 
 
 def _reviewed_facts(piece):
+    if piece['recipe'] in DIAGONAL_TRANSITIONS:
+        from .diagonal_transition_contracts import load_contract
+        from .diagonal_transition_verify import reviewed_facts
+        return load_contract(piece) or reviewed_facts(piece)
+    if piece['recipe'].startswith('highway_ddrhw_y_'):
+        from .y_junction_contracts import load_contract
+        from .y_junction_variants import variant_of, REVERSED
+        if variant_of(piece) == REVERSED:
+            from .y_junction_reversed_verify import reviewed_facts
+        else:
+            from .y_junction_verify import reviewed_facts
+        return load_contract(piece) or reviewed_facts(piece)
     if piece['recipe'] in ORTHOGONAL_TRANSITIONS:
         from .orthogonal_transition_contracts import load_contract
         from .orthogonal_transition_verify import reviewed_facts
@@ -182,13 +216,17 @@ def validate_connection_record(piece,record):
     """
     facts = _reviewed_facts(piece)
     require(facts is not None,piece['id']+': no complete reviewed highway boundary contract')
-    if (piece['recipe'].startswith('highway_ddrhw_parallel_b_')
-            or piece['recipe'] in ORTHOGONAL_TRANSITIONS):
+    if (piece['recipe'].startswith(('highway_ddrhw_parallel_b_', 'highway_ddrhw_y_'))
+            or piece['recipe'] in (*ORTHOGONAL_TRANSITIONS, *DIAGONAL_TRANSITIONS)):
         require(len(facts.get('path_hashes_by_cell', [])) == len(piece['cells'])
                 and {tuple(cell) for cell, _digest in facts['path_hashes_by_cell']}
                     == set(map(tuple, piece['cells'])),
-                ('Alignment B strict extraction requires independently checked saved PATH fingerprints; run freeze_parallel_b_connectors.py after native package and assembly verification'
+                ('Y-junction strict extraction requires checked saved PATH fingerprints; run freeze_y_junction_connectors.py after native and assembly verification'
+                 if piece['recipe'].startswith('highway_ddrhw_y_') else
+                 'Alignment B strict extraction requires independently checked saved PATH fingerprints; run freeze_parallel_b_connectors.py after native package and assembly verification'
                  if piece['recipe'].startswith('highway_ddrhw_parallel_b_') else
+                 'Diagonal transition strict extraction requires independently checked saved PATH fingerprints; run freeze_diagonal_transition_connectors.py after native verification'
+                 if piece['recipe'] in DIAGONAL_TRANSITIONS else
                  'Orthogonal transition strict extraction requires independently checked saved PATH fingerprints; run freeze_orthogonal_transition_connectors.py after native verification'))
     require(record['subject_id'] == piece['id'] and record['subject_kind'] == 'piece',
             'Highway connector record belongs to another subject')
@@ -233,16 +271,19 @@ def service_classifier(piece,engine_transport,height):
                 'classification_status':'Explicitly reviewed native ground HSR engine 7 at 1 m; ordinary railway service is separate.'}
     if engine_transport == 1:
         if abs(height) <= 2e-5:
-            variant = 'rhw-4-l0' if piece['recipe'] in ORTHOGONAL_TRANSITIONS else 'avenue-ground'
+            variant = 'rhw-4-l0' if piece['recipe'] in (*ORTHOGONAL_TRANSITIONS, *DIAGONAL_TRANSITIONS) else 'avenue-ground'
         elif abs(height-7.5) <= 2e-5:
             variant = 'dd-rhw-l1'
         elif abs(height-15.0) <= 2e-5:
             variant = 'dd-rhw-l2'
         else:
-            variant = 'dd-rhw-ground-transition' if piece['recipe'] in ORTHOGONAL_TRANSITIONS else 'access-ramp'
+            variant = 'dd-rhw-ground-transition' if piece['recipe'] in (*ORTHOGONAL_TRANSITIONS, *DIAGONAL_TRANSITIONS) else 'access-ramp'
         return {'service_network':'road','service_family':'road','variant':variant,'role':'primary',
                 'channel_kind':'road-lane','traffic_modes':['car'],
-                'classification_status':'Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.'}
+                'classification_status':(
+                    'Registered diagonal DD-to-ground adapter: actual car engine 1; measured ground RHW-4, DD levels, and intermediate conversion heights identify the service.'
+                    if piece['recipe'] in DIAGONAL_TRANSITIONS else
+                    'Registered highway domain: actual car engine 1; audited ground/DD heights annotate the variant, and intermediate heights are access-ramp.')}
     if engine_transport == 2:
         return {'service_network':'pedestrian','service_family':'pedestrian',
                 'variant':'avenue-sidewalk' if abs(height) <= 2e-5 else 'unreviewed-elevated-walkway',

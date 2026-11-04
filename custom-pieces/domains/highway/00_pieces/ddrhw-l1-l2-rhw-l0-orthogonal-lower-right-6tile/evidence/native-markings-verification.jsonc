@@ -1,0 +1,83 @@
+// title: "Lower-right DD transition saved yellow marking samples"
+// summary: "Bind sampled driver-left paint and wrong-side controls to the accepted lower-right adapter DAT."
+// Used when: Reviewing the paint side of the exact saved transition.
+// Read by: The piece testing guide and contributors reproducing saved marking checks.
+// Updated by: Contributors capturing the verified DAT and native-texture sampling report.
+// Affects: Sampled software paint evidence; game appearance requires a separate observation.
+{
+  "schema_version": 1,
+  "scope": "Saved S3D/PATH and native texture samples across all four directed lanes; sampled checks only.",
+  "source_probe_sha256": "d7588bcd597d2b56e485b3fa39038f77a4fd157e33517d7cac0bc4229e75e456",
+  "passed": true,
+  "piece": "ddrhw-l1-l2-rhw-l0-orthogonal-lower-right-6tile",
+  "manifest_sha256": "c56902467bb0953c1d87e8f552b9fd3fea4752cc8babe2eff7093ae9ec4fb3fa",
+  "verification_sha256": "da122ff1be370f914cec33d52c2a01e4145b5f6eaedb7d6281b65e08f9d27719",
+  "piece_dat_sha256": "8de144bfe843d56e20f77b8c55e7514365cdc5d25c2797d956724095952f5072",
+  "samples": [
+    {
+      "route": "upper-lane-0",
+      "fraction": 0.01,
+      "minimum_left_m": 6.687499999999997
+    },
+    {
+      "route": "upper-lane-0",
+      "fraction": 0.5,
+      "minimum_left_m": 6.687969935778621
+    },
+    {
+      "route": "upper-lane-0",
+      "fraction": 0.99,
+      "minimum_left_m": 6.563500404357908
+    },
+    {
+      "route": "upper-lane-1",
+      "fraction": 0.01,
+      "minimum_left_m": 1.6875000000000002
+    },
+    {
+      "route": "upper-lane-1",
+      "fraction": 0.5,
+      "minimum_left_m": 1.6879699357786209
+    },
+    {
+      "route": "upper-lane-1",
+      "fraction": 0.99,
+      "minimum_left_m": 1.5635004043579097
+    },
+    {
+      "route": "lower-lane-0",
+      "fraction": 0.01,
+      "minimum_left_m": 6.6864996446275535
+    },
+    {
+      "route": "lower-lane-0",
+      "fraction": 0.5,
+      "minimum_left_m": 6.687245072855447
+    },
+    {
+      "route": "lower-lane-0",
+      "fraction": 0.99,
+      "minimum_left_m": 6.6875
+    },
+    {
+      "route": "lower-lane-1",
+      "fraction": 0.01,
+      "minimum_left_m": 1.686499644627553
+    },
+    {
+      "route": "lower-lane-1",
+      "fraction": 0.5,
+      "minimum_left_m": 1.687222487988888
+    },
+    {
+      "route": "lower-lane-1",
+      "fraction": 0.99,
+      "minimum_left_m": 1.6875000000000004
+    }
+  ],
+  "wrong_side_controls_rejected": [
+    "native",
+    "atlas"
+  ],
+  "in_game_markings_observed": false
+}

@@ -1,0 +1,136 @@
+// title: "Mirrored DD-to-L0 close-placement terrain failure — 3 November 2026"
+// summary: "Preserve the screenshot and user controls while distinguishing the confirmed construction-height defect from the inferred runtime cause and unverified fix."
+// Used when: Reproducing the terrain excavation seen near the reversed compact Y and reviewing a future fix.
+// Read by: Contributors, the placement-fix author, and game testers.
+// Updated by: Contributors recording the explicit user statement and unchanged screenshot.
+// Affects: This bounded bug report and authored known-issue prose; existing manual cases, earlier evidence, models, and installed files remain unchanged.
+{
+  "schema_version": 1,
+  "state": "reported-close-placement-terrain-failure-awaiting-reproduction-and-fix-verification",
+  "reported_on": "2026-11-03",
+  "subject_id": "ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile-mirrored",
+  "related_assembly_id": "ddrhw-compact-diagonal-y-junction-reversed",
+  "scope": "User-reported close-placement construction failure beside a diagonal arm of the reversed Y. The right-hand straight arm and farther/manual connection are reported working construction controls. Which diagonal arm, exact rotation, separation, and terrain conditions remain unspecified; no moving-traffic verdict follows.",
+  "user_statement": {
+    "quote": "you see that? when i place the \"yellow line on left of driver DD RHW transition\" piece close enough to our new in intersection so that it connects, it breaks and makes a huge hole. if placed far enough away and connect then manually, then it works",
+    "verbatim": true,
+    "piece_identification": "The coordinator identifies the named transition as this mirrored type; no tooltip is visible in the screenshot.",
+    "intersection_identification": "The coordinator identifies the nearby new intersection as the reversed-traffic compact Y; no exact arm is inferred.",
+    "follow_up": {
+      "quote": "the other one works",
+      "verbatim": true,
+      "question_context": "The coordinator had asked whether the affected connection was a diagonal arm or the right-hand straight arm.",
+      "interpretation_confirmed_by_coordinator": "The right-hand straight arm works; the reported close-placement excavation concerns a diagonal arm. The exact A or B diagonal arm is not identified."
+    }
+  },
+  "screenshot": {
+    "file": "game-close-placement-20261103.png",
+    "sha256": "797f5b4486dd4e0afd5ad6ff0469fb72ef10615017da3ddd66e1c636b334d2f9",
+    "bytes": 1698190,
+    "size_px": [
+      1902,
+      1260
+    ],
+    "source": "Exact unmodified user-provided PNG copy.",
+    "temporary_source_path_omitted": true,
+    "observations": [
+      "A pronounced steep-sided terrain depression is visible at one end of the pictured highway transition, near the elevated junction.",
+      "The single frame does not show the construction action sequence or a vehicle completing a journey."
+    ]
+  },
+  "installed_candidate": {
+    "installed_receipt_sha256": "58ea62d5171aa8d420c4084a7d948275d7e8bdadbeb1061c98011798d78fa09c",
+    "public_installation_evidence": "../../../01_assemblies/ddrhw-compact-diagonal-y-junction-reversed/evidence/additive-installation-20261103.jsonc",
+    "public_installation_evidence_sha256": "1da1252dcfe50ba00d6b8e0af8dcf734f2a6bc40c179baf7bafc2bdb70b4b511",
+    "binding_basis": "The coordinator supplies the active installation receipt. The screenshot does not independently identify installed file versions."
+  },
+  "user_reported_observations": [
+    {
+      "condition": "Place the transition close enough to connect during placement beside a diagonal arm of the reversed Y.",
+      "result": "The piece breaks and creates a huge hole.",
+      "status": "reported construction failure; exact A/B arm and geometry unresolved"
+    },
+    {
+      "condition": "Close placement at the right-hand straight arm C.",
+      "result": "The follow-up states that the other one works; the coordinator identifies this as the right-hand straight-arm control.",
+      "status": "reported construction success only; no Route Query, moving-traffic, all-rotation, or post-fix pass inferred"
+    },
+    {
+      "condition": "Place the transition farther away, then connect manually.",
+      "result": "The user says it works.",
+      "status": "reported construction workaround only; exact separation is not supplied"
+    }
+  ],
+  "unknowns": [
+    "Which diagonal Y arm is affected: southwest A or northwest B",
+    "Transition placement rotation and camera-independent orientation",
+    "Distance between the transition and junction in city tiles",
+    "Initial terrain heights and any prior terrain edits",
+    "Exact native cells affected during automatic close placement",
+    "Exact native connection sequence and cell layout at the affected diagonal arm",
+    "Whether Route Query or moving cars succeed after the farther/manual workaround",
+    "Whether a future software fix prevents the failure in the same conditions"
+  ],
+  "recording_limits": {
+    "existing_manual_observations_changed": false,
+    "generated_case_states_changed": false,
+    "reason": "The follow-up distinguishes diagonal-arm failure from right-hand straight-arm success, but no exact A/B arm, rotation, distance, or complete declared case scope is identified. Preserve the earlier aggregate acceptance and record this later bounded failure separately.",
+    "earlier_frozen_evidence_rewritten": false,
+    "software_or_model_fix_supplied_by_this_report": false,
+    "human_fix_verification": "unverified"
+  },
+  "software_analysis": {
+    "authority": "Pinned Windows 1.1.641 engine and source findings, with separate portable numerical verification in terrain-constraint-contract.jsonc.",
+    "confirmed_defect": "The mirrored core construction layout lacked an effective height group tying its terrain vertices together. This is a confirmed construction-source defect; causation of the pictured runtime excavation remains inferred.",
+    "pinned_engine": {
+      "platform": "Windows",
+      "game_version": "1.1.641",
+      "executable_sha256": "f3c42faf44c692dcc4475b9a009f5ef139b855434c60a7befe400a0a750204a7",
+      "parser_address": "0060A6D3",
+      "parser_mapping": {
+        "ConsLayout_character": "#",
+        "parsed_constraint_code": 7
+      },
+      "consumer_branch_target": "00644A12",
+      "consumer_action": "For code 7, a three-iteration loop ties corner 0 to corners 1, 2, and 3 of each affected cell.",
+      "connected_core_group": {
+        "core_tiles": [
+          2,
+          6
+        ],
+        "shared_terrain_vertices": 21,
+        "height_groups": 1
+      }
+    },
+    "corrective_source_change": {
+      "subject_id": "ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile-mirrored",
+      "change": "Use # in all 12 occupied mirrored ConsLayout cells.",
+      "scope": "Mirrored transition construction constraints only; the original transition and both Y variants are outside the source correction.",
+      "software_verification": "pending separate compiled verification at this report update",
+      "human_fix_verification": "unverified"
+    },
+    "runtime_cause": {
+      "status": "inferred; not established by a controlled in-game retest",
+      "hypothesis": "The missing core height group could allow unwanted terrain shaping when close placement interacts with the diagonal connection.",
+      "limits": "The source/engine constraint mechanism is confirmed, but the screenshot and user report do not trace the engine decisions or prove that this correction resolves their precise placement."
+    },
+    "previous_uncertainty": "The constraint-code consumer was unresolved in the initial report; the pinned parser/consumer findings above supersede that uncertainty."
+  },
+  "post_fix_retest_controls": [
+    {
+      "control": "close-diagonal",
+      "setup": "Fresh adapter in the reported close-placement condition near an identified diagonal arm, recording the actual connecting native cells.",
+      "status": "unverified"
+    },
+    {
+      "control": "close-right-straight",
+      "setup": "Fresh adapter at the right-hand straight arm as the separately reported successful construction control.",
+      "status": "unverified for the corrected candidate"
+    },
+    {
+      "control": "farther-manual",
+      "setup": "Fresh adapter beyond automatic contact, then manual native dragging across the recorded gap.",
+      "status": "unverified for the corrected candidate"
+    }
+  ]
+}

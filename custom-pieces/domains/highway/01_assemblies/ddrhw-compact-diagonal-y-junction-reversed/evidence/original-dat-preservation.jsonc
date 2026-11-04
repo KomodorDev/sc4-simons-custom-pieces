@@ -1,0 +1,38 @@
+// title: "Original Y complete-DAT preservation control"
+// summary: "Prove the original three game archives remain byte-identical while the separate reversed-traffic variant is authored."
+//
+// Used when: Reviewing preservation of the user-confirmed original Y junction.
+// Read by: Contributors and the reversed assembly testing guide.
+// Updated by: Contributors after a fresh actual original three-piece build and exact byte comparison.
+// Affects: Original DAT preservation evidence only; it supplies no reversed physical acceptance, installation, or human game pass.
+{
+  "passed": true,
+  "scope": "Fresh original complete-DAT rebuild after strict variant dispatch and default-preserving shared hooks; counterpart-only geometry and tests remain separate.",
+  "previous_build": "dist/ddrhw-y-junction-final-parts-03",
+  "fresh_build": "dist/ddrhw-y-original-invariance-reversed-01",
+  "fresh_manifest_sha256": "bb7f6525c54e531197fd80c0ce6a084cd60f3acde704560832de3e55df4cb108",
+  "fresh_verification_sha256": "367be15dd59a3bac40a06dba963bab96739b6fc9e88f848f2f83dd4341aeb13c",
+  "pieces": [
+    {
+      "piece_id": "ddrhw-y-diagonal-stem-split",
+      "sha256": "6892d4ce98c569738fa186f902619eb34732f34f5be2c5f90acce3747a7c4a1f",
+      "bytes": 6499142,
+      "byte_identical": true
+    },
+    {
+      "piece_id": "ddrhw-y-diagonal-branch",
+      "sha256": "f245e4701d3959b2ab39a426e9bccef23ceafd1a0fa28f7a0373674ab3561e8d",
+      "bytes": 5526584,
+      "byte_identical": true
+    },
+    {
+      "piece_id": "ddrhw-y-orthogonal-core",
+      "sha256": "584ebb51dd1c199968a1a349ef928813ecf8bc039e9463ca091fa7e290a573fc",
+      "bytes": 7197160,
+      "byte_identical": true
+    }
+  ],
+  "installed_files_changed": false,
+  "schema_version": 1,
+  "new_variant_physical_acceptance": "Not supplied by this preservation control; see the separate compiled verification."
+}

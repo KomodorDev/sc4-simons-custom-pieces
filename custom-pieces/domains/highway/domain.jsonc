@@ -11,6 +11,7 @@
   "id": "highway",
   "name": "Highway",
   "implementation": "scp_highway",
+  "scp_transport_menu": true,
   "pieces": [
     "00_pieces/ddrhw-l1-and-l2-over-avenue-l0-crossing-diagonal-90deg/piece.jsonc",
     "00_pieces/ddrhw-diagonal-access-core/piece.jsonc",
@@ -70,13 +71,28 @@
     "00_pieces/ddrhw-parallel-b-upper-exit-grade/piece.jsonc",
     "00_pieces/ddrhw-parallel-b-upper-entry-grade/piece.jsonc",
     "00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile/piece.jsonc",
-    "00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile-mirrored/piece.jsonc"
+    "00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile-mirrored/piece.jsonc",
+    "00_pieces/ddrhw-y-diagonal-stem-split/piece.jsonc",
+    "00_pieces/ddrhw-y-diagonal-branch/piece.jsonc",
+    "00_pieces/ddrhw-y-orthogonal-core/piece.jsonc",
+    "00_pieces/ddrhw-y-reversed-diagonal-stem-split/piece.jsonc",
+    "00_pieces/ddrhw-y-reversed-diagonal-branch/piece.jsonc",
+    "00_pieces/ddrhw-y-reversed-orthogonal-core/piece.jsonc",
+    "00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile/piece.jsonc",
+    "00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile-mirrored/piece.jsonc",
+    "00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-alignment-a/piece.jsonc",
+    "00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-mirrored-alignment-a/piece.jsonc",
+    "00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-alignment-a/piece.jsonc",
+    "00_pieces/ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a/piece.jsonc",
+    "00_pieces/ddrhw-l1-l2-rhw-l0-orthogonal-lower-right-6tile/piece.jsonc"
   ],
   "assemblies": [
     "01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/assembly.jsonc",
     "01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-modular-diamond/assembly.jsonc",
     "01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond/assembly.jsonc",
-    "01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b/assembly.jsonc"
+    "01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-parallel-diamond-alignment-b/assembly.jsonc",
+    "01_assemblies/ddrhw-compact-diagonal-y-junction/assembly.jsonc",
+    "01_assemblies/ddrhw-compact-diagonal-y-junction-reversed/assembly.jsonc"
   ],
   "collections": "collections.jsonc",
   "scaffold": {

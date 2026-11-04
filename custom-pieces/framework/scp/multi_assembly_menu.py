@@ -17,6 +17,7 @@ from .dbpf import exemplar, pack_dbpf, require
 from .menu import MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION
 from .piece_menu_families import hidden_members
 from . import menu_experiment as single
+from . import transport_menu
 
 KIND = 'assembly-disjoint-button-cycles-v1'
 PROOF = 'docs/assembly-menus-source'
@@ -136,7 +137,10 @@ def _transform(base, controller, menu, bundle, icons):
     composition.update(ordering_insertion=updated, feature_sequences={
         'schema_version': 1, 'groups': roots, 'previous_ordering_insertion': base['overlay']['rul0']['ordering_insertion'],
         'previous_controller_sha256': single._sha(original[RUL0]), 'shared_between_assemblies': False})
-    resources, audits = strict_dbpf(menu), []
+    nested_source = strict_dbpf(menu)
+    version = transport_menu.format_version(base)
+    resources = transport_menu.restore(nested_source, transport_menu.members(base), version=version)
+    audits = []
     require(len(icons) == len(groups), 'Missing assembly menu icon')
     for (layout, _scene, pieces), icon in zip(groups, icons):
         cycle = {**layout['cycle_button'], 'target_id': pieces[0]['menu']['id']}
@@ -152,13 +156,19 @@ def _transform(base, controller, menu, bundle, icons):
             for domain, domain_submenus in _domain_submenus(groups):
                 resources, audit = build_resources(resources, domain_submenus, domain=domain)
                 audits.append({'domain_id': domain, **audit})
+    resources = transport_menu.arrange(
+        resources, transport_menu.members(base, groups), version=version, folder_source=nested_source)
     return pack_dbpf({**original, RUL0: changed}), pack_dbpf(resources), composition, audits
 
 
-def _documents(groups):
+def _documents(groups, base):
     from .content import markdown_metadata
     from .menu_experiment_resources import member_domain
-    network_menu = 'Highways' if member_domain(groups[0][2]) == 'highway' else 'Rail'
+    nested_domains = transport_menu.members(base)
+    first_domain = member_domain(groups[0][2])
+    network_menu = 'Highways' if first_domain == 'highway' else 'Rail'
+    if first_domain in nested_domains:
+        network_menu += ' → SCP → Assemblies'
     mixed = len({member_domain(pieces) for _layout, _scene, pieces in groups}) > 1
     opening = ('1. Open **Transportation**, then choose **Rail** or **Highways** as listed for the assembly below.'
                if mixed else f'1. Open **Transportation → {network_menu}**.')
@@ -183,17 +193,21 @@ def _documents(groups):
         lines += ['Assemblies assigned to a submenu appear inside the named submenu below. Open that submenu, then choose its assembly button. The Submenus DLL, SC4ResourceLoadingHooks DLL, and `submenu-essentials.dat` must be installed and active for this nested presentation. Software verification does not establish runtime DLL loading.', '']
     cases = []
     for index, (layout, _scene, pieces) in enumerate(groups, 2):
-        network_menu = 'Highways' if member_domain(pieces) == 'highway' else 'Rail'
+        domain = member_domain(pieces)
+        nested = domain in nested_domains
+        network_menu = 'Highways' if domain == 'highway' else 'Rail'
+        if nested:
+            network_menu += ' → SCP → Assemblies'
         lines += [f'<a id="{index}-{layout["assembly_id"]}"></a>', '',
                   f'## {index}. ' + layout['cycle_button']['title'], '',
                   'Assembly: `' + layout['assembly_id'] + '`. The cycle follows this component order:', '']
         if 'cycle_submenu' in layout:
             lines += [f'Open **Transportation → {network_menu} → {layout["cycle_submenu"]["title"]}**, then click **{layout["cycle_button"]["title"]}**. Tab and Shift+Tab stay inside this assembly’s component cycle.', '']
-        elif mixed:
+        elif mixed or nested:
             lines += [f'Open **Transportation → {network_menu}**, then click **{layout["cycle_button"]["title"]}**. Tab and Shift+Tab stay inside this assembly’s component cycle.', '']
         lines += [f'{index}. {piece["name"]} (`{piece["id"]}`).' for index, piece in enumerate(pieces, 1)]
         lines += ['']
-        for case in single._game_checks(pieces, single_button=True)['cases']:
+        for case in single._game_checks(pieces, single_button=True, nested=nested)['cases']:
             if 'cycle_submenu' in layout and case['id'] == 'single-assembly-entry':
                 case = {**case, 'description': f'Transportation > {network_menu} > {layout["cycle_submenu"]["title"]} has exactly one button named {layout["cycle_button"]["title"]} for this assembly; no individual member buttons appear. Selecting this button and using Tab or Shift+Tab stays within its listed component cycle.'}
             cases.append({**case, 'id': layout['assembly_id'] + ':' + case['id'],
@@ -207,7 +221,7 @@ def _documents(groups):
                       'description': f'Transportation > {network_menu} shows {row["definition"]["title"]}; it opens and contains exactly the selected {len(row["cycle_ids"])} assembly buttons, each starting its own isolated component cycle.',
                       'status': 'unverified', 'observations': []})
     dependency = ('This candidate requires the Submenus DLL, SC4ResourceLoadingHooks DLL, and `submenu-essentials.dat` for its nested assembly menus.'
-                  if submenus else 'This candidate does not require Submenus DLL.')
+                  if submenus or nested_domains else 'This candidate does not require Submenus DLL.')
     lines += [f'<a id="{len(groups) + 2}-verification"></a>', '',
               f'## {len(groups) + 2}. Verification and observations', '',
               'The original source documents and archives are frozen under `../assembly-menus-source/`. All piece DATs are unchanged. ' + dependency + ' Building and packaging do not install anything.', '',
@@ -215,7 +229,8 @@ def _documents(groups):
     guide = '\n'.join(lines).encode('utf8')
     checks = single._json_bytes({'schema_version': 1, 'purpose': 'Frozen pending checks; no human observations.',
         'authority': 'Record explicit human observations separately against the candidate manifest fingerprint; preserve this template.',
-        'environment_required': ['platform', 'game_version', 'NAM_profile'], 'cases': cases})
+        'environment_required': ['platform', 'game_version', 'NAM_profile'] + (['Submenus_DLL_version'] if nested_domains else []),
+        'cases': cases})
     readme = ('Assembly component menus\nDEVELOPMENT BUILD — NOT GAME-TESTED\n'
               + ''.join(f'{layout["cycle_button"]["title"]}: {len(pieces)} components\n' for layout, _, pieces in groups)
               + 'Read docs/assembly-menus/README.md. Tab cycles within the selected assembly.\n'
@@ -248,7 +263,7 @@ def _manifest(base, bundle, proof, controller, menu, composition, audits):
         'Assembly menu behavior requires explicit in-game observations; public release is blocked.']))
     documents = [{**row, 'path': PROOF + '/documentation/' + row['path']} for row in base.get('documentation', [])]
     additions = [*(proof[key] for key in sorted(proof)),
-                 *(single._record(name, raw) for name, raw in _documents(groups).items())]
+                 *(single._record(name, raw) for name, raw in _documents(groups, base).items())]
     require(len({row['path'] for row in documents + additions}) == len(documents + additions),
             'Multiple assembly proof paths overlap source documentation')
     result['documentation'] = documents + additions
@@ -291,7 +306,9 @@ def _actual(base, bundle, old_controller, old_menu, controller, menu, compositio
         if row[1][0] not in selected:
             expected.append(row)
     require(actual == expected, 'Actual disjoint assembly cycles differ in membership, order, family, or rotation states')
-    before, after = strict_dbpf(old_menu), strict_dbpf(menu)
+    version = transport_menu.format_version(base)
+    before = transport_menu.restore(strict_dbpf(old_menu), transport_menu.members(base), version=version)
+    after = transport_menu.restore(strict_dbpf(menu), transport_menu.members(base, groups), version=version)
     prefixes = (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)
     removed = {(*prefix, number(piece['menu']['id'])) for _, _, pieces in groups for piece in pieces for prefix in prefixes}
     added = {(*prefix, number(layout['cycle_button']['id'])) for layout, _, _ in groups for prefix in prefixes}
@@ -432,7 +449,7 @@ def verify(output, write_report=True):
             'custom_type_families': len(base['pieces']) - count + len(groups) - len(hidden_members(base['pieces'])),
             'add_types_rows': count - len(groups) + len(hidden_members(base['pieces'])),
             'unrelated_piece_buttons_preserved': len(base['pieces']) - count - len(hidden_members(base['pieces'])),
-            'submenus_dll_required': bool(submenus),
+            'submenus_dll_required': bool(submenus or transport_menu.members(base)),
             'construction_definitions_preserved': True, 'network_ini_preserved': True,
             'assemblies': manifest['menu_experiment']['assemblies']},
         'in_game_menu_tested': False,
@@ -516,6 +533,7 @@ def build(project_root, source, output, *, layout_ids=None, domain_id=None, sele
     base = single._read_json(source / 'manifest.json')
     require('menu_experiment' not in base, 'Source must be a normal build; nested assembly menus are unsupported')
     single._check_source_files(source, base)
+    transport_menu.require_current_source(catalog, base)
     groups = _groups(base, bundle)
     current = {piece['id']: piece for piece in catalog['pieces']}
     for _, _, pieces in groups:
@@ -526,6 +544,7 @@ def build(project_root, source, output, *, layout_ids=None, domain_id=None, sele
     proposed = {number(layout['cycle_button']['id']) for layout, _, _ in groups}
     proposed |= {number(row['definition']['id']) for row in _submenus(groups)}
     used = {key[2] for key in installed} | {number(piece['menu']['id']) for piece in catalog['pieces']}
+    transport_menu.check_ids(transport_menu.members(base), used, proposed)
     require(not proposed & used, 'Assembly presentation identifier collides with existing content')
     folder = base['plugin_folder']
     original_controller = (source / folder / single.CONTROLLER).read_bytes()
@@ -548,7 +567,7 @@ def build(project_root, source, output, *, layout_ids=None, domain_id=None, sele
             safe_relative(stage, row['path']).replace(destination)
         for key, value in raw.items():
             path = safe_relative(stage, proof[key]['path']); path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(value)
-        documents = _documents(groups)
+        documents = _documents(groups, base)
         for name, value in {f'{folder}/{single.CONTROLLER}': controller, f'{folder}/{single.MENU}': menu, **documents}.items():
             path = safe_relative(stage, name); path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(value)
         (stage / 'manifest.json').write_bytes(single._json_bytes(manifest))
@@ -561,4 +580,4 @@ def build(project_root, source, output, *, layout_ids=None, domain_id=None, sele
         'assembly_menu_buttons': len(groups), 'member_buttons_hidden': sum(len(p) for _, _, p in groups),
         'piece_types_preserved': len(base['pieces']), 'assembly_ids': [layout['assembly_id'] for layout, _, _ in groups],
         'presentation_identifier_conflicts': 0, 'dependency_donors_checked': len(donors),
-        'installed': False, 'in_game_menu_tested': False, 'submenus_dll_required': bool(_submenus(groups))}
+        'installed': False, 'in_game_menu_tested': False, 'submenus_dll_required': bool(_submenus(groups) or transport_menu.members(base))}

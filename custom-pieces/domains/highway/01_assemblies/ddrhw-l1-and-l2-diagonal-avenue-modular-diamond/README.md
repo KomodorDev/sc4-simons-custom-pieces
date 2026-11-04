@@ -85,7 +85,7 @@ Keep the same straight stamp, C01. Replace the two matching R40 ramps and their 
 
 1. Prepare a clear, flat 10 × 10-tile area. Read X eastward and Y northward; the southwest tile centre is (X0, Y0). Keep this reference fixed for every component.
 2. Install an explicitly selected, verified experimental build through the [shared installation procedure](../../../../docs/BUILD_AND_INSTALL.md). Building and rendering do not install game files.
-3. Open **Transportation → Highways**, and select **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond**. Select **DD RHW-4 — Straight Diagonal Highway Stamp**, P01, first.
+3. Open **Transportation → Highways → SCP → Assemblies**, and select **SCP | ASSEMBLY | DD RHW-4 — Modular Diagonal Avenue Diamond**. Select **DD RHW-4 — Straight Diagonal Highway Stamp**, P01, first.
 4. Press **Tab** forward or **Shift+Tab** backward through the seven default types. **Home** and **End** rotate the selected piece. Use 0° for every row in the reference layout below.
 5. Place P01 once, then P02–P07 separately. Each listed position is the local (column 0, row 0) construction reference. Some sparse pieces have an empty reference cell: align the occupied preview cells rather than treating that empty position as a confirmed mouse-click anchor.
 6. Connect native diagonal DD RHW-4 approaches at the northeast and southwest highway ends. Open **Transportation → Roads → Avenue**, and drag an ordinary diagonal Avenue up to each outer terminal boundary. Joining the outside approaches, placing over a prebuilt Avenue, and dragging through occupied tiles are separate game checks.

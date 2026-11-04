@@ -133,7 +133,7 @@ Follow [documentation generation](WORKFLOW_DOCUMENTATION_GENERATION.md), includi
 - [ ] E02 — Refresh affected generated views, observation dependencies, and inventories through their owners; preserve exact observations and distinguish stale results from current evidence.
 - [ ] E03 — Generate only the required final images from the correct compiled inputs, and inspect the actual PNGs for complete geometry, legibility, clipping, and consistent presentation.
 - [ ] E04 — For an assembly, match the required reference view order, legends, badges, and annotations; verify translucent construction overlays, owned-tile outlines, and actual piece projections including overhang.
-- [ ] E05 — Check required standalone views, menu icons, component thumbnails, connection cards, image paths, and current provenance against the requested scope.
+- [ ] E05 — Check required standalone views, menu icons, component thumbnails, connection cards, image paths, and current provenance against the requested scope. For a menu change in a migrated category, verify the [SCP folder and both leaves](BUILD_AND_INSTALL.md#81-required-scp-folder-layout), playable button placement, and all four icon states. Track actual game menu behavior separately.
 - [ ] E06 — Complete authored README/TESTING content outside generated blocks; supply exact placement, menu, rotation, connection, and test instructions with genuine limitations.
 - [ ] E07 — Update the owning workflow or reference when a reusable lesson changes future authoring decisions; link to it rather than duplicating a competing rule.
 - [ ] E08 — Check metadata, numbered headings, navigation, one-line prose paragraphs, portable public paths, Oxford commas, and local links.

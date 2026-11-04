@@ -1,0 +1,180 @@
+// title: "Reviewed highway connector channels"
+// summary: "Bind every measured service endpoint to its independently reviewed channel and exposed tile boundary."
+//
+// Used when: Contributors export this highway component or inspect its complete boundary cards.
+// Read by: scp.connector_metadata.load_library(), connector exports, and source-owned overview rendering.
+// Updated by: scp_highway.connections.write_connector_groups() after reviewed saved-resource extraction.
+// Affects: Highway, Avenue, ramp, and pedestrian service boundaries, signed slopes, and derived connector exports.
+{
+  "schema_version": 3,
+  "purpose": "Complete reviewed saved-PATH service boundaries, signed endpoint grades, and physical channel associations. Physical deck fit, neighbouring compatibility, and game operation remain unverified.",
+  "piece_id": "ddrhw-l1-l2-rhw-l0-ramp-diagonal-opposite-mirrored-alignment-a",
+  "source_binding": {
+    "piece_sha256": "62d463bdd4c690da571a616577f66d8799c5a0fe0d0093dfa64134177d61ecce",
+    "connections_sha256": "7cb69b2e4e4e1a73e7a2600c549b0469775795906460b41e5e658b01589b61f3"
+  },
+  "components": [
+    {
+      "id": "upper-carriageway",
+      "network": "road",
+      "construction_network": "dirtroad"
+    },
+    {
+      "id": "lower-carriageway",
+      "network": "road",
+      "construction_network": "dirtroad"
+    }
+  ],
+  "channels": [
+    {
+      "id": "upper-lane-01",
+      "component_id": "upper-carriageway",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "upper-lane-02",
+      "component_id": "upper-carriageway",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "lower-lane-01",
+      "component_id": "lower-carriageway",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    },
+    {
+      "id": "lower-lane-02",
+      "component_id": "lower-carriageway",
+      "kind": "road-lane",
+      "traffic_modes": [
+        "car"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "boundary-01-upper-carriageway-01",
+      "component_id": "upper-carriageway",
+      "members": [
+        {
+          "id": "member-upper-lane-01-in",
+          "source_port_id": "upper-lane-01-in",
+          "direction": "in",
+          "channel_id": "upper-lane-01",
+          "cut_id": "cut-upper-lane-01-in"
+        },
+        {
+          "id": "member-upper-lane-02-in",
+          "source_port_id": "upper-lane-02-in",
+          "direction": "in",
+          "channel_id": "upper-lane-02",
+          "cut_id": "cut-upper-lane-02-in"
+        }
+      ]
+    },
+    {
+      "id": "boundary-02-lower-carriageway-01",
+      "component_id": "lower-carriageway",
+      "members": [
+        {
+          "id": "member-lower-lane-01-out",
+          "source_port_id": "lower-lane-01-out",
+          "direction": "out",
+          "channel_id": "lower-lane-01",
+          "cut_id": "cut-lower-lane-01-out"
+        },
+        {
+          "id": "member-lower-lane-02-out",
+          "source_port_id": "lower-lane-02-out",
+          "direction": "out",
+          "channel_id": "lower-lane-02",
+          "cut_id": "cut-lower-lane-02-out"
+        }
+      ]
+    },
+    {
+      "id": "boundary-03-lower-carriageway-01",
+      "component_id": "lower-carriageway",
+      "members": [
+        {
+          "id": "member-lower-lane-01-in",
+          "source_port_id": "lower-lane-01-in",
+          "direction": "in",
+          "channel_id": "lower-lane-01",
+          "cut_id": "cut-lower-lane-01-in"
+        },
+        {
+          "id": "member-lower-lane-02-in",
+          "source_port_id": "lower-lane-02-in",
+          "direction": "in",
+          "channel_id": "lower-lane-02",
+          "cut_id": "cut-lower-lane-02-in"
+        }
+      ]
+    },
+    {
+      "id": "boundary-03-upper-carriageway-02",
+      "component_id": "upper-carriageway",
+      "members": [
+        {
+          "id": "member-upper-lane-01-out",
+          "source_port_id": "upper-lane-01-out",
+          "direction": "out",
+          "channel_id": "upper-lane-01",
+          "cut_id": "cut-upper-lane-01-out"
+        },
+        {
+          "id": "member-upper-lane-02-out",
+          "source_port_id": "upper-lane-02-out",
+          "direction": "out",
+          "channel_id": "upper-lane-02",
+          "cut_id": "cut-upper-lane-02-out"
+        }
+      ]
+    }
+  ],
+  "boundary_bundles": [
+    {
+      "id": "boundary-01",
+      "source_cell": [
+        1,
+        4
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "boundary-01-upper-carriageway-01"
+      ]
+    },
+    {
+      "id": "boundary-02",
+      "source_cell": [
+        2,
+        5
+      ],
+      "edge": "south",
+      "connector_ids": [
+        "boundary-02-lower-carriageway-01"
+      ]
+    },
+    {
+      "id": "boundary-03",
+      "source_cell": [
+        6,
+        1
+      ],
+      "edge": "east",
+      "connector_ids": [
+        "boundary-03-lower-carriageway-01",
+        "boundary-03-upper-carriageway-02"
+      ]
+    }
+  ]
+}

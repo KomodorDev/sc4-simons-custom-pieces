@@ -1,0 +1,510 @@
+// title: "Checked DD RHW Y component connector measurements"
+// summary: "Bind complete intrinsic lane boundaries to independently verified saved component and assembly resources."
+//
+// Used when: Extracting, validating, exporting, or drawing connector cards for this Y component.
+// Read by: scp_highway.y_junction_contracts and the shared connector workflow.
+// Updated by: domains/highway/tools/freeze_y_junction_connectors.py after the complete native build verifies.
+// Affects: This component's directional ports, permitted journeys, forbidden transfers, and complete canonical PATH identities; game observations remain unverified.
+{
+  "schema_version": 1,
+  "state": "accepted-independently-checked-saved-resources",
+  "game_operation": "unverified",
+  "source": {
+    "build": "dist/ddrhw-y-reversed-native",
+    "manifest_sha256": "fb5a6c265a125b16a9c2def234e16fccc16f6f6cf8ba4d95cda57e4700a7294e",
+    "verification_passed": true,
+    "whole_assembly_checked": true,
+    "whole_assembly_physical_models_checked": true
+  },
+  "contract": {
+    "reference_piece_id": "ddrhw-y-reversed-diagonal-stem-split",
+    "footprint": [
+      5,
+      3
+    ],
+    "cells": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "path_hashes_by_cell": [
+      [
+        [
+          0,
+          0
+        ],
+        "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534"
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        "18e24582ccea1458aa9960f60b29acc520bf5ef7287bcc722ff17b9cf85a8918"
+      ],
+      [
+        [
+          2,
+          0
+        ],
+        "53a1ff5f520350d81a11ffdd059f37472252d2c2d8be9032ec6915eefc047ea4"
+      ],
+      [
+        [
+          3,
+          0
+        ],
+        "6748c2f1f5c1227b1a5b8116f4f2836b201c2ee8a8b0bca922c6ade26b2d0a2b"
+      ],
+      [
+        [
+          4,
+          0
+        ],
+        "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534"
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        "167596087696da260dbff482758a013bbd1148c7e110ae4d598bc7b92901565e"
+      ],
+      [
+        [
+          2,
+          1
+        ],
+        "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534"
+      ],
+      [
+        [
+          1,
+          2
+        ],
+        "8ca049f5a5eb644dfccd3a985b97b9fbfaebdfda2d297ae1394848003a2d0534"
+      ]
+    ],
+    "raw_path_fingerprint_status": "accepted-checked-saved-build",
+    "ports": [
+      {
+        "id": "a-b-in",
+        "direction": "in",
+        "engine_transport": 1,
+        "edge": 0,
+        "endpoint_m": [
+          8.0,
+          -12.8,
+          7.5
+        ],
+        "sampled_tangent": [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        "tangent": [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "dd-rhw-l1",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          1,
+          1
+        ],
+        "channel_id": "a-b"
+      },
+      {
+        "id": "a-b-out",
+        "direction": "out",
+        "engine_transport": 1,
+        "edge": 1,
+        "endpoint_m": [
+          22.332766,
+          8.0,
+          7.5
+        ],
+        "sampled_tangent": [
+          0.25726656145381405,
+          0.9663404764148767
+        ],
+        "tangent": [
+          0.25725570106816964,
+          0.9663433676845538
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "dd-rhw-l1",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          1,
+          0
+        ],
+        "channel_id": "a-b"
+      },
+      {
+        "id": "b-a-in",
+        "direction": "in",
+        "engine_transport": 1,
+        "edge": 1,
+        "endpoint_m": [
+          22.332766,
+          8.0,
+          15.0
+        ],
+        "sampled_tangent": [
+          -0.25726656145381405,
+          -0.9663404764148767
+        ],
+        "tangent": [
+          -0.25725570106816964,
+          -0.9663433676845538
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "dd-rhw-l2",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          1,
+          0
+        ],
+        "channel_id": "b-a"
+      },
+      {
+        "id": "b-a-out",
+        "direction": "out",
+        "engine_transport": 1,
+        "edge": 0,
+        "endpoint_m": [
+          8.0,
+          -12.8,
+          15.0
+        ],
+        "sampled_tangent": [
+          -0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "dd-rhw-l2",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          1,
+          1
+        ],
+        "channel_id": "b-a"
+      },
+      {
+        "id": "a-c-in",
+        "direction": "in",
+        "engine_transport": 1,
+        "edge": 0,
+        "endpoint_m": [
+          8.0,
+          -19.2,
+          7.5
+        ],
+        "sampled_tangent": [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        "tangent": [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "dd-rhw-l1",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          1,
+          1
+        ],
+        "channel_id": "a-c"
+      },
+      {
+        "id": "a-c-out",
+        "direction": "out",
+        "engine_transport": 1,
+        "edge": 1,
+        "endpoint_m": [
+          53.321807,
+          8.0,
+          7.5
+        ],
+        "sampled_tangent": [
+          0.9475285848954339,
+          0.31967105093526477
+        ],
+        "tangent": [
+          0.9475295370856598,
+          0.31966822855929156
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "dd-rhw-l1",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          3,
+          0
+        ],
+        "channel_id": "a-c"
+      },
+      {
+        "id": "c-a-in",
+        "direction": "in",
+        "engine_transport": 1,
+        "edge": 1,
+        "endpoint_m": [
+          53.321807,
+          8.0,
+          15.0
+        ],
+        "sampled_tangent": [
+          -0.9475285848954339,
+          -0.31967105093526477
+        ],
+        "tangent": [
+          -0.9475295370856598,
+          -0.31966822855929156
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "dd-rhw-l2",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          3,
+          0
+        ],
+        "channel_id": "c-a"
+      },
+      {
+        "id": "c-a-out",
+        "direction": "out",
+        "engine_transport": 1,
+        "edge": 0,
+        "endpoint_m": [
+          8.0,
+          -19.2,
+          15.0
+        ],
+        "sampled_tangent": [
+          -0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "tangent": [
+          -0.7071067811865476,
+          -0.7071067811865476
+        ],
+        "grade": 0.0,
+        "service_network": "road",
+        "service_family": "road",
+        "variant": "dd-rhw-l2",
+        "role": "primary",
+        "channel_kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "source_cell": [
+          1,
+          1
+        ],
+        "channel_id": "c-a"
+      }
+    ],
+    "movements": [
+      [
+        "a-b-in",
+        "a-b-out"
+      ],
+      [
+        "b-a-in",
+        "b-a-out"
+      ],
+      [
+        "a-c-in",
+        "a-c-out"
+      ],
+      [
+        "c-a-in",
+        "c-a-out"
+      ]
+    ],
+    "forbidden_transfers": [
+      [
+        "a-b-in",
+        "b-a-out"
+      ],
+      [
+        "a-b-in",
+        "a-c-out"
+      ],
+      [
+        "a-b-in",
+        "c-a-out"
+      ],
+      [
+        "b-a-in",
+        "a-b-out"
+      ],
+      [
+        "b-a-in",
+        "a-c-out"
+      ],
+      [
+        "b-a-in",
+        "c-a-out"
+      ],
+      [
+        "a-c-in",
+        "a-b-out"
+      ],
+      [
+        "a-c-in",
+        "b-a-out"
+      ],
+      [
+        "a-c-in",
+        "c-a-out"
+      ],
+      [
+        "c-a-in",
+        "a-b-out"
+      ],
+      [
+        "c-a-in",
+        "b-a-out"
+      ],
+      [
+        "c-a-in",
+        "a-c-out"
+      ]
+    ],
+    "components": [
+      {
+        "id": "dd-highway",
+        "network": "road",
+        "construction_network": "dirtroad"
+      }
+    ],
+    "channels": [
+      {
+        "id": "a-b",
+        "component_id": "dd-highway",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "ports": [
+          "a-b-in",
+          "a-b-out"
+        ]
+      },
+      {
+        "id": "b-a",
+        "component_id": "dd-highway",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "ports": [
+          "b-a-in",
+          "b-a-out"
+        ]
+      },
+      {
+        "id": "a-c",
+        "component_id": "dd-highway",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "ports": [
+          "a-c-in",
+          "a-c-out"
+        ]
+      },
+      {
+        "id": "c-a",
+        "component_id": "dd-highway",
+        "kind": "road-lane",
+        "traffic_modes": [
+          "car"
+        ],
+        "ports": [
+          "c-a-in",
+          "c-a-out"
+        ]
+      }
+    ]
+  }
+}

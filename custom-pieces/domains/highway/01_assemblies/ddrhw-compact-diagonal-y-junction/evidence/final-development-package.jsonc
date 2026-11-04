@@ -1,0 +1,525 @@
+// title: "DD RHW compact Y final development package"
+// summary: "Bind the first-alignment game-file and source ZIPs to the final menu proof, actual saved-resource checks, exact test scopes, and pending human observations."
+// Used when: Reviewing or deliberately installing this exact experimental three-component development candidate.
+// Read by: Contributors and reviewers checking archive identities, component cycling, source provenance, and verification limits.
+// Updated by: Contributors after a fresh normal build, assembly-menu build, full checks, archive creation, and independent payload audit.
+// Affects: This frozen delivery receipt; it supplies no installation, publication, game-test, or human-approval result.
+{
+  "schema_version": 1,
+  "subject": "ddrhw-compact-diagonal-y-junction",
+  "recorded_at_utc": "2026-11-03T09:26:01.676723+00:00",
+  "result": "first_alignment_development_candidate_implemented_verified_and_packaged",
+  "path_base": "repository root",
+  "branch": "codex/ddrhw-compact-diagonal-y-junction",
+  "branch_base_dev_commit": "dcebaf4",
+  "delivery": {
+    "component_types": 3,
+    "component_placements": 3,
+    "occupied_city_tiles": 21,
+    "component_owned_tiles": {
+      "A": 8,
+      "B": 8,
+      "C": 5
+    },
+    "bounding_rectangle_tiles": [
+      6,
+      7
+    ],
+    "bounding_rectangle_metres": [
+      96,
+      112
+    ],
+    "directed_single_lane_journeys": 6,
+    "proper_rotations": 4,
+    "reflected_variant_included": false,
+    "second_alignment_included": false,
+    "installed": false,
+    "published": false,
+    "in_game_tested": false,
+    "human_image_approval_recorded": false
+  },
+  "artifacts": {
+    "normal_build_manifest": {
+      "path": "custom-pieces/dist/ddrhw-y-junction-final-parts-03/manifest.json",
+      "bytes": 930484,
+      "sha256": "854187952d5d7253317474fa949e1ba6516289a51f8f78f89ef70313d97528f3"
+    },
+    "normal_build_verification": {
+      "path": "custom-pieces/dist/ddrhw-y-junction-final-parts-03/verification.json",
+      "bytes": 106089,
+      "sha256": "534b8006813be6dcf9b3905753502beec41986de21ed3ab0c00c6f78de92a282"
+    },
+    "assembly_menu_manifest": {
+      "path": "custom-pieces/dist/ddrhw-y-junction-menu-final-03/manifest.json",
+      "bytes": 1084336,
+      "sha256": "2388f51caf6fee05e699b03279646724d357c39b97ba5d4ec391e1d9f8e417c0"
+    },
+    "assembly_menu_verification": {
+      "path": "custom-pieces/dist/ddrhw-y-junction-menu-final-03/verification.json",
+      "bytes": 113114,
+      "sha256": "e0c979c0ed68213616b8de17578709fdfc8411e210d976b13a69a1390a0f4e5e"
+    },
+    "game_file_zip": {
+      "path": "custom-pieces/dist/ddrhw-y-junction-menu-final-03.zip",
+      "bytes": 300133457,
+      "sha256": "de364ee3b6c6f4fc6d748e9f257eb9388a0b4cab3015a966fadb6af39dca3f14"
+    },
+    "source_zip": {
+      "path": "custom-pieces/dist/ddrhw-y-junction-source-final-03.zip",
+      "bytes": 290460519,
+      "sha256": "4974628ea5b4b274037e4d92c51c26da3d1c727fb875ee9edfb01a37a2c68759"
+    },
+    "DAT_files": [
+      {
+        "path": "custom-pieces/dist/ddrhw-y-junction-menu-final-03/zzz_Simons_Custom_Pieces/00_SCP_Controller_NAM50.dat",
+        "bytes": 5445700,
+        "sha256": "93091d6f3f97484b2b533bc08b159097919419b6771c74a858693957f1c4dca4"
+      },
+      {
+        "path": "custom-pieces/dist/ddrhw-y-junction-menu-final-03/zzz_Simons_Custom_Pieces/10_SCP_Menu.dat",
+        "bytes": 8106,
+        "sha256": "1ce85acf04269a55222a6c175b006b454a7d7bf6c3a253edb5261a12591ac2a6"
+      },
+      {
+        "path": "custom-pieces/dist/ddrhw-y-junction-menu-final-03/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-y-diagonal-branch.dat",
+        "bytes": 5526584,
+        "sha256": "f245e4701d3959b2ab39a426e9bccef23ceafd1a0fa28f7a0373674ab3561e8d"
+      },
+      {
+        "path": "custom-pieces/dist/ddrhw-y-junction-menu-final-03/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-y-diagonal-stem-split.dat",
+        "bytes": 6499142,
+        "sha256": "6892d4ce98c569738fa186f902619eb34732f34f5be2c5f90acce3747a7c4a1f"
+      },
+      {
+        "path": "custom-pieces/dist/ddrhw-y-junction-menu-final-03/zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-y-orthogonal-core.dat",
+        "bytes": 7197160,
+        "sha256": "584ebb51dd1c199968a1a349ef928813ecf8bc039e9463ca091fa7e290a573fc"
+      }
+    ]
+  },
+  "archive_audit": {
+    "passed": true,
+    "binary_members_verified": 3799,
+    "source_members_verified": 3783,
+    "binary_matches_frozen_candidate": true,
+    "source_matches_current_portable_library": true,
+    "private_settings_or_native_source_archives_in_source_zip": false,
+    "installed": false
+  },
+  "archive_capture_note": "Both archives were frozen before this receipt was written, so they deliberately omit this later receipt. The source ZIP contains the 3,783 portable library files captured by the final normal build. The Git-only original source-history ZIP is omitted, as documented in TESTING.md.",
+  "menu_verification": {
+    "add_types_rows": 2,
+    "alias_activation_and_visibility": "unverified",
+    "all_piece_assets_preserved": true,
+    "assembly_id": "ddrhw-compact-diagonal-y-junction",
+    "assembly_menu_buttons": 1,
+    "component_types_in_cycle": 3,
+    "construction_definitions_preserved": true,
+    "custom_type_families": 1,
+    "grouped_type_rows": 3,
+    "individual_submenu_buttons": 0,
+    "kind": "assembly-single-button-cycle-v1",
+    "member_buttons_hidden": 3,
+    "network_ini_preserved": true,
+    "new_presentation_resources": 4,
+    "pending_game_cases": 10,
+    "piece_types_preserved": 3,
+    "removed_member_presentation_resources": 12,
+    "shared_tab_family": true,
+    "source_build_verified": true,
+    "submenus_dll_required": false,
+    "unrelated_piece_buttons_preserved": 0
+  },
+  "independent_menu_audit": {
+    "schema_version": 1,
+    "passed": true,
+    "scope": "Independent actual encoded resources; game activation and Tab observations remain unverified.",
+    "candidate_manifest_sha256": "2388f51caf6fee05e699b03279646724d357c39b97ba5d4ec391e1d9f8e417c0",
+    "source_manifest_sha256": "854187952d5d7253317474fa949e1ba6516289a51f8f78f89ef70313d97528f3",
+    "component_dats": [
+      {
+        "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-y-diagonal-branch.dat",
+        "bytes": 5526584,
+        "sha256": "f245e4701d3959b2ab39a426e9bccef23ceafd1a0fa28f7a0373674ab3561e8d"
+      },
+      {
+        "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-y-diagonal-stem-split.dat",
+        "bytes": 6499142,
+        "sha256": "6892d4ce98c569738fa186f902619eb34732f34f5be2c5f90acce3747a7c4a1f"
+      },
+      {
+        "path": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-y-orthogonal-core.dat",
+        "bytes": 7197160,
+        "sha256": "584ebb51dd1c199968a1a349ef928813ecf8bc039e9463ca091fa7e290a573fc"
+      }
+    ],
+    "all_actual_file_and_document_fingerprints_checked": true,
+    "files_checked": 5,
+    "documentation_files_checked": 3793,
+    "encoded_assembly_button": "6a47fee5",
+    "encoded_button_count": 1,
+    "component_order": [
+      "ddrhw-y-diagonal-stem-split",
+      "ddrhw-y-diagonal-branch",
+      "ddrhw-y-orthogonal-core"
+    ],
+    "hidden_member_presentations": 3,
+    "original_rotation_states_per_member": 8,
+    "shared_feature_family_keywords": [
+      "RotationRing",
+      "AddTypes",
+      "AddTypes"
+    ],
+    "protected_rul1_sha256": "10841a0f582d355981afe78513881d83af0351345ee63bb040cd20f1bb6db529",
+    "protected_network_ini_sha256": "222f1bbaf1bd2715228ccea7766514e417191db128cc389b145900a4c2f9c54e",
+    "construction_definitions_and_unrelated_ordering_preserved": true,
+    "all_source_proof_hashes_checked": true,
+    "icon_pixels_match_proof": true,
+    "game_menu_activation_verified": false,
+    "game_tab_operation_verified": false,
+    "package_modified": false
+  },
+  "saved_assembly_verification": {
+    "passed": true,
+    "normal_build_checked": "custom-pieces/dist/ddrhw-y-junction-final-parts-02",
+    "checked_manifest_sha256": "af3364c1283b35d2a46f17af70eee238aba07ac28e5bdc0c0087e6001baaa6fd",
+    "final_normal_build_all_five_DATs_byte_identical_to_checked_build": true,
+    "original_accepted_build_all_five_DATs_byte_identical": true,
+    "actual_complete_journeys": 6,
+    "actual_native_lane_members": 12,
+    "all_four_rotations_checked": true,
+    "no_uturn_or_unintended_lane_transfer": true,
+    "physical_summary": {
+      "passed": true,
+      "actual_indexed_triangles_checked": 116091,
+      "actual_saved_vehicle_corridors": {
+        "passed": true,
+        "actual_saved_car_segments": 4987,
+        "continuous_spine_pavement_support": true,
+        "continuous_authored_one_metre_underside_support": true,
+        "full_vehicle_strip_coverage": true,
+        "original_native_endpoint_prefixes": 8,
+        "original_native_endpoint_prefix_total_length_m": 0.011318283286509525,
+        "original_native_underside_scope": "The unchanged native helper supplies the roof in its measured 1.415mm endpoint phase; its original open substructure is not claimed to be a newly closed authored underside.",
+        "actual_face_vehicle_corridor_intersection_checked": true,
+        "pavement_position_tolerance_m": 4e-06,
+        "vehicle_width_m": 2.5,
+        "vehicle_height_m": 3.8
+      },
+      "unchanged_native_vehicle_corridors": {
+        "passed": true,
+        "native_real_car_segments_checked": 24,
+        "native_capacity_routes_excluded": true,
+        "native_game_traffic_observed": false
+      },
+      "complete_road_shell": {
+        "passed": true,
+        "triangle_faces_checked": 114912,
+        "declared_join_edges": 44,
+        "whole_assembly_shell": true,
+        "topology_weld_maximum_distance_m": 4e-06,
+        "maximum_actual_source_vertex_displacement_m": 3.814697265625e-06
+      },
+      "complete_barrier_shell": {
+        "integral_raised_road_shell": true,
+        "actual_barrier_triangles": 70124
+      },
+      "complete_support_shell": {
+        "passed": true,
+        "triangle_faces_checked": 1168,
+        "declared_join_edges": 0,
+        "whole_assembly_shell": true,
+        "topology_weld_maximum_distance_m": 4e-06,
+        "maximum_actual_source_vertex_displacement_m": 0.0
+      },
+      "complete_saved_support_prisms": {
+        "passed": true,
+        "closed_prisms_checked": 66,
+        "complete_surface_coverage_checked": true,
+        "closed_solid_vehicle_intersections_checked": 963,
+        "actual_asphalt_surface_intersections_checked": 2825,
+        "full_top_bearing_claimed": false,
+        "structural_capacity_tested": false
+      },
+      "deck_body_clearance": {
+        "passed": true,
+        "roof_triangles_checked": 14479,
+        "bounded_float32_edge_contacts": 11,
+        "float32_contact_width_limit_m": 4e-06
+      },
+      "underside_surface_clearance": {
+        "passed": true,
+        "bounded_float32_edge_contacts": 2,
+        "float32_contact_width_limit_m": 4e-06,
+        "underside_triangles_checked": 16089
+      },
+      "barrier_to_deck_solid_clearance": {
+        "passed": true,
+        "actual_barrier_to_slab_overlaps_checked": 20697,
+        "vertical_barrier_triangles_checked": 24,
+        "contact_position_bound_m": 4e-06,
+        "actual_saved_roof_and_underside_planes": true,
+        "finite_underside_encoding_distance_bound_m": 4e-06,
+        "nominal_depth_substituted_for_saved_faces": false
+      },
+      "barrier_to_barrier_surface_clearance": {
+        "passed": true,
+        "barrier_triangles_checked": 70284,
+        "finite_candidate_pairs_checked": 394739,
+        "shared_finite_edge_seams": 86805,
+        "bounded_float32_coplanar_contacts": 12,
+        "position_bound_m": 4e-06,
+        "coplanar_contact_width_bound_m": 4e-06
+      },
+      "native_finite_physical_seams": {
+        "native_finite_segments_checked": 86,
+        "position_tolerance_m": 2e-06,
+        "uv_tolerance": 5e-06,
+        "original_native_occluded_profile_length_m": 0.005659140828916165,
+        "scope": "Finite geometry, material, and affine UV at exact coreward native end profiles, including staggered diagonal shoulders",
+        "in_game_rendering_tested": false
+      },
+      "independent_native_collar_certificate": {
+        "native_faces_checked": 636,
+        "position_tolerance_m": 4e-06,
+        "uv_tolerance": 5e-06,
+        "scope": "Decoded faces contained on actual pinned finite source-profile lofts or literal C parent faces; no authored geometry exception",
+        "certified_faces": 636,
+        "removed_inherited_interior_roof_area_m2": 29.803185007785,
+        "internal_roof_masks": 10,
+        "actual_saved_faces_changed": false,
+        "generic_native_textured_faces_without_geometry_exception": 218
+      },
+      "game_rendering_tested": false,
+      "structural_capacity_tested": false
+    },
+    "actual_check_report_sha256": "aef5ca12b95c9b3121fd21f928d9fa70f8ab22c8388367ed90f45d8b3a247756",
+    "original_accepted_payload_evidence": "custom-pieces/domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction/evidence/compiled-verification.jsonc"
+  },
+  "tests": {
+    "portable_full_library": {
+      "command": "python3 -B tools/run_tests.py",
+      "exit_code": 0,
+      "reported_tests": 2273,
+      "explicit_skip_entries": 93,
+      "suites": [
+        {
+          "suite": "framework",
+          "reported_tests": 1052,
+          "seconds": 800.018,
+          "explicit_skips": 11
+        },
+        {
+          "suite": "high-speed-rail",
+          "reported_tests": 420,
+          "seconds": 288.098,
+          "explicit_skips": 65
+        },
+        {
+          "suite": "highway",
+          "reported_tests": 672,
+          "seconds": 347.065,
+          "explicit_skips": 12
+        },
+        {
+          "suite": "hsr-trumpet-straight-stem",
+          "reported_tests": 129,
+          "seconds": 73.174,
+          "explicit_skips": 5
+        }
+      ],
+      "skip_reasons": [
+        {
+          "reason": "Audited NAM donors unavailable",
+          "entries": 1
+        },
+        {
+          "reason": "Audited NAM donors unavailable; set SCP_TEST_NAM_PLUGINS",
+          "entries": 2
+        },
+        {
+          "reason": "Audited NAM unavailable; set SCP_TEST_NAM_PLUGINS",
+          "entries": 2
+        },
+        {
+          "reason": "Audited local HSR native donor unavailable",
+          "entries": 43
+        },
+        {
+          "reason": "Audited local NAM donor is unavailable",
+          "entries": 1
+        },
+        {
+          "reason": "Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS",
+          "entries": 1
+        },
+        {
+          "reason": "Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS to enable integration tests",
+          "entries": 1
+        },
+        {
+          "reason": "Audited local native HSR donor unavailable",
+          "entries": 5
+        },
+        {
+          "reason": "Audited local native HSR model donor unavailable",
+          "entries": 10
+        },
+        {
+          "reason": "Exact native HSR, ordinary Road PATH, and opaque sidewalk capture are unavailable; supply SCP_TEST_NAM_PLUGINS, local/settings.jsonc, legacy local/settings.json, or local/validation-inputs/Plugins.",
+          "entries": 1
+        },
+        {
+          "reason": "Historical actual staged build absent; no saved-resource claim made",
+          "entries": 2
+        },
+        {
+          "reason": "Needs the saved, protected two-piece build",
+          "entries": 7
+        },
+        {
+          "reason": "Optional audited native HSR donor is unavailable",
+          "entries": 1
+        },
+        {
+          "reason": "Original NAM 50 inputs are unavailable in this checkout",
+          "entries": 1
+        },
+        {
+          "reason": "Original NAM 50 inputs are unavailable in this source-only checkout",
+          "entries": 2
+        },
+        {
+          "reason": "Private NAM settings are unavailable",
+          "entries": 7
+        },
+        {
+          "reason": "Renamed assembly has no current-ID resource capture; unchanged historical proof is preserved separately",
+          "entries": 3
+        },
+        {
+          "reason": "Saved revised parallel ground-mouth build is absent; set SCP_TEST_PARALLEL_GROUND_MOUTHS_BUILD to its exact directory.",
+          "entries": 1
+        },
+        {
+          "reason": "Saved revised parallel slip build is absent; set SCP_TEST_PARALLEL_SLIP_BUILD to its exact directory.",
+          "entries": 1
+        },
+        {
+          "reason": "The independently checked native parallel build is absent; native NAM inputs and a saved candidate build are required.",
+          "entries": 1
+        }
+      ],
+      "private_native_inputs_and_saved_builds_excluded_from_snapshot": true,
+      "all_executable_code_and_design_inputs_match_final_source": true,
+      "snapshot_file_count": 3804,
+      "snapshot_fingerprint": "d1603312e04e4f9a12061049c23b301be151a17cc58c1fe8de25e5dbccc69fdf",
+      "log_sha256": "85a0ee2b287ce48b47a0a845c230ab3ef282d0a729a3e91f6c76d17c26d66fa4"
+    },
+    "configured_native_Y_family": {
+      "command": "python3 -B -m unittest discover -s custom-pieces/domains/highway/tests -p 'test*y_junction*.py' -q",
+      "reported_tests": 51,
+      "skips": 0,
+      "passed": true,
+      "seconds": 8.127,
+      "log_sha256": "d828cae1734c02ef5e6d04d060b67ac10e1f33ca038a0cf5d63d0ceff710af1f"
+    },
+    "compiled_render_caption_regressions": {
+      "reported_tests": 3,
+      "skips": 0,
+      "passed": true,
+      "log_sha256": "fd7e1051a94c92472bb779d9124c3abeafa30a01dc5c9c894aa27d75236f36ec"
+    },
+    "connector_export_and_card_check": {
+      "passed": true,
+      "compiled_paths": "passed",
+      "export_freshness": "passed",
+      "log_sha256": "48889a74f4ff1ce0709c0ffb4aa7ea9f003b5c0e57756ab74a6b8cbf7dc0733c"
+    },
+    "documentation": {
+      "all_passed": true,
+      "subjects_checked": 234,
+      "current_layouts": 82,
+      "documents_checked": 193,
+      "local_links_checked": 28017
+    },
+    "library_only_export_documentation": {
+      "passed": true,
+      "subjects": 4,
+      "documents": 8,
+      "local_links": 888,
+      "escaping_links": 0
+    }
+  },
+  "final_generated_record_refresh": {
+    "scope": "Six generated connector-data and connection-overview provenance records were refreshed after the portable test snapshot. No executable code, design inputs, registered definitions, canonical image bytes, or manual game outcomes changed. The final connector check passes, and the final normal/menu builds capture these refreshed records.",
+    "records": [
+      {
+        "path": "custom-pieces/domains/highway/00_pieces/ddrhw-y-diagonal-branch/connector-data.json",
+        "tested_sha256": "d611842523cd968646093b575c81ef4f147852e215953bbfc168e4200128b7bd",
+        "current_sha256": "dad72ec444b2f383bb919683fc60465f32950ae67ee847f278ae1340c5963f48"
+      },
+      {
+        "path": "custom-pieces/domains/highway/00_pieces/ddrhw-y-diagonal-branch/evidence/connection-overview.json",
+        "tested_sha256": "75fd12ece36cb9d15d9ebe54405004c2fa3c5c562e9b9ef73c2ecd3620e475a4",
+        "current_sha256": "37bf437d75870fe25419b00a92be54a1fa82850a8ec5588545b42775f36e3b49"
+      },
+      {
+        "path": "custom-pieces/domains/highway/00_pieces/ddrhw-y-diagonal-stem-split/connector-data.json",
+        "tested_sha256": "6cf2217e90b7d46f36d57e33a38ab9d3986df600f7cc1cb3c06e1a080dd5c5f7",
+        "current_sha256": "517ba3716c603aeb122069c9d467e5dfe87eb344d88b7a4fafaae957639f9b6d"
+      },
+      {
+        "path": "custom-pieces/domains/highway/00_pieces/ddrhw-y-diagonal-stem-split/evidence/connection-overview.json",
+        "tested_sha256": "1a53d2832f27dccb55e51f0dbf7e49b0707277db5832c2e89cf5dc9ffb030e55",
+        "current_sha256": "082d50061c7ec35439f2056ea19179cc7ccdc271abf3d75050f7c8f37e70810e"
+      },
+      {
+        "path": "custom-pieces/domains/highway/00_pieces/ddrhw-y-orthogonal-core/connector-data.json",
+        "tested_sha256": "d4453a74b38fa27d5f99450ed86c7c4936aebb9db704d50399749e2c498f323f",
+        "current_sha256": "72f80d5e8d637bc44437ea7cf4926515e955623f242dd6da6dd022909da8d9c2"
+      },
+      {
+        "path": "custom-pieces/domains/highway/00_pieces/ddrhw-y-orthogonal-core/evidence/connection-overview.json",
+        "tested_sha256": "56ba50f7518db57aceaf52bd8542753683ab465b7d137140b1a1c2aca4c1b10f",
+        "current_sha256": "f6683ec838a4004e4f81e7127aae3cb4bb1c603bde7a5f69713f73a453fe8ae0"
+      }
+    ]
+  },
+  "final_source_freeze": {
+    "file_count": 3804,
+    "fingerprint": "7eebadb1947a69ecff8a85480b308c627e770f0802d0f2db58da90da7f477747",
+    "selected_executable_hashes": {
+      "custom-pieces/domains/highway/implementation/scp_highway/y_junction.py": "2fd735dbbfb6c9d9b4210e617adffe5cca55ac29ac9fb23430b5ac5d5c7d4056",
+      "custom-pieces/domains/highway/implementation/scp_highway/y_junction_approaches.py": "5b5d28169feeceb618b1261c583f3fb94115360e3f67f26bc356faed825ee247",
+      "custom-pieces/domains/highway/implementation/scp_highway/y_junction_contracts.py": "ab9129eeb189abfc3e2a81752231db98942ee809a11fc447c9ca6cbd66571419",
+      "custom-pieces/domains/highway/implementation/scp_highway/y_junction_geometry.py": "924d830775eb93add2ee182ba519748992b6bb16216e5c10706521996d269ba8",
+      "custom-pieces/domains/highway/implementation/scp_highway/y_junction_layout.py": "d5cb9a02c4ec6d02d17ac97947e701e19e45d889d0bd99e1d507ac42275ad616",
+      "custom-pieces/domains/highway/implementation/scp_highway/y_junction_models_verify.py": "53d75b2f7dc7a496601d73356e0934b5d7a427772f7b89a6d7f6cbb7f9ef32a5",
+      "custom-pieces/domains/highway/implementation/scp_highway/y_junction_native_models.py": "5618c51e9d4bb4deb42ae361f4eb99554ad5566b2b193b3fb6a80c026d6027d8",
+      "custom-pieces/domains/highway/implementation/scp_highway/y_junction_surface_uv.py": "5be6529f493a4c905697cfb7e75e106f1af8fc634a618bc299b7d45e39d5d64f",
+      "custom-pieces/domains/highway/implementation/scp_highway/y_junction_verify.py": "54b1da87fe3213b998d24795252ce0cc35e52b3b1ab31f8fa3c5cc80b7f1a0e6",
+      "custom-pieces/domains/highway/tests/test_y_junction_verify.py": "d730c11e2e937b4b819703984f7b75616f079439a0307f01778277dc37a48af2",
+      "custom-pieces/framework/scp/build.py": "32a0ee73d9968a03302a2b55d01e62dfe06e7f5fa2d75a3d1d1e20cacfd3bd80",
+      "custom-pieces/framework/scp/native_approaches.py": "6f6cce698058a1ed24a813aa631daee282641480144dff4fd7af8ea606fa4ffe"
+    }
+  },
+  "artwork": {
+    "six_canonical_compiled_assembly_views": true,
+    "three_standalone_angled_top_thumbnail_sets": true,
+    "three_fresh_connector_cards_and_exports": true,
+    "render_provenance_sha256": "b466a654828642d811d845269a308d25e97a9cc702124b17382afdf32f3716e3",
+    "agent_visual_review_completed": true,
+    "human_approval": "unverified"
+  },
+  "remaining_human_checks": [
+    "Deliberate receipt-based installation of a complete intended selection, followed by a game restart and fresh placement.",
+    "Menu activation, Tab/Shift+Tab cycling, cursor anchors, optional native sockets, and native highway dragging.",
+    "All six Route Query and moving-car journeys, longer-vehicle behavior, appearance, shadows, demolition, and save/reload."
+  ],
+  "known_limits": [
+    "Compact experimental grades reach approximately 26.57245% and 25.76137% on the two separate deck-changing links.",
+    "The original DD-to-MIS material transition retains a visible tone seam.",
+    "Saved 2.5 m-wide and 3.8 m-high corridor checks do not establish every finite vehicle length, real-world structural capacity, or successful game operation."
+  ]
+}

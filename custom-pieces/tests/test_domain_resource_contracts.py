@@ -21,7 +21,7 @@ from scp.recipes import effect_clone, label
 from scp.rul0 import compose_rul0
 from scp.shadows import build_shadows, encode_shadow_fsh
 from scp.test_support import plane
-from scp_highway import menu
+from scp_highway import menu, native
 from scp_highway.recipes import construction, validate_effect
 
 TILE, PREVIEW = 0x7F500000, 0x7F500FF5
@@ -130,7 +130,12 @@ class SavedNonRailPackageContractTests(unittest.TestCase):
             (*verify.EFFECT, PREVIEW): effect_clone(DONOR_EFFECT, DONOR_NAME, AUTHORED_NAME, NATIVE_MODEL, PREVIEW),
             TEXTURE: encode_shadow_fsh(Image.new('L', (8, 8), 255))})
         self.assets.update(build_shadows(model, TILE))
-        self.menus, _audit = menu.build_menu_resources(menu.portable_baseline(), self.piece)
+        icon_spec = {**self.piece, 'cells': [list(cell) for cell in native.CELLS]}
+        self.menus, self.menu_audit = menu.build_menu_resources(menu.portable_baseline(), icon_spec)
+        icon = self.menus[*menu.ICON, int(self.piece['menu']['id'], 16)]
+        artwork = patch('scp_highway.menu.make_piece_icon', return_value=icon)
+        artwork.start()
+        self.addCleanup(artwork.stop)
         self.recipes_provider = SimpleNamespace(effect_donor=lambda piece: (NATIVE_EFFECT, DONOR_NAME, NATIVE_MODEL),
                                                 validate_effect=self.validate_fixture_effect)
         self.verify_provider = SimpleNamespace(check_paths=lambda resources, piece: {'fixture_paths_checked': True},
@@ -162,7 +167,8 @@ class SavedNonRailPackageContractTests(unittest.TestCase):
             files.append({'path': name, 'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()})
         manifest = {'schema_version': 1, 'plugin_folder': 'zzz_Simons_Custom_Pieces', 'pieces': [self.piece],
                     'profile': {'id': 'fixture', 'donors': []}, 'files': files, 'documentation': [],
-                    'overlay': self.overlay, 'dependency_audit': {'textures': texture_dependencies or [], 'shadows': []}}
+                    'menu_audit': [self.menu_audit], 'overlay': self.overlay,
+                    'dependency_audit': {'textures': texture_dependencies or [], 'shadows': []}}
         (self.output / 'manifest.json').write_text(json.dumps(manifest))
 
     def test_portable_non_rail_package_owns_atlas_and_generated_shadows(self):

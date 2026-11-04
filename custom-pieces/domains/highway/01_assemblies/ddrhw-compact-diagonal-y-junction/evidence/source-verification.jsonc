@@ -1,0 +1,524 @@
+// title: "Independent compact DD RHW Y source verification"
+// summary: "Verify native lane contacts, flat joins, grades, sampled radii, and continuous polyline clearance without importing the geometry writer."
+//
+// Used when: Reviewing the first unregistered DD RHW Y source-design candidate.
+// Read by: Contributors and the assembly-design workflow; not a game-resource verifier.
+// Updated by: domains/highway/tools/verify_ddrhw_y_design.py from the identified source report, brief, and native audit.
+// Affects: Bounded source-feasibility evidence only; no saved resources, physical model approval, installation, or game observations.
+{
+  "schema_version": 1,
+  "passed": true,
+  "scope": "Independent source-polyline checks only; first measured grid alignment.",
+  "geometry_writer_imported": false,
+  "native_members_checked": 12,
+  "route_checks": {
+    "A-B": {
+      "native_start_member": [
+        "A",
+        "L2",
+        1,
+        "native-to-core"
+      ],
+      "native_end_member": [
+        "B",
+        "L2",
+        1,
+        "core-to-native"
+      ],
+      "endpoint_maximum_error_m": 3.552713678800501e-15,
+      "horizontal_length_m": 67.41234255212066,
+      "maximum_grade_percent": 0.0,
+      "sampled_minimum_radius_m": 29.86242716485612,
+      "start_native_collar": {
+        "length_checked_m": 3,
+        "maximum_lateral_error_m": 0.0,
+        "maximum_height_error_m": 0.0
+      },
+      "end_native_collar": {
+        "length_checked_m": 3,
+        "maximum_lateral_error_m": 0.0,
+        "maximum_height_error_m": 0.0
+      }
+    },
+    "B-A": {
+      "native_start_member": [
+        "B",
+        "L1",
+        0,
+        "native-to-core"
+      ],
+      "native_end_member": [
+        "A",
+        "L1",
+        0,
+        "core-to-native"
+      ],
+      "endpoint_maximum_error_m": 3.552713678800501e-15,
+      "horizontal_length_m": 67.41234255212066,
+      "maximum_grade_percent": 0.0,
+      "sampled_minimum_radius_m": 29.86242716485612,
+      "start_native_collar": {
+        "length_checked_m": 3,
+        "maximum_lateral_error_m": 0.0,
+        "maximum_height_error_m": 0.0
+      },
+      "end_native_collar": {
+        "length_checked_m": 3,
+        "maximum_lateral_error_m": 0.0,
+        "maximum_height_error_m": 0.0
+      }
+    },
+    "A-C": {
+      "native_start_member": [
+        "A",
+        "L2",
+        0,
+        "native-to-core"
+      ],
+      "native_end_member": [
+        "C",
+        "L2",
+        0,
+        "core-to-native"
+      ],
+      "endpoint_maximum_error_m": 0.0,
+      "horizontal_length_m": 88.74976731951772,
+      "maximum_grade_percent": 0.0,
+      "sampled_minimum_radius_m": 64.96466803820806,
+      "start_native_collar": {
+        "length_checked_m": 3,
+        "maximum_lateral_error_m": 2.6645352591003757e-15,
+        "maximum_height_error_m": 0.0
+      },
+      "end_native_collar": {
+        "length_checked_m": 3,
+        "maximum_lateral_error_m": 0.0,
+        "maximum_height_error_m": 0.0
+      }
+    },
+    "C-A": {
+      "native_start_member": [
+        "C",
+        "L1",
+        1,
+        "native-to-core"
+      ],
+      "native_end_member": [
+        "A",
+        "L1",
+        1,
+        "core-to-native"
+      ],
+      "endpoint_maximum_error_m": 0.0,
+      "horizontal_length_m": 88.74976731951773,
+      "maximum_grade_percent": 0.0,
+      "sampled_minimum_radius_m": 64.96466803637333,
+      "start_native_collar": {
+        "length_checked_m": 3,
+        "maximum_lateral_error_m": 0.0,
+        "maximum_height_error_m": 0.0
+      },
+      "end_native_collar": {
+        "length_checked_m": 3,
+        "maximum_lateral_error_m": 2.6645352591003757e-15,
+        "maximum_height_error_m": 0.0
+      }
+    },
+    "B-C": {
+      "native_start_member": [
+        "B",
+        "L1",
+        1,
+        "native-to-core"
+      ],
+      "native_end_member": [
+        "C",
+        "L2",
+        1,
+        "core-to-native"
+      ],
+      "endpoint_maximum_error_m": 0.0,
+      "horizontal_length_m": 88.20203069391637,
+      "maximum_grade_percent": 26.572453573032064,
+      "sampled_minimum_radius_m": 31.955596945832557,
+      "start_native_collar": {
+        "length_checked_m": 3,
+        "maximum_lateral_error_m": 5.10702591327572e-15,
+        "maximum_height_error_m": 0.0
+      },
+      "end_native_collar": {
+        "length_checked_m": 3,
+        "maximum_lateral_error_m": 0.0,
+        "maximum_height_error_m": 0.0
+      }
+    },
+    "C-B": {
+      "native_start_member": [
+        "C",
+        "L1",
+        0,
+        "native-to-core"
+      ],
+      "native_end_member": [
+        "B",
+        "L2",
+        0,
+        "core-to-native"
+      ],
+      "endpoint_maximum_error_m": 0.0,
+      "horizontal_length_m": 90.97844865203257,
+      "maximum_grade_percent": 25.76137326877857,
+      "sampled_minimum_radius_m": 37.81300563325004,
+      "start_native_collar": {
+        "length_checked_m": 3,
+        "maximum_lateral_error_m": 0.0,
+        "maximum_height_error_m": 0.0
+      },
+      "end_native_collar": {
+        "length_checked_m": 3,
+        "maximum_lateral_error_m": 5.10702591327572e-15,
+        "maximum_height_error_m": 0.0
+      }
+    }
+  },
+  "continuous_pair_checks": [
+    {
+      "pair": [
+        "A-B",
+        "B-A"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": null,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": null,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": null,
+      "road_vehicle_limiting_segment_indices": null,
+      "exactly_coplanar_segment_pairs": 0,
+      "noncoplanar_height_near_segment_pairs": 0
+    },
+    {
+      "pair": [
+        "A-B",
+        "A-C"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": 4.527716129871444,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": null,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": [
+        0,
+        48
+      ],
+      "road_vehicle_limiting_segment_indices": null,
+      "exactly_coplanar_segment_pairs": 608814,
+      "noncoplanar_height_near_segment_pairs": 0
+    },
+    {
+      "pair": [
+        "A-B",
+        "C-A"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": null,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": null,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": null,
+      "road_vehicle_limiting_segment_indices": null,
+      "exactly_coplanar_segment_pairs": 0,
+      "noncoplanar_height_near_segment_pairs": 0
+    },
+    {
+      "pair": [
+        "A-B",
+        "B-C"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": 25.3888642312923,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": 22.39964230975221,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": [
+        428,
+        442
+      ],
+      "road_vehicle_limiting_segment_indices": [
+        442,
+        404
+      ],
+      "exactly_coplanar_segment_pairs": 121899,
+      "noncoplanar_height_near_segment_pairs": 208386
+    },
+    {
+      "pair": [
+        "A-B",
+        "C-B"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": 4.527524319943401,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": 5.440059013769371,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": [
+        680,
+        867
+      ],
+      "road_vehicle_limiting_segment_indices": [
+        548,
+        730
+      ],
+      "exactly_coplanar_segment_pairs": 125985,
+      "noncoplanar_height_near_segment_pairs": 214515
+    },
+    {
+      "pair": [
+        "B-A",
+        "A-C"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": null,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": null,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": null,
+      "road_vehicle_limiting_segment_indices": null,
+      "exactly_coplanar_segment_pairs": 0,
+      "noncoplanar_height_near_segment_pairs": 0
+    },
+    {
+      "pair": [
+        "B-A",
+        "C-A"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": 4.527716129871446,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": null,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": [
+        680,
+        845
+      ],
+      "road_vehicle_limiting_segment_indices": null,
+      "exactly_coplanar_segment_pairs": 608814,
+      "noncoplanar_height_near_segment_pairs": 0
+    },
+    {
+      "pair": [
+        "B-A",
+        "B-C"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": 4.5279069493471935,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": 6.850852875799121,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": [
+        0,
+        48
+      ],
+      "road_vehicle_limiting_segment_indices": [
+        123,
+        179
+      ],
+      "exactly_coplanar_segment_pairs": 121899,
+      "noncoplanar_height_near_segment_pairs": 208386
+    },
+    {
+      "pair": [
+        "B-A",
+        "C-B"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": 19.81395353327385,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": 16.489659794699783,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": [
+        299,
+        459
+      ],
+      "road_vehicle_limiting_segment_indices": [
+        285,
+        499
+      ],
+      "exactly_coplanar_segment_pairs": 125985,
+      "noncoplanar_height_near_segment_pairs": 214515
+    },
+    {
+      "pair": [
+        "A-C",
+        "C-A"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": null,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": null,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": null,
+      "road_vehicle_limiting_segment_indices": null,
+      "exactly_coplanar_segment_pairs": 0,
+      "noncoplanar_height_near_segment_pairs": 0
+    },
+    {
+      "pair": [
+        "A-C",
+        "B-C"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": 5.0,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": 7.7565570454343025,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": [
+        860,
+        855
+      ],
+      "road_vehicle_limiting_segment_indices": [
+        728,
+        709
+      ],
+      "exactly_coplanar_segment_pairs": 160026,
+      "noncoplanar_height_near_segment_pairs": 273564
+    },
+    {
+      "pair": [
+        "A-C",
+        "C-B"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": 17.021758869350016,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": 14.508920795043688,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": [
+        492,
+        456
+      ],
+      "road_vehicle_limiting_segment_indices": [
+        520,
+        416
+      ],
+      "exactly_coplanar_segment_pairs": 165390,
+      "noncoplanar_height_near_segment_pairs": 281610
+    },
+    {
+      "pair": [
+        "C-A",
+        "B-C"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": 24.4872511258409,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": 21.982448396949227,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": [
+        343,
+        446
+      ],
+      "road_vehicle_limiting_segment_indices": [
+        318,
+        484
+      ],
+      "exactly_coplanar_segment_pairs": 160026,
+      "noncoplanar_height_near_segment_pairs": 273564
+    },
+    {
+      "pair": [
+        "C-A",
+        "C-B"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": 5.0,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": 6.366591975215138,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": [
+        0,
+        0
+      ],
+      "road_vehicle_limiting_segment_indices": [
+        175,
+        185
+      ],
+      "exactly_coplanar_segment_pairs": 165390,
+      "noncoplanar_height_near_segment_pairs": 281610
+    },
+    {
+      "pair": [
+        "B-C",
+        "C-B"
+      ],
+      "continuous_vehicle_plan_lower_bound_m": 8.918075511504044,
+      "continuous_noncoplanar_road_vehicle_plan_lower_bound_m": 8.201418270547988,
+      "vehicle_required_separation_m": 2.5,
+      "noncoplanar_road_vehicle_required_separation_m": 4.25,
+      "vehicle_corridor_pass": true,
+      "noncoplanar_road_vehicle_corridor_pass": true,
+      "vehicle_limiting_segment_indices": [
+        519,
+        378
+      ],
+      "road_vehicle_limiting_segment_indices": [
+        542,
+        353
+      ],
+      "exactly_coplanar_segment_pairs": 66230,
+      "noncoplanar_height_near_segment_pairs": 430016
+    }
+  ],
+  "envelope_parameters": {
+    "vehicle_width_m": 2.5,
+    "vehicle_height_m": 3.8,
+    "provisional_pavement_width_m": 6,
+    "provisional_deck_depth_m": 1.0
+  },
+  "coplanar_policy": "Separate traffic corridors may share one coordinated pavement union. Barriers and individual ribbon edges remain unverified.",
+  "negative_controls": {
+    "displaced_native_endpoint": {
+      "rejected": true,
+      "reason": "Native endpoint moved or lane contacts swapped for A-B"
+    },
+    "interior_grade_spike": {
+      "rejected": true,
+      "reason": "Source grade exceeds its experimental bound for B-C"
+    },
+    "coincident_climbing_route_corridors": {
+      "rejected": true,
+      "continuous_vehicle_plan_lower_bound_m": 0.0,
+      "reason": "Opposing ramps on an identical plan corridor meet while their deck ordering reverses."
+    }
+  },
+  "limits": [
+    "Finite planar segment distances and conservative height intervals bound the supplied piecewise-linear source routes, within float64 arithmetic.",
+    "Native contacts are reconstructed from the exported measured donor routes and proper poses; this command does not reread proprietary native archives.",
+    "The radius bound is sampled through adjacent polyline triples; no continuous analytic-curve radius is claimed.",
+    "Actual pavement unions, mesh datums, markings, barriers, deck solids, supports, overhangs, full moving vehicle bodies, and structural capacity remain unverified.",
+    "Construction ownership, safe reusable module cuts, identifiers, saved PATH/S3D resources, native dragging, game placement, installation, and human traffic observations remain unverified.",
+    "This candidate does not prove a smallest footprint or establish a second grid alignment."
+  ],
+  "game_operation_tested": false,
+  "source": {
+    "design_geometry_sha256": "8857eae50b01d3f5c15c5b47b43319de0e72c733d5cf331bb29e14f27af6d9b3",
+    "design_brief_sha256": "6b7b5bc771b6ddc90faae5890994bc6cfedc63f3cccdd41e9520c2737a88d9a6",
+    "native_design_inputs_sha256": "eba53e48164cbad76e1e29b82a8dd79d26a5ea98b61f6a7f1031692b35c8b3d0",
+    "geometry_tool_sha256": "ad342a215bb0e73170dcccc655c771e5f0d024dea6f1e6fc8ff01f80e730484f",
+    "independent_verifier_sha256": "ce1c2feb6b89526f470b48664e232cb974a71b19abb9f46f51d6b9f7ad7971cf"
+  }
+}

@@ -288,12 +288,65 @@ class MirroredOrthogonalTransitionPathTests(unittest.TestCase):
     def test_mirrored_core_flags_retain_the_reflected_empty_shoulder_and_tangents(self):
         piece, resources = fixture(mirrored=True)
         fields = {'CellLayout': ['ab.<', 'cd..', 'ef..', 'gh..', 'ij..', 'kl..', '^...'],
-                  'ConsLayout': ['++.<', '++..', '++..', '++..', '++..', '++..', '^...'],
+                  'ConsLayout': ['##.<', '##..', '##..', '##..', '##..', '##..', '^...'],
                   'Costs': ['1000'], 'CheckType': [f'{chr(97+i)} - dirtroad: 0x{word:08X}'
                       for i, word in enumerate(check.MIRRORED_CORE_ROAD_WORDS)]}
         self.assertEqual(check.check_construction_fields(fields, piece, resources)['occupied_cells_checked'], 12)
         fields['CheckType'][1] = 'b - dirtroad: 0x02000200'
         with self.assertRaisesRegex(ValueError, 'endpoint-tangent flags'):
+            check.check_construction_fields(fields, piece, resources)
+
+    def test_mirrored_flat_base_uses_measured_code7_at_all_twenty_one_vertices(self):
+        piece, _ = fixture(mirrored=True)
+        fields = {'ConsLayout': ['##.<', '##..', '##..', '##..', '##..', '##..', '^...']}
+        report = check.check_mirrored_terrain_constraints(fields, piece)
+        self.assertEqual(report['native_constraint_code'], 7)
+        self.assertEqual(report['inserted_equality_pairs'], 36)
+        self.assertEqual([row['quarter_turns'] for row in report['proper_rotations']], [0, 1, 2, 3])
+        self.assertTrue(all(row['constrained_vertices'] == 21 and row['flat_height_groups'] == 1
+                            for row in report['proper_rotations']))
+        self.assertFalse(report['absolute_world_height_fixed'])
+        self.assertFalse(report['authored_path_heights_changed'])
+        self.assertFalse(report['game_terrain_behavior_tested'])
+
+    def test_mirrored_flat_base_rejects_ignored_plus_missing_and_sloped_constraints(self):
+        piece, resources = fixture(mirrored=True)
+        fields = {'CellLayout': ['ab.<', 'cd..', 'ef..', 'gh..', 'ij..', 'kl..', '^...'],
+                  'ConsLayout': ['##.<', '##..', '##..', '##..', '##..', '##..', '^...'],
+                  'Costs': ['1000'], 'CheckType': [f'{chr(97+i)} - dirtroad: 0x{word:08X}'
+                      for i, word in enumerate(check.MIRRORED_CORE_ROAD_WORDS)]}
+        for replacement in ('+', '.', '|'):
+            damaged = deepcopy(fields)
+            damaged['ConsLayout'][0] = replacement+'#.<'
+            with self.subTest(replacement=replacement):
+                with self.assertRaises(ValueError):
+                    check.check_mirrored_terrain_constraints(damaged, piece)
+                with self.assertRaises(ValueError):
+                    check.check_construction_fields(damaged, piece, resources)
+        old = deepcopy(fields)
+        old['ConsLayout'] = [line.replace('#', '+') for line in old['ConsLayout']]
+        with self.assertRaises(ValueError):
+            check.check_mirrored_terrain_constraints(old, piece)
+
+    def test_code7_corner_graph_detects_an_unconstrained_corner_in_every_rotation(self):
+        constraints = ['+#.<', '##..', '##..', '##..', '##..', '##..', '^...']
+        for turns in range(4):
+            groups = check._terrain_vertex_components(constraints, turns)
+            with self.subTest(turns=turns):
+                self.assertEqual(sorted(map(len, groups)), [1, 20])
+
+    def test_mirrored_flat_base_policy_cannot_change_original_transition(self):
+        piece, resources = fixture()
+        fields = {'CellLayout': ['ab.<', 'cd..', 'ef..', 'gh..', 'ij..', 'kl..', '^...'],
+                  'ConsLayout': ['++.<', '++..', '++..', '++..', '++..', '++..', '^...'],
+                  'Costs': ['1000'], 'CheckType': [f'{chr(97+i)} - dirtroad: 0x{word:08X}'
+                      for i, word in enumerate(check.CORE_ROAD_WORDS)]}
+        report = check.check_construction_fields(fields, piece, resources)
+        self.assertNotIn('terrain_constraints', report)
+        with self.assertRaisesRegex(ValueError, 'restricted to the mirrored'):
+            check.check_mirrored_terrain_constraints(fields, piece)
+        fields['ConsLayout'] = [line.replace('+', '#') for line in fields['ConsLayout']]
+        with self.assertRaises(ValueError):
             check.check_construction_fields(fields, piece, resources)
 
     def test_facing_original_and_mirrored_keep_the_same_four_directed_dd_lanes(self):
@@ -313,6 +366,51 @@ class MirroredOrthogonalTransitionPathTests(unittest.TestCase):
         self.assertEqual(accepted['reference_piece_id'], check.PIECE_ID)
         mirrored, _ = fixture(mirrored=True)
         self.assertNotEqual(orthogonal_transition_contracts.reference(piece), orthogonal_transition_contracts.reference(mirrored))
+
+
+class LowerBendRightPathTests(unittest.TestCase):
+    def setUp(self):
+        self.variant = check.LOWER_BEND_RIGHT
+        self.piece, self.original = fixture()
+        self.piece.update(id=check.LOWER_BEND_RIGHT_PIECE_ID,
+                          recipe=check.RECIPE + '_lower_bend_right', transition_variant=self.variant)
+        self.piece['engineering']['max_grade_percent'] = 20.
+        self.routes = check.expected_cell_routes(variant=self.variant)
+        self.resources = {(*PATH, int(tile, 16)): encode(self.routes[cell])
+                          for cell, tile in zip(check.CELLS, self.piece['tile_ids'])}
+
+    def test_lower_bend_keeps_dd_phase_and_swaps_ground_outlets(self):
+        ports = {port['id']: (port['point_m'], port['source_cell'], port['tangent'])
+                 for port in check.external_ports(variant=self.variant)}
+        self.assertEqual(ports['upper-lane-01-out'], ((18.5, 8., 15.), [1, 0], (0., 1.)))
+        self.assertEqual(ports['lower-lane-01-in'], ((13.5, 8., 7.5), [1, 0], (0., -1.)))
+        self.assertEqual(ports['upper-lane-01-in'], ((18.5, -88., 0.), [1, 5], (0., 1.)))
+        self.assertEqual(ports['lower-lane-01-out'], ((-2.5, -88., 0.), [0, 5], (0., -1.)))
+        for cell in ((0, 5), (1, 5)):
+            self.assertEqual(sorted(route['lane'] for route in self.routes[cell]), [1, 2])
+        result = check.check_paths(self.resources, self.piece)
+        self.assertEqual(result['model_only_cells'], [[0, 0]])
+        self.assertEqual([row['complete_directed_journeys'] for row in result['proper_rotations']], [4]*4)
+        self.assertAlmostEqual(result['maximum_grade_percent'], 100.*15./78., places=5)
+
+    def test_old_upper_bend_with_same_traffic_phase_is_rejected(self):
+        upper_bend = check.expected_cell_routes(variant='opposite-side-mirrored')
+        wrong = {(*PATH, int(tile, 16)): encode(upper_bend[cell])
+                 for cell, tile in zip(check.CELLS, self.piece['tile_ids'])}
+        with self.assertRaisesRegex(ValueError, 'PATH differs'):
+            check.check_paths(wrong, self.piece)
+
+    def test_lower_bend_requires_existing_core_words_and_native_flat_constraint(self):
+        fields = {'CellLayout': ['ab.<', 'cd..', 'ef..', 'gh..', 'ij..', 'kl..', '^...'],
+                  'ConsLayout': ['##.<', '##..', '##..', '##..', '##..', '##..', '^...'],
+                  'Costs': ['1000'], 'CheckType': [f'{chr(97+i)} - dirtroad: 0x{word:08X}'
+                      for i, word in enumerate(check.CORE_ROAD_WORDS)]}
+        result = check.check_construction_fields(fields, self.piece, self.resources)
+        self.assertEqual([row['constrained_vertices'] for row in result['terrain_constraints']['proper_rotations']],
+                         [21]*4)
+        fields['ConsLayout'][0] = '+#.<'
+        with self.assertRaisesRegex(ValueError, 'construction changes'):
+            check.check_construction_fields(fields, self.piece, self.resources)
 
 
 if __name__ == '__main__':

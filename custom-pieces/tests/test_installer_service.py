@@ -72,6 +72,28 @@ class DiscoveryTests(unittest.TestCase):
     def test_game_plugins_is_a_scan_root_not_the_install_destination(self):
         self.assertEqual(self.discover(self.game / "Plugins").plugins, self.plugins)
 
+    def test_install_reports_missing_submenu_files_before_preparation(self):
+        work = self.base / "install-work"
+        with self.assertRaises(ValueError) as raised:
+            service.run_install(ROOT, self.game, work, platform="win32", home=self.home,
+                                documents=self.documents)
+        for name in ("memo.submenus.dll", "SC4ResourceLoadingHooks.dll", "submenu-essentials.dat"):
+            self.assertIn(name, str(raised.exception))
+        self.assertFalse(work.exists())
+
+    def test_submenu_files_use_both_plugins_roots_but_dlls_must_be_at_top_level(self):
+        nested = self.plugins / "Dependencies"
+        nested.mkdir()
+        (nested / "submenu-essentials.dat").touch()
+        (self.game / "Plugins/SC4ResourceLoadingHooks.dll").touch()
+        submenu = nested / "MEMO.SUBMENUS.DLL"
+        submenu.touch()
+        plan = self.discover(self.game)
+        with self.assertRaisesRegex(ValueError, r"memo\.submenus\.dll directly inside"):
+            service._require_submenu_files(plan)
+        submenu.rename(self.plugins / submenu.name)
+        service._require_submenu_files(plan)
+
     def test_selected_data_plugins_uses_registered_game_without_writing_it(self):
         before = set(self.base.rglob("*"))
         with patch.object(service, "_registered_games", return_value=[self.game]):
@@ -207,7 +229,7 @@ class InstallerSelectionTests(unittest.TestCase):
         self.assertGreater(len(actual), len([piece for piece in catalog["pieces"] if piece["enabled_by_default"]]))
 
     def test_capabilities_use_finite_provider_recipes_for_both_domains(self):
-        from scp_highway import native, ramp_paths, modular_ramps, modular_stamp, parallel_layout
+        from scp_highway import native, ramp_paths, modular_ramps, modular_stamp, parallel_layout, y_junction_layout
         capabilities = service.implemented_recipes_by_domain()
         self.assertEqual(set(capabilities), {"high-speed-rail", "highway"})
         self.assertIsInstance(capabilities["highway"], frozenset)
@@ -215,8 +237,18 @@ class InstallerSelectionTests(unittest.TestCase):
                                                  "highway_ddrhw_diagonal_ghsr_crossing",
                                                  "highway_ddrhw_orthogonal_l0_transition",
                                                  "highway_ddrhw_orthogonal_l0_transition_mirrored",
+                                                 "highway_ddrhw_orthogonal_l0_transition_opposite_side",
+                                                 "highway_ddrhw_orthogonal_l0_transition_opposite_side_mirrored",
+                                                 "highway_ddrhw_orthogonal_l0_transition_lower_bend_right",
+                                                 "highway_ddrhw_diagonal_l0_transition_a",
+                                                 "highway_ddrhw_diagonal_l0_transition_mirrored_a",
+                                                 "highway_ddrhw_diagonal_l0_transition_opposite_a",
+                                                 "highway_ddrhw_diagonal_l0_transition_opposite_mirrored_a",
+                                                 "highway_ddrhw_y_reversed_diagonal_stem_split",
+                                                 "highway_ddrhw_y_reversed_diagonal_branch",
+                                                 "highway_ddrhw_y_reversed_orthogonal_core",
                                                  "highway_ddrhw_diagonal_ghsr_crossing_alignment_b"} | {
-            item["recipe"] for provider in (ramp_paths, modular_ramps, parallel_layout)
+            item["recipe"] for provider in (ramp_paths, modular_ramps, parallel_layout, y_junction_layout)
             for item in provider.module_catalog()["types"]} | PARALLEL_B_RECIPES)
         self.assertIn("hsr_diagonal_ghsr", capabilities["high-speed-rail"])
 
@@ -494,6 +526,8 @@ class OrchestrationTests(unittest.TestCase):
         self.game.mkdir()
         self.extra = self.base / "GamePlugins"
         self.extra.mkdir()
+        for name in ("memo.submenus.dll", "SC4ResourceLoadingHooks.dll", "submenu-essentials.dat"):
+            (self.extra / name).write_bytes(b"synthetic submenu dependency")
         self.work = self.base / "Work"
         self.plan = service.Installation(self.game, self.plugins, (self.extra,), "win32")
         self.ids = ["first-piece", "second-piece"]
@@ -507,14 +541,26 @@ class OrchestrationTests(unittest.TestCase):
     def test_complete_selection_and_explicit_roots_reach_every_existing_stage(self):
         events = []
         with patch("scp.build.doctor") as doctor, patch("scp.build.build_project") as build, \
-                patch("scp.menu_experiment.build_assembly_menu") as menu, \
+                patch("scp.menu_experiment.build_assembly_menus") as menu, \
                 patch("scp.install.install_build", return_value={"status": "installed", "backup_id": "synthetic"}) as install:
             result = service.run_install(ROOT, self.game, self.work, progress=events.append)
         for stage in (doctor, build):
             self.assertEqual(stage.call_args.kwargs["include"], self.ids)
             self.assertEqual(stage.call_args.kwargs["extra_roots"], [self.extra])
-        self.assertEqual(menu.call_args.kwargs["layout_id"], "trumpet")
+        expected_layouts = [
+            {"domain_id": "high-speed-rail", "layout_id": "trumpet"},
+            {"domain_id": "highway", "layout_id": "compact-diagonal-diamond"},
+            {"domain_id": "highway", "layout_id": "modular-diagonal-diamond"},
+            {"domain_id": "highway", "layout_id": "parallel-diagonal-diamond"},
+            {"domain_id": "highway", "layout_id": "parallel-diagonal-diamond-alignment-b"},
+            {"domain_id": "highway", "layout_id": "ddrhw-compact-diagonal-y-junction"},
+            {"domain_id": "highway", "layout_id": "ddrhw-compact-diagonal-y-junction-reversed"},
+        ]
+        menu.assert_called_once()
+        self.assertEqual(menu.call_args.kwargs["selections"], expected_layouts)
         self.assertEqual(menu.call_args.kwargs["extra_roots"], [self.extra])
+        install.assert_called_once()
+        self.assertEqual(install.call_args.args[0], menu.call_args.args[2])
         self.assertEqual(install.call_args.kwargs["extra_roots"], [self.extra])
         self.assertEqual(result["piece_ids"], self.ids)
         self.assertFalse(result["in_game_tested"])
@@ -527,7 +573,7 @@ class OrchestrationTests(unittest.TestCase):
         chosen_data = self.base / "Explicit Player Data"
         with patch.object(service, "discover_installation", return_value=self.plan) as discover, \
                 patch("scp.build.doctor"), patch("scp.build.build_project"), \
-                patch("scp.menu_experiment.build_assembly_menu"), \
+                patch("scp.menu_experiment.build_assembly_menus"), \
                 patch("scp.install.install_build", return_value={"status": "installed", "backup_id": "synthetic"}):
             service.run_install(ROOT, self.game, self.work, player_data=chosen_data)
         self.assertEqual(discover.call_args.args, (self.game,))
@@ -535,7 +581,7 @@ class OrchestrationTests(unittest.TestCase):
 
     def test_failed_build_never_calls_menu_or_installer(self):
         with patch("scp.build.doctor"), patch("scp.build.build_project", side_effect=ValueError("compiler rejected geometry")), \
-                patch("scp.menu_experiment.build_assembly_menu") as menu, patch("scp.install.install_build") as install:
+                patch("scp.menu_experiment.build_assembly_menus") as menu, patch("scp.install.install_build") as install:
             with self.assertRaisesRegex(ValueError, "compiler rejected geometry"):
                 service.run_install(ROOT, self.game, self.work)
         menu.assert_not_called()
@@ -563,10 +609,18 @@ class OrchestrationTests(unittest.TestCase):
 
     def test_synthetic_self_test_checks_real_installation_and_rollback(self):
         result = service.self_test(ROOT)
+        self.assertTrue(result["planar_geometry_runtime_checked"])
         self.assertTrue(result["real_receipt_install_and_rollback"])
         self.assertTrue(result["geometry_verification_mocked_for_synthetic_fixture"])
         self.assertFalse(result["live_game_modified"])
         self.assertEqual(result["implemented_pieces"], len(service.all_implemented_ids(ROOT)))
+        self.assertEqual(result["assembly_menu_layouts"], 7)
+
+    def test_synthetic_self_test_rejects_a_broken_bundled_triangulator(self):
+        from shapely import GeometryCollection
+        with patch("shapely.constrained_delaunay_triangles", return_value=GeometryCollection()):
+            with self.assertRaisesRegex(ValueError, "boundary-and-hole triangulation"):
+                service.self_test(ROOT)
 
     def test_undo_rejects_a_different_plugins_destination(self):
         self.work.mkdir()

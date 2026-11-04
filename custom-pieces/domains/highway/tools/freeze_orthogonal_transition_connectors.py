@@ -18,6 +18,7 @@ from scp.dbpf import require
 from scp.verify import strict_dbpf, verify_build
 from scp_highway.connections import service_classifier
 from scp_highway.orthogonal_approaches import PIECE_ID, MIRRORED_PIECE_ID, variant
+from scp_highway.orthogonal_transition_variants import SUPPORTED_PIECE_IDS
 from scp_highway.orthogonal_transition_verify import reviewed_contract, reviewed_facts
 
 HEADER = '''// title: "Accepted six-tile DD-to-ground connector measurements"
@@ -35,7 +36,7 @@ def freeze(build, root=ROOT, *, piece_id=PIECE_ID):
     require(build.is_relative_to(root), 'Connector freeze build must be inside the library')
     manifest_raw = (build / 'manifest.json').read_bytes()
     manifest = json.loads(manifest_raw)
-    require(piece_id in (PIECE_ID, MIRRORED_PIECE_ID), 'Connector freeze requires one reviewed transition identity')
+    require(piece_id in SUPPORTED_PIECE_IDS, 'Connector freeze requires one reviewed transition identity')
     piece = next(p for p in load_catalog(root)['pieces'] if p['id'] == piece_id)
     built = next(p for p in manifest['pieces'] if p['id'] == piece_id)
     variant(piece)
@@ -81,7 +82,7 @@ def freeze(build, root=ROOT, *, piece_id=PIECE_ID):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('build', type=Path)
-    parser.add_argument('--piece', choices=(PIECE_ID, MIRRORED_PIECE_ID), default=PIECE_ID,
-                        help='Select the original or mirrored owner in a checked paired build')
+    parser.add_argument('--piece', choices=SUPPORTED_PIECE_IDS, default=PIECE_ID,
+                        help='Select one reviewed transition owner in a checked build')
     args = parser.parse_args()
     print(json.dumps(freeze(args.build, piece_id=args.piece), indent=2))

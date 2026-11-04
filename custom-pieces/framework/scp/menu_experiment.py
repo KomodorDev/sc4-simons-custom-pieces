@@ -11,7 +11,7 @@ from __future__ import annotations
 from copy import deepcopy
 import hashlib
 import json
-from . import jsonc
+from . import jsonc, transport_menu
 import os
 from pathlib import Path
 import re
@@ -145,12 +145,13 @@ def _source_documentation_path(layout, path):
     return path if 'submenu' in layout else f'{ASSEMBLY_PROOF}/documentation/{path}'
 
 
-def _assembly_readme(layout, pieces):
+def _assembly_readme(layout, pieces, *, nested=False):
     return ('Assembly component menu\nDEVELOPMENT BUILD — NOT GAME-TESTED\n'
             f'Assembly: {layout["assembly_id"]}\n'
             f'Button: {layout["cycle_button"]["title"]}\n'
             f'The single assembly button selects {len(pieces)} reusable component types with Tab and Shift+Tab.\n'
-            'Home and End rotate the selected component; each click places one component.\n'
+            + ('Open Transportation > Highways > SCP > Assemblies.\n' if nested else '')
+            + 'Home and End rotate the selected component; each click places one component.\n'
             'Read docs/assembly-menu/README.md for the component order and pending game checks.\n'
             'Original source documents and archives are frozen proof in docs/assembly-menu-source/.\n'
             'Building and packaging do not install anything. Use the receipt-based installer for a complete candidate.\n').encode('utf-8')
@@ -190,13 +191,19 @@ def _transformed(base, controller, menu, layout, scene, *, cycle_icon=None, expe
         changed, composition = resources[RUL0], deepcopy(base['overlay']['rul0'])
     controller_resources = {**resources, RUL0: changed}
     cycle = {**layout['cycle_button'], 'target_id': pieces[0]['menu']['id']}
+    nested_source = strict_dbpf(menu)
+    version = transport_menu.format_version(base)
+    original = transport_menu.restore(nested_source, transport_menu.members(base), version=version)
     menu_resources, audit = build_menu_experiment_resources(
-        strict_dbpf(menu), pieces, cycle_button=cycle, submenu=layout.get('submenu'),
+        original, pieces, cycle_button=cycle, submenu=layout.get('submenu'),
         cycle_icon=cycle_icon, expected_cycle_icon=expected_cycle_icon)
+    menu_resources = transport_menu.arrange(
+        menu_resources, transport_menu.members(base, [(layout, scene, pieces)]),
+        version=version, folder_source=nested_source)
     return pack_dbpf(controller_resources), pack_dbpf(menu_resources), composition, audit, pieces
 
 
-def _game_checks(pieces, *, single_button=False):
+def _game_checks(pieces, *, single_button=False, nested=False):
     from .menu_experiment_resources import member_domain
     menu_name = 'Highways' if member_domain(pieces) == 'highway' else 'Rail'
     if single_button:
@@ -209,13 +216,16 @@ def _game_checks(pieces, *, single_button=False):
             {'id': 'cancel-and-reselect', 'description': 'Escape cancels placement, and reselecting the assembly button starts on the first component.'},
             {'id': 'save-reload', 'description': 'Place test components, save, quit, reload, and inspect their models and network paths.'},
         ]
+        if nested:
+            rows[0]['description'] = (f'Transportation > {menu_name} > SCP > Assemblies shows one button for this assembly. '
+                                      'The native menu and Pieces contain no duplicate buttons for its components.')
         rows += [{'id': 'cycle-component-' + piece['id'], 'piece_id': piece['id'],
                   'description': 'Reach this named component with Tab or Shift+Tab, confirm its preview, and place it at the assembly plan’s specified orientation.'}
                  for piece in pieces]
         return {'schema_version': 1,
                 'purpose': 'Frozen pending menu checks at build time; this is not a human observation record or traffic approval.',
                 'authority': 'Record explicit human observations separately against the candidate manifest fingerprint; preserve this template.',
-                'environment_required': ['platform', 'game_version', 'NAM_profile'],
+                'environment_required': ['platform', 'game_version', 'NAM_profile'] + (['Submenus_DLL_version'] if nested else []),
                 'cases': [{**row, 'status': 'unverified', 'observations': []} for row in rows]}
     rows = [
         {'id': 'rail-entry-points', 'description': 'Both the cycle button and the test submenu are visible in Transportation > Rail.'},
@@ -236,11 +246,11 @@ def _game_checks(pieces, *, single_button=False):
             'cases': [{**row, 'status': 'unverified', 'observations': []} for row in rows]}
 
 
-def _guide(layout, pieces):
+def _guide(layout, pieces, *, nested=False):
     from .content import markdown_metadata
     from .menu_experiment_resources import member_domain
     highway = member_domain(pieces) == 'highway'
-    menu_name = 'Highways' if highway else 'Rail'
+    menu_name = ('Highways → SCP → Assemblies' if nested else 'Highways') if highway else 'Rail'
     if 'submenu' not in layout:
         rows = [markdown_metadata('Assembly component menu',
                 'Place reusable assembly components from one button, using Tab and Shift+Tab to change type.',
@@ -252,7 +262,8 @@ def _guide(layout, pieces):
                 '4. Press **Home** or **End** to rotate the selected component. Follow the assembly placement plan, and click once to place that component.',
                 '5. Press **Escape** to cancel placement. Select the assembly button again to start on its first component.',
                 '6. Test the single entry, each type, forward and reverse cycling, rotation, cancellation, placement, and save/reload in a disposable city. Bind explicit observations to the candidate manifest and recorded game environment.', '',
-                'The menu uses native construction-family ordering and does not require Submenus DLL for this presentation. The complete original menu and controller are retained outside the installable folder as verification proof. Do not install a second controller beside an existing SCP selection; use the receipt-based installer for a complete candidate. Building and packaging do not install anything.', '',
+                ('The SCP folders require the Submenus DLL, SC4ResourceLoadingHooks DLL, and submenu-essentials.dat. ' if nested else
+                 'The menu uses native construction-family ordering and does not require Submenus DLL for this presentation. ') + 'The complete original menu and controller are retained outside the installable folder as verification proof. Do not install a second controller beside an existing SCP selection; use the receipt-based installer for a complete candidate. Building and packaging do not install anything.', '',
                 ('The [game-checks.json](game-checks.json) template remains unverified. Software validation does not approve menu activation, visible vehicle operation, or the complete assembly in the game.' if highway else
                  'The [game-checks.json](game-checks.json) template remains unverified. Software validation does not approve menu activation, visible train operation, or the complete assembly in the game.'), '',
                 '| Tab position | Component name | Permanent piece ID |', '| --- | --- | --- |']
@@ -301,12 +312,13 @@ def _expected_manifest(base, layout, scene, proof, controller, menu, composition
                if 'submenu' in layout else 'Assembly menu behavior requires explicit in-game observations; public release is blocked.')
     result['release']['blocked'] = list(dict.fromkeys([*result['release'].get('blocked', []), message]))
     _, guide_path, checks_path = _presentation_paths(layout)
-    additions = [*(proof[key] for key in sorted(proof)), _record(guide_path, _guide(layout, pieces)),
-                 _record(checks_path, _json_bytes(_game_checks(pieces, single_button='submenu' not in layout)))]
+    nested = pieces[0].get('domain') in transport_menu.members(base)
+    additions = [*(proof[key] for key in sorted(proof)), _record(guide_path, _guide(layout, pieces, nested=nested)),
+                 _record(checks_path, _json_bytes(_game_checks(pieces, single_button='submenu' not in layout, nested=nested)))]
     source_documents = [{**item, 'path': _source_documentation_path(layout, item['path'])}
                         for item in deepcopy(base.get('documentation', []))]
     if 'submenu' not in layout:
-        additions.append(_record('README.txt', _assembly_readme(layout, pieces)))
+        additions.append(_record('README.txt', _assembly_readme(layout, pieces, nested=nested)))
     paths = {item['path'] for item in source_documents}
     require(not paths.intersection(item['path'] for item in additions), 'Experiment evidence overlaps source documentation')
     result['documentation'] = [*source_documents, *additions]
@@ -330,7 +342,10 @@ def _check_actual_resources(base_controller, base_menu, controller, menu, base, 
     require(current_controller[NETWORK_INI] == old_controller[NETWORK_INI], 'Menu experiment changed NetworkINI')
     if RUL1 in expected_controller:
         require(current_controller[RUL1] == old_controller[RUL1], 'Menu experiment changed adaptive RUL1')
-    old = strict_dbpf(base_menu); current = strict_dbpf(menu)
+    version = transport_menu.format_version(base)
+    old = transport_menu.restore(strict_dbpf(base_menu), transport_menu.members(base), version=version)
+    current = transport_menu.restore(
+        strict_dbpf(menu), transport_menu.members(base, [(layout, None, pieces)]), version=version)
     selected = {number(piece['menu']['id']) for piece in pieces}
     cycle_id = number(layout['cycle_button']['id'])
     submenu_id = number(layout['submenu']['id']) if 'submenu' in layout else None
@@ -493,7 +508,7 @@ def verify_menu_experiment(output, write_report=True):
         report['menu_experiment'].update(assembly_menu_buttons=1, member_buttons_hidden=len(pieces),
                                          unrelated_piece_buttons_preserved=len(base['pieces']) - len(pieces) - len(hidden_members(base['pieces'])),
                                          removed_member_presentation_resources=4 * len(pieces),
-                                         submenus_dll_required=False)
+                                         submenus_dll_required=bool(transport_menu.members(base)))
     if write_report:
         (output / 'verification.json').write_bytes(_json_bytes(report))
     return report
@@ -637,6 +652,8 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
     pieces = _selected(base, scene)
     from .menu_experiment_resources import member_domain
     require(member_domain(pieces) == domain_id, 'Assembly members differ from the explicitly selected domain')
+    transport_menu.require_current_source(catalog, base)
+    nested = domain_id in transport_menu.members(base)
     current = {piece['id']: piece for piece in catalog['pieces']}
     for piece in pieces:
         require({key: value for key, value in piece.items() if key != 'asset_file'} == current.get(piece['id']),
@@ -644,6 +661,7 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
     _, installed, donors, _ = audit_inputs(catalog, plugins, base['pieces'], extra_roots)
     proposed = {number(layout[key]['id']) for key in ('cycle_button', 'submenu') if key in layout}
     used_ids = {key[2] for key in installed} | {number(piece['menu']['id']) for piece in catalog['pieces']}
+    transport_menu.check_ids(transport_menu.members(base), used_ids, proposed)
     require(not proposed & used_ids, 'Experimental presentation identifier collides with existing content')
     folder = base['plugin_folder']
     original_controller = (source / folder / CONTROLLER).read_bytes()
@@ -673,12 +691,12 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
             for directory in sorted(stage.rglob('*'), key=lambda path: len(path.parts), reverse=True):
                 if directory.is_dir() and not any(directory.iterdir()):
                     directory.rmdir()
-            (stage / 'README.txt').write_bytes(_assembly_readme(layout, pieces))
+            (stage / 'README.txt').write_bytes(_assembly_readme(layout, pieces, nested=nested))
         for key, raw in proof_raw.items():
             target = stage / proof[key]['path']; target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(raw)
         for name, raw in ((f'{folder}/{CONTROLLER}', controller), (f'{folder}/{MENU}', menu),
-                          (guide_path, _guide(layout, pieces)),
-                          (checks_path, _json_bytes(_game_checks(pieces, single_button='submenu' not in layout)))):
+                          (guide_path, _guide(layout, pieces, nested=nested)),
+                          (checks_path, _json_bytes(_game_checks(pieces, single_button='submenu' not in layout, nested=nested)))):
             target = stage / name; target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(raw)
         (stage / 'manifest.json').write_bytes(_json_bytes(manifest))
         report = verify_build(stage)
@@ -694,7 +712,7 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
     if 'submenu' in layout:
         result['test_submenu'] = layout['submenu']['title']
     else:
-        result.update(assembly_menu_buttons=1, member_buttons_hidden=len(pieces), submenus_dll_required=False)
+        result.update(assembly_menu_buttons=1, member_buttons_hidden=len(pieces), submenus_dll_required=bool(transport_menu.members(base)))
     return result
 
 

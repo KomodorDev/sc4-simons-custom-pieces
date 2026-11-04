@@ -1,0 +1,222 @@
+// title: "Opposite-side transition pair final software and installation receipt"
+// summary: "Bind the tested archives and verified additive installation while preserving explicit human-test limits."
+// Used when: Reviewing the completed opposite-upper-descent transition additions.
+// Read by: Contributors and the final delivery reviewer.
+// Updated by: The coordinator after the complete test run and two live-installation audits.
+// Affects: Frozen delivery evidence only; does not approve game or manual observation cases.
+{
+  "schema_version": 1,
+  "record_date": "2026-11-03",
+  "requested_pair": [
+    "ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile",
+    "ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile-mirrored"
+  ],
+  "acceptance_scope": "Completed software, artifact, archive, and local additive-installation checks. Human game and image observations remain unverified.",
+  "normal_four_type_build": {
+    "manifest_sha256": "26554d0f1e1712ccef88ac7c8f2afd8f344b4e390ac09a68c61b270526caa40d",
+    "verification_sha256": "567705dc2e7df3c9b9dc331bc8a0d799aeab0d95e1ff65a33202998ab5638eb5",
+    "retained_original_and_mirrored_complete_DATs_unchanged": true,
+    "visible_menu_buttons": 1,
+    "tab_family_members": 4
+  },
+  "required_portable_tests": {
+    "command": [
+      "python3",
+      "-B",
+      "tools/run_tests.py"
+    ],
+    "passed": true,
+    "private_game_inputs_in_snapshot": false,
+    "reported_tests": 2336,
+    "explicit_skip_records": 96,
+    "count_meaning": "Unittest reports test counts and skip records separately; class-level skips prevent subtraction from establishing a precise executed-case count.",
+    "suites": [
+      {
+        "scope": "framework",
+        "reported_tests": 1052,
+        "status": "OK (skipped=11)"
+      },
+      {
+        "scope": "high-speed-rail",
+        "reported_tests": 420,
+        "status": "OK (skipped=65)"
+      },
+      {
+        "scope": "highway",
+        "reported_tests": 735,
+        "status": "OK (skipped=15)"
+      },
+      {
+        "scope": "assemblies",
+        "reported_tests": 129,
+        "status": "OK (skipped=5)"
+      }
+    ],
+    "skip_reasons": [
+      {
+        "reason": "Audited NAM donors unavailable",
+        "records": 1
+      },
+      {
+        "reason": "Audited NAM donors unavailable; set SCP_TEST_NAM_PLUGINS",
+        "records": 2
+      },
+      {
+        "reason": "Audited NAM unavailable; set SCP_TEST_NAM_PLUGINS",
+        "records": 2
+      },
+      {
+        "reason": "Audited local HSR native donor unavailable",
+        "records": 43
+      },
+      {
+        "reason": "Audited local NAM donor is unavailable",
+        "records": 1
+      },
+      {
+        "reason": "Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS",
+        "records": 1
+      },
+      {
+        "reason": "Audited local NAM unavailable; set SCP_TEST_NAM_PLUGINS to enable integration tests",
+        "records": 1
+      },
+      {
+        "reason": "Audited local native HSR donor unavailable",
+        "records": 5
+      },
+      {
+        "reason": "Audited local native HSR model donor unavailable",
+        "records": 10
+      },
+      {
+        "reason": "Exact native HSR, ordinary Road PATH, and opaque sidewalk capture are unavailable; supply SCP_TEST_NAM_PLUGINS, local/settings.jsonc, legacy local/settings.json, or local/validation-inputs/Plugins.",
+        "records": 1
+      },
+      {
+        "reason": "Historical actual staged build absent; no saved-resource claim made",
+        "records": 2
+      },
+      {
+        "reason": "Needs the saved, protected two-piece build",
+        "records": 7
+      },
+      {
+        "reason": "Optional audited native HSR donor is unavailable",
+        "records": 1
+      },
+      {
+        "reason": "Original NAM 50 inputs are unavailable in this checkout",
+        "records": 3
+      },
+      {
+        "reason": "Original NAM 50 inputs are unavailable in this source-only checkout",
+        "records": 2
+      },
+      {
+        "reason": "Original NAM 50 inputs unavailable in this source-only checkout",
+        "records": 1
+      },
+      {
+        "reason": "Private NAM settings are unavailable",
+        "records": 7
+      },
+      {
+        "reason": "Renamed assembly has no current-ID resource capture; unchanged historical proof is preserved separately",
+        "records": 3
+      },
+      {
+        "reason": "Saved revised parallel ground-mouth build is absent; set SCP_TEST_PARALLEL_GROUND_MOUTHS_BUILD to its exact directory.",
+        "records": 1
+      },
+      {
+        "reason": "Saved revised parallel slip build is absent; set SCP_TEST_PARALLEL_SLIP_BUILD to its exact directory.",
+        "records": 1
+      },
+      {
+        "reason": "The independently checked native parallel build is absent; native NAM inputs and a saved candidate build are required.",
+        "records": 1
+      }
+    ],
+    "snapshot_manifest_sha256": "fcf220513d34c6b329b9e226f9a8f8c8a3a2b76ccfb56ca16564baed251e562b",
+    "log_sha256": "87e1384324b2904fd49e525e5eaa4681fe26918ee62d157f2c03ace9702263ff",
+    "production_and_all_snapshot_file_hashes_rechecked_before_install": true,
+    "preceding_diagnostic": "Initial full capture had exactly one obsolete two-member collection assertion. Only that test was updated, preserving the original pair controls and adding explicit four-member/32-state coverage. The affected class and complete final run pass."
+  },
+  "documentation": {
+    "documents_checked": 205,
+    "local_links_checked": 29280,
+    "errors": 0,
+    "new_actual_DAT_PNGs_inspected": 8,
+    "connector_freshness_passed": true
+  },
+  "archives": [
+    {
+      "kind": "normal_four_type_binary",
+      "filename": "ddrhw-transition-four-variants-final-02.zip",
+      "sha256": "6dfddc1cee084b110130a0d84b951ce8701cad77f2716a67d8cf1edb51e487f4",
+      "members": 3939,
+      "independent_audit_passed": true
+    },
+    {
+      "kind": "portable_source",
+      "filename": "ddrhw-transition-opposite-source-final-02.zip",
+      "sha256": "c9fc46a7724159dfc4d718624108f8854f34d7c99f483845de5b1086cc852fc9",
+      "members": 3931,
+      "independent_audit_passed": true
+    }
+  ],
+  "archive_freeze_policy": "These archives were frozen and audited before this delivery receipt was generated. This post-package receipt is intentionally outside both ZIPs; compiled payloads, implementation, tests, manuals, and artwork did not change afterward.",
+  "additive_installation": {
+    "committed": true,
+    "candidate_manifest_sha256": "868b50f73a7f7193e0aad508b8192a4cb67aed98198989bde7d3eb05b3211ba5",
+    "baseline_receipt_sha256": "345c834b3f9574c774ab2fad5b465038cc33cdeee41ab4936a1373fe7b3bd616",
+    "installed_receipt_sha256": "862393c6c84fb1fdbb44574dbf44ecfa97af71ab1e86bb796e25bc8355e698b3",
+    "new_piece_DATs": 2,
+    "retained_piece_DATs": 231,
+    "retained_piece_and_menu_identities": 232,
+    "retained_identity_fields": [
+      "sha256",
+      "device",
+      "inode",
+      "size",
+      "mtime_ns"
+    ],
+    "all_retained_identities_unchanged": true,
+    "menu_DAT_rewritten": false,
+    "controller_DATs_changed": 1,
+    "installation_receipts_changed": 1,
+    "atomic_target_writes": 4,
+    "piece_types_after": 233,
+    "installable_DATs_after": 235,
+    "native_profile_donors": 13,
+    "scan_roots": 5,
+    "game_closed_checks_passed": true,
+    "prior_F880_terrain_constraint_definition_preserved": true,
+    "standard_external_backup_verified": true,
+    "backup_id": "cf1f14e408154bc7948696fe8fd72400",
+    "committed_transaction_journal_verified": true,
+    "post_install_audit_sha256": "99cd2274a9a3cd120c404c4fa1eadff06e6ed684741753b7376176d0147f5fac",
+    "independent_standard_library_live_audit_sha256": "44847ebeaba435db9f3e2d9b7b9d71847311ee8b543a764bed0098d250ec567d"
+  },
+  "human_checks": {
+    "new_piece_game_operation": "unverified",
+    "close_diagonal_hole_correction_retest": "unverified",
+    "fresh_placement_required_for_retest": true,
+    "game_or_manual_observation_results_changed": false
+  },
+  "menu_selection": {
+    "anchor": "Existing original Orthogonal Combined Transition button",
+    "tab_presses_from_anchor": {
+      "ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile": 2,
+      "ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile-mirrored": 3
+    }
+  },
+  "published": false,
+  "subject_id": "ddrhw-l1-l2-to-rhw-l0-transition-opposite-6tile-mirrored",
+  "installed_piece_DAT_sha256": "3344c522515adccf258f78d8e4ca4028ff42f57f5465eee91d1b3c301cf27099",
+  "unapproved_tracker_cases": 101,
+  "compiled_evidence": "compiled-verification.jsonc",
+  "marking_evidence": "native-markings-verification.jsonc",
+  "artwork_evidence": "documentation-artwork-verification.jsonc"
+}

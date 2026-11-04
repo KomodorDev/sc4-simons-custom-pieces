@@ -51,14 +51,12 @@ def _rotate(value, turns):
 
 
 def variant(piece):
-    """Identify only the two reviewed owners; absence preserves the original."""
-    value = piece.get(VARIANT_FIELD, 'original')
-    require(isinstance(value, str) and value in ('original', 'mirrored')
-            and piece.get('id') == (MIRRORED_PIECE_ID if value == 'mirrored' else PIECE_ID)
-            and piece.get('recipe') == (MIRRORED_RECIPE if value == 'mirrored' else RECIPE)
-            and piece.get('domain') == 'highway',
-            'Unreviewed orthogonal approach owner or variant')
-    return value
+    """Identify only a finite reviewed owner; absence preserves the original."""
+    from .orthogonal_transition_variants import variant_of
+    try:
+        return variant_of(piece)
+    except ValueError as error:
+        raise ValueError('Unreviewed orthogonal approach owner or variant') from error
 
 
 def approaches(piece):
@@ -90,6 +88,24 @@ def approaches(piece):
         ((0, 6), (0, 5), 3, 0x57030000, 0, GROUND_SECTION, 'road', 0x01000001, 'direct'),
         ((1, 6), (1, 5), 3, 0x57030000, 2, GROUND_SECTION, 'road', 0x00010100, 'direct'),
     )
+    if reviewed_variant not in ('original', 'mirrored'):
+        from .orthogonal_transition_variants import LOWER_BEND_RIGHT, record_for
+        record = record_for(reviewed_variant)
+        reflected, reversed_traffic = record.physical_reflection, record.traffic_reversed
+        dd_column = 0 if reflected else 1
+        upper_column, lower_column = ((1, 0) if reflected else (0, 1))
+        if reviewed_variant == LOWER_BEND_RIGHT:
+            upper_column, lower_column = dd_column, 1 - dd_column
+        upper_pose, lower_pose = ((2, 0) if reversed_traffic else (0, 2))
+        ground_poses = {upper_column: upper_pose, lower_column: lower_pose}
+        dd_pose = 2 if reversed_traffic else 0
+        bindings = (
+            ((dd_column, -1), (dd_column, 0), 1, 0x57530000, dd_pose,
+             DD_SECTION, 'monorail', _rotate(0x01000400, dd_pose), 'rkt0'),
+            *(((column, 6), (column, 5), 3, 0x57030000, ground_poses[column],
+               GROUND_SECTION, 'road', _rotate(0x01000001, ground_poses[column]), 'direct')
+              for column in (0, 1)),
+        )
     result = []
     for outside, end, edge, target, pose, section, marker, flags, reference in bindings:
         result.append({'cell': list(outside), 'end_cell': list(end), 'end_tile_id': by_cell[end],

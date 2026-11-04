@@ -16,7 +16,8 @@ from scp.catalog import load_catalog
 from scp import piece_menu_families
 from scp.subject_sources import piece_id_for_recipe, piece_directory
 from scp.verify import check_emitted_runtime_addresses, parse_rules
-from scp_highway import recipes, menu, verify, orthogonal_transition_verify as independent
+from scp_highway import recipes, piece_icons, verify, orthogonal_transition_verify as independent
+from scp_highway import orthogonal_transition_variants as variants
 from scp_installer import service
 
 
@@ -120,12 +121,14 @@ class OrthogonalTransitionIntegrationTests(unittest.TestCase):
         self.assertIn(independent.RECIPE, service.implemented_recipes_by_domain()['highway'])
         self.assertIn(independent.PIECE_ID, service.all_implemented_ids(ROOT))
         self.assertEqual(self.catalog['piece_sets']['ddrhw-orthogonal-ground-transition'],
-                         [independent.PIECE_ID, self.mirrored['id']])
+                         list(variants.PIECE_IDS))
         self.assertIn(self.mirrored['id'], service.all_implemented_ids(ROOT))
         self.assertEqual(set(self.piece['dependencies']), {'controller', 'dd_rhw', 'rhw_core', 'rhw4', 'rhw4_textures'})
         icon = ROOT / 'domains/highway/00_pieces' / independent.PIECE_ID / 'icon.png'
-        self.assertEqual(icon.read_bytes(), menu.make_icon('ddrhw-transition'))
-        self.assertNotEqual(icon.read_bytes(), menu.make_icon('ddrhw-ramp'))
+        raw = icon.read_bytes()
+        piece_icons.validate_piece_icon(raw, expected=piece_icons.make_piece_icon(self.piece))
+        with self.assertRaisesRegex(ValueError, 'artwork pixels differ'):
+            piece_icons.validate_piece_icon(raw, expected=piece_icons.make_piece_icon(self.mirrored))
 
     def test_paired_selection_has_one_button_and_mirror_remains_individually_selectable(self):
         pieces = [self.piece, self.mirrored]

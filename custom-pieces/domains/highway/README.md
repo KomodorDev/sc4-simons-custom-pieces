@@ -19,8 +19,8 @@ The experimental highway provider builds a diagonal NAM DD RHW-4 over a ground d
 
 ## 1. Inventories and collections
 
-- [Individual pieces: 59 menu types](00_pieces/INVENTORY.md).
-- [Assembly blueprints: 4 designs](01_assemblies/INVENTORY.md).
+- [Individual pieces: 72 menu types](00_pieces/INVENTORY.md).
+- [Assembly blueprints: 6 designs](01_assemblies/INVENTORY.md).
 
 <details>
 <summary>Named build collections</summary>
@@ -35,15 +35,26 @@ A collection selects existing piece types; it is not an additional piece or a on
 - `ddrhw-diagonal-ghsr-crossing-alignment-b`: 1 piece types.
 - `ddrhw-diagonal-ghsr-crossing-alignments`: 2 piece types.
 - `ddrhw-parallel-diamond-alignment-b`: 15 piece types.
-- `ddrhw-orthogonal-ground-transition`: 2 piece types.
+- `ddrhw-orthogonal-ground-transition`: 4 piece types.
 - `ddrhw-orthogonal-ground-transition-original`: 1 piece types.
 - `ddrhw-orthogonal-ground-transition-mirrored`: 1 piece types.
+- `ddrhw-compact-diagonal-y-junction`: 3 piece types.
+- `ddrhw-compact-diagonal-y-junction-reversed`: 3 piece types.
+- `ddrhw-orthogonal-ground-transition-opposite-side`: 2 piece types.
+- `ddrhw-orthogonal-ground-transition-opposite-side-original`: 1 piece types.
+- `ddrhw-orthogonal-ground-transition-opposite-side-mirrored`: 1 piece types.
+- `ddrhw-diagonal-ground-transition-alignment-a`: 4 piece types.
+- `ddrhw-diagonal-ground-transition-alignment-a-original`: 1 piece types.
+- `ddrhw-diagonal-ground-transition-alignment-a-mirrored`: 1 piece types.
+- `ddrhw-diagonal-ground-transition-alignment-a-opposite`: 1 piece types.
+- `ddrhw-diagonal-ground-transition-alignment-a-opposite-mirrored`: 1 piece types.
+- `ddrhw-orthogonal-ground-transition-lower-bend-right`: 1 piece types.
 
 </details>
 
 <!-- END COLLECTIONS -->
 
-Each highway type belongs in `00_pieces/<piece-id>/` with its JSONC definition, README, TESTING document, and artwork. A documented combination belongs in `01_assemblies/<assembly-id>/` with a README and TESTING reference. Creating an empty domain or a blueprint does not create a game button; a button requires an implemented, selected piece. Select the highway components and their assembly cycle button under **Transportation → Highways**. The ordinary Avenue construction tool remains under **Transportation → Roads → Avenue**.
+Each highway type belongs in `00_pieces/<piece-id>/` with its JSONC definition, README, TESTING document, and artwork. A documented combination belongs in `01_assemblies/<assembly-id>/` with a README and TESTING reference. A playable button requires an implemented, selected piece or a prepared assembly cycle. In a Highway candidate using the SCP folder layout, open **Transportation → Highways → SCP → Pieces** for standalone types and alternative-piece cycles. Open **Transportation → Highways → SCP → Assemblies** for the single button of each assembly. Use **Tab** or **Shift+Tab** on that button to select a reusable component. **PART HWY** identifies piece artwork, and **ASM HWY** identifies the assembly artwork. Earlier candidates use the paths in their own guides. The ordinary Avenue construction tool remains under **Transportation → Roads → Avenue**. [Shared menu and icon guide](../../docs/BUILD_AND_INSTALL.md#81-required-scp-folder-layout)
 
 Use the [piece and assembly design skill](../../skills/network-piece-and-assembly-design/SKILL.md) and [build/install guide](../../docs/BUILD_AND_INSTALL.md) for development. Define the actual highway network, width, traffic side, level, and compatible native connections before authoring a piece. Rail heights and train paths are not highway contracts.
 

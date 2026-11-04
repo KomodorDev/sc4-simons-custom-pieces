@@ -12,7 +12,7 @@ from scp.dbpf import encode_exemplar, exemplar
 from scp.menu import MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION
 from scp.menu_experiment import _layout
 from scp.menu_experiment_resources import build_menu_experiment_resources
-from scp_highway import menu
+from scp_highway import menu, native
 
 
 class AssemblySubmenuTests(unittest.TestCase):
@@ -25,6 +25,7 @@ class AssemblySubmenuTests(unittest.TestCase):
                      'puzzle_id': f'{0xF610 + index:04x}',
                      'menu': {'id': f'{0x6A47F610 + index:08x}',
                               'order': f'{0xFFFFFF10 + index:08x}', 'style': 'ddrhw-crossing'}}
+            piece['cells'] = [list(cell) for cell in native.CELLS]
             resources, _ = menu.build_menu_resources(menu.portable_baseline(), piece)
             self.source.update(resources); self.pieces.append(piece)
         self.cycle_ids = ['6a47fee2', '6a47fee3']

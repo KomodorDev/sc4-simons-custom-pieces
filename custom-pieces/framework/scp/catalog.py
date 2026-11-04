@@ -67,6 +67,9 @@ def load_catalog(root):
         registry = jsonc.load(registry_path)
         require(registry.get('schema_version') == 1 and registry.get('id') == slug,
                 f'{slug}: invalid domain registry')
+        if 'scp_transport_menu' in registry:
+            require(type(registry['scp_transport_menu']) is bool,
+                    f'{slug}: scp_transport_menu must be boolean')
         records[slug] = registry
         listed = registry.get('pieces', [])
         require(isinstance(listed, list) and len(listed) == len(set(listed)),

@@ -1,0 +1,115 @@
+// title: "Compiled reversed Y resource verification"
+// summary: "Bind the three actual game archives to checked saved geometry, opposite-phase native interfaces, and driver-left markings."
+//
+// Used when: Reviewing the first compiled reversed Y implementation and later resource-equivalent packages.
+// Read by: Contributors, testers, and the linked assembly testing guides.
+// Updated by: Contributors after independent physical acceptance and exact actual-DAT model/PATH comparison.
+// Affects: Three compiled components, their 21 cells, and software acceptance; installation and game observations remain separate.
+{
+  "schema_version": 1,
+  "state": "accepted-checked-compiled-resources",
+  "variant": "reversed",
+  "scope": "First verified normal three-piece game build, with complete physical acceptance bound by exact saved model/PATH byte equality.",
+  "build": "dist/ddrhw-y-reversed-native",
+  "manifest_sha256": "fb5a6c265a125b16a9c2def234e16fccc16f6f6cf8ba4d95cda57e4700a7294e",
+  "verification_sha256": "084786c5bc91f20f9850df1e3bd98c80a741ed85af190e586f54984c06d631f3",
+  "static_checks_passed": true,
+  "pieces": [
+    {
+      "piece_id": "ddrhw-y-reversed-diagonal-stem-split",
+      "puzzle_id": "f884",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-y-reversed-diagonal-stem-split.dat",
+      "bytes": 6505578,
+      "sha256": "f86b412afab377c082b0d1b305ed46f5021107ec8173b547f1798ba3c846733f",
+      "owned_cells": 8
+    },
+    {
+      "piece_id": "ddrhw-y-reversed-diagonal-branch",
+      "puzzle_id": "f885",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-y-reversed-diagonal-branch.dat",
+      "bytes": 9627666,
+      "sha256": "8ed02ed4be5131ec7326fb8184e99d05b5d493cffc8b468859f22038f796aa39",
+      "owned_cells": 8
+    },
+    {
+      "piece_id": "ddrhw-y-reversed-orthogonal-core",
+      "puzzle_id": "f886",
+      "asset_file": "zzz_Simons_Custom_Pieces/20_Pieces/SCP_ddrhw-y-reversed-orthogonal-core.dat",
+      "bytes": 9746723,
+      "sha256": "d0daf9c5f2ce93756bbdca9c593564ed9b11cb2a5f3e2ff28c50fc52bb08b37e",
+      "owned_cells": 5
+    }
+  ],
+  "canonical_snapshot_bridge": {
+    "passed": true,
+    "snapshot_sha256": "6c657959d91d6e34f83495029c3e6d937dbeeb770ad9528c41ab449d6f852fd1",
+    "manifest_sha256": "fb5a6c265a125b16a9c2def234e16fccc16f6f6cf8ba4d95cda57e4700a7294e",
+    "verification_sha256": "084786c5bc91f20f9850df1e3bd98c80a741ed85af190e586f54984c06d631f3",
+    "canonical_resources_equal": 42,
+    "all_five_zooms_match": true,
+    "source_allocation_bridge": "Registered game identifiers and reviewed layout metadata preserve all checked encoded geometry/PATH bytes."
+  },
+  "physical_verification": {
+    "file": "physical-verification.jsonc",
+    "sha256": "3859e6c1c6b780c29e432db5fac02c765dd7063ec86327043a8c812d6063cb5b",
+    "complete_physical_acceptance": true,
+    "world_triangles": 156467,
+    "actual_saved_triangles": 166869,
+    "numeric_bounds": {
+      "saved_face_euclidean_position_m": 4e-06,
+      "native_finite_join_position_m": 2e-06,
+      "saved_PATH_position_m": 2e-08,
+      "native_source_UV": 5e-06
+    }
+  },
+  "marking_verification": {
+    "file": "saved-marking-verification-02.jsonc",
+    "sha256": "dd53c829e808030534c84deacc82b72beae42de8095a2f336ade73aaf4991d0e",
+    "original_capture_sha256": "81d8d1a073c1f0ee39ae178fe595dcc5893e4e52b0cc91f91b1fb81c0eb34de3",
+    "sampled_driver_left_yellow": true,
+    "yellow_samples": 85,
+    "wrong_side_controls_rejected": 2,
+    "complete_paint_continuity_tested": false
+  },
+  "source_fingerprints": {
+    "domains/highway/implementation/scp_highway/y_junction.py": "c826442ab182cf1026a1a65ed12c638bf0cc3968119635cee3abfbf6cf3127e6",
+    "domains/highway/implementation/scp_highway/y_junction_approaches.py": "081abb585a2326ddb820f7bc59c7efc986c1f91cd4d1199b2bbac41470adecd2",
+    "domains/highway/implementation/scp_highway/y_junction_contracts.py": "f7c9cdb533811913d8dbfa27e8a35f28fac9d4806568820d5a32b74213bff1dd",
+    "domains/highway/implementation/scp_highway/y_junction_geometry.py": "e12c7e9ba4ad92fd0382ea32a6b7a67ad807236929eefefb7a535765fe211357",
+    "domains/highway/implementation/scp_highway/y_junction_layout.py": "d5cb9a02c4ec6d02d17ac97947e701e19e45d889d0bd99e1d507ac42275ad616",
+    "domains/highway/implementation/scp_highway/y_junction_models_verify.py": "27a35d8b55de3a179ab17f357fe2f3959b03891b24d2d79823a90ff34a126508",
+    "domains/highway/implementation/scp_highway/y_junction_native_models.py": "a6f72a83f33e6adec60736adef37c96d855ac413e54e59526e6e098a1973eb4e",
+    "domains/highway/implementation/scp_highway/y_junction_reversed_approaches.py": "5b2733062a7095fc372e3251f3c227b699e02ed8fe40a6132042e1e29dfc19f4",
+    "domains/highway/implementation/scp_highway/y_junction_reversed_geometry.py": "1dddac7669f8f0a0d75eef5880b7aa88f8df5373c22fe6c18e7ae552b8d10dfb",
+    "domains/highway/implementation/scp_highway/y_junction_reversed_layout.py": "72c8bcdf5676de33feac702f3d0bc88612ec7204bc02c5e0b5a8b8b45cd55413",
+    "domains/highway/implementation/scp_highway/y_junction_reversed_models_verify.py": "f7ba03a059362a3d35e26d3ad3d051f550556ecf63264e344b41025724338f39",
+    "domains/highway/implementation/scp_highway/y_junction_reversed_native_models.py": "7105662d328e1cc58b970e89d6847265ad6cc71179fe202719ef912d34efb9d3",
+    "domains/highway/implementation/scp_highway/y_junction_reversed_source.py": "62b862f80a641249901c7a4faceadf22e51652c68c7d35e5311afa0d0b897791",
+    "domains/highway/implementation/scp_highway/y_junction_reversed_verify.py": "1d5533916a309c437ac1364e78eb4495e48bea596ea33575b0737bc56dc90406",
+    "domains/highway/implementation/scp_highway/y_junction_surface_uv.py": "5be6529f493a4c905697cfb7e75e106f1af8fc634a618bc299b7d45e39d5d64f",
+    "domains/highway/implementation/scp_highway/y_junction_variants.py": "a4d2b3743bcfcc6ff8961bac99fcc91d26c499c5e6b11a9cf46888a6cddf1379",
+    "domains/highway/implementation/scp_highway/y_junction_verify.py": "60f4e6f0ec4637c0565364bcca8572fb43b338a3ff144190866e1451e2de4566",
+    "domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction-reversed/assembly.jsonc": "97ed948bcb7c962bfd0ae2ac976f4b6ce3be13bb55365f6f72d3ebefe9bb5f7a",
+    "domains/highway/01_assemblies/ddrhw-compact-diagonal-y-junction-reversed/checks/support-solids.jsonc": "4ce918a25d73ab9971caa857ee7fefb87d13490781355cacbca182e2390cf16d",
+    "domains/highway/tools/verify_y_junction_markings.py": "d49ec54d1568c8fca386b7e5ced65b1dd29d633bbdf48f7bee0246d0ec4e1302"
+  },
+  "original_complete_DAT_preservation": {
+    "file": "original-dat-preservation.jsonc",
+    "sha256": "58fd916358e3155eb7e1bfca491130f30cb96c8123223b4484193bb327a987d9",
+    "all_three_byte_identical": true
+  },
+  "ownership": {
+    "file": "ownership-verification.jsonc",
+    "sha256": "44f3419dac7b27c93872e06517819ca93e9789d2fc2ea5b6e677860732b74bce",
+    "cells": 21,
+    "routed_cells": 14,
+    "model_only_cells": 7,
+    "rectangle_tiles": [
+      6,
+      7
+    ]
+  },
+  "manual_game_operation": "unverified",
+  "installed_at_this_capture": false,
+  "structural_capacity_tested": false
+}

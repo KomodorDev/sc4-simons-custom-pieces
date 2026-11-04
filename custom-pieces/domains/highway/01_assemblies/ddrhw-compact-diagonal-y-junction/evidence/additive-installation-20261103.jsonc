@@ -1,0 +1,92 @@
+// title: "DD RHW compact Y additive installation"
+// summary: "Record the actual three-component installation and independent proof that all 225 existing piece files stayed in place unchanged."
+// Used when: Reviewing the installed Y candidate, locating its private rollback backup, or preparing human game checks.
+// Read by: Contributors and reviewers checking actual installation, resource preservation, source identities, and remaining manual observations.
+// Updated by: Contributors after an authorized additive installation and independent post-install audit.
+// Affects: This installation evidence; frozen distribution archives and human game observations remain separate.
+// Public copy: The private filesystem path is redacted. All recorded measurements come from the original capture.
+// Original capture SHA-256: 8b30cc12402ba5f9f04ef1699afd1e53f9f28da6706732baab5c03223e3014a1
+{
+  "schema_version": 1,
+  "subject": "ddrhw-compact-diagonal-y-junction",
+  "recorded_at_utc": "2026-11-03T09:57:40.850362+00:00",
+  "status": "installed-additively-and-independently-audited",
+  "installation_target": "The active player Plugins directory, in zzz_Simons_Custom_Pieces; personal physical paths are intentionally omitted.",
+  "user_scope": "Install the completed Y junction, without reinstalling or removing the other pieces.",
+  "installed": true,
+  "in_game_tested": false,
+  "existing_piece_types": 225,
+  "added_piece_types": 3,
+  "total_piece_types": 228,
+  "owned_DAT_files": 230,
+  "retained_piece_files": {
+    "count": 225,
+    "contents_unchanged": true,
+    "device_and_inode_unchanged": true,
+    "modification_times_unchanged": true,
+    "sizes_unchanged": true,
+    "reinstalled": false
+  },
+  "added_files": [
+    "20_Pieces/SCP_ddrhw-y-diagonal-branch.dat",
+    "20_Pieces/SCP_ddrhw-y-diagonal-stem-split.dat",
+    "20_Pieces/SCP_ddrhw-y-orthogonal-core.dat"
+  ],
+  "updated_existing_files": [
+    "00_SCP_Controller_NAM50.dat",
+    "10_SCP_Menu.dat",
+    ".scp-install.json"
+  ],
+  "old_menu_resources_preserved": 660,
+  "new_menu_resources": 4,
+  "new_assembly_button": "6a47fee5",
+  "old_assembly_cycles_preserved": 5,
+  "native_RUL1_unchanged": true,
+  "NetworkINI_unchanged": true,
+  "eight_existing_native_solutions_reused_uniquely": true,
+  "protected_resource_sha256": {
+    "RUL1": "a1c94180c3b72150a45e8dfb28668ce18199d55d98a78785b4d89f9373cbe67a",
+    "NetworkINI": "558c9fff1ba6fe3ac889359d439e4d0adec75f369c72a947250143d37ae8bece"
+  },
+  "source_binding": {
+    "baseline_build": "custom-pieces/dist/all-pieces-hsr-highway-menu-02",
+    "baseline_manifest_sha256": "cb3cdeba4ef030b5de275f96d9c8fceb1046c30aa370d904bc7e5a1c049068b0",
+    "accepted_Y_build": "custom-pieces/dist/ddrhw-y-junction-menu-final-03",
+    "accepted_Y_manifest_sha256": "2388f51caf6fee05e699b03279646724d357c39b97ba5d4ec391e1d9f8e417c0",
+    "private_compound_manifest_sha256": "8bc67ac6686b7167b3ddf7f5842ac4cc5d73f41b01b44cc34dc5838cfeeff291",
+    "installed_receipt_sha256": "2f76ff4fd3638375c12fa1f6bb55895573835161541e318c8ae0f0bfd620d090",
+    "private_candidate_audit_sha256": "5d56f08ea1900bfdfe249566e0476f5e201c241771fd8ff04bf37d5172b23088",
+    "private_post_install_audit_sha256": "e1e3096894fa25365ef11c816eff534c5090fbfeeaebef73fc6f22c4ccb2fa1a",
+    "private_transaction_script_sha256": "84c760c0169e24fa4ffb046ef2cf9f03b6faae3a241d4406157a8df031ee3f67"
+  },
+  "verification_scope": "The 225 pre-existing piece files were retained in place and checked by exact saved bytes, file identities, and source/receipt proof. Their geometry was not rebuilt or reverified. The accepted Y DATs retain their complete saved-resource verification. Shared-resource composition and the actual resulting installation passed independent audits.",
+  "transaction_controls": {
+    "owned_baseline_checked": true,
+    "all_13_original_donor_fingerprints_checked": true,
+    "all_active_and_original_capture_roots_scanned": true,
+    "resource_conflicts_checked": true,
+    "exclusive_operation_lock_used_and_released": true,
+    "game_closed_before_commit": true,
+    "synthetic_tests_passed": 5,
+    "interruption_positions_checked": 6,
+    "deferred_journal_recovery_checked": true,
+    "synthetic_test_log_sha256": "c519de4bc0d8ab58c8d83a0cf7a4039b5dbd38aba5e39e209f2297db14011a41"
+  },
+  "rollback": {
+    "backup_id": "6ee8209a71314820a98c88f1c871a3fe",
+    "private_backup_directory_relative_to_repository": "redacted: private rollback backup location",
+    "full_prior_owned_installation_and_receipt_saved": true,
+    "standard_post_commit_rollback_metadata_valid": true,
+    "partial_transaction_journal_phase": "committed"
+  },
+  "new_junction_placement": {
+    "menu": "Transportation \u2192 Highways \u2192 SCP | ASSEMBLY | DD RHW-4 \u2014 Compact Y-Junction \u2014 Diagonal Stem",
+    "Tab": "next component",
+    "Shift+Tab": "previous component",
+    "each_click_places": "one component",
+    "restart_and_fresh_placement": "Start or restart SimCity 4 after this file update, and place the three new components afresh. Existing piece files and city saves were not modified."
+  },
+  "manual_observations_changed": false,
+  "remaining_game_checks": "Actual menu activation and cycling, cursor anchors, native dragging, Route Query, visible travel, appearance, shadows, demolition, and save/reload remain unverified.",
+  "capture_history": "The earlier final-development-package.jsonc and its archives remain frozen pre-installation captures. This later record establishes the additive filesystem installation without changing those archives or asserting any human game result."
+}

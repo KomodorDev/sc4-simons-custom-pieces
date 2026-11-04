@@ -1,0 +1,139 @@
+// title: "Assembly definition: DD RHW-4 — Compact Y-Junction — Diagonal Stem"
+// summary: "Define the placed reusable components and construction plan for this assembly."
+//
+// Used when: Contributors author this assembly, and the catalogue loads its registered definition.
+// Read by: scp.catalog.load_catalog(), documentation generators, and build or assembly-menu workflows.
+// Updated by: Contributors following custom-pieces/docs/WORKFLOW_ASSEMBLY_CREATION.md; scp.subject_sources.write_subject() preserves later edits.
+// Affects: Placed component positions and rotations, generated documentation, and the assembly’s component-cycle menu.
+{
+  "title": "DD RHW-4 \u2014 Compact Y-Junction \u2014 Diagonal Stem",
+  "purpose": "A southwest native DD stem splits its two lanes between a northwest diagonal branch and an east orthogonal branch; two separated one-lane graded connections complete all six journeys.",
+  "geometry_status": "Implementation candidate; actual software and human game evidence are recorded in TESTING.md.",
+  "coordinate_units": "metres east, north, and height; rotations counterclockwise",
+  "coordinate_system": {
+    "origin_world_m": [
+      -32.0,
+      -48.0
+    ],
+    "origin_name": "southwest tile-centre reference",
+    "tile_size_m": 16,
+    "tile_boundaries_offset_m": 8,
+    "axes": [
+      "east",
+      "north",
+      "height"
+    ]
+  },
+  "construction_rectangle_tiles": [
+    6,
+    7
+  ],
+  "occupied_tiles": 21,
+  "module_placements": 3,
+  "component_types_used": 3,
+  "traffic_policy": {
+    "required_movements": [
+      "A->B",
+      "B->A",
+      "A->C",
+      "C->A",
+      "B->C",
+      "C->B"
+    ],
+    "lanes_per_journey": 1,
+    "forbidden_movements": [
+      "A->A",
+      "B->B",
+      "C->C"
+    ],
+    "native_upper_directions": {
+      "A": "incoming",
+      "B": "outgoing",
+      "C": "outgoing"
+    },
+    "native_lower_directions": {
+      "A": "outgoing",
+      "B": "incoming",
+      "C": "incoming"
+    }
+  },
+  "native_socket_cells_col_row": {
+    "A": [
+      -2,
+      2
+    ],
+    "B": [
+      -2,
+      -2
+    ],
+    "C": [
+      4,
+      0
+    ]
+  },
+  "placements": [
+    {
+      "instance_id": "P01",
+      "label": "P01",
+      "piece_id": "ddrhw-y-diagonal-stem-split",
+      "name": "DD RHW-4 \u2014 Diagonal Two-Branch Stem \u2014 L1/L2 at P01",
+      "menu_name": "DD RHW-4 \u2014 Diagonal Two-Branch Stem \u2014 L1/L2",
+      "recipe": "highway_ddrhw_y_diagonal_stem_split",
+      "origin_m": [
+        -32.0,
+        -16.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        0,
+        2
+      ]
+    },
+    {
+      "instance_id": "P02",
+      "label": "P02",
+      "piece_id": "ddrhw-y-diagonal-branch",
+      "name": "DD RHW-4 \u2014 Diagonal Branch and Paired Graded Links \u2014 L1/L2 at P02",
+      "menu_name": "DD RHW-4 \u2014 Diagonal Branch and Paired Graded Links \u2014 L1/L2",
+      "recipe": "highway_ddrhw_y_diagonal_branch",
+      "origin_m": [
+        -32.0,
+        48.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        0,
+        6
+      ]
+    },
+    {
+      "instance_id": "P03",
+      "label": "P03",
+      "piece_id": "ddrhw-y-orthogonal-core",
+      "name": "DD RHW-4 \u2014 Orthogonal Y Connection Core \u2014 L1/L2 at P03",
+      "menu_name": "DD RHW-4 \u2014 Orthogonal Y Connection Core \u2014 L1/L2",
+      "recipe": "highway_ddrhw_y_orthogonal_core",
+      "origin_m": [
+        -16.0,
+        -0.0
+      ],
+      "rotation_degrees_ccw": 0,
+      "rotation_degrees": 0,
+      "display_origin_tiles_en": [
+        1,
+        3
+      ]
+    }
+  ],
+  "game_tests": {
+    "placement": "unverified",
+    "traffic_both_directions": "unverified",
+    "no_unwanted_transfers": "unverified",
+    "rotations_and_mirrors": "unverified",
+    "shadows": "unverified",
+    "demolition": "unverified",
+    "save_reload": "unverified"
+  }
+}
