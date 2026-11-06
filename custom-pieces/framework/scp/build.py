@@ -277,9 +277,11 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
                      "Eight highway button states repeat four proper rotations; they do not reflect traffic directions.\n"
                      "Placement, vehicle travel, custom shadows, and save/reload still need in-game inspection.\n")
         if hierarchy:
-            placement = placement.replace('Highway components are in Transportation > Highways.',
-                                          'Highway components are in Transportation > Highways > SCP > Pieces.')
-            placement += ("Highway SCP folders require Submenus DLL, SC4ResourceLoadingHooks DLL, "
+            for domain, category in (('high-speed-rail', 'Rail'), ('highway', 'Highways')):
+                if domain in hierarchy['domains']:
+                    path = f'Transportation > {category}'
+                    placement = placement.replace(path, f'{path} > SCP > Pieces')
+            placement += ("SCP folders require Submenus DLL, SC4ResourceLoadingHooks DLL, "
                           "and submenu-essentials.dat.\n")
         readme = ("Simon's Custom Pieces\nDEVELOPMENT BUILD — NOT GAME-TESTED\n"
                   "Requires the exact NAM profile recorded in manifest.json.\n"
@@ -387,9 +389,14 @@ def package_build(output, destination, release=False, project_root=None, *, refr
         published = deepcopy(packaged)
         published['release'] = status
         published['in_game_tested'] = True
+        domains = {piece.get('domain', 'high-speed-rail') for piece in manifest['pieces']}
+        folders = manifest.get(transport_menu.KEY, {}).get('domains', ())
+        menu_paths = [f'Transportation > {category}' + (' > SCP > Pieces' if domain in folders else '')
+                      for domain, category in (('high-speed-rail', 'Rail'), ('highway', 'Highways'))
+                      if domain in domains]
         raw = ("Simon's Custom Pieces\n" + manifest['version'] + "\n"
                "Requires the exact supported NAM profile in manifest.json.\n"
-               "Separate SCP buttons appear under Transportation > Rail.\n"
+               + '\n'.join(f'Standalone SCP buttons appear under {path}.' for path in menu_paths) + '\n'
                "Install the coordinated plugin as a unit; never stack standalone prototype overlays.\n"
                "Back up cities and retain a complete previous plugin before upgrading.\n").encode('utf8')
         members['README.txt'] = raw

@@ -4,13 +4,14 @@
 // Used when: The library discovers HSR/GHSR pieces and assemblies, resolves a named build collection, creates a draft piece, or loads the rail implementation and connector adapter.
 // Read by: scp.catalog.load_catalog reads the registered source paths, scp.providers.implementation resolves the implementation module, and scp.connector_metadata loads the connector profiles and adapter; custom-pieces/scp.py scaffold reads the draft defaults.
 // Updated by: Maintainers register or remove subjects here; scp.registration.apply_registration adds pieces through the scaffold command and domain registration tools. Assembly registration is an explicit authoring step in the assembly workflow.
-// Affects: Which rail definitions and placement plans the library can select, which code implements them, and which defaults new drafts inherit. It does not allocate permanent game IDs or store measured connector results.
+// Affects: Which rail definitions and placement plans the library can select, which code implements them, which defaults new drafts inherit, and whether the Rail menu uses the SCP folders.
 // Reference: custom-pieces/docs/WORKFLOW_PIECE_CREATION.md and custom-pieces/docs/WORKFLOW_ASSEMBLY_CREATION.md.
 {
   "schema_version": 1,
   "purpose": "Explicit registry of maintained pieces, documented assemblies, implementation and build collections for this transport domain.",
   "id": "high-speed-rail",
   "name": "High Speed Rail and Ground High Speed Rail",
+  "scp_transport_menu": true,
   "implementation": "scp_hsr",
   "connector_profiles": "connector-profiles.jsonc",
   "pieces": [

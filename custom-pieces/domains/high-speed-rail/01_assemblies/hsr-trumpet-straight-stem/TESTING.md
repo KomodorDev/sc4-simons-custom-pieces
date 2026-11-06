@@ -55,12 +55,12 @@ A **tangent** is a unit travel-direction vector: `[0,1]` means north. **Grade** 
 
 | Port | Service / engine / role | Direction | Location; tangent; grade | Connection class |
 | --- | --- | --- | --- | --- |
-| `W.in` | hsr / 7 / primary | in | [-120.0, -2.0, 15.5]; [1.0, -0.0]; 0.0 | `path-interface-fba09fbeb87ad95c667a` |
-| `W.out` | hsr / 7 / primary | out | [-120.0, 2.0, 15.5]; [-1.0, -0.0]; 0.0 | `path-interface-12d12be31d2057c5763d` |
+| `W.in` | hsr / 7 / primary | in | [-104.0, -2.0, 15.5]; [1.0, 0.0]; 0.0 | `path-interface-12d12be31d2057c5763d` |
+| `W.out` | hsr / 7 / primary | out | [-104.0, 2.0, 15.5]; [-1.0, 0.0]; 0.0 | `path-interface-fba09fbeb87ad95c667a` |
 | `S.out` | hsr / 7 / primary | out | [-2.0, -216.0, 15.5]; [0.0, -1.0]; 0.0 | `path-interface-12d12be31d2057c5763d` |
 | `S.in` | hsr / 7 / primary | in | [2.0, -216.0, 15.5]; [0.0, 1.0]; 0.0 | `path-interface-fba09fbeb87ad95c667a` |
-| `E.out` | hsr / 7 / primary | out | [200.0, -2.0, 15.5]; [1.0, -0.0]; 0.0 | `path-interface-fba09fbeb87ad95c667a` |
-| `E.in` | hsr / 7 / primary | in | [200.0, 2.0, 15.5]; [-1.0, -0.0]; 0.0 | `path-interface-12d12be31d2057c5763d` |
+| `E.out` | hsr / 7 / primary | out | [184.0, -2.0, 15.5]; [1.0, -0.0]; 0.0 | `path-interface-fba09fbeb87ad95c667a` |
+| `E.in` | hsr / 7 / primary | in | [184.0, 2.0, 15.5]; [-1.0, -0.0]; 0.0 | `path-interface-12d12be31d2057c5763d` |
 
 #### Directed journeys
 
@@ -93,7 +93,7 @@ Use the README's [views](README.md#1-views), [piece list](README.md#2-pieces), a
 
 ### Before you start
 
-Follow [Build and install](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) to prepare the matching one-button assembly candidate and local dependencies. The current whole-assembly input is the verified fourteen-type `custom-pieces/dist/trumpet-fan-core-parts-audit-01` build. The final parts and menu commands use `custom-pieces/dist/trumpet-fan-core-parts-final-01` and `custom-pieces/dist/trumpet-fan-core-menu-final-01`; consult the [package report](evidence/border-piece-integration-package.json) for the actual completed output hashes. Use the current repository README and TESTING documents for the 28-placement rebuild. Preparing or checking a candidate does not install it. Before a game trial, record its actual hashes, platform, game version, NAM profile, and disposable test city; historical reports do not supply a new run’s environment.
+Use the [software-check commands](#run-the-software-checks) to prepare the shortened 26-placement menu, and follow the [build and install guide](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) for its local dependencies. Before a game trial, record the candidate hashes, platform, game version, NAM profile, and disposable test city. The earlier [package report](evidence/border-piece-integration-package.json) records the 28-placement predecessor.
 
 ### Layout reference
 
@@ -107,8 +107,8 @@ A **reference position** is a piece's software reference tile, which can be empt
 
 A **port** is a track entrance or exit. Its position, direction, height, deck width, and visible rails must agree with its neighbour. A **native end** accepts the stated ordinary track profile. A **custom curved end** requires its matching curved continuation; height alone is insufficient.
 
-- P22 meets P01's ordinary west end. P01 meets P02 to the east and P03 at its custom branch. P03's ordinary south end meets P24, then P04's western one-way port.
-- P04's eastern one-way port meets P25, then P10. P10's custom curved end meets P07. P07's ordinary east end meets P23, then P08. P09 completes the east approach.
+- P01 meets the native starter at (X0, Y13) to the west, P02 to the east, and P03 at its custom branch. P03's ordinary south end meets P24, then P04's western one-way port.
+- P04's eastern one-way port meets P25, then P10. P10's custom curved end meets P07. P07's ordinary east end meets P23, then P08. P08 requests the native starter at (X19, Y13) beyond its east end.
 - P15 meets P26, which owns the ordinary western approach at (X9, Y13). P26 meets P07's new ordinary west end at the boundary between (X9, Y13) and (X10, Y13); P07 owns only the four cells through (X13, Y13).
 - P04's paired end meets P05, which rises from 15.5 m to 30.5 m and meets P13. P11 carries upper north/south HSR over lower east/west HSR without a level transfer.
 - P12 and P16–P19 extend the upper stem. P20 and P21 join at 23 m. P21 descends through matching recessed-web straight P06A, then another copy P06B, into fan core P06. Its custom curved ends meet P07 and P08. The inherited native-curve web transition is separately closed and verified in the extraction audit; matching height alone is not a full-profile claim.
@@ -117,20 +117,20 @@ Each linked piece README lists its declared ports; these declarations do not est
 
 ### Placement sequence
 
-Open **Transportation → Rail** and select **SCP | ASSEMBLY | HSR — Trumpet — Straight Stem** once. In the steps below, **select** means press **Tab** or **Shift+Tab** on that assembly button until the named component appears. Each click places that component; it does not stamp the complete assembly.
+Open **Transportation → Rail → SCP → Assemblies** and select **SCP | ASSEMBLY | HSR — Trumpet — Straight Stem**. In the steps below, **select** means press **Tab** or **Shift+Tab** on that assembly button until the named component appears. Each click places one component. For P04, P08, and P01, use the exact shortcuts in the [native approach table](README.md#31-native-hsr-approaches).
 
-Use clear, flat terrain for the first game test and keep the full **20 × 23 tile** rectangle clear. A **cursor preview** is the complete shape attached to your pointer before you click. Press **Home** or **End** to rotate it; on keyboards without dedicated Home and End keys, check the keyboard mapping; some Mac keyboards use **Fn + ←** and **Fn + →**. Align all occupied tiles with the plan; reference positions are not certified click anchors.
+Use clear, flat terrain for the first game test and keep the original **20 × 23 tile** display rectangle clear, plus the south starter cell. The fixed components occupy the inner **18 × 23 tile** footprint. A **cursor preview** is the complete shape attached to your pointer before you click. Press **Home** or **End** to rotate it; on keyboards without dedicated Home and End keys, check the keyboard mapping; some Mac keyboards use **Fn + ←** and **Fn + →**. Align all occupied tiles with the plan; reference positions are not certified click anchors.
 
 1. Select **HSR Level 4 (30.5 m) over HSR Level 2 (15.5 m) — Two-Track Crossing 90°**. Place P11 at **(X7, Y13)**, 0°, with upper track north/south.
 2. Select **HSR Level 4 (30.5 m) — Two-Track Straight** and place P12/P13 at **(X7, Y14)** and **(X7, Y12)**, both 0°. Select **HSR Level 2 (15.5 m) — Two-Track Straight**, rotate 270°, and place P14/P15 at **(X6, Y13)** and **(X8, Y13)**.
-3. Place P05 **HSR Level 2 (15.5 m) ↔ Level 4 (30.5 m) — Two-Track Ramp** at **(X7, Y11)** and P04 **HSR Level 2 (15.5 m) — Parallel Split and Return Merge with Two-Track Mainline \u2014 Recessed Mainline End** at **(X6, Y5)**, both 0°. Match the climb's high end to P13 and its low end to P04.
+3. Place P05 **HSR Level 2 (15.5 m) ↔ Level 4 (30.5 m) — Two-Track Ramp** at **(X7, Y11)**, 0°. Select the **South terminal** for P04 and place it at **(X6, Y5)**, 0°. Match the climb's high end to P13 and its low end to P04. Keep **(X7, Y−1)** clear for the native starter.
 4. Place upper straights P16–P19 at **(X7, Y15)** through **(X7, Y18)**, all 0°. Place P20 **HSR Custom (23 m) ↔ Level 4 (30.5 m) — Two-Track Curve 90° Ramp — Tight** at **(X7, Y22)**, 0°, and P21 **HSR Level 2 (15.5 m) ↔ Custom (23 m) — Two-Track Curve 90° Ramp — Tight** at **(X14, Y22)**, 270°.
-5. Select **HSR Level 2 (15.5 m) — Two-Track Straight — Recessed Web**, and place P06A at **(X14, Y18)** and P06B at **(X14, Y17)**, both 0°. Select **HSR Level 2 (15.5 m) — Fan with Two-Track Stem — Compact, Recessed Web**, and place P06 at **(X12, Y16)**, 0°. Place the four-tile P07 **HSR Level 2 (15.5 m) — Opposed Merges to Two-Track Mainline — Oblique Branch Cuts** at **(X10, Y13)**, 0°. Select **HSR Level 2 (15.5 m) — Split from Two-Track Mainline — Oblique Branch Cut**, rotate it to **180°**, and place P08 at **(X18, Y13)**. Match the complete paired profiles and both custom curved fan cuts to the picture.
-6. Select **HSR Level 2 (15.5 m) — Two-Track Straight**, rotate 270°, and place **P26 (X9, Y13)**, **P23 (X14, Y13)**, and **P09 (X19, Y13)**. P26 supplies the western tile formerly included in P07; the remaining four P07 tiles keep their world positions. P08 already owns the four eastern core tiles; no separate straight is placed at (X15, Y13).
-7. Place P01 **HSR Level 2 (15.5 m) — Split from Two-Track Mainline — Oblique Branch Cut** at **(X1, Y13)**, 0°. Use the same paired straight at 270° for **P22 (X0, Y13)** and **P02 (X5, Y13)**.
+5. Select **HSR Level 2 (15.5 m) — Two-Track Straight — Recessed Web**, and place P06A at **(X14, Y18)** and P06B at **(X14, Y17)**, both 0°. Select **HSR Level 2 (15.5 m) — Fan with Two-Track Stem — Compact, Recessed Web**, and place P06 at **(X12, Y16)**, 0°. Place the four-tile P07 **HSR Level 2 (15.5 m) — Opposed Merges to Two-Track Mainline — Oblique Branch Cuts** at **(X10, Y13)**, 0°. Select the **East terminal**, rotate it to **180°**, and place P08 at **(X18, Y13)**. Match the complete paired profiles and both custom curved fan cuts to the picture.
+6. Select **HSR Level 2 (15.5 m) — Two-Track Straight**, rotate 270°, and place **P26 (X9, Y13)** and **P23 (X14, Y13)**. Keep **(X19, Y13)** clear for P08’s native starter. P26 supplies the western tile formerly included in P07. P08 already owns (X15, Y13).
+7. Select the **West terminal** for **P01 (X1, Y13)** at 0°, and keep **(X0, Y13)** clear. Place the ordinary paired straight at 270° for **P02 (X5, Y13)**.
 8. Place P03 **HSR Level 2 (15.5 m) — Single-Track One-Way Curve — Oblique Entry** at **(X2, Y12)** and P10 **HSR Level 2 (15.5 m) — Single-Track One-Way Curve — Oblique Exit** at **(X8, Y12)**, both 0°.
 9. Select **HSR Level 2 (15.5 m) — Single-Track One-Way Straight — 8 m Deck Width**. Place **P24 (X6, Y6)** at **180°**, pointing south, and **P25 (X8, Y6)** at **0°**, pointing north. These complete the two connections between the curves and P04; select the same cycle component at the two specified rotations.
-10. Extend compatible ordinary paired HSR beyond the west edge of X0, east edge of X19, and south edge of Y0. All three outside connections have their train path at **15.5 m**. Supply travel demand and test every journey below using separate Route Query and visible-train observations.
+10. Follow the [native approach game checks](#native-approach-game-checks) to extend HSR from all three native starter cells. All three outside connections have their train path at **15.5 m**. Supply travel demand and test every journey below using separate Route Query and visible-train observations.
 
 The selected pieces support proper **0°, 90°, 180°, and 270°** rotations in their construction rules. For this game test, use each placement at the rotation specified in the README. Keyboard response, cursor anchors, terrain behaviour, and actual train operation still require human observations. Plop & Paint does not stamp this complete blueprint.
 
@@ -140,12 +140,12 @@ The selected pieces support proper **0°, 90°, 180°, and 270°** rotations in 
 
 | Journey | Placement sequence |
 | --- | --- |
-| West → East | P22 → P01 → P02 → P14 → P11 → P15 → P26 → P07 → P23 → P08 → P09 |
-| East → West | P09 → P08 → P23 → P07 → P26 → P15 → P11 → P14 → P02 → P01 → P22 |
-| West → South | P22 → P01 → P03 → P24 → P04 |
-| South → East | P04 → P25 → P10 → P07 → P23 → P08 → P09 |
-| South → West | P04 → P05 → P13 → P11 → P12 → P16 → P17 → P18 → P19 → P20 → P21 → P06A → P06B → P06 → P07 → P26 → P15 → P11 → P14 → P02 → P01 → P22 |
-| East → South | P09 → P08 → P06 → P06B → P06A → P21 → P20 → P19 → P18 → P17 → P16 → P12 → P11 → P13 → P05 → P04 |
+| West → East | P01 → P02 → P14 → P11 → P15 → P26 → P07 → P23 → P08 |
+| East → West | P08 → P23 → P07 → P26 → P15 → P11 → P14 → P02 → P01 |
+| West → South | P01 → P03 → P24 → P04 |
+| South → East | P04 → P25 → P10 → P07 → P23 → P08 |
+| South → West | P04 → P05 → P13 → P11 → P12 → P16 → P17 → P18 → P19 → P20 → P21 → P06A → P06B → P06 → P07 → P26 → P15 → P11 → P14 → P02 → P01 |
+| East → South | P08 → P06 → P06B → P06A → P21 → P20 → P19 → P18 → P17 → P16 → P12 → P11 → P13 → P05 → P04 |
 
 U-turns and transfers between the two crossing levels are forbidden. The separate Route Query and visible-travel cases come from this assembly’s authoritative record and appear in [5. Results and known issues](#5-results-and-known-issues).
 
@@ -155,9 +155,9 @@ U-turns and transfers between the two crossing levels are forbidden. The separat
 
 The assembly owns its [component placement tests](tests/test_hsr_trumpet_components.py), [merge-preservation tests](tests/test_hsr_merge_extraction.py), and [saved-resource tests](tests/test_hsr_trumpet.py). Reusable component checks, including the [fan geometry tests](../../tests/test_hsr_compact_fan.py), remain in the domain's `tests/` folder. From the repository root, run `python3 -B custom-pieces/scp.py check --scope hsr-trumpet-straight-stem --verbose` for this assembly's suite, or `python3 -B custom-pieces/scp.py check --scope high-speed-rail --verbose` for the reusable rail suite. Preserved reports retain the source paths and fingerprints captured during their original runs.
 
-The current arrangement uses **28 placements of 14 types**, within the unchanged **20 × 23 tile** rectangle, with **105 occupied tiles**, **74 support positions**, **715,251 actual placed-tile triangles**, and **166 encoded PATH fragments**. The [current validation](evidence/validation.json), [immutable initial integration gate](evidence/border-piece-integration-initial-validation.json), and [current integration record](checks/border-piece-integration.json) bind the actual saved fourteen-type candidate and complete physical checks. These software results establish neither a human picture approval nor an installed or observed game result.
+The previous border and fan integration used **28 placements of 14 types**, within the unchanged **20 × 23 tile** rectangle, with **105 occupied tiles**, **74 support positions**, **715,251 actual placed-tile triangles**, and **166 encoded PATH fragments**. The [previous validation](evidence/validation.json), [immutable initial integration gate](evidence/border-piece-integration-initial-validation.json), and [integration record](checks/border-piece-integration.json) bind the actual saved fourteen-type candidate and complete physical checks. These software results establish neither a human picture approval nor an installed or observed game result.
 
-The current [test report](evidence/border-piece-integration-tests.json) separates each executed source/native scope and its explicit skips. The [package report](evidence/border-piece-integration-package.json) identifies the actual final parts, one-button menu, and delivery outputs; it is kept outside its own hashed delivery archive. Older numerical test and extraction results below retain their original run scope.
+The [previous integration test report](evidence/border-piece-integration-tests.json) separates each executed source/native scope and its explicit skips. The [package report](evidence/border-piece-integration-package.json) identifies the actual final parts, one-button menu, and delivery outputs; it is kept outside its own hashed delivery archive. Older numerical test and extraction results below retain their original run scope.
 
 The preceding four-tile-merge capture used **26 placements of 13 types**, with the existing paired straight replacing the former western merge tile. Its preserved [validation report](evidence/design-history/before-border-piece-integration/evidence/validation.json) and [extraction proof](evidence/merge-west-tail-extraction.json) accept the actual saved four-tile resources and complete arrangement: **105 occupied tiles**, **74 support positions**, **709,002 placed-tile triangles**, and **166 encoded PATH fragments**. Support spacing remains at least **16 m**. Historical test logs, build provenance, and preservation audits remain linked in the [design history](#design-history). These software results create no human image approval, installation, or game-test pass.
 
@@ -171,15 +171,15 @@ P06 now owns the exact nine saved fork cells. P06A and P06B are two copies of th
 
 The current [native parts audit](evidence/fan-core-parts-build.json), both [core extraction](../../00_pieces/hsr-l2-mixed-fan-compact-recessed-web/evidence/fan-core-extraction.json) and [straight extraction](../../00_pieces/hsr-l2-two-track-straight-recessed-web/evidence/straight-extraction.json) proofs, and the complete current physical audit have separate scopes. The other twenty-five original placement dictionaries are unchanged. Track directions, all six complete journeys, support positions, outside ports, and the city grid remain preserved; the inherited northern web transition is not universal native-profile compatibility.
 
-### Current independent acceptance scope
+### Shortened layout and prior physical acceptance
 
 A **PATH** describes train movement. An **S3D model** contains visible triangles. A **DAT archive** packages those game resources. A **fingerprint** is a hash of exact file bytes; it detects any change in the approved resources.
 
-Use the [quality contract](checks/contract.json) and [layout contract](checks/layout.json) with the resource fingerprints below; these source records define the current acceptance requirements.
+The [shortening audit](evidence/outer-straight-removal.jsonc) compares the current 26 placements, 103 fixed cells, 72 custom supports, six directed journeys, and native joins with the [28-placement predecessor](evidence/design-history/assembly-before-outer-straight-removal.json). It checks that both straight ends are shortened by one tile and that all retained placement coordinates and resources match. The [quality contract](checks/contract.json), [layout contract](checks/layout.json), and resource fingerprints below retain their earlier scope.
 
-The current [resource contract](checks/resources.json) binds the 14 selected piece DATs, their identities, recipes, sizes, resource counts, and hashes, plus the models, PATHs, and shadows of the 105 placed tiles, their owners and rotations, all six complete directed journeys, the fixed layout, and the historical decision content. The current pins identify the newly audited fourteen-type assembly; the following older extraction figures retain their original four-tile-merge scope. The [extraction proof](evidence/merge-west-tail-extraction.json) confirms exact resource preservation in **103 world cells**, byte-identical PATHs in **104 retained world cells**, identical decoded routes for the replacement straight's **two routes**, **12 byte-identical complete DATs**, identical point counts and hashes for **all six complete journeys**, and all **74 support positions** preserved. The preceding [five-tile-merge audit](evidence/design-history/evidence-validation-before-merge-west-tail-extraction.json) recorded **708,930 placed-tile triangles**, **166 encoded PATH fragments**, and **1,155 tile-resource fingerprints**; those figures remain facts about that earlier capture.
+The earlier [resource contract](checks/resources.json) binds the 14 selected piece DATs, their identities, recipes, sizes, resource counts, and hashes, plus the models, PATHs, and shadows of the 105 placed tiles, their owners and rotations, all six complete directed journeys, the fixed layout, and the historical decision content. Those pins identify the earlier 28-placement version of the fourteen-type assembly; the following older extraction figures retain their original four-tile-merge scope. The [extraction proof](evidence/merge-west-tail-extraction.json) confirms exact resource preservation in **103 world cells**, byte-identical PATHs in **104 retained world cells**, identical decoded routes for the replacement straight's **two routes**, **12 byte-identical complete DATs**, identical point counts and hashes for **all six complete journeys**, and all **74 support positions** preserved. The preceding [five-tile-merge audit](evidence/design-history/evidence-validation-before-merge-west-tail-extraction.json) recorded **708,930 placed-tile triangles**, **166 encoded PATH fragments**, and **1,155 tile-resource fingerprints**; those figures remain facts about that earlier capture.
 
-The current placement contract requires **28 placements, 14 types, 105 occupied tiles, and 74 support centres**, at least **16 m** apart. Outside ports, the **20 × 23 tile** construction rectangle and fixed X/Y grid are unchanged. P26 owns the extracted tile and its existing support, and P07's reference was moved 16 m east while its retained geometry was rebased 16 m west locally. The approved local physical adjustment affects the upper northern parapet and adjacent upper bed strip within a **2.5 m** collar at the new western seam, by at most **3.4524 mm**. The rail region, slab underside, pier, outside ports, and support positions are preserved. The executed audit checks all six HSR journeys in every proper rotation, with no U-turn or unintended level transfer, as well as the new P26/P07 seam and **six native joining sections**. Keeping an inherited interface byte-identical does not establish that every visual detail at that interface has been redesigned.
+The predecessor placement contract required **28 placements, 14 types, 105 occupied tiles, and 74 support centres**, at least **16 m** apart. Outside ports, the **20 × 23 tile** construction rectangle and fixed X/Y grid are unchanged. P26 owns the extracted tile and its existing support, and P07's reference was moved 16 m east while its retained geometry was rebased 16 m west locally. The approved local physical adjustment affects the upper northern parapet and adjacent upper bed strip within a **2.5 m** collar at the new western seam, by at most **3.4524 mm**. The rail region, slab underside, pier, outside ports, and support positions are preserved. The executed audit checks all six HSR journeys in every proper rotation, with no U-turn or unintended level transfer, as well as the new P26/P07 seam and **six native joining sections**. Keeping an inherited interface byte-identical does not establish that every visual detail at that interface has been redesigned.
 
 The production blend's [independent collar proof](../../00_pieces/hsr-l2-two-track-mainline-opposed-merges-oblique-cuts/evidence/west-parapet-collar-proof.json) records a measured maximum displacement of **3.452301025 mm** and **6,518 finite section checks** with zero new gaps above **2 micrometres** in that scan. A micrometre is 0.001 mm. The complete saved-build audit additionally checks **87 collar sections** at 29 positions and matches all five zooms to the approved seam model. These finite checks do not establish unrestricted watertightness. Triangle partitioning interpolates texture coordinates at new vertices; texture placement inside the deformed collar is not asserted unchanged.
 
@@ -210,32 +210,17 @@ The two shortened one-way curves retain their custom-end tiles. Their standalone
 
 ### Run the software checks
 
-To check the existing staged candidate, open a terminal in the repository folder containing `custom-pieces`, and activate this checkout's Python environment using [Python setup](../../../../docs/BUILD_AND_INSTALL.md#python-setup-for-a-checkout-or-source-zip). The commands below use `python`, which selects that environment's interpreter on macOS, Linux, and Windows. Verify the candidate, then write a private assembly-audit report under `custom-pieces/local/`. If `trumpet-validation.json` already contains a run you need to retain, choose an unused report filename:
+Open a terminal in the repository folder containing `custom-pieces`, and activate this checkout's Python environment using [Python setup](../../../../docs/BUILD_AND_INSTALL.md#python-setup-for-a-checkout-or-source-zip). The first command compiles the 14 component types. The second creates a separate assembly-menu candidate with the three terminal selections. The third inspects the saved controller, menu, and piece archives. Use unused directory names and substitute those names consistently if either example directory already exists.
 
 ```sh
-python custom-pieces/scp.py verify --output custom-pieces/dist/trumpet-fan-core-menu-final-01
-python custom-pieces/domains/high-speed-rail/tools/verify_hsr_trumpet.py --build custom-pieces/dist/trumpet-fan-core-menu-final-01 --scene custom-pieces/domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/assembly.json --output custom-pieces/local/trumpet-validation.json
+python -B custom-pieces/scp.py build --set hsr-straight-stem-trumpet --output custom-pieces/dist/trumpet-parts
+python -B custom-pieces/scp.py assembly-menu --domain high-speed-rail --layout trumpet --source custom-pieces/dist/trumpet-parts --output custom-pieces/dist/trumpet-native-menu
+python -B custom-pieces/scp.py verify --output custom-pieces/dist/trumpet-native-menu
 ```
 
-Next, set `SCP_TRUMPET_BUILD`, an **environment variable** that tells the integration checks which candidate directory to inspect. Some saved-resource checks default to `custom-pieces/dist/hsr-trumpet-straight-stem` when this variable is absent; the complete-candidate integration check requires it explicitly. The check runner resolves relative candidate paths from the repository root. The following commands set an absolute path, run the assembly checks, and remove the variable afterward. On macOS or Linux, use:
+The saved menu verifier checks the three terminal roots and their 24 construction states. The separate whole-assembly verifier `verify_hsr_trumpet.py` uses a frozen [resource descriptor](checks/resources.json) keyed to the former `straight-stem-trumpet` identity. Use that verifier with its matching historical source and build. The commands above check a current menu candidate using the renamed identities. They create local build and verification outputs. Game installation is a separate step in the [assembly-menu procedure](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu).
 
-```sh
-export SCP_TRUMPET_BUILD="$PWD/custom-pieces/dist/trumpet-fan-core-menu-final-01"
-python custom-pieces/scp.py check --scope hsr-trumpet-straight-stem
-unset SCP_TRUMPET_BUILD
-```
-
-On Windows, use PowerShell:
-
-```powershell
-$env:SCP_TRUMPET_BUILD = (Resolve-Path 'custom-pieces/dist/trumpet-fan-core-menu-final-01').Path
-python custom-pieces/scp.py check --scope hsr-trumpet-straight-stem
-Remove-Item Env:SCP_TRUMPET_BUILD
-```
-
-If the candidate is missing or a fresh one is needed, follow the numbered [assembly-menu procedure](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu). That guide owns the preparation commands and uses fresh output directories, such as `custom-pieces/dist/trumpet-fan-core-menu-final-02`; choose an unused name if its example already exists. Do not rerun `assembly-menu` into an existing candidate directory.
-
-For the fresh run, replace `custom-pieces/dist/trumpet-fan-core-menu-final-01` in both verification commands, the `SCP_TRUMPET_BUILD` value for your shell, and every later candidate reference with the chosen new directory. Then repeat the verification and assembly checks above. Keep retained evidence links bound to their original runs, and record fresh reports separately. These commands create or check local outputs; they do not install the candidate.
+Use the [shortening audit](evidence/outer-straight-removal.jsonc) for the current outside joins and retained routes. The [earlier native terminal audit](evidence/native-terminal-audit.jsonc) records 24 track-socket and 60 model-section comparisons for the previous 28-placement version, including its original south end. The new side ends and the south end have coincident mainline and branch records at their two physical track sockets. Test both branch choices in the game.
 
 The preceding [validation report](evidence/design-history/before-border-piece-integration/evidence/validation.json) and [public binary-payload projection of its audit input manifest](evidence/design-history/before-border-piece-integration/evidence/audited-build-manifest.json) identify that earlier four-tile-merge audit and 26-placement scene. Its exact input manifest's hash is `manifest_sha256` in that preserved validation report. Read the projection's declared scope before comparing its own file hash with that original manifest. The dedicated [extraction proof](evidence/merge-west-tail-extraction.json) binds the merge DAT with SHA-256 `a4b00568156436b3de3493f51dd13d939de7d5f50fbf72a9b432f3586cee726f`, preserved world routes and supports, and the bounded collar difference. The normal piece builder and normal saved-resource verifiers ran; unchanged analytic surface contexts were reused from verified cached models, and the production affine collar normalizer executed from the current source. This capture does not claim a cold recompilation of those unchanged analytic contexts. A missing current descriptor, missing required staged build, or changed resource must fail verification. Optional integration tests may explicitly skip an absent current build; they must not hide malformed present builds or substitute generated expected answers.
 
@@ -249,7 +234,9 @@ The [earlier executed capture](evidence/design-history/validation-at-junction-re
 
 ### Artwork evidence
 
-The six assembly pictures start with `Assembly - HSR — Trumpet — Straight Stem`; the second row identifies a `Clean view`, `Component guide`, or `Construction view`, followed by the camera direction. Their [render report](evidence/render.json) records the exact images, fixed captions, renderer settings, and saved-model inputs for all **28 placements**. The named views and construction plan show the nine-tile P06 core, separate P06A and P06B recessed-web straights, four-tile P07, and separate P26. The [artwork audit](evidence/border-piece-integration-artwork.json) binds those six pictures to the immutable whole-assembly gate and preserves the original observations. The [preceding 26-placement render report](evidence/design-history/before-border-piece-integration/evidence/render.json) and [earlier P01–P25 render report](evidence/design-history/evidence-render-before-merge-west-tail-extraction.json) retain their original scopes. The current [component picture report](evidence/piece-previews.json) maps all 28 placements to the 14 reusable type-picture pairs.
+The [current render report](evidence/render.json) binds all six pictures to the shortened layout and actual saved models. The construction view uses 30% tile fills, solid ownership boundaries, and model outlines. The [previous six-picture report](evidence/design-history/before-outer-straight-removal/evidence/render.json) and the [previous layered construction report](evidence/design-history/before-outer-straight-removal/evidence/construction-render.jsonc) retain the 28-placement layout. The [older solid construction view](evidence/design-history/tile-ownership-before-layered-construction.png) and the [original border-integration artwork audit](evidence/border-piece-integration-artwork.json) retain their own scope. The [standalone component report](evidence/piece-previews.json) still identifies the same 14 reusable types.
+
+Image review cases use the current images' fingerprints. The earlier [observation record](evidence/design-history/before-outer-straight-removal/checks/manual-tests.json) and its [measured connections](evidence/design-history/before-outer-straight-removal/connections.json) retain the earlier scope and results. Human review of the refreshed images remains pending.
 
 The preceding [executed connector refresh](evidence/merge-west-tail-connectors.json) rerendered and independently checked all 15 then-supported migrated types after the owning implementation changed. All **56 canonical PNGs for the other 14 types** remained byte-identical, and every authoritative manual record remained unchanged during that pass. Refreshed image bindings and generated case summaries remain views of the original observations; they create no human image approval or game-test pass.
 
@@ -261,11 +248,22 @@ Use the exact reference layout from chapter 2 and the verified candidate from ch
 
 ### Menu and placement
 
-The current assembly menu requires one **SCP | ASSEMBLY | HSR — Trumpet — Straight Stem** button containing its **14 component types**. Check that Tab visits all 14 types, Shift+Tab reverses that order, and one click places only the selected component. The [assembly-menu guide](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) owns those preparation steps. Current static acceptance belongs to the [final package report](evidence/border-piece-integration-package.json), which records the actual fourteen-type cycle, unchanged component DATs, one button, and no submenu for the new candidate. The preceding [menu audit](evidence/design-history/before-border-piece-integration/evidence/assembly-menu.json) retains its original thirteen-type scope; older menu results do not certify the new cycle. Static verification does not establish the button’s appearance or keyboard behaviour inside the game.
+Open **Transportation → Rail** and check for one **SCP** folder above the native and NAM buttons. Open **SCP → Assemblies** and check for one **SCP | ASSEMBLY | HSR — Trumpet — Straight Stem** button. If the candidate includes standalone Rail pieces, open **SCP → Pieces** and check for those buttons. The trumpet's components should be available through its assembly button. The Submenus DLL can hide **Pieces** when the selection contains only the assembly. Check that **Tab** visits the **14 ordinary component selections**, followed by the **South**, **East**, and **West** terminals, and that **Shift+Tab** reverses that order. Verify the side selections at their recorded positions and rotations. [Assembly-menu preparation](../../../../docs/BUILD_AND_INSTALL.md#prepare-the-assembly-menu) · [Earlier package report](evidence/border-piece-integration-package.json)
+
+### Native approach game checks
+
+Use a fresh placement in a disposable flat city after starting the game with the revised controller. The starter is requested when the component is placed, so place P04, P08, and P01 fresh for the test. Start with empty starter cells and enough space to drag three additional straight cells outward.
+
+1. Place each terminal from its own cycle position. Record separately for south, east, and west whether its one native starter appears in the cell shown in the [native approach table](README.md#31-native-hsr-approaches). Inspect the rails and deck at the edge where the custom and native tiles meet.
+2. Press **Esc**, open **Transportation → Rail**, and select **Monorail**. Start the drag on the native starter cell and release at least three cells farther outward on the same axis. Record whether the extended tiles take on the elevated HSR appearance on each arm.
+3. At a separate test site, prebuild matching straight elevated HSR up to one cell beyond the starter plot. In the reference grid, the closest native cells are **(X−1, Y13)** west, **(X20, Y13)** east, and **(X7, Y−2)** south. Leave the starter plot empty and click the terminal once. Record separately for each arm whether the empty square fills and joins the existing line with that click.
+4. Connect each approach to a working source of Monorail trips. Run Route Query and watch a moving train for each of the six directed journeys, including the two loop journeys.
+
+Record the exact menu build, game version, NAM profile, arm, direction, and result. Game placement, one-gap joins, drag initiation, and train travel are pending. Keep demolition and save/reload as separate observations.
 
 ### Appearance and travel
 
-After installing an authorized test build, use a disposable flat city. Inspect P22/P01, the new P26/P07 seam, and P07/P23 at every zoom, then P03/P24 and P25/P10. Check rails, deck, wall openings, pillars, and shadows. Verify each piece's cursor placement at its specified orientation. Build the complete reference arrangement, supply real Monorail demand, and check every journey with separate Route Query and visible-train observations. Also test forbidden U-turns and level transfers, demolition, and save/reload. Record the tested file hashes, city layout, platform, and screenshots with the observation.
+After installing an authorized test build, use a disposable flat city. Inspect both native approaches at P01 and P08, then P26/P07 and P07/P23 at every zoom, then P03/P24 and P25/P10. Check rails, deck, wall openings, pillars, and shadows. Verify each piece's cursor placement at its specified orientation. Build the complete reference arrangement, supply real Monorail demand, and check every journey with separate Route Query and visible-train observations. Also test forbidden U-turns and level transfers, demolition, and save/reload. Record the tested file hashes, city layout, platform, and screenshots with the observation.
 
 The three generated forbidden-transfer cases cover the approach U-turns. They do not separately establish an in-game crossing-level isolation result; keep that distinction when reporting the observed scope.
 
@@ -312,15 +310,15 @@ Each collapsed group shows exact case counts and states. Forbidden transfers are
 
 | Check / exact scope | General | 0° |
 | --- | --- | --- |
-| **Compiled resources**<br>Whole subject | <a href="#case-software_resources-fe740c153144a3695751">[x] passed</a> | — |
+| **Compiled resources**<br>Whole subject | <a href="#case-software_resources-f5c6783fcb77e4e2b353">[x] passed</a> | — |
 
 
 <details>
 <summary>Compiled resources — Whole subject</summary>
 
-<a id="case-software_resources-fe740c153144a3695751"></a>
+<a id="case-software_resources-f5c6783fcb77e4e2b353"></a>
 
-**General: passed** — `software_resources-fe740c153144a3695751`.
+**General: passed** — `software_resources-f5c6783fcb77e4e2b353`.
 
 Verify the actual compiled resources and construction rules.
 
@@ -328,12 +326,7 @@ Scope: Whole subject.
 
 Recorded observations (chronological; the state above checks the relevant dependency snapshot):
 
-- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: actual saved-resource and full-assembly audit; confirmed at: 2026-10-27T14:12:46.158490+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json]; environment: {}
-- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:05:41.349287+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
-- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:17:27.127678+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
-- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T21:59:37.265650+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
-- result: passed; authority: software; reviewer: Current saved-resource verifier and independent one-plus-four extraction/assembly controls; confirmed at: 2026-10-28T09:50:03.583685+00:00; evidence: [evidence/validation.json, evidence/merge-west-tail-extraction.json, evidence/audited-build-manifest.json]; environment: {}
-- result: passed; authority: software; reviewer: Current normal native 14-type saved build, independent complete 28-placement assembly integration, and actual saved-PATH extraction with all25 non-fan placement dictionaries unchanged and the reviewed three-piece fan decomposition; confirmed at: 2026-10-28T18:16:00.644573+00:00; evidence: [evidence/border-piece-integration-initial-validation.json, checks/border-piece-integration.json, evidence/border-piece-integration-artwork.json]; environment: {}
+- result: passed; authority: software; reviewer: verify_hsr_trumpet_shortening.py; confirmed at: 2026-11-04T21:17:26+00:00; evidence: [evidence/outer-straight-removal.jsonc]; environment: {}
 
 </details>
 
@@ -344,15 +337,15 @@ Recorded observations (chronological; the state above checks the relevant depend
 
 | Check / exact scope | General | 0° |
 | --- | --- | --- |
-| **Directed routing graph**<br>Whole subject | <a href="#case-software_connectivity-fe740c153144a3695751">[x] passed</a> | — |
+| **Directed routing graph**<br>Whole subject | <a href="#case-software_connectivity-f5c6783fcb77e4e2b353">[x] passed</a> | — |
 
 
 <details>
 <summary>Directed routing graph — Whole subject</summary>
 
-<a id="case-software_connectivity-fe740c153144a3695751"></a>
+<a id="case-software_connectivity-f5c6783fcb77e4e2b353"></a>
 
-**General: passed** — `software_connectivity-fe740c153144a3695751`.
+**General: passed** — `software_connectivity-f5c6783fcb77e4e2b353`.
 
 Verify the declared directed journeys and forbidden transfers.
 
@@ -360,12 +353,134 @@ Scope: Whole subject.
 
 Recorded observations (chronological; the state above checks the relevant dependency snapshot):
 
-- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: actual saved-resource and full-assembly audit; confirmed at: 2026-10-27T14:12:46.158490+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json]; environment: {}
-- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:05:41.349287+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
-- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T19:17:27.127678+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
-- result: passed; authority: software; reviewer: verify_hsr_trumpet.py: completed native saved-resource and whole-assembly audit; confirmed at: 2026-10-27T21:59:37.265650+00:00; evidence: [evidence/validation.json, evidence/audited-build-manifest.json, evidence/junction-rework-build.json]; environment: {}
-- result: passed; authority: software; reviewer: Current saved-resource verifier and independent one-plus-four extraction/assembly controls; confirmed at: 2026-10-28T09:50:03.583685+00:00; evidence: [evidence/validation.json, evidence/merge-west-tail-extraction.json, evidence/audited-build-manifest.json]; environment: {}
-- result: passed; authority: software; reviewer: Current normal native 14-type saved build, independent complete 28-placement assembly integration, and actual saved-PATH extraction with all25 non-fan placement dictionaries unchanged and the reviewed three-piece fan decomposition; confirmed at: 2026-10-28T18:16:00.644573+00:00; evidence: [evidence/border-piece-integration-initial-validation.json, checks/border-piece-integration.json, evidence/border-piece-integration-artwork.json]; environment: {}
+- result: passed; authority: software; reviewer: verify_hsr_trumpet_shortening.py; confirmed at: 2026-11-04T21:17:26+00:00; evidence: [evidence/outer-straight-removal.jsonc]; environment: {}
+
+</details>
+
+</details>
+
+<details>
+<summary>Preview review — Images — 7 cases; unverified: 7</summary>
+
+| Check / exact scope | General | 0° |
+| --- | --- | --- |
+| **Preview review**<br>Image: image:hsr-trumpet-straight-stem:clean-southeast | <a href="#case-preview_review-57ec335520c45d3e78b5">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:hsr-trumpet-straight-stem:clean-top | <a href="#case-preview_review-1c841799c34e6b37907e">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:hsr-trumpet-straight-stem:fan-atomization-review | <a href="#case-preview_review-907f41d5044bcb48c04d">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:hsr-trumpet-straight-stem:named-northwest | <a href="#case-preview_review-1d20271b180a24b699f0">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:hsr-trumpet-straight-stem:named-southeast | <a href="#case-preview_review-1a0b9a049beae822b548">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:hsr-trumpet-straight-stem:named-top | <a href="#case-preview_review-69e71e6d02c5a7512b67">[ ] unverified</a> | — |
+| **Preview review**<br>Image: image:hsr-trumpet-straight-stem:tile-ownership | <a href="#case-preview_review-efabd1954d5c42a13b18">[ ] unverified</a> | — |
+
+
+<details>
+<summary>Preview review — Image: image:hsr-trumpet-straight-stem:clean-southeast</summary>
+
+<a id="case-preview_review-57ec335520c45d3e78b5"></a>
+
+**General: unverified** — `preview_review-57ec335520c45d3e78b5`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:hsr-trumpet-straight-stem:clean-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-trumpet-straight-stem:clean-top</summary>
+
+<a id="case-preview_review-1c841799c34e6b37907e"></a>
+
+**General: unverified** — `preview_review-1c841799c34e6b37907e`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:hsr-trumpet-straight-stem:clean-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-trumpet-straight-stem:fan-atomization-review</summary>
+
+<a id="case-preview_review-907f41d5044bcb48c04d"></a>
+
+**General: unverified** — `preview_review-907f41d5044bcb48c04d`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:hsr-trumpet-straight-stem:fan-atomization-review.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-trumpet-straight-stem:named-northwest</summary>
+
+<a id="case-preview_review-1d20271b180a24b699f0"></a>
+
+**General: unverified** — `preview_review-1d20271b180a24b699f0`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:hsr-trumpet-straight-stem:named-northwest.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-trumpet-straight-stem:named-southeast</summary>
+
+<a id="case-preview_review-1a0b9a049beae822b548"></a>
+
+**General: unverified** — `preview_review-1a0b9a049beae822b548`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:hsr-trumpet-straight-stem:named-southeast.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-trumpet-straight-stem:named-top</summary>
+
+<a id="case-preview_review-69e71e6d02c5a7512b67"></a>
+
+**General: unverified** — `preview_review-69e71e6d02c5a7512b67`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:hsr-trumpet-straight-stem:named-top.
+
+No observation recorded.
+
+</details>
+
+
+<details>
+<summary>Preview review — Image: image:hsr-trumpet-straight-stem:tile-ownership</summary>
+
+<a id="case-preview_review-efabd1954d5c42a13b18"></a>
+
+**General: unverified** — `preview_review-efabd1954d5c42a13b18`.
+
+Inspect this exact preview for tracks, walls, piers, seams, and shadows.
+
+Scope: Image: image:hsr-trumpet-straight-stem:tile-ownership.
+
+No observation recorded.
 
 </details>
 
@@ -376,15 +491,15 @@ Recorded observations (chronological; the state above checks the relevant depend
 
 | Check / exact scope | General | 0° |
 | --- | --- | --- |
-| **In-game rendering**<br>Whole subject | — | <a href="#case-in_game_render-4b8e61d1c512b7c578e8">[ ] unverified</a> |
+| **In-game rendering**<br>Whole subject | — | <a href="#case-in_game_render-a31fffc9773c3a5be65a">[ ] unverified</a> |
 
 
 <details>
 <summary>In-game rendering — Whole subject</summary>
 
-<a id="case-in_game_render-4b8e61d1c512b7c578e8"></a>
+<a id="case-in_game_render-a31fffc9773c3a5be65a"></a>
 
-**0° CCW: unverified** — `in_game_render-4b8e61d1c512b7c578e8`.
+**0° CCW: unverified** — `in_game_render-a31fffc9773c3a5be65a`.
 
 Inspect the placed tracks, walls, piers, seams, and shadows in SimCity 4.
 
@@ -401,15 +516,15 @@ No observation recorded.
 
 | Check / exact scope | General | 0° |
 | --- | --- | --- |
-| **Placement**<br>Whole subject | — | <a href="#case-in_game_placement-4b8e61d1c512b7c578e8">[ ] unverified</a> |
+| **Placement**<br>Whole subject | — | <a href="#case-in_game_placement-a31fffc9773c3a5be65a">[ ] unverified</a> |
 
 
 <details>
 <summary>Placement — Whole subject</summary>
 
-<a id="case-in_game_placement-4b8e61d1c512b7c578e8"></a>
+<a id="case-in_game_placement-a31fffc9773c3a5be65a"></a>
 
-**0° CCW: unverified** — `in_game_placement-4b8e61d1c512b7c578e8`.
+**0° CCW: unverified** — `in_game_placement-a31fffc9773c3a5be65a`.
 
 Place this piece or complete blueprint and inspect every occupied tile.
 
@@ -426,15 +541,15 @@ No observation recorded.
 
 | Check / exact scope | General | 0° |
 | --- | --- | --- |
-| **Demolition**<br>Whole subject | — | <a href="#case-in_game_demolition-4b8e61d1c512b7c578e8">[ ] unverified</a> |
+| **Demolition**<br>Whole subject | — | <a href="#case-in_game_demolition-a31fffc9773c3a5be65a">[ ] unverified</a> |
 
 
 <details>
 <summary>Demolition — Whole subject</summary>
 
-<a id="case-in_game_demolition-4b8e61d1c512b7c578e8"></a>
+<a id="case-in_game_demolition-a31fffc9773c3a5be65a"></a>
 
-**0° CCW: unverified** — `in_game_demolition-4b8e61d1c512b7c578e8`.
+**0° CCW: unverified** — `in_game_demolition-a31fffc9773c3a5be65a`.
 
 Bulldoze the complete placement and inspect the cleared area.
 
@@ -451,15 +566,15 @@ No observation recorded.
 
 | Check / exact scope | General | 0° |
 | --- | --- | --- |
-| **Save and reload**<br>Whole subject | — | <a href="#case-in_game_save_reload-4b8e61d1c512b7c578e8">[ ] unverified</a> |
+| **Save and reload**<br>Whole subject | — | <a href="#case-in_game_save_reload-a31fffc9773c3a5be65a">[ ] unverified</a> |
 
 
 <details>
 <summary>Save and reload — Whole subject</summary>
 
-<a id="case-in_game_save_reload-4b8e61d1c512b7c578e8"></a>
+<a id="case-in_game_save_reload-a31fffc9773c3a5be65a"></a>
 
-**0° CCW: unverified** — `in_game_save_reload-4b8e61d1c512b7c578e8`.
+**0° CCW: unverified** — `in_game_save_reload-a31fffc9773c3a5be65a`.
 
 Save, quit, reload, and inspect the placement and its paths.
 
@@ -476,20 +591,20 @@ No observation recorded.
 
 | Check / exact scope | General | 0° |
 | --- | --- | --- |
-| **Route Query**<br>Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out | — | <a href="#case-in_game_route_query-8b08022118fd9f445d85">[ ] unverified</a> |
-| **Route Query**<br>Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out | — | <a href="#case-in_game_route_query-76bf51a0e3b87a77ead7">[ ] unverified</a> |
-| **Route Query**<br>Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out | — | <a href="#case-in_game_route_query-336582ad6132a64a36f8">[ ] unverified</a> |
-| **Route Query**<br>Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out | — | <a href="#case-in_game_route_query-2572758d9ad9c64a40fd">[ ] unverified</a> |
-| **Route Query**<br>Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out | — | <a href="#case-in_game_route_query-87f3cb5204e2970d80c1">[ ] unverified</a> |
-| **Route Query**<br>Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out | — | <a href="#case-in_game_route_query-aea09525a3e21f949d2b">[ ] unverified</a> |
+| **Route Query**<br>Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out | — | <a href="#case-in_game_route_query-24305b8238cd8ab235ed">[ ] unverified</a> |
+| **Route Query**<br>Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out | — | <a href="#case-in_game_route_query-8fbc6930ce4cdd09a9a8">[ ] unverified</a> |
+| **Route Query**<br>Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out | — | <a href="#case-in_game_route_query-0ce0b71aba072400b0e3">[ ] unverified</a> |
+| **Route Query**<br>Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out | — | <a href="#case-in_game_route_query-46ffbddfd6d131dc9ad0">[ ] unverified</a> |
+| **Route Query**<br>Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out | — | <a href="#case-in_game_route_query-7a0571837ba64c0a3685">[ ] unverified</a> |
+| **Route Query**<br>Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out | — | <a href="#case-in_game_route_query-85e2fe8fb2dd0c1622b9">[ ] unverified</a> |
 
 
 <details>
 <summary>Route Query — Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out</summary>
 
-<a id="case-in_game_route_query-8b08022118fd9f445d85"></a>
+<a id="case-in_game_route_query-24305b8238cd8ab235ed"></a>
 
-**0° CCW: unverified** — `in_game_route_query-8b08022118fd9f445d85`.
+**0° CCW: unverified** — `in_game_route_query-24305b8238cd8ab235ed`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
@@ -503,9 +618,9 @@ No observation recorded.
 <details>
 <summary>Route Query — Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out</summary>
 
-<a id="case-in_game_route_query-76bf51a0e3b87a77ead7"></a>
+<a id="case-in_game_route_query-8fbc6930ce4cdd09a9a8"></a>
 
-**0° CCW: unverified** — `in_game_route_query-76bf51a0e3b87a77ead7`.
+**0° CCW: unverified** — `in_game_route_query-8fbc6930ce4cdd09a9a8`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
@@ -519,9 +634,9 @@ No observation recorded.
 <details>
 <summary>Route Query — Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out</summary>
 
-<a id="case-in_game_route_query-336582ad6132a64a36f8"></a>
+<a id="case-in_game_route_query-0ce0b71aba072400b0e3"></a>
 
-**0° CCW: unverified** — `in_game_route_query-336582ad6132a64a36f8`.
+**0° CCW: unverified** — `in_game_route_query-0ce0b71aba072400b0e3`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
@@ -535,9 +650,9 @@ No observation recorded.
 <details>
 <summary>Route Query — Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out</summary>
 
-<a id="case-in_game_route_query-2572758d9ad9c64a40fd"></a>
+<a id="case-in_game_route_query-46ffbddfd6d131dc9ad0"></a>
 
-**0° CCW: unverified** — `in_game_route_query-2572758d9ad9c64a40fd`.
+**0° CCW: unverified** — `in_game_route_query-46ffbddfd6d131dc9ad0`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
@@ -551,9 +666,9 @@ No observation recorded.
 <details>
 <summary>Route Query — Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out</summary>
 
-<a id="case-in_game_route_query-87f3cb5204e2970d80c1"></a>
+<a id="case-in_game_route_query-7a0571837ba64c0a3685"></a>
 
-**0° CCW: unverified** — `in_game_route_query-87f3cb5204e2970d80c1`.
+**0° CCW: unverified** — `in_game_route_query-7a0571837ba64c0a3685`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
@@ -567,9 +682,9 @@ No observation recorded.
 <details>
 <summary>Route Query — Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out</summary>
 
-<a id="case-in_game_route_query-aea09525a3e21f949d2b"></a>
+<a id="case-in_game_route_query-85e2fe8fb2dd0c1622b9"></a>
 
-**0° CCW: unverified** — `in_game_route_query-aea09525a3e21f949d2b`.
+**0° CCW: unverified** — `in_game_route_query-85e2fe8fb2dd0c1622b9`.
 
 Use Route Query in SimCity 4 to confirm this directed journey for its service network.
 
@@ -586,20 +701,20 @@ No observation recorded.
 
 | Check / exact scope | General | 0° |
 | --- | --- | --- |
-| **Visible travel**<br>Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out | — | <a href="#case-in_game_visible_travel-8b08022118fd9f445d85">[ ] unverified</a> |
-| **Visible travel**<br>Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out | — | <a href="#case-in_game_visible_travel-76bf51a0e3b87a77ead7">[ ] unverified</a> |
-| **Visible travel**<br>Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out | — | <a href="#case-in_game_visible_travel-336582ad6132a64a36f8">[ ] unverified</a> |
-| **Visible travel**<br>Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out | — | <a href="#case-in_game_visible_travel-2572758d9ad9c64a40fd">[ ] unverified</a> |
-| **Visible travel**<br>Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out | — | <a href="#case-in_game_visible_travel-87f3cb5204e2970d80c1">[ ] unverified</a> |
-| **Visible travel**<br>Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out | — | <a href="#case-in_game_visible_travel-aea09525a3e21f949d2b">[ ] unverified</a> |
+| **Visible travel**<br>Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out | — | <a href="#case-in_game_visible_travel-24305b8238cd8ab235ed">[ ] unverified</a> |
+| **Visible travel**<br>Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out | — | <a href="#case-in_game_visible_travel-8fbc6930ce4cdd09a9a8">[ ] unverified</a> |
+| **Visible travel**<br>Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out | — | <a href="#case-in_game_visible_travel-0ce0b71aba072400b0e3">[ ] unverified</a> |
+| **Visible travel**<br>Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out | — | <a href="#case-in_game_visible_travel-46ffbddfd6d131dc9ad0">[ ] unverified</a> |
+| **Visible travel**<br>Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out | — | <a href="#case-in_game_visible_travel-7a0571837ba64c0a3685">[ ] unverified</a> |
+| **Visible travel**<br>Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out | — | <a href="#case-in_game_visible_travel-85e2fe8fb2dd0c1622b9">[ ] unverified</a> |
 
 
 <details>
 <summary>Visible travel — Service: hsr; role: primary; journey: E.in>S.out; entry: E.in; exit: S.out</summary>
 
-<a id="case-in_game_visible_travel-8b08022118fd9f445d85"></a>
+<a id="case-in_game_visible_travel-24305b8238cd8ab235ed"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-8b08022118fd9f445d85`.
+**0° CCW: unverified** — `in_game_visible_travel-24305b8238cd8ab235ed`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
@@ -613,9 +728,9 @@ No observation recorded.
 <details>
 <summary>Visible travel — Service: hsr; role: primary; journey: E.in>W.out; entry: E.in; exit: W.out</summary>
 
-<a id="case-in_game_visible_travel-76bf51a0e3b87a77ead7"></a>
+<a id="case-in_game_visible_travel-8fbc6930ce4cdd09a9a8"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-76bf51a0e3b87a77ead7`.
+**0° CCW: unverified** — `in_game_visible_travel-8fbc6930ce4cdd09a9a8`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
@@ -629,9 +744,9 @@ No observation recorded.
 <details>
 <summary>Visible travel — Service: hsr; role: primary; journey: S.in>E.out; entry: S.in; exit: E.out</summary>
 
-<a id="case-in_game_visible_travel-336582ad6132a64a36f8"></a>
+<a id="case-in_game_visible_travel-0ce0b71aba072400b0e3"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-336582ad6132a64a36f8`.
+**0° CCW: unverified** — `in_game_visible_travel-0ce0b71aba072400b0e3`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
@@ -645,9 +760,9 @@ No observation recorded.
 <details>
 <summary>Visible travel — Service: hsr; role: primary; journey: S.in>W.out; entry: S.in; exit: W.out</summary>
 
-<a id="case-in_game_visible_travel-2572758d9ad9c64a40fd"></a>
+<a id="case-in_game_visible_travel-46ffbddfd6d131dc9ad0"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-2572758d9ad9c64a40fd`.
+**0° CCW: unverified** — `in_game_visible_travel-46ffbddfd6d131dc9ad0`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
@@ -661,9 +776,9 @@ No observation recorded.
 <details>
 <summary>Visible travel — Service: hsr; role: primary; journey: W.in>E.out; entry: W.in; exit: E.out</summary>
 
-<a id="case-in_game_visible_travel-87f3cb5204e2970d80c1"></a>
+<a id="case-in_game_visible_travel-7a0571837ba64c0a3685"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-87f3cb5204e2970d80c1`.
+**0° CCW: unverified** — `in_game_visible_travel-7a0571837ba64c0a3685`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
@@ -677,9 +792,9 @@ No observation recorded.
 <details>
 <summary>Visible travel — Service: hsr; role: primary; journey: W.in>S.out; entry: W.in; exit: S.out</summary>
 
-<a id="case-in_game_visible_travel-aea09525a3e21f949d2b"></a>
+<a id="case-in_game_visible_travel-85e2fe8fb2dd0c1622b9"></a>
 
-**0° CCW: unverified** — `in_game_visible_travel-aea09525a3e21f949d2b`.
+**0° CCW: unverified** — `in_game_visible_travel-85e2fe8fb2dd0c1622b9`.
 
 Observe traffic visibly complete this directed journey for its service network; Route Query alone does not complete this check.
 
@@ -696,17 +811,17 @@ No observation recorded.
 
 | Check / exact scope | General | 0° |
 | --- | --- | --- |
-| **Forbidden transfer**<br>from port: W.in; to port: W.out; from service: hsr; to service: hsr; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-92b725456842f93c47ca">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: S.in; to port: S.out; from service: hsr; to service: hsr; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-dfbdc4123044e5fb53fe">[ ] unverified</a> |
-| **Forbidden transfer**<br>from port: E.in; to port: E.out; from service: hsr; to service: hsr; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-9f7a461fa713c7413977">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: W.in; to port: W.out; from service: hsr; to service: hsr; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-a52234e5fe0ebe309e15">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: S.in; to port: S.out; from service: hsr; to service: hsr; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-cd45bc8d8ad61307fc18">[ ] unverified</a> |
+| **Forbidden transfer**<br>from port: E.in; to port: E.out; from service: hsr; to service: hsr; basis: not reachable in the saved placed encoded-route graph | — | <a href="#case-in_game_forbidden_transfer-70fd39ed72cf3e425431">[ ] unverified</a> |
 
 
 <details>
 <summary>Forbidden transfer — from port: W.in; to port: W.out; from service: hsr; to service: hsr; basis: not reachable in the saved placed encoded-route graph</summary>
 
-<a id="case-in_game_forbidden_transfer-92b725456842f93c47ca"></a>
+<a id="case-in_game_forbidden_transfer-a52234e5fe0ebe309e15"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-92b725456842f93c47ca`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-a52234e5fe0ebe309e15`.
 
 Confirm this undeclared transfer is unavailable.
 
@@ -720,9 +835,9 @@ No observation recorded.
 <details>
 <summary>Forbidden transfer — from port: S.in; to port: S.out; from service: hsr; to service: hsr; basis: not reachable in the saved placed encoded-route graph</summary>
 
-<a id="case-in_game_forbidden_transfer-dfbdc4123044e5fb53fe"></a>
+<a id="case-in_game_forbidden_transfer-cd45bc8d8ad61307fc18"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-dfbdc4123044e5fb53fe`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-cd45bc8d8ad61307fc18`.
 
 Confirm this undeclared transfer is unavailable.
 
@@ -736,140 +851,13 @@ No observation recorded.
 <details>
 <summary>Forbidden transfer — from port: E.in; to port: E.out; from service: hsr; to service: hsr; basis: not reachable in the saved placed encoded-route graph</summary>
 
-<a id="case-in_game_forbidden_transfer-9f7a461fa713c7413977"></a>
+<a id="case-in_game_forbidden_transfer-70fd39ed72cf3e425431"></a>
 
-**0° CCW: unverified** — `in_game_forbidden_transfer-9f7a461fa713c7413977`.
+**0° CCW: unverified** — `in_game_forbidden_transfer-70fd39ed72cf3e425431`.
 
 Confirm this undeclared transfer is unavailable.
 
 Scope: from port: E.in; to port: E.out; from service: hsr; to service: hsr; basis: not reachable in the saved placed encoded-route graph.
-
-No observation recorded.
-
-</details>
-
-</details>
-
-<details>
-<summary>Preview review — Images — 7 cases; unverified: 7</summary>
-
-| Check / exact scope | General | 0° |
-| --- | --- | --- |
-| **Preview review**<br>Image: image:straight-stem-trumpet:clean-southeast | <a href="#case-preview_review-4255f74d1a0022065ce4">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet:clean-top | <a href="#case-preview_review-8f00df0ccb26670bca5a">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet:fan-atomization-review | <a href="#case-preview_review-11a85f8a26bcca0d56f4">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet:named-northwest | <a href="#case-preview_review-09c7f0560ea1efecf6f1">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet:named-southeast | <a href="#case-preview_review-b0defe1adfa80a596bb8">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet:named-top | <a href="#case-preview_review-ecf9be65aaa4dd4c3c7b">[ ] unverified</a> | — |
-| **Preview review**<br>Image: image:straight-stem-trumpet:tile-ownership | <a href="#case-preview_review-a613bd9fbd07c6e7cb5f">[ ] unverified</a> | — |
-
-
-<details>
-<summary>Preview review — Image: image:straight-stem-trumpet:clean-southeast</summary>
-
-<a id="case-preview_review-4255f74d1a0022065ce4"></a>
-
-**General: unverified** — `preview_review-4255f74d1a0022065ce4`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:straight-stem-trumpet:clean-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:straight-stem-trumpet:clean-top</summary>
-
-<a id="case-preview_review-8f00df0ccb26670bca5a"></a>
-
-**General: unverified** — `preview_review-8f00df0ccb26670bca5a`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:straight-stem-trumpet:clean-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:straight-stem-trumpet:fan-atomization-review</summary>
-
-<a id="case-preview_review-11a85f8a26bcca0d56f4"></a>
-
-**General: unverified** — `preview_review-11a85f8a26bcca0d56f4`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:straight-stem-trumpet:fan-atomization-review.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:straight-stem-trumpet:named-northwest</summary>
-
-<a id="case-preview_review-09c7f0560ea1efecf6f1"></a>
-
-**General: unverified** — `preview_review-09c7f0560ea1efecf6f1`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:straight-stem-trumpet:named-northwest.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:straight-stem-trumpet:named-southeast</summary>
-
-<a id="case-preview_review-b0defe1adfa80a596bb8"></a>
-
-**General: unverified** — `preview_review-b0defe1adfa80a596bb8`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:straight-stem-trumpet:named-southeast.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:straight-stem-trumpet:named-top</summary>
-
-<a id="case-preview_review-ecf9be65aaa4dd4c3c7b"></a>
-
-**General: unverified** — `preview_review-ecf9be65aaa4dd4c3c7b`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:straight-stem-trumpet:named-top.
-
-No observation recorded.
-
-</details>
-
-
-<details>
-<summary>Preview review — Image: image:straight-stem-trumpet:tile-ownership</summary>
-
-<a id="case-preview_review-a613bd9fbd07c6e7cb5f"></a>
-
-**General: unverified** — `preview_review-a613bd9fbd07c6e7cb5f`.
-
-Inspect this exact image for paths, surfaces, supports, joins, shadows, and labels.
-
-Scope: Image: image:straight-stem-trumpet:tile-ownership.
 
 No observation recorded.
 

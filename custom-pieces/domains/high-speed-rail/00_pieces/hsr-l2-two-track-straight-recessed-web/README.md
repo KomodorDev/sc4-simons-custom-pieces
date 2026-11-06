@@ -54,7 +54,7 @@ Keep the complete 1 × 1 tile clear. The documented origin is a software coordin
 
 After following the [separate build and installation procedure](../../../../docs/BUILD_AND_INSTALL.md), use a disposable flat test city.
 
-1. Open **Transportation → Rail**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) — Two-Track Straight — Recessed Web**. An installed assembly may include this type in its declared Tab/Shift+Tab cycle.
+1. Open **Transportation → Rail → SCP → Pieces**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) — Two-Track Straight — Recessed Web**. An installed assembly may include this type in its declared Tab/Shift+Tab cycle.
 2. Move the complete cursor preview over clear terrain. Press **Home** or **End** to rotate it; on the documented Mac keyboard, **Fn + ←** and **Fn + →** provide those keys. Use the supported construction states listed in the generated connection section.
 3. At 0°, align the north and south ends with matching recessed-web paired boundaries. Rotating the piece turns both physical tracks and their travel directions together; it does not reflect the piece or reverse an individual route.
 4. Click once to place it. Supply matching outside connections and travel demand. Inspect rails, concrete, support, and shadows, then test each permitted direction and the unavailable track transfers separately.

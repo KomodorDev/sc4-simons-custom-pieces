@@ -1,9 +1,19 @@
 """Controller aliases preserve canonical geometry and placement definitions."""
+from copy import deepcopy
+import json
+from pathlib import Path
 import unittest
 
+from scp import jsonc, multi_assembly_menu
 from scp import piece_menu_families
 from scp.assembly_aliases import add_aliases, verify_aliases
+from scp.build import NETWORK_INI, RUL0
+from scp.catalog import load_catalog
+from scp.dbpf import pack_dbpf
 from scp.rul0 import compose_rul0, with_feature_sequence
+from scp.verify import strict_dbpf
+
+from test_menu_experiment import menu_resource
 
 
 NATIVE = (
@@ -151,3 +161,80 @@ Costs = 1000'''.replace('\n', '\r\n'), added)
     def test_no_aliases_preserve_the_original_format(self):
         self.assertEqual(add_aliases(self.original, self.composition, []), (self.original, self.composition))
         verify_aliases(self.original, self.composition, self.original, self.composition, [])
+
+
+class TrumpetTerminalCycleTests(unittest.TestCase):
+    def test_terminal_states_follow_the_ordinary_cycle_and_preserve_canonical_rules(self):
+        from scp_hsr.hsr_components import build_rules
+
+        root = Path(__file__).resolve().parents[1]
+        catalog = load_catalog(root)
+        scene = next(row['scene'] for row in catalog['_assemblies'] if row['id'] == 'hsr-trumpet-straight-stem')
+        pieces = {piece['id']: piece for piece in catalog['pieces']}
+        selected = [pieces[piece_id] for piece_id in dict.fromkeys(row['piece_id'] for row in scene['placements'])]
+        layout = jsonc.load(root / 'domains/high-speed-rail/menu-layout.jsonc')['layouts']['trumpet']
+        ledger = catalog['_allocations']['assembly_aliases']
+        group = {'layout_id': 'trumpet', 'domain_id': 'high-speed-rail', 'layout': layout,
+                 'scene': scene, 'alias_reservations': {key: ledger[key] for key in layout['terminal_components'].values()}}
+        bundle = {'schema_version': 2, 'groups': [group]}
+        # Re-read the frozen bundle's serialization order during saved verification.
+        saved_bundle = json.loads(json.dumps(bundle, sort_keys=True))
+        canonical_roots = [int(piece['puzzle_id'], 16) for piece in selected]
+        fragments = ['RotationRing = ' + ', '.join(f'{puzzle + turn * 0x10000:X}' for turn in range(8))
+                     + '\r\n\r\n' + build_rules(piece) for puzzle, piece in zip(canonical_roots, selected)]
+        original, composition = compose_rul0(NATIVE, fragments)
+        old_controller = pack_dbpf({RUL0: original, NETWORK_INI: b'Native Network INI'})
+        old_menu = pack_dbpf({key: value for piece in selected for key, value in menu_resource(piece).items()})
+        base = {'pieces': selected, 'overlay': {'rul0': composition}}
+        controller, menu, saved, _ = multi_assembly_menu._transform(base, old_controller, old_menu, bundle, [None])
+        multi_assembly_menu._actual(base, saved_bundle, old_controller, old_menu, controller, menu, saved)
+        self.assertEqual(saved['feature_sequences']['groups'], [canonical_roots + [0xF891, 0xF892, 0xF893]])
+        self.assertTrue(saved['suffix'].startswith(composition['suffix']))
+        self.assertEqual(len(strict_dbpf(menu)), 4)
+        self.assertEqual(saved['suffix'].count('monorail: 0x02000200 road: 0x00010100 optional'), 1)
+        self.assertEqual(saved['suffix'].count('monorail: 0x00020002 road: 0x01010000 optional'), 2)
+        saved_groups = multi_assembly_menu._groups(base, saved_bundle)
+        terminals = saved_groups[0][0]['_terminals']
+        self.assertEqual([(row['placement_id'], row['cycle_position'], row['rotation_degrees_ccw'], row['helper_cell_xy'])
+                          for row in terminals], [('P04', 15, 0, [7, -1]), ('P08', 16, 180, [19, 13]),
+                                                  ('P01', 17, 0, [0, 13])])
+
+        original_suffix = saved['suffix'].encode('ascii')
+        bad_suffix = original_suffix.replace(b'road: 0x00010100 optional', b'road: 0x00010000 optional', 1)
+        resources = strict_dbpf(controller)
+        resources[RUL0] = resources[RUL0][:-len(original_suffix)] + bad_suffix
+        with self.assertRaisesRegex(ValueError, 'Saved HSR terminal marker'):
+            multi_assembly_menu._actual(base, saved_bundle, old_controller, old_menu,
+                                        pack_dbpf(resources), menu, {**saved, 'suffix': bad_suffix.decode('ascii')})
+
+        altered = deepcopy(saved_bundle)
+        altered['groups'][0]['alias_reservations']['trumpet-west-native-hsr-terminal']['placement_id'] = 'P08'
+        with self.assertRaisesRegex(ValueError, 'reservation differs from the selected placement'):
+            multi_assembly_menu._groups(base, altered)
+
+        altered = deepcopy(saved_bundle)
+        altered['groups'][0]['scene']['terminal_approaches']['P01']['helper_cell_xy'] = [1, 13]
+        with self.assertRaisesRegex(ValueError, 'reviewed native HSR approaches'):
+            multi_assembly_menu._groups(base, altered)
+
+        # Earlier package proofs carry their old layout, reservations, and scene together.
+        previous_bundle = deepcopy(saved_bundle)
+        previous = previous_bundle['groups'][0]
+        straight = 'hsr-l2-two-track-straight'
+        for direction, current_label, old_label, edge, x, helper_x in (
+                ('E', 'P08', 'P09', 'north', 19, 20), ('W', 'P01', 'P22', 'south', 0, -1)):
+            alias = previous['layout']['terminal_components'].pop(current_label)
+            previous['layout']['terminal_components'][old_label] = alias
+            previous['alias_reservations'][alias].update(placement_id=old_label, piece_id=straight)
+            previous_scene = previous['scene']
+            previous_scene['terminal_approaches'].pop(current_label)
+            previous_scene['terminal_approaches'][old_label] = {
+                'helper_edge': edge, 'arm': direction, 'helper_cell_xy': [helper_x, 13]}
+            previous_scene['placements'].append({'instance_id': old_label, 'piece_id': straight,
+                                                 'display_origin_tiles_en': [x, 13], 'rotation_degrees_ccw': 270})
+        previous_controller, previous_menu, previous_rules, _ = multi_assembly_menu._transform(
+            base, old_controller, old_menu, previous_bundle, [None])
+        multi_assembly_menu._actual(base, previous_bundle, old_controller, old_menu,
+                                    previous_controller, previous_menu, previous_rules)
+        self.assertEqual(previous_rules['feature_sequences']['groups'], saved['feature_sequences']['groups'])
+        self.assertEqual(previous_rules['suffix'].count('monorail: 0x02000200 road: 0x00010100 optional'), 3)

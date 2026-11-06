@@ -44,7 +44,7 @@ Footprint: **1 × 1 tiles**. Exact menu name: **HSR Level 2 (15.5 m) over Road L
 
 After following the [separate installation procedure](../../../../docs/BUILD_AND_INSTALL.md), use a disposable flat test city. A construction rectangle is the complete reserved area around the piece; this type reserves one 16 × 16 m tile.
 
-1. Open **Transportation → Rail**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) over Road Level 0 (0 m) — Parallel Stack**.
+1. Open **Transportation → Rail → SCP → Pieces**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) over Road Level 0 (0 m) — Parallel Stack**.
 2. Move the preview onto one clear tile. At 0°, both HSR and Road run north/south, with the train paths 15.5 m above the Road paths. Press **Home** or **End** to rotate both networks together; on the documented Mac keyboard, **Fn + ←** and **Fn + →** produce those keys.
 3. Click once to place this one tile. To extend the stack, place another copy against its matching north or south boundary. Continue HSR, Road vehicles, and sidewalks together at that complete boundary; an HSR-only or Road-only approach leaves required services missing.
 4. Check Road and pedestrian access, both HSR directions, both side pillars, the cap, the paved sidewalks, and the seams. Supply travel demand, inspect Route Query, and watch actual travel. Record each exact case in **4. Testing**; these instructions do not establish a game pass.
