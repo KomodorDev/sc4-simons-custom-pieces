@@ -1,12 +1,12 @@
-"""Build and inspect a self-contained source/local-builder installer.
+"""Build and inspect the source installer or an explicit prebuilt review bundle.
 
-No game inputs or generated DAT archives enter this distribution. The runtime
-retains the library's source hierarchy because its independent checks read the
-authoritative source, geometry, and frozen audit files directly.
+The runtime retains the library's source hierarchy for source and input checks.
+A review bundle can also carry one verified SCP payload under installer/prebuilt.
 """
 from __future__ import annotations
 
 import argparse
+from contextlib import ExitStack, nullcontext
 from hashlib import sha256
 from importlib.util import module_from_spec, spec_from_file_location
 import importlib.metadata
@@ -27,6 +27,11 @@ PLATFORMS = ("windows-x64",)
 APP_NAME = "SCP Installer"
 RUNTIME_MANIFEST = "installer/runtime-manifest.json"
 BUILD_INFO = "installer/build-info.json"
+PREBUILT_PAYLOAD = "installer/prebuilt"
+FROZEN_RUNTIME = "_internal/custom-pieces"
+SOURCE_BUILDER = "source-local-builder"
+PREBUILT_BUILDER = "verified-prebuilt"
+ARCHIVE_METADATA_LIMIT = 16 * 1024 * 1024
 SOURCE_EXTENSIONS = {".py", ".json", ".jsonc", ".md", ".png", ".svg", ".txt", ".toml"}
 FORBIDDEN_PARTS = {"local", "dist", "__pycache__", ".git", ".venv", "node_modules"}
 GAME_EXTENSIONS = {".dat", ".sc4model", ".sc4lot", ".sc4desc", ".dll", ".exe"}
@@ -158,7 +163,44 @@ def _files(root: Path) -> list[Path]:
     return sorted(found, key=lambda path: path.relative_to(root).as_posix())
 
 
-def prepare_runtime(source: Path, destination: Path, source_commit: str, target: str) -> dict:
+def _verify_prebuilt_payload(path: Path, commit: str) -> str:
+    # This script can run directly without an editable library installation.
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "framework"))
+    try:
+        from scp.prebuilt import verify_payload
+        verify_payload(path, source_commit=commit)
+    finally:
+        sys.path.pop(0)
+    return _hash(path / "manifest.json")
+
+
+def _distribution_metadata(commit: str, target: str, payload_digest: str | None) -> dict:
+    kind = SOURCE_BUILDER if payload_digest is None else PREBUILT_BUILDER
+    tag_prefix = "installer-" if payload_digest is None else "installer-prebuilt-review-"
+    metadata = {"schema_version": 1, "kind": kind, "source_commit": commit,
+                "release_tag": tag_prefix + commit[:12], "platform": target,
+                "experimental": True, "bundled_native_game_resources": False}
+    if payload_digest is not None:
+        metadata.update(prebuilt_payload_manifest_sha256=payload_digest, review_only=True)
+    return metadata
+
+
+def _check_distribution_metadata(record: dict, commit: str, suffix: str = "") -> str | None:
+    digest = record.get("prebuilt_payload_manifest_sha256")
+    if digest is not None and (not isinstance(digest, str) or re.fullmatch("[0-9a-f]{64}", digest) is None):
+        raise ValueError("Installer prebuilt payload manifest digest is invalid.")
+    expected = _distribution_metadata(commit, record.get("platform"), digest)
+    expected["kind"] += suffix
+    if (record.get("platform") not in PLATFORMS or record.get("experimental") is not True
+            or record.get("bundled_native_game_resources") is not False
+            or any(record.get(key) != value for key, value in expected.items())
+            or (digest is None and ("prebuilt_payload_manifest_sha256" in record or "review_only" in record))):
+        raise ValueError("Installer distribution metadata is inconsistent.")
+    return digest
+
+
+def prepare_runtime(source: Path, destination: Path, source_commit: str, target: str, *,
+                    prebuilt_payload: Path | None = None) -> dict:
     source, destination = source.resolve(), destination.absolute()
     _commit(source_commit)
     if target not in PLATFORMS:
@@ -167,6 +209,11 @@ def prepare_runtime(source: Path, destination: Path, source_commit: str, target:
         raise ValueError("Runtime destination must be new or empty.")
     if source == destination or source.is_relative_to(destination):
         raise ValueError("Runtime output cannot contain or replace the source checkout.")
+    payload_digest = None
+    if prebuilt_payload is not None:
+        payload_digest = _verify_prebuilt_payload(prebuilt_payload, source_commit)
+        if destination.is_relative_to(prebuilt_payload.resolve()):
+            raise ValueError("Installer runtime output cannot be inside its prebuilt payload input.")
     destination.mkdir(parents=True, exist_ok=True)
     sources = _runtime_paths(source)
     for path in sources:
@@ -183,30 +230,27 @@ def prepare_runtime(source: Path, destination: Path, source_commit: str, target:
     missing = required - {path.relative_to(source).as_posix() for path in sources}
     if missing:
         raise ValueError("Installer runtime is missing required source files: " + ", ".join(sorted(missing)))
-    metadata = {"schema_version": 1, "kind": "source-local-builder", "source_commit": source_commit,
-                "release_tag": "installer-" + source_commit[:12], "platform": target,
-                "experimental": True, "bundled_native_game_resources": False,
-                "runtime_manifest": RUNTIME_MANIFEST}
-    _json(destination / BUILD_INFO, metadata)
+    if prebuilt_payload is not None:
+        shutil.copytree(prebuilt_payload, destination / PREBUILT_PAYLOAD, symlinks=True)
+    metadata = _distribution_metadata(source_commit, target, payload_digest)
+    _json(destination / BUILD_INFO, {**metadata, "runtime_manifest": RUNTIME_MANIFEST})
     records = [_record(path, destination) for path in _files(destination)]
-    manifest = {"schema_version": 1, "kind": "source-local-builder-runtime", "source_commit": source_commit,
-                "files": records}
+    manifest = {"schema_version": 1, "kind": metadata["kind"] + "-runtime",
+                "source_commit": source_commit, "files": records}
     _json(destination / RUNTIME_MANIFEST, manifest)
     verify_runtime(destination)
     return manifest
 
 
 def verify_runtime(root: Path) -> dict:
-    """Verify the exact source tree before the GUI can read native inputs."""
+    """Verify the packaged source and optional payload before using native inputs."""
     root = Path(root).resolve()
     manifest = json.loads((root / RUNTIME_MANIFEST).read_text(encoding="utf-8"))
     metadata = json.loads((root / BUILD_INFO).read_text(encoding="utf-8"))
     commit = _commit(manifest["source_commit"])
-    if (manifest.get("schema_version") != 1 or manifest.get("kind") != "source-local-builder-runtime"
-            or metadata.get("source_commit") != commit or metadata.get("platform") not in PLATFORMS
-            or metadata.get("release_tag") != "installer-" + commit[:12]
-            or metadata.get("kind") != "source-local-builder" or metadata.get("experimental") is not True
-            or metadata.get("bundled_native_game_resources") is not False):
+    payload_digest = _check_distribution_metadata(metadata, commit)
+    if (manifest.get("schema_version") != 1 or manifest.get("kind") != metadata["kind"] + "-runtime"
+            or metadata.get("runtime_manifest") != RUNTIME_MANIFEST):
         raise ValueError("Installer source manifest or build metadata is inconsistent.")
     records = manifest["files"]
     names = [_relative(record["path"]).as_posix() for record in records]
@@ -219,10 +263,24 @@ def verify_runtime(root: Path) -> dict:
         path = actual[record["path"]]
         if _record(path, root) != record:
             raise ValueError("Installer source changed: " + record["path"])
-        if path.read_bytes()[:4] == b"DBPF" or path.suffix.lower() in GAME_EXTENSIONS:
+        if PurePosixPath(record["path"]).is_relative_to(PREBUILT_PAYLOAD):
+            if payload_digest is None:
+                raise ValueError("Source-local installer runtime unexpectedly contains a prebuilt payload.")
+            continue
+        if path.suffix.lower() in GAME_EXTENSIONS or _is_dbpf(path):
             raise ValueError("Installer runtime unexpectedly contains a native game resource.")
-    return {"status": "passed", "source_commit": commit, "files_verified": len(records),
-            "bundled_native_game_resources": False}
+    result = {"status": "passed", "source_commit": commit, "files_verified": len(records),
+              "bundled_native_game_resources": False}
+    if payload_digest is not None:
+        if _verify_prebuilt_payload(root / PREBUILT_PAYLOAD, commit) != payload_digest:
+            raise ValueError("Installer prebuilt payload manifest differs from build metadata.")
+        result.update(kind=PREBUILT_BUILDER, prebuilt_payload_manifest_sha256=payload_digest)
+    return result
+
+
+def _is_dbpf(path: Path) -> bool:
+    with path.open("rb") as stream:
+        return stream.read(4) == b"DBPF"
 
 
 def _bundle_record(path: Path, root: Path) -> dict:
@@ -235,9 +293,16 @@ def create_archive(folder: Path, destination: Path, source_commit: str, target: 
     folder, destination = Path(folder).resolve(), Path(destination).absolute()
     records = [_bundle_record(path, folder) for path in _files(folder)
                if path.relative_to(folder).as_posix() not in {"bundle-index.json", "SHA256SUMS"}]
-    index = {"schema_version": 1, "kind": "source-local-builder-installer", "source_commit": source_commit,
-             "platform": target, "release_tag": "installer-" + source_commit[:12], "experimental": True,
-             "bundled_native_game_resources": False, "files": records}
+    runtime = folder / FROZEN_RUNTIME
+    build_info = runtime / BUILD_INFO
+    payload_digest = None
+    if build_info.is_file():
+        metadata = json.loads(build_info.read_text(encoding="utf-8"))
+        payload_digest = _check_distribution_metadata(metadata, source_commit)
+        if metadata["platform"] != target:
+            raise ValueError("Installer runtime and ZIP target platforms differ.")
+    index = _distribution_metadata(source_commit, target, payload_digest)
+    index.update(kind=index["kind"] + "-installer", files=records)
     _json(folder / "bundle-index.json", index)
     hash_paths = [path for path in _files(folder) if path.relative_to(folder).as_posix() != "SHA256SUMS"]
     sums = []
@@ -257,13 +322,45 @@ def create_archive(folder: Path, destination: Path, source_commit: str, target: 
             archive.writestr(info, path.read_bytes())
     report = verify_archive(destination)
     (destination.parent / (destination.name + ".sha256")).write_text(
-        _hash(destination) + "  " + destination.name + "\n", encoding="utf-8")
+        report["zip_sha256"] + "  " + destination.name + "\n", encoding="utf-8")
     return report
 
 
+def _read_archive_metadata(archive: zipfile.ZipFile, info: zipfile.ZipInfo) -> bytes:
+    if info.file_size > ARCHIVE_METADATA_LIMIT:
+        raise ValueError("Installer ZIP metadata exceeds its size limit: " + info.filename)
+    return archive.read(info)
+
+
+def _stream_archive_member(archive: zipfile.ZipFile, info: zipfile.ZipInfo,
+                           destination: Path | None) -> tuple[str, int, bytes]:
+    digest = sha256()
+    size = 0
+    with archive.open(info) as source, (destination.open("wb") if destination else nullcontext()) as target:
+        block = source.read(1024 * 1024)
+        magic = block[:4]
+        while block:
+            digest.update(block)
+            size += len(block)
+            if target is not None:
+                target.write(block)
+            block = source.read(1024 * 1024)
+    return digest.hexdigest(), size, magic
+
+
+def _payload_destination(root: Path, name: str) -> Path:
+    if name != "manifest.json" and re.fullmatch(
+            r"zzz_Simons_Custom_Pieces/(?:00_SCP_Controller_NAM50|10_SCP_Menu|20_Pieces/SCP_[a-z0-9-]+)\.dat",
+            name) is None:
+        raise ValueError("Prebuilt installer ZIP contains an unexpected payload file: " + name)
+    destination = root / name
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    return destination
+
+
 def verify_archive(path: Path) -> dict:
-    """Prove ZIP closure, hashes, regular files, and absence of game DATs."""
-    with zipfile.ZipFile(path) as archive:
+    """Verify ZIP closure, hashes, and the scope of any prebuilt SCP payload."""
+    with zipfile.ZipFile(path) as archive, ExitStack() as cleanup:
         infos = archive.infolist()
         names = [info.filename for info in infos]
         if len(names) != len({name.casefold() for name in names}):
@@ -273,44 +370,103 @@ def verify_archive(path: Path) -> dict:
         if len(roots) != 1 or any(len(name.parts) < 2 for name in paths):
             raise ValueError("Installer ZIP must have one enclosing folder.")
         prefix = next(iter(roots)) + "/"
-        contents = {name[len(prefix):]: archive.read(name) for name in names}
-        index = json.loads(contents["bundle-index.json"])
-        commit = _commit(index["source_commit"])
-        if (index.get("kind") != "source-local-builder-installer" or index.get("schema_version") != 1
-                or index.get("platform") not in PLATFORMS or index.get("experimental") is not True
-                or index.get("bundled_native_game_resources") is not False
-                or index.get("release_tag") != "installer-" + commit[:12]):
-            raise ValueError("Installer ZIP metadata is inconsistent.")
-        records = index["files"]
-        selected = [_relative(record["path"]).as_posix() for record in records]
-        if len(selected) != len(set(selected)) or set(contents) != set(selected) | {"bundle-index.json", "SHA256SUMS"}:
-            raise ValueError("Installer ZIP has undeclared or missing members.")
         by_name = {info.filename[len(prefix):]: info for info in infos}
-        for record in records:
-            name, raw = record["path"], contents[record["path"]]
-            mode = by_name[name].external_attr >> 16
-            if len(raw) != record["bytes"] or sha256(raw).hexdigest() != record["sha256"] or mode != record["mode"]:
+        if not {"bundle-index.json", "SHA256SUMS"} <= by_name.keys():
+            raise ValueError("Installer ZIP is missing its bundle index or checksums.")
+        index_raw = _read_archive_metadata(archive, by_name["bundle-index.json"])
+        index = json.loads(index_raw)
+        commit = _commit(index["source_commit"])
+        payload_digest = _check_distribution_metadata(index, commit, "-installer")
+        indexed = {_relative(record["path"]).as_posix(): record for record in index["files"]}
+        if (len(indexed) != len(index["files"])
+                or set(by_name) != indexed.keys() | {"bundle-index.json", "SHA256SUMS"}):
+            raise ValueError("Installer ZIP has undeclared or missing members.")
+
+        payload_root = None
+        if payload_digest is not None:
+            temporary = cleanup.enter_context(tempfile.TemporaryDirectory(prefix="scp-prebuilt-zip-"))
+            payload_root = Path(temporary).resolve()
+        verified = {"bundle-index.json": sha256(index_raw).hexdigest()}
+        payload_prefix = PurePosixPath(FROZEN_RUNTIME, PREBUILT_PAYLOAD)
+        for name, record in indexed.items():
+            info = by_name[name]
+            mode = info.external_attr >> 16
+            if info.file_size != record["bytes"] or mode != record["mode"]:
                 raise ValueError("Installer ZIP member changed: " + name)
             if record["kind"] != "file" or stat.S_IFMT(mode) != stat.S_IFREG:
                 raise ValueError("Unsupported installer ZIP member kind.")
-            # Frozen Python and its native libraries are expected; SimCity resources are not.
-            if PurePosixPath(name).suffix.lower() in GAME_EXTENSIONS - {".exe", ".dll"} or raw.startswith(b"DBPF"):
+            member = PurePosixPath(name)
+            destination = None
+            if member.is_relative_to(payload_prefix):
+                if payload_root is None:
+                    raise ValueError("Source-local installer ZIP unexpectedly contains a prebuilt payload.")
+                relative = member.relative_to(payload_prefix).as_posix()
+                if relative == "manifest.json" and info.file_size > ARCHIVE_METADATA_LIMIT:
+                    raise ValueError("Installer ZIP metadata exceeds its size limit: " + info.filename)
+                destination = _payload_destination(payload_root, relative)
+            digest, size, magic = _stream_archive_member(archive, info, destination)
+            if size != record["bytes"] or digest != record["sha256"]:
+                raise ValueError("Installer ZIP member changed: " + name)
+            # Frozen Python and its native libraries are part of the executable.
+            if destination is None and (member.suffix.lower() in GAME_EXTENSIONS - {".exe", ".dll"}
+                                        or magic == b"DBPF"):
                 raise ValueError("Installer ZIP contains a native game resource: " + name)
+            verified[name] = digest
+
+        build_info = FROZEN_RUNTIME + "/" + BUILD_INFO
+        if build_info in by_name:
+            metadata = json.loads(_read_archive_metadata(archive, by_name[build_info]))
+            if (_check_distribution_metadata(metadata, commit) != payload_digest
+                    or metadata["platform"] != index["platform"]
+                    or metadata.get("runtime_manifest") != RUNTIME_MANIFEST):
+                raise ValueError("Installer ZIP and runtime metadata differ.")
+        elif payload_root is not None:
+            raise ValueError("Prebuilt installer ZIP is missing its build metadata.")
+        if payload_root is not None:
+            manifest_name = FROZEN_RUNTIME + "/" + RUNTIME_MANIFEST
+            if manifest_name not in by_name:
+                raise ValueError("Prebuilt installer ZIP is missing its runtime manifest.")
+            manifest = json.loads(_read_archive_metadata(archive, by_name[manifest_name]))
+            _verify_archive_runtime_manifest(manifest, indexed, commit)
+            if _verify_prebuilt_payload(payload_root, commit) != payload_digest:
+                raise ValueError("Prebuilt installer ZIP payload manifest differs from archive metadata.")
+
         expected_sums = {}
-        for line in contents["SHA256SUMS"].decode("utf-8").splitlines():
+        sums_raw = _read_archive_metadata(archive, by_name["SHA256SUMS"])
+        for line in sums_raw.decode("utf-8").splitlines():
             digest, name = line.split("  ", 1)
             _relative(name)
             if name in expected_sums or re.fullmatch("[0-9a-f]{64}", digest) is None:
                 raise ValueError("Installer checksums contain an invalid or duplicate entry.")
             expected_sums[name] = digest
-        if set(expected_sums) != set(contents) - {"SHA256SUMS"} or any(
-                sha256(contents[name]).hexdigest() != digest for name, digest in expected_sums.items()):
+        if expected_sums != verified:
             raise ValueError("Installer checksum closure does not match the archive.")
-    return {"status": "passed", "source_commit": commit, "platform": index["platform"],
-            "members_verified": len(names), "bundled_native_game_resources": False, "zip_sha256": _hash(Path(path))}
+    result = {"status": "passed", "source_commit": commit, "platform": index["platform"],
+              "members_verified": len(names), "bundled_native_game_resources": False, "zip_sha256": _hash(Path(path))}
+    if payload_digest is not None:
+        result.update(kind=index["kind"], prebuilt_payload_manifest_sha256=payload_digest, review_only=True)
+    return result
 
 
-def _notices(destination: Path) -> None:
+def _verify_archive_runtime_manifest(manifest: dict, indexed: dict, commit: str) -> None:
+    if (manifest.get("schema_version") != 1 or manifest.get("source_commit") != commit
+            or manifest.get("kind") != PREBUILT_BUILDER + "-runtime"):
+        raise ValueError("Prebuilt installer ZIP and runtime manifest differ.")
+    records = manifest["files"]
+    names = [_relative(record["path"]).as_posix() for record in records]
+    runtime = FROZEN_RUNTIME + "/"
+    runtime_files = {name.removeprefix(runtime): record for name, record in indexed.items()
+                     if name.startswith(runtime)}
+    if (len(names) != len(set(names)) or RUNTIME_MANIFEST in names
+            or set(runtime_files) != set(names) | {RUNTIME_MANIFEST}):
+        raise ValueError("Prebuilt installer ZIP file set differs from the runtime manifest.")
+    for record in records:
+        archived = runtime_files[record["path"]]
+        if archived["bytes"] != record["bytes"] or archived["sha256"] != record["sha256"]:
+            raise ValueError("Prebuilt installer ZIP runtime file changed: " + record["path"])
+
+
+def _notices(destination: Path, *, prebuilt: bool = False) -> None:
     text = ["SCP Installer: bundled third-party software", "", "Python: https://docs.python.org/3/license.html",
             "Pillow: https://github.com/python-pillow/Pillow", "NumPy: https://numpy.org/doc/stable/license.html",
             "Shapely: https://github.com/shapely/shapely/blob/main/LICENSE.txt",
@@ -318,7 +474,10 @@ def _notices(destination: Path) -> None:
             "PyInstaller bootloader: https://pyinstaller.org/en/stable/license.html",
             "Tcl/Tk: https://www.tcl-lang.org/software/tcltk/license.html", "",
             "PyInstaller's licensing exception covers generated bundles; the bundled components retain their own licenses.",
-            "NAM and SimCity game resources are not included. The installer reads the user's installed dependencies locally.", ""]
+            ("Review-only: this bundle contains compiled SCP data that may include NAM or SimCity-derived resources."
+             if prebuilt else
+             "NAM and SimCity game resources are not included. The installer reads the user's installed dependencies locally."),
+            ""]
     licenses = destination / "licenses"
     licenses.mkdir()
     for name in ("Pillow", "numpy", "shapely", "pyinstaller", "pyinstaller-hooks-contrib", "altgraph", "packaging"):
@@ -337,9 +496,7 @@ def _notices(destination: Path) -> None:
     (destination / "THIRD-PARTY-NOTICES.txt").write_text("\n".join(text) + "\n", encoding="utf-8")
 
 
-def build_bundle(source: Path, output: Path, source_commit: str, target: str) -> dict:
-    if target != host_platform():
-        raise ValueError("PyInstaller must run natively on the selected operating system and architecture.")
+def _check_source_revision(source: Path, source_commit: str) -> None:
     revision = subprocess.run(["git", "rev-parse", "HEAD"], cwd=source, text=True, capture_output=True, check=True)
     if revision.stdout.strip() != _commit(source_commit):
         raise ValueError("Installer source commit differs from the checked-out revision.")
@@ -347,13 +504,22 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str) ->
     untracked = subprocess.run(["git", "ls-files", "--others", "--exclude-standard", "-z", "--", "."],
                                cwd=source, capture_output=True, check=True)
     if tracked.returncode != 0 or untracked.stdout:
-        raise ValueError("A native release build requires committed source files; use prepare to inspect unfinished work.")
+        raise ValueError("A release build or prebuilt review requires clean, committed source files.")
+
+
+def build_bundle(source: Path, output: Path, source_commit: str, target: str, *,
+                 prebuilt_payload: Path | None = None) -> dict:
+    if target != host_platform():
+        raise ValueError("PyInstaller must run natively on the selected operating system and architecture.")
+    _check_source_revision(source, source_commit)
     output = output.absolute()
     if output.exists() and any(output.iterdir()):
         raise ValueError("Bundle output directory must be new or empty.")
     output.mkdir(parents=True, exist_ok=True)
     runtime = output / "work/runtime/custom-pieces"
-    prepare_runtime(source, runtime, source_commit, target)
+    prepare_runtime(source, runtime, source_commit, target, prebuilt_payload=prebuilt_payload)
+    if prebuilt_payload is not None:
+        _check_source_revision(source, source_commit)
     # Check Tcl/Tk before freezing; importing it does not open a window.
     import tkinter
     tkinter.Tcl().eval("info patchlevel")
@@ -383,8 +549,9 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str) ->
                          "PYTHONHASHSEED": "0", "SOURCE_DATE_EPOCH": timestamp}
     subprocess.run(command, check=True, cwd=runtime, env=build_environment)
     # Neither discovery nor freezing may modify the exact source payload.
-    verify_runtime(runtime)
-    name = "SCP-Installer-" + target + "-" + source_commit[:12]
+    verification = verify_runtime(runtime)
+    payload_digest = verification.get("prebuilt_payload_manifest_sha256")
+    name = "SCP-Installer-" + ("Prebuilt-Review-" if payload_digest else "") + target + "-" + source_commit[:12]
     # Keep extracted paths short on Windows. The downloadable asset remains
     # versioned; the folder inside it needs no repeated platform or commit.
     folder = output / APP_NAME
@@ -399,6 +566,8 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str) ->
     if (report.get("status") != "passed" or report.get("source_commit") != source_commit
             or report.get("utf8_mode") != 1):
         raise ValueError("Frozen installer self-test did not report a pass with UTF-8 mode enabled.")
+    if report.get("runtime_verification", {}).get("prebuilt_payload_manifest_sha256") != payload_digest:
+        raise ValueError("Frozen installer self-test verified a different prebuilt payload.")
     report["platform"] = target
     _json(report_path, report)
     gui_report_path = output / ("gui-smoke-test-" + target + ".json")
@@ -408,20 +577,27 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str) ->
     if (gui_report.get("status") != "passed" or gui_report.get("source_commit") != source_commit
             or gui_report.get("utf8_mode") != 1):
         raise ValueError("Frozen installer GUI smoke test did not report a pass with UTF-8 mode enabled.")
+    if gui_report.get("runtime_verification", {}).get("prebuilt_payload_manifest_sha256") != payload_digest:
+        raise ValueError("Frozen installer GUI smoke test verified a different prebuilt payload.")
     gui_report["platform"] = target
     _json(gui_report_path, gui_report)
+    heading = ("SCP Installer — review-only verified-prebuilt bundle" if payload_digest
+               else "SCP Installer — experimental source/local-builder release")
+    content_notice = (
+        "This bundle contains verified compiled SCP resources and is for private review.\n"
+        if payload_digest else "No SimCity or NAM binary resources are included or downloaded by this release.\n")
     (folder / "README.txt").write_text(
-        "SCP Installer — experimental source/local-builder release\n\n"
+        heading + "\n\n"
         "Open SCP Installer.exe. Keep its _internal folder beside it.\n"
         + "Choose your SimCity 4 game or user-data folder, then select Install.\n"
         "The supported NAM installation must already be present; the installer checks it before changing Plugins.\n"
         "Python is bundled. No separate Python installation, terminal command, or source checkout is required.\n"
         "Windows may show an unsigned-app warning.\n"
-        "No SimCity or NAM binary resources are included or downloaded by this release.\n"
-        "Generated pieces remain experimental; software verification does not establish in-game testing.\n"
+        + content_notice
+        + "Generated pieces remain experimental; software verification does not establish in-game testing.\n"
         "Instructions and limitations: https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/"
         + source_commit + "/custom-pieces/docs/INSTALLER.md\n", encoding="utf-8")
-    _notices(folder)
+    _notices(folder, prebuilt=payload_digest is not None)
     archive = output / (name + ".zip")
     verification = create_archive(folder, archive, source_commit, target)
     _json(output / ("bundle-index-" + target + ".json"), json.loads((folder / "bundle-index.json").read_text()))
@@ -451,6 +627,8 @@ def publish(artifacts: Path, source_commit: str, repository: str) -> dict:
             raise ValueError("Expected exactly one platform archive: " + name)
         archive = matches[0]
         verification = verify_archive(archive)
+        if verification.get("review_only") is True:
+            raise ValueError("The public release workflow cannot publish a prebuilt review bundle.")
         if verification["source_commit"] != source_commit or verification["platform"] != target:
             raise ValueError("Release archive is bound to a different commit or platform.")
         sidecar = archive.with_name(name + ".sha256")
@@ -537,6 +715,8 @@ def main(arguments: list[str] | None = None) -> int:
         command.add_argument("--output", type=Path, required=True)
         command.add_argument("--source-commit", required=True)
         command.add_argument("--platform", choices=PLATFORMS, required=True)
+        command.add_argument("--prebuilt-payload", type=Path,
+                             help="Embed this verified SCP payload in a private review bundle.")
     verify = commands.add_parser("verify")
     verify.add_argument("archive", type=Path)
     publication = commands.add_parser("publish")
@@ -545,10 +725,17 @@ def main(arguments: list[str] | None = None) -> int:
     publication.add_argument("--repository", required=True)
     options = parser.parse_args(arguments)
     if options.command == "prepare":
-        result = prepare_runtime(options.source, options.output / "custom-pieces", options.source_commit, options.platform)
-        result = {"status": "passed", "runtime_files": len(result["files"]), "source_commit": result["source_commit"]}
+        if options.prebuilt_payload is not None:
+            _check_source_revision(options.source, options.source_commit)
+        manifest = prepare_runtime(options.source, options.output / "custom-pieces", options.source_commit,
+                                   options.platform, prebuilt_payload=options.prebuilt_payload)
+        result = {"status": "passed", "runtime_files": len(manifest["files"]), "source_commit": manifest["source_commit"]}
+        if options.prebuilt_payload is not None:
+            _check_source_revision(options.source, options.source_commit)
+            result["kind"] = manifest["kind"]
     elif options.command == "build":
-        result = build_bundle(options.source, options.output, options.source_commit, options.platform)
+        result = build_bundle(options.source, options.output, options.source_commit, options.platform,
+                              prebuilt_payload=options.prebuilt_payload)
     elif options.command == "verify":
         result = verify_archive(options.archive)
     else:

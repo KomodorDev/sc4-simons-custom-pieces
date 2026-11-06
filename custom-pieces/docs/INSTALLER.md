@@ -1,6 +1,6 @@
 ---
 title: "Install SCP without Python"
-summary: "Download the experimental Windows installer, select the game folder, and build and install the complete implemented catalogue locally."
+summary: "Install the complete catalogue with the Windows installer, or prepare a verified prebuilt installer for private review."
 audience: "Players"
 document_type: "procedure"
 ---
@@ -8,10 +8,10 @@ document_type: "procedure"
 # Install SCP without Python
 
 <!-- BEGIN DOCUMENT NAVIGATION -->
-[1. Check the game installation](#1-check-the-game-installation) · [2. Download the matching ZIP](#2-download-the-matching-zip) · [3. Select the game folder](#3-select-the-game-folder) · [4. Install and find the pieces](#4-install-and-find-the-pieces) · [5. Update, remove, or resolve a stopped installation](#5-update-remove-or-resolve-a-stopped-installation) · [6. What a successful installer check establishes](#6-what-a-successful-installer-check-establishes)
+[1. Check the game installation](#1-check-the-game-installation) · [2. Download the matching ZIP](#2-download-the-matching-zip) · [3. Select the game folder](#3-select-the-game-folder) · [4. Install and find the pieces](#4-install-and-find-the-pieces) · [5. Update, remove, or resolve a stopped installation](#5-update-remove-or-resolve-a-stopped-installation) · [6. What a successful installer check establishes](#6-what-a-successful-installer-check-establishes) · [7. Prepare a prebuilt installer for review](#7-prepare-a-prebuilt-installer-for-review)
 <!-- END DOCUMENT NAVIGATION -->
 
-The **SCP Installer** includes the programs needed to build and install Simon's Custom Pieces. You do not need Python, Git, a terminal, or a separate resource-capture tool. It builds from your own installed SimCity 4 and Network Addon Mod (NAM) resources; the download does not include those resources.
+The **SCP Installer** installs Simon's Custom Pieces. You do not need Python, Git, a terminal, or a separate resource-capture tool to use it. The public source-builder download creates the game files from your installed SimCity 4 and Network Addon Mod (NAM). A **prebuilt review installer** includes the finished SCP game files and checks that you have the exact game and NAM files they require.
 
 The installer selects **every implemented piece in its bundled catalogue** and prepares the Rail trumpet and Highway assembly buttons. **Experimental** means the software checks do not establish correct operation inside the game. Existing failed, stale, and unverified observations remain visible in the [library inventories](../README.md). Check a subject's guide and testing record before using it in an important city.
 
@@ -21,13 +21,13 @@ Install SimCity 4 Deluxe and NAM before running SCP. The currently audited game 
 
 The download runs on **64-bit Windows with an Intel or AMD processor**. The [profile](../config/profiles/nam50-rhd.jsonc) records the supported game resources. The installer cannot add a missing game, install NAM, or convert an unsupported game profile automatically.
 
-Close SimCity 4 before installing or updating SCP. Keep a backup of any city you intend to use for experimental pieces. Building can take some time because the installer generates the complete catalogue on your computer; the progress display identifies the current stage.
+Close SimCity 4 before installing or updating SCP. Keep a backup of any city you intend to use for experimental pieces. The source-builder installer can take some time because it generates the complete catalogue on your computer. The prebuilt review installer skips that generation. The progress display identifies the current stage in both installers.
 
 ## 2. Download the matching ZIP
 
 Open the repository's [Releases page](https://github.com/KomodorDev/sc4-simons-custom-pieces/releases), and choose the intended **SCP Installer — experimental** prerelease. A **prerelease** is a downloadable development version, rather than a claim that every piece has passed game testing. If no installer prerelease is listed, the release workflow has not produced an installer yet; the repository's **Source code** ZIP is a different download and requires the developer setup.
 
-Download **`SCP-Installer-windows-x64-<commit>.zip`**. This contains the Windows installer executable and its runtime.
+Download **`SCP-Installer-windows-x64-<commit>.zip`** for the source-builder installer. If you are reviewing a prebuilt candidate, use the privately prepared **`SCP-Installer-Prebuilt-Review-windows-x64-<commit>.zip`**. Both archives contain the Windows installer executable and its runtime.
 
 `<commit>` is the first 12 characters of the source revision recorded on that release. The ZIP has a matching `.zip.sha256` file, and the release includes a bundle index and installer self-test report tied to its exact source revision. A SHA-256 checksum detects different bytes; it does not establish game compatibility or replace publisher signing.
 
@@ -51,7 +51,7 @@ The installer reads the installed NAM archives and the original game archives re
 
 Before selecting **Install**, copy `memo.submenus.dll` and `SC4ResourceLoadingHooks.dll` directly into either the game's Plugins folder or the player-data Plugins folder. Use Resource Loading Hooks version 2.0.1 or later. Place `submenu-essentials.dat` anywhere under either Plugins folder. These files let the game display the Rail and Highway SCP folders. The installer checks that the files are in the expected locations. [Submenus DLL installation instructions](https://github.com/memo33/submenus-dll#installation)
 
-Check that the selected game folder is correct, then select **Install**. Leave the application open while it discovers Plugins, checks inputs, builds all implemented types, verifies the saved resources, prepares the assembly menus, and installs the verified result. A failed check stops the operation; it does not count as a successful installation. Select **Open log** to inspect the detailed progress or reported problem. **Cancel** requests a stop after the current build step; it becomes unavailable when the final installation transaction begins.
+Check that the selected game folder is correct, then select **Install**. Both installers discover Plugins, check the local inputs and conflicts, back up the previous SCP installation, and install the verified files. The source builder generates and verifies the pieces and prepares the assembly menus. The prebuilt review installer verifies the contents of the packaged game files and installs the finished pieces, menus, and controller. A failed check stops installation. Select **Open log** to inspect progress or a reported problem. **Cancel** requests a stop at the next checkpoint and becomes unavailable when the final installation transaction begins.
 
 When the installer reports success, start SimCity 4. For standalone rail pieces, open **Transportation → Rail → SCP → Pieces**. For the trumpet, open **Transportation → Rail → SCP → Assemblies** and click **SCP | ASSEMBLY | HSR — Trumpet — Straight Stem**. The cycle contains 14 ordinary component selections and three terminal selections. Press **Tab** for the next selection or **Shift+Tab** for the previous one, and click once to place the selected component. Follow the placement table for the 26 positions. [Trumpet guide](../domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/README.md)
 
@@ -75,4 +75,24 @@ If installation stops, read the reported filename and reason. A resource fingerp
 
 ## 6. What a successful installer check establishes
 
-The release workflow builds the Windows installer, runs the packaged executable's self-test and GUI startup smoke check, records the source revision and archive checksums, and creates an experimental prerelease after an accepted `main` update. A **GUI startup smoke check** briefly opens and closes the application to check that the window can start; it does not install anything or play the game. The installer then builds and verifies your local resource files. Neither operation plays SimCity 4, approves a software preview, changes a manual observation, reserves public game identifiers, or clears redistribution of compiled NAM-derived resources. Those remain separate [release requirements](RELEASE.md).
+The release workflow builds the Windows source-builder installer, runs the packaged executable's self-test and GUI startup smoke check, records the source revision and archive checksums, and creates an experimental prerelease after an accepted `main` update. A **GUI startup smoke check** briefly opens and closes the application to check that the window can start. Prebuilt preparation verifies the actual compiled assets before packaging. The Windows installer then verifies the exact packaged bytes and local dependencies. Game observations, public identifier reservations, and redistribution permission remain separate [release requirements](RELEASE.md).
+
+## 7. Prepare a prebuilt installer for review
+
+A **payload** is the finished set of files the installer copies into Plugins. The preparation command generates the models, shadows, traffic paths, menus, and one combined controller from the exact supported inputs. It runs the existing saved-resource and assembly checks before exporting the install files and their fingerprints. The combined controller is prepared once against the pinned NAM controller fingerprint. The installer checks that the player's controller matches and installs SCP's overlay in its own folder.
+
+1. Start from a clean, committed checkout of the library and prepare its Python environment. Open a terminal at the repository root. Identify the supported game folder containing `SimCity_3.dat` and the player's Plugins folder containing NAM. [Python setup instructions](https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/dev/README.md#2-prepare-python-and-run-the-tests)
+2. Run the command below. Replace `<game folder>` and `<player Plugins>` with those two paths, keeping the quotation marks. Both output directories are under the ignored private `local/` directory. Choose a new payload directory for a later build. The command reports the full source commit and the payload location when the export passes.
+
+   ```sh
+   python -B custom-pieces/installer/prepare_payload.py --game-folder "<game folder>" --player-data "<player Plugins>" --work-dir custom-pieces/local/prebuilt-work --output custom-pieces/local/prebuilt-payload
+   ```
+
+3. On a 64-bit Windows machine with an Intel or AMD processor, check out the same source commit and copy the prepared payload to a private directory. Run the following commands from the repository root. Replace `<full commit>` with the 40-character source commit reported in step 2, and replace `<payload directory>` with the path to the copied payload. The build command checks the source revision, package contents, packaged self-test, and application startup before producing the review ZIP.
+
+   ```powershell
+   python -m pip install -r custom-pieces/requirements-installer.txt
+   python -B custom-pieces/installer/build_bundle.py build --output custom-pieces/local/prebuilt-windows --source-commit "<full commit>" --platform windows-x64 --prebuilt-payload "<payload directory>"
+   ```
+
+4. Extract the **SCP-Installer-Prebuilt-Review** ZIP and follow chapters 1 through 5 using a disposable Windows installation of the supported profile. Verify the first install, a repeat install, and an update or undo. Record the elapsed times and confirm the log contains the prebuilt verification and installation stages. Keep the ZIP and compiled payload private during review. [Public release requirements](RELEASE.md#5-gates-for-a-public-package)

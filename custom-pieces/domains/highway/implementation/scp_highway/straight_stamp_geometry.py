@@ -194,6 +194,15 @@ def partition_source_cells(source_cells):
             'wing_paths': wing_paths, 'source_triangle_counts': source_counts}
 
 
+def _source_mismatch(record, resource, expected, actual):
+    return ValueError(
+        f"The accepted source changed before straight-stamp face partition. "
+        f"{record['source_piece_id']} {resource} at source cell "
+        f"{tuple(record['source_local_cell'])}, world cell {tuple(record['source_world_cell'])}. "
+        f"Expected SHA-256 {expected}, actual SHA-256 {actual}."
+    )
+
+
 def source_cells(context):
     """Reproduce and fingerprint the accepted 27-cell source using pinned inputs."""
     from scp import jsonc
@@ -211,16 +220,23 @@ def source_cells(context):
         if identifier not in compiled:
             spec = jsonc.load(ROOT / 'domains/highway/00_pieces' / identifier / 'piece.jsonc')
             compiled[identifier] = {tuple(cell): (model, path) for cell, model, path in compile_source(spec, context)}
-        model, path = compiled[identifier][tuple(record['source_local_cell'])]
+        local_cell = tuple(record['source_local_cell'])
+        model, path = compiled[identifier][local_cell]
         if 'inherited_model_sha256' in record:
-            _require(matches_frozen_model(model, record['inherited_model_sha256']),
-                     'The accepted old Avenue apron changed before straight partition')
+            expected = record['inherited_model_sha256']
+            if not matches_frozen_model(model, expected):
+                raise _source_mismatch(record, 'inherited Avenue apron model', expected,
+                                       hashlib.sha256(model).hexdigest())
             if pristine is None:
                 pristine = {tuple(cell): model for cell, model, _ in build_crossing_channels(context)}
-            model = pristine[tuple(record['source_local_cell'])]
-        _require(matches_frozen_model(model, record['model_sha256']) and
-                 hashlib.sha256(path).hexdigest() == record['path_sha256'],
-                 'The accepted source changed before straight-stamp face partition')
+            model = pristine[local_cell]
+        expected = record['model_sha256']
+        if not matches_frozen_model(model, expected):
+            raise _source_mismatch(record, 'model', expected, hashlib.sha256(model).hexdigest())
+        expected = record['path_sha256']
+        actual = hashlib.sha256(path).hexdigest()
+        if actual != expected:
+            raise _source_mismatch(record, 'traffic PATH', expected, actual)
         result[tuple(record['source_world_cell'])] = model, path
     context['_straight_stamp_source_cells'] = result
     return result

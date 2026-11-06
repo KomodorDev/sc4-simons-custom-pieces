@@ -39,6 +39,8 @@ def progress_text(event, names):
     if phase == "compile":
         label = names.get(event.get("piece"), event.get("piece", "piece"))
         return f"Building {event.get('index', '?')} of {event.get('pieces', '?')}: {label}"
+    if phase == "install" and event.get("distribution") == "verified-prebuilt":
+        return "Checking the prebuilt pieces and installing them with a backup…"
     return {
         "discover": "Finding your game and Plugins folders…",
         "selection": f"Preparing all {event.get('pieces', '')} implemented pieces…",
