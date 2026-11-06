@@ -124,12 +124,13 @@ def _check_evidence(root, piece, evidence, files, donors):
         _project_file(root, screenshot)
 
 
-def assess_build(project_root: Path, manifest: dict) -> dict:
+def assess_build(project_root: Path, manifest: dict, *, require_build_game_evidence: bool = True) -> dict:
     """Return fail-closed release readiness for the manifest's selected pieces.
 
     Each ``game_evidence`` reference is relative to ``project_root``. The
     evidence binds every packaged DAT and the complete declared donor profile;
     it does not replace verification of files or establish permission itself.
+    Experimental installer prereleases may skip these build-specific records.
     """
     root = Path(project_root).resolve()
     blocked = []
@@ -173,6 +174,9 @@ def assess_build(project_root: Path, manifest: dict) -> dict:
                         blocked.append(f"{source['id']}: {kind}: {pending} current manual cases need confirmation")
         except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
             blocked.append(f'authoritative manual coverage is missing or invalid ({_portable_error(root, exc)})')
+
+    if not require_build_game_evidence:
+        return {'public_release_ready': not blocked, 'blocked': blocked}
 
     for piece in pieces:
         reference = piece.get('game_evidence')

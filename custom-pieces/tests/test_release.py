@@ -71,6 +71,24 @@ class ReleaseEvidenceTests(unittest.TestCase):
         self.assertEqual(assess_build(self.root, self.manifest),
                          {'public_release_ready': True, 'blocked': []})
 
+    def test_build_specific_evidence_can_be_skipped_independently_of_release_gates(self):
+        piece = self.manifest['pieces'][0]
+        del piece['game_evidence']
+        self.assertIn(f"{piece['id']}: game_evidence is not recorded", self._assert_blocked()['blocked'])
+        self.assertEqual(assess_build(self.root, self.manifest, require_build_game_evidence=False),
+                         {'public_release_ready': True, 'blocked': []})
+
+        piece['game_tests']['placement'] = 'unverified'
+        piece['provenance']['redistribution'] = 'permission-pending'
+        gates = jsonc.load(self.root / 'config/release.jsonc')
+        gates['supported_platform_tests'] = {'status': 'pending', 'evidence': None}
+        self._write_json('config/release.jsonc', gates)
+        self.assertEqual(assess_build(self.root, self.manifest, require_build_game_evidence=False), {
+            'public_release_ready': False,
+            'blocked': ['supported_platform_tests', f"{piece['id']}: in-game test matrix",
+                        f"{piece['id']}: redistribution evidence"],
+        })
+
     def test_layout_objection_blocks_release_even_when_all_file_and_game_evidence_pass(self):
         self.manifest['pieces'][0]['design_review']={
             'status':'needs-redesign','summary':'A route takes an unnecessary rectangular detour.',

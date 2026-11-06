@@ -145,7 +145,7 @@ def receive(repo, workspace, *, mode):
 
 
 def require_release_evidence(root, manifest):
-    """Apply the existing public gates to the exact assembled game archives."""
+    """Check public evidence for an experimental prebuilt installer."""
     from scp.catalog import load_catalog
     from scp.release import assess_build
 
@@ -154,7 +154,7 @@ def require_release_evidence(root, manifest):
         raise ValueError("Public release payload does not contain the current complete catalogue.")
     folder = manifest["plugin_folder"]
     complete = [{**piece, "asset_file": f"{folder}/20_Pieces/SCP_{piece['id']}.dat"} for piece in pieces]
-    result = assess_build(root, {**manifest, "pieces": complete})
+    result = assess_build(root, {**manifest, "pieces": complete}, require_build_game_evidence=False)
     if not result["public_release_ready"]:
         reasons = result["blocked"]
         remaining = len(reasons) - min(len(reasons), 12)

@@ -29,7 +29,7 @@ After a human promotes `dev` to `main`, the [automatic installer workflow](AUTOM
 
 The Mac prepares all implemented pieces, the Rail trumpet and Highway assembly menus, and the combined controller. The prebuilt installer verifies the packaged files and audited local inputs before installing one receipt-owned SCP folder. The current profile remains Windows Deluxe 1.1.641 with NAM 50 and right-hand traffic. See the [player installer guide](INSTALLER.md) for required inputs and the possible Windows first-launch prompt.
 
-Installer distribution is separate from distributing NAM-derived DATs. Existing permission questions for externally authored source text or templates still need their applicable evidence; the local-builder approach does not supply a blanket license. Existing public identifier reservations, manual game observations, platform observations, and outstanding design flags remain unchanged. The gates below continue to assess a proposed compiled-plugin package; installer CI cannot mark them passed.
+Installer distribution is separate from distributing NAM-derived DATs. Existing permission questions for externally authored source text or templates still need their applicable evidence; the local-builder approach does not supply a blanket license. Existing public identifier reservations, manual game observations, platform observations, and outstanding design flags remain unchanged. The experimental prebuilt installer requires the shared release evidence, current per-piece game results, design-review clearance, and per-piece redistribution records. Direct compiled-plugin releases also require a separate game-evidence file for every piece with screenshots and fingerprints for the exact build. Human observations determine gameplay results.
 
 Current compiled piece DATs contain copied or adapted NAM models, paths, and effects. A selected build has one separate controller DAT containing the complete **RUL0 resource** and the **NetworkINI resource**, with additions, plus one separate menu DAT. It does not copy every resource from the original `NetworkAddonMod_Controller.dat` archive. An old staged ZIP is not a prerequisite for preparing or assessing a fresh candidate.
 
@@ -135,7 +135,7 @@ Publication approval and permission evidence are separate facts. The protected G
 
 ## 7. Build-specific game evidence
 
-Each selected piece can reference a project-relative evidence JSON file with `"game_evidence": "evidence/hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg.json"` in its piece manifest. The release assessor requires the fields below. This is a **template with placeholders**, not test evidence:
+For a direct compiled-plugin release, each selected piece references a project-relative evidence JSON file with `"game_evidence": "evidence/hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg.json"` in its piece manifest. The release assessor requires the fields below. This is a **template with placeholders**, not test evidence:
 
 ```json
 {

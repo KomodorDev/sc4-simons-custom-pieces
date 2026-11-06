@@ -94,6 +94,6 @@ The maintainer who operates the project's private release folder completes these
    python3 -B custom-pieces/installer/release_dropbox.py github-secrets --repository KomodorDev/sc4-simons-custom-pieces --environment scp-prebuilt-release
    ```
 
-Repeat the private review if the release tooling changes and update the run ID. Each release checks its own exact payload and evidence. Catalogue changes follow the ordinary preparation and merge steps.
+Repeat the private review if the release tooling changes and update the run ID. Each release checks its exact payload and the [evidence required for an experimental installer](RELEASE.md#experimental-installer-distribution). Catalogue changes follow the ordinary preparation and merge steps.
 
 [GitHub environment settings](https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments) · [Public release requirements](RELEASE.md#5-gates-for-a-public-package)

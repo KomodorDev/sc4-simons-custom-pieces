@@ -62,6 +62,16 @@ class ReleaseHandoffTests(unittest.TestCase):
                 handoff.approved_release_head(ROOT, MAIN, TREE)
             api.assert_not_called()
 
+    def test_prebuilt_release_uses_the_assessor_without_build_specific_game_evidence(self):
+        folder = 'zzz_Simons_Custom_Pieces'
+        manifest = {'plugin_folder': folder, 'pieces': [{'id': 'example'}]}
+        piece = {'id': 'example', 'status': 'tested'}
+        complete = {**manifest, 'pieces': [{**piece, 'asset_file': f'{folder}/20_Pieces/SCP_example.dat'}]}
+        with patch('scp.catalog.load_catalog', return_value={'pieces': [piece]}), \
+                patch('scp.release.assess_build', return_value={'public_release_ready': True}) as assess:
+            handoff.require_release_evidence(ROOT, manifest)
+        assess.assert_called_once_with(ROOT, complete, require_build_game_evidence=False)
+
     def test_missing_dropbox_zip_identifies_revision_and_stops_before_extraction(self):
         env = {**EVENT, "GITHUB_EVENT_NAME": "workflow_dispatch", "GITHUB_REF": "refs/heads/dev"}
         with tempfile.TemporaryDirectory() as temporary:
