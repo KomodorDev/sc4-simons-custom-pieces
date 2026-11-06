@@ -40,6 +40,7 @@ jobs:
   build:
     name: Installer (${{ matrix.platform }})
     needs: tests
+    if: github.event_name == 'pull_request'
     strategy:
       fail-fast: false
       matrix:
@@ -51,7 +52,8 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
-      - name: Prepare long paths and exact source bytes on Windows
+      - &windows_git
+        name: Prepare long paths and exact source bytes on Windows
         run: |
           git config --global core.longpaths true
           git config --global core.autocrlf false
@@ -60,13 +62,15 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
-      - name: Select Python 3.11
+      - &windows_python
+        name: Select Python 3.11
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: '3.11'
           cache: pip
           cache-dependency-path: custom-pieces/requirements-installer.txt
-      - name: Install pinned installer dependencies
+      - &windows_dependencies
+        name: Install pinned installer dependencies
         run: python -m pip install -r custom-pieces/requirements-installer.txt
       - name: Freeze, self-test, and verify the native installer ZIP
         shell: bash
@@ -92,34 +96,90 @@ jobs:
             ${{ runner.temp }}/scp-installer/self-test-*.json
             ${{ runner.temp }}/scp-installer/gui-smoke-test-*.json
 
-  publish:
-    name: Publish experimental installer
-    needs: [tests, build]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+  review:
+    name: Private hosted prebuilt review
+    needs: tests
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/dev'
+    runs-on: windows-2022
+    timeout-minutes: 45
+    environment: scp-prebuilt-review
     permissions:
-      contents: write
+      contents: read
     env:
-      GH_TOKEN: ${{ github.token }}
+      PYTHONDONTWRITEBYTECODE: '1'
     steps:
-      - name: Check out the exact tested revision
+      - *windows_git
+      - &release_checkout
+        name: Check out the exact revision and its source history
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          fetch-depth: 0
           persist-credentials: false
-      - name: Select Python 3.11
-        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
-        with:
-          python-version: '3.11'
-      - name: Download all verified native outputs
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
-        with:
-          pattern: installer-*
-          path: custom-pieces/dist/release-artifacts
-      - name: Verify and publish this exact main commit
+      - *windows_python
+      - *windows_dependencies
+      - name: Verify Dropbox handoff and rejected inputs
+        shell: bash
+        env:
+          SCP_DROPBOX_APP_KEY: ${{ secrets.SCP_DROPBOX_APP_KEY }}
+          SCP_DROPBOX_REFRESH_TOKEN: ${{ secrets.SCP_DROPBOX_REFRESH_TOKEN }}
+        run: >-
+          python -B custom-pieces/installer/release_handoff.py
+          --mode review --workspace "$RUNNER_TEMP/scp-handoff"
+      - name: Build and test the private Windows installer
         shell: bash
         run: >-
+          python -B custom-pieces/installer/build_bundle.py build
+          --output "$RUNNER_TEMP/scp-installer" --source-commit "$GITHUB_SHA" --platform windows-x64
+          --prebuilt-payload "$RUNNER_TEMP/scp-handoff/payload"
+          --release-record "$RUNNER_TEMP/scp-handoff/release-record.json"
+      # The repository is public. The private review ZIP never leaves this runner.
+
+  publish:
+    name: Publish verified prebuilt Windows installer
+    needs: tests
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: windows-2022
+    timeout-minutes: 45
+    environment: scp-prebuilt-release
+    permissions:
+      actions: read
+      contents: write
+      pull-requests: read
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - *windows_git
+      - *release_checkout
+      - *windows_python
+      - *windows_dependencies
+      - name: Check the approved merge and download its verified prebuild
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SCP_DROPBOX_APP_KEY: ${{ secrets.SCP_DROPBOX_APP_KEY }}
+          SCP_DROPBOX_REFRESH_TOKEN: ${{ secrets.SCP_DROPBOX_REFRESH_TOKEN }}
+          SCP_PREBUILT_PUBLICATION: ${{ vars.SCP_PREBUILT_PUBLICATION }}
+          SCP_PREBUILT_REVIEW_RUN_ID: ${{ vars.SCP_PREBUILT_REVIEW_RUN_ID }}
+        run: >-
+          python -B custom-pieces/installer/release_handoff.py
+          --mode publish --workspace "$RUNNER_TEMP/scp-handoff"
+      - name: Build and test the release Windows installer
+        shell: bash
+        env:
+          SCP_PREBUILT_PUBLICATION: ${{ vars.SCP_PREBUILT_PUBLICATION }}
+        run: >-
+          python -B custom-pieces/installer/build_bundle.py build
+          --output "$RUNNER_TEMP/scp-installer" --source-commit "$GITHUB_SHA" --platform windows-x64
+          --prebuilt-payload "$RUNNER_TEMP/scp-handoff/payload"
+          --release-record "$RUNNER_TEMP/scp-handoff/release-record.json" --public-prebuilt
+      - name: Verify and publish this exact main commit
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SCP_PREBUILT_PUBLICATION: ${{ vars.SCP_PREBUILT_PUBLICATION }}
+          SCP_PREBUILT_REVIEW_RUN_ID: ${{ vars.SCP_PREBUILT_REVIEW_RUN_ID }}
+        run: >-
           python -B custom-pieces/installer/build_bundle.py publish
-          --artifacts custom-pieces/dist/release-artifacts
+          --artifacts "$RUNNER_TEMP/scp-installer"
           --source-commit "$GITHUB_SHA"
-          --repository "$GITHUB_REPOSITORY"
+          --repository "$GITHUB_REPOSITORY" --prebuilt-release

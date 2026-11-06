@@ -175,7 +175,7 @@ def _scanned_dll_link(path: Path, roots: list[Path], managed: Path) -> bool:
         return False
 
 
-def _foreign_overlays(plugins: Path, managed: Path, controller: Path, *, extra_roots=None) -> None:
+def _foreign_overlays(plugins: Path, managed: Path, controller: Path, *, extra_roots=None) -> dict:
     from .dbpf import index_plugins
     # Refuse linked plugin subtrees and DATs: an index scan must not miss a
     # foreign controller. Only validated non-DBPF DLL file shortcuts may pass.
@@ -195,6 +195,7 @@ def _foreign_overlays(plugins: Path, managed: Path, controller: Path, *, extra_r
             raise ValueError(f'Foreign shared controller/NetworkINI overlay is installed: {foreign[0]}')
         if resource != RUL1 and not locations.get(resource):
             raise ValueError('The pinned NAM controller is missing a required shared resource')
+    return locations
 
 
 def _locations(output: Path | None, plugins: Path, backup_root: Path, *, extra_roots=None):
@@ -259,13 +260,7 @@ def _exclusive_operation(function):
     return wrapped
 
 
-@_exclusive_operation
-def install_build(output: Path, plugins: Path, backup_root: Path, *, extra_roots=None) -> dict:
-    """Verify, snapshot, and install the manifest's one managed plugin folder."""
-    output, plugins, backup_root = _locations(output, plugins, backup_root, extra_roots=extra_roots)
-    from .build import verify_build  # Delay the import to avoid a CLI/build cycle.
-    verify_build(output)
-    manifest = _json(output / 'manifest.json')
+def _checked_install_files(output, manifest):
     if manifest.get('schema_version') != 1 or manifest.get('plugin_folder') != FOLDER:
         raise ValueError('Unsupported build manifest or plugin folder')
     files = {}
@@ -286,6 +281,41 @@ def install_build(output: Path, plugins: Path, backup_root: Path, *, extra_roots
     files = _hashes(files)
     if _tree(output / FOLDER) != files:
         raise ValueError('Build folder has undeclared, missing or changed files')
+    return files
+
+
+@_exclusive_operation
+def install_build(output: Path, plugins: Path, backup_root: Path, *, extra_roots=None) -> dict:
+    """Verify, snapshot, and install the manifest's one managed plugin folder."""
+    from .build import verify_build  # Delay the import to avoid a CLI/build cycle.
+    output, plugins, backup_root = _locations(output, plugins, backup_root, extra_roots=extra_roots)
+    verify_build(output)
+    raw = (output / 'manifest.json').read_bytes()
+    manifest = json.loads(raw)
+    files = _checked_install_files(output, manifest)
+    return _install(output, plugins, backup_root, manifest, _sha(raw), files, extra_roots=extra_roots)
+
+
+@_exclusive_operation
+def install_prebuilt(output: Path, plugins: Path, backup_root: Path, *, extra_roots=None,
+                     source_commit, expected_manifest_sha256, expected_piece_ids, expected_profile) -> dict:
+    """Install the hash-bound payload of a verified prebuilt installer."""
+    from .prebuilt import load_payload, check_local_resources
+    output, plugins, backup_root = _locations(output, plugins, backup_root, extra_roots=extra_roots)
+    manifest, digest = load_payload(output, source_commit)
+    if digest != expected_manifest_sha256:
+        raise ValueError('Prebuilt payload manifest differs from the installer build record')
+    if {piece['id'] for piece in manifest['pieces']} != set(expected_piece_ids):
+        raise ValueError('Prebuilt payload does not contain the complete installer piece selection')
+    if manifest['profile'] != expected_profile:
+        raise ValueError('Prebuilt payload uses a different NAM dependency profile')
+    files = _checked_install_files(output, manifest)
+    return _install(output, plugins, backup_root, manifest, digest, files,
+                    extra_roots=extra_roots, check_resources=check_local_resources)
+
+
+def _install(output, plugins, backup_root, manifest, manifest_sha256, files, *,
+             extra_roots=None, check_resources=None):
     managed = plugins / FOLDER
     previous = _owned(managed)
     piece_ids = sorted({piece['id'] for piece in manifest.get('pieces', [])})
@@ -302,11 +332,13 @@ def install_build(output: Path, plugins: Path, backup_root: Path, *, extra_roots
                              'Keep them selected, or remove their crossings from saved cities '
                              'before uninstalling and reinstalling.')
     controller = _profile(manifest.get('profile'), plugins, managed, extra_roots=extra_roots)
-    _foreign_overlays(plugins, managed, controller, extra_roots=extra_roots)
+    installed = _foreign_overlays(plugins, managed, controller, extra_roots=extra_roots)
+    if check_resources is not None:
+        check_resources(output, manifest, installed)
 
     backup_id = uuid.uuid4().hex
     receipt = {'schema_version': 1, 'plugin_folder': FOLDER, 'backup_id': backup_id,
-               'build_manifest_sha256': _sha((output / 'manifest.json').read_bytes()),
+               'build_manifest_sha256': manifest_sha256,
                'profile': manifest['profile'], 'files': files, 'piece_ids': piece_ids}
     backup_root.mkdir(parents=True, exist_ok=True)
     backup = backup_root / backup_id

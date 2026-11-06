@@ -94,11 +94,17 @@ class ReleaseEvidenceTests(unittest.TestCase):
         (self.root / 'evidence/example-crossing.json').unlink()
         self._assert_blocked()
 
-    def test_missing_manual_coverage_keeps_relative_filename_without_private_root(self):
+    def test_missing_manual_coverage_keeps_portable_filename_with_windows_paths(self):
         source = {**deepcopy(self.manifest['pieces'][0]), 'domain': 'fixture-network'}
-        catalog = {'pieces': [source], 'domains': {'fixture-network': {'path': 'domains/fixture-network'}}}
+        domain_path = 'domains/fixture-network'
+        catalog = {'pieces': [source], 'domains': {'fixture-network': {'path': domain_path}}}
         self._write_json('project.jsonc', {'fixture': 'catalog access is mocked below'})
-        with patch('scp.catalog.load_catalog', return_value=catalog):
+
+        def native_path(value):
+            # Model Windows path formatting while keeping the fixture on this host.
+            return PureWindowsPath(value) if value == domain_path else Path(value)
+
+        with patch('scp.catalog.load_catalog', return_value=catalog), patch('scp.release.Path', side_effect=native_path):
             result = self._assert_blocked()
         reason = next(reason for reason in result['blocked'] if 'authoritative manual coverage' in reason)
         self.assertNotIn(str(self.root.resolve()), reason)

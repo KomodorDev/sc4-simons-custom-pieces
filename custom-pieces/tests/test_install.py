@@ -21,7 +21,10 @@ from unittest.mock import patch
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()) / 'framework'))
 from scp.install import (FOLDER, RECEIPT, OPERATION_LOCK, RUL0, NETWORK_INI,
-                         _foreign_overlays, install_build, rollback_install, uninstall)
+                         _foreign_overlays, install_build, install_prebuilt, rollback_install, uninstall)
+from scp.menu import MENU_EXEMPLAR
+from scp.prebuilt import CONTROLLER, MENU, KIND
+from scp.track_paths import S3D
 
 
 def digest(raw):
@@ -96,6 +99,81 @@ class InstallTests(unittest.TestCase):
         self.assertFalse((self.plugins / FOLDER).exists())
         self.assertFalse(self.backups.exists())
         self.assert_native_untouched()
+
+    def make_prebuilt(self, name, payload, *, textures=()):
+        output = self.root / name
+        folder = output / FOLDER
+        (folder / '20_Pieces').mkdir(parents=True)
+        resources = {
+            CONTROLLER: {RUL0: b'merged ' + payload, NETWORK_INI: b'mapped ' + payload},
+            MENU: {(*MENU_EXEMPLAR, 0xABC123): payload},
+            '20_Pieces/SCP_synthetic-piece.dat': {(*S3D, 0xABC124): payload},
+        }
+        files = []
+        for filename, records in resources.items():
+            raw = archive(records)
+            (folder / filename).write_bytes(raw)
+            files.append({'path': f'{FOLDER}/{filename}', 'sha256': digest(raw), 'bytes': len(raw)})
+        manifest = {
+            'schema_version': 1, 'kind': KIND, 'plugin_folder': FOLDER, 'source_commit': 'a' * 40,
+            'verified_build_manifest_sha256': 'b' * 64, 'pieces': [{'id': 'synthetic-piece'}],
+            'profile': {'id': 'synthetic-nam50-rhd', 'donors': [
+                {'filename': self.controller.name, 'sha256': digest(self.native_bytes)}]},
+            'files': files, 'dependency_audit': {'textures': list(textures), 'shadows': []},
+            'exclusive_instance_ids': ['00abc123'],
+        }
+        (output / 'manifest.json').write_text(json.dumps(manifest))
+        return output
+
+    def install_fixture_payload(self, output, **overrides):
+        raw = (output / 'manifest.json').read_bytes()
+        options = {'source_commit': 'a' * 40, 'expected_piece_ids': ['synthetic-piece'],
+                   'expected_manifest_sha256': digest(raw), 'expected_profile': json.loads(raw)['profile']}
+        return install_prebuilt(output, self.plugins, self.backups, **{**options, **overrides})
+
+    def test_prebuilt_install_update_and_undo_skip_full_verification(self):
+        first = self.make_prebuilt('prebuilt-one', b'one')
+        second = self.make_prebuilt('prebuilt-two', b'two')
+        self.install_fixture_payload(first)
+        previous = self.managed_hashes()
+        result = self.install_fixture_payload(second)
+        self.assertNotEqual(self.managed_hashes(), previous)
+        rollback_install(self.plugins, self.backups, result['backup_id'])
+        self.assertEqual(self.managed_hashes(), previous)
+        self.verifier.assert_not_called()
+        self.assert_native_untouched()
+
+    def test_prebuilt_rejects_manifest_drift_and_incomplete_catalogue(self):
+        output = self.make_prebuilt('prebuilt', b'one')
+        with self.assertRaisesRegex(ValueError, 'manifest differs'):
+            self.install_fixture_payload(output, expected_manifest_sha256='0' * 64)
+        with self.assertRaisesRegex(ValueError, 'complete installer piece selection'):
+            self.install_fixture_payload(output, expected_piece_ids=['synthetic-piece', 'omitted-piece'])
+        with self.assertRaisesRegex(ValueError, 'different NAM dependency profile'):
+            self.install_fixture_payload(output, expected_profile={'id': 'unsupported'})
+        self.assert_clean_rejection()
+
+    def test_prebuilt_rejects_changed_assets(self):
+        output = self.make_prebuilt('prebuilt', b'one')
+        (output / FOLDER / MENU).write_bytes(archive({(*MENU_EXEMPLAR, 0xABC123): b'two'}))
+        with self.assertRaisesRegex(ValueError, 'undeclared, missing or changed files'):
+            self.install_fixture_payload(output)
+        self.assert_clean_rejection()
+
+    def test_prebuilt_checks_final_resource_collisions_and_external_dependencies(self):
+        output = self.make_prebuilt('prebuilt', b'one', textures=['7ab50e44-1abe787d-00001234'])
+        foreign = self.plugins / 'conflict.dat'
+        for key, error in [((*S3D, 0xABC124), 'Prebuilt resource .* conflicts'),
+                           ((*S3D, 0xABC123), 'Prebuilt menu identifier .* conflicts')]:
+            with self.subTest(key=key):
+                foreign.write_bytes(archive({key: b'foreign'}))
+                with self.assertRaisesRegex(ValueError, error):
+                    self.install_fixture_payload(output)
+                self.assert_clean_rejection()
+        foreign.unlink()
+        with self.assertRaisesRegex(ValueError, 'Missing textures'):
+            self.install_fixture_payload(output)
+        self.assert_clean_rejection()
 
     def test_first_install_owns_exact_declared_files_and_receipt(self):
         result = self.install()

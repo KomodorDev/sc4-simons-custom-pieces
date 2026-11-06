@@ -455,6 +455,14 @@ class CaptureTests(unittest.TestCase):
         self.assertEqual((roots, records), ([], []))
         self.assertFalse((self.work / "local").exists())
 
+    def test_prebuilt_mode_rechecks_original_nam_resource_when_reusing_a_capture(self):
+        (self.plugins / self.record["filename"]).write_bytes(self.expected)
+        self.source.write_bytes(pack_dbpf({self.key: b"changed"}))
+        with self.assertRaisesRegex(ValueError, "exact supported ordinary_road resource"):
+            service.prepare_captures(self.library, self.plan, self.work, ["synthetic-piece"],
+                                     verify_originals=True)
+        self.assertFalse((self.work / "local").exists())
+
     def test_existing_modified_capture_is_never_overwritten(self):
         path = self.plugins / self.record["filename"]
         path.write_bytes(b"personal or changed input")
@@ -531,12 +539,104 @@ class OrchestrationTests(unittest.TestCase):
         self.work = self.base / "Work"
         self.plan = service.Installation(self.game, self.plugins, (self.extra,), "win32")
         self.ids = ["first-piece", "second-piece"]
+        self.audit = {"profile": "nam50-rhd", "donors": [
+            {"filename": "NetworkAddonMod_Controller.dat", "sha256": "1" * 64,
+             "path": str(self.extra / "NetworkAddonMod_Controller.dat")},
+            {"filename": "SCP_OrdinaryRoad_Path_Capture.dat", "sha256": "2" * 64,
+             "path": str(self.work / "local/captures/run/SCP_OrdinaryRoad_Path_Capture.dat")},
+        ]}
         for patcher in (
                 patch.object(service, "discover_installation", return_value=self.plan),
                 patch.object(service, "installed_selection", return_value=self.ids),
                 patch.object(service, "prepare_captures", return_value=([], []))):
             patcher.start()
             self.addCleanup(patcher.stop)
+
+    def _prebuilt_runtime(self, *, payload_present=True):
+        root = self.base / "Runtime"
+        (root / "config").mkdir(parents=True)
+        (root / "config/installer.jsonc").write_bytes((ROOT / "config/installer.jsonc").read_bytes())
+        payload = root / "installer/prebuilt"
+        payload.parent.mkdir()
+        manifest = b'{"synthetic": true}'
+        if payload_present:
+            payload.mkdir()
+            (payload / "manifest.json").write_bytes(manifest)
+        info = {"schema_version": 1, "kind": "verified-prebuilt", "source_commit": "a" * 40,
+                "prebuilt_payload_manifest_sha256": hashlib.sha256(manifest).hexdigest()}
+        (root / "installer/build-info.json").write_text(json.dumps(info), encoding="utf-8")
+        runtime = {"schema_version": 1, "kind": "verified-prebuilt-runtime", "source_commit": info["source_commit"]}
+        (root / "installer/runtime-manifest.json").write_text(json.dumps(runtime), encoding="utf-8")
+        return root, payload, info
+
+    def test_prebuilt_install_bypasses_local_build_menus_and_geometry_verification(self):
+        root, payload, info = self._prebuilt_runtime()
+        capture_root, captures = self.work / "local/captures/run", [{"label": "ordinary_road"}]
+        events = []
+        with patch.object(service, "prepare_captures", return_value=([capture_root], captures)) as capture, \
+                patch("scp.build.doctor", return_value=self.audit) as doctor, patch("scp.build.build_project") as build, \
+                patch("scp.menu_experiment.build_assembly_menus") as menu, \
+                patch("scp.build.verify_build") as verify, patch("scp.install.install_build") as local_install, \
+                patch("scp.install.install_prebuilt",
+                      return_value={"status": "installed", "backup_id": "synthetic"}) as install:
+            result = service.run_install(root, self.game, self.work, progress=events.append)
+        capture.assert_called_once_with(root, self.plan, self.work, self.ids, progress=events.append,
+                                        cancel=None, verify_originals=True)
+        doctor.assert_called_once_with(root, self.plugins, include=self.ids,
+                                       extra_roots=[self.extra, capture_root])
+        for local_stage in (build, menu, verify, local_install):
+            local_stage.assert_not_called()
+        install.assert_called_once_with(
+            payload, self.plugins, self.work / "backups", extra_roots=[self.extra, capture_root],
+            source_commit=info["source_commit"], expected_piece_ids=self.ids,
+            expected_manifest_sha256=info["prebuilt_payload_manifest_sha256"],
+            expected_profile={"id": "nam50-rhd", "donors": [
+                {"filename": "NetworkAddonMod_Controller.dat", "sha256": "1" * 64},
+                {"filename": "SCP_OrdinaryRoad_Path_Capture.dat", "sha256": "2" * 64},
+            ]})
+        self.assertEqual([event["phase"] for event in events], ["discover", "selection", "audit", "install", "complete"])
+        self.assertEqual(events[-2]["distribution"], "verified-prebuilt")
+        self.assertEqual(result["captures"], captures)
+        self.assertEqual(result["piece_ids"], self.ids)
+        saved = json.loads((self.work / "last-installation.json").read_text())
+        self.assertEqual(saved["distribution"], "verified-prebuilt")
+        self.assertEqual(saved["backup_id"], "synthetic")
+
+    def test_prebuilt_package_without_payload_or_metadata_never_falls_back(self):
+        root, _, info = self._prebuilt_runtime(payload_present=False)
+        metadata = root / "installer/build-info.json"
+        with patch.object(service, "prepare_install_build") as build, patch("scp.install.install_prebuilt") as install:
+            with self.assertRaisesRegex(ValueError, "prebuilt piece payload is missing"):
+                service.run_install(root, self.game, self.work)
+            metadata.unlink()
+            with self.assertRaisesRegex(ValueError, "missing its package metadata"):
+                service.run_install(root, self.game, self.work)
+            metadata.write_text(json.dumps({"schema_version": 1, "kind": "source-local-builder",
+                                            "source_commit": info["source_commit"]}), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "metadata and runtime manifest disagree"):
+                service.run_install(root, self.game, self.work)
+        build.assert_not_called()
+        install.assert_not_called()
+        self.assertFalse(self.work.exists())
+
+    def test_prebuilt_validation_failure_never_falls_back_or_records_success(self):
+        root, _, _ = self._prebuilt_runtime()
+        with patch.object(service, "prepare_install_build") as build, \
+                patch("scp.build.doctor", return_value=self.audit), \
+                patch("scp.install.install_prebuilt", side_effect=ValueError("payload hash mismatch")):
+            with self.assertRaisesRegex(ValueError, "payload hash mismatch"):
+                service.run_install(root, self.game, self.work)
+        build.assert_not_called()
+        self.assertFalse((self.work / "last-installation.json").exists())
+
+    def test_prebuilt_compatibility_failure_stops_before_installing(self):
+        root, _, _ = self._prebuilt_runtime()
+        with patch("scp.build.doctor", side_effect=ValueError("native approach conflict")), \
+                patch("scp.install.install_prebuilt") as install:
+            with self.assertRaisesRegex(ValueError, "native approach conflict"):
+                service.run_install(root, self.game, self.work)
+        install.assert_not_called()
+        self.assertFalse((self.work / "last-installation.json").exists())
 
     def test_complete_selection_and_explicit_roots_reach_every_existing_stage(self):
         events = []
@@ -622,6 +722,45 @@ class OrchestrationTests(unittest.TestCase):
         with patch("shapely.constrained_delaunay_triangles", return_value=GeometryCollection()):
             with self.assertRaisesRegex(ValueError, "boundary-and-hole triangulation"):
                 service.self_test(ROOT)
+
+    def test_packaged_prebuilt_self_test_installs_finished_archives_and_undoes(self):
+        from scp.menu import MENU_EXEMPLAR
+        from scp.prebuilt import CONTROLLER, KIND, MENU
+        from scp.track_paths import S3D
+
+        commit = "1" * 40
+        output = self.base / "prebuilt"
+        piece = "test-piece"
+        files = []
+        for name, resources in (
+            (CONTROLLER, {RUL0: b"finished rules", NETWORK_INI: b"finished network"}),
+            (MENU, {(*MENU_EXEMPLAR, 1): b"finished menu"}),
+            (f"20_Pieces/SCP_{piece}.dat", {(*S3D, 2): b"finished model"}),
+        ):
+            path = f"{FOLDER}/{name}"
+            asset = output / path
+            asset.parent.mkdir(parents=True, exist_ok=True)
+            raw = pack_dbpf(resources)
+            asset.write_bytes(raw)
+            files.append({"path": path, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()})
+        manifest = {"schema_version": 1, "kind": KIND, "plugin_folder": FOLDER, "source_commit": commit,
+                    "verified_build_manifest_sha256": "2" * 64, "pieces": [{"id": piece}], "files": files,
+                    "profile": {"id": "test-profile", "donors": [
+                        {"filename": "NetworkAddonMod_Controller.dat", "sha256": "3" * 64}]},
+                    "dependency_audit": {"textures": ["7ab50e44-1abe787d-12345678"], "shadows": []},
+                    "exclusive_instance_ids": []}
+        raw = json.dumps(manifest).encode("utf-8")
+        (output / "manifest.json").write_bytes(raw)
+        digest = hashlib.sha256(raw).hexdigest()
+        with patch.object(service, "_prebuilt_bundle", return_value=(output, commit, digest)), \
+                patch.object(service, "all_implemented_ids", return_value=[piece]):
+            result = service.self_test(ROOT)
+        self.assertTrue(result["prebuilt_transaction_verified"])
+        self.assertEqual(result["prebuilt_files_verified"], 3)
+        self.assertFalse(result["synthetic_payload_only"])
+        self.assertTrue(result["native_profile_mocked_for_prebuilt_fixture"])
+        self.assertFalse(result["geometry_verification_mocked_for_synthetic_fixture"])
+        self.assertTrue(result["real_receipt_install_and_rollback"])
 
     def test_undo_rejects_a_different_plugins_destination(self):
         self.work.mkdir()
