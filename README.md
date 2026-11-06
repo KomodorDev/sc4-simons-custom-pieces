@@ -5,7 +5,7 @@ audience: "Players, contributors, and maintainers"
 document_type: "entry-point"
 ---
 
-![Simon's Custom Pieces city illustration with a high-speed rail trumpet on the left and a double-decker highway diamond on the right](custom-pieces/docs/assets/scp-city-banner.webp)
+![Gold Simon's Custom Pieces title beneath a central skyscraper, with a high-speed rail trumpet on the left and a double-decker highway diamond on the right](custom-pieces/docs/assets/scp-city-banner.webp)
 
 # Simon's Custom Pieces
 
