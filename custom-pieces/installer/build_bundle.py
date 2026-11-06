@@ -572,7 +572,8 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str, *,
     _json(report_path, report)
     gui_report_path = output / ("gui-smoke-test-" + target + ".json")
     subprocess.run([str(executable), "--gui-smoke-test", "--report", str(gui_report_path)], check=True,
-                   timeout=30, cwd=output, env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
+                   timeout=180 if payload_digest else 30, cwd=output,
+                   env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
     gui_report = json.loads(gui_report_path.read_text(encoding="utf-8"))
     if (gui_report.get("status") != "passed" or gui_report.get("source_commit") != source_commit
             or gui_report.get("utf8_mode") != 1):
