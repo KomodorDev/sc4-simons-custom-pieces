@@ -111,7 +111,8 @@ def runtime_allowed(relative: str, domain_names: set[str], subjects: set[str]) -
     if parts[0] in {"framework", "schemas"}:
         return path.suffix in {".py", ".jsonc"}
     if parts[0] == "installer":
-        return path.suffix == ".py" and (len(parts) == 2 or len(parts) == 3 and parts[1] == "scp_installer")
+        return path.suffix == ".py" and (len(parts) == 2 and path.name in {"main.py", "build_bundle.py"}
+                                        or len(parts) == 3 and parts[1] == "scp_installer")
     if parts[0] == "docs":
         return path.suffix in {".md", ".png", ".svg", ".jsonc", ".txt"}
     if parts[0] == "config":
@@ -174,14 +175,31 @@ def _verify_prebuilt_payload(path: Path, commit: str) -> str:
     return _hash(path / "manifest.json")
 
 
-def _distribution_metadata(commit: str, target: str, payload_digest: str | None) -> dict:
+def _distribution_metadata(commit: str, target: str, payload_digest: str | None, *,
+                           release_record=None, public=False) -> dict:
+    if (public and release_record is None) or (release_record is not None and payload_digest is None):
+        raise ValueError("Public prebuilt distribution requires a verified release handoff record.")
+    if release_record is not None:
+        keys = {"schema_version", "kind", "prebuild_commit", "source_tree", "source_commit",
+                "prebuild_manifest_sha256", "payload_manifest_sha256", "archive_sha256"}
+        if (not isinstance(release_record, dict) or set(release_record) != keys
+                or release_record["schema_version"] != 1 or release_record["kind"] != "scp-release-payload"
+                or release_record["source_commit"] != commit
+                or release_record["payload_manifest_sha256"] != payload_digest
+                or any(not isinstance(release_record[key], str) or not re.fullmatch(r"[0-9a-f]{40}", release_record[key])
+                       for key in ("prebuild_commit", "source_tree"))
+                or any(not isinstance(release_record[key], str) or not re.fullmatch(r"[0-9a-f]{64}", release_record[key])
+                       for key in ("prebuild_manifest_sha256", "archive_sha256"))):
+            raise ValueError("The installer payload and its release handoff record disagree.")
     kind = SOURCE_BUILDER if payload_digest is None else PREBUILT_BUILDER
-    tag_prefix = "installer-" if payload_digest is None else "installer-prebuilt-review-"
+    tag_prefix = "installer-" if payload_digest is None or public else "installer-prebuilt-review-"
     metadata = {"schema_version": 1, "kind": kind, "source_commit": commit,
                 "release_tag": tag_prefix + commit[:12], "platform": target,
                 "experimental": True, "bundled_native_game_resources": False}
     if payload_digest is not None:
-        metadata.update(prebuilt_payload_manifest_sha256=payload_digest, review_only=True)
+        metadata.update(prebuilt_payload_manifest_sha256=payload_digest, review_only=not public)
+    if release_record is not None:
+        metadata["release_record"] = release_record
     return metadata
 
 
@@ -189,18 +207,21 @@ def _check_distribution_metadata(record: dict, commit: str, suffix: str = "") ->
     digest = record.get("prebuilt_payload_manifest_sha256")
     if digest is not None and (not isinstance(digest, str) or re.fullmatch("[0-9a-f]{64}", digest) is None):
         raise ValueError("Installer prebuilt payload manifest digest is invalid.")
-    expected = _distribution_metadata(commit, record.get("platform"), digest)
+    expected = _distribution_metadata(commit, record.get("platform"), digest,
+                                      release_record=record.get("release_record"),
+                                      public=record.get("review_only") is False)
     expected["kind"] += suffix
     if (record.get("platform") not in PLATFORMS or record.get("experimental") is not True
             or record.get("bundled_native_game_resources") is not False
             or any(record.get(key) != value for key, value in expected.items())
-            or (digest is None and ("prebuilt_payload_manifest_sha256" in record or "review_only" in record))):
+            or (digest is None and any(key in record for key in
+                                      ("prebuilt_payload_manifest_sha256", "review_only", "release_record")))):
         raise ValueError("Installer distribution metadata is inconsistent.")
     return digest
 
 
 def prepare_runtime(source: Path, destination: Path, source_commit: str, target: str, *,
-                    prebuilt_payload: Path | None = None) -> dict:
+                    prebuilt_payload: Path | None = None, release_record=None, public_prebuilt=False) -> dict:
     source, destination = source.resolve(), destination.absolute()
     _commit(source_commit)
     if target not in PLATFORMS:
@@ -232,7 +253,8 @@ def prepare_runtime(source: Path, destination: Path, source_commit: str, target:
         raise ValueError("Installer runtime is missing required source files: " + ", ".join(sorted(missing)))
     if prebuilt_payload is not None:
         shutil.copytree(prebuilt_payload, destination / PREBUILT_PAYLOAD, symlinks=True)
-    metadata = _distribution_metadata(source_commit, target, payload_digest)
+    metadata = _distribution_metadata(source_commit, target, payload_digest,
+                                      release_record=release_record, public=public_prebuilt)
     _json(destination / BUILD_INFO, {**metadata, "runtime_manifest": RUNTIME_MANIFEST})
     records = [_record(path, destination) for path in _files(destination)]
     manifest = {"schema_version": 1, "kind": metadata["kind"] + "-runtime",
@@ -275,6 +297,8 @@ def verify_runtime(root: Path) -> dict:
         if _verify_prebuilt_payload(root / PREBUILT_PAYLOAD, commit) != payload_digest:
             raise ValueError("Installer prebuilt payload manifest differs from build metadata.")
         result.update(kind=PREBUILT_BUILDER, prebuilt_payload_manifest_sha256=payload_digest)
+        if "release_record" in metadata:
+            result["release_record"] = metadata["release_record"]
     return result
 
 
@@ -296,12 +320,15 @@ def create_archive(folder: Path, destination: Path, source_commit: str, target: 
     runtime = folder / FROZEN_RUNTIME
     build_info = runtime / BUILD_INFO
     payload_digest = None
+    metadata = {}
     if build_info.is_file():
         metadata = json.loads(build_info.read_text(encoding="utf-8"))
         payload_digest = _check_distribution_metadata(metadata, source_commit)
         if metadata["platform"] != target:
             raise ValueError("Installer runtime and ZIP target platforms differ.")
-    index = _distribution_metadata(source_commit, target, payload_digest)
+    index = _distribution_metadata(source_commit, target, payload_digest,
+                                   release_record=metadata.get("release_record"),
+                                   public=metadata.get("review_only") is False)
     index.update(kind=index["kind"] + "-installer", files=records)
     _json(folder / "bundle-index.json", index)
     hash_paths = [path for path in _files(folder) if path.relative_to(folder).as_posix() != "SHA256SUMS"]
@@ -418,6 +445,8 @@ def verify_archive(path: Path) -> dict:
             metadata = json.loads(_read_archive_metadata(archive, by_name[build_info]))
             if (_check_distribution_metadata(metadata, commit) != payload_digest
                     or metadata["platform"] != index["platform"]
+                    or metadata.get("review_only") != index.get("review_only")
+                    or metadata.get("release_record") != index.get("release_record")
                     or metadata.get("runtime_manifest") != RUNTIME_MANIFEST):
                 raise ValueError("Installer ZIP and runtime metadata differ.")
         elif payload_root is not None:
@@ -444,7 +473,10 @@ def verify_archive(path: Path) -> dict:
     result = {"status": "passed", "source_commit": commit, "platform": index["platform"],
               "members_verified": len(names), "bundled_native_game_resources": False, "zip_sha256": _hash(Path(path))}
     if payload_digest is not None:
-        result.update(kind=index["kind"], prebuilt_payload_manifest_sha256=payload_digest, review_only=True)
+        result.update(kind=index["kind"], prebuilt_payload_manifest_sha256=payload_digest,
+                      review_only=index["review_only"])
+        if "release_record" in index:
+            result["release_record"] = index["release_record"]
     return result
 
 
@@ -466,7 +498,7 @@ def _verify_archive_runtime_manifest(manifest: dict, indexed: dict, commit: str)
             raise ValueError("Prebuilt installer ZIP runtime file changed: " + record["path"])
 
 
-def _notices(destination: Path, *, prebuilt: bool = False) -> None:
+def _notices(destination: Path, *, prebuilt: bool = False, public_prebuilt: bool = False) -> None:
     text = ["SCP Installer: bundled third-party software", "", "Python: https://docs.python.org/3/license.html",
             "Pillow: https://github.com/python-pillow/Pillow", "NumPy: https://numpy.org/doc/stable/license.html",
             "Shapely: https://github.com/shapely/shapely/blob/main/LICENSE.txt",
@@ -474,7 +506,9 @@ def _notices(destination: Path, *, prebuilt: bool = False) -> None:
             "PyInstaller bootloader: https://pyinstaller.org/en/stable/license.html",
             "Tcl/Tk: https://www.tcl-lang.org/software/tcltk/license.html", "",
             "PyInstaller's licensing exception covers generated bundles; the bundled components retain their own licenses.",
-            ("Review-only: this bundle contains compiled SCP data that may include NAM or SimCity-derived resources."
+            ("This bundle contains compiled SCP data that may include NAM or SimCity-derived resources."
+             if public_prebuilt else
+             "Review-only: this bundle contains compiled SCP data that may include NAM or SimCity-derived resources."
              if prebuilt else
              "NAM and SimCity game resources are not included. The installer reads the user's installed dependencies locally."),
             ""]
@@ -507,8 +541,17 @@ def _check_source_revision(source: Path, source_commit: str) -> None:
         raise ValueError("A release build or prebuilt review requires clean, committed source files.")
 
 
+def _check_release_tree(source, record):
+    """Recheck the handoff's Git claims independently on the packaging checkout."""
+    from release_payload import source_identity
+
+    for commit in dict.fromkeys((record["prebuild_commit"], record["source_commit"])):
+        if source_identity(source, commit) != (commit, record["source_tree"]):
+            raise ValueError(f"Release handoff commit {commit} does not contain tree {record['source_tree']}.")
+
+
 def build_bundle(source: Path, output: Path, source_commit: str, target: str, *,
-                 prebuilt_payload: Path | None = None) -> dict:
+                 prebuilt_payload: Path | None = None, release_record=None, public_prebuilt=False) -> dict:
     if target != host_platform():
         raise ValueError("PyInstaller must run natively on the selected operating system and architecture.")
     _check_source_revision(source, source_commit)
@@ -517,9 +560,12 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str, *,
         raise ValueError("Bundle output directory must be new or empty.")
     output.mkdir(parents=True, exist_ok=True)
     runtime = output / "work/runtime/custom-pieces"
-    prepare_runtime(source, runtime, source_commit, target, prebuilt_payload=prebuilt_payload)
+    prepare_runtime(source, runtime, source_commit, target, prebuilt_payload=prebuilt_payload,
+                    release_record=release_record, public_prebuilt=public_prebuilt)
     if prebuilt_payload is not None:
         _check_source_revision(source, source_commit)
+    if release_record is not None:
+        _check_release_tree(source, release_record)
     # Check Tcl/Tk before freezing; importing it does not open a window.
     import tkinter
     tkinter.Tcl().eval("info patchlevel")
@@ -551,7 +597,7 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str, *,
     # Neither discovery nor freezing may modify the exact source payload.
     verification = verify_runtime(runtime)
     payload_digest = verification.get("prebuilt_payload_manifest_sha256")
-    name = "SCP-Installer-" + ("Prebuilt-Review-" if payload_digest else "") + target + "-" + source_commit[:12]
+    name = "SCP-Installer-" + ("Prebuilt-Review-" if payload_digest and not public_prebuilt else "") + target + "-" + source_commit[:12]
     # Keep extracted paths short on Windows. The downloadable asset remains
     # versioned; the folder inside it needs no repeated platform or commit.
     folder = output / APP_NAME
@@ -561,13 +607,20 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str, *,
     executable = folder / (APP_NAME + ".exe")
     report_path = output / ("self-test-" + target + ".json")
     subprocess.run([str(executable), "--self-test", "--report", str(report_path)], check=True,
-                   timeout=180, cwd=output, env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
+                   timeout=300 if payload_digest else 180, cwd=output,
+                   env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
     report = json.loads(report_path.read_text(encoding="utf-8"))
     if (report.get("status") != "passed" or report.get("source_commit") != source_commit
             or report.get("utf8_mode") != 1):
         raise ValueError("Frozen installer self-test did not report a pass with UTF-8 mode enabled.")
     if report.get("runtime_verification", {}).get("prebuilt_payload_manifest_sha256") != payload_digest:
         raise ValueError("Frozen installer self-test verified a different prebuilt payload.")
+    if release_record is not None:
+        payload = json.loads((runtime / PREBUILT_PAYLOAD / "manifest.json").read_bytes())
+        if (report.get("prebuilt_transaction_verified") is not True
+                or report.get("prebuilt_files_verified") != len(payload["files"])
+                or report["runtime_verification"].get("release_record") != release_record):
+            raise ValueError("Frozen installer self-test did not verify the complete prebuilt install and handoff.")
     report["platform"] = target
     _json(report_path, report)
     gui_report_path = output / ("gui-smoke-test-" + target + ".json")
@@ -580,11 +633,15 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str, *,
         raise ValueError("Frozen installer GUI smoke test did not report a pass with UTF-8 mode enabled.")
     if gui_report.get("runtime_verification", {}).get("prebuilt_payload_manifest_sha256") != payload_digest:
         raise ValueError("Frozen installer GUI smoke test verified a different prebuilt payload.")
+    if release_record is not None and gui_report["runtime_verification"].get("release_record") != release_record:
+        raise ValueError("Frozen installer GUI smoke test verified a different release handoff.")
     gui_report["platform"] = target
     _json(gui_report_path, gui_report)
-    heading = ("SCP Installer — review-only verified-prebuilt bundle" if payload_digest
+    heading = ("SCP Installer — verified-prebuilt release" if public_prebuilt
+               else "SCP Installer — review-only verified-prebuilt bundle" if payload_digest
                else "SCP Installer — experimental source/local-builder release")
     content_notice = (
+        "This bundle contains the verified compiled SCP catalogue.\n" if public_prebuilt else
         "This bundle contains verified compiled SCP resources and is for private review.\n"
         if payload_digest else "No SimCity or NAM binary resources are included or downloaded by this release.\n")
     (folder / "README.txt").write_text(
@@ -598,11 +655,13 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str, *,
         + "Generated pieces remain experimental; software verification does not establish in-game testing.\n"
         "Instructions and limitations: https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/"
         + source_commit + "/custom-pieces/docs/INSTALLER.md\n", encoding="utf-8")
-    _notices(folder, prebuilt=payload_digest is not None)
+    _notices(folder, prebuilt=payload_digest is not None, public_prebuilt=public_prebuilt)
     archive = output / (name + ".zip")
     verification = create_archive(folder, archive, source_commit, target)
     _json(output / ("bundle-index-" + target + ".json"), json.loads((folder / "bundle-index.json").read_text()))
     _json(output / ("archive-check-" + target + ".json"), verification)
+    if release_record is not None:
+        _json(output / "release-record.json", release_record)
     return verification
 
 
@@ -612,7 +671,7 @@ def _gh(*arguments: str, input_json: dict | None = None) -> dict:
     return json.loads(result.stdout) if result.stdout.strip() else {}
 
 
-def publish(artifacts: Path, source_commit: str, repository: str) -> dict:
+def publish(artifacts: Path, source_commit: str, repository: str, *, prebuilt_release=False) -> dict:
     """Publish only the verified native outputs of this exact main push."""
     _commit(source_commit)
     if (os.environ.get("GITHUB_EVENT_NAME") != "push" or os.environ.get("GITHUB_REF") != "refs/heads/main"
@@ -620,7 +679,10 @@ def publish(artifacts: Path, source_commit: str, repository: str) -> dict:
         raise ValueError("Publishing requires the exact main push in this repository's GitHub Actions workflow.")
     if re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository) is None:
         raise ValueError("Invalid GitHub repository name.")
+    if prebuilt_release and os.environ.get("SCP_PREBUILT_PUBLICATION") != "enabled":
+        raise ValueError("Public prebuilt publication is disabled in the protected release environment.")
     assets = []
+    release_record = None
     for target in PLATFORMS:
         name = "SCP-Installer-" + target + "-" + source_commit[:12] + ".zip"
         matches = list(Path(artifacts).rglob(name))
@@ -630,6 +692,8 @@ def publish(artifacts: Path, source_commit: str, repository: str) -> dict:
         verification = verify_archive(archive)
         if verification.get("review_only") is True:
             raise ValueError("The public release workflow cannot publish a prebuilt review bundle.")
+        if (verification.get("kind") == PREBUILT_BUILDER + "-installer") != prebuilt_release:
+            raise ValueError("Release archive does not use the selected installer distribution.")
         if verification["source_commit"] != source_commit or verification["platform"] != target:
             raise ValueError("Release archive is bound to a different commit or platform.")
         sidecar = archive.with_name(name + ".sha256")
@@ -649,11 +713,32 @@ def publish(artifacts: Path, source_commit: str, repository: str) -> dict:
         verification_path = archive.parent / ("archive-check-" + target + ".json")
         with zipfile.ZipFile(archive) as saved:
             embedded = json.loads(saved.read(next(name for name in saved.namelist() if name.endswith("/bundle-index.json"))))
+            if prebuilt_release:
+                suffix = "/" + FROZEN_RUNTIME + "/" + PREBUILT_PAYLOAD + "/manifest.json"
+                payload = json.loads(saved.read(next(name for name in saved.namelist() if name.endswith(suffix))))
         if json.loads(index_path.read_text(encoding="utf-8")) != embedded:
             raise ValueError("Release's external member manifest differs from the verified ZIP.")
         if json.loads(verification_path.read_text(encoding="utf-8")) != verification:
             raise ValueError("Release's external archive-check report differs from the verified ZIP.")
         assets += [archive, sidecar, report_path, gui_path, index_path, verification_path]
+        if prebuilt_release:
+            record_path = archive.with_name("release-record.json")
+            release_record = json.loads(record_path.read_text(encoding="utf-8"))
+            if (not release_record or release_record != verification.get("release_record")
+                    or report.get("prebuilt_transaction_verified") is not True
+                    or report.get("prebuilt_files_verified") != len(payload["files"])
+                    or any(test.get("runtime_verification", {}).get("release_record") != release_record
+                           for test in (report, gui_report))):
+                raise ValueError("Release record differs from the verified prebuilt ZIP or executable checks.")
+            from main import bootstrap
+            from release_handoff import approved_release_head, require_release_evidence
+
+            source = Path(__file__).resolve().parents[1]
+            _check_release_tree(source, release_record)
+            approved_release_head(source.parent, source_commit, release_record["source_tree"])
+            bootstrap(source)
+            require_release_evidence(source, payload)
+            assets.append(record_path)
     tag = "installer-" + source_commit[:12]
     endpoint = "repos/" + repository
     # Create the exact ref explicitly; a rerun may reuse it but must never move it.
@@ -681,18 +766,26 @@ def publish(artifacts: Path, source_commit: str, repository: str) -> dict:
                 raise ValueError("Published installer asset differs; it will not be overwritten: " + path.name)
         return {"status": "already-published-identical", "tag": tag, "source_commit": source_commit}
     if not existing:
+        package_description = (
+            "A supported existing NAM installation is required. The installer verifies your local NAM and installs "
+            "the prebuilt SCP catalogue.\n\n" if prebuilt_release else
+            "A supported existing NAM installation is required. The installer builds from your local NAM resources.\n\n")
+        handoff_description = (
+            "Prebuild commit: `" + release_record["prebuild_commit"] + "`. Tracked source tree: `"
+            + release_record["source_tree"] + "`. See the release record for both commit IDs and payload checksums.\n"
+            if prebuilt_release else "")
         release = _gh("--method", "POST", endpoint + "/releases", "--input", "-", input_json={
             "tag_name": tag, "target_commitish": source_commit, "name": "SCP Installer — experimental " + source_commit[:12],
             "draft": True, "prerelease": True, "generate_release_notes": False,
             "body": "Experimental self-contained Windows installer for all implemented pieces.\n\n"
                     "Download the ZIP matching your platform, extract it, and open SCP Installer. Python is included. "
-                    "A supported existing NAM installation is required. The installer builds from your local NAM resources; "
-                    "the download contains no SimCity or NAM binary resources.\n\n"
-                    "The Windows executable is unsigned, so operating-system approval may be required. "
+                    + package_description
+                    + "The Windows executable is unsigned, so operating-system approval may be required. "
                     "Pieces remain experimental; automated checks are not in-game observations.\n\n"
                     "[Installation instructions](https://github.com/" + repository + "/blob/" + source_commit
-                    + "/custom-pieces/docs/INSTALLER.md)\n\nSource commit: `" + source_commit + "`. "
-                    "Each ZIP has a SHA-256 sidecar, an exact member manifest, and a frozen-executable self-test report.\n"})
+                    + "/custom-pieces/docs/INSTALLER.md)\n\nSource commit: `" + source_commit + "`.\n"
+                    + handoff_description
+                    + "Each ZIP has a SHA-256 sidecar, an exact member manifest, and a frozen-executable self-test report.\n"})
     else:
         release = existing[0]
     # Draft-only retries may replace incomplete assets. Published assets are immutable here.
@@ -717,30 +810,45 @@ def main(arguments: list[str] | None = None) -> int:
         command.add_argument("--source-commit", required=True)
         command.add_argument("--platform", choices=PLATFORMS, required=True)
         command.add_argument("--prebuilt-payload", type=Path,
-                             help="Embed this verified SCP payload in a private review bundle.")
+                             help="Embed this verified SCP payload.")
+        command.add_argument("--release-record", type=Path, help="Verified Dropbox handoff record.")
+        command.add_argument("--public-prebuilt", action="store_true", help=argparse.SUPPRESS)
     verify = commands.add_parser("verify")
     verify.add_argument("archive", type=Path)
     publication = commands.add_parser("publish")
     publication.add_argument("--artifacts", type=Path, required=True)
     publication.add_argument("--source-commit", required=True)
     publication.add_argument("--repository", required=True)
+    publication.add_argument("--prebuilt-release", action="store_true")
     options = parser.parse_args(arguments)
+    release_record = None
+    if options.command in {"prepare", "build"}:
+        if options.release_record is not None:
+            release_record = json.loads(options.release_record.read_text(encoding="utf-8"))
+        if options.public_prebuilt and (os.environ.get("SCP_PREBUILT_PUBLICATION") != "enabled"
+                                       or os.environ.get("GITHUB_EVENT_NAME") != "push"
+                                       or os.environ.get("GITHUB_REF") != "refs/heads/main"
+                                       or os.environ.get("GITHUB_SHA") != options.source_commit):
+            raise ValueError("Public prebuilt packaging requires the enabled, exact GitHub Actions main push.")
     if options.command == "prepare":
         if options.prebuilt_payload is not None:
             _check_source_revision(options.source, options.source_commit)
         manifest = prepare_runtime(options.source, options.output / "custom-pieces", options.source_commit,
-                                   options.platform, prebuilt_payload=options.prebuilt_payload)
+                                   options.platform, prebuilt_payload=options.prebuilt_payload,
+                                   release_record=release_record, public_prebuilt=options.public_prebuilt)
         result = {"status": "passed", "runtime_files": len(manifest["files"]), "source_commit": manifest["source_commit"]}
         if options.prebuilt_payload is not None:
             _check_source_revision(options.source, options.source_commit)
             result["kind"] = manifest["kind"]
     elif options.command == "build":
         result = build_bundle(options.source, options.output, options.source_commit, options.platform,
-                              prebuilt_payload=options.prebuilt_payload)
+                              prebuilt_payload=options.prebuilt_payload,
+                              release_record=release_record, public_prebuilt=options.public_prebuilt)
     elif options.command == "verify":
         result = verify_archive(options.archive)
     else:
-        result = publish(options.artifacts, options.source_commit, options.repository)
+        result = publish(options.artifacts, options.source_commit, options.repository,
+                         prebuilt_release=options.prebuilt_release)
     print(json.dumps(result, sort_keys=True))
     return 0
 

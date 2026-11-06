@@ -661,7 +661,7 @@ def undo_install(root, selected_folder, work_root, progress=None, *,
 
 
 def self_test(root):
-    """Exercise the real receipt/backup transaction with synthetic DBPFs only."""
+    """Exercise the installer transaction in temporary Plugins with synthetic NAM inputs."""
     import shapely
     from shapely import Polygon, constrained_delaunay_triangles, union_all
     polygon = Polygon([(0., 0.), (4., 0.), (4., 4.), (0., 4.)],
@@ -671,50 +671,71 @@ def self_test(root):
             or union_all(triangles.geoms).symmetric_difference(polygon).area > 1e-12):
         raise ValueError("Bundled planar geometry runtime failed its boundary-and-hole triangulation check.")
     from unittest.mock import patch
-    from scp.install import RUL0, NETWORK_INI, install_build, rollback_install
+    from scp.install import RUL0, NETWORK_INI, install_build, install_prebuilt, rollback_install
+    prebuilt = _prebuilt_bundle(root)
+    policy = _policy(root)
+    selections = _assembly_menu_selections(root, policy["assembly_menu"])
+    ids = all_implemented_ids(root)
+    prebuilt_files_verified = 0
     with tempfile.TemporaryDirectory(prefix="scp-installer-self-test-") as temporary:
         base = Path(temporary).resolve()
         plugins = base / "Plugins"
         plugins.mkdir()
-        native = pack_dbpf({RUL0: b"synthetic native rules", NETWORK_INI: b"synthetic native ini"})
-        (plugins / "NetworkAddonMod_Controller.dat").write_bytes(native)
+        native_resources = {RUL0: b"synthetic native rules", NETWORK_INI: b"synthetic native ini"}
+        if prebuilt:
+            from scp.prebuilt import load_payload
+
+            output, commit, expected_digest = prebuilt
+            manifest, _ = load_payload(output, commit)
+            for dependencies in manifest["dependency_audit"].values():
+                for key in dependencies:
+                    resource = tuple(int(part, 16) for part in key.split("-"))
+                    native_resources.setdefault(resource, b"synthetic NAM dependency")
+        native = pack_dbpf(native_resources)
+        controller = plugins / "NetworkAddonMod_Controller.dat"
+        controller.write_bytes(native)
         unrelated = plugins / "unrelated.txt"
         unrelated.write_text("preserve")
-        output = base / "build"
-        managed = output / FOLDER
-        managed.mkdir(parents=True)
-        raw = pack_dbpf({RUL0: b"synthetic custom rules", NETWORK_INI: b"synthetic custom ini"})
-        filename = "00_SCP_Controller_NAM50.dat"
-        (managed / filename).write_bytes(raw)
-        manifest = {"schema_version": 1, "plugin_folder": FOLDER,
-                    "pieces": [{"id": "synthetic-self-test"}],
-                    "profile": {"donors": [{"filename": "NetworkAddonMod_Controller.dat",
-                                               "sha256": hashlib.sha256(native).hexdigest()}]},
-                    "files": [{"path": f"{FOLDER}/{filename}", "bytes": len(raw),
-                               "sha256": hashlib.sha256(raw).hexdigest()}]}
-        (output / "manifest.json").write_text(json.dumps(manifest))
-        with patch("scp.build.verify_build", return_value={"status": "synthetic-only"}):
-            result = install_build(output, plugins, base / "backups", extra_roots=[])
-        if (managed / filename).read_bytes() != (plugins / FOLDER / filename).read_bytes():
-            raise ValueError("Synthetic installer self-test did not preserve the payload.")
+        if prebuilt:
+            # Hosted packaging has no original NAM inputs. Bypass only the
+            # pinned native file hashes and keep the actual resource-index scan.
+            with patch("scp.install._profile", return_value=controller), patch(
+                "scp.build.verify_build", side_effect=AssertionError("Prebuilt self-test invoked full verification")
+            ):
+                result = install_prebuilt(output, plugins, base / "backups", source_commit=commit,
+                                          expected_manifest_sha256=expected_digest, expected_piece_ids=ids,
+                                          expected_profile=manifest["profile"])
+            prebuilt_files_verified = len(manifest["files"])
+        else:
+            output = base / "build"
+            path = f"{FOLDER}/00_SCP_Controller_NAM50.dat"
+            asset = output / path
+            asset.parent.mkdir(parents=True)
+            raw = pack_dbpf({RUL0: b"synthetic custom rules", NETWORK_INI: b"synthetic custom ini"})
+            asset.write_bytes(raw)
+            manifest = {"schema_version": 1, "plugin_folder": FOLDER,
+                        "pieces": [{"id": "synthetic-self-test"}],
+                        "profile": {"id": "synthetic-nam50-rhd",
+                                    "donors": [{"filename": controller.name,
+                                                "sha256": hashlib.sha256(native).hexdigest()}]},
+                        "files": [{"path": path, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}]}
+            (output / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+            with patch("scp.build.verify_build", return_value={"status": "synthetic-only"}):
+                result = install_build(output, plugins, base / "backups", extra_roots=[])
+        for record in manifest["files"]:
+            with (plugins / record["path"]).open("rb") as stream:
+                if hashlib.file_digest(stream, "sha256").hexdigest() != record["sha256"]:
+                    raise ValueError("Installer self-test changed a finished archive.")
         rollback_install(plugins, base / "backups", result["backup_id"], extra_roots=[])
         if ((plugins / FOLDER).exists() or unrelated.read_text() != "preserve"
-                or (plugins / "NetworkAddonMod_Controller.dat").read_bytes() != native):
-            raise ValueError("Synthetic installer rollback did not restore the original state.")
-    policy = _policy(root)
-    selections = _assembly_menu_selections(root, policy["assembly_menu"])
-    ids = all_implemented_ids(root)
-    if prebuilt := _prebuilt_bundle(root):
-        from scp.prebuilt import load_payload
-
-        output, commit, expected_digest = prebuilt
-        payload, digest = load_payload(output, commit)
-        if digest != expected_digest or {piece["id"] for piece in payload["pieces"]} != set(ids):
-            raise ValueError("Prebuilt installer self-test found a mismatched payload or incomplete piece selection.")
+                or controller.read_bytes() != native):
+            raise ValueError("Installer self-test rollback did not restore the original state.")
     return {"status": "passed", "implemented_pieces": len(ids),
             "assembly_menu_layouts": len(selections),
-            "real_receipt_install_and_rollback": True, "synthetic_payload_only": True,
+            "real_receipt_install_and_rollback": True, "synthetic_payload_only": not prebuilt,
             "planar_geometry_runtime_checked": True,
             "shapely_version": shapely.__version__, "geos_version": shapely.geos_version_string,
-            "geometry_verification_mocked_for_synthetic_fixture": True,
+            "prebuilt_transaction_verified": bool(prebuilt), "prebuilt_files_verified": prebuilt_files_verified,
+            "native_profile_mocked_for_prebuilt_fixture": bool(prebuilt),
+            "geometry_verification_mocked_for_synthetic_fixture": not prebuilt,
             "live_game_modified": False}

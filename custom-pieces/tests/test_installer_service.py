@@ -723,6 +723,45 @@ class OrchestrationTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "boundary-and-hole triangulation"):
                 service.self_test(ROOT)
 
+    def test_packaged_prebuilt_self_test_installs_finished_archives_and_undoes(self):
+        from scp.menu import MENU_EXEMPLAR
+        from scp.prebuilt import CONTROLLER, KIND, MENU
+        from scp.track_paths import S3D
+
+        commit = "1" * 40
+        output = self.base / "prebuilt"
+        piece = "test-piece"
+        files = []
+        for name, resources in (
+            (CONTROLLER, {RUL0: b"finished rules", NETWORK_INI: b"finished network"}),
+            (MENU, {(*MENU_EXEMPLAR, 1): b"finished menu"}),
+            (f"20_Pieces/SCP_{piece}.dat", {(*S3D, 2): b"finished model"}),
+        ):
+            path = f"{FOLDER}/{name}"
+            asset = output / path
+            asset.parent.mkdir(parents=True, exist_ok=True)
+            raw = pack_dbpf(resources)
+            asset.write_bytes(raw)
+            files.append({"path": path, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()})
+        manifest = {"schema_version": 1, "kind": KIND, "plugin_folder": FOLDER, "source_commit": commit,
+                    "verified_build_manifest_sha256": "2" * 64, "pieces": [{"id": piece}], "files": files,
+                    "profile": {"id": "test-profile", "donors": [
+                        {"filename": "NetworkAddonMod_Controller.dat", "sha256": "3" * 64}]},
+                    "dependency_audit": {"textures": ["7ab50e44-1abe787d-12345678"], "shadows": []},
+                    "exclusive_instance_ids": []}
+        raw = json.dumps(manifest).encode("utf-8")
+        (output / "manifest.json").write_bytes(raw)
+        digest = hashlib.sha256(raw).hexdigest()
+        with patch.object(service, "_prebuilt_bundle", return_value=(output, commit, digest)), \
+                patch.object(service, "all_implemented_ids", return_value=[piece]):
+            result = service.self_test(ROOT)
+        self.assertTrue(result["prebuilt_transaction_verified"])
+        self.assertEqual(result["prebuilt_files_verified"], 3)
+        self.assertFalse(result["synthetic_payload_only"])
+        self.assertTrue(result["native_profile_mocked_for_prebuilt_fixture"])
+        self.assertFalse(result["geometry_verification_mocked_for_synthetic_fixture"])
+        self.assertTrue(result["real_receipt_install_and_rollback"])
+
     def test_undo_rejects_a_different_plugins_destination(self):
         self.work.mkdir()
         record = {"status": "installed", "backup_root": str(self.work / "backups"),

@@ -1,6 +1,6 @@
 ---
 title: "Install SCP without Python"
-summary: "Install the complete catalogue with the Windows installer, or prepare a verified prebuilt installer for private review."
+summary: "Install the complete catalogue with the Windows installer, or prepare a verified prebuilt installer."
 audience: "Players"
 document_type: "procedure"
 ---
@@ -11,7 +11,7 @@ document_type: "procedure"
 [1. Check the game installation](#1-check-the-game-installation) · [2. Download the matching ZIP](#2-download-the-matching-zip) · [3. Select the game folder](#3-select-the-game-folder) · [4. Install and find the pieces](#4-install-and-find-the-pieces) · [5. Update, remove, or resolve a stopped installation](#5-update-remove-or-resolve-a-stopped-installation) · [6. What a successful installer check establishes](#6-what-a-successful-installer-check-establishes) · [7. Prepare a prebuilt installer for review](#7-prepare-a-prebuilt-installer-for-review)
 <!-- END DOCUMENT NAVIGATION -->
 
-The **SCP Installer** installs Simon's Custom Pieces. You do not need Python, Git, a terminal, or a separate resource-capture tool to use it. The public source-builder download creates the game files from your installed SimCity 4 and Network Addon Mod (NAM). A **prebuilt review installer** includes the finished SCP game files and checks that you have the exact game and NAM files they require.
+The **SCP Installer** installs Simon's Custom Pieces. You do not need Python, Git, a terminal, or a separate resource-capture tool to use it. A **prebuilt installer** includes the finished SCP game files and checks that you have the exact game and NAM files they require. Earlier source-builder downloads create the game files from your installed SimCity 4 and Network Addon Mod (NAM).
 
 The installer selects **every implemented piece in its bundled catalogue** and prepares the Rail trumpet and Highway assembly buttons. **Experimental** means the software checks do not establish correct operation inside the game. Existing failed, stale, and unverified observations remain visible in the [library inventories](../README.md). Check a subject's guide and testing record before using it in an important city.
 
@@ -27,7 +27,7 @@ Close SimCity 4 before installing or updating SCP. Keep a backup of any city you
 
 Open the repository's [Releases page](https://github.com/KomodorDev/sc4-simons-custom-pieces/releases), and choose the intended **SCP Installer — experimental** prerelease. A **prerelease** is a downloadable development version, rather than a claim that every piece has passed game testing. If no installer prerelease is listed, the release workflow has not produced an installer yet; the repository's **Source code** ZIP is a different download and requires the developer setup.
 
-Download **`SCP-Installer-windows-x64-<commit>.zip`** for the source-builder installer. If you are reviewing a prebuilt candidate, use the privately prepared **`SCP-Installer-Prebuilt-Review-windows-x64-<commit>.zip`**. Both archives contain the Windows installer executable and its runtime.
+Download **`SCP-Installer-windows-x64-<commit>.zip`** for a published installer. A prebuilt release includes `release-record.json` among its GitHub assets. If you are reviewing a locally prepared candidate, use the private **`SCP-Installer-Prebuilt-Review-windows-x64-<commit>.zip`**. Both ZIP types contain the Windows installer executable and its runtime.
 
 `<commit>` is the first 12 characters of the source revision recorded on that release. The ZIP has a matching `.zip.sha256` file, and the release includes a bundle index and installer self-test report tied to its exact source revision. A SHA-256 checksum detects different bytes; it does not establish game compatibility or replace publisher signing.
 
@@ -75,7 +75,7 @@ If installation stops, read the reported filename and reason. A resource fingerp
 
 ## 6. What a successful installer check establishes
 
-The release workflow builds the Windows source-builder installer, runs the packaged executable's self-test and GUI startup smoke check, records the source revision and archive checksums, and creates an experimental prerelease after an accepted `main` update. A **GUI startup smoke check** briefly opens and closes the application to check that the window can start. Prebuilt preparation verifies the actual compiled assets before packaging. The Windows installer then verifies the exact packaged bytes and local dependencies. Game observations, public identifier reservations, and redistribution permission remain separate [release requirements](RELEASE.md).
+The [release workflow](AUTOMATIC_RELEASES.md) packages the prebuilt Windows installer on GitHub after the Mac verifies the game assets. A **GUI startup smoke check** briefly opens and closes the application to check that the window can start. The packaged self-test exercises installation and Undo on disposable data. Game observations, public identifier reservations, and redistribution permission remain separate [release requirements](RELEASE.md).
 
 ## 7. Prepare a prebuilt installer for review
 

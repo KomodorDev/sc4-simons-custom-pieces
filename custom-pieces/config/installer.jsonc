@@ -8,9 +8,9 @@
 // Reference: custom-pieces/docs/INSTALLER.md explains player actions, and docs/GITHUB.md describes automated installer publication.
 {
   "schema_version": 1,
-  "purpose": "Experimental installer distribution policy; local building does not establish public DAT redistribution permission or in-game verification.",
+  "purpose": "Experimental installer distribution policy. Public prebuilt packages require a verified Dropbox handoff and recorded release evidence.",
   "maturity": "experimental",
-  "distribution": "local-builder",
+  "distribution": "verified-prebuilt-release",
   "selection": "all-implemented",
   "assembly_menu": {
     "domain": "high-speed-rail",
@@ -35,7 +35,7 @@
   "capture_policy": "Read exact source archives from the user's installed game and NAM, verify the recorded resource identities, and create required captures locally without modifying the originals.",
   "publication": {
     "channel": "prerelease",
-    "trigger": "successful-main-push",
+    "trigger": "approved-main-merge-with-verified-prebuild-and-release-evidence",
     "tag": "installer-<first-12-source-commit-hex>",
     "required_platforms": "windows-x64",
     "source_commit_required": true,

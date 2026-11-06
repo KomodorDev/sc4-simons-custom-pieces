@@ -56,12 +56,13 @@ class InstallerBundleTests(unittest.TestCase):
         return ("// title: " + json.dumps(title) + '\n// summary: "Portable synthetic installer input."\n'
                 + json.dumps(value, indent=2) + "\n").encode()
 
-    def _prepare(self, prebuilt_payload=None, runtime=None):
+    def _prepare(self, prebuilt_payload=None, runtime=None, **handoff):
         source = self._source()
         runtime = runtime or self.directory / "runtime"
         with patch.object(bundle, "_source_paths", return_value=list(source.rglob("*"))) as paths:
             paths.return_value = [path for path in paths.return_value if path.is_file()]
-            bundle.prepare_runtime(source, runtime, COMMIT, "windows-x64", prebuilt_payload=prebuilt_payload)
+            bundle.prepare_runtime(source, runtime, COMMIT, "windows-x64", prebuilt_payload=prebuilt_payload,
+                                   **handoff)
         return runtime
 
     def _prebuilt_payload(self):
@@ -271,6 +272,30 @@ class InstallerBundleTests(unittest.TestCase):
 
         with patch.object(zipfile.ZipFile, "read", new=read_metadata_only):
             self.assertEqual(bundle.verify_archive(archive)["status"], "passed")
+
+    def test_public_prebuilt_zip_binds_the_original_and_receiving_commits(self):
+        payload = self._prebuilt_payload()
+        digest = bundle._hash(payload / "manifest.json")
+        record = {"schema_version": 1, "kind": "scp-release-payload",
+                  "prebuild_commit": "a" * 40, "source_tree": "b" * 40, "source_commit": COMMIT,
+                  "prebuild_manifest_sha256": "c" * 64, "payload_manifest_sha256": digest,
+                  "archive_sha256": "d" * 64}
+        folder = self.directory / "frozen"
+        runtime = self._prepare(payload, folder / bundle.FROZEN_RUNTIME,
+                                release_record=record, public_prebuilt=True)
+        self.assertEqual(bundle.verify_runtime(runtime)["release_record"], record)
+        archive = self.directory / "prebuilt.zip"
+        result = bundle.create_archive(folder, archive, COMMIT, "windows-x64")
+        self.assertFalse(result["review_only"])
+        self.assertEqual(result["release_record"], record)
+        info = json.loads((runtime / bundle.BUILD_INFO).read_bytes())
+        self.assertEqual(info["release_tag"], f"installer-{COMMIT[:12]}")
+        self.assertEqual(info["source_commit"], COMMIT)
+        self.assertNotEqual(info["source_commit"], record["prebuild_commit"])
+        with self.assertRaisesRegex(ValueError, "handoff record disagree"):
+            bundle._distribution_metadata(COMMIT, "windows-x64", digest,
+                                          release_record={**record, "payload_manifest_sha256": "e" * 64},
+                                          public=True)
 
     def test_prebuilt_payload_rejects_a_different_source_revision_or_unexpected_donor_archive(self):
         payload = self._prebuilt_payload()

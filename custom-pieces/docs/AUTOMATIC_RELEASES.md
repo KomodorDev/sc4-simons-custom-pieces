@@ -1,6 +1,6 @@
 ---
 title: "Automatic releases, explained simply"
-summary: "Understand what GitHub Actions does, when the Windows installer becomes a download, and what happens later on the player's computer."
+summary: "Prepare a verified prebuilt installer on the Mac, hand it to a hosted Windows job through Dropbox, and publish it after a human release merge."
 audience: "Players and maintainers without prior GitHub Actions knowledge"
 document_type: "explanation"
 ---
@@ -8,81 +8,88 @@ document_type: "explanation"
 # Automatic releases, explained simply
 
 <!-- BEGIN DOCUMENT NAVIGATION -->
-[1. The route from a change to a download](#1-the-route-from-a-change-to-a-download) · [2. What runs on GitHub?](#2-what-runs-on-github) · [3. Why does a PR have an installer build before release?](#3-why-does-a-pr-have-an-installer-build-before-release) · [4. What do I click to publish and find the download?](#4-what-do-i-click-to-publish-and-find-the-download) · [5. What happens on the player's computer?](#5-what-happens-on-the-players-computer) · [6. What if something fails?](#6-what-if-something-fails)
+[1. The route from a change to a download](#1-the-route-from-a-change-to-a-download) · [2. What runs on GitHub?](#2-what-runs-on-github) · [3. Why does a PR have an installer build before release?](#3-why-does-a-pr-have-an-installer-build-before-release) · [4. What do I click to publish and find the download?](#4-what-do-i-click-to-publish-and-find-the-download) · [5. What happens on the player's computer?](#5-what-happens-on-the-players-computer) · [6. What if something fails?](#6-what-if-something-fails) · [7. One-time Dropbox and hosted review setup](#7-one-time-dropbox-and-hosted-review-setup)
 <!-- END DOCUMENT NAVIGATION -->
 
-**GitHub Actions** is GitHub's automation service. It follows our saved instructions on GitHub's temporary computers: check the code, package the Windows installer, and publish a download after a human accepts a release into `main`.
-
-You decide which changes to accept. GitHub handles testing and packaging; your computer does not need to stay switched on.
+**GitHub Actions** follows the project's saved instructions on temporary computers hosted by GitHub. The Mac prepares the actual game files. The hosted Windows computer verifies and packages them. You decide what to merge.
 
 ## 1. The route from a change to a download
 
-A **repository** contains the project's files and version history. A **commit** is one saved project version. A **branch** is a named line of versions: `dev` holds accepted development work, and `main` holds versions accepted for release. A **pull request**, or **PR**, proposes combining changes from one branch into another. Accepting that proposal is called a **merge**.
+A **repository** contains the project's files and version history. A **commit** is one saved version. A **branch** is a named line of versions. `dev` holds accepted development work, and `main` holds releases. A **pull request**, or **PR**, proposes combining changes from one branch into another. Accepting that proposal is called a **merge**.
 
 ```mermaid
 flowchart TD
-    A[Human merges a change into dev] --> B[Human merges dev into main through a release PR]
-    B --> C[GitHub runs tests and builds the Windows installer]
-    C --> D[Checks pass: GitHub publishes the installer ZIP]
-    D --> E[Player downloads and runs the installer]
-    E --> F[Installer builds and installs pieces on the player's computer]
+    A[Human merges changes into dev] --> B[Mac builds and verifies game files]
+    B --> C[Dropbox confirms the complete private ZIP]
+    C --> D[Human merges dev into main]
+    D --> E[GitHub Windows runner matches and verifies the prebuilt ZIP]
+    E --> F[Release requirements and Windows checks pass]
+    F --> G[GitHub publishes the Windows installer]
 ```
 
-Merging into `dev` does not publish an installer. Each new `main` commit starts a release run, including documentation-only changes. Publication happens only if that run's installer checks succeed.
+A **Git tree fingerprint** identifies all files tracked by Git, including their paths and contents. The Mac saves the original prebuild commit and its tree fingerprint. GitHub compares that fingerprint with the one from the resulting `main` commit. A merge commit can have a different commit ID and still have the exact same files. The release record preserves both commit IDs.
 
 ## 2. What runs on GitHub?
 
-A **workflow** is a saved list of automated instructions. Its groups of steps are called **jobs**. This repository has three workflows:
+A **workflow** is a saved list of instructions, and a **job** is one group of steps. These jobs run on GitHub's hosted computers.
 
-| Name shown under Actions | What it does |
+| Trigger | What runs |
 | --- | --- |
-| **CI** | Runs source tests for PRs and updates to `dev` or `main`. CI means continuous integration: checking changes automatically. |
-| **Release policy** | Checks that a PR targeting `main` comes from this repository's `dev` branch. It checks the proposed release route. |
-| **Installer release** | Tests the source, packages and checks the Windows installer, and publishes it when the trigger is an accepted update to `main`. |
+| A pull request | Source tests and a source-builder Windows installer check. The job uses no Dropbox credentials. |
+| A manual run on `dev` | **Private hosted prebuilt review** checks the real Dropbox handoff and rejects missing and mismatched test inputs. The packaged installer copies every finished DAT into a temporary Plugins folder, checks the installed checksums, and undoes the install. The runner uses synthetic NAM inputs and retains the compiled files only for the job. |
+| A human merges the release PR into `main` | Source tests and **Publish verified prebuilt Windows installer**. The Windows job verifies the approved merge, the protected review record, the Dropbox archive, the release requirements, and the installer before publishing. |
 
-The **Installer release** workflow has three jobs, in order:
-
-1. **Installer source checks:** a temporary Linux computer runs the source tests to catch software problems before packaging.
-2. **Installer (windows-x64):** a temporary Windows computer bundles the application, Python, and supporting files. It tests installation and undo with disposable files, checks that the window opens, and verifies the ZIP.
-3. **Publish experimental installer:** GitHub attaches the verified files to a release. This job requires the previous jobs to succeed and runs only for an update to `main`.
-
-See the saved [workflow file](https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/dev/.github/workflows/installer-release.yml), the project's [technical release instructions](https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/dev/docs/GITHUB.md#automatic-installer-prereleases), or GitHub's [introduction to Actions](https://docs.github.com/en/actions/get-started/understand-github-actions) for more detail.
+The **protected environment** limits which branches may use its credentials. Review uses `scp-prebuilt-review` on `dev`, and publication uses `scp-prebuilt-release` on `main`. Read-only Dropbox access is available only during the download step. GitHub's public artifact storage is used for the source-builder PR checks. The prebuilt jobs keep their files on the runner until an approved release is published.
 
 ## 3. Why does a PR have an installer build before release?
 
-A PR also runs **Installer release**, so we can check the program before accepting changes. Its publication job deliberately says **Skipped**. The test download is an **artifact**: a temporary review file. Look for **installer-windows-x64** on the run's page; it is retained for 14 days and contains the installer ZIP and check reports.
-
-A **release asset** is a file attached to the public Releases page. The later `main` run builds and checks its own version before publishing those assets.
-
-Manually selecting **Run workflow** also produces a review build; it does not publish. No workflow merges a PR automatically.
+The source-builder job gives you a Windows application check while the change is still under review. An **artifact** is a file attached to a workflow run for temporary download. The source-builder artifact appears as **installer-windows-x64** and is retained for 14 days. A successful PR check leaves both merges and release publication under their usual controls.
 
 ## 4. What do I click to publish and find the download?
 
-1. Merge the intended development PRs into `dev` after reviewing their changes and checks.
-2. Open the repository's **Pull requests** tab. Open the existing release PR from `dev` into `main`. If none exists, select **New pull request**, set **base: main** and **compare: dev**, review **Files changed**, enter a title, and select **Create pull request**.
-3. Wait for **Tests** and **Release policy** to pass, and review the installer build's result. For the release merge, use **Merge pull request** with **Create a merge commit**, then select **Confirm merge**. A human performs this step.
-4. Open **Actions → Installer release**. Select the run for the newly merged **main** version. Wait for **Installer source checks**, **Installer (windows-x64)**, and **Publish experimental installer** to succeed.
-5. Open the [Releases page](https://github.com/KomodorDev/sc4-simons-custom-pieces/releases), and select the intended **SCP Installer — experimental** entry. Under **Assets**, download **`SCP-Installer-windows-x64-<commit>.zip`**. `<commit>` means the 12-character version identifier already present in the filename. Choose that file instead of the separate **Source code** ZIP.
+1. Complete the [one-time setup](#7-one-time-dropbox-and-hosted-review-setup). Merge the intended development PRs into `dev` and wait for **Tests** to pass. On the Mac, open Terminal in the root of your clean `dev` checkout. Update it with `git pull --ff-only`.
+2. Run the preparation command below. Replace each placeholder in angle brackets with the actual folder path and keep the quotation marks. Use the game folder that contains `SimCity_3.dat`, the player-data folder or its `Plugins` folder containing NAM, and the private App Folder shown in Finder under **Dropbox → Apps**. To copy a folder path from Finder, select the folder and press **Option–Command–C**.
 
-A **prerelease** is a downloadable experimental version. These installers are marked as prereleases. The extra `.sha256` file helps detect a changed ZIP, and the reports record what was checked; players use the installer ZIP.
+   ```sh
+   python3 -B custom-pieces/installer/prepare_release.py --game-folder "<game folder>" --player-data "<player-data or Plugins folder>" --dropbox-folder "<Dropbox Apps/SCP Release Builds folder>"
+   ```
+
+3. Wait until the command reports `"status": "payload-ready"`. It first confirms that the folder you selected syncs to the authorized Dropbox app using a temporary test ZIP with no game files. It then waits for Dropbox to confirm the exact completed release ZIP. Keep the reported source commit and tree fingerprint. If `dev` changes, rerun the command for the new version. The separate public release requirements still apply.
+4. On GitHub, open **Pull requests → New pull request**. Set **base: main** and **compare: dev** in this repository. Review **Files changed**, then select **Create pull request**. Wait for **Tests** and **Release policy**. A human selects **Merge pull request**, chooses **Create a merge commit**, and selects **Confirm merge**.
+5. Open **Actions → Installer release** and select the run for the new `main` commit. When **Publish verified prebuilt Windows installer** passes, open [Releases](https://github.com/KomodorDev/sc4-simons-custom-pieces/releases). Under **Assets**, find `SCP-Installer-windows-x64-<commit>.zip`, its checksum, and `release-record.json`. The filename uses the first 12 characters of the merged `main` commit.
 
 ## 5. What happens on the player's computer?
 
-**Building** means producing usable files from the project's instructions. **NAM** means Network Addon Mod. There are two different builds:
-
-| Where | What gets built | When |
-| --- | --- | --- |
-| GitHub's temporary computers | The Windows installer ZIP, including Python and the builder | During the automated workflow |
-| The player's computer | The actual game plugin files, called DAT archives, using that player's existing game and NAM resources | After the player opens the installer and selects Install |
-
-GitHub does not access your personal game folder or **Plugins folder**, where the game reads add-ons. The download excludes game and NAM archives. Players need the supported game and NAM already installed.
-
-The player extracts the ZIP, opens **SCP Installer.exe**, selects **Choose game folder…**, and selects **Install**. The installer finds Plugins, checks the original resources, builds all implemented pieces, prepares the Rail trumpet and Highway assembly buttons, verifies the result, saves a backup, and installs. Python is included; players do not need to install it or type commands. The [player guide](INSTALLER.md) covers requirements, extraction, Windows prompts, folder selection, and Undo.
+The prebuilt ZIP contains the complete set of game files, called **DAT archives**. The player extracts the ZIP, closes SimCity 4, opens **SCP Installer.exe**, selects the game folder, and selects **Install**. The installer checks the package and the player's existing game and NAM resources, checks for conflicts, backs up the previous installation, and copies the finished files. Python is included. [Player instructions](INSTALLER.md)
 
 ## 6. What if something fails?
 
-In **Actions → Installer release**, open the failed run, select the failed job, and expand the step marked with a red cross. Its **log** records what happened and the error.
+Open **Actions → Installer release**, select the failed run, select the failed job, and expand its red step. A missing or mismatched ZIP names the expected source revision. Prepare that exact revision on the Mac. If `dev` and the resulting `main` tree differ, reconcile their source through the normal PR process, prepare the resulting `dev` again, and make a new release PR.
 
-A failed test or build stops publication. The merged source stays on `main`. For a temporary GitHub or network problem, a maintainer can select **Re-run jobs → Re-run failed jobs**. A code problem needs a fix through the usual work branch → `dev` → `main` route. The [technical release instructions](https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/dev/docs/GITHUB.md#automatic-installer-prereleases) explain unfinished uploads and retry checks.
+If only Dropbox sync timed out, use the reported private ZIP with the same `--dropbox-folder` option and add `--resume-archive "<private ZIP path>"`. This verifies the ZIP against current `dev` before retrying the transfer. For a temporary hosted failure with the exact approved payload still available, select **Re-run jobs → Re-run failed jobs** on the same run. The GitHub source merge and release publication are separate steps.
 
-The installation test uses synthetic files: test data created for that check. The window check opens the application without installing into a real game. Tests needing unavailable game resources can be explicitly skipped. These jobs do not play SimCity 4 or change recorded placement, rendering, or traffic observations. The download remains experimental.
+## 7. One-time Dropbox and hosted review setup
+
+1. Open the [Dropbox App Console](https://www.dropbox.com/developers/apps/create) and sign in on Dropbox. Select **Scoped access**, select **App folder**, enter an app name such as **SCP Release Builds**, and select **Create app**. On **Permissions**, enable **files.metadata.read** and **files.content.read**, then select **Submit** or **Save changes**. Under **Settings → OAuth 2**, enable **Allow public clients** if it is off. Under **Settings → Credentials**, copy the **App key**. Keep the App Folder private and leave sharing links disabled. [Dropbox app setup](https://www.dropbox.com/developers/reference/getting-started) · [Dropbox authorization](https://docs.dropboxapi.com/dropbox-api/docs/get-started/authorization)
+2. In Terminal, from the checkout root, run the authorization command. Replace `<App key>` with the App key. Open the link printed by the command, select **Allow** on Dropbox, then paste the authorization code at the Terminal prompt. The prompt hides the code. The command saves the refresh credential privately at `~/.config/scp/release-dropbox.json`. Keep authorization codes, refresh tokens, and app secrets out of Git, chat, and shell commands. In Dropbox Desktop, sign in to the same account. Open Finder, select **Dropbox** in the sidebar, and look under **Apps** for your app's folder. If it is missing, confirm the app folder is included in Dropbox Desktop's sync settings. [Dropbox Desktop setup](https://learn.dropbox.com/self-guided-learning/dropbox-fundamentals-course/dropbox-desktop-app)
+
+   ```sh
+   python3 -B custom-pieces/installer/release_dropbox.py authorize --app-key "<App key>"
+   ```
+
+3. In the GitHub repository, open **Settings → Environments**. Confirm that **scp-prebuilt-review** accepts only the `dev` branch and that **scp-prebuilt-release** accepts only the `main` branch. If either is missing, select **New environment**, enter its exact name, select **Configure environment**, and under **Deployment branches and tags** select **Selected branches and tags**. Select **Add deployment branch or tag rule**, choose **Branch**, and enter the matching branch name. Use the GitHub CLI command below to put the App key and refresh token directly into the review environment's **Environment secrets**. If GitHub CLI asks you to sign in, run `gh auth login`, select **GitHub.com**, and follow its browser login.
+
+   ```sh
+   python3 -B custom-pieces/installer/release_dropbox.py github-secrets --repository KomodorDev/sc4-simons-custom-pieces --environment scp-prebuilt-review
+   ```
+
+4. Once the pipeline code is on `dev`, prepare its ZIP using [chapter 4](#4-what-do-i-click-to-publish-and-find-the-download). Open **Actions → Installer release → Run workflow**, choose **dev**, and select **Run workflow**. Open the resulting run. Confirm that **Private hosted prebuilt review** and both of its handoff and installer steps passed. The run ID is the number after `/actions/runs/` in its URL.
+5. After the successful private review, install the same read-only credentials in the release environment. In **Settings → Environments → scp-prebuilt-release → Environment variables**, select **Add variable**. Set **SCP_PREBUILT_REVIEW_RUN_ID** to the successful run ID. When the project's release evidence is ready, add **SCP_PREBUILT_PUBLICATION** with the value **enabled**. Use the same one-command preparation and normal human merge for each later release.
+
+   ```sh
+   python3 -B custom-pieces/installer/release_dropbox.py github-secrets --repository KomodorDev/sc4-simons-custom-pieces --environment scp-prebuilt-release
+   ```
+
+Repeat the private review if the release tooling changes and update the run ID. Each release checks its own exact payload and evidence. Catalogue changes follow the ordinary preparation and merge steps.
+
+[GitHub environment settings](https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments) · [Public release requirements](RELEASE.md#5-gates-for-a-public-package)
