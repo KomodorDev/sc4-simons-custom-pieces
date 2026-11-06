@@ -6,13 +6,14 @@ import os
 from pathlib import Path
 import re
 import shutil
+import sys
 import tempfile
 import zipfile
 
 from . import jsonc
 from .paths import local_settings
 from .catalog import load_catalog, select_pieces, release_status
-from .dbpf import entries, decompress, index_plugins, pack_dbpf, require, tgi_string
+from .dbpf import COMPRESSION_DIRECTORY_TYPE, entries, decompress, index_plugins, pack_dbpf, require, tgi_string
 from .menu import build_menu_resources
 from .recipes import build_piece
 from .rul0 import MARKER, compose_rul0
@@ -63,16 +64,18 @@ def audit_inputs(catalog, plugins, pieces, extra_roots=None):
             installed.setdefault(key, []).extend(paths)
     context, audit, dependency_paths = {}, [], {}
     needed = sorted({label for piece in pieces for label in piece['dependencies']})
+    archives = {path for paths in installed.values() for path in paths}
     for label in needed:
         require(label in catalog['_profile']['files'], f'Unknown dependency: {label}')
         record = catalog['_profile']['files'][label]
-        matches = sorted({path for paths in installed.values() for path in paths if path.name == record['filename']})
+        matches = sorted(path for path in archives if path.name == record['filename'])
         require(len(matches) == 1, f"Expected one {record['filename']}, found {len(matches)} across scanned Plugins roots")
         path = matches[0]; raw = path.read_bytes()
-        require(sha(raw) == record['sha256'], f'{path.name} changed. Re-audit this NAM version; do not just change the fingerprint.')
+        digest = sha(raw)
+        require(digest == record['sha256'], f'{path.name} changed. Re-audit this NAM version; do not just change the fingerprint.')
         context[label] = {key: decompress(value) for key, value in entries(raw).items()}
         dependency_paths[label] = path
-        audit.append({'filename': path.name, 'path': str(path), 'sha256': sha(raw)})
+        audit.append({'filename': path.name, 'path': str(path), 'sha256': digest})
     native = next(Path(x['path']) for x in audit if x['filename'] == 'NetworkAddonMod_Controller.dat')
     shared = (RUL0, NETWORK_INI, RUL1) if any(adaptive_bindings(piece) or native_approaches.approaches(piece)
                                               for piece in pieces) else (RUL0, NETWORK_INI)
@@ -153,7 +156,89 @@ def _prepare_output(output, project_root, roots):
     return output
 
 
-def build_project(project_root, plugins, output, include=None, extra_roots=None, progress=None):
+def _compile_piece(piece, context, donors, plugin_folder):
+    model_report = None
+    try:
+        resources, delta = build_piece(piece, context)
+        record = {**deepcopy(piece), 'asset_file': f"{plugin_folder}/20_Pieces/SCP_{piece['id']}.dat"}
+        if (piece.get('domain', 'high-speed-rail') != 'high-speed-rail' or
+                piece['recipe'].startswith(('interchange_', 'directional_', 'hsr_component_')) or
+                piece['recipe'].startswith('rail_') and piece['recipe'].endswith('_revised')):
+            # Fail on invalid per-piece geometry before staging. Saved-build
+            # verification still checks the actual DATs and coordinated rules.
+            from .verify import check_piece_paths, check_piece_models
+            check_piece_paths(resources, record)
+            checked = check_piece_models(resources, record, donors)
+            if piece.get('domain') == 'highway':
+                model_report = checked
+    except ValueError as error:
+        raise ValueError(f'{piece["id"]}: {error}') from error
+    return resources, delta, record, model_report
+
+
+def _compile_groups(pieces):
+    """Keep pieces that share costly recipe geometry in one worker."""
+    from .providers import domain_module
+
+    groups = {}
+    for piece in pieces:
+        group = getattr(domain_module(piece, 'recipes'), 'compilation_group', None)
+        family = group(piece) if group is not None else None
+        key = (piece['domain'], family) if family is not None else piece['id']
+        groups.setdefault(key, []).append(piece)
+    return sorted(groups.values(),
+                  key=lambda group: sum(len(piece['tile_ids']) for piece in group), reverse=True)
+
+
+def _init_build_worker(context, donors, plugin_folder, source_root):
+    from .check_bootstrap import SourcePackages
+
+    # A fresh Python process does not inherit the installer's import finder.
+    sys.meta_path.insert(0, SourcePackages(source_root))
+    global _worker_inputs
+    _worker_inputs = (context, donors, plugin_folder)
+
+
+def _compile_group(pieces):
+    from .shadows import compiled_shadow_sets
+
+    with compiled_shadow_sets() as shadows:
+        compiled = [_compile_piece(piece, *_worker_inputs) for piece in pieces]
+    return compiled, shadows
+
+
+def _compile_in_parallel(groups, workers, context, donors, plugin_folder, progress):
+    from concurrent.futures import ProcessPoolExecutor, as_completed
+    from concurrent.futures.process import BrokenProcessPool
+    from multiprocessing import get_context
+    from .paths import project_root
+
+    compiled, shadows = {}, {}
+    count = sum(len(group) for group in groups)
+    pool = ProcessPoolExecutor(
+        max_workers=workers, mp_context=get_context('spawn'),
+        initializer=_init_build_worker, initargs=(context, donors, plugin_folder, project_root()))
+    try:
+        futures = [pool.submit(_compile_group, group) for group in groups]
+        for future in as_completed(futures):
+            results, group_shadows = future.result()
+            shadows.update(group_shadows)
+            for resources, delta, record, model_report in results:
+                identifier = record['id']
+                compiled[identifier] = (resources, delta, record, model_report)
+                if progress:
+                    progress({'phase': 'compile', 'index': len(compiled), 'pieces': count,
+                              'piece': identifier, 'workers': workers})
+    except BrokenProcessPool as error:
+        raise ValueError('A build worker stopped unexpectedly. Retry with --jobs 1 for a serial build.') from error
+    finally:
+        pool.shutdown(cancel_futures=True)
+    return compiled, shadows
+
+
+def build_project(project_root, plugins, output, include=None, extra_roots=None, progress=None, *, jobs=1):
+    """Compile one deterministic build, optionally using separate Python processes."""
+    require(jobs is None or type(jobs) is int and jobs > 0, 'Build jobs must be a positive integer')
     catalog = load_catalog(project_root); selected = select_pieces(catalog, include)
     require(selected, 'No pieces selected')
     piece_menu_families.declarations(selected, available=catalog['pieces'])
@@ -170,33 +255,45 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
     baseline = context['controller']
     labels = sorted({label for piece in selected for label in piece['dependencies']})
     donors = {key: raw for label in labels for key, raw in context[label].items()}
+    model_donors = {key: raw for key, raw in donors.items() if key[0] != COMPRESSION_DIRECTORY_TYPE}
     assets_by_piece, menu_resources, all_resources, rules, menu_audit = {}, {}, {}, [], []
     rul1_rules = []
     records = []
-    for index, piece in enumerate(selected):
-        if progress:
-            progress({'phase':'compile','index':index+1,'pieces':len(selected),'piece':piece['id']})
-        # No H3ID/effect collisions may hide inside the otherwise valid baseline.
-        native_rul = baseline[RUL0].decode('ascii')
+    # Check every selected identifier against the native rules before dispatch.
+    native_rul = baseline[RUL0].decode('ascii')
+    for piece in selected:
         require(not re.search(r'HighwayIntersectionInfo_0x[0-9a-f]{4}' + piece['puzzle_id'] + r'\]', native_rul, re.I),
                 f"Puzzle id {piece['puzzle_id']} already used by NAM")
         require(piece['effect_name'].encode() not in baseline[RUL0], 'Preview effect name already used')
+    compiled, shadow_sets = None, {}
+    if jobs != 1 and len(selected) > 1 and not getattr(sys, 'frozen', False):
+        if hasattr(os, 'process_cpu_count'):
+            cpus = os.process_cpu_count()
+        elif hasattr(os, 'sched_getaffinity'):
+            cpus = len(os.sched_getaffinity(0))
+        else:
+            cpus = os.cpu_count()
+        cpus = cpus or 1
+        limit = min(cpus, 61) if sys.platform == 'win32' else cpus
+        workers = min(limit, jobs if jobs is not None else max(1, cpus // 2))
+        if workers > 1:
+            groups = _compile_groups(selected)
+            workers = min(workers, len(groups))
+            if workers > 1:
+                compiled, shadow_sets = _compile_in_parallel(
+                    groups, workers, context, model_donors, catalog['plugin_folder'], progress)
+    from .providers import domain_module
+    highway_audits = {}
+    for index, piece in enumerate(selected):
+        if compiled is None:
+            if progress:
+                progress({'phase':'compile','index':index+1,'pieces':len(selected),'piece':piece['id']})
+            resources, delta, record, _ = _compile_piece(piece, context, model_donors, catalog['plugin_folder'])
+        else:
+            resources, delta, record, model_report = compiled.pop(piece['id'])
+            if model_report is not None:
+                highway_audits[piece['id']] = (record, resources, model_report)
         try:
-            resources, delta = build_piece(piece, context)
-            record = {**deepcopy(piece), 'asset_file': f"{catalog['plugin_folder']}/20_Pieces/SCP_{piece['id']}.dat"}
-            if (piece.get('domain', 'high-speed-rail') != 'high-speed-rail' or
-                    piece['recipe'].startswith(('interchange_', 'directional_', 'hsr_component_')) or
-                    piece['recipe'].startswith('rail_') and piece['recipe'].endswith('_revised')):
-                # Complex pieces must fail while their own assets are in hand,
-                # before the rest of a long matrix is compiled. The final
-                # saved-build verification executes these checks again;
-                # the framework has no complete model-report cache.
-                from .verify import check_piece_paths, check_piece_models
-                check_piece_paths(resources, record)
-                # Native-profile geometry needs the same audited originals
-                # here as in the final saved-resource verification.
-                check_piece_models(resources, record, donors)
-            from .providers import domain_module
             donor = domain_module(piece, 'menu').menu_donor(context)
             menus, metadata = build_menu_resources(donor, piece)
         except ValueError as error:
@@ -315,7 +412,13 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
         write_json(stage / 'input-audit.json', {'donors': donor_audit, 'scanned_roots': [str(x) for x in roots]})
         if progress:
             progress({'phase':'verify','pieces':len(selected)})
-        report = verify_build(stage)
+        from .shadows import compiled_shadow_sets
+        from .verify import compiled_highway_model_audits
+        with compiled_shadow_sets(shadow_sets), compiled_highway_model_audits() as audits:
+            if highway_audits:
+                audits['donors'] = model_donors
+                audits['pieces'] = highway_audits
+            report = verify_build(stage)
         # Transaction: complete verification precedes any replacement of old build.
         if output.exists():
             old = Path(tempfile.mkdtemp(prefix='.scp-old-', dir=output.parent)); old.rmdir()

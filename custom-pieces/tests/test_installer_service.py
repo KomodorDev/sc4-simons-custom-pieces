@@ -644,9 +644,10 @@ class OrchestrationTests(unittest.TestCase):
                 patch("scp.menu_experiment.build_assembly_menus") as menu, \
                 patch("scp.install.install_build", return_value={"status": "installed", "backup_id": "synthetic"}) as install:
             result = service.run_install(ROOT, self.game, self.work, progress=events.append)
-        for stage in (doctor, build):
-            self.assertEqual(stage.call_args.kwargs["include"], self.ids)
-            self.assertEqual(stage.call_args.kwargs["extra_roots"], [self.extra])
+        doctor.assert_not_called()  # build_project performs the full input audit.
+        self.assertEqual(build.call_args.kwargs["include"], self.ids)
+        self.assertEqual(build.call_args.kwargs["extra_roots"], [self.extra])
+        self.assertEqual(build.call_args.kwargs["jobs"], 1)
         expected_layouts = [
             {"domain_id": "high-speed-rail", "layout_id": "trumpet"},
             {"domain_id": "highway", "layout_id": "compact-diagonal-diamond"},
@@ -679,6 +680,13 @@ class OrchestrationTests(unittest.TestCase):
             service.run_install(ROOT, self.game, self.work, player_data=chosen_data)
         self.assertEqual(discover.call_args.args, (self.game,))
         self.assertEqual(discover.call_args.kwargs["player_data"], chosen_data)
+
+    def test_source_preparation_forwards_explicit_and_automatic_jobs(self):
+        for jobs in (2, None):
+            with (self.subTest(jobs=jobs), patch("scp.build.build_project") as build,
+                  patch("scp.menu_experiment.build_assembly_menus")):
+                service.prepare_install_build(ROOT, self.plan, self.work, self.ids, jobs=jobs)
+                self.assertEqual(build.call_args.kwargs["jobs"], jobs)
 
     def test_failed_build_never_calls_menu_or_installer(self):
         with patch("scp.build.doctor"), patch("scp.build.build_project", side_effect=ValueError("compiler rejected geometry")), \

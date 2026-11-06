@@ -87,8 +87,13 @@ def _prove_dropbox_folder(staging, dropbox, credentials, timeout):
 
 
 def prepare_release(repo, *, game_folder, player_data, dropbox_folder, staging_folder,
-                    credentials_path, sync_timeout, resume_archive=None):
+                    credentials_path, sync_timeout, resume_archive=None, jobs=None):
     """Prepare, verify, and sync the release payload for the current dev tree."""
+    if jobs is not None:
+        if type(jobs) is not int or jobs < 1:
+            raise ValueError("--jobs must be a positive integer")
+        if resume_archive is not None:
+            raise ValueError("--jobs applies only to new builds")
     repo = Path(repo).resolve()
     dropbox = validate_dropbox_directory(_regular_path(dropbox_folder))
     if dropbox.parent.name.casefold() != "apps":
@@ -128,10 +133,12 @@ def prepare_release(repo, *, game_folder, player_data, dropbox_folder, staging_f
         run = Path(tempfile.mkdtemp(prefix=f"{source_tree[:12]}-", dir=staging))
         payload, archive = run / "payload", run / filename
         print(f"Preparing the complete verified payload in {run}", file=sys.stderr, flush=True)
-        subprocess.run([sys.executable, "-B", str(repo / "custom-pieces/installer/prepare_payload.py"),
-                        "--game-folder", str(game_folder), "--player-data", str(player_data),
-                        "--work-dir", str(run / "work"), "--output", str(payload)],
-                       cwd=repo, check=True, stdout=sys.stderr)
+        command = [sys.executable, "-B", str(repo / "custom-pieces/installer/prepare_payload.py"),
+                   "--game-folder", str(game_folder), "--player-data", str(player_data),
+                   "--work-dir", str(run / "work"), "--output", str(payload)]
+        if jobs is not None:
+            command.extend(["--jobs", str(jobs)])
+        subprocess.run(command, cwd=repo, check=True, stdout=sys.stderr)
         if _clean_dev_source(repo) != (source_commit, source_tree):
             raise ValueError("The checkout changed during preparation. Build again from the current dev tree.")
         release = write_release_payload(payload, archive, source_commit=source_commit, source_tree=source_tree)
@@ -178,17 +185,23 @@ def main(argv=None):
                         help="Maximum seconds to wait for Dropbox to sync (default: %(default)s).")
     parser.add_argument("--resume-archive", type=Path,
                         help="Retry syncing the exact verified ZIP from a previous interrupted run.")
+    parser.add_argument("--jobs", type=int,
+                        help="Maximum compilation workers for a new build (default: half the available logical CPUs, at least one).")
     args = parser.parse_args(argv)
+    if args.jobs is not None and args.jobs < 1:
+        parser.error("--jobs must be a positive integer")
     if args.resume_archive is None and (args.game_folder is None or args.player_data is None):
         parser.error("--game-folder and --player-data are required for a new build")
-    if args.resume_archive is not None and (args.game_folder is not None or args.player_data is not None):
-        parser.error("--resume-archive retries only the upload, so omit --game-folder and --player-data")
+    if args.resume_archive is not None and any(
+            option is not None for option in (args.game_folder, args.player_data, args.jobs)):
+        parser.error("--resume-archive retries only the upload, so omit --game-folder, --player-data, and --jobs")
     library = Path(__file__).resolve().parents[1]
     bootstrap(library)
     report = prepare_release(
         library.parent, game_folder=args.game_folder, player_data=args.player_data,
         dropbox_folder=args.dropbox_folder, staging_folder=args.staging_folder,
-        credentials_path=args.credentials, sync_timeout=args.sync_timeout, resume_archive=args.resume_archive)
+        credentials_path=args.credentials, sync_timeout=args.sync_timeout, resume_archive=args.resume_archive,
+        jobs=args.jobs)
     print(f"Payload ready to merge for dev {report['source_commit']}. Public release requirements still apply.",
           file=sys.stderr)
     print(json.dumps(report, indent=2))

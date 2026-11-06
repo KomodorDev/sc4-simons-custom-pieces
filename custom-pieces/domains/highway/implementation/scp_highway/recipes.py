@@ -112,6 +112,14 @@ def finish_piece(spec, context, compiled):
     return assets
 
 
+def compilation_group(spec):
+    """Share each cached Highway world or straight-stamp partition in one process."""
+    for family in ('highway_ddrhw_parallel_b_', 'highway_ddrhw_parallel_', 'highway_ddrhw_modular_'):
+        if spec['recipe'].startswith(family):
+            return family
+    return None
+
+
 def build_piece(spec, context):
     if spec['recipe'] in DIAGONAL_TRANSITION_RECIPES:
         from .diagonal_transition import build_piece as build_diagonal_transition
