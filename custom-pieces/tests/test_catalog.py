@@ -106,7 +106,11 @@ class CatalogTests(unittest.TestCase):
         if self.project.get('allocations'):
             relative = self.project['allocations']
             self._write(relative, jsonc.loads((FRAMEWORK / relative).read_text()))
-        self._write('config/release.jsonc', jsonc.loads((FRAMEWORK / 'config/release.jsonc').read_text()))
+        gates = jsonc.load(FRAMEWORK / 'config/release.jsonc')
+        for record in gates.values():
+            if isinstance(record, dict) and 'status' in record:
+                record.update(enabled=True, status='pending', evidence=None)
+        self._write('config/release.jsonc', gates)
         self._write('project.jsonc', self.project)
         self.default_count = sum(jsonc.loads((self.root / path).read_text())['enabled_by_default']
                                  for path in self.piece_paths)
@@ -533,16 +537,11 @@ class CatalogTests(unittest.TestCase):
 
     def test_passing_gate_labels_without_evidence_are_not_sufficient(self):
         gates = jsonc.loads((self.root / 'config/release.jsonc').read_text())
-        for value in gates.values():
-            if isinstance(value, dict) and 'status' in value:
-                value['status'], value['evidence'] = 'passed', None
+        names = [name for name, record in gates.items() if isinstance(record, dict) and 'status' in record]
+        for name in names:
+            gates[name]['status'] = 'passed'
         self._write('config/release.jsonc', gates)
-        pieces = self._catalog()['pieces']
-        for piece in pieces:
-            piece['status'] = 'tested'
-            piece['game_tests'] = dict.fromkeys(piece['game_tests'], 'passed')
-            piece['provenance']['redistribution'] = 'permission-recorded'
-        self.assertFalse(release_status(self.root, pieces)['public_release_ready'])
+        self.assertEqual(release_status(self.root, [])['blocked'], names)
 
     def test_release_gate_labels_do_not_replace_piece_game_tests(self):
         gates = jsonc.loads((self.root / 'config/release.jsonc').read_text())

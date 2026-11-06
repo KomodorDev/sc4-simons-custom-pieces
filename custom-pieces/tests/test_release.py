@@ -22,7 +22,7 @@ class ReleaseEvidenceTests(unittest.TestCase):
         gates = jsonc.loads((FRAMEWORK / 'config/release.jsonc').read_text())
         for record in gates.values():
             if isinstance(record, dict) and 'status' in record:
-                record['status'], record['evidence'] = 'passed', 'fixture-human-record'
+                record.update(enabled=True, status='passed', evidence='fixture-human-record')
         self._write_json('config/release.jsonc', gates)
         cases = dict.fromkeys(('placement', 'traffic_both_directions', 'no_unwanted_transfers',
                                'rotations_and_mirrors', 'shadows', 'demolition', 'save_reload'), 'passed')
