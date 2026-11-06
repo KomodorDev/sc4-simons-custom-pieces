@@ -186,7 +186,7 @@ def main(argv=None):
     parser.add_argument("--resume-archive", type=Path,
                         help="Retry syncing the exact verified ZIP from a previous interrupted run.")
     parser.add_argument("--jobs", type=int,
-                        help="Maximum compilation workers for a new build (default: up to four based on available CPUs).")
+                        help="Maximum compilation workers for a new build (default: half the available logical CPUs, at least one).")
     args = parser.parse_args(argv)
     if args.jobs is not None and args.jobs < 1:
         parser.error("--jobs must be a positive integer")

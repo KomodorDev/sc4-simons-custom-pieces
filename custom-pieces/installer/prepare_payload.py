@@ -16,7 +16,7 @@ def main(argv=None):
     parser.add_argument('--player-data', type=Path, required=True)
     parser.add_argument('--work-dir', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--jobs', type=int, help='Maximum compilation workers (default: up to four based on available CPUs)')
+    parser.add_argument('--jobs', type=int, help='Maximum compilation workers (default: half the available logical CPUs, at least one)')
     args = parser.parse_args(argv)
     if args.jobs is not None and args.jobs < 1:
         parser.error('--jobs must be a positive integer')

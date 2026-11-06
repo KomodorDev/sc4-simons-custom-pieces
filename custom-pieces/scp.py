@@ -124,7 +124,7 @@ def main():
             cmd.add_argument('--output', type=Path, default=ROOT / 'dist/development')
         if name == 'build':
             cmd.add_argument('--progress', action='store_true', help='Show build progress on standard error; keep JSON on standard output')
-            cmd.add_argument('--jobs', type=int, help='Maximum compilation workers (default: up to four based on available CPUs)')
+            cmd.add_argument('--jobs', type=int, help='Maximum compilation workers (default: half the available logical CPUs, at least one)')
         if name == 'package':
             cmd.add_argument('--destination', type=Path, default=ROOT / 'dist/Simons-Custom-Pieces-development.zip')
             cmd.add_argument('--release', action='store_true')

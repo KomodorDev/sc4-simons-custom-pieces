@@ -228,7 +228,7 @@ def _compile_in_parallel(groups, workers, context, donors, plugin_folder, progre
                 compiled[identifier] = (resources, delta, record, model_report)
                 if progress:
                     progress({'phase': 'compile', 'index': len(compiled), 'pieces': count,
-                              'piece': identifier})
+                              'piece': identifier, 'workers': workers})
     except BrokenProcessPool as error:
         raise ValueError('A build worker stopped unexpectedly. Retry with --jobs 1 for a serial build.') from error
     finally:
@@ -267,9 +267,15 @@ def build_project(project_root, plugins, output, include=None, extra_roots=None,
         require(piece['effect_name'].encode() not in baseline[RUL0], 'Preview effect name already used')
     compiled, shadow_sets = None, {}
     if jobs != 1 and len(selected) > 1 and not getattr(sys, 'frozen', False):
-        cpus = getattr(os, 'process_cpu_count', os.cpu_count)() or 1
+        if hasattr(os, 'process_cpu_count'):
+            cpus = os.process_cpu_count()
+        elif hasattr(os, 'sched_getaffinity'):
+            cpus = len(os.sched_getaffinity(0))
+        else:
+            cpus = os.cpu_count()
+        cpus = cpus or 1
         limit = min(cpus, 61) if sys.platform == 'win32' else cpus
-        workers = min(limit, jobs if jobs is not None else 4)
+        workers = min(limit, jobs if jobs is not None else max(1, cpus // 2))
         if workers > 1:
             groups = _compile_groups(selected)
             workers = min(workers, len(groups))
