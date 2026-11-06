@@ -1,10 +1,12 @@
 """Independent assembly cycles from one verified, disjoint normal build.
 
-Only menu presentations and the generated RUL0 Ordering insertion change.
+Menu presentations, generated RUL0 ordering, and explicitly selected
+construction aliases are derived from the verified original build.
 The original build and all per-assembly inputs remain frozen verification
 proof; no completed menu candidate is used as an intermediate source.
 """
 from copy import deepcopy
+from functools import partial
 import json
 import os
 from pathlib import Path
@@ -37,9 +39,33 @@ def _alias_targets(layout, pieces):
 
 
 def _alias_pairs(groups):
-    return [(number(piece['puzzle_id']), _root(layout, piece))
-            for layout, _, pieces in groups for piece in pieces
-            if piece['id'] in layout.get('_alias_roots', {})]
+    pairs = []
+    for layout, _, pieces in groups:
+        sources = {piece['id']: number(piece['puzzle_id']) for piece in pieces}
+        pairs.extend((sources[piece['id']], _root(layout, piece)) for piece in pieces
+                     if piece['id'] in layout.get('_alias_roots', {}))
+        pairs.extend((sources[row['piece_id']], number(row['puzzle_id']))
+                     for row in layout.get('_terminals', ()))
+    return pairs
+
+
+def _cycle_roots(layout, pieces):
+    return [_root(layout, piece) for piece in pieces] + [number(row['puzzle_id'])
+                for row in layout.get('_terminals', ())]
+
+
+def _terminal_bodies(groups, *, verify=False):
+    from .providers import domain_module
+    result = {}
+    for layout, _, pieces in groups:
+        if terminals := layout.get('_terminals'):
+            by_id = {piece['id']: piece for piece in pieces}
+            provider = domain_module(pieces[0], 'trumpet_terminals')
+            for row in terminals:
+                root, piece_id = number(row['puzzle_id']), row['piece_id']
+                result[root] = (partial(provider.verify_terminal_body, piece_id, row['helper_edge'], piece=by_id[piece_id])
+                                if verify else partial(provider.terminal_body, piece_id, row['helper_edge']))
+    return result
 
 
 def _consumed(layout, pieces):
@@ -69,6 +95,48 @@ def _alias_roots(layout_id, layout, pieces, reservations):
                 'Assembly alias reservation differs from the selected component or layout')
         roots[piece_id] = number(row['puzzle_id'])
     return roots
+
+
+def _terminal_components(layout_id, layout, scene, pieces, reservations):
+    from .providers import domain_module
+    requested = layout['terminal_components']
+    approaches = scene.get('terminal_approaches')
+    require(isinstance(approaches, dict) and approaches.keys() == requested.keys(),
+            'Assembly terminal selections must match the scene terminal placements')
+    require(isinstance(reservations, dict) and set(reservations) == set(requested.values()),
+            'Missing or unexpected assembly terminal reservations')
+    placements = domain_module(pieces[0], 'trumpet_terminals').terminal_placements(scene)
+    components = []
+    for index, (label, placement) in enumerate(placements.items(), len(pieces) + 1):
+        identifier = requested[label]
+        row = reservations[identifier]
+        require(isinstance(row, dict) and set(row) == {'piece_id', 'layout_id', 'puzzle_id', 'placement_id'}
+                and row['piece_id'] == placement['piece_id'] and row['layout_id'] == layout_id
+                and row['placement_id'] == label and isinstance(row['puzzle_id'], str)
+                and re.fullmatch(r'[0-9a-f]{4}', row['puzzle_id']),
+                'Assembly terminal reservation differs from the selected placement or layout')
+        approach = approaches[label]
+        origin = placement.get('display_origin_tiles_en')
+        rotation = placement.get('rotation_degrees_ccw')
+        require(isinstance(approach, dict) and approach.get('helper_edge') in ('north', 'south', 'west')
+                and approach.get('arm') in ('S', 'E', 'W', 'N')
+                and isinstance(approach.get('helper_cell_xy'), list)
+                and len(approach['helper_cell_xy']) == 2
+                and all(type(value) is int for value in approach['helper_cell_xy'])
+                and isinstance(origin, list) and len(origin) == 2
+                and all(type(value) is int or type(value) is float and value.is_integer() for value in origin)
+                and type(rotation) is int and rotation in (0, 90, 180, 270),
+                'Assembly terminal needs an exact cardinal helper, grid position, and rotation')
+        components.append({'id': identifier, 'piece_id': row['piece_id'], 'puzzle_id': row['puzzle_id'],
+                           'placement_id': label, 'cycle_position': index, 'arm': approach['arm'],
+                           'helper_edge': approach['helper_edge'], 'helper_cell_xy': approach['helper_cell_xy'],
+                           'origin_cell_xy': list(map(int, origin)), 'rotation_degrees_ccw': rotation})
+    return components
+
+
+def _terminal_targets(layout, pieces):
+    menu_prefixes = {piece['id']: number(piece['menu']['id']) & 0xffff0000 for piece in pieces}
+    return {menu_prefixes[row['piece_id']] | number(row['puzzle_id']) for row in layout.get('_terminals', ())}
 
 
 def _groups(base, bundle):
@@ -112,9 +180,16 @@ def _groups(base, bundle):
         buttons.add(button)
         pieces = single._selected(base, scene)
         require(member_domain(pieces) == domain, 'Assembly member domain differs from menu selection')
-        aliases = _alias_roots(row['layout_id'], layout, pieces, row.get('alias_reservations', {}))
-        if aliases:
-            layout['_alias_roots'] = aliases
+        require(('terminal_components' in layout) == ('terminal_approaches' in scene),
+                'Assembly terminal selections and scene approaches must be declared together')
+        reservations = row.get('alias_reservations', {})
+        if 'terminal_components' in layout:
+            aliases = {}
+            layout['_terminals'] = _terminal_components(row['layout_id'], layout, scene, pieces, reservations)
+        else:
+            aliases = _alias_roots(row['layout_id'], layout, pieces, reservations)
+            if aliases:
+                layout['_alias_roots'] = aliases
         alias_targets = _alias_targets(layout, pieces)
         for piece in pieces:
             root = _root(layout, piece)
@@ -129,6 +204,16 @@ def _groups(base, bundle):
             require(menu_id not in menu_ids and not rotations & states,
                     'Assembly menu groups overlap in a member, menu identifier, or construction state')
             menu_ids.add(menu_id); states.update(rotations)
+        terminal_targets = _terminal_targets(layout, pieces)
+        for terminal in layout.get('_terminals', ()):
+            root = number(terminal['puzzle_id'])
+            rotations = {root + turn * 0x10000 for turn in range(8)}
+            require(root and root not in canonical_roots and not rotations & states,
+                    'Assembly terminal collides with an existing construction state')
+            states.update(rotations)
+        require(not terminal_targets & (menu_ids | canonical_menu_ids),
+                'Assembly terminal collides with an existing menu identifier')
+        menu_ids.update(terminal_targets)
         result.append((layout, scene, pieces))
     require(len(result) >= 2 or bool(_alias_pairs(result)), 'Multiple assembly menus need at least two layouts')
     require(not buttons & menu_ids, 'Assembly presentation identifier overlaps a member button')
@@ -183,8 +268,9 @@ def _transform(base, controller, menu, bundle, icons):
     require(set(original) == {RUL0, NETWORK_INI} | ({RUL1} if needs_rul1(base['overlay']) else set()),
             'Original multi-assembly controller resource closure differs')
     aliases = _alias_pairs(groups)
-    source_rules, source_composition = add_aliases(original[RUL0], base['overlay']['rul0'], aliases)
-    roots = [[_root(layout, piece) for piece in pieces] for layout, _, pieces in groups]
+    source_rules, source_composition = add_aliases(original[RUL0], base['overlay']['rul0'], aliases,
+                                                  terminal_bodies=_terminal_bodies(groups))
+    roots = [_cycle_roots(layout, pieces) for layout, _, pieces in groups]
     changed, composition = with_feature_sequence(source_rules, source_composition,
                                                   [root for group in roots for root in group])
     insertion = composition['ordering_insertion']
@@ -282,8 +368,29 @@ def _documents(groups, base):
         elif mixed or nested:
             lines += [f'Open **Transportation → {network_menu}**, then click **{layout["cycle_button"]["title"]}**. Tab and Shift+Tab stay inside this assembly’s component cycle.', '']
         lines += [f'{index}. {piece["name"]} (`{piece["id"]}`).' for index, piece in enumerate(pieces, 1)]
+        terminals = layout.get('_terminals', ())
+        base_by_id = {piece['id']: piece for piece in pieces}
+        terminal_by_id = {terminal['id']: terminal for terminal in terminals}
+        terminal_members = []
+        for terminal in terminals:
+            piece = base_by_id[terminal['piece_id']]
+            label, direction = terminal['placement_id'], terminal['arm']
+            title = f'{piece["name"]} — Native HSR starter for {label} ({direction})'
+            x, y = terminal['origin_cell_xy']
+            helper_x, helper_y = terminal['helper_cell_xy']
+            turns = terminal['rotation_degrees_ccw']
+            lines.append(f'{terminal["cycle_position"]}. {title} (`{terminal["id"]}`). Place the component at reference (X{x}, Y{y}), at {turns}° counterclockwise. Keep (X{helper_x}, Y{helper_y}) clear for the native starter tile. The component uses the same model as its ordinary selection.')
+            terminal_members.append({'id': terminal['id'], 'name': title, 'domain': domain})
         lines += ['']
-        for case in single._game_checks(pieces, single_button=True, nested=nested)['cases']:
+        if terminals:
+            lines += ['The native starter is a NAM HSR track tile placed immediately outside the assembly. After placing each terminal selection, choose the **Monorail** tool and drag from the starter outward along the same track axis. Check that the new track takes on the HSR appearance, then test train travel in both directions.', '']
+        for case in single._game_checks([*pieces, *terminal_members], single_button=True, nested=nested)['cases']:
+            if terminal := terminal_by_id.get(case.get('piece_id')):
+                case = {**case, 'piece_id': terminal['piece_id'], 'selection_id': terminal['id'],
+                        'placement_id': terminal['placement_id'],
+                        'description': (f'Reach cycle selection {terminal["cycle_position"]} for '
+                                        f'{terminal["placement_id"]}, then place it at the reference and rotation '
+                                        'listed in this guide. Confirm that the native starter tile appears.')}
             if 'cycle_submenu' in layout and case['id'] == 'single-assembly-entry':
                 case = {**case, 'description': f'Transportation > {network_menu} > {layout["cycle_submenu"]["title"]} has exactly one button named {layout["cycle_button"]["title"]} for this assembly; no individual member buttons appear. Selecting this button and using Tab or Shift+Tab stays within its listed component cycle.'}
             key = layout['assembly_id'] + (':' + layout['assembly_variant'] if 'assembly_variant' in layout else '')
@@ -309,7 +416,8 @@ def _documents(groups, base):
         'environment_required': ['platform', 'game_version', 'NAM_profile'] + (['Submenus_DLL_version'] if nested_domains else []),
         'cases': cases})
     readme = ('Assembly component menus\nDEVELOPMENT BUILD — NOT GAME-TESTED\n'
-              + ''.join(f'{layout["cycle_button"]["title"]}: {len(pieces)} components\n' for layout, _, pieces in groups)
+              + ''.join(f'{layout["cycle_button"]["title"]}: {len(_cycle_roots(layout, pieces))} components\n'
+                        for layout, _, pieces in groups)
               + 'Read docs/assembly-menus/README.md. Tab cycles within the selected assembly.\n'
               + 'Building and packaging do not install anything.\n').encode('utf8')
     return {GUIDE: guide, CHECKS: checks, 'README.txt': readme}
@@ -327,7 +435,8 @@ def _manifest(base, bundle, proof, controller, menu, composition, audits):
     selection = [{**({'domain_id': member_domain(pieces)} if bundle['schema_version'] == 2 else {}),
                   'assembly_id': layout['assembly_id'], 'member_ids': [piece['id'] for piece in pieces],
                   **({'assembly_variant': layout['assembly_variant'],
-                      'component_aliases': layout['component_aliases']} if 'assembly_variant' in layout else {})}
+                      'component_aliases': layout['component_aliases']} if 'assembly_variant' in layout else {}),
+                  **({'terminal_components': layout['_terminals']} if '_terminals' in layout else {})}
                  for layout, _, pieces in groups]
     result['menu_experiment'] = {'kind': KIND, 'schema_version': bundle['schema_version'], 'assemblies': selection,
         'source_inputs': proof, 'construction_aliases_created': bool(_alias_pairs(groups)), 'in_game_menu_tested': False}
@@ -366,7 +475,8 @@ def _actual(base, bundle, old_controller, old_menu, controller, menu, compositio
     old_insert = original_composition['ordering_insertion'].encode('ascii')
     new_insert = composition['ordering_insertion'].encode('ascii')
     if aliases:
-        verify_aliases(old_c[RUL0], original_composition, new_c[RUL0], composition, aliases)
+        verify_aliases(old_c[RUL0], original_composition, new_c[RUL0], composition, aliases,
+                       terminal_bodies=_terminal_bodies(groups, verify=True))
     else:
         require(old_c[RUL0].count(old_insert) == 1 and new_c[RUL0] == old_c[RUL0].replace(old_insert, new_insert, 1),
                 'Multiple assembly menus changed native bytes or construction definitions')
@@ -380,7 +490,7 @@ def _actual(base, bundle, old_controller, old_menu, controller, menu, compositio
     original, actual = rows(old_insert), rows(new_insert)
     original.extend(('rotationring', [alias + turn * 0x10000 for turn in range(8)])
                     for _, alias in aliases)
-    selections = [[_root(layout, piece) for piece in pieces] for layout, _, pieces in groups]
+    selections = [_cycle_roots(layout, pieces) for layout, _, pieces in groups]
     selected = {root for roots in selections for root in roots}
     by_root = {states[0]: states for _, states in original}
     require(len(by_root) == len(original) and all(root in by_root for root in selected), 'Invalid original rotation roots')
@@ -546,6 +656,10 @@ def verify(output, write_report=True):
         'verification_limit': 'Strict frozen source-build validation and independent disjoint menu/Ordering checks; activation, Tab behavior, appearance, traffic, and save/reload remain unverified.'}
     if aliases:
         report['menu_experiment']['construction_aliases_checked'] = len(aliases)
+    terminals = sum(len(layout.get('_terminals', ())) for layout, _, _ in groups)
+    if terminals:
+        report['menu_experiment']['native_terminal_roots_checked'] = terminals
+        report['menu_experiment']['native_terminal_construction_states_checked'] = terminals * 8
     if submenus:
         if bundle['schema_version'] == 1:
             report['menu_experiment']['assembly_submenus'] = audits[-1]['submenus']
@@ -615,11 +729,11 @@ def build(project_root, source, output, *, layout_ids=None, domain_id=None, sele
         assembly = assemblies[0]
         row = {**({'domain_id': selected_domain} if bundle['schema_version'] == 2 else {}),
                'layout_id': identifier, 'layout': layout, 'scene': assembly['scene']}
-        if 'component_aliases' in layout:
+        reservation_keys = layout.get('component_aliases', layout.get('terminal_components', {})).values()
+        if reservation_keys:
             reservations = catalog.get('_allocations', {}).get('assembly_aliases', {})
-            keys = layout['component_aliases'].values()
-            require(all(key in reservations for key in keys), 'Assembly component alias has no ID reservation')
-            row['alias_reservations'] = {key: reservations[key] for key in keys}
+            require(all(key in reservations for key in reservation_keys), 'Assembly component alias has no ID reservation')
+            row['alias_reservations'] = {key: reservations[key] for key in reservation_keys}
         bundle['groups'].append(row)
         path = single._assembly_icon_path(root, assembly, layout.get('assembly_variant'))
         require(path.is_file(), 'Missing canonical assembly icon; generate it with assembly-icons')
@@ -639,10 +753,15 @@ def build(project_root, source, output, *, layout_ids=None, domain_id=None, sele
         for piece in pieces:
             require({k: v for k, v in piece.items() if k != 'asset_file'} == current.get(piece['id']),
                     'Assembly member differs from current authoring metadata')
-    _, installed, donors, _ = audit_inputs(catalog, plugins, base['pieces'], extra_roots)
+    context, installed, donors, _ = audit_inputs(catalog, plugins, base['pieces'], extra_roots)
+    for layout, _, pieces in groups:
+        if layout.get('_terminals'):
+            from .providers import domain_module
+            domain_module(pieces[0], 'trumpet_terminals').verify_native_inputs(context, installed, donors)
     proposed = {number(layout['cycle_button']['id']) for layout, _, _ in groups}
     proposed |= {number(row['definition']['id']) for row in _submenus(groups)}
     proposed |= {target for layout, _, pieces in groups for target in _alias_targets(layout, pieces).values()}
+    proposed |= {target for layout, _, pieces in groups for target in _terminal_targets(layout, pieces)}
     used = {key[2] for key in installed} | {number(piece['menu']['id']) for piece in catalog['pieces']}
     transport_menu.check_ids(transport_menu.members(base), used, proposed)
     require(not proposed & used, 'Assembly presentation identifier collides with existing content')

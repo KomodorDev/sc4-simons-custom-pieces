@@ -52,7 +52,7 @@ The permanent construction definition is [piece.json](piece.json), and its geome
 
 After following the [separate installation procedure](../../../../docs/BUILD_AND_INSTALL.md), use a disposable flat test city. A proper rotation turns the whole piece and all its travel directions together; it does not reflect the piece or reverse a directed track.
 
-1. Open **Transportation → Rail**, hover over the SCP buttons, and select **HSR Level 4 (30.5 m) over HSR Level 2 (15.5 m) — Two-Track Crossing 90°**. An assembly can expose the same reusable type through its Tab/Shift+Tab component cycle.
+1. Open **Transportation → Rail → SCP → Pieces**, hover over the SCP buttons, and select **HSR Level 4 (30.5 m) over HSR Level 2 (15.5 m) — Two-Track Crossing 90°**. An assembly can expose the same reusable type through its Tab/Shift+Tab component cycle.
 2. Move the complete cursor preview onto clear terrain. Press **Home** or **End** to rotate; on the documented Mac keyboard, **Fn + ←** and **Fn + →** provide those keys. Use only the supported construction states listed below.
 3. At 0°, identify the lower east/west pair and upper north/south pair in both clean views. Place this component on one clear tile, with the intended Level 2 and Level 4 approaches aligned to their respective boundaries.
 4. Click once to place the component. Supply matching outside connections and travel demand. Inspect tracks, decks, walls, supports, and shadows, then check the permitted journeys and unavailable movements separately.

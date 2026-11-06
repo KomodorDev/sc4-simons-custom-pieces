@@ -4,7 +4,7 @@
 // Used when: custom-pieces/scp.py assembly-menu, or its menu-test compatibility command, prepares the named rail assembly button from an existing verified normal build.
 // Read by: scp.menu_experiment.build_menu_experiment, also called by build_assembly_menu, resolves the layout, registered assembly, component order, presentation IDs, title, and description.
 // Updated by: Maintainers author a layout when registering an assembly and deliberately change its presentation or cycling policy; the assembly-creation starter shows the header-preserving edit. Menu preparation reads this source and writes a separate build.
-// Affects: The one assembly button, Tab/Shift+Tab component cycle, and visibility of member buttons in that prepared build. It neither changes component geometry nor places the complete assembly with one click; presentation IDs must pass collision checks.
+// Affects: The assembly button, Tab/Shift+Tab component cycle, terminal starter selections, and visibility of member buttons in the prepared build. Each click places one selected component.
 // Reference: custom-pieces/docs/BUILD_AND_INSTALL.md#8-prepare-the-assembly-menu.
 {
   "schema_version": 1,
@@ -13,11 +13,16 @@
     "trumpet": {
       "assembly_id": "hsr-trumpet-straight-stem",
       "member_order": "first-use-in-assembly",
+      "terminal_components": {
+        "P04": "trumpet-south-native-hsr-terminal",
+        "P08": "trumpet-east-native-hsr-terminal",
+        "P01": "trumpet-west-native-hsr-terminal"
+      },
       "cycle_button": {
         "id": "6a47fef0",
         "order": "7010fef0",
         "title": "SCP | ASSEMBLY | HSR — Trumpet — Straight Stem",
-        "description": "Select one reusable trumpet component. Tab and Shift+Tab change component types; Home and End rotate the current component. This button does not place the complete assembly."
+        "description": "Select one trumpet component. Tab and Shift+Tab change the selection. The final three selections add native HSR starters at the south, east, and west arms. Home and End rotate the current selection. Each click places one component."
       }
     }
   }

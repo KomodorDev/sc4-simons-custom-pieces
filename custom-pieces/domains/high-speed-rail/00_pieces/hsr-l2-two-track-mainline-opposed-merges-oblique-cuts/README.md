@@ -60,7 +60,7 @@ Use the occupied-cell and structural-cell definitions in piece.json to understan
 
 After following the [separate build and installation procedure](../../../../docs/BUILD_AND_INSTALL.md), use a disposable flat test city. A proper rotation turns the entire component and all its travel directions together; it does not reflect the component or reverse a one-way route.
 
-1. Open **Transportation → Rail**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) — Opposed Merges to Two-Track Mainline — Oblique Branch Cuts**. An installed assembly may instead include this same type within its declared Tab/Shift+Tab cycle.
+1. Open **Transportation → Rail → SCP → Pieces**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) — Opposed Merges to Two-Track Mainline — Oblique Branch Cuts**. An installed assembly may instead include this same type within its declared Tab/Shift+Tab cycle.
 2. Move the cursor preview over clear terrain. Press **Home** or **End** to rotate the whole piece; on the documented Mac keyboard, **Fn + ←** and **Fn + →** provide those keys. Use only the supported construction states listed in the generated connection section.
 3. At 0°, identify the paired mainline ends and both branch entrances in the top picture. Align the complete cursor preview so that every required channel agrees with its neighbour; a curved branch needs its matching continuation.
 4. Click once to place the component. Supply matching outside connections and travel demand. Inspect the rails, decks, walls, supports, and shadows, then test the permitted journeys and forbidden movements separately.

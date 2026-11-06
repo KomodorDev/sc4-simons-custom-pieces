@@ -16,7 +16,7 @@ Exact reusable identifier: `hsr-l4-single-track-oneway-split-90deg-right-wide`.
 
 Footprint: **6 × 6 tiles**. Exact menu name: **HSR Level 4 (30.5 m) — Split 90° Right from Single-Track One-Way Mainline — Wide**.
 
-Choose this exact name in Transportation → Rail. Press Home or End to rotate; use only the supported states listed below. Join each end to a matching port profile and direction.
+Choose this exact name in Transportation → Rail → SCP → Pieces. Press Home or End to rotate using the supported states listed below. Join each end to a matching port profile and direction.
 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)

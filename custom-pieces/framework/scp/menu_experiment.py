@@ -104,8 +104,10 @@ def _layout(value, domain='high-speed-rail'):
     from .menu_experiment_resources import valid_menu_order
     required = {'assembly_id', 'member_order', 'cycle_button'}
     variant = {'assembly_variant', 'component_aliases'}
+    terminals = {'terminal_components'}
     require(isinstance(value, dict) and set(value) in (
-        required, required | {'submenu'}, required | {'cycle_submenu'}, required | variant),
+        required, required | {'submenu'}, required | {'cycle_submenu'}, required | variant,
+        required | terminals),
             'Unsupported menu layout fields')
     if 'assembly_variant' in value:
         require(domain == 'highway' and isinstance(value['assembly_variant'], str)
@@ -116,6 +118,13 @@ def _layout(value, domain='high-speed-rail'):
             isinstance(key, str) and isinstance(alias, str) and re.fullmatch(r'[a-z][a-z0-9-]*', alias)
             for key, alias in aliases.items()) and len(aliases) == len(set(aliases.values())),
             'Invalid assembly component alias map')
+    if 'terminal_components' in value:
+        entries = value['terminal_components']
+        require(domain == 'high-speed-rail' and isinstance(entries, dict) and entries and all(
+            isinstance(key, str) and re.fullmatch(r'P[0-9]{2}[A-Z]?', key)
+            and isinstance(alias, str) and re.fullmatch(r'[a-z][a-z0-9-]*', alias)
+            for key, alias in entries.items()) and len(entries) == len(set(entries.values())),
+            'Invalid assembly terminal component map')
     require(isinstance(value['assembly_id'], str) and
             re.fullmatch(r'[a-z][a-z0-9-]{1,63}', value['assembly_id']), 'Invalid assembly identifier')
     require(value['member_order'] == 'first-use-in-assembly', 'Unsupported menu member order')
@@ -157,11 +166,13 @@ def _source_documentation_path(layout, path):
 
 
 def _assembly_readme(layout, pieces, *, nested=False):
+    from .menu_experiment_resources import member_domain
+    menu_name = 'Highways' if member_domain(pieces) == 'highway' else 'Rail'
     return ('Assembly component menu\nDEVELOPMENT BUILD — NOT GAME-TESTED\n'
             f'Assembly: {layout["assembly_id"]}\n'
             f'Button: {layout["cycle_button"]["title"]}\n'
             f'The single assembly button selects {len(pieces)} reusable component types with Tab and Shift+Tab.\n'
-            + ('Open Transportation > Highways > SCP > Assemblies.\n' if nested else '')
+            + (f'Open Transportation > {menu_name} > SCP > Assemblies.\n' if nested else '')
             + 'Home and End rotate the selected component; each click places one component.\n'
             'Read docs/assembly-menu/README.md for the component order and pending game checks.\n'
             'Original source documents and archives are frozen proof in docs/assembly-menu-source/.\n'
@@ -261,7 +272,9 @@ def _guide(layout, pieces, *, nested=False):
     from .content import markdown_metadata
     from .menu_experiment_resources import member_domain
     highway = member_domain(pieces) == 'highway'
-    menu_name = ('Highways → SCP → Assemblies' if nested else 'Highways') if highway else 'Rail'
+    menu_name = 'Highways' if highway else 'Rail'
+    if nested:
+        menu_name += ' → SCP → Assemblies'
     if 'submenu' not in layout:
         rows = [markdown_metadata('Assembly component menu',
                 'Place reusable assembly components from one button, using Tab and Shift+Tab to change type.',
@@ -657,8 +670,8 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
         layout_id = 'trumpet'
     require(layout_id in config['layouts'], 'Unknown assembly menu layout')
     layout = _layout(config['layouts'][layout_id], domain_id)
-    if 'assembly_variant' in layout:
-        require(single_button_only, 'Assembly variants require assembly-menu')
+    if 'assembly_variant' in layout or 'terminal_components' in layout:
+        require(single_button_only or 'terminal_components' in layout, 'Assembly variants require assembly-menu')
         from .multi_assembly_menu import build
         return build(root, source, output, selections=[{'domain_id': domain_id, 'layout_id': layout_id}],
                      plugins=plugins, extra_roots=extra_roots)
@@ -670,6 +683,7 @@ def build_menu_experiment(project_root, source, output, *, layout_id='trumpet-me
                   if assembly['id'] == layout['assembly_id'] and assembly['domain'] == domain_id]
     require(len(assemblies) == 1, 'Menu experiment must select one registered assembly')
     scene = assemblies[0]['scene']
+    require('terminal_approaches' not in scene, 'Assembly terminal selections and scene approaches must be declared together')
     from .menu_experiment_resources import make_assembly_icon, validate_assembly_icon
     icon_path = _assembly_icon_path(root, assemblies[0])
     require(icon_path.is_file(), 'Missing canonical assembly icon; generate it with assembly-icons')

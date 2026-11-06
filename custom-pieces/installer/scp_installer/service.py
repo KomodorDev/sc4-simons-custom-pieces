@@ -459,7 +459,7 @@ def _work_root(path, installation):
 
 
 def _require_submenu_files(installation):
-    """Check that the Highway menu dependencies are in the game's loading roots."""
+    """Check that the SCP menu dependencies are in the game's loading roots."""
     roots = (installation.plugins, *installation.extra_plugins)
     missing = []
     for name in ("memo.submenus.dll", "SC4ResourceLoadingHooks.dll"):
@@ -470,7 +470,7 @@ def _require_submenu_files(installation):
                and path.is_file() for root in roots for path in root.rglob("*")):
         missing.append("submenu-essentials.dat anywhere under Plugins outside the SCP installation")
     if missing:
-        raise ValueError("Install these missing files to use the Highway SCP menu.\n\n- "
+        raise ValueError("Install these missing files to use the SCP menus.\n\n- "
                          + "\n- ".join(missing)
                          + "\n\nUse Resource Loading Hooks 2.0.1 or later, then retry. "
                          + "See https://github.com/memo33/submenus-dll#installation")

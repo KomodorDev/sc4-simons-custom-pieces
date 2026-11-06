@@ -1,0 +1,366 @@
+// title: "HSR trumpet outer straight removal audit"
+// summary: "Verify the retained trumpet geometry, clipped journeys, and shortened native starter placements against the saved predecessor."
+//
+// Used when: Reviewing the shortened trumpet assembly and its prepared menu.
+// Read by: The trumpet testing guide and maintainers reviewing the assembly.
+// Updated by: A maintainer rerunning the shortened-layout verifier against the exact saved builds.
+// Affects: Software evidence for the fixed placement plan, saved paths, native seams, and terminal selection states.
+{
+  "schema_version": 1,
+  "status": "passed",
+  "baseline_manifest_sha256": "5b2ce6c05818129060416b54045aae52c2c973d2631be796046a280cd0a3db4e",
+  "candidate_manifest_sha256": "28816a0e48d015583ed77f8654b362219a69bb4fae733c014bff8b2661eb79ff",
+  "baseline_scene_sha256": "c4ebddadbe4a02091b3b7f57f7bb7bc815e3c5372cd2c2abc69d560f076ea455",
+  "candidate_scene_sha256": "3b4aa360e9f0bc602d5d24a6707348300252017a6bd1eb4f615b8a92b41d1302",
+  "baseline_scene": "evidence/design-history/assembly-before-outer-straight-removal.json",
+  "candidate_scene": "assembly.json",
+  "removed": [
+    {
+      "placement": "P22",
+      "centre_m": [
+        -112.0,
+        0.0
+      ]
+    },
+    {
+      "placement": "P09",
+      "centre_m": [
+        192.0,
+        0.0
+      ]
+    }
+  ],
+  "retained_fixed_cells": 103,
+  "retained_placements_and_DATs_identical": 26,
+  "fixed_construction_rectangle_tiles": [
+    18,
+    23
+  ],
+  "retained_piece_dat_sha256": {
+    "hsr-h23000mm-and-l4-two-track-curve-ramp-90deg-tight": "57353b7fd0068afcc03c797099b05f8ecf8915f0247b908e7ce632d4bc78d499",
+    "hsr-l2-and-h23000mm-two-track-curve-ramp-90deg-tight": "9b2e521da218fc6d39a3c640c792c76af264acefc1d9d47707fdbf351bc86ff2",
+    "hsr-l2-and-l4-two-track-ramp": "f6bd84cb45e553d8666f96282cc428a27f786c4642e767fab6c53626d1d2b023",
+    "hsr-l2-mixed-fan-compact-recessed-web": "7806e7b4a2326be812a8660e1ccc9c9e45dd36d6202e9f69aa21d51cf0c7a7e1",
+    "hsr-l2-single-track-oneway-curve-oblique-entry": "ec29eb942ad249fe0b76ba3708d6b53776060c9cbb9946f6c0988f4dd9e59fdb",
+    "hsr-l2-single-track-oneway-curve-oblique-exit": "99aaee556dde591e8502b48cf2b41aca309ab8208e0ef1ef7c38cf9a9f40bf79",
+    "hsr-l2-single-track-oneway-straight-width8m": "dac6d20036f729cae5fe12922ffbc5926e1b35e3376dbe541c223684633defc6",
+    "hsr-l2-two-track-mainline-opposed-merges-oblique-cuts": "8be9afbffba089dd3ff916a34bf6ea358722fc55321a256fff20106be4a9f2af",
+    "hsr-l2-two-track-mainline-split-merge-parallel-recessed-end": "f975d978ed78b6025f2c997e0ae0cc10900da29bd525c7597c08ba2cb6c5994d",
+    "hsr-l2-two-track-mainline-split-oblique-cut": "2f005a1645b55a860604a155596f4a9c47fc0ee29ee6d67ffcb60a07a21acc9e",
+    "hsr-l2-two-track-straight": "9b82c31fd3d2a1d84985ad5741541d88b09a6fcc99fae2baf10c8af96f17d5a0",
+    "hsr-l2-two-track-straight-recessed-web": "ba8122a02cf73ba4728b31996818b56872f37b235f4239b1ec8f3402f35ae2bf",
+    "hsr-l4-over-hsr-l2-two-track-crossing-90deg": "82136b8a300b1f938589a5ad8df3a83dad7d42289da8113c6dc0404a9cca4486",
+    "hsr-l4-two-track-straight": "bf8455266be66c381aa237b3957e6f7de7bd8fb71b64de211bcdefe150bad186"
+  },
+  "retained_fixed_payload_comparisons": 1133,
+  "retained_source_support_positions": 72,
+  "retained_actual_tile_triangles": 714609,
+  "paths": {
+    "previous_fragments": 166,
+    "retained_fragments": 162,
+    "allowed": 6,
+    "forbidden": 6,
+    "splits": 3,
+    "proper_rotations_checked": 4,
+    "journeys": [
+      {
+        "journey": [
+          "E_in",
+          "S_out"
+        ],
+        "previous_point_count": 1790,
+        "retained_point_count": 1789,
+        "retained_points_identical": true
+      },
+      {
+        "journey": [
+          "E_in",
+          "W_out"
+        ],
+        "previous_point_count": 21,
+        "retained_point_count": 19,
+        "retained_points_identical": true
+      },
+      {
+        "journey": [
+          "S_in",
+          "E_out"
+        ],
+        "previous_point_count": 542,
+        "retained_point_count": 541,
+        "retained_points_identical": true
+      },
+      {
+        "journey": [
+          "S_in",
+          "W_out"
+        ],
+        "previous_point_count": 1799,
+        "retained_point_count": 1798,
+        "retained_points_identical": true
+      },
+      {
+        "journey": [
+          "W_in",
+          "E_out"
+        ],
+        "previous_point_count": 21,
+        "retained_point_count": 19,
+        "retained_points_identical": true
+      },
+      {
+        "journey": [
+          "W_in",
+          "S_out"
+        ],
+        "previous_point_count": 537,
+        "retained_point_count": 536,
+        "retained_points_identical": true
+      }
+    ]
+  },
+  "native_seams": {
+    "native_tile": "5dd31500",
+    "rul1_sha256": "4e44ec44283de6fccc3cd40492fc24154d13fb16a5150e13c201c6e615bba998",
+    "rul2_sha256": "c427c7872743ca4cd9f583adf33c93a320babe37c42061fbd33c905696e7a3b1",
+    "native_path_sha256": "14ede4aca7915368d6cfbeb88e5af3e801243eb9e4becbd4a5cf9b1e1fe7a9b8",
+    "native_model_sha256": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
+    "proper_rotations_per_terminal": 4,
+    "paired_directed_socket_comparisons": 24,
+    "model_profile_comparisons": 60,
+    "terminals": {
+      "P01": {
+        "helper_grid_east_north": [
+          0,
+          13
+        ],
+        "helper_centre_m": [
+          -112.0,
+          0.0
+        ],
+        "native_cw_rotation": 1,
+        "native_rul1": "Rot2=0x01010000,0x00020002,0x5DD31500,1,0",
+        "registered_sockets": [
+          {
+            "direction": "in",
+            "position_m": [
+              -104.0,
+              -2.0,
+              15.5
+            ],
+            "tangent_and_grade": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "transport_class": 7,
+            "custom_lane_and_junction": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "native_lane_and_junction": [
+              [
+                0,
+                null
+              ]
+            ]
+          },
+          {
+            "direction": "out",
+            "position_m": [
+              -104.0,
+              2.0,
+              15.5
+            ],
+            "tangent_and_grade": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "transport_class": 7,
+            "custom_lane_and_junction": [
+              [
+                0,
+                0
+              ]
+            ],
+            "native_lane_and_junction": [
+              [
+                0,
+                null
+              ]
+            ]
+          }
+        ],
+        "maximum_model_sample_difference_m": 1.907e-06
+      },
+      "P08": {
+        "helper_grid_east_north": [
+          19,
+          13
+        ],
+        "helper_centre_m": [
+          192.0,
+          0.0
+        ],
+        "native_cw_rotation": 3,
+        "native_rul1": "Rot4=0x00000101,0x00020002,0x5DD31500,3,0",
+        "registered_sockets": [
+          {
+            "direction": "in",
+            "position_m": [
+              184.0,
+              2.0,
+              15.5
+            ],
+            "tangent_and_grade": [
+              -1.0,
+              -0.0,
+              0.0
+            ],
+            "transport_class": 7,
+            "custom_lane_and_junction": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "native_lane_and_junction": [
+              [
+                0,
+                null
+              ]
+            ]
+          },
+          {
+            "direction": "out",
+            "position_m": [
+              184.0,
+              -2.0,
+              15.5
+            ],
+            "tangent_and_grade": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "transport_class": 7,
+            "custom_lane_and_junction": [
+              [
+                0,
+                0
+              ]
+            ],
+            "native_lane_and_junction": [
+              [
+                0,
+                null
+              ]
+            ]
+          }
+        ],
+        "maximum_model_sample_difference_m": 1.907e-06
+      },
+      "P04": {
+        "helper_grid_east_north": [
+          7,
+          -1
+        ],
+        "helper_centre_m": [
+          0.0,
+          -224.0
+        ],
+        "native_cw_rotation": 0,
+        "native_rul1": "Rot1=0x00010100,0x02000200,0x5DD31500,0,0",
+        "registered_sockets": [
+          {
+            "direction": "in",
+            "position_m": [
+              2.0,
+              -216.0,
+              15.5
+            ],
+            "tangent_and_grade": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "transport_class": 7,
+            "custom_lane_and_junction": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "native_lane_and_junction": [
+              [
+                0,
+                null
+              ]
+            ]
+          },
+          {
+            "direction": "out",
+            "position_m": [
+              -2.0,
+              -216.0,
+              15.5
+            ],
+            "tangent_and_grade": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "transport_class": 7,
+            "custom_lane_and_junction": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ],
+            "native_lane_and_junction": [
+              [
+                0,
+                null
+              ]
+            ]
+          }
+        ],
+        "maximum_model_sample_difference_m": 1.907e-06
+      }
+    }
+  },
+  "saved_menu": {
+    "controller_dat_sha256": "12f73c659ce1371fa62e2dfd923afd908634adf4f3a48def97bcb406f604a215",
+    "owned_model_addresses_checked": {
+      "P04": 14,
+      "P08": 4,
+      "P01": 4
+    },
+    "unique_terminal_construction_states": 24,
+    "south_root_body_identical": true
+  },
+  "limits": [
+    "Native dependencies were audited in the supplied stock-only NAM input directory. The full installed Plugins collision scan is outside this audit.",
+    "Software checks cover the saved construction rules, route geometry, and sampled model profile.",
+    "Starter creation, dragging, visible trains, and live selection of coincident branch records remain unverified."
+  ]
+}

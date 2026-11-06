@@ -44,6 +44,8 @@ from scp_hsr.hsr_trumpet_rework_verify import (
     continuous_symmetric_distance, _directed_continuous_distance, audit_matching_route_movement,
 )
 
+PRE_TRIM_SCENE = SCENE.parent/'evidence/design-history/assembly-before-outer-straight-removal.json'
+
 
 @lru_cache(maxsize=1)
 def historical_recipes():
@@ -75,7 +77,7 @@ def current_piece_source(relative, root=ROOT):
 
 def historical_scene():
     from scp_hsr.hsr_trumpet_border_verify import frozen_inputs, expected_current_placements
-    scene = json.loads(SCENE.read_text())
+    scene = json.loads(PRE_TRIM_SCENE.read_text())
     scene['placements'] = expected_current_placements(frozen_inputs())
     return scene
 
@@ -536,12 +538,12 @@ class RemovedStructuralCellProjectionControls(unittest.TestCase):
 
 
 class EncodedWholeAssemblySourceControls(unittest.TestCase):
-    """Clean clones can check encoded route geometry without native model inputs."""
+    """Check the archived complete-route limits against their 28-placement plan."""
     @classmethod
     def setUpClass(cls):
         from scp_hsr.hsr_components_layout import component_layout
         from scp_hsr.hsr_trumpet_verify import rotate,key
-        scene=json.loads(SCENE.read_text());tiles={}
+        scene=json.loads(PRE_TRIM_SCENE.read_text());tiles={}
         for placement in scene['placements']:
             path=piece_folder(placement['piece_id'])/'piece.json'
             spec=json.loads(path.read_text());layout=component_layout(spec['recipe'])

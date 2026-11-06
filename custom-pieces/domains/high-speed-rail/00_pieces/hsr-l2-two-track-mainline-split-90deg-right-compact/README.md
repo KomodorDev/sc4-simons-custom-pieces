@@ -16,7 +16,7 @@ Exact reusable identifier: `hsr-l2-two-track-mainline-split-90deg-right-compact`
 
 Footprint: **2 × 2 tiles**. Exact menu name: **HSR Level 2 (15.5 m) — Split 90° Right from Two-Track Mainline — Compact**.
 
-Choose this exact name in Transportation → Rail. Press Home or End to rotate; use only the supported states listed below. Join each end to a matching port profile and direction.
+Choose this exact name in Transportation → Rail → SCP → Pieces. Press Home or End to rotate using the supported states listed below. Join each end to a matching port profile and direction.
 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)

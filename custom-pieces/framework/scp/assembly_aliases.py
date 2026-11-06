@@ -97,12 +97,16 @@ def _append_rings(insertion, rings):
     return insertion.replace(end, newline.join(rings) + newline + end, 1)
 
 
-def add_aliases(raw, composition, aliases):
+def add_aliases(raw, composition, aliases, *, terminal_bodies=None):
     """Append aliases and temporary standalone rings before assembly ordering.
 
     Each pair identifies a canonical root and a distinct new root. The only
-    copied fields that change are references between the copied states.
+    copied fields that change are references between the copied states, plus
+    the domain-owned root body edit for an explicitly selected terminal.
     """
+    terminal_bodies = terminal_bodies or {}
+    require(terminal_bodies.keys() <= {alias for _, alias in aliases},
+            'Assembly terminal body has no construction alias')
     if not aliases:
         return raw, composition
     insertion, suffix, _ = _restore(raw, composition)
@@ -113,6 +117,8 @@ def add_aliases(raw, composition, aliases):
         rings.append(('RotationRing = ' + ', '.join(f'{state:X}' for state in remap.values())).encode('ascii'))
         for original, copied in remap.items():
             body = bodies[original]
+            if copied == alias and alias in terminal_bodies:
+                body = terminal_bodies[alias](body)
             if reference := COPY_FROM.search(body):
                 target = remap[int(reference[1], 16)]
                 body = body[:reference.start(1)] + f'0x{target:X}'.encode('ascii') + body[reference.end(1):]
@@ -133,8 +139,12 @@ def add_aliases(raw, composition, aliases):
     return expanded, metadata
 
 
-def verify_aliases(original_raw, original_composition, final_raw, final_composition, aliases):
+def verify_aliases(original_raw, original_composition, final_raw, final_composition, aliases,
+                   *, terminal_bodies=None):
     """Inspect saved alias definitions and prove all original bytes recover."""
+    terminal_bodies = terminal_bodies or {}
+    require(terminal_bodies.keys() <= {alias for _, alias in aliases},
+            'Assembly terminal verifier has no construction alias')
     old_order, old_suffix, old_native = _restore(original_raw, original_composition)
     order, suffix, native = _restore(final_raw, final_composition)
     require(native == old_native and suffix.startswith(old_suffix),
@@ -164,6 +174,10 @@ def verify_aliases(original_raw, original_composition, final_raw, final_composit
             canonical = COPY_FROM.search(original_body)
             reference = COPY_FROM.search(copied_body)
             if canonical is None:
+                if copied == alias and alias in terminal_bodies:
+                    require(reference is None, 'Assembly terminal unexpectedly copies another root')
+                    terminal_bodies[alias](original_body, copied_body)
+                    continue
                 require(copied_body == original_body,
                         'Assembly alias changed a canonical construction body')
                 continue

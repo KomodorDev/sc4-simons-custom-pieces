@@ -16,7 +16,7 @@ Exact reusable identifier: `ghsr-ground-two-track-mainline-split-135deg-right-co
 
 Footprint: **6 × 6 tiles**. Exact menu name: **GHSR Ground (1 m) — Split 135° Right from Two-Track Mainline — Compact**.
 
-Choose this exact name in Transportation → Rail. Press Home or End to rotate; use only the supported states listed below. Join each end to a matching port profile and direction.
+Choose this exact name in Transportation → Rail → SCP → Pieces. Press Home or End to rotate using the supported states listed below. Join each end to a matching port profile and direction.
 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)

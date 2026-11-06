@@ -56,7 +56,7 @@ The permanent construction definition is [piece.json](piece.json), and its geome
 
 After following the [separate installation procedure](../../../../docs/BUILD_AND_INSTALL.md), use a disposable flat test city. A proper rotation turns the whole piece and all its travel directions together; it does not reflect the piece or reverse a directed track.
 
-1. Open **Transportation → Rail**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) — Split from Two-Track Mainline — Oblique Branch Cut**. An assembly can expose the same reusable type through its Tab/Shift+Tab component cycle.
+1. Open **Transportation → Rail → SCP → Pieces**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) — Split from Two-Track Mainline — Oblique Branch Cut**. An assembly can expose the same reusable type through its Tab/Shift+Tab component cycle.
 2. Move the complete cursor preview onto clear terrain. Press **Home** or **End** to rotate; on the documented Mac keyboard, **Fn + ←** and **Fn + →** provide those keys. Use only the supported construction states listed below.
 3. At 0°, identify the west and east paired mainline ends and the southern curved departure in the top picture. Keep all four consecutive tiles clear, and align the whole paired boundary and curved continuation before placing.
 4. Click once to place the component. Supply matching outside connections and travel demand. Inspect tracks, decks, walls, supports, and shadows, then check the permitted journeys and unavailable movements separately.

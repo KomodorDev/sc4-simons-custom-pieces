@@ -56,7 +56,7 @@ A **proper rotation** turns the complete piece without reflecting it. The eight 
 
 After following the separate [installation procedure](../../../../docs/BUILD_AND_INSTALL.md), use a disposable flat test city. Placement remains unverified in game.
 
-1. Open **Transportation → Rail**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) ↔ Level 4 (30.5 m) — Two-Track Ramp**. In an assembly’s component cycle, use **Tab** or **Shift+Tab** to select this same type.
+1. Open **Transportation → Rail → SCP → Pieces**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) ↔ Level 4 (30.5 m) — Two-Track Ramp**. In an assembly’s component cycle, use **Tab** or **Shift+Tab** to select this same type.
 2. Move the preview over a clear **1 × 8 tile rectangle**. Press **Home** or **End** to rotate; on the documented Mac keyboard, **Fn + ←** and **Fn + →** produce those keys.
 3. At 0°, align the south end with the paired Level 2 approach and the north end with the paired Level 4 approach. Preserve the complete joining section and both travel directions.
 4. Click once to place the complete piece. Supply travel demand for each permitted journey, then inspect the game’s route query and moving trains separately.
