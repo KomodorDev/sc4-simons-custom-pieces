@@ -83,6 +83,54 @@ class ShadowTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'differs from actual S3D'):
             validate_piece_shadows(resources,{'tile_ids':[self.tile]})
 
+    def test_transferred_shadows_only_match_the_exact_saved_model(self):
+        piece = {'tile_ids': [self.tile]}
+        resources = {(*S3D, self.tile + zoom): self.model for zoom in range(5)}
+        with shadows.compiled_shadow_sets() as compiled:
+            resources.update(build_shadows(self.model, self.tile))
+        self.assertEqual(set(compiled), {self.model})
+        self.assertEqual(tuple(zlib.decompress(raw) for raw in compiled[self.model]),
+                         tuple(resources[*SHADOW, self.tile + zoom] for zoom in range(5)))
+        shadows._shadow_set.cache_clear()
+        shadows._compressed_shadow_set.cache_clear()
+        self.addCleanup(shadows._shadow_set.cache_clear)
+        self.addCleanup(shadows._compressed_shadow_set.cache_clear)
+        with shadows.compiled_shadow_sets(compiled) as transferred, \
+                patch.object(shadows, '_rasterize', wraps=shadows._rasterize) as rasterize:
+            self.assertIs(transferred, compiled)
+            validate_piece_shadows(resources, piece)
+            rasterize.assert_not_called()
+
+            key = (*SHADOW, self.tile + 4)
+            mask = decode_shadow_fsh(resources[key]).getchannel('A')
+            mask.putpixel((64, 64), 0)
+            with self.assertRaisesRegex(ValueError, 'differs from actual S3D'):
+                validate_piece_shadows({**resources, key: encode_shadow_fsh(mask)}, piece)
+            rasterize.assert_not_called()
+
+            changed = {**resources, (*S3D, self.tile): pack_s3d(plane(2., 6.))}
+            with self.assertRaisesRegex(ValueError, 'differs from actual S3D'):
+                validate_piece_shadows(changed, piece)
+            self.assertEqual(rasterize.call_count, len(ZOOM_SIZES))
+
+        shadows._shadow_set.cache_clear()
+        with patch.object(shadows, '_rasterize', wraps=shadows._rasterize) as rasterize:
+            validate_piece_shadows(resources, piece)
+            rasterize.assert_not_called()
+
+    def test_compiled_shadow_scope_restores_the_outer_scope_after_error(self):
+        other_model = pack_s3d(plane(2., 6.))
+        with shadows.compiled_shadow_sets() as outer:
+            with self.assertRaisesRegex(RuntimeError, 'compile failed'):
+                with shadows.compiled_shadow_sets() as inner:
+                    build_shadows(self.model, self.tile)
+                    raise RuntimeError('compile failed')
+            build_shadows(other_model, self.tile)
+        self.assertEqual(set(inner), {self.model})
+        self.assertEqual(set(outer), {other_model})
+        build_shadows(self.model, self.tile)
+        self.assertEqual(set(outer), {other_model})
+
     def test_native_bgra_pixel_order_and_coverage(self):
         coverage = Image.new('L', (8, 8), 0)
         coverage.putpixel((0, 0), 255)
@@ -131,6 +179,26 @@ class ShadowTests(unittest.TestCase):
     def test_geometry_is_clipped_to_one_tile_without_rescaling(self):
         self.assertEqual(rasterize_shadow(pack_s3d(plane(-100., 100., -100., 100.)), 128).getextrema(), (255, 255))
         self.assertIsNone(rasterize_shadow(pack_s3d(plane(9., 12.)), 128).getbbox())
+
+    def test_sloped_triangle_preserves_clipped_pixel_coverage(self):
+        model = plane()
+        vertices = [(-10., 15.5, -3.125), (5.125, 15.5, 7.8125),
+                    (9.125, 15.5, -5.625), (0., 15.5, 0.)]
+        model['vertices'][0]['data'] = b''.join(struct.pack('<5f', *point, 0., 0.) for point in vertices)
+        model['indices'][0]['values'] = (0, 1, 2)
+        model['primitives'][0] = [(0, 0, 3)]
+        mask = rasterize_shadow(pack_s3d(model), 8)
+        # Coverage from the original centre-sampled scanline rasterizer.
+        self.assertEqual(mask.tobytes(), bytes.fromhex("""
+            00 00 00 00 00 00 00 00
+            00 00 04 28 48 68 8c ab
+            c3 e3 ff ff ff ff ff ff
+            88 fb ff ff ff ff ff df
+            00 40 e3 ff ff ff ff 94
+            00 00 14 af ff ff ff 44
+            00 00 00 00 6c f7 f3 08
+            00 00 00 00 00 2c 88 00
+        """))
 
     def test_model_rotation_rotates_artwork(self):
         rotated = pack_s3d(plane(-8., 8., -2., 2.))

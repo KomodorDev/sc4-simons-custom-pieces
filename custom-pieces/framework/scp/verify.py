@@ -7,6 +7,8 @@ Neither mode executes SimCity 4 or treats file checks as an in-game test.
 from __future__ import annotations
 
 from collections import Counter
+from contextlib import contextmanager
+from contextvars import ContextVar
 from copy import deepcopy
 import hashlib
 import json
@@ -16,7 +18,7 @@ import re
 import struct
 
 from .catalog import validate_catalog, auto_tile_base
-from .dbpf import entries, decompress, exemplar, encode_exemplar, tgi_string, require
+from .dbpf import COMPRESSION_DIRECTORY_TYPE, entries, decompress, exemplar, encode_exemplar, tgi_string, require
 from .menu import validate_menu_resources, MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION
 from .models import parse_s3d, validate_s3d, valid_frame, positions
 from .adaptive_network import (RUL1, bindings as adaptive_bindings,
@@ -35,6 +37,29 @@ LTEXT = (0x2026960B, 0x2A592FD1)
 SHADOW = (0x7AB50E44, 0x2BC2759A)
 TEXTURE = (0x7AB50E44, 0x1ABE787D)
 EPS = 2e-6
+_compiled_highway_model_audits = ContextVar('compiled_highway_model_audits', default=None)
+
+
+@contextmanager
+def compiled_highway_model_audits():
+    """Share independently computed Highway model reports within one build."""
+    cache = _compiled_highway_model_audits.get()
+    if cache is not None:
+        yield cache
+        return
+    cache = {}
+    token = _compiled_highway_model_audits.set(cache)
+    try:
+        yield cache
+    finally:
+        _compiled_highway_model_audits.reset(token)
+
+
+def _matching_compiled_highway_models(donors):
+    cache = _compiled_highway_model_audits.get()
+    if cache is not None and cache.get('donors') == donors:
+        return cache.get('pieces', {})
+    return {}
 
 
 def sha(raw):
@@ -274,6 +299,15 @@ def check_piece_models(resources, piece, donors):
                 'Adaptive rendering requires an independent domain proof of its active geometry and PATH layers')
     result['render_groups'] = render_report
     return result
+
+
+def _check_saved_piece_models(resources, piece, donors, compiled_models):
+    if piece.get('domain') == 'highway' and piece['id'] in compiled_models:
+        checked_piece, checked_resources, report = compiled_models[piece['id']]
+        if (checked_resources == resources and
+                json.dumps(checked_piece, sort_keys=True) == json.dumps(piece, sort_keys=True)):
+            return deepcopy(report)
+    return check_piece_models(resources, piece, donors)
 
 
 def check_piece_render_budget(resources, piece):
@@ -717,7 +751,7 @@ def load_local_donors(output, manifest):
         raw = path.read_bytes()
         require(sha(raw) == entry['sha256'], f'Local NAM donor changed: {path.name}')
         for key, value in entries(raw).items():
-            if key[0] == 0xE86B1EEF:
+            if key[0] == COMPRESSION_DIRECTORY_TYPE:
                 continue
             value = decompress(value)
             require(key not in donors or donors[key] == value, 'Conflicting local donor resources')
@@ -785,6 +819,7 @@ def verify_build(output, write_report=True):
         resources.update(plain_menu)
         by_file[menu_path] = plain_menu
     donors, donor_report = load_local_donors(output, manifest)
+    compiled_models = _matching_compiled_highway_models(donors)
     construction = check_construction(resources, pieces, manifest, donors)
     hidden_menus = piece_menu_families.hidden_members(pieces)
     base_menu = donors.get((*MENU_EXEMPLAR, 0x6A47C200), menu_baseline())
@@ -858,7 +893,7 @@ def verify_build(output, write_report=True):
         try:
             paths_report = check_piece_paths(resources, piece)
             model_resources = by_file[piece['asset_file']] if piece.get('domain') == 'highway' else resources
-            models_report = check_piece_models(model_resources, piece, donors)
+            models_report = _check_saved_piece_models(model_resources, piece, donors, compiled_models)
         except ValueError as error:
             raise ValueError(f'{piece["id"]}: {error}') from error
         piece_texture_ids = set(models_report.pop('texture_ids'))

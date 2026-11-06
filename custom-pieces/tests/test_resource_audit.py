@@ -13,7 +13,7 @@ from unittest.mock import patch
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "framework"))
 
-from scp.dbpf import entries, pack_dbpf, tgi_string
+from scp.dbpf import decompress, entries, pack_dbpf, read_index, tgi_string
 from scp import resource_audit as audit
 
 KEY = (0x5ad0e817, 0xbadb57f1, 0x12345678)
@@ -44,6 +44,31 @@ class ResourceAuditTests(unittest.TestCase):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(raw or pack_dbpf({KEY: b"source resource"}))
         return path
+
+    def test_index_rejects_table_or_resource_past_end_of_archive(self):
+        original = pack_dbpf({KEY: b"source resource"})
+        index_offset = struct.unpack_from("<I", original, 40)[0]
+        for offset, value, error in (
+            (40, index_offset + 1, "DBPF index outside file"),
+            (index_offset + 16, len(original), "DBPF resource outside file"),
+        ):
+            with self.subTest(error=error):
+                invalid = bytearray(original)
+                struct.pack_into("<I", invalid, offset, value)
+                archive = self.write_archive(raw=invalid)
+                with self.assertRaisesRegex(ValueError, error):
+                    read_index(archive)
+
+    def test_qfs_copies_back_references_with_literal_and_partial_overlap(self):
+        # Emit abcd, append literal X and copy bcdX, then copy seven bytes
+        # starting two bytes back. The last copy repeats and truncates dX.
+        compressed = b"\x10\xfb\x00\x00\x10\xe0abcd\x05\x03X\x10\x01\xfc"
+        self.assertEqual(decompress(compressed), b"abcdXbcdXdXdXdXd")
+
+    def test_qfs_rejects_back_reference_before_start_of_output(self):
+        compressed = b"\x10\xfb\x00\x00\x07\xe0abcd\x00\x04\xfc"
+        with self.assertRaisesRegex(ValueError, "Invalid QFS back-reference"):
+            decompress(compressed)
 
     def test_reports_every_archive_and_duplicate_index_occurrence_without_winner(self):
         first = self.write_archive("a.dat", duplicate_archive())
@@ -124,6 +149,8 @@ class ResourceAuditTests(unittest.TestCase):
                 return self
             def __exit__(self, *args):
                 return self.stream.__exit__(*args)
+            def fileno(self):
+                return self.stream.fileno()
             def seek(self, *args):
                 return self.stream.seek(*args)
             def read(self, size=-1):
@@ -149,6 +176,8 @@ class ResourceAuditTests(unittest.TestCase):
                 return self
             def __exit__(self, *args):
                 return self.stream.__exit__(*args)
+            def fileno(self):
+                return self.stream.fileno()
             def seek(self, offset):
                 seeks.append(offset)
                 return self.stream.seek(offset)

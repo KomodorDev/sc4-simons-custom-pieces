@@ -7,6 +7,7 @@ coverage index and per-view evidence. Requires Pillow and NumPy.
 """
 from __future__ import annotations
 
+from collections import deque
 import json
 import hashlib
 import inspect
@@ -16,6 +17,7 @@ from pathlib import Path
 import struct
 import sys
 import time
+from types import SimpleNamespace
 
 sys.dont_write_bytecode = True
 import numpy as np
@@ -558,7 +560,7 @@ def _canonical_title(root, catalog, piece):
 
 
 def render_catalog(outputs, plugins, destination=None, *, root, index_path=None,
-                   piece_ids=None, force=False, progress=None, view_roles=('angled',)):
+                   piece_ids=None, force=False, progress=None, view_roles=('angled',), jobs=None):
     """Render explicitly requested canonical views; never create a flat catalogue."""
     from .catalog import load_catalog
     from .piece_previews import render_piece, preview_settings
@@ -567,24 +569,50 @@ def render_catalog(outputs, plugins, destination=None, *, root, index_path=None,
     sources = {}
     for output in outputs:
         output = Path(output); manifest_raw = (output/'manifest.json').read_bytes(); manifest = json.loads(manifest_raw)
+        manifest_hash = _sha(manifest_raw)
         files = {item['path']: item for item in manifest.get('files', [])}
         for piece in manifest['pieces']:
-            sources[piece['id']] = (output, piece, files.get(piece['asset_file'], {}), manifest.get('version'), _sha(manifest_raw))
+            sources[piece['id']] = (output, piece, files.get(piece['asset_file'], {}), manifest.get('version'), manifest_hash)
     if piece_ids is None: piece_ids = [p['id'] for p in pieces if p['id'] in sources]
     if isinstance(piece_ids, str) or len(piece_ids) != len(set(piece_ids)) or not set(piece_ids) <= sources.keys() & known.keys():
         raise ValueError('Preview selection contains duplicate, unknown or unbuilt piece identifiers')
+    if jobs is not None and (type(jobs) is not int or jobs < 1):
+        raise ValueError('Preview jobs must be a positive integer')
     if destination is not None and Path(destination).name != '00_pieces':
         raise ValueError('Canonical catalog destinations must be a domain pieces directory; omit --destination to use registered domains')
     base = Path(destination).resolve() if destination is not None else root
     index_path = Path(index_path) if index_path is not None else root/'local/cache/preview-index.json'
+    if jobs is None:
+        available_cpus = getattr(os, 'process_cpu_count', os.cpu_count)() or 1
+        jobs = min(2, available_cpus)
+    workers = min(len(piece_ids), jobs)
+    targets = {
+        slug: (base/slug if destination is not None else
+               root/catalog['domains'][known[slug]['domain']]['path']/'00_pieces'/slug)
+        for slug in piece_ids
+    }
+    if workers > 1:
+        filenames = [name for role in view_roles for name in _view_files(role)]
+        if 'angled' in view_roles:
+            filenames.append('previews/preview-thumb.png')
+        occupied = {index_path.resolve(), index_path.with_suffix('.tmp.json').resolve()}
+        for target in targets.values():
+            for name in filenames:
+                path = target/name
+                resolved = path.resolve()
+                if (not resolved.is_relative_to(base) or resolved in occupied
+                        or (path.is_file() and path.stat().st_nlink > 1)):
+                    raise ValueError('Parallel previews require separate output files within the destination')
+                occupied.add(resolved)
     index = json.loads(index_path.read_text()) if index_path.is_file() else {'schema_version': 3, 'pieces': {}}
     index = {**index, 'schema_version': 3, 'purpose': 'Portable actual-source coverage for canonical per-piece previews; not manual or in-game evidence.'}
     index['pieces'] = {key: value for key, value in index['pieces'].items() if key in known}
     settings = {role: preview_settings(view_role=role) for role in view_roles}
     index['settings'] = preview_settings(); index['view_settings'] = {**index.get('view_settings', {}), **settings}
     library = TextureLibrary(plugins); rendered = skipped = 0; rendered_views = skipped_views = 0; start = time.monotonic()
-    for number, slug in enumerate(piece_ids, 1):
-        output, built, file_record, version, manifest_hash = sources[slug]; current = known[slug]
+
+    def prepare_piece(slug):
+        output, built, file_record, _, _ = sources[slug]; current = known[slug]
         comparable = lambda p: {key: value for key, value in piece_spec(p).items() if key not in ('design_review', 'purpose')}
         if comparable(built) != comparable(current):
             raise ValueError(f'{slug}: built definition differs from the current registered piece; rebuild it first')
@@ -594,52 +622,84 @@ def render_catalog(outputs, plugins, destination=None, *, root, index_path=None,
         raw = read_piece_preview(output, built); model = parse_s3d(raw)
         owned = {int(iid,16):read_resource(output/built['asset_file'], (*TEXTURE,int(iid,16)))
                  for iid in built.get('authored_texture_ids', [])}
+        # Resolve mutable cache entries in selection order. The worker uses
+        # the returned per-model dict of read-only texture arrays and evidence.
         textures, atlases = library.for_model(model, owned_resources=owned)
-        target = (base/slug) if destination is not None else root/catalog['domains'][current['domain']]['path']/'00_pieces'/slug
         title, title_sources = _canonical_title(root, catalog, current)
-        old = index['pieces'].get(slug, {})
-        views = dict(old.get('views', {})); any_rendered = False
+        return slug, raw, dat_hash, textures, atlases, title, title_sources, index['pieces'].get(slug, {})
+
+    def render_prepared_piece(slug, raw, dat_hash, textures, atlases, title, title_sources, old):
+        _, built, _, version, manifest_hash = sources[slug]; current = known[slug]
+        target = targets[slug]
+        prepared_textures = SimpleNamespace(for_model=lambda model: (textures, atlases))
+        views = dict(old.get('views', {})); rendered_views = 0
+        model_hash = _sha(raw)
         drawing = {key: current.get(key) for key in ('id', 'name', 'footprint', 'cells', 'tile_ids')}
         for role in view_roles:
             image_name, evidence_name = _view_files(role)
             image, evidence_path = target/image_name, target/evidence_name
-            inputs = {'drawing': drawing, 'preview_sha256': _sha(raw), 'source_dat_sha256': dat_hash,
+            inputs = {'drawing': drawing, 'preview_sha256': model_hash, 'source_dat_sha256': dat_hash,
                       'textures': atlases, 'settings_sha256': _json_hash(settings[role]),
                       'display_title': title, 'title_source_inputs': title_sources}
             fingerprint = _json_hash(inputs); previous = views.get(role, {})
             unchanged = (not force and previous.get('input_fingerprint') == fingerprint
+                         and previous.get('image') == image.relative_to(base).as_posix()
                          and _valid_view_record(previous, role, base))
-            if unchanged:
-                skipped_views += 1
-            else:
-                evidence = render_piece({**current, 'asset_file': built['asset_file']}, raw, library, target,
-                                        dat_hash=dat_hash, view_role=role, title=title)
+            if not unchanged:
+                evidence = render_piece({**current, 'asset_file': built['asset_file']}, raw, prepared_textures,
+                                        target, dat_hash=dat_hash, view_role=role, title=title)
                 evidence['title_source_inputs'] = title_sources
                 evidence['input_fingerprint'] = fingerprint
                 evidence_path.write_text(json.dumps(evidence, indent=2)+'\n')
-                rendered_views += 1; any_rendered = True
+                rendered_views += 1
             evidence = json.loads(evidence_path.read_text())
-            if evidence['sha256'] != _sha(image.read_bytes()) or evidence['source']['model_sha256'] != _sha(raw):
+            image_hash = _sha(image.read_bytes())
+            if evidence['sha256'] != image_hash or evidence['source']['model_sha256'] != model_hash:
                 raise ValueError(f'{slug}: saved per-piece evidence differs from actual image/model')
             record = {key: inputs[key] for key in ('preview_sha256', 'source_dat_sha256', 'textures', 'settings_sha256', 'display_title')}
             record.update(input_fingerprint=fingerprint, image=image.relative_to(base).as_posix(),
-                          image_sha256=_sha(image.read_bytes()), image_size=evidence['size'],
+                          image_sha256=image_hash, image_size=evidence['size'],
                           evidence_sha256=_sha(evidence_path.read_bytes()))
             if role == 'angled':
                 thumb = target/'previews/preview-thumb.png'
                 record.update(thumbnail=thumb.relative_to(base).as_posix(), thumbnail_sha256=_sha(thumb.read_bytes()))
             views[role] = record
-        rendered += int(any_rendered); skipped += int(not any_rendered)
         entry = {**old, 'id': slug, 'menu_name': current['name'], 'views': views,
                  'built_spec_sha256': _json_hash(piece_spec(built)), 'catalog_spec_sha256': _json_hash(piece_spec(current)),
                  'built_spec': piece_spec(built), 'catalog_spec': piece_spec(current),
                  'preview_tgi': read_dbpf.tgi_string((*S3D, int(built['preview_id'], 16))),
                  'preview_bytes': len(raw), 'source_asset': built['asset_file'], 'source_build_version': version,
                  'source_manifest_sha256': manifest_hash, 'source_dat_sha256': dat_hash,
-                 'current_model_sha256': _sha(raw), 'current_textures': atlases,
+                 'current_model_sha256': model_hash, 'current_textures': atlases,
                  'actual_model_triangles': evidence['model']['triangles'], 'in_game_evidence': False}
         if 'angled' in views:
             entry.update(views['angled'])
+        return slug, entry, rendered_views
+
+    def render_pieces():
+        if workers <= 1:
+            for slug in piece_ids:
+                yield render_prepared_piece(*prepare_piece(slug))
+            return
+        # Limit both the active renders and the models held while waiting for
+        # results. Finish and checkpoint results in the requested order.
+        from concurrent.futures import ThreadPoolExecutor
+
+        remaining = iter(piece_ids)
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            pending = deque(pool.submit(render_prepared_piece, *prepare_piece(next(remaining)))
+                            for _ in range(workers))
+            while pending:
+                yield pending.popleft().result()
+                slug = next(remaining, None)
+                if slug is not None:
+                    pending.append(pool.submit(render_prepared_piece, *prepare_piece(slug)))
+
+    for number, (slug, entry, piece_rendered_views) in enumerate(render_pieces(), 1):
+        any_rendered = bool(piece_rendered_views)
+        rendered += int(any_rendered); skipped += int(not any_rendered)
+        rendered_views += piece_rendered_views
+        skipped_views += len(view_roles) - piece_rendered_views
         index['pieces'][slug] = entry
         _save_index(index_path, index)
         if progress:
@@ -678,11 +738,15 @@ def main():
     parser.add_argument('--index',type=Path,help='Portable JSON coverage index for --catalog')
     parser.add_argument('--force',action='store_true',help='Render even when all input and image hashes match')
     parser.add_argument('--progress',action='store_true')
+    parser.add_argument('--jobs', type=int,
+                        help='Simultaneous catalogue renders (default: up to two based on available CPUs)')
     args = parser.parse_args()
+    if args.jobs is not None and (args.jobs < 1 or not args.catalog):
+        parser.error('--jobs requires --catalog and a positive integer')
     if args.catalog:
         result=render_catalog(args.output,args.plugins,args.destination,root=args.root,
             index_path=args.index,
-            piece_ids=args.include,force=args.force,view_roles=args.views,
+            piece_ids=args.include,force=args.force,view_roles=args.views,jobs=args.jobs,
             progress=(lambda event:print(json.dumps(event),flush=True)) if args.progress else None)
     else:
         if len(args.output)!=1:parser.error('Repeated --output requires --catalog')
