@@ -221,6 +221,8 @@ python -m pip install -r custom-pieces/requirements-preview.txt
    python custom-pieces/scp.py verify
    ```
 
+   A worker is a separate Python process that compiles one group of pieces at a time. A logical CPU is one execution slot that the operating system reports. The builder defaults to half the logical CPUs available to Python, rounded down, with a minimum of one worker. For example, 10 logical CPUs allow five workers if at least five independent groups are selected. The number of groups and the operating system’s process limit can reduce the final count. Add `--jobs 1` to the build command to use a single process, or `--jobs 2` to use up to two. Each additional worker can increase memory use. With multiple workers, the progress display lists pieces as they finish.
+
 4. Create a development ZIP:
 
    ```sh
