@@ -11,6 +11,7 @@ FRAMEWORK = next(p for p in Path(__file__).resolve().parents if (p / 'project.js
 sys.path.insert(0, str(FRAMEWORK / 'framework'))
 
 from scp import jsonc
+from scp.content import new_manual_record
 from scp.release import _portable_error, assess_build
 
 
@@ -22,7 +23,7 @@ class ReleaseEvidenceTests(unittest.TestCase):
         gates = jsonc.loads((FRAMEWORK / 'config/release.jsonc').read_text())
         for record in gates.values():
             if isinstance(record, dict) and 'status' in record:
-                record['status'], record['evidence'] = 'passed', 'fixture-human-record'
+                record.update(enabled=True, status='passed', evidence='fixture-human-record')
         self._write_json('config/release.jsonc', gates)
         cases = dict.fromkeys(('placement', 'traffic_both_directions', 'no_unwanted_transfers',
                                'rotations_and_mirrors', 'shadows', 'demolition', 'save_reload'), 'passed')
@@ -71,6 +72,93 @@ class ReleaseEvidenceTests(unittest.TestCase):
         self.assertEqual(assess_build(self.root, self.manifest),
                          {'public_release_ready': True, 'blocked': []})
 
+    def test_build_specific_evidence_can_be_skipped_independently_of_release_gates(self):
+        piece = self.manifest['pieces'][0]
+        del piece['game_evidence']
+        self.assertIn(f"{piece['id']}: game_evidence is not recorded", self._assert_blocked()['blocked'])
+        self.assertEqual(assess_build(self.root, self.manifest, require_build_game_evidence=False),
+                         {'public_release_ready': True, 'blocked': []})
+
+        piece['game_tests']['placement'] = 'unverified'
+        piece['provenance']['redistribution'] = 'permission-pending'
+        gates = jsonc.load(self.root / 'config/release.jsonc')
+        gates['supported_platform_tests'] = {'status': 'pending', 'evidence': None}
+        self._write_json('config/release.jsonc', gates)
+        self.assertEqual(assess_build(self.root, self.manifest, require_build_game_evidence=False), {
+            'public_release_ready': False,
+            'blocked': ['supported_platform_tests', f"{piece['id']}: in-game test matrix",
+                        f"{piece['id']}: redistribution evidence"],
+        })
+
+    def test_platform_switch_controls_authoritative_manual_and_exact_build_evidence(self):
+        piece = self.manifest['pieces'][0]
+        piece_id = piece['id']
+        piece['status'] = 'experimental'
+        piece['game_tests']['placement'] = 'unverified'
+        self.evidence['package_fingerprints'][piece['asset_file']] = 'd' * 64
+        self._write_evidence()
+
+        domain = 'fixture-network'
+        domain_path = f'domains/{domain}'
+        source = {**deepcopy(piece), 'domain': domain}
+        catalog = {'pieces': [source], 'domains': {domain: {'path': domain_path}}}
+        self._write_json('project.jsonc', {'fixture': 'catalog access is mocked below'})
+        self._write_json(f'{domain_path}/00_pieces/{piece_id}/checks/manual-tests.json',
+                         new_manual_record(piece_id, 'piece', {}, {}))
+
+        gate = 'supported_platform_tests'
+        gates = jsonc.load(self.root / 'config/release.jsonc')
+        gates[gate].update(enabled=False, status='pending', evidence=None)
+        self._write_json('config/release.jsonc', gates)
+        ready = {'public_release_ready': True, 'blocked': []}
+        with patch('scp.catalog.load_catalog', return_value=catalog):
+            self.assertEqual(assess_build(self.root, self.manifest), ready)
+            self.assertEqual(assess_build(self.root, self.manifest, require_build_game_evidence=False), ready)
+            for enabled in (True, 0):
+                with self.subTest(enabled=enabled):
+                    gates[gate]['enabled'] = enabled
+                    self._write_json('config/release.jsonc', gates)
+                    blockers = self._assert_blocked()['blocked']
+                    self.assertIn(gate, blockers)
+                    self.assertIn(f'{piece_id}: in-game test matrix', blockers)
+                    self.assertIn(f'{piece_id}: in_game_placement: 4 current manual cases need confirmation',
+                                  blockers)
+                    exact = f'{piece_id}: game evidence invalid (game evidence package fingerprints differ from this build)'
+                    self.assertIn(exact, blockers)
+                    self.assertEqual(
+                        assess_build(self.root, self.manifest, require_build_game_evidence=False),
+                        {'public_release_ready': False, 'blocked': [reason for reason in blockers if reason != exact]},
+                    )
+
+    def test_disabled_permission_and_platform_checks_keep_design_and_metadata_guards(self):
+        gates = jsonc.load(self.root / 'config/release.jsonc')
+        for name in ('nam_derivatives_permission', 'supported_platform_tests'):
+            gates[name]['enabled'] = False
+        gates['ids_allocated']['status'] = 'pending'
+        self._write_json('config/release.jsonc', gates)
+
+        piece = self.manifest['pieces'][0]
+        piece['game_tests']['placement'] = 'unverified'
+        piece['provenance']['redistribution'] = 'permission-pending'
+        del piece['game_evidence']
+        current = deepcopy(piece)
+        current['design_review'] = {'status': 'needs-redesign', 'summary': 'Current review rejected this layout.',
+                                    'reasons': ['The historical build predates the review.']}
+        self._write_json('project.jsonc', {'fixture': 'catalog access is mocked below'})
+        with patch('scp.catalog.load_catalog', return_value={'pieces': [current]}):
+            blockers = self._assert_blocked()['blocked']
+        self.assertIn('ids_allocated', blockers)
+        self.assertTrue(any('NEEDS REDESIGN' in reason for reason in blockers))
+        self.assertEqual(len(blockers), 2)
+
+        for section, problem in (('files', 'duplicate build file path'),
+                                 ('donors', 'duplicate donor filename')):
+            with self.subTest(section=section):
+                manifest = deepcopy(self.manifest)
+                records = manifest['files'] if section == 'files' else manifest['profile']['donors']
+                records.append(deepcopy(records[0]))
+                self.assertEqual(self._assert_blocked(manifest)['blocked'], [f'build evidence metadata: {problem}'])
+
     def test_layout_objection_blocks_release_even_when_all_file_and_game_evidence_pass(self):
         self.manifest['pieces'][0]['design_review']={
             'status':'needs-redesign','summary':'A route takes an unnecessary rectangular detour.',
@@ -86,6 +174,21 @@ class ReleaseEvidenceTests(unittest.TestCase):
         with patch('scp.catalog.load_catalog',return_value={'pieces':[current]}):
             result=self._assert_blocked()
         self.assertTrue(any('NEEDS REDESIGN' in reason for reason in result['blocked']))
+
+    def test_saved_permission_cannot_hide_a_pending_current_record(self):
+        self._write_json('project.jsonc', {})
+        current = deepcopy(self.manifest['pieces'][0])
+        current['provenance']['redistribution'] = 'permission-pending'
+        gates = jsonc.load(self.root / 'config/release.jsonc')
+        gates['supported_platform_tests']['enabled'] = False
+        with patch('scp.catalog.load_catalog', return_value={'pieces': [current]}):
+            for enabled in (True, False, True):
+                with self.subTest(enabled=enabled):
+                    gates['nam_derivatives_permission']['enabled'] = enabled
+                    self._write_json('config/release.jsonc', gates)
+                    result = assess_build(self.root, self.manifest)
+                    expected = [f"{current['id']}: redistribution evidence"] if enabled else []
+                    self.assertEqual(result, {'public_release_ready': not enabled, 'blocked': expected})
 
     def test_missing_reference_or_file_is_blocked(self):
         manifest = deepcopy(self.manifest)

@@ -124,6 +124,7 @@ def main():
             cmd.add_argument('--output', type=Path, default=ROOT / 'dist/development')
         if name == 'build':
             cmd.add_argument('--progress', action='store_true', help='Show build progress on standard error; keep JSON on standard output')
+            cmd.add_argument('--jobs', type=int, help='Maximum compilation workers (default: half the available logical CPUs, at least one)')
         if name == 'package':
             cmd.add_argument('--destination', type=Path, default=ROOT / 'dist/Simons-Custom-Pieces-development.zip')
             cmd.add_argument('--release', action='store_true')
@@ -171,6 +172,8 @@ def main():
         menu_cmd.add_argument('--plugins', type=Path)
         menu_cmd.add_argument('--extra-plugins', action='append', type=Path, default=None)
     args = parser.parse_args()
+    if args.command == 'build' and args.jobs is not None and args.jobs < 1:
+        parser.error('--jobs must be a positive integer')
     if args.command == 'docs-check':
         from scp.documentation_check import check_documentation
         result = check_documentation(ROOT, piece_ids=args.documentation_pieces,
@@ -242,7 +245,7 @@ def main():
                 message = f"{update['phase'].title()}: {update['pieces']} pieces"
             print(message, file=sys.stderr, flush=True)
         result = build_project(ROOT, args.plugins or configured_plugins(), args.output, selection(args, catalog),
-                               args.extra_plugins, progress=progress if args.progress else None)
+                               args.extra_plugins, progress=progress if args.progress else None, jobs=args.jobs)
     elif args.command == 'verify':
         result = verify_build(args.output)
     elif args.command == 'package':

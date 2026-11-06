@@ -30,9 +30,11 @@ import hashlib
 import math
 import struct
 import zlib
+from contextlib import contextmanager
+from contextvars import ContextVar
 from functools import lru_cache
 
-from PIL import Image, ImageDraw
+from PIL import Image
 
 from .models import parse_s3d, positions, validate_s3d
 
@@ -44,6 +46,7 @@ ZOOM_SIZES = (8, 16, 32, 64, 128)
 TILE_METRES = 16.0
 SUPERSAMPLE = 8
 PROJECTION = 'vertical; X/Z [-8,8] metres; +X right; +Z down; no height offset'
+_compiled_shadow_sets = ContextVar('compiled_shadow_sets', default=None)
 
 
 def _require(condition: bool, message: str) -> None:
@@ -152,42 +155,67 @@ def _clip_polygon(points: list[tuple[float, float]]) -> list[tuple[float, float]
 def _rasterize(triangles: list[tuple], size: int) -> Image.Image:
     _require(size in ZOOM_SIZES, 'Unsupported shadow zoom size')
     side = size * SUPERSAMPLE
-    canvas = Image.new('L', (side, side), 0)
-    draw = ImageDraw.Draw(canvas)
+    mask = bytearray(side * side)
+    filled_row = memoryview(b'\xff' * side)
     for triangle in triangles:
         polygon = _clip_polygon([(point[0], point[2]) for point in triangle])
         if len(polygon) < 3:
             continue
         pixels = [((x + 8.) * side / TILE_METRES,
                    (z + 8.) * side / TILE_METRES) for x, z in polygon]
-        # Draw centre-sampled scanline spans ourselves. ImageDraw.polygon
-        # includes both endpoints of an integer edge, which widens an exact
-        # four-metre rectangle by one high-resolution pixel. Half-open spans
-        # keep a centred, grid-aligned deck at its actual world width.
-        first_y = max(0, math.ceil(min(y for x, y in pixels) - .5))
-        stop_y = min(side, math.ceil(max(y for x, y in pixels) - .5))
-        for row in range(first_y, stop_y):
-            sample_y, crossings = row + .5, []
-            prior = pixels[-1]
-            for current in pixels:
-                if ((prior[1] <= sample_y < current[1]) or
-                        (current[1] <= sample_y < prior[1])):
-                    fraction = (sample_y - prior[1]) / (current[1] - prior[1])
-                    crossings.append(prior[0] + fraction * (current[0] - prior[0]))
-                prior = current
-            if len(crossings) >= 2:
-                left = max(0, math.ceil(min(crossings) - .5))
-                right = min(side, math.ceil(max(crossings) - .5)) - 1
-                if left <= right:
-                    draw.line((left, row, right, row), fill=255)
+        # Keep the original pixel-centre rule. Each edge contributes only at
+        # rows with min_y <= row + .5 < max_y. A horizontal edge contributes
+        # no crossings, and retaining edge direction preserves rounding.
+        first_y = max(0, math.ceil(min(y for _, y in pixels) - .5))
+        stop_y = min(side, math.ceil(max(y for _, y in pixels) - .5))
+        left_edges = [side + 1.] * (stop_y - first_y)
+        right_edges = [-1.] * (stop_y - first_y)
+        prior_x, prior_y = pixels[-1]
+        for x, y in pixels:
+            edge_first = max(first_y, math.ceil(min(prior_y, y) - .5))
+            edge_stop = min(stop_y, math.ceil(max(prior_y, y) - .5))
+            dx, dy = x - prior_x, y - prior_y
+            for row in range(edge_first, edge_stop):
+                fraction = (row + .5 - prior_y) / dy
+                crossing = prior_x + fraction * dx
+                local_row = row - first_y
+                if crossing < left_edges[local_row]:
+                    left_edges[local_row] = crossing
+                if crossing > right_edges[local_row]:
+                    right_edges[local_row] = crossing
+            prior_x, prior_y = x, y
+        # Half-open horizontal spans retain the actual width of a grid-aligned
+        # deck. Zero or one crossing leaves an empty span.
+        for row, (minimum, maximum) in enumerate(zip(left_edges, right_edges), first_y):
+            left = max(0, math.ceil(minimum - .5))
+            right = min(side, math.ceil(maximum - .5))
+            if left < right:
+                offset = row * side
+                mask[offset + left:offset + right] = filled_row[:right - left]
     # BOX area reduction gives bounded coverage with no ringing outside the
     # silhouette. Eight samples per axis provide 1/64-pixel coverage steps.
+    canvas = Image.frombytes('L', (side, side), bytes(mask))
     return canvas.resize((size, size), Image.Resampling.BOX)
 
 
 def rasterize_shadow(modelraw: bytes, size: int) -> Image.Image:
     """Return a coverage mask for actual referenced geometry, clipped to one tile."""
     return _rasterize(_triangles(modelraw)[0], size)
+
+
+@contextmanager
+def compiled_shadow_sets(mapping=None):
+    """Share canonical shadow results from compilation for the exact model bytes.
+
+    Populate the mapping only with rasterizer results, never with saved
+    shadow resources that still need verification.
+    """
+    shadow_sets = {} if mapping is None else mapping
+    token = _compiled_shadow_sets.set(shadow_sets)
+    try:
+        yield shadow_sets
+    finally:
+        _compiled_shadow_sets.reset(token)
 
 
 @lru_cache(maxsize=12288)
@@ -200,6 +228,9 @@ def _compressed_shadow_set(modelraw: bytes) -> tuple[bytes, ...]:
     The bounded compressed cache fits the full catalog without retaining its
     approximately 0.8 GB of uncompressed five-zoom shadow images.
     """
+    shadow_sets = _compiled_shadow_sets.get()
+    if shadow_sets is not None and modelraw in shadow_sets:
+        return shadow_sets[modelraw]
     triangles, _ = _triangles(modelraw)
     return tuple(zlib.compress(encode_shadow_fsh(_rasterize(triangles, size)))
                  for size in ZOOM_SIZES)
@@ -226,7 +257,11 @@ def build_shadows(modelraw: bytes, tile: str | int) -> dict[tuple[int, int, int]
     tile = _number(tile)
     _require(0 <= tile <= 0xFFFFFFF0 and tile & 15 == 0,
              'Shadow tile ID must be a 32-bit instance with a zero low nibble')
-    return {(*SHADOW, tile + zoom): raw for zoom, raw in enumerate(_shadow_set(modelraw))}
+    shadows = _shadow_set(modelraw)
+    shadow_sets = _compiled_shadow_sets.get()
+    if shadow_sets is not None:
+        shadow_sets[modelraw] = _compressed_shadow_set(modelraw)
+    return {(*SHADOW, tile + zoom): raw for zoom, raw in enumerate(shadows)}
 
 
 def validate_piece_shadows(resources: dict, piece: dict) -> dict:
