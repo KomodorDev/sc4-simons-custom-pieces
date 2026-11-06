@@ -21,6 +21,7 @@ REVIEWED_PATHS = (
     "custom-pieces/framework/scp/prebuilt.py",
     "custom-pieces/framework/scp/install.py",
     "custom-pieces/framework/scp/release.py",
+    "custom-pieces/framework/scp/catalog.py",
     "custom-pieces/requirements-installer.txt",
 )
 
@@ -146,6 +147,7 @@ def receive(repo, workspace, *, mode):
 
 def require_release_evidence(root, manifest):
     """Check public evidence for an experimental prebuilt installer."""
+    from scp import jsonc
     from scp.catalog import load_catalog
     from scp.release import assess_build
 
@@ -154,7 +156,15 @@ def require_release_evidence(root, manifest):
         raise ValueError("Public release payload does not contain the current complete catalogue.")
     folder = manifest["plugin_folder"]
     complete = [{**piece, "asset_file": f"{folder}/20_Pieces/SCP_{piece['id']}.dat"} for piece in pieces]
-    result = assess_build(root, {**manifest, "pieces": complete}, require_build_game_evidence=False)
+    gates = jsonc.load(Path(root) / "config/release.jsonc")
+    installer = gates.get("prebuilt_installer", {}) if isinstance(gates, dict) else None
+    if not isinstance(installer, dict):
+        raise ValueError("Release record prebuilt_installer settings must be an object.")
+    require_build_game_evidence = installer.get("require_build_game_evidence", True)
+    if type(require_build_game_evidence) is not bool:
+        raise ValueError("Release record prebuilt_installer.require_build_game_evidence must be true or false.")
+    result = assess_build(root, {**manifest, "pieces": complete},
+                          require_build_game_evidence=require_build_game_evidence)
     if not result["public_release_ready"]:
         reasons = result["blocked"]
         remaining = len(reasons) - min(len(reasons), 12)

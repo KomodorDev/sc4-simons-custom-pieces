@@ -62,15 +62,28 @@ class ReleaseHandoffTests(unittest.TestCase):
                 handoff.approved_release_head(ROOT, MAIN, TREE)
             api.assert_not_called()
 
-    def test_prebuilt_release_uses_the_assessor_without_build_specific_game_evidence(self):
+    def test_prebuilt_release_uses_the_configured_build_specific_game_evidence_setting(self):
         folder = 'zzz_Simons_Custom_Pieces'
         manifest = {'plugin_folder': folder, 'pieces': [{'id': 'example'}]}
         piece = {'id': 'example', 'status': 'tested'}
         complete = {**manifest, 'pieces': [{**piece, 'asset_file': f'{folder}/20_Pieces/SCP_example.dat'}]}
-        with patch('scp.catalog.load_catalog', return_value={'pieces': [piece]}), \
-                patch('scp.release.assess_build', return_value={'public_release_ready': True}) as assess:
-            handoff.require_release_evidence(ROOT, manifest)
-        assess.assert_called_once_with(ROOT, complete, require_build_game_evidence=False)
+        for settings, expected in (({}, True), ({'require_build_game_evidence': True}, True),
+                                   ({'require_build_game_evidence': False}, False)):
+            with self.subTest(settings=settings), \
+                    patch('scp.catalog.load_catalog', return_value={'pieces': [piece]}), \
+                    patch('scp.jsonc.load', return_value={'prebuilt_installer': settings}), \
+                    patch('scp.release.assess_build', return_value={'public_release_ready': True}) as assess:
+                handoff.require_release_evidence(ROOT, manifest)
+                assess.assert_called_once_with(ROOT, complete, require_build_game_evidence=expected)
+
+    def test_prebuilt_release_rejects_a_nonboolean_build_specific_game_evidence_setting(self):
+        manifest = {'plugin_folder': 'zzz_Simons_Custom_Pieces', 'pieces': [{'id': 'example'}]}
+        with patch('scp.catalog.load_catalog', return_value={'pieces': [{'id': 'example', 'status': 'tested'}]}), \
+                patch('scp.jsonc.load', return_value={'prebuilt_installer': {'require_build_game_evidence': 0}}), \
+                patch('scp.release.assess_build') as assess:
+            with self.assertRaisesRegex(ValueError, 'require_build_game_evidence must be true or false'):
+                handoff.require_release_evidence(ROOT, manifest)
+            assess.assert_not_called()
 
     def test_missing_dropbox_zip_identifies_revision_and_stops_before_extraction(self):
         env = {**EVENT, "GITHUB_EVENT_NAME": "workflow_dispatch", "GITHUB_REF": "refs/heads/dev"}

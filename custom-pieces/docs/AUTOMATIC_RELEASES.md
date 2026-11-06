@@ -88,7 +88,7 @@ The maintainer who operates the project's private release folder completes these
    ```
 
 4. Once the pipeline code is on `dev`, prepare its ZIP using [chapter 4](#4-what-do-i-click-to-publish-and-find-the-download). Open **Actions → Installer release → Run workflow**, choose **dev**, and select **Run workflow**. Open the resulting run. Confirm that **Private hosted prebuilt review** and both of its handoff and installer steps passed. The run ID is the number after `/actions/runs/` in its URL.
-5. After the successful private review, install the same read-only credentials in the release environment. In **Settings → Environments → scp-prebuilt-release → Environment variables**, select **Add variable**. Set **SCP_PREBUILT_REVIEW_RUN_ID** to the successful run ID. When the project's release evidence is ready, add **SCP_PREBUILT_PUBLICATION** with the value **enabled**. Use the same one-command preparation and normal human merge for each later release.
+5. After the successful private review, install the same read-only credentials in the release environment. In **Settings → Environments → scp-prebuilt-release → Environment variables**, select **Add variable**. Set **SCP_PREBUILT_REVIEW_RUN_ID** to the successful run ID. When the [enabled release checks](RELEASE.md#51-configure-release-checks) are satisfied, add **SCP_PREBUILT_PUBLICATION** with the value **enabled**. Use the same one-command preparation and normal human merge for each later release.
 
    ```sh
    python3 -B custom-pieces/installer/release_dropbox.py github-secrets --repository KomodorDev/sc4-simons-custom-pieces --environment scp-prebuilt-release

@@ -506,6 +506,31 @@ class CatalogTests(unittest.TestCase):
         self.assertFalse(result['public_release_ready'])
         self.assertTrue(result['blocked'])
 
+    def test_shared_release_checks_can_be_disabled_independently(self):
+        gates = jsonc.load(self.root / 'config/release.jsonc')
+        names = [name for name, record in gates.items() if isinstance(record, dict) and 'status' in record]
+        for name in names:
+            with self.subTest(name=name):
+                gates[name]['enabled'] = False
+                self._write('config/release.jsonc', gates)
+                self.assertEqual(release_status(self.root, [])['blocked'], [other for other in names if other != name])
+                self.assertEqual(gates[name]['status'], 'pending')
+                gates[name]['enabled'] = True
+        self._write('config/release.jsonc', gates)
+        self.assertEqual(release_status(self.root, [])['blocked'], names)
+
+    def test_shared_release_checks_require_an_explicit_boolean_to_skip(self):
+        gates = jsonc.load(self.root / 'config/release.jsonc')
+        name = 'public_name_checked'
+        for value in (None, 0, 'false'):
+            with self.subTest(value=value):
+                gates[name] = {'enabled': value, 'status': 'passed', 'evidence': 'fixture'}
+                self._write('config/release.jsonc', gates)
+                self.assertIn(name, release_status(self.root, [])['blocked'])
+        gates[name] = {'status': 'pending', 'evidence': None}
+        self._write('config/release.jsonc', gates)
+        self.assertIn(name, release_status(self.root, [])['blocked'])
+
     def test_passing_gate_labels_without_evidence_are_not_sufficient(self):
         gates = jsonc.loads((self.root / 'config/release.jsonc').read_text())
         for value in gates.values():

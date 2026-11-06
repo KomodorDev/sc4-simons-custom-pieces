@@ -310,6 +310,7 @@ def select_pieces(catalog, include=None):
 
 def release_status(root, pieces):
     gates = jsonc.load(Path(root) / 'config/release.jsonc')
+    require(isinstance(gates, dict), 'Release record must be an object')
     blocked = []
     current_reviews = {}
     if (Path(root) / 'project.jsonc').is_file():
@@ -321,7 +322,11 @@ def release_status(root, pieces):
     for name in ('public_name_checked', 'ids_allocated', 'nam_derivatives_permission',
                  'supported_platform_tests', 'simtropolis_description_and_game_images'):
         item = gates.get(name, {})
-        if item.get('status') != 'passed' or not item.get('evidence'):
+        if not isinstance(item, dict):
+            blocked.append(name)
+            continue
+        enabled = item.get('enabled', True)
+        if type(enabled) is not bool or (enabled and (item.get('status') != 'passed' or not item.get('evidence'))):
             blocked.append(name)
     for piece in pieces:
         review = current_reviews.get(piece['id']) or piece.get('design_review')
