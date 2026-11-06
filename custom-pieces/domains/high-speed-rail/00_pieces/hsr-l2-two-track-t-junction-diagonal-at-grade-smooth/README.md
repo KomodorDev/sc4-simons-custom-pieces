@@ -16,7 +16,7 @@ Exact reusable identifier: `hsr-l2-two-track-t-junction-diagonal-at-grade-smooth
 
 Footprint: **13 × 14 tiles**. Exact menu name: **HSR Level 2 (15.5 m) — Two-Track Smooth Diagonal T Junction — At Grade**.
 
-Choose this exact name in Transportation → Rail. Press Home or End to rotate; use only the supported states listed below. Join each end to a matching port profile and direction.
+Choose this exact name in Transportation → Rail → SCP → Pieces. Press Home or End to rotate using the supported states listed below. Join each end to a matching port profile and direction.
 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
@@ -47,7 +47,7 @@ This is the diagonal counterpart of the [straight smooth T](../hsr-l2-two-track-
 
 The 13 × 14 construction rectangle measures 208 × 224 m with 42 occupied cells. Keep the whole rectangle clear during tests: unused cells allow the curved arms and native-width deck edges, rather than promising room for another building or road. The shared support plan has 37 pillars at least 16 m apart. Foundations stay in occupied cells and all 333 underside contact points are checked.
 
-1. Open **Transportation → Rail** in a disposable flat city and select **SCP | HSR Level 2 (15.5 m) — Two-Track Smooth Diagonal T Junction — At Grade**.
+1. Open **Transportation → Rail → SCP → Pieces** in a disposable flat city and select **SCP | HSR Level 2 (15.5 m) — Two-Track Smooth Diagonal T Junction — At Grade**.
 2. Keep a 13 × 14 area clear. Its base mainline runs southwest/northeast and its branch southeast. Press **Home/End** to rotate by quarter turns, then click once to place. The eight menu states repeat four proper rotations; they do not reflect running directions.
 3. Join matching native diagonal paired HSR at all three outside ends. Stop drags at the piece boundary.
 4. Create travel demand and check all six journeys, close-up joins and the deliberate same-height crossings. Repeat the other rotations, terrain/shadow inspection, demolition and save/reload checks using the checklist below.

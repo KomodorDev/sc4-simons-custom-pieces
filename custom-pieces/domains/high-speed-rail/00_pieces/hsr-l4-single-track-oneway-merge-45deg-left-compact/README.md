@@ -16,7 +16,7 @@ Exact reusable identifier: `hsr-l4-single-track-oneway-merge-45deg-left-compact`
 
 Footprint: **3 × 4 tiles**. Exact menu name: **HSR Level 4 (30.5 m) — Merge 45° Left to Single-Track One-Way Mainline — Compact**.
 
-Choose this exact name in Transportation → Rail. Press Home or End to rotate; use only the supported states listed below. Join each end to a matching port profile and direction.
+Choose this exact name in Transportation → Rail → SCP → Pieces. Press Home or End to rotate using the supported states listed below. Join each end to a matching port profile and direction.
 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)

@@ -67,7 +67,7 @@ A **proper rotation** turns the whole piece without reflecting it. Four proper o
 
 After following the [separate installation procedure](../../../../docs/BUILD_AND_INSTALL.md), use a disposable flat test city. Placement and rotation remain unverified in game.
 
-1. Open **Transportation → Rail**, hover over the SCP icons, and select **HSR Level 2 (15.5 m) ↔ Level 4 (30.5 m) — Two-Track Curve 90° Right Ramp**.
+1. Open **Transportation → Rail → SCP → Pieces**, hover over the SCP icons, and select **HSR Level 2 (15.5 m) ↔ Level 4 (30.5 m) — Two-Track Curve 90° Right Ramp**.
 2. Move the preview over a clear **7 × 7 tile rectangle**. Press **Home** or **End** to rotate; on the documented Mac keyboard, **Fn + ←** and **Fn + →** produce those keys. **Tab** and **Shift+Tab** select types only within a declared construction family.
 3. At 0°, align the low south end with the paired Level 2 approach and the high east end with the paired Level 4 approach. Use the rotation table above for another orientation. The empty construction reference is a software coordinate, so align the visible ends rather than treating it as a certified mouse-click anchor.
 4. Click once to place the complete curve. Join both track channels at each end, preserving each approach's height, direction, and full deck profile.

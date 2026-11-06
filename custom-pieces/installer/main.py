@@ -69,7 +69,8 @@ def verify_runtime(root):
         module = module_from_spec(spec)
         spec.loader.exec_module(module)
         return module.verify_runtime(root)
-    if getattr(sys, "frozen", False):
+    if (getattr(sys, "frozen", False) or (root / "installer/build-info.json").exists()
+            or (root / "installer/prebuilt").exists()):
         raise ValueError("The installer package is incomplete. Extract the entire ZIP before opening it.")
     return {"status": "source-checkout", "frozen_package_verified": False}
 

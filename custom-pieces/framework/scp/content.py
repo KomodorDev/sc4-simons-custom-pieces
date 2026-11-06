@@ -900,7 +900,7 @@ def _piece_overview(directory, subject):
     if subject.get('footprint'):
         width, depth = subject['footprint']
         rows += [f'Footprint: **{width} × {depth} tiles**. Exact menu name: **{subject.get("name", subject["id"])}**.', '']
-    rows += ['Choose this exact name in Transportation → Rail. Press Home or End to rotate; use only the supported states listed below. Join each end to a matching port profile and direction.', '',
+    rows += ['Choose this exact name in Transportation → Rail → SCP → Pieces. Press Home or End to rotate using the supported states listed below. Join each end to a matching port profile and direction.', '',
              '- [Connections and journeys](#connections-and-journeys)', '- [Test checklist](#test-checklist)', '']
     review = subject.get('design_review')
     if review:

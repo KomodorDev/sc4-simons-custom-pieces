@@ -232,16 +232,27 @@ def assembly_caption_rows(name, view_class, camera):
     return prefix+name, view_class+' | '+camera.strip()
 
 
-def _grid_bounds(vertices, sources):
-    """Enclose real cells and model at tile edges, without extra negative-index cells."""
+def _grid_bounds(vertices, sources, display_bounds=None):
+    """Enclose real cells and model, optionally retaining extra display cells."""
     cells = [cell for source in sources for cell in source.get('occupied_world_cells', [])]
     east = [point[0] for point in vertices] + [point[0] for point in cells]
     north = [-point[2] for point in vertices] + [point[1] for point in cells]
     # Bounds are tile edges, not a lattice through the tile centres.
-    return (16.*math.floor((min(east)+8.)/16.)-8.,
-            16.*math.floor((min(north)+8.)/16.)-8.,
-            16.*math.ceil((max(east)-8.)/16.)+8.,
-            16.*math.ceil((max(north)-8.)/16.)+8.)
+    occupied_bounds = (16.*math.floor((min(east)+8.)/16.)-8.,
+                       16.*math.floor((min(north)+8.)/16.)-8.,
+                       16.*math.ceil((max(east)-8.)/16.)+8.,
+                       16.*math.ceil((max(north)-8.)/16.)+8.)
+    if display_bounds is None:
+        return occupied_bounds
+    if not isinstance(display_bounds, (list, tuple)) or len(display_bounds) != 4:
+        raise ValueError('Display bounds need four tile edges in west, south, east, north order')
+    west, south, east, north = bounds = tuple(_finite(value, 'Display bound') for value in display_bounds)
+    if any((value + 8.) % 16. for value in bounds):
+        raise ValueError('Display bounds must follow the city grid tile edges')
+    left, bottom, right, top = occupied_bounds
+    if west > left or south > bottom or east < right or north < top:
+        raise ValueError('Display bounds must enclose all model geometry and occupied cells')
+    return bounds
 
 
 def _placement_plan(vertices, sources, bounds, origin, width, height, panel, top, *, title=None,
@@ -418,8 +429,9 @@ def render_assembly(model, plugins, destination, *, provenance=None,
     panel = min(570, width//5) if labelled else 0
     top = 190 if labelled else 147
     view_width, view_height = width-2*panel, height-top-115
-    origin = provenance.get('coordinate_system', {}).get('origin_world_m', [0., 0.])
-    grid_bounds = _grid_bounds(vertices, sources)
+    coordinates = provenance.get('coordinate_system', {})
+    origin = coordinates.get('origin_world_m', [0., 0.])
+    grid_bounds = _grid_bounds(vertices, sources, coordinates.get('display_bounds_world_m'))
     images = []
     for name, azimuth, elevation, label in VIEWS:
         canvas = Image.new('RGB', (width, height), '#f7f9fb')

@@ -1,0 +1,459 @@
+// title: "Native HSR terminal resource and boundary audit"
+// summary: "Bind the trumpet's three outer terminal positions to installed NAM 50 starter rules, actual paired train paths, and measured model joins."
+//
+// Used when: Reviewing a trumpet terminal change or checking a new package against the native starter and boundary inputs.
+// Read by: HSR maintainers reviewing the trumpet's TESTING guide and native approach cases.
+// Updated by: A maintainer after repeating the dependency and saved-boundary audit against an identified build.
+// Affects: Software evidence for the terminal construction contract and native seams. Live construction and train observations are recorded separately.
+{
+  "schema_version": 1,
+  "status": "passed",
+  "scope": "Pinned installed NAM dependencies and actual saved HSR terminal boundaries. Software checks only.",
+  "saved_parts_build": "all-pieces-hsr-highway-source-02",
+  "saved_parts_build_piece_count": 225,
+  "saved_parts_manifest_sha256": "feca56d742a61c0af964fa17c8c3ce5f5860f36f475adb5349393bea3867358d",
+  "assembly_definition_sha256": "c4ebddadbe4a02091b3b7f57f7bb7bc815e3c5372cd2c2abc69d560f076ea455",
+  "installed_archive_sha256": {
+    "High Speed Rail.dat": "e72def6bf460ed1f9f6969e68b146bfc046e3f05a34ede522d94d69da5c5473a",
+    "NetworkAddonMod_Controller.dat": "d903540cdf772b4ed6a072c504e006e1cac384f8027ce58a288a5a9654f94161"
+  },
+  "native_controller": {
+    "C215": {
+      "CellLayout": [
+        "...a...",
+        "...b..<",
+        "...b...",
+        "...c...",
+        "...^..."
+      ],
+      "ConsLayout": [
+        ".......",
+        "...+..<",
+        "...+...",
+        "...^..."
+      ],
+      "road_check": "CheckType = c - monorail: 0x02000200 road: 0x00010100 optional",
+      "section_body_sha256": "ce68f9f9ed1e2674d74632bfd0fdcbeec342ab88b685a03eb7e482a97c8b8f64"
+    },
+    "RUL1_road_monorail": [
+      [
+        "00010100",
+        "02000200",
+        "5dd31500",
+        0,
+        0
+      ],
+      [
+        "01010000",
+        "00020002",
+        "5dd31500",
+        1,
+        0
+      ],
+      [
+        "01000001",
+        "02000200",
+        "5dd31500",
+        2,
+        0
+      ],
+      [
+        "00000101",
+        "00020002",
+        "5dd31500",
+        3,
+        0
+      ]
+    ],
+    "RUL2_native_straight_and_stub_rows": [
+      "0x5dd31500,1,0,0x0d031500,1,0=0x5dd31500,1,0,0x5dd31500,3,0",
+      "0x5dd31500,1,0,0x0d031500,3,0=0x5dd31500,1,0,0x5dd31500,3,0",
+      "0x5dd31500,3,0,0x0d031500,1,0=0x5dd31500,3,0,0x5dd31500,3,0",
+      "0x5dd31500,3,0,0x0d031500,3,0=0x5dd31500,3,0,0x5dd31500,3,0",
+      "0x0d000500,1,0,0x5dd31500,1,0=0x5dd00500,1,0,0x5dd31500,1,0",
+      "0x0d000500,1,0,0x5dd31500,3,0=0x5dd00500,1,0,0x5dd31500,3,0",
+      "0x0d000500,3,0,0x5dd31500,1,0=0x5dd00500,3,0,0x5dd31500,1,0",
+      "0x0d000500,3,0,0x5dd31500,3,0=0x5dd00500,3,0,0x5dd31500,3,0"
+    ],
+    "rul0_sha256": "d2a63a6c9070857c5360343cfa07f0be13ef0559fd659e9545c57c15dda672b9",
+    "rul1_sha256": "4e44ec44283de6fccc3cd40492fc24154d13fb16a5150e13c201c6e615bba998",
+    "rul2_sha256": "c427c7872743ca4cd9f583adf33c93a320babe37c42061fbd33c905696e7a3b1"
+  },
+  "native_tile_resources_sha256": {
+    "296678f7-a966883f-5dd31500": "14ede4aca7915368d6cfbeb88e5af3e801243eb9e4becbd4a5cf9b1e1fe7a9b8",
+    "5ad0e817-badb57f1-5dd31500": "00647b6415b099944955815ac5f32b6890acb4dc09e6b3082c3887e833082b25",
+    "6534284a-89ac5643-5dd31500": "f7a179b4a7d32eeefd22f4571712549e93de62c450c93efb75764680ed0c9504",
+    "6534284a-ebe084c2-5dd31500": "a280683a000029d779f33544950fde4ff0043e54e2368b94b60a323a98459175"
+  },
+  "method": {
+    "installed_providers": "Each audited RUL and native tile resource has exactly one provider outside the managed SCP installation. Both provider archives match the configured NAM 50 profile.",
+    "socket_pairings": "Rotate each owner and complementary native straight by the same proper rotation. At each two-track seam, compare directed entry/exit, three-dimensional endpoint, travel tangent, grade, and Monorail transport class.",
+    "model_sections": "Intersect actual saved triangles 0.000005 m inside both tile edges. Compare ballast at lateral -2, 0, and 2 m, parapet top at -7.3, -6.7, 6.7, and 7.3 m, parapet faces at 16.5 m, and recessed web faces at 15.5 m.",
+    "model_section_tolerance_m": 5e-05,
+    "model_scope": "The sampled visible profiles match. The authored model also has a continuous central underside, which the native straight lacks."
+  },
+  "counts": {
+    "existing_native_RUL1_marker_solutions": 4,
+    "existing_native_RUL2_straight_and_stub_rules": 8,
+    "authored_occupied_cells": 105,
+    "unowned_helper_cells": 3,
+    "proper_rotations_per_terminal": 4,
+    "complementary_directed_socket_pairings": 24,
+    "model_profile_comparisons_across_zooms_and_rotations": 60,
+    "maximum_model_sample_delta_m": 1.908e-06
+  },
+  "terminals": {
+    "P04": {
+      "arm": "S",
+      "asset_dat_sha256": "f975d978ed78b6025f2c997e0ae0cc10900da29bd525c7597c08ba2cb6c5994d",
+      "helper_cell": [
+        1,
+        6
+      ],
+      "helper_centre_east_north_m": [
+        0.0,
+        -224.0
+      ],
+      "owner_cell": [
+        1,
+        5
+      ],
+      "owner_centre_east_north_m": [
+        0.0,
+        -208.0
+      ],
+      "owner_path_sha256": "718c29252f13505858ec875e440e11967a82b21235adaed2fd3f8e6f200b2e58",
+      "owner_tile_id": "7f58c150",
+      "piece_id": "hsr-l2-two-track-mainline-split-merge-parallel-recessed-end",
+      "registered_rotation_ccw": 0,
+      "owner_model_sha256_at_each_of_five_zooms": "d95223e268b562e1887c4a2d7801b103c04fe6830d143e8b3f7ac746e89362d2",
+      "registered_directed_sockets": {
+        "in": {
+          "custom_route_records": [
+            {
+              "junction": 0,
+              "lane_class": 1
+            },
+            {
+              "junction": 1,
+              "lane_class": 2
+            }
+          ],
+          "native_route_records": [
+            {
+              "junction": null,
+              "lane_class": 0
+            }
+          ],
+          "position_east_north_height_m": [
+            2.0,
+            -216.0,
+            15.5
+          ],
+          "transport_class": 7,
+          "travel_tangent_and_grade": [
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        "out": {
+          "custom_route_records": [
+            {
+              "junction": 0,
+              "lane_class": 1
+            },
+            {
+              "junction": 0,
+              "lane_class": 2
+            }
+          ],
+          "native_route_records": [
+            {
+              "junction": null,
+              "lane_class": 0
+            }
+          ],
+          "position_east_north_height_m": [
+            -2.0,
+            -216.0,
+            15.5
+          ],
+          "transport_class": 7,
+          "travel_tangent_and_grade": [
+            0.0,
+            -1.0,
+            0.0
+          ]
+        }
+      },
+      "maximum_model_sample_delta_m_by_ccw_rotation": {
+        "0": 1.907e-06,
+        "180": 1.907e-06,
+        "270": 1.907e-06,
+        "90": 1.907e-06
+      }
+    },
+    "P09": {
+      "arm": "E",
+      "asset_dat_sha256": "9b82c31fd3d2a1d84985ad5741541d88b09a6fcc99fae2baf10c8af96f17d5a0",
+      "helper_cell": [
+        0,
+        -1
+      ],
+      "helper_centre_east_north_m": [
+        208.0,
+        0.0
+      ],
+      "owner_cell": [
+        0,
+        0
+      ],
+      "owner_centre_east_north_m": [
+        192.0,
+        0.0
+      ],
+      "owner_path_sha256": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "owner_tile_id": "7f508000",
+      "piece_id": "hsr-l2-two-track-straight",
+      "registered_rotation_ccw": 270,
+      "owner_model_sha256_at_each_of_five_zooms": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "registered_directed_sockets": {
+        "in": {
+          "custom_route_records": [
+            {
+              "junction": 0,
+              "lane_class": 0
+            }
+          ],
+          "native_route_records": [
+            {
+              "junction": null,
+              "lane_class": 0
+            }
+          ],
+          "position_east_north_height_m": [
+            200.0,
+            2.0,
+            15.5
+          ],
+          "transport_class": 7,
+          "travel_tangent_and_grade": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        "out": {
+          "custom_route_records": [
+            {
+              "junction": 0,
+              "lane_class": 0
+            }
+          ],
+          "native_route_records": [
+            {
+              "junction": null,
+              "lane_class": 0
+            }
+          ],
+          "position_east_north_height_m": [
+            200.0,
+            -2.0,
+            15.5
+          ],
+          "transport_class": 7,
+          "travel_tangent_and_grade": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "maximum_model_sample_delta_m_by_ccw_rotation": {
+        "0": 1.908e-06,
+        "180": 1.908e-06,
+        "270": 1.908e-06,
+        "90": 1.908e-06
+      }
+    },
+    "P22": {
+      "arm": "W",
+      "asset_dat_sha256": "9b82c31fd3d2a1d84985ad5741541d88b09a6fcc99fae2baf10c8af96f17d5a0",
+      "helper_cell": [
+        0,
+        1
+      ],
+      "helper_centre_east_north_m": [
+        -128.0,
+        0.0
+      ],
+      "owner_cell": [
+        0,
+        0
+      ],
+      "owner_centre_east_north_m": [
+        -112.0,
+        0.0
+      ],
+      "owner_path_sha256": "def2fc350924062d104614235cbeec48b139049d2a5ddeb8e84433d644066435",
+      "owner_tile_id": "7f508000",
+      "piece_id": "hsr-l2-two-track-straight",
+      "registered_rotation_ccw": 270,
+      "owner_model_sha256_at_each_of_five_zooms": "6819eceaf578fa29a33140e4bc941b4815c952166de79ea20d0e55fa8504ab44",
+      "registered_directed_sockets": {
+        "in": {
+          "custom_route_records": [
+            {
+              "junction": 0,
+              "lane_class": 0
+            }
+          ],
+          "native_route_records": [
+            {
+              "junction": null,
+              "lane_class": 0
+            }
+          ],
+          "position_east_north_height_m": [
+            -120.0,
+            -2.0,
+            15.5
+          ],
+          "transport_class": 7,
+          "travel_tangent_and_grade": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        "out": {
+          "custom_route_records": [
+            {
+              "junction": 0,
+              "lane_class": 0
+            }
+          ],
+          "native_route_records": [
+            {
+              "junction": null,
+              "lane_class": 0
+            }
+          ],
+          "position_east_north_height_m": [
+            -120.0,
+            2.0,
+            15.5
+          ],
+          "transport_class": 7,
+          "travel_tangent_and_grade": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "maximum_model_sample_delta_m_by_ccw_rotation": {
+        "0": 1.907e-06,
+        "180": 1.907e-06,
+        "270": 1.907e-06,
+        "90": 1.907e-06
+      }
+    }
+  },
+  "separate_frozen_layout_payload_comparison": {
+    "frozen_resources_descriptor_sha256": "b18ae71c247f95ee2f09d79c816170d29d593a974d17b355e6bf1d6e3034d535",
+    "historical_build_name": "trumpet-fan-core-parts-audit-01",
+    "pieces_checked": 14,
+    "registered_placements": 28,
+    "world_cells_with_exact_runtime_placement_and_physical_payloads": 105,
+    "world_cell_payload_comparisons": 1155,
+    "by_resource_kind": {
+      "label": {
+        "identical": 0,
+        "presentation_name_changes": 88,
+        "total": 88
+      },
+      "model": {
+        "identical": 454,
+        "presentation_name_changes": 0,
+        "total": 454
+      },
+      "path": {
+        "identical": 88,
+        "presentation_name_changes": 0,
+        "total": 88
+      },
+      "preview_effect": {
+        "identical": 14,
+        "presentation_name_changes": 0,
+        "total": 14
+      },
+      "shadow": {
+        "identical": 440,
+        "presentation_name_changes": 0,
+        "total": 440
+      },
+      "tile_exemplar": {
+        "identical": 0,
+        "presentation_name_changes": 88,
+        "total": 88
+      }
+    },
+    "runtime_classification": "Every archived resource key is retained. All S3Ds, PATHs, shadow images, and preview effects match byte-for-byte. Changed tile exemplars retain every parsed property except the display name. Labels are presentation data.",
+    "scope_limit": "This comparison preserves frozen physical inputs without rerunning their whole-layout validations.",
+    "frozen_resources_descriptor": "checks/resources.json"
+  },
+  "limits": [
+    "The C215 road marker is a dynamic construction request outside the static layout.",
+    "For fresh terminal placement, reserve one empty flat helper plot. Its native creation and outward Monorail drag remain pending game observation.",
+    "A prebuilt HSR line needs the matching paired Level 2 straight, with game acceptance of the helper plot tested separately. A dynamic tile can require a Road marker edit.",
+    "Do not use the helper over protected custom cells, unrelated networks, or lots. Native terrain, demolition, save/reload, and all moving-train routes require separate human checks.",
+    "P04 has route classes 1 and 2 at two physical sockets. Equal positions, travel tangents, grades, and transport class do not establish live selection of those records."
+  ],
+  "controller_and_menu_transform": {
+    "source": "all-pieces-hsr-highway-source-02",
+    "source_manifest_sha256": "feca56d742a61c0af964fa17c8c3ce5f5860f36f475adb5349393bea3867358d",
+    "derived_controller_sha256": "5c70e4146252f1bc056f72cd0ddc36e9e89bb9cefe5af945f5ea058b08913fdb",
+    "derived_menu_sha256": "8217797ddbbabfbd8476cc414a19f9ea461774dce97af424c8d213cbeb852d0a",
+    "frozen_selection_sha256": "7bca9cb32ac78d43e4451d185e620890351ea00069c8f431606ad5fdbfa74c8f",
+    "ordinary_selections": 14,
+    "native_terminal_selections": 3,
+    "terminal_construction_states_checked": 24,
+    "component_order": [
+      "f826",
+      "f7a5",
+      "f831",
+      "f82e",
+      "f82f",
+      "f829",
+      "f7a8",
+      "f827",
+      "f832",
+      "f830",
+      "f7a6",
+      "f824",
+      "f825",
+      "f7b0",
+      "f891",
+      "f892",
+      "f893"
+    ],
+    "scope": "Actual saved NAM 50 source controller and menu were transformed and independently read back. This scoped audit preserves canonical rule bodies and all unrelated menu resources. It does not certify the entire mixed source build."
+  },
+  "current_encoded_journeys": {
+    "manifest_sha256": "feca56d742a61c0af964fa17c8c3ce5f5860f36f475adb5349393bea3867358d",
+    "placed_cells": 105,
+    "encoded_fragments": 166,
+    "six_journeys": {
+      "complete_directed_journeys_frozen": 6,
+      "all_encoded_point_positions_and_counts_identical": true
+    },
+    "proper_poses": [
+      0,
+      90,
+      180,
+      270
+    ]
+  }
+}

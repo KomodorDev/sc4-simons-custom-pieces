@@ -16,7 +16,7 @@ Exact reusable identifier: `ghsr-ground-single-track-oneway-straight-diagonal`.
 
 Footprint: **1 × 2 tiles**. Exact menu name: **GHSR Ground (1 m) — Single-Track One-Way Diagonal Straight**.
 
-Choose this exact name in Transportation → Rail. Press Home or End to rotate; use only the supported states listed below. Join each end to a matching port profile and direction.
+Choose this exact name in Transportation → Rail → SCP → Pieces. Press Home or End to rotate using the supported states listed below. Join each end to a matching port profile and direction.
 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)

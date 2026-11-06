@@ -54,7 +54,7 @@ The permanent construction definition is [piece.json](piece.json), and its geome
 
 After following the [separate installation procedure](../../../../docs/BUILD_AND_INSTALL.md), use a disposable flat test city. A proper rotation turns the whole piece and all its travel directions together; it does not reflect the piece or reverse a directed track.
 
-1. Open **Transportation → Rail**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) — Parallel Split and Return Merge with Two-Track Mainline \u2014 Recessed Mainline End**. An assembly can expose the same reusable type through its Tab/Shift+Tab component cycle.
+1. Open **Transportation → Rail → SCP → Pieces**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) — Parallel Split and Return Merge with Two-Track Mainline \u2014 Recessed Mainline End**. An assembly can expose the same reusable type through its Tab/Shift+Tab component cycle.
 2. Move the complete cursor preview onto clear terrain. Press **Home** or **End** to rotate; on the documented Mac keyboard, **Fn + ←** and **Fn + →** provide those keys. Use only the supported construction states listed below.
 3. At 0°, identify the southern paired end, the recessed central paired end facing north, and the two outer northern single-track ends. The left outer end receives traffic; the right outer end sends traffic. Keep the 3 × 6 tile construction rectangle clear for the first trial.
 4. Click once to place the component. Supply matching outside connections and travel demand. Inspect tracks, decks, walls, supports, and shadows, then check the permitted journeys and unavailable movements separately.

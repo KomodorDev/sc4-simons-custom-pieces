@@ -498,7 +498,7 @@ class CurrentCrossDomainSelectionTests(unittest.TestCase):
         """Bind the portable archive fixture to the real five-layout selection."""
         from scp import jsonc
         from scp.catalog import load_catalog
-        from scp.multi_assembly_menu import _groups
+        from scp.multi_assembly_menu import _cycle_roots, _groups
         from scp.piece_menu_families import declarations
         catalog = load_catalog(ROOT)
         requested = [('high-speed-rail', 'trumpet'),
@@ -512,15 +512,19 @@ class CurrentCrossDomainSelectionTests(unittest.TestCase):
             layout = registry['layouts'][layout_id]
             assembly = next(row for row in catalog['_assemblies']
                             if row['domain'] == domain and row['id'] == layout['assembly_id'])
-            bundle['groups'].append({'domain_id': domain, 'layout_id': layout_id,
-                                     'layout': layout, 'scene': assembly['scene']})
+            group = {'domain_id': domain, 'layout_id': layout_id, 'layout': layout, 'scene': assembly['scene']}
+            if 'terminal_components' in layout:
+                ledger = catalog['_allocations']['assembly_aliases']
+                group['alias_reservations'] = {key: ledger[key] for key in layout['terminal_components'].values()}
+            bundle['groups'].append(group)
         groups = _groups({'pieces': catalog['pieces']}, bundle)
         self.assertEqual([len(pieces) for _, _, pieces in groups], [14, 13, 7, 15, 15])
         members = {piece['id'] for _, _, pieces in groups for piece in pieces}
         self.assertEqual(len(members), 64)
-        states = [{int(piece['puzzle_id'], 16) + turn * 0x10000
-                   for piece in pieces for turn in range(8)} for _, _, pieces in groups]
-        self.assertEqual(len(set.union(*states)), 64 * 8)
+        roots = [_cycle_roots(layout, pieces) for layout, _, pieces in groups]
+        self.assertEqual([len(row) for row in roots], [17, 13, 7, 15, 15])
+        states = [{root + turn * 0x10000 for root in group for turn in range(8)} for group in roots]
+        self.assertEqual(len(set.union(*states)), 67 * 8)
         family_groups = declarations(catalog['pieces'])
         actual_families = [{piece['id'] for piece in group} for group in family_groups]
         for family in actual_families:

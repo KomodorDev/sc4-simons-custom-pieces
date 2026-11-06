@@ -51,7 +51,8 @@ class AssemblyImageHeaderTests(unittest.TestCase):
                 'menu_name': 'Fixture track', 'origin_m': [0., 0.],
                 'rotation_ccw_degrees': 0., 'display_origin_tiles_en': [0., 0.],
                 'label_anchor_world_m': [0., 0., 15.5], 'occupied_world_cells': [[0., 0.]]}],
-            'coordinate_system': {'origin_world_m': [0., 0.]}}
+            'coordinate_system': {'origin_world_m': [0., 0.],
+                                  'display_bounds_world_m': [-24., -8., 24., 8.]}}
         original = deepcopy(provenance)
         with tempfile.TemporaryDirectory() as temporary, \
                 patch.object(renderer, 'TextureLibrary') as library, \
@@ -71,6 +72,8 @@ class AssemblyImageHeaderTests(unittest.TestCase):
         self.assertEqual([image['header_rows'][1] for image in report['images']], expected_second_rows)
         self.assertEqual({image['header_rows'][0] for image in report['images']}, {'Assembly - Fixture junction'})
         self.assertEqual([image['label'] for image in report['images']], expected_second_rows)
+        for image in report['images']:
+            self.assertEqual(image['grid']['bounds_world_m'], [-24., -8., 24., 8.])
         drawn_rows = [call.args[1] for call in caption.call_args_list if call.args[2] in (22, 72)]
         self.assertEqual(drawn_rows, [row for image in report['images'] for row in image['header_rows']])
         all_visible_captions = ' '.join(call.args[1] for call in caption.call_args_list)
@@ -85,6 +88,14 @@ class AssemblyImageHeaderTests(unittest.TestCase):
         self.assertFalse(construction['construction_layers']['model_underlay'])
         self.assertEqual(construction['construction_layers']['ownership_fill_opacity'],1.)
         self.assertEqual(provenance, original)
+
+    def test_explicit_display_grid_cannot_crop_or_cut_through_occupied_tiles(self):
+        vertices = [(-8., 15.5, -8.), (8., 15.5, 8.)]
+        sources = [{'occupied_world_cells': [[0., 0.], [16., 0.]]}]
+        for bounds, error in (([-8., -8., 8., 8.], 'enclose'),
+                              ([-8., -8., 32., 8.], 'tile edges')):
+            with self.subTest(bounds=bounds), self.assertRaisesRegex(ValueError, error):
+                renderer._grid_bounds(vertices, sources, bounds)
 
     def test_other_domain_can_supply_its_saved_textures_and_measured_caption_rows(self):
         model = parse_s3d(donor())

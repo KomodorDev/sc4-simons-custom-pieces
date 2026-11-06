@@ -157,15 +157,18 @@ def validate_catalog(catalog):
         require(isinstance(aliases, dict), 'Assembly alias reservations must be a mapping')
         assigned = set()
         piece_ids = {piece.get('id') for piece in catalog['pieces']}
+        alias_fields = {'piece_id', 'layout_id', 'puzzle_id'}
         for name, record in aliases.items():
             require(isinstance(name, str) and re.fullmatch(r'[a-z][a-z0-9-]*', name)
-                    and isinstance(record, dict) and set(record) == {'piece_id', 'layout_id', 'puzzle_id'}
+                    and isinstance(record, dict) and set(record) in (alias_fields, alias_fields | {'placement_id'})
                     and isinstance(record['piece_id'], str) and record['piece_id'] in piece_ids
                     and isinstance(record['layout_id'], str) and re.fullmatch(r'[a-z][a-z0-9-]*', record['layout_id'])
+                    and ('placement_id' not in record or isinstance(record['placement_id'], str)
+                         and re.fullmatch(r'P[0-9]{2}[A-Z]?', record['placement_id']))
                     and isinstance(record['puzzle_id'], str) and re.fullmatch(r'[0-9a-f]{4}', record['puzzle_id']),
                     'Invalid assembly alias reservation')
             puzzle = number(record['puzzle_id'])
-            assignment = (record['layout_id'], record['piece_id'])
+            assignment = (record['layout_id'], record.get('placement_id') or record['piece_id'])
             require(puzzle and puzzle not in reserved_puzzles and assignment not in assigned,
                     'Assembly alias reservation collision')
             reserved_puzzles.add(puzzle)

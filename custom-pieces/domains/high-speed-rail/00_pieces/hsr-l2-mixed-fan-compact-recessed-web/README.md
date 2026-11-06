@@ -54,7 +54,7 @@ The [piece definition](piece.json) owns the construction identity, and the [geom
 
 After following the [separate build and installation procedure](../../../../docs/BUILD_AND_INSTALL.md), use a disposable flat test city. A proper rotation turns the complete component and its directions together; it does not reflect the component or reverse a route.
 
-1. Open **Transportation → Rail**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) — Fan with Two-Track Stem — Compact, Recessed Web**. An installed assembly may include this type in its declared Tab/Shift+Tab cycle.
+1. Open **Transportation → Rail → SCP → Pieces**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) — Fan with Two-Track Stem — Compact, Recessed Web**. An installed assembly may include this type in its declared Tab/Shift+Tab cycle.
 2. Move the complete cursor preview over clear terrain. Press **Home** or **End** to rotate it; on the documented Mac keyboard, **Fn + ←** and **Fn + →** provide those keys. Use only the construction states listed in the generated connection section.
 3. At 0°, locate the north-facing paired boundary and the two southern curved cuts in the top picture. Align a matching recessed-web paired straight with the north boundary, and align matching curved continuations with the southern cuts.
 4. Click once to place the component. Supply the matching outside connections and travel demand. Inspect rails, decks, grey walls, supports, and shadows, then check the permitted journeys and forbidden movements separately.

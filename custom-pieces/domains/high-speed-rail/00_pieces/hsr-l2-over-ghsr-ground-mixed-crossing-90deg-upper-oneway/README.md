@@ -16,7 +16,7 @@ Exact reusable identifier: `hsr-l2-over-ghsr-ground-mixed-crossing-90deg-upper-o
 
 Footprint: **3 × 1 tiles**. Exact menu name: **HSR Level 2 (15.5 m) over GHSR Ground (1 m) — Single-Track One-Way over Two-Track Crossing 90°**.
 
-Choose this exact name in Transportation → Rail. Press Home or End to rotate; use only the supported states listed below. Join each end to a matching port profile and direction.
+Choose this exact name in Transportation → Rail → SCP → Pieces. Press Home or End to rotate using the supported states listed below. Join each end to a matching port profile and direction.
 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)

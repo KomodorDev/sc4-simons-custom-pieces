@@ -1,4 +1,5 @@
 """Entry-point isolation and checks that protect the graphical install flow."""
+from importlib.util import module_from_spec, spec_from_file_location
 import json
 from pathlib import Path
 import subprocess
@@ -26,6 +27,22 @@ class InstallerEntryTests(unittest.TestCase):
             self.assertEqual(value['kind'], 'source-local-builder')
             self.assertFalse(value['bundled_native_game_resources'])
             self.assertTrue(value['experimental'])
+
+    def test_prepared_runtime_without_integrity_manifest_cannot_use_source_fallback(self):
+        spec = spec_from_file_location("_test_installer_main", ROOT / "installer/main.py")
+        entry = module_from_spec(spec)
+        spec.loader.exec_module(entry)
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "installer").mkdir()
+            info = root / "installer/build-info.json"
+            info.write_text('{"kind":"verified-prebuilt"}')
+            with self.assertRaisesRegex(ValueError, "package is incomplete"):
+                entry.verify_runtime(root)
+            info.unlink()
+            (root / "installer/prebuilt").mkdir()
+            with self.assertRaisesRegex(ValueError, "package is incomplete"):
+                entry.verify_runtime(root)
 
     def test_offline_entry_exercises_real_owned_transaction_without_game_inputs(self):
         with tempfile.TemporaryDirectory() as temporary:

@@ -4,7 +4,7 @@ from __future__ import annotations
 from copy import deepcopy
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import stat
 import sys
 import tempfile
@@ -18,6 +18,10 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "installer"))
 import build_bundle as bundle
+from scp.dbpf import pack_dbpf
+from scp.install import FOLDER, NETWORK_INI, RUL0
+from scp.menu import DESCRIPTION, ICON, MENU_EXEMPLAR, TITLE
+from scp.track_paths import PATH, S3D
 
 
 COMMIT = "1234567890abcdef1234567890abcdef12345678"
@@ -52,13 +56,36 @@ class InstallerBundleTests(unittest.TestCase):
         return ("// title: " + json.dumps(title) + '\n// summary: "Portable synthetic installer input."\n'
                 + json.dumps(value, indent=2) + "\n").encode()
 
-    def _prepare(self):
+    def _prepare(self, prebuilt_payload=None, runtime=None, **handoff):
         source = self._source()
-        runtime = self.directory / "runtime"
+        runtime = runtime or self.directory / "runtime"
         with patch.object(bundle, "_source_paths", return_value=list(source.rglob("*"))) as paths:
             paths.return_value = [path for path in paths.return_value if path.is_file()]
-            bundle.prepare_runtime(source, runtime, COMMIT, "windows-x64")
+            bundle.prepare_runtime(source, runtime, COMMIT, "windows-x64", prebuilt_payload=prebuilt_payload,
+                                   **handoff)
         return runtime
+
+    def _prebuilt_payload(self):
+        root = self.directory / "payload"
+        menu_id = 0x6A478001
+        tile_id = 0x7F580000
+        archives = {
+            "00_SCP_Controller_NAM50.dat": {RUL0: b"fixture RUL0", NETWORK_INI: b"fixture INI"},
+            "10_SCP_Menu.dat": {(*prefix, menu_id): b"fixture menu"
+                               for prefix in (MENU_EXEMPLAR, ICON, TITLE, DESCRIPTION)},
+            "20_Pieces/SCP_example.dat": {(*S3D, tile_id): b"fixture model",
+                                           (*PATH, tile_id): b"fixture path"},
+        }
+        paths = [self._write(root, f"{FOLDER}/{name}", pack_dbpf(resources))
+                 for name, resources in archives.items()]
+        manifest = {"schema_version": 1, "kind": "scp-prebuilt-payload", "plugin_folder": FOLDER,
+                    "source_commit": COMMIT, "verified_build_manifest_sha256": "a" * 64,
+                    "profile": {"id": "nam50-rhd", "donors": [
+                        {"filename": "NetworkAddonMod_Controller.dat", "sha256": "b" * 64}]},
+                    "pieces": [{"id": "example"}], "files": [bundle._record(path, root) for path in paths],
+                    "dependency_audit": {"textures": [], "shadows": []}, "exclusive_instance_ids": []}
+        self._write(root, "manifest.json", json.dumps(manifest).encode())
+        return root
 
     def _archive(self, target="windows-x64"):
         folder = self.directory / "SCP-Installer-fixture"
@@ -207,6 +234,144 @@ class InstallerBundleTests(unittest.TestCase):
                 path.write_text(json.dumps({**original, key: value}))
                 with self.assertRaisesRegex(ValueError, "inconsistent"):
                     bundle.verify_runtime(runtime)
+
+    def test_prebuilt_runtime_and_zip_include_exact_review_payload_and_digest(self):
+        payload = self._prebuilt_payload()
+        folder = self.directory / "frozen"
+        runtime = self._prepare(payload, folder / bundle.FROZEN_RUNTIME)
+        digest = bundle._hash(payload / "manifest.json")
+        info = json.loads((runtime / bundle.BUILD_INFO).read_text())
+        self.assertEqual(info["kind"], "verified-prebuilt")
+        self.assertTrue(info["review_only"])
+        self.assertEqual(info["prebuilt_payload_manifest_sha256"], digest)
+        self.assertEqual(bundle.verify_runtime(runtime)["prebuilt_payload_manifest_sha256"], digest)
+        archive = self.directory / "prebuilt.zip"
+        result = bundle.create_archive(folder, archive, COMMIT, "windows-x64")
+        self.assertEqual(result["kind"], "verified-prebuilt-installer")
+        self.assertTrue(result["review_only"])
+        self.assertEqual(result["prebuilt_payload_manifest_sha256"], digest)
+        with zipfile.ZipFile(archive) as saved:
+            prefix = f"{folder.name}/{bundle.FROZEN_RUNTIME}/{bundle.PREBUILT_PAYLOAD}/"
+            included = {name.removeprefix(prefix): saved.read(name) for name in saved.namelist()
+                        if name.startswith(prefix)}
+        expected = {path.relative_to(payload).as_posix(): path.read_bytes() for path in bundle._files(payload)}
+        self.assertEqual(included, expected)
+
+    def test_prebuilt_archive_reads_only_metadata_as_complete_members(self):
+        folder = self.directory / "frozen"
+        self._prepare(self._prebuilt_payload(), folder / bundle.FROZEN_RUNTIME)
+        archive = self.directory / "prebuilt.zip"
+        bundle.create_archive(folder, archive, COMMIT, "windows-x64")
+        read = zipfile.ZipFile.read
+
+        def read_metadata_only(saved, member):
+            name = member.filename if isinstance(member, zipfile.ZipInfo) else member
+            self.assertIn(PurePosixPath(name).name,
+                          {"bundle-index.json", "build-info.json", "runtime-manifest.json", "SHA256SUMS"})
+            return read(saved, member)
+
+        with patch.object(zipfile.ZipFile, "read", new=read_metadata_only):
+            self.assertEqual(bundle.verify_archive(archive)["status"], "passed")
+
+    def test_public_prebuilt_zip_binds_the_original_and_receiving_commits(self):
+        payload = self._prebuilt_payload()
+        digest = bundle._hash(payload / "manifest.json")
+        record = {"schema_version": 1, "kind": "scp-release-payload",
+                  "prebuild_commit": "a" * 40, "source_tree": "b" * 40, "source_commit": COMMIT,
+                  "prebuild_manifest_sha256": "c" * 64, "payload_manifest_sha256": digest,
+                  "archive_sha256": "d" * 64}
+        folder = self.directory / "frozen"
+        runtime = self._prepare(payload, folder / bundle.FROZEN_RUNTIME,
+                                release_record=record, public_prebuilt=True)
+        self.assertEqual(bundle.verify_runtime(runtime)["release_record"], record)
+        archive = self.directory / "prebuilt.zip"
+        result = bundle.create_archive(folder, archive, COMMIT, "windows-x64")
+        self.assertFalse(result["review_only"])
+        self.assertEqual(result["release_record"], record)
+        info = json.loads((runtime / bundle.BUILD_INFO).read_bytes())
+        self.assertEqual(info["release_tag"], f"installer-{COMMIT[:12]}")
+        self.assertEqual(info["source_commit"], COMMIT)
+        self.assertNotEqual(info["source_commit"], record["prebuild_commit"])
+        with self.assertRaisesRegex(ValueError, "handoff record disagree"):
+            bundle._distribution_metadata(COMMIT, "windows-x64", digest,
+                                          release_record={**record, "payload_manifest_sha256": "e" * 64},
+                                          public=True)
+
+    def test_prebuilt_payload_rejects_a_different_source_revision_or_unexpected_donor_archive(self):
+        payload = self._prebuilt_payload()
+        manifest = payload / "manifest.json"
+        original = manifest.read_bytes()
+        manifest.write_text(json.dumps({**json.loads(original), "source_commit": "c" * 40}))
+        with self.assertRaisesRegex(ValueError, "source revision"):
+            self._prepare(payload)
+        manifest.write_bytes(original)
+        donor = self._write(payload, f"{FOLDER}/NetworkAddonMod_Controller.dat",
+                            pack_dbpf({RUL0: b"native rules"}))
+        with self.assertRaisesRegex(ValueError, "undeclared"):
+            self._prepare(payload)
+        declared = json.loads(original)
+        declared["files"].append(bundle._record(donor, payload))
+        manifest.write_text(json.dumps(declared))
+        with self.assertRaisesRegex(ValueError, "differ from the declared"):
+            self._prepare(payload)
+
+    def test_prebuilt_payload_rejects_raw_donor_bytes_under_an_allowed_name(self):
+        payload = self._prebuilt_payload()
+        manifest_path = payload / "manifest.json"
+        manifest = json.loads(manifest_path.read_bytes())
+        # Keep the expected controller filename, DBPF resource types, and hashes,
+        # but identify its exact bytes as the original installed NAM input.
+        donor = payload / FOLDER / "00_SCP_Controller_NAM50.dat"
+        manifest["profile"]["donors"][0]["sha256"] = bundle._hash(donor)
+        manifest_path.write_text(json.dumps(manifest))
+        with self.assertRaisesRegex(ValueError, "unmodified source archive"):
+            self._prepare(payload)
+
+    def test_prebuilt_runtime_detects_changed_and_missing_payload_bytes(self):
+        runtime = self._prepare(self._prebuilt_payload())
+        path = runtime / bundle.PREBUILT_PAYLOAD / FOLDER / "20_Pieces/SCP_example.dat"
+        path.write_bytes(b"changed")
+        with self.assertRaisesRegex(ValueError, "source changed"):
+            bundle.verify_runtime(runtime)
+        path.unlink()
+        with self.assertRaisesRegex(ValueError, "file set"):
+            bundle.verify_runtime(runtime)
+
+    def test_prebuilt_runtime_metadata_and_archive_bind_exact_manifest(self):
+        folder = self.directory / "frozen"
+        runtime = self._prepare(self._prebuilt_payload(), folder / bundle.FROZEN_RUNTIME)
+        info_path = runtime / bundle.BUILD_INFO
+        info = json.loads(info_path.read_text())
+        info["prebuilt_payload_manifest_sha256"] = "d" * 64
+        info_path.write_text(json.dumps(info))
+        manifest_path = runtime / bundle.RUNTIME_MANIFEST
+        manifest = json.loads(manifest_path.read_text())
+        manifest["files"] = [bundle._record(info_path, runtime) if row["path"] == bundle.BUILD_INFO
+                             else row for row in manifest["files"]]
+        manifest_path.write_text(json.dumps(manifest))
+        with self.assertRaisesRegex(ValueError, "manifest differs from build metadata"):
+            bundle.verify_runtime(runtime)
+        with self.assertRaisesRegex(ValueError, "manifest differs from archive metadata"):
+            bundle.create_archive(folder, self.directory / "prebuilt.zip", COMMIT, "windows-x64")
+
+    def test_raw_game_archive_is_rejected_outside_prebuilt_subtree(self):
+        folder = self.directory / "frozen"
+        self._prepare(self._prebuilt_payload(), folder / bundle.FROZEN_RUNTIME)
+        self._write(folder, "SimCity_3.dat", pack_dbpf({RUL0: b"native rules"}))
+        with self.assertRaisesRegex(ValueError, "native game resource"):
+            bundle.create_archive(folder, self.directory / "prebuilt.zip", COMMIT, "windows-x64")
+
+    def test_publishing_rejects_prebuilt_review_archive_even_with_public_filename(self):
+        folder = self.directory / "frozen"
+        self._prepare(self._prebuilt_payload(), folder / bundle.FROZEN_RUNTIME)
+        archive = self.directory / ("SCP-Installer-windows-x64-" + COMMIT[:12] + ".zip")
+        bundle.create_archive(folder, archive, COMMIT, "windows-x64")
+        environment = {"GITHUB_SHA": COMMIT, "GITHUB_REPOSITORY": "owner/repository",
+                       "GITHUB_EVENT_NAME": "push", "GITHUB_REF": "refs/heads/main"}
+        with patch.dict(os.environ, environment, clear=True), patch.object(bundle, "_gh") as github:
+            with self.assertRaisesRegex(ValueError, "cannot publish a prebuilt review bundle"):
+                bundle.publish(self.directory, COMMIT, "owner/repository")
+            github.assert_not_called()
 
     def test_archive_hashes_closure_and_executable_mode_are_verified(self):
         folder, archive = self._archive()

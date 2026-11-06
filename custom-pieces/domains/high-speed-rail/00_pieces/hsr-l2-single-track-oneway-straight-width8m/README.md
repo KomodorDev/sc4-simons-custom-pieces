@@ -56,7 +56,7 @@ A **proper rotation** turns the complete piece without reflecting it. The eight 
 
 After following the separate [installation procedure](../../../../docs/BUILD_AND_INSTALL.md), use a disposable flat test city. Placement remains unverified in game.
 
-1. Open **Transportation → Rail**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) — Single-Track One-Way Straight — 8 m Deck Width**. In an assembly’s component cycle, use **Tab** or **Shift+Tab** to select this same type.
+1. Open **Transportation → Rail → SCP → Pieces**, hover over the SCP buttons, and select **HSR Level 2 (15.5 m) — Single-Track One-Way Straight — 8 m Deck Width**. In an assembly’s component cycle, use **Tab** or **Shift+Tab** to select this same type.
 2. Move the preview over a clear **1 × 1 tile rectangle**. Press **Home** or **End** to rotate; on the documented Mac keyboard, **Fn + ←** and **Fn + →** produce those keys.
 3. At 0°, connect the south entrance and north exit to matching centred one-way approaches at 15.5 m. Check that both approaches carry trains in the intended south-to-north direction.
 4. Click once to place the complete piece. Supply travel demand for each permitted journey, then inspect the game’s route query and moving trains separately.

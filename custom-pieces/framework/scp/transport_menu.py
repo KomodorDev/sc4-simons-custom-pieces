@@ -17,11 +17,12 @@ from .piece_menu_families import hidden_members
 KEY = 'transport_menu'
 CURRENT_VERSION = 2
 LEGACY_ROOT_ORDER = 0xFFFFFFF4
-# SC4 sorts network and folder order as signed 32-bit values. The NAM 50
-# Highway entries audited for this layout start at -255.
-HIGHWAY_ROOT_ORDER = 0xFFFFFE00
+# SC4 sorts network and folder order as signed 32-bit values. The audited
+# NAM 50 entries start at -255 for Highways and 0x99999999 for Rail.
+ROOT_ORDERS = {'highway': 0xFFFFFE00, 'high-speed-rail': 0x99999900}
 HIGHWAY = (0x6A47FEF4, 0x6A47FEF5, 0x6A47FEF6)
-FOLDER_IDS = {'highway': HIGHWAY}
+RAIL = (0x6A47FEF7, 0x6A47FEF8, 0x6A47FEF9)
+FOLDER_IDS = {'highway': HIGHWAY, 'high-speed-rail': RAIL}
 LEAVES = ('pieces', 'assemblies')
 
 
@@ -123,7 +124,7 @@ def _entries(roster):
 
 
 def _native_buttons(resources, domain):
-    selector = {'highway': 0x4005}[domain]
+    selector = {'highway': 0x4005, 'high-speed-rail': 0x4001}[domain]
     native = set()
     for key, raw in resources.items():
         if key[:2] != MENU_EXEMPLAR:
@@ -170,7 +171,7 @@ def arrange(source, roster, *, version=CURRENT_VERSION, folder_source=None):
                 icon = folder_source[icon_key]
             order = LEGACY_ROOT_ORDER + offset
             if offset == 0 and version == CURRENT_VERSION:
-                order = HIGHWAY_ROOT_ORDER
+                order = ROOT_ORDERS[domain]
             additions = _new_button(template, {'id': iid, 'order': order,
                                               'title': title, 'description': description},
                                     kind='submenu', icon=icon)

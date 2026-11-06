@@ -19,15 +19,15 @@ Research checked on **18 October 2026**. This document distinguishes statements 
 
 ## 1. Current release status
 
-The existing compiled pieces are **experimental local builds**. Public redistribution of their DATs is not cleared by the permission evidence currently recorded here. The project also supplies an **experimental local-builder installer**, which contains the runtime and maintained source and reads native resources from the user's own installed game and NAM. It does not distribute the compiled DATs, NAM archives, or base-game archives. Its [separate distribution policy](../config/installer.jsonc) does not mark the [compiled-plugin readiness record](../config/release.jsonc) passed or published.
+The existing compiled pieces are **experimental local builds**. Public redistribution of their DATs is not cleared by the permission evidence currently recorded here. The earlier public installer contains the runtime and maintained source, and builds from the player's game and NAM. The prebuilt release workflow stays gated by the successful private hosted review and the [compiled-plugin readiness record](../config/release.jsonc).
 
 <a id="experimental-installer-distribution"></a>
 
 ### 1.1 Experimental installer distribution
 
-After a human promotes `dev` to `main`, the [automatic installer workflow](https://github.com/KomodorDev/sc4-simons-custom-pieces/blob/dev/docs/GITHUB.md#automatic-installer-prereleases) runs the complete test command, builds the Windows x64 bundle, checks its contents, runs the packaged executable's self-test and GUI startup smoke check, and publishes an experimental GitHub prerelease only after every required job succeeds. Source commits, ZIP checksums, member indexes, and self-test reports identify the exact candidate. The deterministic `installer-<commit-prefix>` tag does not promote the library's development version to a stable release. Pull requests produce review artifacts and do not publish releases.
+After a human promotes `dev` to `main`, the [automatic installer workflow](AUTOMATIC_RELEASES.md) verifies the approved merge, the prebuilt payload from Dropbox, and the recorded release evidence. GitHub's Windows runner packages the exact verified game files and checks the executable and archive before publishing. The release record identifies the original prebuild and merge commits, the shared source tree, and the payload checksums. The deterministic `installer-<commit-prefix>` tag identifies an experimental prerelease.
 
-The installer selects all implemented registered pieces and prepares the Rail trumpet and Highway assembly menus. On the user's computer, it validates the audited profile, derives required Road captures from exact selected resources, builds and verifies the files, and installs one receipt-owned SCP folder. It does not modify original game or NAM archives. The current profile remains Windows Deluxe 1.1.641 with NAM 50 and right-hand traffic. See the [player installer guide](INSTALLER.md) for required inputs and the possible Windows first-launch prompt.
+The Mac prepares all implemented pieces, the Rail trumpet and Highway assembly menus, and the combined controller. The prebuilt installer verifies the packaged files and audited local inputs before installing one receipt-owned SCP folder. The current profile remains Windows Deluxe 1.1.641 with NAM 50 and right-hand traffic. See the [player installer guide](INSTALLER.md) for required inputs and the possible Windows first-launch prompt.
 
 Installer distribution is separate from distributing NAM-derived DATs. Existing permission questions for externally authored source text or templates still need their applicable evidence; the local-builder approach does not supply a blanket license. Existing public identifier reservations, manual game observations, platform observations, and outstanding design flags remain unchanged. The gates below continue to assess a proposed compiled-plugin package; installer CI cannot mark them passed.
 
@@ -118,7 +118,7 @@ known_issues; install_instructions; uninstall_instructions; upgrade_policy
 archive_members; dat_sha256; archive_sha256; support_url
 ```
 
-Publication approval and permission evidence are separate facts. A permission record does not publish anything. The configured installer workflow publishes only its authorized local-builder prereleases after an accepted `main` update and successful checks. A compiled-plugin build or release-readiness assessment does not itself authorize uploading DATs, sending a message, or publishing a Simtropolis listing.
+Publication approval and permission evidence are separate facts. The protected GitHub environment, the verified private review, the exact tracked release evidence, and the human merge are required for a public prebuilt prerelease. A private handoff is limited to the dedicated Dropbox App Folder and the hosted runner.
 
 <a id="when-nam-changes"></a>
 

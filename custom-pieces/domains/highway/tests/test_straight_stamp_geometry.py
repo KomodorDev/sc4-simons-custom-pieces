@@ -130,17 +130,28 @@ class FrozenAuthoredVertexFormatTests(unittest.TestCase):
         frozen['vertices'][1]['format'] = 2
         self.assertTrue(matches_frozen_model(pack_s3d(changed), hashlib.sha256(pack_s3d(frozen)).hexdigest()))
 
-    def _source_cells(self, raw=None, path=None):
+    def _source_cells(self, raw=None, path=None, *, inherited=False):
         raw = self.raw if raw is None else raw
         path = self.path if path is None else path
         records = [{'source_piece_id': 'fixture', 'source_local_cell': [i, 0],
-                    'source_world_cell': [i, 0], 'model_sha256': self.frozen,
+                    'source_world_cell': [i, -2], 'model_sha256': self.frozen,
                     'path_sha256': hashlib.sha256(self.path).hexdigest()} for i in range(27)]
+        if inherited:
+            records[0]['inherited_model_sha256'] = self.frozen
         compiled = [((i, 0), raw, path) for i in range(27)]
         with patch('scp_highway.modular_stamp.reference', return_value={'cells': records}), \
                 patch('scp.jsonc.load', return_value={'id': 'fixture'}), \
-                patch('scp_highway.ramp_paths.compile_module', return_value=compiled):
+                patch('scp_highway.ramp_paths.compile_module', return_value=compiled), \
+                patch('scp_highway.native.build_crossing_channels',
+                      return_value=[((0, 0), self.old_raw, self.path)]):
             return source_cells({})
+
+    def _assert_source_mismatch(self, error, resource, expected, raw):
+        message = str(error.exception)
+        self.assertIn('accepted source changed before straight-stamp face partition', message)
+        self.assertIn(f'fixture {resource} at source cell (0, 0), world cell (0, -2)', message)
+        self.assertIn(f'Expected SHA-256 {expected}', message)
+        self.assertIn(f'actual SHA-256 {hashlib.sha256(raw).hexdigest()}', message)
 
     def test_complete_source_guard_accepts_packed_correction_and_rejects_model_and_path_changes(self):
         result = self._source_cells()
@@ -151,10 +162,23 @@ class FrozenAuthoredVertexFormatTests(unittest.TestCase):
             data = bytearray(changed['vertices'][1]['data'])
             struct.pack_into('<f', data, offset, .125)
             changed['vertices'][1]['data'] = bytes(data)
-            with self.subTest(kind=label), self.assertRaisesRegex(ValueError, 'accepted source changed'):
-                self._source_cells(raw=pack_s3d(changed))
-        with self.assertRaisesRegex(ValueError, 'accepted source changed'):
-            self._source_cells(path=self.path+b'changed\r\n')
+            raw = pack_s3d(changed)
+            with self.subTest(kind=label):
+                with self.assertRaises(ValueError) as error:
+                    self._source_cells(raw=raw)
+                self._assert_source_mismatch(error, 'model', self.frozen, raw)
+        path = self.path + b'changed\r\n'
+        with self.assertRaises(ValueError) as error:
+            self._source_cells(path=path)
+        self._assert_source_mismatch(error, 'traffic PATH', hashlib.sha256(self.path).hexdigest(), path)
+
+    def test_inherited_apron_guard_reports_its_fingerprint_before_using_the_pristine_model(self):
+        result = self._source_cells(inherited=True)
+        self.assertEqual(result[(0, -2)], (self.old_raw, self.path))
+        raw = self.raw + b'changed'
+        with self.assertRaises(ValueError) as error:
+            self._source_cells(raw=raw, inherited=True)
+        self._assert_source_mismatch(error, 'inherited Avenue apron model', self.frozen, raw)
 
     def test_all_saved_zooms_preview_and_projection_keep_their_frozen_byte_binding(self):
         from scp.track_paths import PATH, S3D

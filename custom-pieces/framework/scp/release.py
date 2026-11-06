@@ -159,7 +159,7 @@ def assess_build(project_root: Path, manifest: dict) -> dict:
             for piece in pieces:
                 source = registered[piece['id']]
                 domain = current['domains'][source['domain']]
-                relative = str(Path(domain['path'])/'00_pieces'/source['id']/'checks/manual-tests.json')
+                relative = (PurePosixPath(domain['path'])/'00_pieces'/source['id']/'checks/manual-tests.json').as_posix()
                 path = safe_relative(root, relative)
                 record = json.loads(path.read_text())
                 _require(record['subject'] == {'id': source['id'], 'kind': 'piece'},

@@ -16,7 +16,7 @@ Exact reusable identifier: `hsr-l2-two-track-t-junction-at-grade-smooth`.
 
 Footprint: **7 × 11 tiles**. Exact menu name: **HSR Level 2 (15.5 m) — Two-Track Smooth T Junction — At Grade**.
 
-Choose this exact name in Transportation → Rail. Press Home or End to rotate; use only the supported states listed below. Join each end to a matching port profile and direction.
+Choose this exact name in Transportation → Rail → SCP → Pieces. Press Home or End to rotate using the supported states listed below. Join each end to a matching port profile and direction.
 
 - [Connections and journeys](#connections-and-journeys)
 - [Test checklist](#test-checklist)
@@ -47,7 +47,7 @@ The four turning connections use direct curves whose curvature eases into straig
 
 The 7 × 11 construction rectangle measures 112 × 176 m and contains 22 occupied network cells. Keep the complete rectangle clear during placement tests: native-width concrete reaches about 3.43 m into some neighbouring unused cells, although the whole geometry remains inside the construction rectangle and every foundation is in an occupied cell. The triangular gap does not establish that a building or road fits there. The shared support plan has 18 pillars at least 16 m apart; nine underside contact points per pillar are checked.
 
-1. In a disposable flat city, open **Transportation → Rail** and select **SCP | HSR Level 2 (15.5 m) — Two-Track Smooth T Junction — At Grade**.
+1. In a disposable flat city, open **Transportation → Rail → SCP → Pieces** and select **SCP | HSR Level 2 (15.5 m) — Two-Track Smooth T Junction — At Grade**.
 2. Leave the full 7 × 11 area clear. The base mainline runs north/south and the branch east. Press **Home/End** to choose another quarter-turn orientation, then click once to place the whole junction.
 3. Join compatible native paired HSR at all three outside ends; stop each drag at the junction boundary.
 4. Supply travel demand and test each of the six directed journeys, both straight and turning. Observe the same-height crossings rather than assuming that the visible junction adds signals. Repeat the other rotations and save/reload checks using the generated checklist below.

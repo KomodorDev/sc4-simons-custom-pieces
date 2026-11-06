@@ -12,7 +12,7 @@ from tkinter import filedialog, messagebox, ttk
 import traceback
 
 from scp.catalog import load_catalog
-from .service import (InstallationCancelled, PlayerDataSelectionRequired,
+from .service import (PREBUILT_KIND, InstallationCancelled, PlayerDataSelectionRequired,
                       all_implemented_ids, run_install, undo_install)
 from .ui_support import default_work_root, progress_text, require_game_closed
 
@@ -20,6 +20,7 @@ from .ui_support import default_work_root, progress_text, require_game_closed
 class InstallerApp:
     def __init__(self, window, root, info, work_root=None):
         self.window, self.root, self.info = window, Path(root), info
+        self.prebuilt = info.get("kind") == PREBUILT_KIND
         self.work_root = Path(work_root or default_work_root()).resolve()
         self.events, self.cancelled = queue.Queue(), threading.Event()
         self.busy, self.cancellable = False, False
@@ -77,7 +78,10 @@ class InstallerApp:
             saved = self.work_root / "last-installation.json"
             self.undo_button.configure(state="normal" if saved.is_file() else "disabled")
             self.status.set("Ready to install. Close SimCity 4, then select Install.")
-            self.detail.set("The installer will find Plugins, prepare the pieces, and save a backup automatically.")
+            self.detail.set(
+                "The installer will find Plugins, check the packaged pieces, and save a backup automatically."
+                if self.prebuilt else
+                "The installer will find Plugins, build the pieces on this computer, and save a backup automatically.")
 
     def choose_player_data(self):
         initial = Path(self.player_candidates[0]).parent if self.player_candidates else Path.home()
@@ -117,7 +121,12 @@ class InstallerApp:
         self.cancel_button.configure(state="normal" if self.cancellable else "disabled")
         self.log_button.configure(state="normal")
         self.bar.start(15)
-        self.detail.set("The first build can take some time. You can keep this window open while it works.")
+        if undo:
+            self.detail.set("Leave this window open while the installer restores the previous installation.")
+        elif self.prebuilt:
+            self.detail.set("Leave this window open while the installer checks your game and the packaged pieces.")
+        else:
+            self.detail.set("Building the pieces can take some time. Leave this window open while it works.")
         selected, player_data = self.folder.get(), self.player_data
 
         def progress(event):
@@ -174,7 +183,7 @@ class InstallerApp:
                 self.undo_button.configure(state="normal" if (self.work_root / "last-installation.json").is_file() else "disabled")
                 if kind == "success":
                     self.status.set(f"Installed — {value['pieces']} pieces are ready.")
-                    self.detail.set("Start SimCity 4. Find the trumpet in Transportation → Rail and the Highway assemblies in Transportation → Highways → SCP → Assemblies. Tab selects components. A backup was saved automatically.")
+                    self.detail.set("Start SimCity 4. In Transportation, choose Rail or Highways, then click SCP. Open Pieces for standalone buttons or Assemblies for a layout. Tab selects components. A backup was saved automatically.")
                     if value.get("recovery_record_warning"):
                         self.undo_button.configure(state="disabled")
                         self.detail.set("Installation succeeded and its backup is saved, but Windows could not save the Undo shortcut. Open the log for the recovery details.")
@@ -195,7 +204,7 @@ class InstallerApp:
         if self.busy and self.cancellable:
             self.cancelled.set()
             self.cancel_button.configure(state="disabled")
-            self.detail.set("Cancelling after the current build step. The installed pieces will remain unchanged.")
+            self.detail.set("Cancelling after the current step. The installed pieces will remain unchanged.")
 
     def open_log(self):
         if self.log_file and self.log_file.is_file():
