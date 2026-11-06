@@ -12,7 +12,7 @@ import json
 from pathlib import Path, PurePosixPath
 import re
 
-from .catalog import release_status
+from .catalog import load_release_record, release_check_enabled, release_status
 
 
 def _require(condition, message):
@@ -124,12 +124,14 @@ def _check_evidence(root, piece, evidence, files, donors):
         _project_file(root, screenshot)
 
 
-def assess_build(project_root: Path, manifest: dict) -> dict:
+def assess_build(project_root: Path, manifest: dict, *, require_build_game_evidence: bool = True,
+                 release_record: dict | None = None, require_design_review_clearance: bool = True) -> dict:
     """Return fail-closed release readiness for the manifest's selected pieces.
 
     Each ``game_evidence`` reference is relative to ``project_root``. The
     evidence binds every packaged DAT and the complete declared donor profile;
     it does not replace verification of files or establish permission itself.
+    Experimental installer prereleases may skip these build-specific records.
     """
     root = Path(project_root).resolve()
     blocked = []
@@ -144,9 +146,15 @@ def assess_build(project_root: Path, manifest: dict) -> dict:
         return {'public_release_ready': False, 'blocked': [f'build evidence metadata: {exc}']}
 
     try:
-        blocked.extend(release_status(root, pieces)['blocked'])
+        gates = load_release_record(root) if release_record is None else release_record
+        status = release_status(root, pieces, release_record=gates,
+                                require_design_review_clearance=require_design_review_clearance)
+        blocked.extend(status['blocked'])
     except (OSError, ValueError, KeyError, TypeError, AttributeError):
-        blocked.append('project release gates are missing or invalid')
+        return {'public_release_ready': False, 'blocked': ['project release gates are missing or invalid']}
+
+    if not release_check_enabled(gates, 'supported_platform_tests'):
+        return {'public_release_ready': not blocked, 'blocked': blocked}
 
     # Current projects have one authoritative record per subject. A coarse
     # flag in an older candidate must never hide a failed or untested port.
@@ -173,6 +181,9 @@ def assess_build(project_root: Path, manifest: dict) -> dict:
                         blocked.append(f"{source['id']}: {kind}: {pending} current manual cases need confirmation")
         except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
             blocked.append(f'authoritative manual coverage is missing or invalid ({_portable_error(root, exc)})')
+
+    if not require_build_game_evidence:
+        return {'public_release_ready': not blocked, 'blocked': blocked}
 
     for piece in pieces:
         reference = piece.get('game_evidence')
