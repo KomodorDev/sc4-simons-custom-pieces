@@ -522,18 +522,12 @@ def _require_submenu_files(installation):
                          + "See https://github.com/memo33/submenus-dll#installation")
 
 
-def _prepare_install_inputs(root, installation, work_root, ids, *, progress=None, cancel=None,
+def _capture_install_inputs(root, installation, work_root, ids, *, progress=None, cancel=None,
                             verify_originals=False):
-    from scp.build import doctor
-
     _cancelled(cancel)
     capture_roots, captures = prepare_captures(root, installation, work_root, ids, progress=progress,
                                               cancel=cancel, verify_originals=verify_originals)
-    extras = [*installation.extra_plugins, *capture_roots]
-    _cancelled(cancel)
-    _notify(progress, "audit", pieces=len(ids))
-    audit = doctor(root, installation.plugins, include=ids, extra_roots=extras)
-    return extras, captures, audit
+    return [*installation.extra_plugins, *capture_roots], captures
 
 
 def _new_run(work_root):
@@ -542,15 +536,16 @@ def _new_run(work_root):
     return run
 
 
-def prepare_install_build(root, installation, work_root, ids, *, progress=None, cancel=None):
+def prepare_install_build(root, installation, work_root, ids, *, progress=None, cancel=None, jobs=1):
     """Build and verify the selected assembly-menu candidate without installing it."""
     from scp.build import build_project
     from scp.menu_experiment import build_assembly_menus
+    from scp.verify import compiled_highway_model_audits
 
     selections = _assembly_menu_selections(root, _policy(root)["assembly_menu"])
     work_root = _work_root(work_root, installation)
-    extras, captures, _ = _prepare_install_inputs(root, installation, work_root, ids,
-                                                 progress=progress, cancel=cancel)
+    extras, captures = _capture_install_inputs(root, installation, work_root, ids,
+                                              progress=progress, cancel=cancel)
     run = _new_run(work_root)
     source, output = run / "source", run / "assembly"
 
@@ -559,12 +554,14 @@ def prepare_install_build(root, installation, work_root, ids, *, progress=None, 
         if progress:
             progress(event)
 
-    _cancelled(cancel)
-    build_project(root, installation.plugins, source, include=ids, extra_roots=extras, progress=build_progress)
-    _cancelled(cancel)
-    _notify(progress, "menu", pieces=len(ids))
-    build_assembly_menus(root, source, output, selections=selections,
-                         plugins=installation.plugins, extra_roots=extras)
+    with compiled_highway_model_audits():
+        _cancelled(cancel)
+        build_project(root, installation.plugins, source, include=ids, extra_roots=extras, progress=build_progress,
+                      jobs=jobs)
+        _cancelled(cancel)
+        _notify(progress, "menu", pieces=len(ids))
+        build_assembly_menus(root, source, output, selections=selections,
+                             plugins=installation.plugins, extra_roots=extras)
     _cancelled(cancel)
     return run, output, extras, captures
 
@@ -590,10 +587,14 @@ def run_install(root, selected_folder, work_root, progress=None, cancel=None, *,
         install_options = {}
         distribution = "experimental-local-builder"
     else:
+        from scp.build import doctor
         from scp.install import install_prebuilt
         output, commit, manifest_sha256 = prebuilt
-        extras, captures, audit = _prepare_install_inputs(
+        extras, captures = _capture_install_inputs(
             root, installation, work_root, ids, progress=progress, cancel=cancel, verify_originals=True)
+        _cancelled(cancel)
+        _notify(progress, "audit", pieces=len(ids))
+        audit = doctor(root, installation.plugins, include=ids, extra_roots=extras)
         expected_profile = {"id": audit["profile"],
                             "donors": [{key: row[key] for key in ("filename", "sha256")}
                                        for row in audit["donors"]]}

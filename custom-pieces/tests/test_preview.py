@@ -6,6 +6,7 @@ import struct
 from pathlib import Path
 import sys
 import tempfile
+from threading import Barrier
 import unittest
 from unittest.mock import Mock, patch
 
@@ -140,6 +141,62 @@ class PreviewTests(unittest.TestCase):
         with patch('scp.catalog.load_catalog',return_value=self.catalog):
             return preview.render_catalog([self.output],self.plugins,self.images,root=self.root,
                 index_path=self.index,**kwargs)
+
+    def add_second_piece(self):
+        second = {**self.piece, 'id': 'second-piece', 'name': 'Second Test Piece',
+                  'tile_ids': ['7f501000'], 'preview_id': '7f501ff5', 'asset_file': 'pieces/second.dat'}
+        self.catalog['pieces'].append(preview.piece_spec(second))
+        dat = pack_dbpf({(*preview.S3D, int(second['preview_id'], 16)): self.raw})
+        (self.output / second['asset_file']).write_bytes(dat)
+        path = self.output / 'manifest.json'
+        manifest = json.loads(path.read_text())
+        manifest['pieces'].append(second)
+        manifest['files'].append({'path': second['asset_file'], 'sha256': hashlib.sha256(dat).hexdigest()})
+        path.write_text(json.dumps(manifest))
+        return [second['id'], self.piece['id']]
+
+    def test_parallel_previews_match_serial_bytes_and_resume_in_selection_order(self):
+        from scp.piece_previews import render_piece
+
+        piece_ids = self.add_second_piece()
+        views = ['angled', 'top']
+        self.render(jobs=1, piece_ids=piece_ids, view_roles=views)
+        expected = {path.relative_to(self.images): path.read_bytes()
+                    for path in self.images.rglob('*') if path.is_file()}
+        self.images = self.root / 'parallel' / '00_pieces'
+        self.index = self.images / self.index.name
+        barrier = Barrier(2, timeout=15)
+
+        def render_together(*args, **kwargs):
+            if kwargs['view_role'] == 'angled':
+                barrier.wait()
+            return render_piece(*args, **kwargs)
+
+        progress = []
+        with (patch('scp.piece_previews.render_piece', side_effect=render_together),
+              patch.object(preview.os, 'process_cpu_count', return_value=8, create=True)):
+            result = self.render(piece_ids=piece_ids, view_roles=views, progress=progress.append)
+        self.assertTrue(result['coverage']['complete'])
+        self.assertEqual(result['rendered_views'], 4)
+        self.assertEqual([event['piece'] for event in progress], piece_ids)
+        self.assertEqual({path.relative_to(self.images): path.read_bytes()
+                          for path in self.images.rglob('*') if path.is_file()}, expected)
+
+        result = self.render(jobs=2, piece_ids=piece_ids, view_roles=views)
+        self.assertEqual(result['skipped_unchanged_views'], 4)
+
+    def test_parallel_previews_reject_aliases_before_writing(self):
+        piece_ids = self.add_second_piece()
+        target = self.images / piece_ids[0]
+        target.mkdir(parents=True)
+        try:
+            (self.images / piece_ids[1]).symlink_to(target, target_is_directory=True)
+        except OSError as error:
+            self.skipTest(f'Symlinks unavailable: {error}')
+        with self.assertRaisesRegex(ValueError, 'separate output files'):
+            self.render(jobs=2, piece_ids=piece_ids)
+        self.assertFalse(any(target.iterdir()))
+        self.assertFalse(self.index.exists())
 
     def test_vectorized_raster_matches_reference_pixels_with_wrapping_and_alpha(self):
         rng=np.random.default_rng(514)

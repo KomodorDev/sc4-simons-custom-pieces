@@ -1,7 +1,9 @@
 """Small, bounded DBPF/QFS/exemplar tools. No game files are modified here."""
+import os
 from pathlib import Path
 import struct
 
+COMPRESSION_DIRECTORY_TYPE = 0xE86B1EEF
 EXTENSIONS = {'.dat', '.sc4model', '.sc4lot', '.sc4desc'}
 
 
@@ -20,7 +22,8 @@ def read_index(path):
         require(len(header) == 96 and header[:4] == b'DBPF', f'Invalid DBPF: {Path(path).name}')
         count, offset, size = struct.unpack_from('<3I', header, 36)
         require(size == count * 20 and size < 128 * 1024 * 1024, 'Unsupported DBPF index')
-        require(offset >= 96 and offset + size <= Path(path).stat().st_size, 'DBPF index outside file')
+        archive_size = os.fstat(stream.fileno()).st_size
+        require(offset >= 96 and offset + size <= archive_size, 'DBPF index outside file')
         stream.seek(offset)
         data = stream.read(size)
         require(len(data) == size, 'Truncated DBPF index')
@@ -28,7 +31,7 @@ def read_index(path):
     # Some historical installed DATs contain repeated IDs. Preserve the index
     # for auditing rather than rejecting an otherwise usable NAM installation.
     # Newly generated archives are checked strictly by the output verifier.
-    require(all(start >= 96 and length > 0 and start + length <= Path(path).stat().st_size
+    require(all(start >= 96 and length > 0 and start + length <= archive_size
                 for _, _, _, start, length in result), 'DBPF resource outside file')
     return result
 
@@ -83,8 +86,15 @@ def decompress(raw):
                     'Invalid QFS literal/length')
             out.extend(data[pos:pos + literal]); pos += literal
             require(not count or 0 < offset <= len(out), 'Invalid QFS back-reference')
-            for _ in range(count):
-                out.append(out[-offset])
+            if count:
+                start = len(out) - offset
+                if count <= offset:
+                    out.extend(out[start:start + count])
+                else:
+                    # An overlapping copy starts reading its own output after
+                    # offset bytes, so it repeats the existing suffix.
+                    pattern = out[start:]
+                    out.extend((pattern * ((count + offset - 1) // offset))[:count])
             if control >= 252:
                 break
     except (IndexError, ValueError) as error:

@@ -16,7 +16,10 @@ def main(argv=None):
     parser.add_argument('--player-data', type=Path, required=True)
     parser.add_argument('--work-dir', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--jobs', type=int, help='Maximum compilation workers (default: up to four based on available CPUs)')
     args = parser.parse_args(argv)
+    if args.jobs is not None and args.jobs < 1:
+        parser.error('--jobs must be a positive integer')
     root = Path(__file__).resolve().parents[1]
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
     dirty = subprocess.check_output(
@@ -47,7 +50,7 @@ def main(argv=None):
     def progress(event):
         print(json.dumps(event), file=sys.stderr, flush=True)
 
-    _, build, _, _ = prepare_install_build(root, installation, work, ids, progress=progress)
+    _, build, _, _ = prepare_install_build(root, installation, work, ids, progress=progress, jobs=args.jobs)
     current = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
     dirty = subprocess.check_output(
         ['git', 'status', '--porcelain=v1', '--untracked-files=all', '--', '.'], cwd=root, text=True)

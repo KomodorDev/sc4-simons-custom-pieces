@@ -108,6 +108,40 @@ class PrepareReleaseTests(unittest.TestCase):
         probes.sync.assert_not_called()
         self.assertEqual(len(list(self.staging.glob(f"*/{ARCHIVE}"))), 1)
 
+    def test_cli_forwards_job_limit_only_for_a_new_build(self):
+        with ExitStack() as stack:
+            probes = self.mocks(stack)
+            stack.enter_context(redirect_stdout(io.StringIO()))
+            self.assertEqual(command.main([
+                "--game-folder", str(self.game), "--player-data", str(self.player_data),
+                "--dropbox-folder", str(self.dropbox), "--staging-folder", str(self.staging), "--jobs", "2",
+            ]), 0)
+        self.assertEqual(probes.build.call_args.args[0][-2:], ["--jobs", "2"])
+
+        stderr = io.StringIO()
+        with redirect_stderr(stderr), self.assertRaises(SystemExit) as error:
+            command.main(["--dropbox-folder", str(self.dropbox), "--resume-archive", ARCHIVE, "--jobs", "2"])
+        self.assertEqual(error.exception.code, 2)
+        self.assertIn("--resume-archive retries only the upload", stderr.getvalue())
+
+    def test_payload_command_passes_job_limit_to_the_build_service(self):
+        import prepare_payload as payload_command
+
+        install = Mock(game_folder=self.game, plugins=self.player_data, extra_plugins=[])
+        build_path = self.staging / "assembled"
+        with (patch.object(payload_command, "bootstrap"),
+              patch.object(payload_command.subprocess, "check_output", side_effect=[COMMIT, "", COMMIT, ""]),
+              patch("scp_installer.service.discover_installation", return_value=install),
+              patch("scp_installer.service.all_implemented_ids", return_value=["piece"]),
+              patch("scp_installer.service.prepare_install_build", return_value=(None, build_path, [], [])) as build,
+              patch("scp.prebuilt.prepare_payload", return_value={"pieces": [], "files": []}),
+              redirect_stdout(io.StringIO())):
+            self.assertEqual(payload_command.main([
+                "--game-folder", str(self.game), "--player-data", str(self.player_data),
+                "--work-dir", str(self.staging / "work"), "--output", str(self.staging / "payload"), "--jobs", "2",
+            ]), 0)
+        self.assertEqual(build.call_args.kwargs["jobs"], 2)
+
     def test_dev_change_during_sync_prevents_readiness(self):
         with ExitStack() as stack:
             probes = self.mocks(stack)

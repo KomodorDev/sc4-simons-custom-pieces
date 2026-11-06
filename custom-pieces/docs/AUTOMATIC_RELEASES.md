@@ -56,6 +56,8 @@ The project's private Dropbox App Folder currently belongs to one maintainer. On
    python3 -B custom-pieces/installer/prepare_release.py --game-folder "<game folder>" --player-data "<player-data or Plugins folder>" --dropbox-folder "<Dropbox Apps/SCP Release Builds folder>"
    ```
 
+   The Mac compiles the game files using up to four workers by default. Add `--jobs 1` at the end of the command to use a single build process, or `--jobs 2` to use up to two. See [the build guide](BUILD_AND_INSTALL.md#4-build-a-selected-collection) for how the worker limit is chosen.
+
 3. Wait until the command reports `"status": "payload-ready"`. It first confirms that the folder you selected syncs to the authorized Dropbox app using a temporary test ZIP with no game files. It then waits for Dropbox to confirm the exact completed release ZIP. Keep the reported source commit and tree fingerprint. If `dev` changes, rerun the command for the new version. The separate public release requirements still apply.
 4. On GitHub, open **Pull requests → New pull request**. Set **base: main** and **compare: dev** in this repository. Review **Files changed**, then select **Create pull request**. Wait for **Tests** and **Release policy**. A human selects **Merge pull request**, chooses **Create a merge commit**, and selects **Confirm merge**.
 5. Open **Actions → Installer release** and select the run for the new `main` commit. When **Publish verified prebuilt Windows installer** passes, open [Releases](https://github.com/KomodorDev/sc4-simons-custom-pieces/releases). Under **Assets**, find `SCP-Installer-windows-x64-<commit>.zip`, its checksum, and `release-record.json`. The filename uses the first 12 characters of the merged `main` commit.
