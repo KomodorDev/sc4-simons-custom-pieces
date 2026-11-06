@@ -47,6 +47,8 @@ The source-builder job gives you a Windows application check while the change is
 
 ## 4. What do I click to publish and find the download?
 
+The project's private Dropbox App Folder currently belongs to one maintainer. Only that maintainer has access to the app and its synced folder, so they prepare and upload the release ZIP. GitHub's protected jobs use stored read-only credentials to download it. Source reviews and merges follow the repository's usual GitHub permissions.
+
 1. Complete the [one-time setup](#7-one-time-dropbox-and-hosted-review-setup). Merge the intended development PRs into `dev` and wait for **Tests** to pass. On the Mac, open Terminal in the root of your clean `dev` checkout. Update it with `git pull --ff-only`.
 2. Run the preparation command below. Replace each placeholder in angle brackets with the actual folder path and keep the quotation marks. Use the game folder that contains `SimCity_3.dat`, the player-data folder or its `Plugins` folder containing NAM, and the private App Folder shown in Finder under **Dropbox → Apps**. To copy a folder path from Finder, select the folder and press **Option–Command–C**.
 
@@ -60,7 +62,7 @@ The source-builder job gives you a Windows application check while the change is
 
 ## 5. What happens on the player's computer?
 
-The prebuilt ZIP contains the complete set of game files, called **DAT archives**. The player extracts the ZIP, closes SimCity 4, opens **SCP Installer.exe**, selects the game folder, and selects **Install**. The installer checks the package and the player's existing game and NAM resources, checks for conflicts, backs up the previous installation, and copies the finished files. Python is included. [Player instructions](INSTALLER.md)
+Players download the published Windows installer from GitHub Releases without a Dropbox account. The installer ZIP contains the complete set of game files, called **DAT archives**. The player extracts the ZIP, closes SimCity 4, opens **SCP Installer.exe**, selects the game folder, and selects **Install**. The installer checks the package and the player's existing game and NAM resources, checks for conflicts, backs up the previous installation, and copies the finished files. Python is included. [Player instructions](INSTALLER.md)
 
 ## 6. What if something fails?
 
@@ -69,6 +71,8 @@ Open **Actions → Installer release**, select the failed run, select the failed
 If only Dropbox sync timed out, use the reported private ZIP with the same `--dropbox-folder` option and add `--resume-archive "<private ZIP path>"`. This verifies the ZIP against current `dev` before retrying the transfer. For a temporary hosted failure with the exact approved payload still available, select **Re-run jobs → Re-run failed jobs** on the same run. The GitHub source merge and release publication are separate steps.
 
 ## 7. One-time Dropbox and hosted review setup
+
+The maintainer who operates the project's private release folder completes these setup steps once.
 
 1. Open the [Dropbox App Console](https://www.dropbox.com/developers/apps/create) and sign in on Dropbox. Select **Scoped access**, select **App folder**, enter an app name such as **SCP Release Builds**, and select **Create app**. On **Permissions**, enable **files.metadata.read** and **files.content.read**, then select **Submit** or **Save changes**. Under **Settings → OAuth 2**, enable **Allow public clients** if it is off. Under **Settings → Credentials**, copy the **App key**. Keep the App Folder private and leave sharing links disabled. [Dropbox app setup](https://www.dropbox.com/developers/reference/getting-started) · [Dropbox authorization](https://docs.dropboxapi.com/dropbox-api/docs/get-started/authorization)
 2. In Terminal, from the checkout root, run the authorization command. Replace `<App key>` with the App key. Open the link printed by the command, select **Allow** on Dropbox, then paste the authorization code at the Terminal prompt. The prompt hides the code. The command saves the refresh credential privately at `~/.config/scp/release-dropbox.json`. Keep authorization codes, refresh tokens, and app secrets out of Git, chat, and shell commands. In Dropbox Desktop, sign in to the same account. Open Finder, select **Dropbox** in the sidebar, and look under **Apps** for your app's folder. If it is missing, confirm the app folder is included in Dropbox Desktop's sync settings. [Dropbox Desktop setup](https://learn.dropbox.com/self-guided-learning/dropbox-fundamentals-course/dropbox-desktop-app)
