@@ -39,6 +39,8 @@ def main(argv=None):
     # Keep stdlib and dependencies available while forcing every declared
     # project package, including differently named tools directories, local.
     sys.meta_path.insert(0, finder)
+    # A spawned worker imports scp.build before installing its own finder.
+    sys.path.insert(0, str(finder.packages['scp'].parent))
     unittest.main(module=None, argv=['unittest', *arguments])
 
 
