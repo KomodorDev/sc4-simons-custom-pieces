@@ -8,16 +8,29 @@ document_type: "entry-point"
 # Simon's Custom Pieces
 
 <!-- BEGIN DOCUMENT NAVIGATION -->
-[1. Get the source](#1-get-the-source) · [2. Prepare Python and run the tests](#2-prepare-python-and-run-the-tests) · [3. Build and use the mod](#3-build-and-use-the-mod) · [4. Contribute](#4-contribute)
+[1. Browse pieces and assemblies](#1-browse-pieces-and-assemblies) · [2. Get the source](#2-get-the-source) · [3. Prepare Python and run the tests](#3-prepare-python-and-run-the-tests) · [4. Build and use the mod](#4-build-and-use-the-mod) · [5. Contribute](#5-contribute)
 <!-- END DOCUMENT NAVIGATION -->
 
-Simon's Custom Pieces is an experimental SimCity 4 network-piece library. It provides reusable High Speed Rail (HSR) and Ground High Speed Rail (GHSR) pieces, modular interchange blueprints, source definitions, and build tools.
+Simon's Custom Pieces is an experimental SimCity 4 mod library with reusable pieces and layouts for high-speed rail and highways.
 
-A **piece** is one reusable construction type. An **assembly** is a layout made from several placed pieces. The library owns the piece definitions, generated connector data, canonical artwork, and recorded evidence.
+## 1. Browse pieces and assemblies
+
+A **piece** is a reusable building block, such as a rail crossing or a highway ramp. An **assembly** is a layout you build by placing several pieces together, such as a junction or an interchange.
+
+In `custom-pieces/domains/`, choose the rail or highway folder. Within each one, `00_pieces/` contains the individual pieces, and `01_assemblies/` contains the assembly guides. Open an illustrated catalogue to browse that folder's content.
+
+| Network | Piece catalogue | Assembly catalogue |
+| --- | --- | --- |
+| High-speed rail | [Rail pieces](custom-pieces/domains/high-speed-rail/00_pieces/INVENTORY.md) | [Rail assemblies](custom-pieces/domains/high-speed-rail/01_assemblies/INVENTORY.md) |
+| Highway | [Highway pieces](custom-pieces/domains/highway/00_pieces/INVENTORY.md) | [Highway assemblies](custom-pieces/domains/highway/01_assemblies/INVENTORY.md) |
+
+| Example piece | Example assembly |
+| --- | --- |
+| [Two-level rail crossing](custom-pieces/domains/high-speed-rail/00_pieces/hsr-l4-over-hsr-l2-two-track-crossing-90deg/README.md)<br><img src="custom-pieces/domains/high-speed-rail/00_pieces/hsr-l4-over-hsr-l2-two-track-crossing-90deg/previews/preview.png" width="360" alt="Two elevated rail lines crossing at different heights"> | [Straight-stem rail trumpet](custom-pieces/domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/README.md)<br><img src="custom-pieces/domains/high-speed-rail/01_assemblies/hsr-trumpet-straight-stem/previews/preview.png" width="360" alt="Three-way rail junction with a curved loop"> |
+| [Six-tile highway transition](custom-pieces/domains/highway/00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile/README.md)<br><img src="custom-pieces/domains/highway/00_pieces/ddrhw-l1-l2-to-rhw-l0-transition-orthogonal-6tile/previews/preview.png" width="360" alt="Two stacked highway decks descending to side-by-side ground lanes"> | [Compact diagonal avenue diamond](custom-pieces/domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/README.md)<br><img src="custom-pieces/domains/highway/01_assemblies/ddrhw-l1-and-l2-diagonal-avenue-diamond/previews/preview.png" width="360" alt="Stacked highway crossing a diagonal avenue with four connecting ramps"> |
 
 | I want to… | Start here |
 | --- | --- |
-| Browse available pieces and assemblies | [Library guide](custom-pieces/README.md) and [illustrated piece inventory](custom-pieces/domains/high-speed-rail/00_pieces/INVENTORY.md) |
 | Install without Python or build commands | [Windows installer guide](custom-pieces/docs/INSTALLER.md) |
 | Understand how GitHub creates installer downloads | [Automatic releases, explained simply](custom-pieces/docs/AUTOMATIC_RELEASES.md) |
 | Build or install a plugin from source | [Build and install](custom-pieces/docs/BUILD_AND_INSTALL.md) |
@@ -27,8 +40,9 @@ A **piece** is one reusable construction type. An **assembly** is a layout made 
 | Contribute changes and understand automated checks | [Contributor workflow](docs/GITHUB.md) |
 
 <a id="get-the-source"></a>
+<a id="1-get-the-source"></a>
 
-## 1. Get the source
+## 2. Get the source
 
 A **clone** is a local copy of the repository and its Git history. Install [Git](https://git-scm.com/downloads/) if needed, then open a terminal and type `git --version` to confirm that it is available. Clone the project into any directory where you keep source code:
 
@@ -40,8 +54,9 @@ cd sc4-simons-custom-pieces
 The folder containing `custom-pieces/` and this README is the **repository root**. Run the following commands from that root.
 
 <a id="prepare-python-and-run-the-tests"></a>
+<a id="2-prepare-python-and-run-the-tests"></a>
 
-## 2. Prepare Python and run the tests
+## 3. Prepare Python and run the tests
 
 Use Python 3.11 or newer; [official Python downloads](https://www.python.org/downloads/) are available if it is not installed. CI uses Python 3.11. A **virtual environment** keeps the project's Python dependencies separate from other projects. Create and activate one using the commands for your operating system.
 
@@ -70,8 +85,9 @@ python -B tools/run_tests.py
 The test command runs the library's framework, registered domain, and assembly suites. Pillow handles images, NumPy supports numerical geometry and rendering, and Shapely joins and triangulates authored road surfaces. These portable checks do not require a game installation. Tests that need unavailable NAM resources or saved development builds report explicit skips. NAM means Network Addon Mod, an external game dependency. Automated checks do not establish observed game behavior or update manual observations.
 
 <a id="build-and-use-the-mod"></a>
+<a id="3-build-and-use-the-mod"></a>
 
-## 3. Build and use the mod
+## 4. Build and use the mod
 
 For the graphical installer, follow [Install SCP without Python](custom-pieces/docs/INSTALLER.md). Each accepted update to `main` starts a tested Windows installer build and publishes an **experimental prerelease** after every required installer job succeeds. Download the Windows x64 ZIP from [Releases](https://github.com/KomodorDev/sc4-simons-custom-pieces/releases), extract it, open **SCP Installer.exe**, choose the game folder, and select **Install**. The installer includes its runtime, builds all implemented pieces from the user's installed game and NAM, prepares the Rail trumpet and Highway assembly buttons, and installs one managed plugin folder. See the guide's supported-profile limits and first-launch instructions.
 
@@ -80,8 +96,9 @@ Building the game plugin requires the exact supported NAM inputs described in th
 The project remains experimental. Read each piece's documented limits and recorded tests before using it. Software previews and passing automated checks do not prove placement, traffic, or rendering inside the game. Public binary distribution has separate [release requirements](custom-pieces/docs/RELEASE.md).
 
 <a id="contribute"></a>
+<a id="4-contribute"></a>
 
-## 4. Contribute
+## 5. Contribute
 
 The repository contains `custom-pieces/` and its repository support. Canonical images and evidence are tracked with their owning subjects; private settings, native test inputs, caches, and disposable builds are ignored. See [the contributor workflow](docs/GITHUB.md) for the exact file boundary and branch procedure.
 
