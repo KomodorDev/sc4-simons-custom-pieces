@@ -175,6 +175,21 @@ class ReleaseEvidenceTests(unittest.TestCase):
             result=self._assert_blocked()
         self.assertTrue(any('NEEDS REDESIGN' in reason for reason in result['blocked']))
 
+    def test_saved_permission_cannot_hide_a_pending_current_record(self):
+        self._write_json('project.jsonc', {})
+        current = deepcopy(self.manifest['pieces'][0])
+        current['provenance']['redistribution'] = 'permission-pending'
+        gates = jsonc.load(self.root / 'config/release.jsonc')
+        gates['supported_platform_tests']['enabled'] = False
+        with patch('scp.catalog.load_catalog', return_value={'pieces': [current]}):
+            for enabled in (True, False, True):
+                with self.subTest(enabled=enabled):
+                    gates['nam_derivatives_permission']['enabled'] = enabled
+                    self._write_json('config/release.jsonc', gates)
+                    result = assess_build(self.root, self.manifest)
+                    expected = [f"{current['id']}: redistribution evidence"] if enabled else []
+                    self.assertEqual(result, {'public_release_ready': not enabled, 'blocked': expected})
+
     def test_missing_reference_or_file_is_blocked(self):
         manifest = deepcopy(self.manifest)
         del manifest['pieces'][0]['game_evidence']

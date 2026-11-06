@@ -322,11 +322,10 @@ def release_check_enabled(record, name):
 def release_status(root, pieces, *, release_record=None):
     gates = load_release_record(root) if release_record is None else release_record
     blocked = []
-    current_reviews = {}
+    current_pieces = {}
     if (Path(root) / 'project.jsonc').is_file():
         try:
-            current_reviews = {piece['id']:piece.get('design_review')
-                               for piece in load_catalog(root)['pieces']}
+            current_pieces = {piece['id']: piece for piece in load_catalog(root)['pieces']}
         except (OSError, ValueError, KeyError, TypeError):
             blocked.append('current design-review registry is missing or invalid')
     for name in ('public_name_checked', 'ids_allocated', 'nam_derivatives_permission',
@@ -341,14 +340,17 @@ def release_status(root, pieces, *, release_record=None):
     require_game_tests = release_check_enabled(gates, 'supported_platform_tests')
     require_redistribution = release_check_enabled(gates, 'nam_derivatives_permission')
     for piece in pieces:
-        review = current_reviews.get(piece['id']) or piece.get('design_review')
+        current_piece = current_pieces.get(piece['id'], piece)
+        review = current_piece.get('design_review') or piece.get('design_review')
         if review:
             from .design_review import review_note
             blocked.append(f"{piece['id']}: {review_note({'design_review':review})}")
         if require_game_tests and (
                 piece['status'] != 'tested' or any(value != 'passed' for value in piece['game_tests'].values())):
             blocked.append(f"{piece['id']}: in-game test matrix")
-        if require_redistribution and piece.get('provenance', {}).get('redistribution') != 'permission-recorded':
+        if require_redistribution and any(
+                candidate.get('provenance', {}).get('redistribution') != 'permission-recorded'
+                for candidate in (piece, current_piece)):
             blocked.append(f"{piece['id']}: redistribution evidence")
     return {'public_release_ready': not blocked, 'blocked': blocked,
             'note': 'Static checks do not constitute game testing or redistribution permission.'}

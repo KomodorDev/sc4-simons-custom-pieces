@@ -594,6 +594,7 @@ class CatalogTests(unittest.TestCase):
         for relative in self.piece_paths:
             piece=jsonc.loads((self.root/relative).read_text())
             piece.pop('design_review',None)
+            piece['provenance']['redistribution'] = 'permission-recorded'
             self._write(relative,piece)
         pieces = self._catalog()['pieces']
         for piece in pieces:

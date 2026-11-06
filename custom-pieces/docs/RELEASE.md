@@ -124,7 +124,7 @@ Publication approval and permission evidence are separate facts. The protected G
 
 Open [config/release.jsonc](../config/release.jsonc). To skip one shared check, set `"enabled": false` inside that check’s record. For example, set it inside `public_name_checked` to skip the name check. Keep `status` and `evidence` as the record of what was actually verified. Each shared check is enabled by default, including when an older record omits `enabled`. The `release-check` command, direct compiled-package releases, and both publication stages for prebuilt installers use these shared settings.
 
-- `nam_derivatives_permission` controls the project’s permission record and each bundled piece’s redistribution record.
+- `nam_derivatives_permission` controls the project’s permission record and each bundled piece’s redistribution status in both the saved build and the current catalogue.
 - `supported_platform_tests` controls the project’s platform record, each piece’s game-test status, the current manual gameplay cases, and the separate files for the exact build described in [chapter 7](#7-build-specific-game-evidence). With this check enabled, direct compiled packages require those files. Prebuilt installers require them when `prebuilt_installer.require_build_game_evidence` is also `true`.
 
 Package verification, catalogue completeness, design review, and protected publication approval use separate checks. Direct packaging evaluates the current release policy against the verified build. The published package is marked game-tested when the enabled gameplay checks pass.
