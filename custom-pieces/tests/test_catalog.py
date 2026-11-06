@@ -523,17 +523,46 @@ class CatalogTests(unittest.TestCase):
         self._write('config/release.jsonc', gates)
         self.assertEqual(release_status(self.root, [])['blocked'], names)
 
+    def test_permission_and_platform_switches_skip_only_their_own_piece_checks(self):
+        gates = jsonc.load(self.root / 'config/release.jsonc')
+        for record in gates.values():
+            if isinstance(record, dict) and 'status' in record:
+                record.update(status='passed', evidence='fixture')
+        permission = 'nam_derivatives_permission'
+        platform = 'supported_platform_tests'
+        for name in (permission, platform):
+            gates[name].update(status='pending', evidence=None)
+        piece = {'id': 'fixture-piece', 'status': 'experimental',
+                 'game_tests': {'placement': 'unverified'},
+                 'provenance': {'redistribution': 'permission-pending'}}
+        permission_blockers = [permission, 'fixture-piece: redistribution evidence']
+        platform_blockers = [platform, 'fixture-piece: in-game test matrix']
+        for permission_enabled, platform_enabled, expected in (
+            (True, True, permission_blockers + platform_blockers),
+            (False, True, platform_blockers),
+            (True, False, permission_blockers),
+            (False, False, []),
+            (True, True, permission_blockers + platform_blockers),
+        ):
+            with self.subTest(permission=permission_enabled, platform=platform_enabled):
+                gates[permission]['enabled'] = permission_enabled
+                gates[platform]['enabled'] = platform_enabled
+                self._write('config/release.jsonc', gates)
+                result = release_status(self.root, [piece])
+                self.assertEqual(result['public_release_ready'], not expected)
+                self.assertCountEqual(result['blocked'], expected)
+
     def test_shared_release_checks_require_an_explicit_boolean_to_skip(self):
         gates = jsonc.load(self.root / 'config/release.jsonc')
-        name = 'public_name_checked'
-        for value in (None, 0, 'false'):
-            with self.subTest(value=value):
-                gates[name] = {'enabled': value, 'status': 'passed', 'evidence': 'fixture'}
-                self._write('config/release.jsonc', gates)
-                self.assertIn(name, release_status(self.root, [])['blocked'])
-        gates[name] = {'status': 'pending', 'evidence': None}
-        self._write('config/release.jsonc', gates)
-        self.assertIn(name, release_status(self.root, [])['blocked'])
+        for name in ('public_name_checked', 'nam_derivatives_permission', 'supported_platform_tests'):
+            for value in (None, 0, 'false'):
+                with self.subTest(name=name, value=value):
+                    gates[name] = {'enabled': value, 'status': 'passed', 'evidence': 'fixture'}
+                    self._write('config/release.jsonc', gates)
+                    self.assertIn(name, release_status(self.root, [])['blocked'])
+            gates[name] = {'status': 'pending', 'evidence': None}
+            self._write('config/release.jsonc', gates)
+            self.assertIn(name, release_status(self.root, [])['blocked'])
 
     def test_passing_gate_labels_without_evidence_are_not_sufficient(self):
         gates = jsonc.loads((self.root / 'config/release.jsonc').read_text())

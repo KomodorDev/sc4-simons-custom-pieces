@@ -29,7 +29,7 @@ After a human promotes `dev` to `main`, the [automatic installer workflow](AUTOM
 
 The Mac prepares all implemented pieces, the Rail trumpet and Highway assembly menus, and the combined controller. The prebuilt installer verifies the packaged files and audited local inputs before installing one receipt-owned SCP folder. The current profile remains Windows Deluxe 1.1.641 with NAM 50 and right-hand traffic. See the [player installer guide](INSTALLER.md) for required inputs and the possible Windows first-launch prompt.
 
-Installer distribution is separate from distributing NAM-derived DATs. Existing permission questions for externally authored source text or templates still need their applicable evidence; the local-builder approach does not supply a blanket license. Existing public identifier reservations, manual game observations, platform observations, and outstanding design flags remain unchanged. The experimental prebuilt installer requires the [enabled shared release checks](#51-configure-release-checks), current per-piece game results, design-review clearance, and per-piece redistribution records. Direct compiled-plugin releases also require a separate game-evidence file for every piece with screenshots and fingerprints for the exact build. Human observations determine gameplay results.
+Installer distribution is separate from distributing NAM-derived DATs. Existing permission questions for externally authored source text or templates still need their applicable evidence; the local-builder approach does not supply a blanket license. Existing public identifier reservations, manual game observations, platform observations, and outstanding design flags remain unchanged. The experimental prebuilt installer and direct compiled-plugin packages both use the [release checks configured in the shared policy](#51-configure-release-checks). The gameplay policy controls recorded game results and separate files for the exact build. Human observations determine gameplay results.
 
 Current compiled piece DATs contain copied or adapted NAM models, paths, and effects. A selected build has one separate controller DAT containing the complete **RUL0 resource** and the **NetworkINI resource**, with additions, plus one separate menu DAT. It does not copy every resource from the original `NetworkAddonMod_Controller.dat` archive. An old staged ZIP is not a prerequisite for preparing or assessing a fresh candidate.
 
@@ -122,9 +122,12 @@ Publication approval and permission evidence are separate facts. The protected G
 
 ### 5.1 Configure release checks
 
-Open [config/release.jsonc](../config/release.jsonc). To skip one shared check, set `"enabled": false` inside that check’s record. For example, set it inside `public_name_checked` to skip the name check. Keep `status` and `evidence` as the record of what was actually verified. Each shared check is enabled by default, including when an older record omits `enabled`. Both direct compiled-package releases and prebuilt installer releases use these shared settings.
+Open [config/release.jsonc](../config/release.jsonc). To skip one shared check, set `"enabled": false` inside that check’s record. For example, set it inside `public_name_checked` to skip the name check. Keep `status` and `evidence` as the record of what was actually verified. Each shared check is enabled by default, including when an older record omits `enabled`. The `release-check` command, direct compiled-package releases, and both publication stages for prebuilt installers use these shared settings.
 
-For prebuilt installers, `prebuilt_installer.require_build_game_evidence` controls the separate evidence files described in [chapter 7](#7-build-specific-game-evidence). Set it to `true` to require those files in an installer prerelease. Direct compiled packages always require those files. Per-piece game results, design-review clearance, and redistribution records are checked separately.
+- `nam_derivatives_permission` controls the project’s permission record and each bundled piece’s redistribution record.
+- `supported_platform_tests` controls the project’s platform record, each piece’s game-test status, the current manual gameplay cases, and the separate files for the exact build described in [chapter 7](#7-build-specific-game-evidence). With this check enabled, direct compiled packages require those files. Prebuilt installers require them when `prebuilt_installer.require_build_game_evidence` is also `true`.
+
+Package verification, catalogue completeness, design review, and protected publication approval use separate checks. Direct packaging evaluates the current release policy against the verified build. The published package is marked game-tested when the enabled gameplay checks pass.
 
 <a id="when-nam-changes"></a>
 
@@ -141,7 +144,7 @@ For prebuilt installers, `prebuilt_installer.require_build_game_evidence` contro
 
 ## 7. Build-specific game evidence
 
-For a direct compiled-plugin release or an installer with build-specific game evidence enabled, each selected piece references a project-relative evidence JSON file with `"game_evidence": "evidence/hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg.json"` in its piece manifest. The release assessor requires the fields below. This is a **template with placeholders**, not test evidence:
+When `supported_platform_tests` is enabled, direct compiled-plugin releases and installers with build-specific evidence enabled require each selected piece to reference a project-relative evidence JSON file with `"game_evidence": "evidence/hsr-l2-over-ghsr-ground-two-track-crossing-lower-diagonal-45deg.json"` in its piece manifest. The release assessor requires the fields below. This is a **template with placeholders**, not test evidence:
 
 ```json
 {

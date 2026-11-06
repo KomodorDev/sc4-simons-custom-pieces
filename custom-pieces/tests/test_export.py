@@ -117,3 +117,61 @@ class DocumentationHandoffTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'Build is invalid'):
                     package_build(output, destination, project_root=Path(temporary), refresh_docs=True)
             self.assertFalse(destination.exists())
+
+    def test_public_package_uses_current_gameplay_policy_for_a_verified_build(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            output = root/'build'
+            policy_path = root/'config/release.jsonc'
+            policy_path.parent.mkdir()
+            gates = {'schema_version': 1, 'prebuilt_installer': {'require_build_game_evidence': False}}
+            for name in ('public_name_checked', 'ids_allocated', 'nam_derivatives_permission',
+                         'supported_platform_tests', 'simtropolis_description_and_game_images'):
+                gates[name] = {'enabled': True, 'status': 'passed', 'evidence': 'fixture evidence'}
+            gates['supported_platform_tests']['enabled'] = False
+            policy_path.write_text(json.dumps(gates))
+
+            slug = 'example-crossing'
+            asset = f'zzz_Simons_Custom_Pieces/20_Pieces/SCP_{slug}.dat'
+            data = b'fixture build archive'
+            (output/asset).parent.mkdir(parents=True)
+            (output/asset).write_bytes(data)
+            blocker = f'{slug}: game_evidence is not recorded'
+            manifest = {
+                'version': '1.0', 'in_game_tested': False,
+                'release': {'public_release_ready': False, 'blocked': [blocker]},
+                'pieces': [{'id': slug, 'status': 'tested', 'asset_file': asset,
+                            'game_tests': {'placement': 'passed'},
+                            'provenance': {'redistribution': 'permission-recorded'}}],
+                'files': [{'path': asset, 'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)}],
+                'profile': {'donors': [{'filename': 'NetworkAddonMod_Controller.dat', 'sha256': 'b' * 64}]},
+            }
+            saved = json.dumps(manifest).encode()
+            (output/'manifest.json').write_bytes(saved)
+
+            destination = root/'release.zip'
+            with patch('scp.build.load_catalog', return_value={'version': '1.0'}), \
+                    patch('scp.build.verify_build', return_value={'static_checks_passed': True}) as verify:
+                result = package_build(output, destination, release=True, project_root=root)
+                verify.assert_called_once_with(output.resolve(), write_report=False)
+                self.assertTrue(result['public_release'])
+                with zipfile.ZipFile(destination) as archive:
+                    packaged = json.loads(archive.read('manifest.json'))
+                    self.assertTrue(packaged['release']['public_release_ready'])
+                    self.assertIs(packaged['in_game_tested'], False)
+                    self.assertEqual(archive.read(asset), data)
+                self.assertEqual((output/'manifest.json').read_bytes(), saved)
+
+                verify.side_effect = ValueError('Package file hash/size mismatch')
+                invalid = root/'invalid.zip'
+                with self.assertRaisesRegex(ValueError, 'Package file hash/size mismatch'):
+                    package_build(output, invalid, release=True, project_root=root)
+                self.assertFalse(invalid.exists())
+
+                verify.side_effect = None
+                gates['supported_platform_tests']['enabled'] = True
+                policy_path.write_text(json.dumps(gates))
+                blocked = root/'blocked.zip'
+                with self.assertRaisesRegex(ValueError, blocker):
+                    package_build(output, blocked, release=True, project_root=root)
+                self.assertFalse(blocked.exists())

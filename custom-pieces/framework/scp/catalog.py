@@ -308,9 +308,19 @@ def select_pieces(catalog, include=None):
     return selected
 
 
-def release_status(root, pieces):
-    gates = jsonc.load(Path(root) / 'config/release.jsonc')
-    require(isinstance(gates, dict), 'Release record must be an object')
+def load_release_record(root):
+    record = jsonc.load(Path(root) / 'config/release.jsonc')
+    require(isinstance(record, dict), 'Release record must be an object')
+    return record
+
+
+def release_check_enabled(record, name):
+    check = record.get(name)
+    return not isinstance(check, dict) or check.get('enabled') is not False
+
+
+def release_status(root, pieces, *, release_record=None):
+    gates = load_release_record(root) if release_record is None else release_record
     blocked = []
     current_reviews = {}
     if (Path(root) / 'project.jsonc').is_file():
@@ -328,14 +338,17 @@ def release_status(root, pieces):
         enabled = item.get('enabled', True)
         if type(enabled) is not bool or (enabled and (item.get('status') != 'passed' or not item.get('evidence'))):
             blocked.append(name)
+    require_game_tests = release_check_enabled(gates, 'supported_platform_tests')
+    require_redistribution = release_check_enabled(gates, 'nam_derivatives_permission')
     for piece in pieces:
         review = current_reviews.get(piece['id']) or piece.get('design_review')
         if review:
             from .design_review import review_note
             blocked.append(f"{piece['id']}: {review_note({'design_review':review})}")
-        if piece['status'] != 'tested' or any(v != 'passed' for v in piece['game_tests'].values()):
+        if require_game_tests and (
+                piece['status'] != 'tested' or any(value != 'passed' for value in piece['game_tests'].values())):
             blocked.append(f"{piece['id']}: in-game test matrix")
-        if piece.get('provenance', {}).get('redistribution') != 'permission-recorded':
+        if require_redistribution and piece.get('provenance', {}).get('redistribution') != 'permission-recorded':
             blocked.append(f"{piece['id']}: redistribution evidence")
     return {'public_release_ready': not blocked, 'blocked': blocked,
             'note': 'Static checks do not constitute game testing or redistribution permission.'}

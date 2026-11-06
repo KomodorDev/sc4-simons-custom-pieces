@@ -12,7 +12,7 @@ import json
 from pathlib import Path, PurePosixPath
 import re
 
-from .catalog import release_status
+from .catalog import load_release_record, release_check_enabled, release_status
 
 
 def _require(condition, message):
@@ -124,7 +124,8 @@ def _check_evidence(root, piece, evidence, files, donors):
         _project_file(root, screenshot)
 
 
-def assess_build(project_root: Path, manifest: dict, *, require_build_game_evidence: bool = True) -> dict:
+def assess_build(project_root: Path, manifest: dict, *, require_build_game_evidence: bool = True,
+                 release_record: dict | None = None) -> dict:
     """Return fail-closed release readiness for the manifest's selected pieces.
 
     Each ``game_evidence`` reference is relative to ``project_root``. The
@@ -145,9 +146,13 @@ def assess_build(project_root: Path, manifest: dict, *, require_build_game_evide
         return {'public_release_ready': False, 'blocked': [f'build evidence metadata: {exc}']}
 
     try:
-        blocked.extend(release_status(root, pieces)['blocked'])
+        gates = load_release_record(root) if release_record is None else release_record
+        blocked.extend(release_status(root, pieces, release_record=gates)['blocked'])
     except (OSError, ValueError, KeyError, TypeError, AttributeError):
-        blocked.append('project release gates are missing or invalid')
+        return {'public_release_ready': False, 'blocked': ['project release gates are missing or invalid']}
+
+    if not release_check_enabled(gates, 'supported_platform_tests'):
+        return {'public_release_ready': not blocked, 'blocked': blocked}
 
     # Current projects have one authoritative record per subject. A coarse
     # flag in an older candidate must never hide a failed or untested port.

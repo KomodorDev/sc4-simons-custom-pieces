@@ -28,6 +28,13 @@ class PortableCLITests(unittest.TestCase):
         return subprocess.run([sys.executable, '-B', str(self.root / 'scp.py'), *args],
                               cwd=self.root.parent, capture_output=True, text=True)
 
+    def configure_platform_release_check(self, enabled):
+        path = self.root / 'config/release.jsonc'
+        gates = jsonc.load(path)
+        gates['supported_platform_tests'] = {'enabled': enabled, 'status': 'passed',
+                                             'evidence': 'fixture platform evidence'}
+        path.write_text(json.dumps(gates))
+
     def test_self_contained_list_needs_no_previous_prototype_directory(self):
         result = self.call('list')
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -235,9 +242,12 @@ class PortableCLITests(unittest.TestCase):
         self.assertEqual(a.read_bytes(), b.read_bytes())
 
     def test_release_check_does_not_treat_static_status_as_game_evidence(self):
+        self.configure_platform_release_check(True)
         result = self.call('release-check', '--all')
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertFalse(json.loads(result.stdout)['public_release_ready'])
+        report = json.loads(result.stdout)
+        self.assertFalse(report['public_release_ready'])
+        self.assertTrue(any(blocker.endswith(': in-game test matrix') for blocker in report['blocked']))
 
     def test_failed_piece_can_be_inspected_but_not_selected_for_build(self):
         slug = 'hsr-l2-over-tram-ground-mixed-crossing-90deg'
@@ -245,10 +255,11 @@ class PortableCLITests(unittest.TestCase):
         piece = json.loads(path.read_text())
         piece['game_tests']['placement'] = 'failed'
         path.write_text(json.dumps(piece))
+        blocker = slug + ': in-game test matrix'
+        self.configure_platform_release_check(False)
         report = self.call('release-check', '--include', slug)
         self.assertEqual(report.returncode, 0, report.stderr)
-        self.assertFalse(json.loads(report.stdout)['public_release_ready'])
-        self.assertIn(slug+': in-game test matrix', json.loads(report.stdout)['blocked'])
+        self.assertNotIn(blocker, json.loads(report.stdout)['blocked'])
         # Selection must reject this piece before reading any NAM donor assets.
         plugins = self.root.parent / 'Plugins'
         plugins.mkdir()
@@ -256,7 +267,15 @@ class PortableCLITests(unittest.TestCase):
         self.assertNotEqual(built.returncode, 0)
         self.assertIn('failed placement tests', built.stderr)
 
+        self.configure_platform_release_check(True)
+        report = self.call('release-check', '--include', slug)
+        self.assertEqual(report.returncode, 0, report.stderr)
+        assessed = json.loads(report.stdout)
+        self.assertFalse(assessed['public_release_ready'])
+        self.assertIn(blocker, assessed['blocked'])
+
     def test_named_piece_sets_combine_without_duplicate_pieces(self):
+        self.configure_platform_release_check(True)
         result = self.call('release-check', '--set', 'smooth-t-junctions', '--set', 'diagonal-s-curves')
         self.assertEqual(result.returncode, 0, result.stderr)
         report = json.loads(result.stdout)

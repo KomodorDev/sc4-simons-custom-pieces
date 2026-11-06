@@ -462,10 +462,11 @@ def package_build(output, destination, release=False, project_root=None, *, refr
         require(project_root is not None, 'Release needs current project evidence')
         current = load_catalog(project_root)
         require(current['version'] == manifest['version'], 'Rebuild after changing project version')
+        from .catalog import load_release_record, release_check_enabled
         from .release import assess_build
-        status = assess_build(Path(project_root), manifest)
+        release_record = load_release_record(project_root)
+        status = assess_build(Path(project_root), manifest, release_record=release_record)
         require(status['public_release_ready'], 'Public release is blocked: ' + ', '.join(status['blocked']))
-        require(manifest['release']['public_release_ready'], 'Rebuild after recording release evidence')
     require(not destination.is_symlink() and not destination.is_relative_to(output), 'ZIP destination must be outside build folder')
     destination.parent.mkdir(parents=True, exist_ok=True)
     # Public-style binary ZIP contains no local paths, caches, or NAM source tree.
@@ -487,11 +488,10 @@ def package_build(output, destination, release=False, project_root=None, *, refr
                 'Documentation handoff changed compiled build facts')
         members['manifest.json'] = (json.dumps(packaged, sort_keys=True, indent=2) + '\n').encode()
     if release:
-        # Published documentation reflects recorded game evidence. The DATs
-        # remain byte-identical to the verified, evidence-bound candidate.
+        # Record the current release assessment alongside the verified DATs.
         published = deepcopy(packaged)
         published['release'] = status
-        published['in_game_tested'] = True
+        published['in_game_tested'] = release_check_enabled(release_record, 'supported_platform_tests')
         domains = {piece.get('domain', 'high-speed-rail') for piece in manifest['pieces']}
         folders = manifest.get(transport_menu.KEY, {}).get('domains', ())
         menu_paths = [f'Transportation > {category}' + (' > SCP > Pieces' if domain in folders else '')
