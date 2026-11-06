@@ -127,7 +127,7 @@ Open [config/release.jsonc](../config/release.jsonc). To skip one shared check, 
 - `nam_derivatives_permission` controls the project’s permission record and each bundled piece’s redistribution status in both the saved build and the current catalogue.
 - `supported_platform_tests` controls the project’s platform record, each piece’s game-test status, the current manual gameplay cases, and the separate files for the exact build described in [chapter 7](#7-build-specific-game-evidence). With this check enabled, direct compiled packages require those files. Prebuilt installers require them when `prebuilt_installer.require_build_game_evidence` is also `true`.
 
-Package verification, catalogue completeness, design review, and protected publication approval use separate checks. Direct packaging evaluates the current release policy against the verified build. The published package is marked game-tested when the enabled gameplay checks pass.
+Prebuilt installer publication uses the evidence checks configured in `release.jsonc`, alongside package verification, catalogue completeness, and protected publication approval. Direct compiled-package releases also require clearance of open design-review flags and evaluate the current release policy against the verified build. A published compiled package is marked game-tested when the enabled gameplay checks pass.
 
 <a id="when-nam-changes"></a>
 

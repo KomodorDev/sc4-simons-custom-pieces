@@ -146,7 +146,7 @@ def receive(repo, workspace, *, mode):
 
 
 def require_release_evidence(root, manifest):
-    """Check public evidence for an experimental prebuilt installer."""
+    """Apply the configured release evidence checks to an experimental prebuilt installer."""
     from scp.catalog import load_catalog, load_release_record, release_check_enabled
     from scp.release import assess_build
 
@@ -165,7 +165,8 @@ def require_release_evidence(root, manifest):
         if type(require_build_game_evidence) is not bool:
             raise ValueError("Release record prebuilt_installer.require_build_game_evidence must be true or false.")
     result = assess_build(root, {**manifest, "pieces": complete},
-                          require_build_game_evidence=require_build_game_evidence, release_record=gates)
+                          require_build_game_evidence=require_build_game_evidence, release_record=gates,
+                          require_design_review_clearance=False)
     if not result["public_release_ready"]:
         reasons = result["blocked"]
         remaining = len(reasons) - min(len(reasons), 12)

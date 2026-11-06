@@ -125,7 +125,7 @@ def _check_evidence(root, piece, evidence, files, donors):
 
 
 def assess_build(project_root: Path, manifest: dict, *, require_build_game_evidence: bool = True,
-                 release_record: dict | None = None) -> dict:
+                 release_record: dict | None = None, require_design_review_clearance: bool = True) -> dict:
     """Return fail-closed release readiness for the manifest's selected pieces.
 
     Each ``game_evidence`` reference is relative to ``project_root``. The
@@ -147,7 +147,9 @@ def assess_build(project_root: Path, manifest: dict, *, require_build_game_evide
 
     try:
         gates = load_release_record(root) if release_record is None else release_record
-        blocked.extend(release_status(root, pieces, release_record=gates)['blocked'])
+        status = release_status(root, pieces, release_record=gates,
+                                require_design_review_clearance=require_design_review_clearance)
+        blocked.extend(status['blocked'])
     except (OSError, ValueError, KeyError, TypeError, AttributeError):
         return {'public_release_ready': False, 'blocked': ['project release gates are missing or invalid']}
 

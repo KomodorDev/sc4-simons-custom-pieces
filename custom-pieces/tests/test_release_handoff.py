@@ -239,15 +239,20 @@ class PrebuiltReleaseEvidenceTests(unittest.TestCase):
         self.manifest["files"][0]["sha256"] = "not a fingerprint"
         self._assert_blocked("build evidence metadata: invalid SHA-256 fingerprint")
 
-    def test_disabling_piece_evidence_checks_keeps_design_review(self):
-        self.gates["nam_derivatives_permission"]["enabled"] = False
-        self.gates["supported_platform_tests"]["enabled"] = False
+    def test_installer_applies_only_configured_evidence_checks_with_an_open_design_review(self):
+        for gate in self.gates.values():
+            if "enabled" in gate:
+                gate.update(enabled=False, status="pending", evidence=None)
+        self.piece.update(status="experimental", game_tests={"placement": "unverified"},
+                          provenance={"redistribution": "permission-pending"})
         self.piece["design_review"] = {
             "status": "needs-redesign",
             "summary": "The approach has an unnecessary detour.",
             "reasons": ["The approach has not been accepted."],
         }
-        self._assert_blocked("example: NEEDS REDESIGN")
+        self._check_release()
+        self.gates["ids_allocated"]["enabled"] = True
+        self._assert_blocked("ids_allocated")
 
 
 if __name__ == "__main__":

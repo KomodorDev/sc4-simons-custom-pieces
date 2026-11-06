@@ -319,7 +319,7 @@ def release_check_enabled(record, name):
     return not isinstance(check, dict) or check.get('enabled') is not False
 
 
-def release_status(root, pieces, *, release_record=None):
+def release_status(root, pieces, *, release_record=None, require_design_review_clearance=True):
     gates = load_release_record(root) if release_record is None else release_record
     blocked = []
     current_pieces = {}
@@ -342,7 +342,7 @@ def release_status(root, pieces, *, release_record=None):
     for piece in pieces:
         current_piece = current_pieces.get(piece['id'], piece)
         review = current_piece.get('design_review') or piece.get('design_review')
-        if review:
+        if require_design_review_clearance and review:
             from .design_review import review_note
             blocked.append(f"{piece['id']}: {review_note({'design_review':review})}")
         if require_game_tests and (
