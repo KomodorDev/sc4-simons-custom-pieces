@@ -33,7 +33,7 @@ Download **`SCP-Installer-windows-x64-<commit>.zip`** for a published installer.
 
 Right-click the downloaded ZIP, select **Extract All…**, keep the proposed destination under Downloads or choose another destination, and select **Extract**. Open the extracted directory, open **SCP Installer**, and double-click **SCP Installer.exe**. Keep its accompanying `_internal` directory beside the executable; it contains the bundled runtime and finished files. Extract the entire ZIP before opening the application.
 
-For the audited catalogue, a rebuilt download of approximately **360 MB plus the application and its runtime** is an estimate. The finished game files account for most of that size. Read the actual asset size on the release page for the measured download size. Release checks enforce an extraction-path budget and extract the prebuilt ZIP under a realistic Windows Downloads destination before testing the extracted application.
+For the audited catalogue, a rebuilt download of approximately **360 MB plus the application and its runtime** is an estimate. The finished game files account for most of that size. Read the actual asset size on the release page for the measured download size. Packaging limits everything outside the finished payload to **40 MiB uncompressed**, or 41,943,040 bytes; this includes the application, its runtime, installation data, instructions, and notices. This ceiling catches unexpected growth outside the payload; it does not measure the download or limit the finished game files. Release checks also enforce an extraction-path budget and extract the prebuilt ZIP under a realistic Windows Downloads destination before testing the extracted application.
 
 <a id="first-launch-operating-system-approval"></a>
 
@@ -73,6 +73,8 @@ The managed installation lives in **`zzz_Simons_Custom_Pieces` inside the select
 ## 5. Update, remove, or resolve a stopped installation
 
 To update, close the game, download the intended newer installer, extract it, and select the same Plugins folder. Supply the same game directory if requested. The installer accepts existing receipts from earlier supported installers, verifies the owned files, saves a backup, and replaces the managed installation only after the new packaged files pass their checks. It refuses to overwrite unknown or edited files and refuses an update that silently removes previously installed piece types. Keep the installer's application-data directory if you need its logs or backup.
+
+If installation or Undo succeeds but Windows cannot remove temporary files, the window reports a cleanup warning. The temporary files remain outside Plugins and outside the backup folder, so the game does not load them and they do not block another update or Undo. Select **Open log** to see their exact location. A cleanup warning does not mean the installation failed; keep the saved backup and ownership receipt intact.
 
 To reverse the latest successful installation, close the game, open the installer, select the same Plugins folder, supply the game directory if requested, and select **Undo last installation**. Read the confirmation, and select **Yes** to restore the previous managed SCP installation. If SCP was absent before that installation, undo removes its managed folder. The button is available when the installer has a saved transaction record; it does not offer a history of arbitrary versions. Existing file and backup checks can stop an undo if their contents have changed.
 

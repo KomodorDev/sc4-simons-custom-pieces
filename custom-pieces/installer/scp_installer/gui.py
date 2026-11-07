@@ -200,12 +200,16 @@ class InstallerApp:
                 if kind == "success":
                     self.status.set(f"Installed — {value['pieces']} pieces are ready.")
                     self.detail.set("Start SimCity 4. In Transportation, choose Rail or Highways, then click SCP. Open Pieces for standalone buttons or Assemblies for a layout. Tab selects components. A backup was saved automatically.")
+                    if value.get("cleanup_warning"):
+                        self.detail.set("Installation succeeded and Undo is available. Windows could not remove temporary files outside Plugins. Open the log for their location; they do not affect the game.")
                     if value.get("recovery_record_warning"):
                         self.undo_button.configure(state="disabled")
                         self.detail.set("Installation succeeded and its backup is saved, but Windows could not save the Undo shortcut. Open the log for the recovery details.")
                 elif kind == "undone":
                     self.status.set("The previous installation was restored.")
                     self.detail.set("Your game and NAM source files were preserved.")
+                    if value.get("cleanup_warning"):
+                        self.detail.set("Undo succeeded. Windows could not remove temporary files outside Plugins. Open the log for their location; they do not affect the game.")
                 else:
                     self.status.set("Cancelled" if kind == "cancelled" else "Installation stopped")
                     self.detail.set(value["error"])

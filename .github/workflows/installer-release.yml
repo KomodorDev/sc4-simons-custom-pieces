@@ -104,6 +104,7 @@ jobs:
           retention-days: 14
           path: |
             ${{ runner.temp }}/scp-player-installer/archive-check-*.json
+            ${{ runner.temp }}/scp-player-installer/bundle-index-*.json
             ${{ runner.temp }}/scp-player-installer/extraction-check-*.json
             ${{ runner.temp }}/scp-player-installer/self-test-*.json
             ${{ runner.temp }}/scp-player-installer/gui-smoke-test-*.json

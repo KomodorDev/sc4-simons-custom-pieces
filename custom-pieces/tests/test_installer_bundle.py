@@ -273,6 +273,11 @@ class InstallerBundleTests(unittest.TestCase):
             prefix = f"{folder.name}/{bundle.FROZEN_RUNTIME}/{bundle.PREBUILT_PAYLOAD}/"
             included = {name.removeprefix(prefix): saved.read(name) for name in saved.namelist()
                         if name.startswith(prefix)}
+            overhead = [info for info in saved.infolist() if not info.filename.startswith(prefix)]
+            self.assertEqual(result["player_overhead"], {
+                "uncompressed_bytes": sum(info.file_size for info in overhead),
+                "compressed_member_bytes": sum(info.compress_size for info in overhead),
+                "max_uncompressed_bytes": bundle.PLAYER_OVERHEAD_LIMIT})
         expected = {path.relative_to(payload).as_posix(): path.read_bytes() for path in bundle._files(payload)}
         self.assertEqual(included, expected)
 
@@ -409,6 +414,7 @@ class InstallerBundleTests(unittest.TestCase):
         self.assertEqual(result["status"], "passed")
         self.assertEqual(result["source_commit"], COMMIT)
         self.assertEqual(result["members_verified"], 4)
+        self.assertNotIn("player_overhead", result)
         self.assertEqual(result["zip_bytes"], archive.stat().st_size)
         with zipfile.ZipFile(archive) as saved:
             self.assertEqual(result["uncompressed_bytes"], sum(info.file_size for info in saved.infolist()))
@@ -589,6 +595,62 @@ class InstallerBundleTests(unittest.TestCase):
         self.assertIn("scp.player_manifest", included)
         self.assertIn("scp_installer.package", included)
         self.assertNotIn("build_bundle", included)
+
+    def test_player_overhead_budget_rejects_unknown_bloat_before_payload_extraction(self):
+        folder = self.directory / "frozen"
+        self._prepare(self._prebuilt_payload(), folder / bundle.FROZEN_RUNTIME)
+        unused_name = "_internal/scipy/linalg/_unused.pyd"
+        unused = folder / unused_name
+        unused.parent.mkdir(parents=True)
+        with unused.open("wb") as stream:
+            stream.truncate(bundle.PLAYER_OVERHEAD_LIMIT + 1)
+        archive = self.directory / "oversized.zip"
+        with patch.object(bundle.tempfile, "TemporaryDirectory", side_effect=AssertionError("Payload extracted")):
+            with self.assertRaisesRegex(ValueError, "application overhead budget exceeded"):
+                bundle.create_archive(folder, archive, COMMIT, "windows-x64")
+
+        # Even a forged small index value cannot replace the central-directory
+        # size, which is checked before opening any large archive member.
+        def understate_index(records):
+            changed = []
+            for info, raw in records:
+                if info.filename.endswith("/bundle-index.json"):
+                    index = json.loads(raw)
+                    next(row for row in index["files"] if row["path"] == unused_name)["bytes"] = 1
+                    raw = json.dumps(index).encode()
+                changed.append((info, raw))
+            return changed
+
+        self._rewrite_zip(archive, understate_index)
+        with patch.object(bundle, "_stream_archive_member", side_effect=AssertionError("Large member opened")):
+            with self.assertRaisesRegex(ValueError, "application overhead budget exceeded"):
+                bundle.verify_archive(archive)
+
+    def test_player_overhead_budget_excludes_only_recognized_payload_paths(self):
+        application = zipfile.ZipInfo("_internal/python311.dll")
+        application.file_size = bundle.PLAYER_OVERHEAD_LIMIT
+        application.compress_size = 12
+        payload_name = f"{bundle.FROZEN_RUNTIME}/{bundle.PREBUILT_PAYLOAD}/{FOLDER}/20_Pieces/SCP_example.dat"
+        payload = zipfile.ZipInfo(payload_name)
+        payload.file_size = bundle.PLAYER_OVERHEAD_LIMIT * 100
+        payload.compress_size = 34
+        report = bundle._player_overhead({application.filename: application, payload.filename: payload})
+        self.assertEqual(report["uncompressed_bytes"], bundle.PLAYER_OVERHEAD_LIMIT)
+        self.assertEqual(report["compressed_member_bytes"], 12)
+        disguised = f"{bundle.FROZEN_RUNTIME}/{bundle.PREBUILT_PAYLOAD}/unused.bin"
+        with self.assertRaisesRegex(ValueError, "unexpected payload file"):
+            bundle._player_overhead({disguised: payload})
+
+    def test_source_builder_archive_is_not_subject_to_player_overhead_budget(self):
+        folder = self.directory / "source-builder"
+        unused = folder / "development-source.bin"
+        unused.parent.mkdir()
+        with unused.open("wb") as stream:
+            stream.truncate(bundle.PLAYER_OVERHEAD_LIMIT + 1)
+        result = bundle.create_archive(folder, self.directory / "source-builder.zip", COMMIT, "windows-x64")
+        self.assertEqual(result["status"], "passed")
+        self.assertGreater(result["uncompressed_bytes"], bundle.PLAYER_OVERHEAD_LIMIT)
+        self.assertNotIn("player_overhead", result)
 
     def test_prepared_player_installs_repeats_and_undoes_without_site_packages_or_source_checkout(self):
         runtime = self._prepare(self._prebuilt_payload(), real_modules=True)

@@ -215,9 +215,47 @@ def _locations(output: Path | None, plugins: Path, backup_root: Path, *, extra_r
     return output, plugins, backup_root
 
 
-def _replace(managed: Path, staged: Path | None) -> None:
-    """Exchange one directory and restore the old one if the exchange fails."""
-    holding = managed.parent / f'.scp-previous-{uuid.uuid4().hex}'
+def _transaction_folder(plugins: Path, backup_root: Path, *, extra_roots=None) -> Path:
+    """Stage on the Plugins volume, outside game inputs and backup snapshots."""
+    roots = _scan_roots(plugins, extra_roots)
+    device = plugins.stat().st_dev
+    for parent in dict.fromkeys((backup_root.parent, plugins.parent)):
+        if any(_inside(parent, root) for root in roots) or _inside(parent, backup_root):
+            continue
+        try:
+            if parent.stat().st_dev != device:
+                continue
+            folder = Path(tempfile.mkdtemp(prefix='.scp-transaction-', dir=parent))
+        except OSError:
+            continue
+        # Directory mounts can have a different device from their parent.
+        if folder.stat().st_dev == device:
+            return folder
+        folder.rmdir()
+    raise ValueError('Cannot create a working folder on the Plugins volume outside Plugins and backups. '
+                     'Use a writable player-data location, or a backup location on the same volume.')
+
+
+def _cleanup_transaction(folder: Path | None, *, preserve_previous=False) -> dict:
+    if folder is None:
+        return {}
+    try:
+        if not folder.exists():
+            return {}
+        if preserve_previous and (folder / 'previous').exists():
+            return {'cleanup_warning': f'The previous installation could not be restored automatically. '
+                                       f'Keep the game closed; its recovery files are preserved at {folder}.',
+                    'cleanup_folder': str(folder)}
+        shutil.rmtree(folder)
+    except OSError as error:
+        return {'cleanup_warning': f'Temporary SCP files outside Plugins could not be removed: {folder}. {error}',
+                'cleanup_folder': str(folder)}
+    return {}
+
+
+def _replace(managed: Path, staged: Path | None, transaction: Path) -> None:
+    """Exchange directories; keep the old tree outside Plugins until cleanup."""
+    holding = transaction / 'previous'
     moved = False
     try:
         if managed.exists():
@@ -229,8 +267,6 @@ def _replace(managed: Path, staged: Path | None) -> None:
         if moved and not managed.exists():
             holding.rename(managed)
         raise
-    if moved:
-        shutil.rmtree(holding)
 
 
 def _exclusive_operation(function):
@@ -343,7 +379,7 @@ def _install(output, plugins, backup_root, manifest, manifest_sha256, files, *,
     backup_root.mkdir(parents=True, exist_ok=True)
     backup = backup_root / backup_id
     backup.mkdir()
-    staged = None
+    transaction = None
     try:
         previous_hashes = {}
         if previous is not None:
@@ -351,7 +387,9 @@ def _install(output, plugins, backup_root, manifest, manifest_sha256, files, *,
             previous_hashes = _tree(backup / 'previous' / FOLDER)
             if previous_hashes != _tree(managed):
                 raise ValueError('Existing managed folder changed while it was being backed up')
-        staged = Path(tempfile.mkdtemp(prefix='.scp-stage-', dir=plugins))
+        transaction = _transaction_folder(plugins, backup_root, extra_roots=extra_roots)
+        staged = transaction / 'staged'
+        staged.mkdir()
         for relative in files:
             destination = staged / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
@@ -368,17 +406,20 @@ def _install(output, plugins, backup_root, manifest, manifest_sha256, files, *,
         # file is overwritten until a complete, hash-checked snapshot exists.
         if _owned(managed) != previous:
             raise ValueError('Managed installation changed while preparing the update')
-        _replace(managed, staged)
-        staged = None
-    except BaseException:
-        if staged is not None and staged.exists():
-            shutil.rmtree(staged)
-        # Keep a complete snapshot if the directory exchange already succeeded.
-        if not managed.exists() or not (managed / RECEIPT).exists() or _json(managed / RECEIPT).get('backup_id') != backup_id:
+        _replace(managed, staged, transaction)
+    except BaseException as error:
+        cleanup = _cleanup_transaction(transaction, preserve_previous=True)
+        if cleanup:
+            error.add_note(cleanup['cleanup_warning'])
+        # Keep the snapshot if recovery/cleanup is uncertain or the exchange
+        # already succeeded. Never inspect an inaccessible temporary tree here.
+        if (not cleanup
+                and (not managed.exists() or not (managed / RECEIPT).exists()
+                     or _json(managed / RECEIPT).get('backup_id') != backup_id)):
             shutil.rmtree(backup)
         raise
     return {'status': 'installed', 'backup_id': backup_id,
-            'plugin_folder': str(managed), 'files': len(files)}
+            'plugin_folder': str(managed), 'files': len(files), **_cleanup_transaction(transaction)}
 
 
 @_exclusive_operation
@@ -397,6 +438,7 @@ def uninstall(plugins: Path, backup_root: Path, *, extra_roots=None) -> dict:
     backup_root.mkdir(parents=True, exist_ok=True)
     backup = backup_root / backup_id
     backup.mkdir()
+    transaction = None
     try:
         snapshot = backup / 'previous' / FOLDER
         shutil.copytree(managed, snapshot)
@@ -410,14 +452,18 @@ def uninstall(plugins: Path, backup_root: Path, *, extra_roots=None) -> dict:
             'removed_receipt_sha256': _sha((snapshot / RECEIPT).read_bytes())})
         if _owned(managed) != current:
             raise ValueError('Managed installation changed while preparing removal')
-        _replace(managed, None)
-    except BaseException:
+        transaction = _transaction_folder(plugins, backup_root, extra_roots=extra_roots)
+        _replace(managed, None, transaction)
+    except BaseException as error:
+        cleanup = _cleanup_transaction(transaction, preserve_previous=True)
+        if cleanup:
+            error.add_note(cleanup['cleanup_warning'])
         # Retain a complete recovery snapshot if removal already succeeded.
-        if managed.exists():
+        if not cleanup and managed.exists():
             shutil.rmtree(backup)
         raise
     return {'status': 'uninstalled', 'backup_id': backup_id,
-            'plugin_folder': str(managed), 'files': len(current['files'])}
+            'plugin_folder': str(managed), 'files': len(current['files']), **_cleanup_transaction(transaction)}
 
 
 @_exclusive_operation
@@ -448,6 +494,7 @@ def rollback_install(plugins: Path, backup_root: Path, backup_id: str, *, extra_
             raise ValueError('Current installation receipt differs from the saved install receipt')
     else:
         raise ValueError('Unknown backup operation')
+    transaction = None
     staged = None
     try:
         if metadata['previous_state'] == 'present':
@@ -459,7 +506,9 @@ def rollback_install(plugins: Path, backup_root: Path, backup_id: str, *, extra_
                 raise ValueError('Uninstall backup receipt does not match the removed installation')
             controller = _profile(previous.get('profile'), plugins, managed, extra_roots=extra_roots)
             _foreign_overlays(plugins, managed, controller, extra_roots=extra_roots)
-            staged = Path(tempfile.mkdtemp(prefix='.scp-stage-', dir=plugins))
+            transaction = _transaction_folder(plugins, backup_root, extra_roots=extra_roots)
+            staged = transaction / 'staged'
+            staged.mkdir()
             shutil.copytree(snapshot, staged, dirs_exist_ok=True)
             if _tree(staged) != metadata['previous_files']:
                 raise ValueError('Restored staging files do not match the backup')
@@ -467,10 +516,14 @@ def rollback_install(plugins: Path, backup_root: Path, backup_id: str, *, extra_
             raise ValueError('An absent-state backup contains unexpected previous files')
         if _owned(managed) != current:
             raise ValueError('Managed installation changed while preparing rollback')
-        _replace(managed, staged)
-        staged = None
-    finally:
-        if staged is not None and staged.exists():
-            shutil.rmtree(staged)
+        if transaction is None:
+            transaction = _transaction_folder(plugins, backup_root, extra_roots=extra_roots)
+        _replace(managed, staged, transaction)
+    except BaseException as error:
+        cleanup = _cleanup_transaction(transaction, preserve_previous=True)
+        if cleanup:
+            error.add_note(cleanup['cleanup_warning'])
+        raise
     return {'status': 'rolled_back', 'backup_id': backup_id,
-            'plugin_folder': str(managed), 'previous_state': metadata['previous_state']}
+            'plugin_folder': str(managed), 'previous_state': metadata['previous_state'],
+            **_cleanup_transaction(transaction)}

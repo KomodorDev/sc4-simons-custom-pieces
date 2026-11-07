@@ -31,6 +31,7 @@ SOURCE_EXTENSIONS = {".py", ".json", ".jsonc", ".md", ".png", ".svg", ".txt", ".
 FORBIDDEN_PARTS = {"local", "dist", "__pycache__", ".git", ".venv", "node_modules"}
 EXTRACTION_DESTINATION_CHARACTERS = 100
 WINDOWS_PATH_CHARACTERS = 259  # MAX_PATH's terminating NUL occupies character 260.
+PLAYER_OVERHEAD_LIMIT = 40 * 1024 * 1024
 PLAYER_FORBIDDEN_PARTS = frozenset({
     "tests", "testing", "test", "evidence", "previews", "docs", "schemas", "domains",
     "numpy", "numpy.libs", "shapely", "shapely.libs", "pil", "pillow.libs",
@@ -286,11 +287,33 @@ def _stream_archive_member(archive: zipfile.ZipFile, info: zipfile.ZipInfo,
     return digest.hexdigest(), size, magic
 
 
-def _payload_destination(root: Path, name: str) -> Path:
+def _check_payload_name(name: str) -> None:
     if name != "manifest.json" and re.fullmatch(
             r"zzz_Simons_Custom_Pieces/(?:00_SCP_Controller_NAM50|10_SCP_Menu|20_Pieces/SCP_[a-z0-9-]+)\.dat",
             name) is None:
         raise ValueError("Prebuilt installer ZIP contains an unexpected payload file: " + name)
+
+
+def _player_overhead(infos: dict[str, zipfile.ZipInfo]) -> dict:
+    """Bound application bytes using ZIP sizes, independently of the game data."""
+    payload = PurePosixPath(FROZEN_RUNTIME, PREBUILT_PAYLOAD)
+    uncompressed = compressed = 0
+    for name, info in infos.items():
+        member = PurePosixPath(name)
+        if member.is_relative_to(payload):
+            _check_payload_name(member.relative_to(payload).as_posix())
+        else:
+            uncompressed += info.file_size
+            compressed += info.compress_size
+    if uncompressed > PLAYER_OVERHEAD_LIMIT:
+        raise ValueError(f"Player application overhead budget exceeded: {uncompressed} > "
+                         f"{PLAYER_OVERHEAD_LIMIT} uncompressed bytes outside the finished payload.")
+    return {"uncompressed_bytes": uncompressed, "compressed_member_bytes": compressed,
+            "max_uncompressed_bytes": PLAYER_OVERHEAD_LIMIT}
+
+
+def _payload_destination(root: Path, name: str) -> Path:
+    _check_payload_name(name)
     destination = root / name
     destination.parent.mkdir(parents=True, exist_ok=True)
     return destination
@@ -316,10 +339,12 @@ def verify_archive(path: Path) -> dict:
         commit = _commit(index["source_commit"])
         payload_digest = _check_distribution_metadata(index, commit, "-installer")
         path_budget = None
+        player_overhead = None
         if payload_digest is not None:
             path_budget = _path_budget(names)
             for name in by_name:
                 _check_player_member(name)
+            player_overhead = _player_overhead(by_name)
         indexed = {_relative(record["path"]).as_posix(): record for record in index["files"]}
         if (len(indexed) != len(index["files"])
                 or set(by_name) != indexed.keys() | {"bundle-index.json", "SHA256SUMS"}):
@@ -392,7 +417,8 @@ def verify_archive(path: Path) -> dict:
               "uncompressed_bytes": sum(info.file_size for info in infos), "zip_sha256": _hash(Path(path))}
     if payload_digest is not None:
         result.update(kind=index["kind"], prebuilt_payload_manifest_sha256=payload_digest,
-                      review_only=index["review_only"], path_budget=path_budget)
+                      review_only=index["review_only"], path_budget=path_budget,
+                      player_overhead=player_overhead)
         if "release_record" in index:
             result["release_record"] = index["release_record"]
     return result

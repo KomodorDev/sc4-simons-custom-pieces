@@ -634,6 +634,28 @@ class OrchestrationTests(unittest.TestCase):
         self.assertEqual(saved["distribution"], "verified-prebuilt")
         self.assertEqual(saved["backup_id"], "synthetic")
 
+    def test_cleanup_warning_keeps_the_latest_recovery_record_and_undo_available(self):
+        root, _, _ = self._prebuilt_runtime()
+        warning = {'status': 'installed', 'backup_id': 'latest-transaction',
+                   'cleanup_warning': 'Temporary files outside Plugins are locked',
+                   'cleanup_folder': str(self.work / '.scp-transaction-retained')}
+        with patch('scp.player_manifest.prepare_dependencies', return_value=([], [])), \
+                patch('scp.install.install_prebuilt', return_value=warning):
+            result = service.run_install(root, self.game, self.work)
+        saved = json.loads((self.work / 'last-installation.json').read_text())
+        self.assertEqual(saved['status'], 'installed')
+        self.assertEqual(saved['backup_id'], 'latest-transaction')
+        self.assertEqual(saved['cleanup_warning'], warning['cleanup_warning'])
+        self.assertEqual(saved['cleanup_folder'], warning['cleanup_folder'])
+        self.assertNotIn('recovery_record_warning', result)
+        with patch('scp.install.rollback_install', return_value={
+                'status': 'rolled_back', 'cleanup_warning': 'Undo temporary files are locked'}) as rollback:
+            undone = service.undo_install(root, self.game, self.work)
+        self.assertEqual(undone['status'], 'rolled_back')
+        self.assertIn('cleanup_warning', undone)
+        self.assertEqual(rollback.call_args.args[2], 'latest-transaction')
+        self.assertEqual(json.loads((self.work / 'last-installation.json').read_text())['status'], 'rolled_back')
+
     def test_prebuilt_package_without_payload_or_metadata_never_falls_back(self):
         root, _, info = self._prebuilt_runtime(payload_present=False)
         metadata = root / "installer/build-info.json"

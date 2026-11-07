@@ -15,13 +15,15 @@ import struct
 import sys
 import tempfile
 import threading
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 'project.jsonc').is_file()) / 'framework'))
 from scp.install import (FOLDER, RECEIPT, OPERATION_LOCK, RUL0, NETWORK_INI,
-                         _foreign_overlays, install_build, install_prebuilt, rollback_install, uninstall)
+                         _foreign_overlays, _replace, _transaction_folder, install_build, install_prebuilt,
+                         rollback_install, uninstall)
 from scp.menu import MENU_EXEMPLAR
 from scp.prebuilt import CONTROLLER, MENU, KIND
 from scp.track_paths import S3D
@@ -185,6 +187,171 @@ class InstallTests(unittest.TestCase):
         self.assertFalse((self.plugins / OPERATION_LOCK).exists())
         self.assertFalse(list(self.plugins.glob('.scp-stage-*')))
         self.assert_native_untouched()
+
+    def test_denied_cleanup_after_update_preserves_success_recovery_and_future_operations(self):
+        first = self.make_prebuilt('cleanup-first', b'one')
+        second = self.make_prebuilt('cleanup-second', b'two')
+        third = self.make_prebuilt('cleanup-third', b'three')
+        self.install_fixture_payload(first)
+        previous = self.managed_hashes()
+        actual_remove = shutil.rmtree
+
+        def deny_workspace_cleanup(path, *args, **kwargs):
+            if Path(path).name.startswith('.scp-transaction-'):
+                raise PermissionError('Synthetic Windows lock during post-commit cleanup')
+            return actual_remove(path, *args, **kwargs)
+
+        with patch('scp.install.shutil.rmtree', side_effect=deny_workspace_cleanup):
+            updated = self.install_fixture_payload(second)
+        self.assertEqual(updated['status'], 'installed')
+        self.assertIn('post-commit cleanup', updated['cleanup_warning'])
+        retained = Path(updated['cleanup_folder'])
+        self.assertTrue((retained / 'previous' / RECEIPT).is_file())
+        self.assertFalse(retained.is_relative_to(self.plugins))
+        self.assertFalse(retained.is_relative_to(self.backups))
+        receipt = json.loads((self.plugins / FOLDER / RECEIPT).read_text())
+        self.assertEqual(receipt['backup_id'], updated['backup_id'])
+        self.assertFalse(any(path.name.startswith('.scp-') for path in self.plugins.iterdir()))
+        # A retained external tree must not be scanned as another controller,
+        # poison backup validation, or invalidate the next update's Undo.
+        actual_walk = Path.rglob
+
+        def deny_retained_scan(path, *args, **kwargs):
+            if path == retained or path.is_relative_to(retained):
+                raise PermissionError('Retained temporary folder is unreadable')
+            return actual_walk(path, *args, **kwargs)
+
+        with patch.object(Path, 'rglob', deny_retained_scan):
+            later = self.install_fixture_payload(third)
+            rollback_install(self.plugins, self.backups, later['backup_id'])
+            rollback_install(self.plugins, self.backups, updated['backup_id'])
+        self.assertEqual(self.managed_hashes(), previous)
+        self.assertTrue(retained.exists())
+        self.assert_native_untouched()
+
+    def test_denied_cleanup_after_uninstall_and_undo_does_not_report_operation_failure(self):
+        self.install()
+        original = self.managed_hashes()
+        actual_remove = shutil.rmtree
+
+        def deny_workspace_cleanup(path, *args, **kwargs):
+            if Path(path).name.startswith('.scp-transaction-'):
+                raise PermissionError('Synthetic cleanup lock')
+            return actual_remove(path, *args, **kwargs)
+
+        with patch('scp.install.shutil.rmtree', side_effect=deny_workspace_cleanup):
+            removed = uninstall(self.plugins, self.backups)
+            self.assertEqual(removed['status'], 'uninstalled')
+            self.assertIn('cleanup_warning', removed)
+            self.assertFalse((self.plugins / FOLDER).exists())
+            restored = rollback_install(self.plugins, self.backups, removed['backup_id'])
+            self.assertEqual(restored['status'], 'rolled_back')
+            self.assertIn('cleanup_warning', restored)
+        self.assertEqual(self.managed_hashes(), original)
+        self.assertFalse(any(path.name.startswith('.scp-') for path in self.plugins.iterdir()))
+
+    def test_failed_staging_with_denied_cleanup_leaves_no_game_loaded_files(self):
+        self.install()
+        previous = self.managed_hashes()
+        actual_copy = shutil.copy2
+        actual_remove = shutil.rmtree
+
+        def fail_after_a_staged_file(source, destination, *args, **kwargs):
+            if Path(source).name == '10_SCP_Pieces_NAM50.dat' and Path(destination).parent.name == 'staged':
+                raise PermissionError('Synthetic staging copy failure')
+            return actual_copy(source, destination, *args, **kwargs)
+
+        def deny_workspace_cleanup(path, *args, **kwargs):
+            if Path(path).name.startswith('.scp-transaction-'):
+                raise PermissionError('Synthetic cleanup lock')
+            return actual_remove(path, *args, **kwargs)
+
+        with patch('scp.install.shutil.copy2', side_effect=fail_after_a_staged_file), \
+                patch('scp.install.shutil.rmtree', side_effect=deny_workspace_cleanup):
+            with self.assertRaisesRegex(PermissionError, 'staging copy failure') as raised:
+                self.install()
+        self.assertTrue(any('outside Plugins' in note for note in raised.exception.__notes__))
+        self.assertEqual(self.managed_hashes(), previous)
+        self.assertFalse(any(path.name.startswith('.scp-') for path in self.plugins.iterdir()))
+        self.install()  # Neither partial DATs nor unreadable backups block retry.
+
+    def test_other_backup_volume_uses_external_plugins_parent_for_staging(self):
+        elsewhere = self.root / 'other-volume'
+        elsewhere.mkdir()
+        backup = elsewhere / 'backups'
+        backup.mkdir()
+        actual_stat = Path.stat
+        device = self.plugins.stat().st_dev
+
+        def simulated_volume(path, *args, **kwargs):
+            if path == elsewhere:
+                return SimpleNamespace(st_dev=device + 1)
+            return actual_stat(path, *args, **kwargs)
+
+        with patch.object(Path, 'stat', simulated_volume):
+            workspace = _transaction_folder(self.plugins, backup)
+        self.assertEqual(workspace.parent, self.plugins.parent)
+        self.assertFalse(workspace.is_relative_to(self.plugins))
+        shutil.rmtree(workspace)
+
+    def test_unavailable_external_working_folder_keeps_existing_installation(self):
+        self.install()
+        previous = self.managed_hashes()
+        original_backups = set(self.backups.iterdir())
+        with patch('scp.install.tempfile.mkdtemp', side_effect=PermissionError('Synthetic parent denial')):
+            with self.assertRaisesRegex(ValueError, 'working folder.*outside Plugins'):
+                self.install()
+        self.assertEqual(self.managed_hashes(), previous)
+        self.assertEqual(set(self.backups.iterdir()), original_backups)
+        self.assertFalse((self.plugins / OPERATION_LOCK).exists())
+
+    def test_denied_post_commit_cleanup_stat_is_advisory(self):
+        self.install()
+        actual_exists = Path.exists
+        actual_replace = _replace
+        committed = []
+
+        def exchange(*args, **kwargs):
+            result = actual_replace(*args, **kwargs)
+            committed.append(True)
+            return result
+
+        def deny_cleanup_stat(path):
+            if committed and path.name.startswith('.scp-transaction-'):
+                raise PermissionError('Synthetic cleanup stat denial')
+            return actual_exists(path)
+
+        with patch('scp.install._replace', side_effect=exchange), patch.object(Path, 'exists', deny_cleanup_stat):
+            result = self.install()
+        self.assertEqual(result['status'], 'installed')
+        self.assertIn('cleanup stat denial', result['cleanup_warning'])
+        self.assertEqual(json.loads((self.plugins / FOLDER / RECEIPT).read_text())['backup_id'], result['backup_id'])
+        rollback_install(self.plugins, self.backups, result['backup_id'])
+
+    def test_failed_exchange_restore_preserves_original_tree_and_snapshot(self):
+        self.install()
+        previous = self.managed_hashes()
+        original_backups = set(self.backups.iterdir())
+        actual_rename = Path.rename
+
+        def reject_exchange_and_restore(path, destination):
+            if path.name in {'staged', 'previous'}:
+                raise PermissionError('Synthetic exchange and restoration lock')
+            return actual_rename(path, destination)
+
+        with patch.object(Path, 'rename', reject_exchange_and_restore):
+            with self.assertRaisesRegex(PermissionError, 'restoration lock') as raised:
+                self.install()
+        self.assertTrue(any('recovery files are preserved' in note for note in raised.exception.__notes__))
+        retained = list(self.root.glob('.scp-transaction-*'))
+        self.assertEqual(len(retained), 1)
+        old = retained[0] / 'previous'
+        self.assertEqual({path.relative_to(old).as_posix(): digest(path.read_bytes())
+                          for path in old.rglob('*') if path.is_file()}, previous)
+        self.assertEqual(len(set(self.backups.iterdir()) - original_backups), 1)
+        self.assertFalse((self.plugins / FOLDER).exists())
+        old.rename(self.plugins / FOLDER)  # Prove the retained recovery is exact.
+        self.assertEqual(self.managed_hashes(), previous)
 
     def test_prebuilt_rejects_manifest_drift_and_incomplete_catalogue(self):
         output = self.make_prebuilt('prebuilt', b'one')
@@ -814,7 +981,7 @@ class InstallTests(unittest.TestCase):
         real_rename = Path.rename
 
         def fail_staged_rename(path, destination):
-            if path.name.startswith('.scp-stage-'):
+            if path.name == 'staged':
                 raise OSError('simulated directory exchange failure')
             return real_rename(path, destination)
 
