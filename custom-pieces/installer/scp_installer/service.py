@@ -733,7 +733,7 @@ def undo_install(root, selected_folder, work_root, progress=None, *,
 def _prebuilt_self_test(root, prebuilt, player):
     """Check finished archives and real repeat-install/Undo transactions offline."""
     import scp.install as transactions
-    from scp.prebuilt import load_payload
+    from scp.prebuilt import SYNTHETIC_FIXTURE_MANIFEST_SHA256, load_payload
     output, commit, digest = prebuilt
     manifest, actual_digest = load_payload(output, commit)
     if actual_digest != digest:
@@ -776,7 +776,9 @@ def _prebuilt_self_test(root, prebuilt, player):
     return {"status": "passed", "implemented_pieces": len(ids),
             "assembly_menu_layouts": player["assembly_menu_layouts"],
             "real_receipt_install_and_rollback": True, "repeat_install_and_rollback": True,
-            "synthetic_payload_only": False, "planar_geometry_runtime_checked": False,
+            "synthetic_payload_only": manifest["verified_build_manifest_sha256"] == SYNTHETIC_FIXTURE_MANIFEST_SHA256,
+            "synthetic_review_fixture": manifest["verified_build_manifest_sha256"] == SYNTHETIC_FIXTURE_MANIFEST_SHA256,
+            "planar_geometry_runtime_checked": False,
             "prebuilt_transaction_verified": True, "prebuilt_files_verified": len(manifest["files"]),
             "native_profile_mocked_for_prebuilt_fixture": True,
             "geometry_verification_mocked_for_synthetic_fixture": False, "live_game_modified": False}

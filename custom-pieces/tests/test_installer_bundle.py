@@ -346,6 +346,17 @@ class InstallerBundleTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "unmodified source archive"):
             self._prepare(payload)
 
+    def test_synthetic_player_fixture_cannot_be_packaged_as_a_public_release(self):
+        from scp.prebuilt import SYNTHETIC_FIXTURE_MANIFEST_SHA256
+        payload = self._prebuilt_payload()
+        filename = payload / "manifest.json"
+        manifest = json.loads(filename.read_text())
+        manifest["verified_build_manifest_sha256"] = SYNTHETIC_FIXTURE_MANIFEST_SHA256
+        filename.write_text(json.dumps(manifest))
+        self.assertIsInstance(bundle._verify_prebuilt_payload(payload, COMMIT), str)
+        with self.assertRaisesRegex(ValueError, "synthetic player fixture can never"):
+            self._prepare(payload, public_prebuilt=True)
+
     def test_prebuilt_runtime_detects_changed_and_missing_payload_bytes(self):
         runtime = self._prepare(self._prebuilt_payload())
         path = runtime / bundle.PREBUILT_PAYLOAD / FOLDER / "20_Pieces/SCP_example.dat"

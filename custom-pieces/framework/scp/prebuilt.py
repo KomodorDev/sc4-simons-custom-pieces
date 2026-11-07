@@ -24,6 +24,8 @@ IID = re.compile(r'[0-9a-f]{8}')
 MENU_PREFIXES = {(0x6534284A, 0x2A3858E4), (0x856DDBAC, 0x6A386D26),
                  (0x2026960B, 0x123007BB), (0x2026960B, 0x123006AA)}
 MODEL_PREFIX = (0x5AD0E817, 0xBADB57F1)
+# Reserved marker for non-playable hosted packaging fixtures, never releases.
+SYNTHETIC_FIXTURE_MANIFEST_SHA256 = _sha(b'SCP synthetic non-playable fixture; no native build exists.')
 
 
 def _matches(pattern, value):

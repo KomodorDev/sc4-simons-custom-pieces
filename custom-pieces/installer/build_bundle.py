@@ -220,12 +220,14 @@ def _files(root: Path) -> list[Path]:
     return sorted(found, key=lambda path: path.relative_to(root).as_posix())
 
 
-def _verify_prebuilt_payload(path: Path, commit: str) -> str:
+def _verify_prebuilt_payload(path: Path, commit: str, *, allow_synthetic=True) -> str:
     # This script can run directly without an editable library installation.
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "framework"))
     try:
-        from scp.prebuilt import verify_payload
-        verify_payload(path, source_commit=commit)
+        from scp.prebuilt import SYNTHETIC_FIXTURE_MANIFEST_SHA256, verify_payload
+        manifest = verify_payload(path, source_commit=commit)
+        if not allow_synthetic and manifest["verified_build_manifest_sha256"] == SYNTHETIC_FIXTURE_MANIFEST_SHA256:
+            raise ValueError("A synthetic player fixture can never be a public installer payload.")
     finally:
         sys.path.pop(0)
     return _hash(path / "manifest.json")
@@ -288,7 +290,7 @@ def prepare_runtime(source: Path, destination: Path, source_commit: str, target:
         raise ValueError("Runtime output cannot contain or replace the source checkout.")
     payload_digest = None
     if prebuilt_payload is not None:
-        payload_digest = _verify_prebuilt_payload(prebuilt_payload, source_commit)
+        payload_digest = _verify_prebuilt_payload(prebuilt_payload, source_commit, allow_synthetic=not public_prebuilt)
         if destination.is_relative_to(prebuilt_payload.resolve()):
             raise ValueError("Installer runtime output cannot be inside its prebuilt payload input.")
     destination.mkdir(parents=True, exist_ok=True)
@@ -363,7 +365,8 @@ def verify_runtime(root: Path) -> dict:
     if payload_digest is not None:
         if not PLAYER_SOURCE_FILES | {INSTALL_MANIFEST, BUILD_INFO} <= set(names):
             raise ValueError("Player runtime is missing required application files.")
-        if _verify_prebuilt_payload(root / PREBUILT_PAYLOAD, commit) != payload_digest:
+        if _verify_prebuilt_payload(root / PREBUILT_PAYLOAD, commit,
+                                   allow_synthetic=metadata["review_only"]) != payload_digest:
             raise ValueError("Installer prebuilt payload manifest differs from build metadata.")
         result.update(kind=PREBUILT_BUILDER, prebuilt_payload_manifest_sha256=payload_digest)
         if "release_record" in metadata:
@@ -531,7 +534,7 @@ def verify_archive(path: Path) -> dict:
                 raise ValueError("Prebuilt installer ZIP is missing its runtime manifest.")
             manifest = json.loads(_read_archive_metadata(archive, by_name[manifest_name]))
             _verify_archive_runtime_manifest(manifest, indexed, commit)
-            if _verify_prebuilt_payload(payload_root, commit) != payload_digest:
+            if _verify_prebuilt_payload(payload_root, commit, allow_synthetic=index["review_only"]) != payload_digest:
                 raise ValueError("Prebuilt installer ZIP payload manifest differs from archive metadata.")
 
         expected_sums = {}

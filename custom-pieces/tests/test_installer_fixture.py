@@ -108,6 +108,21 @@ raise SystemExit(prepare_fixture.main(['--source', str(root), '--output', sys.ar
         self.assertEqual(report['source_commit'], COMMIT)
         self.assertEqual(verify_payload(output, COMMIT)['source_commit'], COMMIT)
 
+    def test_prepared_fixture_self_test_records_its_synthetic_scope(self):
+        import build_bundle
+        payload = self.base / 'payload'
+        fixture.prepare_fixture(ROOT, payload, COMMIT)
+        runtime = self.base / 'runtime'
+        build_bundle.prepare_runtime(ROOT, runtime, COMMIT, 'windows-x64', prebuilt_payload=payload)
+        report = self.base / 'report.json'
+        result = subprocess.run([sys.executable, '-I', '-S', '-B', str(runtime / 'installer/main.py'),
+                                 '--self-test', '--report', str(report)], capture_output=True, text=True, timeout=60)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        checked = json.loads(report.read_text())
+        self.assertTrue(checked['synthetic_payload_only'])
+        self.assertTrue(checked['synthetic_review_fixture'])
+        self.assertTrue(checked['repeat_install_and_rollback'])
+
 
 if __name__ == '__main__':
     unittest.main()

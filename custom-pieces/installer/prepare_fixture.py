@@ -38,7 +38,8 @@ def prepare_fixture(source: Path, destination: Path, source_commit: str) -> dict
     from scp.dbpf import pack_dbpf
     from scp.install import FOLDER, NETWORK_INI, RUL0
     from scp.player_manifest import _source
-    from scp.prebuilt import CONTROLLER, KIND, MENU, MENU_PREFIXES, MODEL_PREFIX, verify_payload
+    from scp.prebuilt import (CONTROLLER, KIND, MENU, MENU_PREFIXES, MODEL_PREFIX,
+                              SYNTHETIC_FIXTURE_MANIFEST_SHA256, verify_payload)
 
     project = _source(source, 'project.jsonc')
     pieces = []
@@ -75,7 +76,7 @@ def prepare_fixture(source: Path, destination: Path, source_commit: str) -> dict
                     {(*MODEL_PREFIX, 0xF1700000 + index): MARKER + piece_id.encode('ascii')})
         manifest = {
             'schema_version': 1, 'kind': KIND, 'plugin_folder': FOLDER, 'source_commit': source_commit,
-            'verified_build_manifest_sha256': sha256(MARKER + b'no verified native build exists').hexdigest(),
+            'verified_build_manifest_sha256': SYNTHETIC_FIXTURE_MANIFEST_SHA256,
             'profile': {'id': profile['id'], 'donors': donors},
             'pieces': [{'id': piece_id} for piece_id in pieces], 'files': files,
             'dependency_audit': {'textures': [], 'shadows': []}, 'exclusive_instance_ids': [],
