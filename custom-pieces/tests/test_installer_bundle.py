@@ -409,7 +409,9 @@ class InstallerBundleTests(unittest.TestCase):
         self.assertEqual(result["status"], "passed")
         self.assertEqual(result["source_commit"], COMMIT)
         self.assertEqual(result["members_verified"], 4)
+        self.assertEqual(result["zip_bytes"], archive.stat().st_size)
         with zipfile.ZipFile(archive) as saved:
+            self.assertEqual(result["uncompressed_bytes"], sum(info.file_size for info in saved.infolist()))
             info = saved.getinfo(folder.name + "/SCP Installer.exe")
             self.assertTrue(info.external_attr >> 16 & stat.S_IXUSR)
         self.assertEqual(archive.with_name("installer.zip.sha256").read_text(), result["zip_sha256"] + "  installer.zip\n")
@@ -557,6 +559,8 @@ class InstallerBundleTests(unittest.TestCase):
         actual = {path.relative_to(runtime).as_posix() for path in bundle._files(runtime)
                   if not path.is_relative_to(runtime / bundle.PREBUILT_PAYLOAD)}
         self.assertEqual(actual, expected)
+        self.assertFalse((runtime / "installer/build_bundle.py").exists())
+        self.assertTrue((runtime / "installer/scp_installer/package.py").is_file())
         generated = json.loads((runtime / bundle.INSTALL_MANIFEST).read_text())
         self.assertEqual(generated["pieces"], [{"id": "example", "name": "Example piece"}])
         for forbidden in ("design-history", "preview.png", "source fixture"):
@@ -566,7 +570,8 @@ class InstallerBundleTests(unittest.TestCase):
         folder = self.directory / "frozen"
         self._prepare(self._prebuilt_payload(), folder / bundle.FROZEN_RUNTIME)
         for name in ("_internal/numpy/__init__.py", "_internal/shapely/lib.dll", "_internal/PIL/Image.py",
-                     "_internal/package/tests/test_resource.py", "_internal/scp/docs/guide.md"):
+                     "_internal/package/tests/test_resource.py", "_internal/scp/docs/guide.md",
+                     "_internal/scp/installer/build_bundle.py"):
             with self.subTest(name=name):
                 injected = self._write(folder, name)
                 with self.assertRaisesRegex(ValueError, "development file|excluded dependency"):
@@ -582,6 +587,8 @@ class InstallerBundleTests(unittest.TestCase):
         self.assertTrue({"PIL", "numpy", "shapely", "scp_hsr", "scp_highway", "scp.build", "scp.catalog"} <= excluded)
         included = {command[index + 1] for index, token in enumerate(command) if token == "--hidden-import"}
         self.assertIn("scp.player_manifest", included)
+        self.assertIn("scp_installer.package", included)
+        self.assertNotIn("build_bundle", included)
 
     def test_prepared_player_installs_repeats_and_undoes_without_site_packages_or_source_checkout(self):
         runtime = self._prepare(self._prebuilt_payload(), real_modules=True)

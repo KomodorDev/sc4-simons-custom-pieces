@@ -70,10 +70,8 @@ def metadata(root):
 
 def verify_runtime(root):
     if (root / "installer/runtime-manifest.json").is_file():
-        spec = spec_from_file_location("_scp_installer_bundle", root / "installer/build_bundle.py")
-        module = module_from_spec(spec)
-        spec.loader.exec_module(module)
-        return module.verify_runtime(root)
+        from scp_installer.package import verify_runtime as verify_package
+        return verify_package(root)
     if (getattr(sys, "frozen", False) or (root / "installer/build-info.json").exists()
             or (root / "installer/prebuilt").exists()):
         raise ValueError("The installer package is incomplete. Extract the entire ZIP before opening it.")
