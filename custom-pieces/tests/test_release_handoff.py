@@ -32,6 +32,7 @@ class ReleaseHandoffTests(unittest.TestCase):
             diff.return_value.returncode = 0
             handoff._require_private_review(ROOT, REPO, "123", MAIN)
             self.assertEqual(diff.call_args.args[0][3:5], [DEV, MAIN])
+            self.assertIn("custom-pieces/framework/scp/player_manifest.py", diff.call_args.args[0])
         with patch.object(handoff, "_gh", side_effect=[run, [{"jobs": [job]}]]), \
                 patch.object(handoff.subprocess, "run") as diff:
             diff.return_value.returncode = 1
