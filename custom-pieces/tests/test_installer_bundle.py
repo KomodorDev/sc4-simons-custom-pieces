@@ -577,13 +577,28 @@ class InstallerBundleTests(unittest.TestCase):
         self._prepare(self._prebuilt_payload(), folder / bundle.FROZEN_RUNTIME)
         for name in ("_internal/numpy/__init__.py", "_internal/shapely/lib.dll", "_internal/PIL/Image.py",
                      "_internal/package/tests/test_resource.py", "_internal/scp/docs/guide.md",
-                     "_internal/scp/installer/build_bundle.py"):
+                     "_internal/scp/installer/build_bundle.py",
+                     "_internal/tcl8/8.5/tcltest-2.5.3.tm", "_internal/tcl8/8.5/TCLTEST-helper.tm"):
             with self.subTest(name=name):
                 injected = self._write(folder, name)
                 with self.assertRaisesRegex(ValueError, "development file|excluded dependency"):
                     bundle.create_archive(folder, self.directory / "excluded.zip", COMMIT, "windows-x64")
                 injected.unlink()
                 (self.directory / "excluded.zip").unlink()
+
+    def test_player_trim_removes_only_tcltest_modules_and_preserves_licenses(self):
+        folder = self.directory / "frozen"
+        removed = [self._write(folder, name) for name in (
+            "_internal/tcl8/8.5/tcltest-2.5.3.tm", "_internal/TCLTEST-support/nested/fixture.tcl")]
+        retained = [self._write(folder, name, b"retain exact bytes") for name in (
+            "_internal/tcl8/8.6/http-2.9.tm", "_internal/_tk_data/ttk/ttk.tcl",
+            "licenses/tcltest-NOTICE.txt", "licenses/TclTest/licenses.txt")]
+        bundle._trim_player_runtime(folder)
+        self.assertTrue(all(not path.exists() for path in removed))
+        self.assertFalse((folder / "_internal/TCLTEST-support").exists())
+        for path in retained:
+            self.assertEqual(path.read_bytes(), b"retain exact bytes")
+            bundle._check_player_member(path.relative_to(folder).as_posix())
 
     def test_player_freezer_has_no_collect_all_or_geometry_modules(self):
         command = bundle._freeze_command(self.directory / "runtime", self.directory / "output", prebuilt=True)

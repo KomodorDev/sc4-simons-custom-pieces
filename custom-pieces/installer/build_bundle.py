@@ -48,14 +48,31 @@ def _prepare_install_manifest(source: Path, payload: Path) -> dict:
         sys.path.pop(0)
 
 
+def _is_tcltest_member(member: PurePosixPath) -> bool:
+    return (member.parts[0].casefold() != "licenses"
+            and any(part.casefold().startswith("tcltest") for part in member.parts))
+
+
+def _trim_player_runtime(folder: Path) -> None:
+    """Remove Tcl's test framework while preserving ordinary Tcl/Tk modules."""
+    for path in sorted(folder.rglob("*"), key=lambda item: len(item.parts), reverse=True):
+        member = PurePosixPath(path.relative_to(folder).as_posix())
+        if _is_tcltest_member(member):
+            if path.is_dir() and not path.is_symlink():
+                shutil.rmtree(path)
+            else:
+                path.unlink()
+
+
 def _check_player_member(name: str) -> None:
     member = _relative(name)
     runtime = PurePosixPath(FROZEN_RUNTIME)
     if member.is_relative_to(runtime):
         if not _player_runtime_allowed(member.relative_to(runtime).as_posix()):
             raise ValueError("Player download contains a development file: " + name)
-    elif (member.parts[0] != "licenses"
-          and any(part.casefold() in PLAYER_FORBIDDEN_PARTS for part in member.parts)):
+    elif (_is_tcltest_member(member)
+          or (member.parts[0].casefold() != "licenses"
+              and any(part.casefold() in PLAYER_FORBIDDEN_PARTS for part in member.parts))):
         raise ValueError("Player download contains an excluded dependency or development file: " + name)
 
 
@@ -661,6 +678,8 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str, *,
     folder.mkdir()
     frozen = output / "work/frozen"
     shutil.copytree(frozen / APP_NAME, folder, dirs_exist_ok=True)
+    if payload_digest is not None:
+        _trim_player_runtime(folder)
     executable = folder / (APP_NAME + ".exe")
     report_path = output / ("self-test-" + target + ".json")
     subprocess.run([str(executable), "--self-test", "--report", str(report_path)], check=True,
