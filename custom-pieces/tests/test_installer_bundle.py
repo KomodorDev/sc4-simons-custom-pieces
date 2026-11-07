@@ -675,17 +675,22 @@ class InstallerBundleTests(unittest.TestCase):
         archive = self.directory / "player.zip"
         bundle.create_archive(folder, archive, COMMIT, "windows-x64")
 
+        damaged = [bundle.APP_NAME + ".exe"]
+
         def corrupt_extraction(command, **options):
             self.assertEqual(command[0], "powershell.exe")
             destination = Path(options["env"]["SCP_CHECK_DESTINATION"])
             with zipfile.ZipFile(archive) as saved:
                 saved.extractall(destination)
-            (destination / bundle.APP_NAME / (bundle.APP_NAME + ".exe")).write_bytes(b"corrupted")
+            (destination / bundle.APP_NAME / damaged[0]).write_bytes(b"corrupted")
 
         with patch.object(bundle, "host_platform", return_value="windows-x64"), \
                 patch.object(Path, "home", return_value=self._downloads_home()), \
                 patch.object(bundle.subprocess, "run", side_effect=corrupt_extraction):
             with self.assertRaisesRegex(ValueError, "extraction changed an installer file"):
+                bundle.check_windows_extraction(archive, self.directory)
+            damaged[0] = "SHA256SUMS"
+            with self.assertRaisesRegex(ValueError, "extraction changed the installer checksums"):
                 bundle.check_windows_extraction(archive, self.directory)
 
     def test_freezer_collects_dynamic_highway_provider_from_runtime_source(self):

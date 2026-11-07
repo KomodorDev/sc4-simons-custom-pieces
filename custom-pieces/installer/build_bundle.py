@@ -521,6 +521,9 @@ def check_windows_extraction(archive: Path, output: Path) -> dict:
             if extracted[index_name].read_bytes() != index_raw:
                 raise ValueError("Downloads extraction changed the bundle index.")
             prefix = PurePosixPath(index_name).parent.as_posix() + "/"
+            sums_name = prefix + "SHA256SUMS"
+            if extracted[sums_name].read_bytes() != _read_archive_metadata(saved, saved.getinfo(sums_name)):
+                raise ValueError("Downloads extraction changed the installer checksums.")
             for record in json.loads(index_raw)["files"]:
                 actual = _record(extracted[prefix + record["path"]], destination / prefix)
                 if actual != {key: record[key] for key in ("path", "bytes", "sha256")}:
