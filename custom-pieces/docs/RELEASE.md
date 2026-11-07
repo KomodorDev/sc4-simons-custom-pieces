@@ -1,6 +1,6 @@
 ---
 title: "Installer releases, compiled-plugin requirements, and controller maintenance"
-summary: "Distinguish experimental local-builder installer releases from permission, identifier, and game-evidence requirements for compiled-plugin distribution."
+summary: "Distinguish compact prebuilt installer packaging from permission, identifier, and game-evidence requirements for compiled-plugin distribution."
 audience: "Maintainers and release authors"
 document_type: "reference"
 ---
@@ -19,7 +19,7 @@ Research checked on **18 October 2026**. This document distinguishes statements 
 
 ## 1. Current release status
 
-The existing compiled pieces are **experimental local builds**. Public redistribution of their DATs is not cleared by the permission evidence currently recorded here. The earlier public installer contains the runtime and maintained source, and builds from the player's game and NAM. The prebuilt release workflow stays gated by the successful private hosted review and the [compiled-plugin readiness record](../config/release.jsonc).
+The existing compiled pieces are **experimental local builds**. Public redistribution of their DATs is not cleared by the permission evidence currently recorded here. Earlier source-builder installers contain the runtime and maintained source, and build from the player's game and NAM. Compact prebuilt packaging carries finished SCP files and generated installation data; removing development content from the download does not change permission or gameplay requirements. The prebuilt release workflow stays gated by the successful private hosted review and the [compiled-plugin readiness record](../config/release.jsonc).
 
 <a id="experimental-installer-distribution"></a>
 
@@ -27,7 +27,7 @@ The existing compiled pieces are **experimental local builds**. Public redistrib
 
 After a human promotes `dev` to `main`, the [automatic installer workflow](AUTOMATIC_RELEASES.md) verifies the approved merge, the prebuilt payload from Dropbox, and the recorded release evidence. GitHub's Windows runner packages the exact verified game files and checks the executable and archive before publishing. The release record identifies the original prebuild and merge commits, the shared source tree, and the payload checksums. The deterministic `installer-<commit-prefix>` tag identifies an experimental prerelease.
 
-The Mac prepares all implemented pieces, the Rail trumpet and Highway assembly menus, and the combined controller. The prebuilt installer verifies the packaged files and audited local inputs before installing one receipt-owned SCP folder. The current profile remains Windows Deluxe 1.1.641 with NAM 50 and right-hand traffic. See the [player installer guide](INSTALLER.md) for required inputs and the possible Windows first-launch prompt.
+The Mac prepares all implemented pieces, the Rail trumpet and Highway assembly menus, and the combined controller. The compact prebuilt installer verifies the packaged files and audited local inputs before installing one receipt-owned SCP folder. Players select Plugins directly, and the installer retains the existing receipt and recovery formats for updates and Undo. Documentation, previews, development evidence, authoring tools, geometry libraries, and tests stay in the repository rather than the player ZIP. Packaging verifies an extraction-path budget and actual extraction under a realistic Windows Downloads destination; those checks do not establish observed game behavior. The current profile remains Windows Deluxe 1.1.641 with NAM 50 and right-hand traffic. See the [player installer guide](INSTALLER.md) for required inputs and the possible Windows first-launch prompt.
 
 Installer distribution is separate from distributing NAM-derived DATs. Existing permission questions for externally authored source text or templates still need their applicable evidence; the local-builder approach does not supply a blanket license. Existing public identifier reservations, manual game observations, platform observations, and outstanding design flags remain unchanged. The experimental prebuilt installer and direct compiled-plugin packages both use the [release checks configured in the shared policy](#51-configure-release-checks). The gameplay policy controls recorded game results and separate files for the exact build. Human observations determine gameplay results.
 

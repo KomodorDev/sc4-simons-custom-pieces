@@ -8,7 +8,7 @@ import shutil
 import tempfile
 
 from .dbpf import read_index, require, tgi_string
-from .install import FOLDER, NETWORK_INI, RUL0, _checked_install_files, _root, _sha
+from .install import FOLDER, NETWORK_INI, RUL0, RUL1, _checked_install_files, _root, _sha
 
 
 KIND = 'scp-prebuilt-payload'
@@ -19,6 +19,11 @@ COMMIT = re.compile(r'[0-9a-f]{40}')
 PIECE_ID = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*')
 TGI = re.compile(r'[0-9a-f]{8}(?:-[0-9a-f]{8}){2}')
 IID = re.compile(r'[0-9a-f]{8}')
+# DBPF type/group identities are format constants. Keep the install-time
+# reader independent of geometry generators and image/render dependencies.
+MENU_PREFIXES = {(0x6534284A, 0x2A3858E4), (0x856DDBAC, 0x6A386D26),
+                 (0x2026960B, 0x123007BB), (0x2026960B, 0x123006AA)}
+MODEL_PREFIX = (0x5AD0E817, 0xBADB57F1)
 
 
 def _matches(pattern, value):
@@ -101,10 +106,6 @@ def _archive_keys(path):
 
 
 def _indexed_payload(path, manifest):
-    from .adaptive_network import RUL1
-    from .menu import DESCRIPTION, ICON, MENU_EXEMPLAR, TITLE
-    from .track_paths import S3D
-
     donor_hashes = {row['sha256'] for row in manifest['profile']['donors']}
     resources = set()
     for row in manifest['files']:
@@ -115,10 +116,10 @@ def _indexed_payload(path, manifest):
             require(keys == {RUL0, NETWORK_INI} or keys == {RUL0, NETWORK_INI, RUL1},
                     'Invalid prebuilt shared-controller resource index')
         elif filename.name == MENU:
-            require(all(key[:2] in (DESCRIPTION, ICON, MENU_EXEMPLAR, TITLE) for key in keys),
+            require(all(key[:2] in MENU_PREFIXES for key in keys),
                     'Invalid prebuilt menu resource index')
         else:
-            require(any(key[:2] == S3D for key in keys), f'Prebuilt piece contains no model: {filename.name}')
+            require(any(key[:2] == MODEL_PREFIX for key in keys), f'Prebuilt piece contains no model: {filename.name}')
         require(not keys & resources, f'Duplicate prebuilt resource in {filename.name}')
         resources.update(keys)
     return resources - {RUL0, NETWORK_INI, RUL1}

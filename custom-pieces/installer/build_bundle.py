@@ -1,8 +1,4 @@
-"""Build and inspect the source installer or an explicit prebuilt review bundle.
-
-The runtime retains the library's source hierarchy for source and input checks.
-A review bundle can also carry one verified SCP payload under installer/prebuilt.
-"""
+"""Build a compact prebuilt player app or the separate source-builder review app."""
 from __future__ import annotations
 
 import argparse
@@ -28,13 +24,70 @@ APP_NAME = "SCP Installer"
 RUNTIME_MANIFEST = "installer/runtime-manifest.json"
 BUILD_INFO = "installer/build-info.json"
 PREBUILT_PAYLOAD = "installer/prebuilt"
-FROZEN_RUNTIME = "_internal/custom-pieces"
+FROZEN_RUNTIME = "_internal/scp"
 SOURCE_BUILDER = "source-local-builder"
 PREBUILT_BUILDER = "verified-prebuilt"
 ARCHIVE_METADATA_LIMIT = 16 * 1024 * 1024
 SOURCE_EXTENSIONS = {".py", ".json", ".jsonc", ".md", ".png", ".svg", ".txt", ".toml"}
 FORBIDDEN_PARTS = {"local", "dist", "__pycache__", ".git", ".venv", "node_modules"}
 GAME_EXTENSIONS = {".dat", ".sc4model", ".sc4lot", ".sc4desc", ".dll", ".exe"}
+INSTALL_MANIFEST = "installer/install-manifest.json"
+PLAYER_SOURCE_FILES = frozenset({
+    "installer/main.py", "installer/build_bundle.py",
+    "installer/scp_installer/__init__.py", "installer/scp_installer/service.py",
+    "installer/scp_installer/gui.py", "installer/scp_installer/ui_support.py",
+    "framework/scp/__init__.py", "framework/scp/jsonc.py", "framework/scp/dbpf.py",
+    "framework/scp/install.py", "framework/scp/prebuilt.py", "framework/scp/player_manifest.py",
+})
+EXTRACTION_DESTINATION_CHARACTERS = 100
+WINDOWS_PATH_CHARACTERS = 259  # MAX_PATH's terminating NUL occupies character 260.
+PLAYER_FORBIDDEN_PARTS = frozenset({
+    "tests", "testing", "test", "evidence", "previews", "docs", "schemas", "domains",
+    "numpy", "numpy.libs", "shapely", "shapely.libs", "pil", "pillow.libs",
+    "scp_hsr", "scp_highway", "pytest", "_pytest",
+})
+
+
+def _prepare_install_manifest(source: Path, payload: Path) -> dict:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "framework"))
+    try:
+        from scp.player_manifest import build_install_manifest
+        return build_install_manifest(source, payload)
+    finally:
+        sys.path.pop(0)
+
+
+def _player_runtime_allowed(name: str) -> bool:
+    return (name in PLAYER_SOURCE_FILES | {INSTALL_MANIFEST, BUILD_INFO, RUNTIME_MANIFEST}
+            or PurePosixPath(name).is_relative_to(PREBUILT_PAYLOAD))
+
+
+def _check_player_member(name: str) -> None:
+    member = _relative(name)
+    runtime = PurePosixPath(FROZEN_RUNTIME)
+    if member.is_relative_to(runtime):
+        if not _player_runtime_allowed(member.relative_to(runtime).as_posix()):
+            raise ValueError("Player download contains a development file: " + name)
+    elif (member.parts[0] != "licenses"
+          and any(part.casefold() in PLAYER_FORBIDDEN_PARTS for part in member.parts)):
+        raise ValueError("Player download contains an excluded dependency or development file: " + name)
+
+
+def _windows_characters(value: str) -> int:
+    return len(value.encode("utf-16-le")) // 2
+
+
+def _path_budget(names: list[str]) -> dict:
+    longest = max(names, key=_windows_characters)
+    length = _windows_characters(longest)
+    extracted = EXTRACTION_DESTINATION_CHARACTERS + 1 + length
+    if extracted > WINDOWS_PATH_CHARACTERS:
+        raise ValueError(f"Installer extraction-path budget exceeded: {extracted} > "
+                         f"{WINDOWS_PATH_CHARACTERS} characters: {longest}")
+    return {"destination_characters": EXTRACTION_DESTINATION_CHARACTERS,
+            "max_path_characters": WINDOWS_PATH_CHARACTERS,
+            "longest_member": longest, "longest_member_characters": length,
+            "longest_extracted_characters": extracted}
 
 
 def _source_json(path: Path):
@@ -63,7 +116,10 @@ def _relative(value: str) -> PurePosixPath:
     path = PurePosixPath(value)
     if (not value or "\\" in value or path.is_absolute() or path.as_posix() != value
             or any(part in {"", ".", ".."} for part in path.parts)
-            or ":" in value or "\x00" in value):
+            or any(part.endswith((".", " ")) or re.fullmatch(
+                r"(?:con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\..*)?", part, re.IGNORECASE)
+                   for part in path.parts)
+            or any(ord(char) < 32 or char in '<>:"|?*' for char in value)):
         raise ValueError(f"Unsafe distribution path: {value!r}")
     return path
 
@@ -236,8 +292,14 @@ def prepare_runtime(source: Path, destination: Path, source_commit: str, target:
         if destination.is_relative_to(prebuilt_payload.resolve()):
             raise ValueError("Installer runtime output cannot be inside its prebuilt payload input.")
     destination.mkdir(parents=True, exist_ok=True)
-    sources = _runtime_paths(source)
+    sources = ([source / name for name in sorted(PLAYER_SOURCE_FILES)]
+               if prebuilt_payload is not None else _runtime_paths(source))
+    missing = [path.relative_to(source).as_posix() for path in sources if not path.is_file()]
+    if missing:
+        raise ValueError("Installer runtime is missing required source files: " + ", ".join(missing))
     for path in sources:
+        if path.is_symlink() or any(parent.is_symlink() for parent in path.parents if parent != source.parent):
+            raise ValueError("Installer runtime source must not be a symbolic link: " + str(path.relative_to(source)))
         relative = path.relative_to(source)
         raw = path.read_bytes()
         if raw.startswith(b"DBPF") or path.suffix.lower() in GAME_EXTENSIONS:
@@ -248,11 +310,14 @@ def prepare_runtime(source: Path, destination: Path, source_commit: str, target:
     required = {"project.jsonc", "pyproject.toml", "installer/main.py", "installer/build_bundle.py",
                 "installer/scp_installer/service.py", "config/installer.jsonc", "framework/scp/check_bootstrap.py",
                 "framework/scp/jsonc.py"}
+    if prebuilt_payload is not None:
+        required = PLAYER_SOURCE_FILES
     missing = required - {path.relative_to(source).as_posix() for path in sources}
     if missing:
         raise ValueError("Installer runtime is missing required source files: " + ", ".join(sorted(missing)))
     if prebuilt_payload is not None:
         shutil.copytree(prebuilt_payload, destination / PREBUILT_PAYLOAD, symlinks=True)
+        _json(destination / INSTALL_MANIFEST, _prepare_install_manifest(source, prebuilt_payload))
     metadata = _distribution_metadata(source_commit, target, payload_digest,
                                       release_record=release_record, public=public_prebuilt)
     _json(destination / BUILD_INFO, {**metadata, "runtime_manifest": RUNTIME_MANIFEST})
@@ -283,6 +348,8 @@ def verify_runtime(root: Path) -> dict:
         raise ValueError("Installer runtime file set differs from its source manifest.")
     for record in records:
         path = actual[record["path"]]
+        if payload_digest is not None and not _player_runtime_allowed(record["path"]):
+            raise ValueError("Player runtime contains a development file: " + record["path"])
         if _record(path, root) != record:
             raise ValueError("Installer source changed: " + record["path"])
         if PurePosixPath(record["path"]).is_relative_to(PREBUILT_PAYLOAD):
@@ -294,6 +361,8 @@ def verify_runtime(root: Path) -> dict:
     result = {"status": "passed", "source_commit": commit, "files_verified": len(records),
               "bundled_native_game_resources": False}
     if payload_digest is not None:
+        if not PLAYER_SOURCE_FILES | {INSTALL_MANIFEST, BUILD_INFO} <= set(names):
+            raise ValueError("Player runtime is missing required application files.")
         if _verify_prebuilt_payload(root / PREBUILT_PAYLOAD, commit) != payload_digest:
             raise ValueError("Installer prebuilt payload manifest differs from build metadata.")
         result.update(kind=PREBUILT_BUILDER, prebuilt_payload_manifest_sha256=payload_digest)
@@ -404,6 +473,11 @@ def verify_archive(path: Path) -> dict:
         index = json.loads(index_raw)
         commit = _commit(index["source_commit"])
         payload_digest = _check_distribution_metadata(index, commit, "-installer")
+        path_budget = None
+        if payload_digest is not None:
+            path_budget = _path_budget(names)
+            for name in by_name:
+                _check_player_member(name)
         indexed = {_relative(record["path"]).as_posix(): record for record in index["files"]}
         if (len(indexed) != len(index["files"])
                 or set(by_name) != indexed.keys() | {"bundle-index.json", "SHA256SUMS"}):
@@ -474,7 +548,7 @@ def verify_archive(path: Path) -> dict:
               "members_verified": len(names), "bundled_native_game_resources": False, "zip_sha256": _hash(Path(path))}
     if payload_digest is not None:
         result.update(kind=index["kind"], prebuilt_payload_manifest_sha256=payload_digest,
-                      review_only=index["review_only"])
+                      review_only=index["review_only"], path_budget=path_budget)
         if "release_record" in index:
             result["release_record"] = index["release_record"]
     return result
@@ -492,6 +566,10 @@ def _verify_archive_runtime_manifest(manifest: dict, indexed: dict, commit: str)
     if (len(names) != len(set(names)) or RUNTIME_MANIFEST in names
             or set(runtime_files) != set(names) | {RUNTIME_MANIFEST}):
         raise ValueError("Prebuilt installer ZIP file set differs from the runtime manifest.")
+    if not PLAYER_SOURCE_FILES | {INSTALL_MANIFEST, BUILD_INFO} <= set(names):
+        raise ValueError("Player archive is missing required application files.")
+    if any(not _player_runtime_allowed(name) for name in names):
+        raise ValueError("Player archive runtime contains a development file.")
     for record in records:
         archived = runtime_files[record["path"]]
         if archived["bytes"] != record["bytes"] or archived["sha256"] != record["sha256"]:
@@ -500,9 +578,6 @@ def _verify_archive_runtime_manifest(manifest: dict, indexed: dict, commit: str)
 
 def _notices(destination: Path, *, prebuilt: bool = False, public_prebuilt: bool = False) -> None:
     text = ["SCP Installer: bundled third-party software", "", "Python: https://docs.python.org/3/license.html",
-            "Pillow: https://github.com/python-pillow/Pillow", "NumPy: https://numpy.org/doc/stable/license.html",
-            "Shapely: https://github.com/shapely/shapely/blob/main/LICENSE.txt",
-            "Bundled GEOS: see the accompanying license files under licenses/shapely.",
             "PyInstaller bootloader: https://pyinstaller.org/en/stable/license.html",
             "Tcl/Tk: https://www.tcl-lang.org/software/tcltk/license.html", "",
             "PyInstaller's licensing exception covers generated bundles; the bundled components retain their own licenses.",
@@ -514,20 +589,149 @@ def _notices(destination: Path, *, prebuilt: bool = False, public_prebuilt: bool
             ""]
     licenses = destination / "licenses"
     licenses.mkdir()
-    for name in ("Pillow", "numpy", "shapely", "pyinstaller", "pyinstaller-hooks-contrib", "altgraph", "packaging"):
+    packages = ["pyinstaller", "pyinstaller-hooks-contrib", "altgraph", "packaging"]
+    if not prebuilt:
+        text.extend(["Pillow: https://github.com/python-pillow/Pillow",
+                     "NumPy: https://numpy.org/doc/stable/license.html",
+                     "Shapely: https://github.com/shapely/shapely/blob/main/LICENSE.txt",
+                     "Bundled GEOS: see the accompanying license files under licenses/shapely."])
+        packages += ["Pillow", "numpy", "shapely"]
+    for name in packages:
         package = importlib.metadata.distribution(name)
         text.append(f"{package.metadata['Name']} {package.version}")
-        for file in package.files or ():
+        for number, file in enumerate(package.files or ()):
             if any(part.casefold().startswith(("license", "copying", "notice")) for part in file.parts):
                 source = Path(package.locate_file(file))
                 if source.is_file():
-                    target = licenses / name / str(file).replace("/", "_").replace("\\", "_")
+                    target = licenses / name / f"{number}-{file.name}"
                     target.parent.mkdir(exist_ok=True)
                     shutil.copyfile(source, target)
     import builtins
     builtins.license._Printer__setup()
     (licenses / "Python.txt").write_text("\n".join(builtins.license._Printer__lines) + "\n", encoding="utf-8")
     (destination / "THIRD-PARTY-NOTICES.txt").write_text("\n".join(text) + "\n", encoding="utf-8")
+
+
+def _freeze_command(runtime: Path, output: Path, *, prebuilt: bool) -> list[str]:
+    command = [sys.executable, "-B", "-m", "PyInstaller", "--noconfirm", "--clean", "--windowed", "--onedir",
+               "--python-option", "X utf8", "--name", APP_NAME,
+               "--distpath", str(output / "work/frozen"), "--workpath", str(output / "work/pyinstaller"),
+               "--specpath", str(output / "work"), "--add-data", str(runtime) + ":scp",
+               "--paths", str(runtime / "framework"), "--paths", str(runtime / "installer"),
+               "--hidden-import", "tkinter", "--hidden-import", "tkinter.ttk",
+               "--hidden-import", "tkinter.filedialog", "--hidden-import", "tkinter.messagebox"]
+    if prebuilt:
+        # main.py loads this verifier by filename, so module analysis would
+        # otherwise miss its standard-library dependencies in the frozen app.
+        command += ["--hidden-import", "build_bundle"]
+        # Source files are needed by the integrity-checked bootstrap. Freeze
+        # only the player modules; never collect installed geometry packages.
+        for name in sorted(PLAYER_SOURCE_FILES):
+            if name.startswith("framework/scp/") and name.endswith(".py"):
+                module = PurePosixPath(name).stem
+                command += ["--hidden-import", "scp" if module == "__init__" else "scp." + module]
+            elif name.startswith("installer/scp_installer/") and name.endswith(".py"):
+                module = PurePosixPath(name).stem
+                command += ["--hidden-import", "scp_installer" if module == "__init__" else "scp_installer." + module]
+        excluded = {"PIL", "numpy", "shapely", "scp_hsr", "scp_highway", "pytest", "unittest"}
+        source_scp = Path(__file__).resolve().parents[1] / "framework/scp"
+        included = {PurePosixPath(name).stem for name in PLAYER_SOURCE_FILES if name.startswith("framework/scp/")}
+        excluded.update("scp." + path.stem for path in source_scp.glob("*.py") if path.stem not in included)
+        for module in sorted(excluded):
+            command += ["--exclude-module", module]
+    else:
+        command += ["--paths", str(runtime / "domains/high-speed-rail/implementation"),
+                    "--paths", str(runtime / "domains/highway/implementation")]
+        for module in ("scp", "scp_hsr", "scp_highway", "scp_installer"):
+            command += ["--collect-submodules", module]
+        for module in ("PIL", "numpy", "shapely"):
+            command += ["--collect-all", module]
+    return [*command, str(runtime / "installer/main.py")]
+
+
+def check_windows_extraction(archive: Path, output: Path) -> dict:
+    """Use Windows Expand-Archive in Downloads, and launch the extracted app."""
+    if host_platform() != "windows-x64":
+        raise ValueError("The Downloads extraction check requires native Windows.")
+    verification = verify_archive(archive)
+    if "path_budget" not in verification:
+        raise ValueError("The Downloads extraction check requires a compact player archive.")
+    downloads = Path.home() / "Downloads"
+    downloads.mkdir(exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="SCP-Installer-check-", dir=downloads) as temporary:
+        base = Path(temporary)
+        remaining = EXTRACTION_DESTINATION_CHARACTERS - _windows_characters(str(base)) - 1
+        if remaining < 1:
+            raise ValueError("The Windows Downloads test parent exceeds its extraction budget.")
+        destination = base / ("Extracted" + "-" * remaining)[:remaining]
+        subprocess.run(["powershell.exe", "-NoProfile", "-NonInteractive", "-Command",
+                        "$ErrorActionPreference = 'Stop'; Expand-Archive -LiteralPath "
+                        "$env:SCP_CHECK_ARCHIVE -DestinationPath $env:SCP_CHECK_DESTINATION"],
+                       check=True, timeout=300,
+                       env={**os.environ, "SCP_CHECK_ARCHIVE": str(archive.resolve()),
+                            "SCP_CHECK_DESTINATION": str(destination)})
+        with zipfile.ZipFile(archive) as saved:
+            names = saved.namelist()
+            extracted = {path.relative_to(destination).as_posix(): path for path in _files(destination)}
+            if set(extracted) != set(names):
+                raise ValueError("Downloads extraction produced a different file set.")
+            index_name = next(name for name in names if name.endswith("/bundle-index.json"))
+            index_raw = _read_archive_metadata(saved, saved.getinfo(index_name))
+            if extracted[index_name].read_bytes() != index_raw:
+                raise ValueError("Downloads extraction changed the bundle index.")
+            prefix = PurePosixPath(index_name).parent.as_posix() + "/"
+            for record in json.loads(index_raw)["files"]:
+                actual = _record(extracted[prefix + record["path"]], destination / prefix)
+                if actual != {key: record[key] for key in ("path", "bytes", "sha256")}:
+                    raise ValueError("Downloads extraction changed an installer file: " + record["path"])
+        executable = destination / prefix / (APP_NAME + ".exe")
+        checks = {}
+        for action in ("--self-test", "--gui-smoke-test"):
+            report = output / ("extracted-" + action[2:] + ".json")
+            subprocess.run([str(executable), action, "--report", str(report)], check=True,
+                           cwd=destination, timeout=300, env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
+            result = json.loads(report.read_text(encoding="utf-8"))
+            if (result.get("status") != "passed" or result.get("utf8_mode") != 1
+                    or result.get("source_commit") != verification["source_commit"]
+                    or result.get("runtime_verification", {}).get("prebuilt_payload_manifest_sha256")
+                    != verification["prebuilt_payload_manifest_sha256"]):
+                raise ValueError("The extracted Windows executable check failed: " + action)
+            checks[action[2:]] = result
+            report.unlink()
+        longest = max(_windows_characters(str(path)) for path in extracted.values())
+        if longest > WINDOWS_PATH_CHARACTERS:
+            raise ValueError("Downloads extraction exceeded the Windows path budget.")
+    return {"status": "passed", "platform": "windows-x64", "source_commit": verification["source_commit"],
+            "zip_sha256": verification["zip_sha256"],
+            "prebuilt_payload_manifest_sha256": verification["prebuilt_payload_manifest_sha256"],
+            "destination_characters": EXTRACTION_DESTINATION_CHARACTERS,
+            "longest_extracted_characters": longest, "members_verified": len(names),
+            "method": "Windows PowerShell Expand-Archive under Downloads", "executable_checks": checks}
+
+
+def _check_extraction_report(report: dict, verification: dict) -> None:
+    expected = {"status": "passed", "platform": "windows-x64",
+                "source_commit": verification["source_commit"], "zip_sha256": verification["zip_sha256"],
+                "prebuilt_payload_manifest_sha256": verification["prebuilt_payload_manifest_sha256"],
+                "members_verified": verification["members_verified"],
+                "destination_characters": EXTRACTION_DESTINATION_CHARACTERS,
+                "longest_extracted_characters": verification["path_budget"]["longest_extracted_characters"],
+                "method": "Windows PowerShell Expand-Archive under Downloads"}
+    if any(report.get(key) != value for key, value in expected.items()):
+        raise ValueError("Release requires Downloads extraction evidence for this exact player ZIP.")
+    checks = report.get("executable_checks", {})
+    if set(checks) != {"self-test", "gui-smoke-test"}:
+        raise ValueError("Release requires both extracted Windows executable checks.")
+    for check in checks.values():
+        if (check.get("status") != "passed" or check.get("utf8_mode") != 1
+                or check.get("source_commit") != verification["source_commit"]
+                or check.get("runtime_verification", {}).get("prebuilt_payload_manifest_sha256")
+                != verification["prebuilt_payload_manifest_sha256"]
+                or check.get("runtime_verification", {}).get("release_record") != verification.get("release_record")):
+            raise ValueError("Extracted executable checks differ from the verified release ZIP.")
+    if (checks["self-test"].get("prebuilt_transaction_verified") is not True
+            or checks["self-test"].get("repeat_install_and_rollback") is not True):
+        raise ValueError("Extracted executable did not verify initial installation, repeat installation, and Undo.")
 
 
 def _check_source_revision(source: Path, source_commit: str) -> None:
@@ -569,24 +773,7 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str, *,
     # Check Tcl/Tk before freezing; importing it does not open a window.
     import tkinter
     tkinter.Tcl().eval("info patchlevel")
-    command = [sys.executable, "-B", "-m", "PyInstaller", "--noconfirm", "--clean", "--windowed", "--onedir",
-               # PyInstaller's isolated interpreter ignores PYTHONUTF8. This
-               # bootloader option applies before Python initializes, so the
-               # existing library's implicit text reads are UTF-8 on Windows.
-               "--python-option", "X utf8",
-               "--name", APP_NAME, "--distpath", str(output / "work/frozen"), "--workpath", str(output / "work/pyinstaller"),
-               "--specpath", str(output / "work"), "--add-data", str(runtime) + ":custom-pieces",
-               "--paths", str(runtime / "framework"),
-               "--paths", str(runtime / "installer"),
-               "--paths", str(runtime / "domains/high-speed-rail/implementation"),
-               "--paths", str(runtime / "domains/highway/implementation"),
-               "--collect-submodules", "scp", "--collect-submodules", "scp_hsr",
-               "--collect-submodules", "scp_highway",
-               "--collect-submodules", "scp_installer", "--collect-all", "PIL",
-               "--collect-all", "numpy", "--collect-all", "shapely",
-               "--hidden-import", "tkinter", "--hidden-import", "tkinter.ttk",
-               "--hidden-import", "tkinter.filedialog", "--hidden-import", "tkinter.messagebox"]
-    command.append(str(runtime / "installer/main.py"))
+    command = _freeze_command(runtime, output, prebuilt=prebuilt_payload is not None)
     timestamp = subprocess.run(["git", "show", "--no-patch", "--format=%ct", source_commit],
                                cwd=source, text=True, capture_output=True, check=True).stdout.strip()
     if re.fullmatch(r"[0-9]+", timestamp) is None:
@@ -647,8 +834,10 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str, *,
     (folder / "README.txt").write_text(
         heading + "\n\n"
         "Open SCP Installer.exe. Keep its _internal folder beside it.\n"
-        + "Choose your SimCity 4 game or user-data folder, then select Install.\n"
-        "The supported NAM installation must already be present; the installer checks it before changing Plugins.\n"
+        + ("Choose your SimCity 4 player-data Plugins folder, then select Install.\n"
+           "Choose the game folder as well if the installer asks for it.\n" if payload_digest else
+           "Choose your SimCity 4 game or user-data folder, then select Install.\n")
+        + "The supported NAM installation must already be present; the installer checks it before changing Plugins.\n"
         "Python is bundled. No separate Python installation, terminal command, or source checkout is required.\n"
         "Windows may show an unsigned-app warning.\n"
         + content_notice
@@ -660,6 +849,8 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str, *,
     verification = create_archive(folder, archive, source_commit, target)
     _json(output / ("bundle-index-" + target + ".json"), json.loads((folder / "bundle-index.json").read_text()))
     _json(output / ("archive-check-" + target + ".json"), verification)
+    if payload_digest is not None:
+        _json(output / ("extraction-check-" + target + ".json"), check_windows_extraction(archive, output))
     if release_record is not None:
         _json(output / "release-record.json", release_record)
     return verification
@@ -722,6 +913,10 @@ def publish(artifacts: Path, source_commit: str, repository: str, *, prebuilt_re
             raise ValueError("Release's external archive-check report differs from the verified ZIP.")
         assets += [archive, sidecar, report_path, gui_path, index_path, verification_path]
         if prebuilt_release:
+            extraction_path = archive.parent / ("extraction-check-" + target + ".json")
+            extraction = json.loads(extraction_path.read_text(encoding="utf-8"))
+            _check_extraction_report(extraction, verification)
+            assets.append(extraction_path)
             record_path = archive.with_name("release-record.json")
             release_record = json.loads(record_path.read_text(encoding="utf-8"))
             if (not release_record or release_record != verification.get("release_record")

@@ -19,6 +19,7 @@ REVIEWED_PATHS = (
     ".github/workflows/installer-release.yml",
     "custom-pieces/installer",
     "custom-pieces/framework/scp/prebuilt.py",
+    "custom-pieces/framework/scp/player_manifest.py",
     "custom-pieces/framework/scp/install.py",
     "custom-pieces/framework/scp/release.py",
     "custom-pieces/framework/scp/catalog.py",

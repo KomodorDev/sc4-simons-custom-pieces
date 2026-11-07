@@ -5,7 +5,9 @@ from copy import deepcopy
 import json
 import os
 from pathlib import Path, PurePosixPath
+import shutil
 import stat
+import subprocess
 import sys
 import tempfile
 from types import SimpleNamespace
@@ -39,25 +41,42 @@ class InstallerBundleTests(unittest.TestCase):
         path.write_bytes(raw)
         return path
 
+    def _downloads_home(self):
+        # macOS's resolved default temp directory is much longer than a normal
+        # Windows user home; use a short synthetic home for mocked Windows I/O.
+        temporary = tempfile.TemporaryDirectory(prefix="scp-", dir="/tmp" if os.name != "nt" else None)
+        self.addCleanup(temporary.cleanup)
+        return Path(temporary.name)
+
     def _source(self):
         root = self.directory / "source"
-        project = {"domains": {"fixture": {"registry": "domains/fixture/domain.jsonc", "path": "domains/fixture"}}}
+        project = {"profile": "config/profiles/fixture.jsonc",
+                   "domains": {"fixture": {"registry": "domains/fixture/domain.jsonc", "path": "domains/fixture"}}}
         registry = {"pieces": ["00_pieces/example/piece.json"], "assemblies": []}
-        for relative in ("pyproject.toml", "installer/main.py", "installer/build_bundle.py",
+        for relative in set(bundle.PLAYER_SOURCE_FILES) | {"pyproject.toml", "installer/main.py", "installer/build_bundle.py",
                          "installer/scp_installer/service.py", "config/installer.jsonc",
                          "framework/scp/check_bootstrap.py", "framework/scp/__init__.py", "framework/scp/jsonc.py",
-                         "domains/fixture/00_pieces/example/piece.json", "domains/fixture/README.md"):
+                         "domains/fixture/README.md"}:
             self._write(root, relative)
         self._write(root, "project.jsonc", self._commented(project, "Installer fixture project"))
         self._write(root, "domains/fixture/domain.jsonc", self._commented(registry, "Installer fixture domain"))
+        self._write(root, "domains/fixture/00_pieces/example/piece.json", json.dumps(
+            {"id": "example", "name": "Example piece", "status": "implemented", "game_tests": {}}).encode())
+        self._write(root, "config/profiles/fixture.jsonc", json.dumps({"id": "nam50-rhd", "files": {
+            "controller": {"filename": "NetworkAddonMod_Controller.dat", "sha256": "b" * 64}}}).encode())
+        self._write(root, "domains/highway/menu-layout.jsonc", b'{"layouts":{"fixture":{}}}')
+        self._write(root, "config/installer.jsonc", (ROOT / "config/installer.jsonc").read_bytes())
         return root
 
     def _commented(self, value, title):
         return ("// title: " + json.dumps(title) + '\n// summary: "Portable synthetic installer input."\n'
                 + json.dumps(value, indent=2) + "\n").encode()
 
-    def _prepare(self, prebuilt_payload=None, runtime=None, **handoff):
+    def _prepare(self, prebuilt_payload=None, runtime=None, *, real_modules=False, **handoff):
         source = self._source()
+        if real_modules:
+            for relative in bundle.PLAYER_SOURCE_FILES:
+                shutil.copyfile(ROOT / relative, source / relative)
         runtime = runtime or self.directory / "runtime"
         with patch.object(bundle, "_source_paths", return_value=list(source.rglob("*"))) as paths:
             paths.return_value = [path for path in paths.return_value if path.is_file()]
@@ -513,6 +532,143 @@ class InstallerBundleTests(unittest.TestCase):
         with patch.object(bundle, "host_platform", return_value="unsupported"):
             with self.assertRaisesRegex(ValueError, "run natively"):
                 bundle.build_bundle(self.directory, self.directory / "output", COMMIT, "windows-x64")
+
+    def test_player_runtime_has_only_application_sources_generated_data_and_finished_payload(self):
+        source = self._source()
+        for name in ("docs/guide.md", "domains/fixture/00_pieces/example/previews/preview.png",
+                     "domains/fixture/00_pieces/example/evidence/design-history/report.json",
+                     "framework/scp/build.py", "tests/test_piece.py"):
+            self._write(source, name)
+        runtime = self.directory / "runtime"
+        payload = self._prebuilt_payload()
+        bundle.prepare_runtime(source, runtime, COMMIT, "windows-x64", prebuilt_payload=payload)
+        expected = bundle.PLAYER_SOURCE_FILES | {bundle.BUILD_INFO, bundle.RUNTIME_MANIFEST, bundle.INSTALL_MANIFEST}
+        actual = {path.relative_to(runtime).as_posix() for path in bundle._files(runtime)
+                  if not path.is_relative_to(runtime / bundle.PREBUILT_PAYLOAD)}
+        self.assertEqual(actual, expected)
+        generated = json.loads((runtime / bundle.INSTALL_MANIFEST).read_text())
+        self.assertEqual(generated["pieces"], [{"id": "example", "name": "Example piece"}])
+        for forbidden in ("design-history", "preview.png", "source fixture"):
+            self.assertNotIn(forbidden, json.dumps(generated))
+
+    def test_player_archive_rejects_development_or_unused_dependency_files_even_with_valid_hashes(self):
+        folder = self.directory / "frozen"
+        self._prepare(self._prebuilt_payload(), folder / bundle.FROZEN_RUNTIME)
+        for name in ("_internal/numpy/__init__.py", "_internal/shapely/lib.dll", "_internal/PIL/Image.py",
+                     "_internal/package/tests/test_resource.py", "_internal/scp/docs/guide.md"):
+            with self.subTest(name=name):
+                injected = self._write(folder, name)
+                with self.assertRaisesRegex(ValueError, "development file|excluded dependency"):
+                    bundle.create_archive(folder, self.directory / "excluded.zip", COMMIT, "windows-x64")
+                injected.unlink()
+                (self.directory / "excluded.zip").unlink()
+
+    def test_player_freezer_has_no_collect_all_or_geometry_modules(self):
+        command = bundle._freeze_command(self.directory / "runtime", self.directory / "output", prebuilt=True)
+        self.assertNotIn("--collect-all", command)
+        self.assertNotIn("--collect-submodules", command)
+        excluded = {command[index + 1] for index, token in enumerate(command) if token == "--exclude-module"}
+        self.assertTrue({"PIL", "numpy", "shapely", "scp_hsr", "scp_highway", "scp.build", "scp.catalog"} <= excluded)
+        included = {command[index + 1] for index, token in enumerate(command) if token == "--hidden-import"}
+        self.assertIn("scp.player_manifest", included)
+
+    def test_prepared_player_installs_repeats_and_undoes_without_site_packages_or_source_checkout(self):
+        runtime = self._prepare(self._prebuilt_payload(), real_modules=True)
+        report = self.directory / "player-self-test.json"
+        result = subprocess.run([sys.executable, "-I", "-S", "-B", str(runtime / "installer/main.py"),
+                                 "--self-test", "--report", str(report)], cwd=self.directory,
+                                text=True, capture_output=True, timeout=60)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        check = json.loads(report.read_text())
+        self.assertTrue(check["prebuilt_transaction_verified"])
+        self.assertTrue(check["repeat_install_and_rollback"])
+        self.assertFalse(check["planar_geometry_runtime_checked"])
+        self.assertEqual(check["runtime_verification"]["prebuilt_payload_manifest_sha256"],
+                         bundle._hash(runtime / bundle.PREBUILT_PAYLOAD / "manifest.json"))
+
+    def test_path_budget_counts_windows_utf16_units_and_rejects_overflow(self):
+        # A non-BMP character occupies two Windows UTF-16 units.
+        self.assertEqual(bundle._windows_characters("a\U0001f600"), 3)
+        remaining = bundle.WINDOWS_PATH_CHARACTERS - bundle.EXTRACTION_DESTINATION_CHARACTERS - 1
+        self.assertEqual(bundle._path_budget(["x" * remaining])["longest_extracted_characters"], 259)
+        with self.assertRaisesRegex(ValueError, "extraction-path budget exceeded"):
+            bundle._path_budget(["x" * (remaining + 1)])
+        current_names = ["SCP Installer/" + bundle.FROZEN_RUNTIME + "/" + bundle.PREBUILT_PAYLOAD
+                         + f"/{FOLDER}/20_Pieces/SCP_" + path.parent.name + ".dat"
+                         for path in (ROOT / "domains").glob("*/00_pieces/*/piece.*")]
+        self.assertLessEqual(bundle._path_budget(current_names)["longest_extracted_characters"], 259)
+
+    def test_player_archive_enforces_path_budget_before_extraction(self):
+        folder = self.directory / "frozen"
+        self._prepare(self._prebuilt_payload(), folder / bundle.FROZEN_RUNTIME)
+        self._write(folder, "_internal/" + "a" * 180 + ".dll")
+        with self.assertRaisesRegex(ValueError, "extraction-path budget exceeded"):
+            bundle.create_archive(folder, self.directory / "too-long.zip", COMMIT, "windows-x64")
+
+    def test_archive_rejects_windows_reserved_names_and_trailing_dots(self):
+        for name in ("app/CON.txt", "app/LPT1", "app/folder./file.txt", "app/data:stream", "app/name?/file"):
+            with self.subTest(name=name), self.assertRaisesRegex(ValueError, "Unsafe distribution path"):
+                bundle._relative(name)
+
+    def test_downloads_extraction_checks_exact_files_and_relaunches_both_executable_actions(self):
+        folder = self.directory / bundle.APP_NAME
+        self._prepare(self._prebuilt_payload(), folder / bundle.FROZEN_RUNTIME)
+        self._write(folder, bundle.APP_NAME + ".exe", b"MZ fixture")
+        archive = self.directory / "player.zip"
+        verification = bundle.create_archive(folder, archive, COMMIT, "windows-x64")
+        actions = []
+
+        def windows_command(command, **options):
+            if command[0] == "powershell.exe":
+                destination = Path(options["env"]["SCP_CHECK_DESTINATION"])
+                self.assertEqual(bundle._windows_characters(str(destination)), 100)
+                self.assertIn("Expand-Archive", command[-1])
+                self.assertEqual(destination.parents[1].name, "Downloads")
+                with zipfile.ZipFile(options["env"]["SCP_CHECK_ARCHIVE"]) as saved:
+                    saved.extractall(destination)
+            else:
+                self.assertIn("Downloads", Path(command[0]).parts)
+                self.assertTrue(Path(command[0]).is_file())
+                actions.append(command[1])
+                check = {"status": "passed", "utf8_mode": 1, "source_commit": COMMIT,
+                         "prebuilt_transaction_verified": True, "repeat_install_and_rollback": True,
+                         "runtime_verification": {"prebuilt_payload_manifest_sha256":
+                                                  verification["prebuilt_payload_manifest_sha256"]}}
+                Path(command[3]).write_text(json.dumps(check))
+
+        with patch.object(bundle, "host_platform", return_value="windows-x64"), \
+                patch.object(Path, "home", return_value=self._downloads_home()), \
+                patch.object(bundle.subprocess, "run", side_effect=windows_command):
+            report = bundle.check_windows_extraction(archive, self.directory)
+        bundle._check_extraction_report(report, verification)
+        self.assertEqual(actions, ["--self-test", "--gui-smoke-test"])
+        for key, value in (("zip_sha256", "a" * 64), ("source_commit", "b" * 40),
+                           ("destination_characters", 99), ("longest_extracted_characters", 260)):
+            with self.subTest(key=key), self.assertRaisesRegex(ValueError, "exact player ZIP"):
+                bundle._check_extraction_report({**report, key: value}, verification)
+        report["executable_checks"]["self-test"]["repeat_install_and_rollback"] = False
+        with self.assertRaisesRegex(ValueError, "repeat installation"):
+            bundle._check_extraction_report(report, verification)
+
+    def test_downloads_extraction_rejects_corrupted_files_before_launching(self):
+        folder = self.directory / bundle.APP_NAME
+        self._prepare(self._prebuilt_payload(), folder / bundle.FROZEN_RUNTIME)
+        self._write(folder, bundle.APP_NAME + ".exe", b"MZ fixture")
+        archive = self.directory / "player.zip"
+        bundle.create_archive(folder, archive, COMMIT, "windows-x64")
+
+        def corrupt_extraction(command, **options):
+            self.assertEqual(command[0], "powershell.exe")
+            destination = Path(options["env"]["SCP_CHECK_DESTINATION"])
+            with zipfile.ZipFile(archive) as saved:
+                saved.extractall(destination)
+            (destination / bundle.APP_NAME / (bundle.APP_NAME + ".exe")).write_bytes(b"corrupted")
+
+        with patch.object(bundle, "host_platform", return_value="windows-x64"), \
+                patch.object(Path, "home", return_value=self._downloads_home()), \
+                patch.object(bundle.subprocess, "run", side_effect=corrupt_extraction):
+            with self.assertRaisesRegex(ValueError, "extraction changed an installer file"):
+                bundle.check_windows_extraction(archive, self.directory)
 
     def test_freezer_collects_dynamic_highway_provider_from_runtime_source(self):
         class CommandCaptured(Exception):

@@ -143,6 +143,49 @@ class InstallTests(unittest.TestCase):
         self.verifier.assert_not_called()
         self.assert_native_untouched()
 
+    def test_prebuilt_repeat_install_and_undo_restore_the_exact_previous_receipt(self):
+        output = self.make_prebuilt('prebuilt-repeat', b'one')
+        first = self.install_fixture_payload(output)
+        previous = self.managed_hashes()
+        repeat = self.install_fixture_payload(output)
+        self.assertNotEqual(first['backup_id'], repeat['backup_id'])
+        rollback_install(self.plugins, self.backups, repeat['backup_id'])
+        self.assertEqual(self.managed_hashes(), previous)
+        rollback_install(self.plugins, self.backups, first['backup_id'])
+        self.assertFalse((self.plugins / FOLDER).exists())
+        self.assert_native_untouched()
+
+    def test_prebuilt_updates_an_existing_source_builder_receipt_and_undo_restores_it(self):
+        self.install()
+        previous = self.managed_hashes()
+        output = self.make_prebuilt('prebuilt-after-source', b'new finished payload')
+        result = self.install_fixture_payload(output)
+        self.assertNotEqual(self.managed_hashes(), previous)
+        rollback_install(self.plugins, self.backups, result['backup_id'])
+        self.assertEqual(self.managed_hashes(), previous)
+        self.assert_native_untouched()
+
+    def test_prebuilt_update_copy_failure_keeps_previous_installation_and_snapshot(self):
+        output = self.make_prebuilt('prebuilt-failure', b'one')
+        self.install_fixture_payload(output)
+        previous = self.managed_hashes()
+        original_backups = set(self.backups.iterdir())
+        actual_copy = shutil.copy2
+
+        def fail_payload_copy(source, destination, *args, **kwargs):
+            if Path(source).is_relative_to(output):
+                raise PermissionError('Synthetic Windows access-denied during staging')
+            return actual_copy(source, destination, *args, **kwargs)
+
+        with patch('scp.install.shutil.copy2', side_effect=fail_payload_copy):
+            with self.assertRaisesRegex(PermissionError, 'access-denied'):
+                self.install_fixture_payload(output)
+        self.assertEqual(self.managed_hashes(), previous)
+        self.assertEqual(set(self.backups.iterdir()), original_backups)
+        self.assertFalse((self.plugins / OPERATION_LOCK).exists())
+        self.assertFalse(list(self.plugins.glob('.scp-stage-*')))
+        self.assert_native_untouched()
+
     def test_prebuilt_rejects_manifest_drift_and_incomplete_catalogue(self):
         output = self.make_prebuilt('prebuilt', b'one')
         with self.assertRaisesRegex(ValueError, 'manifest differs'):

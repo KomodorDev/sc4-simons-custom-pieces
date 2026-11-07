@@ -101,6 +101,21 @@ class DiscoveryTests(unittest.TestCase):
             self.assertEqual(self.discover(self.plugins.parent).game_folder, self.game)
         self.assertEqual(before, set(self.base.rglob("*")))
 
+    def test_plugins_selection_can_retain_an_explicit_game_without_registry(self):
+        with patch.object(service, "_registered_games", side_effect=AssertionError("Explicit game was lost")):
+            plan = self.discover(self.plugins, game_folder=self.game)
+        self.assertEqual(plan.plugins, self.plugins)
+        self.assertEqual(plan.game_folder, self.game)
+        self.assertEqual(plan.extra_plugins, (self.game / "Plugins",))
+
+    def test_plugins_selection_requests_game_when_discovery_is_missing_or_ambiguous(self):
+        other = self.make_game(self.base / "Other Game")
+        for games in ([], [self.game, other]):
+            with self.subTest(games=games), patch.object(service, "_registered_games", return_value=games):
+                with self.assertRaises(service.GameSelectionRequired):
+                    self.discover(self.plugins)
+        self.assertEqual(list(self.plugins.iterdir()), [])
+
     def test_two_data_folders_are_not_silently_prioritized(self):
         alternate = self.documents / "SimCity 4 Windows/Plugins"
         alternate.mkdir(parents=True)
@@ -558,13 +573,29 @@ class OrchestrationTests(unittest.TestCase):
         (root / "config/installer.jsonc").write_bytes((ROOT / "config/installer.jsonc").read_bytes())
         payload = root / "installer/prebuilt"
         payload.parent.mkdir()
-        manifest = b'{"synthetic": true}'
+        from scp.prebuilt import CONTROLLER, KIND, MENU
+        paths = [f"{FOLDER}/{CONTROLLER}", f"{FOLDER}/{MENU}",
+                 *(f"{FOLDER}/20_Pieces/SCP_{piece}.dat" for piece in self.ids)]
+        profile = {"id": self.audit["profile"],
+                   "donors": [{key: row[key] for key in ("filename", "sha256")} for row in self.audit["donors"]]}
+        data = {"schema_version": 1, "kind": KIND, "plugin_folder": FOLDER,
+                "source_commit": "a" * 40, "verified_build_manifest_sha256": "b" * 64,
+                "pieces": [{"id": piece} for piece in self.ids], "profile": profile,
+                "files": [{"path": path, "bytes": 1, "sha256": "c" * 64} for path in paths],
+                "dependency_audit": {"textures": [], "shadows": []}, "exclusive_instance_ids": []}
+        manifest = json.dumps(data).encode("utf-8")
         if payload_present:
-            payload.mkdir()
+            (payload / FOLDER).mkdir(parents=True)
             (payload / "manifest.json").write_bytes(manifest)
         info = {"schema_version": 1, "kind": "verified-prebuilt", "source_commit": "a" * 40,
                 "prebuilt_payload_manifest_sha256": hashlib.sha256(manifest).hexdigest()}
         (root / "installer/build-info.json").write_text(json.dumps(info), encoding="utf-8")
+        player = {"schema_version": 1, "kind": "scp-player-install-manifest",
+                  "source_commit": info["source_commit"], "payload_manifest_sha256": info["prebuilt_payload_manifest_sha256"],
+                  "policy": jsonc.load(root / "config/installer.jsonc"),
+                  "pieces": [{"id": piece, "name": piece.title()} for piece in self.ids],
+                  "assembly_menu_layouts": 8, "captures": []}
+        (root / "installer/install-manifest.json").write_text(json.dumps(player), encoding="utf-8")
         runtime = {"schema_version": 1, "kind": "verified-prebuilt-runtime", "source_commit": info["source_commit"]}
         (root / "installer/runtime-manifest.json").write_text(json.dumps(runtime), encoding="utf-8")
         return root, payload, info
@@ -573,17 +604,18 @@ class OrchestrationTests(unittest.TestCase):
         root, payload, info = self._prebuilt_runtime()
         capture_root, captures = self.work / "local/captures/run", [{"label": "ordinary_road"}]
         events = []
-        with patch.object(service, "prepare_captures", return_value=([capture_root], captures)) as capture, \
-                patch("scp.build.doctor", return_value=self.audit) as doctor, patch("scp.build.build_project") as build, \
+        with patch("scp.player_manifest.prepare_dependencies", return_value=([capture_root], captures)) as capture, \
+                patch("scp.build.doctor") as doctor, patch("scp.build.build_project") as build, \
                 patch("scp.menu_experiment.build_assembly_menus") as menu, \
                 patch("scp.build.verify_build") as verify, patch("scp.install.install_build") as local_install, \
                 patch("scp.install.install_prebuilt",
                       return_value={"status": "installed", "backup_id": "synthetic"}) as install:
             result = service.run_install(root, self.game, self.work, progress=events.append)
-        capture.assert_called_once_with(root, self.plan, self.work, self.ids, progress=events.append,
-                                        cancel=None, verify_originals=True)
-        doctor.assert_called_once_with(root, self.plugins, include=self.ids,
-                                       extra_roots=[self.extra, capture_root])
+        capture.assert_called_once()
+        self.assertEqual(capture.call_args.args[1:], (self.plan, self.work))
+        self.assertEqual(capture.call_args.kwargs["progress"], events.append)
+        self.assertFalse(capture.call_args.kwargs["cancel"]())
+        doctor.assert_not_called()
         for local_stage in (build, menu, verify, local_install):
             local_stage.assert_not_called()
         install.assert_called_once_with(
@@ -619,6 +651,34 @@ class OrchestrationTests(unittest.TestCase):
         install.assert_not_called()
         self.assertFalse(self.work.exists())
 
+    def test_prebuilt_names_and_ids_require_no_authoring_catalogue(self):
+        root, _, _ = self._prebuilt_runtime()
+        with patch.object(service, "load_catalog", side_effect=AssertionError("Loaded source catalogue")), \
+                patch.object(service, "all_implemented_ids", side_effect=AssertionError("Loaded source providers")):
+            self.assertEqual(service.available_pieces(root), {piece: piece.title() for piece in self.ids})
+
+    def test_missing_compact_manifest_never_uses_the_source_builder(self):
+        root, _, _ = self._prebuilt_runtime()
+        (root / "installer/install-manifest.json").unlink()
+        with patch.object(service, "prepare_install_build") as build, patch("scp.install.install_prebuilt") as install:
+            with self.assertRaisesRegex(ValueError, "installation manifest is missing"):
+                service.run_install(root, self.game, self.work)
+        build.assert_not_called()
+        install.assert_not_called()
+        self.assertFalse(self.work.exists())
+
+    def test_compact_installation_manifest_is_bound_to_the_payload(self):
+        root, _, _ = self._prebuilt_runtime()
+        filename = root / "installer/install-manifest.json"
+        data = json.loads(filename.read_text())
+        data["payload_manifest_sha256"] = "f" * 64
+        filename.write_text(json.dumps(data))
+        with patch("scp.install.install_prebuilt") as install:
+            with self.assertRaisesRegex(ValueError, "differs from its verified payload"):
+                service.run_install(root, self.game, self.work)
+        install.assert_not_called()
+        self.assertFalse(self.work.exists())
+
     def test_prebuilt_validation_failure_never_falls_back_or_records_success(self):
         root, _, _ = self._prebuilt_runtime()
         with patch.object(service, "prepare_install_build") as build, \
@@ -631,7 +691,7 @@ class OrchestrationTests(unittest.TestCase):
 
     def test_prebuilt_compatibility_failure_stops_before_installing(self):
         root, _, _ = self._prebuilt_runtime()
-        with patch("scp.build.doctor", side_effect=ValueError("native approach conflict")), \
+        with patch("scp.player_manifest.prepare_dependencies", side_effect=ValueError("native approach conflict")), \
                 patch("scp.install.install_prebuilt") as install:
             with self.assertRaisesRegex(ValueError, "native approach conflict"):
                 service.run_install(root, self.game, self.work)
@@ -761,7 +821,10 @@ class OrchestrationTests(unittest.TestCase):
         (output / "manifest.json").write_bytes(raw)
         digest = hashlib.sha256(raw).hexdigest()
         with patch.object(service, "_prebuilt_bundle", return_value=(output, commit, digest)), \
-                patch.object(service, "all_implemented_ids", return_value=[piece]):
+                patch.object(service, "_player_manifest", return_value={
+                    "pieces": [{"id": piece, "name": "Test piece"}], "assembly_menu_layouts": 8}), \
+                patch.object(service, "all_implemented_ids", side_effect=AssertionError("Player package read source IDs")):
+
             result = service.self_test(ROOT)
         self.assertTrue(result["prebuilt_transaction_verified"])
         self.assertEqual(result["prebuilt_files_verified"], 3)

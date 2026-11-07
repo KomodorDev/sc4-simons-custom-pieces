@@ -433,6 +433,10 @@ Include connector JSONC declarations, strict-JSON generated data and optional pr
 
 ## 12. Installation and saved-resource constraints
 
+The compact prebuilt installer consumes the verified payload contract in `framework/scp/prebuilt.py` and the existing transactions in `framework/scp/install.py`. Package generation derives compact installation data from maintained source and recorded input audits. At runtime, this data supplies the installed selection, exact dependency checks, and required private capture plans without loading the catalogue, domain providers, model builders, or rendering libraries. Finished DAT hashes and payload provenance remain unchanged. Keep the receipt and backup formats compatible with existing installations, and exercise installation, repeat installation, updates, Undo, and failure recovery through the shared transaction implementation.
+
+The player package excludes development guides, previews, evidence, tools, tests, and geometry dependencies. Its packager must verify package closure, enforce the extraction-path budget, and test full Windows Downloads extraction with executable startup and transaction checks after extraction. Retain required runtime license notices. Source-builder review artifacts use a separate, broader packaging path for contributor checks.
+
 The installer accepts sc4pac top-level DLL file links only when they target a regular Windows DLL with an MZ header inside explicitly scanned Plugins roots and outside the managed SCP folder. Directory links, DBPF/archive aliases, broken links, and external targets remain forbidden. Preserve existing valid DLL links and their targets. [Installation tests](../tests/test_install.py) cover this distinction.
 
 <a id="structural-shadow-quantization"></a>

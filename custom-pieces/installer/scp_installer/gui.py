@@ -11,9 +11,8 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 import traceback
 
-from scp.catalog import load_catalog
-from .service import (PREBUILT_KIND, InstallationCancelled, PlayerDataSelectionRequired,
-                      all_implemented_ids, run_install, undo_install)
+from .service import (PREBUILT_KIND, GameSelectionRequired, InstallationCancelled, PlayerDataSelectionRequired,
+                      available_pieces, run_install, undo_install)
 from .ui_support import default_work_root, progress_text, require_game_closed
 
 
@@ -24,13 +23,13 @@ class InstallerApp:
         self.work_root = Path(work_root or default_work_root()).resolve()
         self.events, self.cancelled = queue.Queue(), threading.Event()
         self.busy, self.cancellable = False, False
-        self.folder, self.status = tk.StringVar(), tk.StringVar(value="Choose your SimCity 4 game folder to begin.")
+        self.folder, self.status = tk.StringVar(), tk.StringVar(
+            value="Choose your SimCity 4 Plugins folder to begin." if self.prebuilt else
+                  "Choose your SimCity 4 game folder to begin.")
         self.detail = tk.StringVar(value="")
-        implemented = set(all_implemented_ids(self.root))
-        self.names = {piece["id"]: piece["name"] for piece in load_catalog(self.root)["pieces"]
-                      if piece["id"] in implemented}
+        self.names = available_pieces(self.root)
         self.log_file = None
-        self.player_data, self.player_candidates = None, []
+        self.player_data, self.player_candidates, self.game_folder = None, [], None
         self.player_label = tk.StringVar()
         window.title("Simon's Custom Pieces Installer")
         window.geometry("740x455")
@@ -44,10 +43,12 @@ class InstallerApp:
         selection = self.selection_row = ttk.Frame(outer)
         selection.pack(fill="x", pady=(24, 12))
         ttk.Entry(selection, textvariable=self.folder, state="readonly").pack(side="left", fill="x", expand=True)
-        self.choose_button = ttk.Button(selection, text="Choose game folder…", command=self.choose)
+        self.choose_button = ttk.Button(selection, text="Choose Plugins folder…" if self.prebuilt else "Choose game folder…", command=self.choose)
         self.choose_button.pack(side="right", padx=(10, 0))
         self.player_row = ttk.Frame(outer)
-        self.player_button = ttk.Button(self.player_row, text="Choose Plugins folder…", command=self.choose_player_data)
+        self.player_button = ttk.Button(self.player_row,
+                                        text="Choose game folder…" if self.prebuilt else "Choose Plugins folder…",
+                                        command=self.choose_game if self.prebuilt else self.choose_player_data)
         self.player_button.pack(side="left")
         ttk.Label(self.player_row, textvariable=self.player_label, wraplength=400).pack(side="left", padx=(10, 0))
         ttk.Label(outer, textvariable=self.status, wraplength=680).pack(anchor="w", pady=(10, 8))
@@ -68,20 +69,30 @@ class InstallerApp:
         window.after(100, self.poll)
 
     def choose(self):
-        selected = filedialog.askdirectory(title="Select your SimCity 4 game folder", mustexist=True,
+        selected = filedialog.askdirectory(title="Select your SimCity 4 player-data Plugins folder" if self.prebuilt else
+                                           "Select your SimCity 4 game folder", mustexist=True,
                                            initialdir=self.folder.get() or str(Path.home()))
         if selected:
             self.folder.set(selected)
-            self.player_data, self.player_candidates = None, []
+            self.player_data, self.player_candidates, self.game_folder = None, [], None
             self.player_row.pack_forget()
             self.install_button.configure(state="normal")
             saved = self.work_root / "last-installation.json"
             self.undo_button.configure(state="normal" if saved.is_file() else "disabled")
             self.status.set("Ready to install. Close SimCity 4, then select Install.")
             self.detail.set(
-                "The installer will find Plugins, check the packaged pieces, and save a backup automatically."
+                "The installer will check this Plugins folder and the packaged pieces, then save a backup automatically."
                 if self.prebuilt else
                 "The installer will find Plugins, build the pieces on this computer, and save a backup automatically.")
+
+    def choose_game(self):
+        selected = filedialog.askdirectory(title="Select the game folder containing SimCity_3.dat and Apps",
+                                           mustexist=True, initialdir=self.game_folder or str(Path.home()))
+        if selected:
+            self.game_folder = selected
+            self.player_label.set(selected)
+            self.status.set("Game folder selected. Select Install to continue.")
+            self.detail.set("Your selected Plugins folder is kept. The installer will verify the original game files.")
 
     def choose_player_data(self):
         initial = Path(self.player_candidates[0]).parent if self.player_candidates else Path.home()
@@ -127,7 +138,7 @@ class InstallerApp:
             self.detail.set("Leave this window open while the installer checks your game and the packaged pieces.")
         else:
             self.detail.set("Building the pieces can take some time. Leave this window open while it works.")
-        selected, player_data = self.folder.get(), self.player_data
+        selected, player_data, game_folder = self.folder.get(), self.player_data, self.game_folder
 
         def progress(event):
             if event.get("phase") in {"install", "undo"}:
@@ -136,13 +147,18 @@ class InstallerApp:
 
         def worker():
             try:
+                selection_options = {"player_data": player_data}
+                if game_folder is not None:
+                    selection_options["game_folder"] = game_folder
                 if undo:
                     result = undo_install(self.root, selected, self.work_root, progress=progress,
-                                          player_data=player_data)
+                                          **selection_options)
                 else:
                     result = run_install(self.root, selected, self.work_root, progress=progress,
-                                         cancel=self.cancelled.is_set, player_data=player_data)
+                                         cancel=self.cancelled.is_set, **selection_options)
                 self.events.put(("undone" if undo else "success", result))
+            except GameSelectionRequired as error:
+                self.events.put(("error", {"error": str(error), "game_folder_needed": True}))
             except PlayerDataSelectionRequired as error:
                 self.events.put(("error", {"error": str(error), "player_data_needed": True,
                                            "candidate_paths": error.candidate_paths}))
@@ -193,8 +209,11 @@ class InstallerApp:
                 else:
                     self.status.set("Cancelled" if kind == "cancelled" else "Installation stopped")
                     self.detail.set(value["error"])
-                    if value.get("player_data_needed"):
-                        self.player_candidates = value["candidate_paths"]
+                    if value.get("player_data_needed") or value.get("game_folder_needed"):
+                        self.player_candidates = value.get("candidate_paths", [])
+                        needs_game = value.get("game_folder_needed")
+                        self.player_button.configure(text="Choose game folder…" if needs_game else "Choose Plugins folder…",
+                                                     command=self.choose_game if needs_game else self.choose_player_data)
                         self.player_row.pack(fill="x", after=self.selection_row, pady=(0, 4))
         except queue.Empty:
             pass

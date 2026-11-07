@@ -59,6 +59,27 @@ class InstallerEntryTests(unittest.TestCase):
             self.assertTrue(value['geometry_verification_mocked_for_synthetic_fixture'])
             self.assertFalse(value['live_game_modified'])
 
+    def test_player_service_import_does_not_load_authoring_or_geometry_packages(self):
+        code = """
+import builtins
+from pathlib import Path
+import sys
+root = Path(sys.argv[1])
+sys.path[:0] = [str(root / 'framework'), str(root / 'installer')]
+original = builtins.__import__
+def checked(name, *args, **kwargs):
+    if name in {'scp.catalog', 'scp.build', 'scp.menu', 'scp.resource_audit', 'scp.track_paths'} or name.split('.')[0] in {'scp_hsr', 'scp_highway', 'shapely', 'numpy', 'PIL'}:
+        raise AssertionError('Player imported authoring dependency: ' + name)
+    return original(name, *args, **kwargs)
+builtins.__import__ = checked
+import scp_installer.service
+import scp.prebuilt
+import scp.player_manifest
+"""
+        result = subprocess.run([sys.executable, '-B', '-c', code, str(ROOT)],
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
     def test_running_game_is_rejected_using_exact_process_name(self):
         processes = SimpleNamespace(stdout=b'"notepad.exe","100"\n"SimCity 4.exe","101"\n')
         with patch.object(ui_support.sys, 'platform', 'win32'), patch.object(ui_support.subprocess, 'run', return_value=processes):

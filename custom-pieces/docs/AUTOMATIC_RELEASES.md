@@ -11,7 +11,7 @@ document_type: "explanation"
 [1. The route from a change to a download](#1-the-route-from-a-change-to-a-download) · [2. What runs on GitHub?](#2-what-runs-on-github) · [3. Why does a PR have an installer build before release?](#3-why-does-a-pr-have-an-installer-build-before-release) · [4. What do I click to publish and find the download?](#4-what-do-i-click-to-publish-and-find-the-download) · [5. What happens on the player's computer?](#5-what-happens-on-the-players-computer) · [6. What if something fails?](#6-what-if-something-fails) · [7. One-time Dropbox and hosted review setup](#7-one-time-dropbox-and-hosted-review-setup)
 <!-- END DOCUMENT NAVIGATION -->
 
-**GitHub Actions** follows the project's saved instructions on temporary computers hosted by GitHub. The Mac prepares the actual game files. The hosted Windows computer verifies and packages them. You decide what to merge.
+**GitHub Actions** follows the project's saved instructions on temporary computers hosted by GitHub. The Mac prepares the actual game files. The hosted Windows computer verifies them and packages a compact application with the finished game files and generated installation data. You decide what to merge.
 
 ## 1. The route from a change to a download
 
@@ -35,15 +35,17 @@ A **workflow** is a saved list of instructions, and a **job** is one group of st
 
 | Trigger | What runs |
 | --- | --- |
-| A pull request | Source tests and a source-builder Windows installer check. The job uses no Dropbox credentials. |
-| A manual run on `dev` | **Private hosted prebuilt review** checks the real Dropbox handoff and rejects missing and mismatched test inputs. The packaged installer copies every finished DAT into a temporary Plugins folder, checks the installed checksums, and undoes the install. The runner uses synthetic NAM inputs and retains the compiled files only for the job. |
+| A pull request | Source tests, a source-builder Windows installer check, and a compact player check using synthetic test files. The job uses no Dropbox credentials. |
+| A manual run on `dev` | **Private hosted prebuilt review** checks the real Dropbox handoff and rejects missing and mismatched test inputs. The compact packaged installer copies every finished DAT into a temporary Plugins folder, checks the installed checksums, and undoes the install. The job also extracts the ZIP under a realistic Downloads destination and reruns the extracted application checks. The runner uses synthetic NAM inputs and retains the compiled files only for the job. |
 | A human merges the release PR into `main` | Source tests and **Publish verified prebuilt Windows installer**. The Windows job verifies the approved merge, the protected review record, the Dropbox archive, the release requirements, and the installer before publishing. |
 
-The **protected environment** limits which branches may use its credentials. Review uses `scp-prebuilt-review` on `dev`, and publication uses `scp-prebuilt-release` on `main`. Read-only Dropbox access is available only during the download step. GitHub's public artifact storage is used for the source-builder PR checks. The prebuilt jobs keep their files on the runner until an approved release is published.
+The **protected environment** limits which branches may use its credentials. Review uses `scp-prebuilt-review` on `dev`, and publication uses `scp-prebuilt-release` on `main`. Read-only Dropbox access is available only during the download step. GitHub's public artifact storage is used for the source-builder PR checks. The prebuilt jobs keep their compiled payload and installer ZIP on the runner until an approved release is published. Private hosted review uploads only its packaging, extraction, and executable-check reports as **prebuilt-installer-review-checks**, retained for 14 days; these reports contain verification results rather than compiled game files.
 
 ## 3. Why does a PR have an installer build before release?
 
-The source-builder job gives you a Windows application check while the change is still under review. An **artifact** is a file attached to a workflow run for temporary download. The source-builder artifact appears as **installer-windows-x64** and is retained for 14 days. A successful PR check leaves both merges and release publication under their usual controls.
+The source-builder job gives you a Windows application check while the change is still under review. An **artifact** is a file attached to a workflow run for temporary download. The source-builder artifact appears as **installer-windows-x64** and is retained for 14 days. This developer artifact includes source-building tools and dependencies; it is separate from the compact prebuilt player download. A successful PR check leaves both merges and release publication under their usual controls.
+
+The PR job also uses small placeholder DATs with no playable content or native game resources to check compact Windows packaging, Downloads extraction, and the extracted application, retaining only **compact-player-fixture-checks** reports; protected review and publication still verify the exact real payload.
 
 ## 4. What do I click to publish and find the download?
 
@@ -64,7 +66,9 @@ The project's private Dropbox App Folder currently belongs to one maintainer. On
 
 ## 5. What happens on the player's computer?
 
-Players download the published Windows installer from GitHub Releases without a Dropbox account. The installer ZIP contains the complete set of game files, called **DAT archives**. The player extracts the ZIP, closes SimCity 4, opens **SCP Installer.exe**, selects the game folder, and selects **Install**. The installer checks the package and the player's existing game and NAM resources, checks for conflicts, backs up the previous installation, and copies the finished files. Python is included. [Player instructions](INSTALLER.md)
+Players download the published Windows installer from GitHub Releases without a Dropbox account. The installer ZIP contains the complete set of game files, called **DAT archives**, a small Windows application with its bundled Python runtime, and compact generated installation data. The player extracts the entire ZIP, closes SimCity 4, opens **SCP Installer.exe**, selects **Choose Plugins folder…**, chooses the existing Plugins folder, and selects **Install**. The installer discovers the registered game installation or asks for **Choose game folder…** when it cannot identify one. It verifies the package and the player's exact game and NAM inputs, prepares any small private dependency captures, checks for conflicts, backs up the previous installation, and copies the finished SCP files. It preserves existing supported ownership receipts and uses the same transaction records for updates and **Undo last installation**.
+
+The player ZIP retains brief launcher instructions and required license notices. It excludes repository documentation, previews, development evidence, authoring tools, geometry libraries, and test suites. These stay in Git for contributors and release verification. Packaging enforces an extraction-path budget and tests complete extraction beneath a realistic Windows Downloads destination before testing the extracted executable. The published assets include `archive-check-windows-x64.json` and `extraction-check-windows-x64.json` so reviewers can inspect those results. A download near 360 MB plus the application and runtime is an estimate for the audited catalogue; the release asset records the actual size. [Player instructions](INSTALLER.md)
 
 ## 6. What if something fails?
 

@@ -14,13 +14,18 @@ sys.dont_write_bytecode = True
 
 def runtime_root():
     if getattr(sys, "frozen", False):
-        return Path(sys._MEIPASS) / "custom-pieces"
+        return Path(sys._MEIPASS) / "scp"
     return Path(__file__).resolve().parents[1]
 
 
 def bootstrap(root):
     """Load every project module from the inspected, original source hierarchy."""
     root = Path(root).resolve()
+    # The player package has no authoring catalogue or domain providers.
+    # Prefer its own small, regular packages over an editable installation.
+    if (root / "installer/install-manifest.json").is_file() or not (root / "framework/scp/check_bootstrap.py").is_file():
+        sys.path[:0] = [str(root / "framework"), str(root / "installer")]
+        return root
     spec = spec_from_file_location("_scp_installer_bootstrap", root / "framework/scp/check_bootstrap.py")
     module = module_from_spec(spec)
     spec.loader.exec_module(module)

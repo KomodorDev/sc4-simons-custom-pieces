@@ -21,6 +21,7 @@ FOLDER = 'zzz_Simons_Custom_Pieces'
 RECEIPT = '.scp-install.json'
 OPERATION_LOCK = '.scp-operation.lock'
 RUL0 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000000)
+RUL1 = (0x0A5BCF4B, 0xAA5BCF57, 0x10000001)
 NETWORK_INI = (0x00000000, 0x8A5971C5, 0x8A5993B9)
 
 
@@ -187,7 +188,6 @@ def _foreign_overlays(plugins: Path, managed: Path, controller: Path, *, extra_r
                 raise ValueError(f'Symbolic links are not allowed in Plugins: {path}')
         for key, paths in index_plugins(root, exclude=managed).items():
             locations.setdefault(key, []).extend(paths)
-    from .adaptive_network import RUL1
     for resource in (RUL0, NETWORK_INI, RUL1):
         foreign = [path for path in locations.get(resource, [])
                    if Path(path).resolve() != controller]
