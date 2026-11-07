@@ -1,6 +1,3 @@
-# Purpose: Build standalone installers with a bundled Python runtime and GUI.
-# Native game resources are discovered on the user's computer, never bundled.
-Pillow==12.3.0
-NumPy==2.4.6
-Shapely==2.2.0
+# Purpose: Freeze the compact player installer; Python and Tcl/Tk ship with the app.
+# Source-builder and publication-policy jobs separately install requirements-ci.txt.
 PyInstaller==6.22.3

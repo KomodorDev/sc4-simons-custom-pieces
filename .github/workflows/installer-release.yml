@@ -72,6 +72,9 @@ jobs:
       - &windows_dependencies
         name: Install pinned installer dependencies
         run: python -m pip install -r custom-pieces/requirements-installer.txt
+      - &source_dependencies
+        name: Install developer-only source and release-policy dependencies
+        run: python -m pip install -r requirements-ci.txt
       - name: Freeze, self-test, and verify the native installer ZIP
         shell: bash
         env:
@@ -82,6 +85,29 @@ jobs:
           --output "$RUNNER_TEMP/scp-installer"
           --source-commit "$INSTALLER_COMMIT"
           --platform "$INSTALLER_PLATFORM"
+      - name: Prepare synthetic finished files for the compact player check
+        shell: bash
+        run: >-
+          python -B custom-pieces/installer/prepare_fixture.py
+          --output "$RUNNER_TEMP/scp-player-fixture" --source-commit "$GITHUB_SHA"
+      - name: Freeze and extract the compact player fixture under Windows Downloads
+        shell: bash
+        run: >-
+          python -B custom-pieces/installer/build_bundle.py build
+          --output "$RUNNER_TEMP/scp-player-installer" --source-commit "$GITHUB_SHA" --platform windows-x64
+          --prebuilt-payload "$RUNNER_TEMP/scp-player-fixture"
+      - name: Keep compact player fixture verification reports
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: compact-player-fixture-checks
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            ${{ runner.temp }}/scp-player-installer/archive-check-*.json
+            ${{ runner.temp }}/scp-player-installer/bundle-index-*.json
+            ${{ runner.temp }}/scp-player-installer/extraction-check-*.json
+            ${{ runner.temp }}/scp-player-installer/self-test-*.json
+            ${{ runner.temp }}/scp-player-installer/gui-smoke-test-*.json
       - name: Keep verified installer and review evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
@@ -95,6 +121,7 @@ jobs:
             ${{ runner.temp }}/scp-installer/archive-check-*.json
             ${{ runner.temp }}/scp-installer/self-test-*.json
             ${{ runner.temp }}/scp-installer/gui-smoke-test-*.json
+            ${{ runner.temp }}/scp-installer/extraction-check-*.json
 
   review:
     name: Private hosted prebuilt review
@@ -132,6 +159,17 @@ jobs:
           --output "$RUNNER_TEMP/scp-installer" --source-commit "$GITHUB_SHA" --platform windows-x64
           --prebuilt-payload "$RUNNER_TEMP/scp-handoff/payload"
           --release-record "$RUNNER_TEMP/scp-handoff/release-record.json"
+      - name: Keep compact packaging and Downloads extraction review reports
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: prebuilt-installer-review-checks
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            ${{ runner.temp }}/scp-installer/archive-check-*.json
+            ${{ runner.temp }}/scp-installer/extraction-check-*.json
+            ${{ runner.temp }}/scp-installer/self-test-*.json
+            ${{ runner.temp }}/scp-installer/gui-smoke-test-*.json
       # The repository is public. The private review ZIP never leaves this runner.
 
   publish:
@@ -152,6 +190,7 @@ jobs:
       - *release_checkout
       - *windows_python
       - *windows_dependencies
+      - *source_dependencies
       - name: Check the approved merge and download its verified prebuild
         shell: bash
         env:

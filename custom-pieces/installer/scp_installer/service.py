@@ -17,9 +17,24 @@ import tempfile
 import uuid
 
 from scp import jsonc
-from scp.catalog import load_catalog, select_pieces, safe_relative
 from scp.dbpf import pack_dbpf
 from scp.install import FOLDER, _owned
+
+
+def load_catalog(*args, **kwargs):
+    """Load authoring data only when running the separate source-builder mode."""
+    from scp.catalog import load_catalog as load
+    return load(*args, **kwargs)
+
+
+def select_pieces(*args, **kwargs):
+    from scp.catalog import select_pieces as select
+    return select(*args, **kwargs)
+
+
+def safe_relative(*args, **kwargs):
+    from scp.catalog import safe_relative as relative
+    return relative(*args, **kwargs)
 
 
 SOURCE_KIND = "source-local-builder"
@@ -50,6 +65,10 @@ PARALLEL_ALIGNMENT_B_RECIPES = frozenset({
 
 class InstallationCancelled(ValueError):
     """Cancellation before the final owned-folder transaction."""
+
+
+class GameSelectionRequired(ValueError):
+    """Retain the selected Plugins folder and ask for its Windows game folder."""
 
 
 class PlayerDataSelectionRequired(ValueError):
@@ -176,7 +195,7 @@ def _data_plugins(data):
     return plugins if plugins is not None and plugins.is_dir() else None
 
 
-def discover_installation(selected, *, platform=None, home=None, documents=None, player_data=None):
+def discover_installation(selected, *, platform=None, home=None, documents=None, player_data=None, game_folder=None):
     """Find the game's two loading roots without guessing between user profiles."""
     host = platform or sys.platform
     home = Path(home or Path.home()).expanduser().resolve()
@@ -191,7 +210,16 @@ def discover_installation(selected, *, platform=None, home=None, documents=None,
     prefix = _prefix(selected)
     near = [selected, selected.parent]
     direct_game = [path for path in near if _game(path)]
-    game = _one_game(direct_game or [*_registered_games(), *_prefix_games(prefix)])
+    if game_folder is not None:
+        supplied_game = Path(game_folder).expanduser().resolve()
+        game = _one_game([supplied_game, supplied_game.parent])
+    else:
+        try:
+            game = _one_game(direct_game or [*_registered_games(), *_prefix_games(prefix)])
+        except ValueError as error:
+            if _data_plugins(selected) is not None and not direct_game:
+                raise GameSelectionRequired(str(error)) from error
+            raise
     if host == "darwin" and prefix is None:
         # A Windows installation's files can be outside its prefix; selecting
         # an existing Documents/SimCity 4 Windows folder below is still valid.
@@ -293,7 +321,16 @@ def all_implemented_ids(root):
 
 
 def _policy(root):
-    policy = jsonc.load(Path(root) / "config/installer.jsonc")
+    player_manifest = Path(root) / "installer/install-manifest.json"
+    if player_manifest.is_file():
+        if player_manifest.is_symlink():
+            raise ValueError("The player installation manifest must be a regular file.")
+        data = json.loads(player_manifest.read_text(encoding="utf-8"))
+        policy = data.get("policy") if isinstance(data, dict) else None
+    else:
+        policy = jsonc.load(Path(root) / "config/installer.jsonc")
+    if not isinstance(policy, dict):
+        raise ValueError("This installer has an invalid distribution policy.")
     if (policy.get("schema_version") != 1 or policy.get("selection") != "all-implemented"
             or policy.get("bundles_nam_resources") is not False
             or policy.get("bundles_game_resources") is not False):
@@ -343,6 +380,25 @@ def _prebuilt_bundle(root):
     return payload, commit, manifest_sha256
 
 
+def _player_manifest(root, prebuilt):
+    from scp.player_manifest import load_install_manifest
+    payload, commit, digest = prebuilt
+    manifest = load_install_manifest(root, payload, source_commit=commit)
+    if manifest["payload_manifest_sha256"] != digest:
+        raise ValueError("The installation manifest differs from the installer payload fingerprint.")
+    _policy(root)
+    return manifest
+
+
+def available_pieces(root):
+    """Read player labels from the compact manifest without loading authoring data."""
+    prebuilt = _prebuilt_bundle(root)
+    if prebuilt is not None:
+        return {row["id"]: row["name"] for row in _player_manifest(root, prebuilt)["pieces"]}
+    ids = set(all_implemented_ids(root))
+    return {piece["id"]: piece["name"] for piece in load_catalog(root)["pieces"] if piece["id"] in ids}
+
+
 def _assembly_menu_selections(root, menu):
     """Combine the selected Rail assembly with the registered Highway layouts."""
     registry = jsonc.load(Path(root) / "domains/highway/menu-layout.jsonc")
@@ -355,9 +411,9 @@ def _assembly_menu_selections(root, menu):
     ]
 
 
-def installed_selection(root, installation):
+def installed_selection(root, installation, piece_ids=None):
     """Protect every previously installed identifier when preparing an update."""
-    ids = all_implemented_ids(root)
+    ids = all_implemented_ids(root) if piece_ids is None else list(piece_ids)
     previous = _owned(installation.plugins / FOLDER)
     if previous is not None:
         retained = previous.get("piece_ids")
@@ -567,17 +623,21 @@ def prepare_install_build(root, installation, work_root, ids, *, progress=None, 
 
 
 def run_install(root, selected_folder, work_root, progress=None, cancel=None, *,
-                platform=None, home=None, documents=None, player_data=None):
+                platform=None, home=None, documents=None, player_data=None, game_folder=None):
     """Install the explicit package payload or build a source-mode installation."""
     _policy(root)
     prebuilt = _prebuilt_bundle(root)
+    player = _player_manifest(root, prebuilt) if prebuilt is not None else None
     _cancelled(cancel)
     _notify(progress, "discover")
-    installation = discover_installation(selected_folder, platform=platform, home=home,
-                                        documents=documents, player_data=player_data)
+    discovery = {"platform": platform, "home": home, "documents": documents, "player_data": player_data}
+    if game_folder is not None:
+        discovery["game_folder"] = game_folder
+    installation = discover_installation(selected_folder, **discovery)
     _require_submenu_files(installation)
     work_root = _work_root(work_root, installation)
-    ids = installed_selection(root, installation)
+    ids = (installed_selection(root, installation) if player is None else
+           installed_selection(root, installation, piece_ids=[row["id"] for row in player["pieces"]]))
     _notify(progress, "selection", pieces=len(ids), **installation.as_dict())
     if prebuilt is None:
         from scp.install import install_build
@@ -587,17 +647,24 @@ def run_install(root, selected_folder, work_root, progress=None, cancel=None, *,
         install_options = {}
         distribution = "experimental-local-builder"
     else:
-        from scp.build import doctor
         from scp.install import install_prebuilt
+        from scp.player_manifest import prepare_dependencies
+        from scp.prebuilt import load_payload
         output, commit, manifest_sha256 = prebuilt
-        extras, captures = _capture_install_inputs(
-            root, installation, work_root, ids, progress=progress, cancel=cancel, verify_originals=True)
-        _cancelled(cancel)
+        payload_manifest, digest = load_payload(output, commit)
+        if digest != manifest_sha256:
+            raise ValueError("Prebuilt payload manifest differs from the installer build record")
         _notify(progress, "audit", pieces=len(ids))
-        audit = doctor(root, installation.plugins, include=ids, extra_roots=extras)
-        expected_profile = {"id": audit["profile"],
-                            "donors": [{key: row[key] for key in ("filename", "sha256")}
-                                       for row in audit["donors"]]}
+
+        def check_cancelled():
+            _cancelled(cancel)
+            return False
+
+        capture_roots, captures = prepare_dependencies(player, installation, work_root,
+                                                       progress=progress, cancel=check_cancelled)
+        extras = [*installation.extra_plugins, *capture_roots]
+        _cancelled(cancel)
+        expected_profile = payload_manifest["profile"]
         run = _new_run(work_root)
         install = install_prebuilt
         install_options = {"source_commit": commit, "expected_piece_ids": ids,
@@ -627,12 +694,14 @@ def run_install(root, selected_folder, work_root, progress=None, cancel=None, *,
 
 
 def undo_install(root, selected_folder, work_root, progress=None, *,
-                 platform=None, home=None, documents=None, player_data=None):
+                 platform=None, home=None, documents=None, player_data=None, game_folder=None):
     """Restore the last transaction only when it still owns this installation."""
     from scp.install import rollback_install
     _policy(root)
-    installation = discover_installation(selected_folder, platform=platform, home=home,
-                                        documents=documents, player_data=player_data)
+    discovery = {"platform": platform, "home": home, "documents": documents, "player_data": player_data}
+    if game_folder is not None:
+        discovery["game_folder"] = game_folder
+    installation = discover_installation(selected_folder, **discovery)
     work_root = _work_root(work_root, installation)
     record = work_root / "last-installation.json"
     if record.is_symlink() or not record.is_file():
@@ -661,8 +730,67 @@ def undo_install(root, selected_folder, work_root, progress=None, *,
     return result
 
 
+def _prebuilt_self_test(root, prebuilt, player):
+    """Check finished archives and real repeat-install/Undo transactions offline."""
+    import scp.install as transactions
+    from scp.prebuilt import SYNTHETIC_FIXTURE_MANIFEST_SHA256, load_payload
+    output, commit, digest = prebuilt
+    manifest, actual_digest = load_payload(output, commit)
+    if actual_digest != digest:
+        raise ValueError("Prebuilt self-test payload fingerprint differs from its build record.")
+    ids = [row["id"] for row in player["pieces"]]
+    with tempfile.TemporaryDirectory(prefix="scp-installer-self-test-") as temporary:
+        base = Path(temporary).resolve()
+        plugins = base / "Plugins"
+        plugins.mkdir()
+        resources = {transactions.RUL0: b"synthetic native rules",
+                     transactions.NETWORK_INI: b"synthetic native ini"}
+        for dependencies in manifest["dependency_audit"].values():
+            for key in dependencies:
+                resources.setdefault(tuple(int(part, 16) for part in key.split("-")), b"synthetic dependency")
+        native = pack_dbpf(resources)
+        controller = plugins / "NetworkAddonMod_Controller.dat"
+        controller.write_bytes(native)
+        unrelated = plugins / "unrelated.txt"
+        unrelated.write_text("preserve", encoding="utf-8")
+        # Hosted checks have no proprietary NAM files. Bypass only exact donor
+        # fingerprints; keep payload hashes, resource scans, receipts, and Undo.
+        original_profile = transactions._profile
+        transactions._profile = lambda *args, **kwargs: controller
+        try:
+            options = {"source_commit": commit, "expected_manifest_sha256": digest,
+                       "expected_piece_ids": ids, "expected_profile": manifest["profile"]}
+            first = transactions.install_prebuilt(output, plugins, base / "backups", **options)
+            second = transactions.install_prebuilt(output, plugins, base / "backups", **options)
+            for record in manifest["files"]:
+                with (plugins / record["path"]).open("rb") as stream:
+                    if hashlib.file_digest(stream, "sha256").hexdigest() != record["sha256"]:
+                        raise ValueError("Installer self-test changed a finished archive.")
+            transactions.rollback_install(plugins, base / "backups", second["backup_id"])
+            transactions.rollback_install(plugins, base / "backups", first["backup_id"])
+        finally:
+            transactions._profile = original_profile
+        if ((plugins / FOLDER).exists() or unrelated.read_text(encoding="utf-8") != "preserve"
+                or controller.read_bytes() != native):
+            raise ValueError("Installer self-test Undo did not restore the original state.")
+    return {"status": "passed", "implemented_pieces": len(ids),
+            "assembly_menu_layouts": player["assembly_menu_layouts"],
+            "real_receipt_install_and_rollback": True, "repeat_install_and_rollback": True,
+            "synthetic_payload_only": manifest["verified_build_manifest_sha256"] == SYNTHETIC_FIXTURE_MANIFEST_SHA256,
+            "synthetic_review_fixture": manifest["verified_build_manifest_sha256"] == SYNTHETIC_FIXTURE_MANIFEST_SHA256,
+            "planar_geometry_runtime_checked": False,
+            "prebuilt_transaction_verified": True, "prebuilt_files_verified": len(manifest["files"]),
+            "native_profile_mocked_for_prebuilt_fixture": True,
+            "geometry_verification_mocked_for_synthetic_fixture": False, "live_game_modified": False}
+
+
 def self_test(root):
-    """Exercise the installer transaction in temporary Plugins with synthetic NAM inputs."""
+    """Exercise the chosen runtime with disposable synthetic NAM inputs."""
+    prebuilt = _prebuilt_bundle(root)
+    if prebuilt is not None:
+        return _prebuilt_self_test(root, prebuilt, _player_manifest(root, prebuilt))
+
+    # The separate source-builder distribution still needs its geometry runtime.
     import shapely
     from shapely import Polygon, constrained_delaunay_triangles, union_all
     polygon = Polygon([(0., 0.), (4., 0.), (4., 4.), (0., 4.)],
@@ -672,71 +800,48 @@ def self_test(root):
             or union_all(triangles.geoms).symmetric_difference(polygon).area > 1e-12):
         raise ValueError("Bundled planar geometry runtime failed its boundary-and-hole triangulation check.")
     from unittest.mock import patch
-    from scp.install import RUL0, NETWORK_INI, install_build, install_prebuilt, rollback_install
-    prebuilt = _prebuilt_bundle(root)
+    from scp.install import RUL0, NETWORK_INI, install_build, rollback_install
     policy = _policy(root)
     selections = _assembly_menu_selections(root, policy["assembly_menu"])
     ids = all_implemented_ids(root)
-    prebuilt_files_verified = 0
     with tempfile.TemporaryDirectory(prefix="scp-installer-self-test-") as temporary:
         base = Path(temporary).resolve()
         plugins = base / "Plugins"
         plugins.mkdir()
-        native_resources = {RUL0: b"synthetic native rules", NETWORK_INI: b"synthetic native ini"}
-        if prebuilt:
-            from scp.prebuilt import load_payload
-
-            output, commit, expected_digest = prebuilt
-            manifest, _ = load_payload(output, commit)
-            for dependencies in manifest["dependency_audit"].values():
-                for key in dependencies:
-                    resource = tuple(int(part, 16) for part in key.split("-"))
-                    native_resources.setdefault(resource, b"synthetic NAM dependency")
-        native = pack_dbpf(native_resources)
+        native = pack_dbpf({RUL0: b"synthetic native rules", NETWORK_INI: b"synthetic native ini"})
         controller = plugins / "NetworkAddonMod_Controller.dat"
         controller.write_bytes(native)
         unrelated = plugins / "unrelated.txt"
-        unrelated.write_text("preserve")
-        if prebuilt:
-            # Hosted packaging has no original NAM inputs. Bypass only the
-            # pinned native file hashes and keep the actual resource-index scan.
-            with patch("scp.install._profile", return_value=controller), patch(
-                "scp.build.verify_build", side_effect=AssertionError("Prebuilt self-test invoked full verification")
-            ):
-                result = install_prebuilt(output, plugins, base / "backups", source_commit=commit,
-                                          expected_manifest_sha256=expected_digest, expected_piece_ids=ids,
-                                          expected_profile=manifest["profile"])
-            prebuilt_files_verified = len(manifest["files"])
-        else:
-            output = base / "build"
-            path = f"{FOLDER}/00_SCP_Controller_NAM50.dat"
-            asset = output / path
-            asset.parent.mkdir(parents=True)
-            raw = pack_dbpf({RUL0: b"synthetic custom rules", NETWORK_INI: b"synthetic custom ini"})
-            asset.write_bytes(raw)
-            manifest = {"schema_version": 1, "plugin_folder": FOLDER,
-                        "pieces": [{"id": "synthetic-self-test"}],
-                        "profile": {"id": "synthetic-nam50-rhd",
-                                    "donors": [{"filename": controller.name,
-                                                "sha256": hashlib.sha256(native).hexdigest()}]},
-                        "files": [{"path": path, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}]}
-            (output / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
-            with patch("scp.build.verify_build", return_value={"status": "synthetic-only"}):
-                result = install_build(output, plugins, base / "backups", extra_roots=[])
+        unrelated.write_text("preserve", encoding="utf-8")
+        output = base / "build"
+        path = f"{FOLDER}/00_SCP_Controller_NAM50.dat"
+        asset = output / path
+        asset.parent.mkdir(parents=True)
+        raw = pack_dbpf({RUL0: b"synthetic custom rules", NETWORK_INI: b"synthetic custom ini"})
+        asset.write_bytes(raw)
+        manifest = {"schema_version": 1, "plugin_folder": FOLDER,
+                    "pieces": [{"id": "synthetic-self-test"}],
+                    "profile": {"id": "synthetic-nam50-rhd",
+                                "donors": [{"filename": controller.name,
+                                            "sha256": hashlib.sha256(native).hexdigest()}]},
+                    "files": [{"path": path, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}]}
+        (output / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+        with patch("scp.build.verify_build", return_value={"status": "synthetic-only"}):
+            result = install_build(output, plugins, base / "backups", extra_roots=[])
         for record in manifest["files"]:
             with (plugins / record["path"]).open("rb") as stream:
                 if hashlib.file_digest(stream, "sha256").hexdigest() != record["sha256"]:
                     raise ValueError("Installer self-test changed a finished archive.")
         rollback_install(plugins, base / "backups", result["backup_id"], extra_roots=[])
-        if ((plugins / FOLDER).exists() or unrelated.read_text() != "preserve"
+        if ((plugins / FOLDER).exists() or unrelated.read_text(encoding="utf-8") != "preserve"
                 or controller.read_bytes() != native):
             raise ValueError("Installer self-test rollback did not restore the original state.")
     return {"status": "passed", "implemented_pieces": len(ids),
             "assembly_menu_layouts": len(selections),
-            "real_receipt_install_and_rollback": True, "synthetic_payload_only": not prebuilt,
+            "real_receipt_install_and_rollback": True, "synthetic_payload_only": True,
             "planar_geometry_runtime_checked": True,
             "shapely_version": shapely.__version__, "geos_version": shapely.geos_version_string,
-            "prebuilt_transaction_verified": bool(prebuilt), "prebuilt_files_verified": prebuilt_files_verified,
-            "native_profile_mocked_for_prebuilt_fixture": bool(prebuilt),
-            "geometry_verification_mocked_for_synthetic_fixture": not prebuilt,
+            "prebuilt_transaction_verified": False, "prebuilt_files_verified": 0,
+            "native_profile_mocked_for_prebuilt_fixture": False,
+            "geometry_verification_mocked_for_synthetic_fixture": True,
             "live_game_modified": False}
