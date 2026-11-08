@@ -722,7 +722,21 @@ def build_bundle(source: Path, output: Path, source_commit: str, target: str, *,
         if payload_digest else "No SimCity or NAM binary resources are included or downloaded by this release.\n")
     (folder / "README.txt").write_text(
         heading + "\n\n"
-        "Open SCP Installer.exe. Keep its _internal folder beside it.\n"
+        "REQUIREMENTS - prepare these before selecting Install\n"
+        "- 64-bit Windows 10 or later on Intel/AMD; digital Windows SimCity 4 Deluxe 1.1.641.\n"
+        "- NAM 50 right-hand traffic with the supported rail, RealHighway, and US texture components.\n"
+        "- NAM.dll from NAM 50, directly in a Plugins folder.\n"
+        "- Submenus DLL: memo.submenus.dll and submenu-essentials.dat.\n"
+        "- Resource Loading Hooks: SC4ResourceLoadingHooks.dll 2.0.1 or later.\n"
+        "- Microsoft Visual C++ 2022 or later x86 Redistributable, even on 64-bit Windows.\n"
+        "Put all DLLs directly in either player-data Plugins or game Plugins, not in subfolders.\n"
+        "Keep one copy of each DLL across both Plugins folders. Put submenu-essentials.dat under Plugins outside zzz_Simons_Custom_Pieces.\n"
+        "The SCP installer does not install these prerequisites or verify DLL versions/loading and the Microsoft runtime.\n"
+        "NAM requirements: https://www.sc4nam.com/docs/getting-started/installation/\n"
+        "Menu downloads and placement: https://github.com/memo33/submenus-dll#installation\n"
+        "Resource Loading Hooks downloads: https://github.com/0xC0000054/sc4-resource-loading-hooks/releases\n"
+        "Microsoft x86 runtime: https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist\n\n"
+        "Extract the entire ZIP, then open SCP Installer.exe. Keep its _internal folder beside it.\n"
         + ("Choose your SimCity 4 player-data Plugins folder, then select Install.\n"
            "Choose the game folder as well if the installer asks for it.\n" if payload_digest else
            "Choose your SimCity 4 game or user-data folder, then select Install.\n")

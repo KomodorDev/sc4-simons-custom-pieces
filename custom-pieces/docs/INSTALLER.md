@@ -1,6 +1,6 @@
 ---
 title: "Install SCP without Python"
-summary: "Select Plugins, install the finished SCP catalogue with the compact Windows installer, or prepare a verified review package."
+summary: "Prepare the game, NAM, DLLs, and Microsoft runtime, then install the finished SCP catalogue with the compact Windows installer."
 audience: "Players"
 document_type: "procedure"
 ---
@@ -8,18 +8,72 @@ document_type: "procedure"
 # Install SCP without Python
 
 <!-- BEGIN DOCUMENT NAVIGATION -->
-[1. Check the game installation](#1-check-the-game-installation) · [2. Download the matching ZIP](#2-download-the-matching-zip) · [3. Select the Plugins folder](#3-select-the-plugins-folder) · [4. Install and find the pieces](#4-install-and-find-the-pieces) · [5. Update, remove, or resolve a stopped installation](#5-update-remove-or-resolve-a-stopped-installation) · [6. What a successful installer check establishes](#6-what-a-successful-installer-check-establishes) · [7. Prepare a prebuilt installer for review](#7-prepare-a-prebuilt-installer-for-review)
+[1. Check all requirements](#1-check-all-requirements) · [2. Download the matching ZIP](#2-download-the-matching-zip) · [3. Select the Plugins folder](#3-select-the-plugins-folder) · [4. Install and find the pieces](#4-install-and-find-the-pieces) · [5. Update, remove, or resolve a stopped installation](#5-update-remove-or-resolve-a-stopped-installation) · [6. What a successful installer check establishes](#6-what-a-successful-installer-check-establishes) · [7. Prepare a prebuilt installer for review](#7-prepare-a-prebuilt-installer-for-review)
 <!-- END DOCUMENT NAVIGATION -->
 
 The **SCP Installer** installs Simon's Custom Pieces. You do not need Python, Git, a terminal, or a separate resource-capture tool to use it. A **prebuilt installer** includes the finished SCP game files and checks that you have the exact game and Network Addon Mod (NAM) files they require. Its compact Windows application copies those finished files into the Plugins folder you select. A separate source-builder installer remains available for developer checks and creates game files from the installed game and NAM.
 
 The installer selects **every implemented piece in its bundled catalogue** and prepares the Rail trumpet and Highway assembly buttons. **Experimental** means the software checks do not establish correct operation inside the game. Existing failed, stale, and unverified observations remain visible in the [library inventories](../README.md). Check a subject's guide and testing record before using it in an important city.
 
-## 1. Check the game installation
+<a id="1-check-the-game-installation"></a>
 
-Install SimCity 4 Deluxe and NAM before running SCP. The currently audited game profile is **SimCity 4 Deluxe for Windows, version 1.1.641, NAM 50, and right-hand traffic**. Right-hand traffic means vehicles drive on the right. The installer checks exact resource fingerprints, meaning identifiers calculated from file contents, rather than accepting a NAM version label alone.
+## 1. Check all requirements
 
-The download runs on **64-bit Windows with an Intel or AMD processor**. The [profile](../config/profiles/nam50-rhd.jsonc) records the supported game resources. The installer cannot add a missing game, install NAM, or convert an unsupported game profile automatically.
+**The SCP installer does not install the game, NAM, third-party DLLs, or Microsoft runtime. Prepare them before selecting Install.** A **DLL plugin** is a file that adds code to the Windows game; a **DAT archive** contains game resources. SCP uses DLL plugins to display its nested Rail and Highway menus.
+
+### 1.1 Required software and NAM components
+
+| Requirement | Supported setup and official source |
+| --- | --- |
+| Computer | **64-bit Windows 10 or later, on an Intel or AMD processor.** NAM specifies at least **4 GB RAM** and **1 GB free disk space** for NAM alone. SCP also needs space for extraction, the installed files, temporary files, and backups. [NAM system requirements](https://www.sc4nam.com/docs/getting-started/installation/#system-requirements) |
+| Game | **Digital Windows SimCity 4 Deluxe, version 1.1.641**, with the original game archives matching the [audited profile](../config/profiles/nam50-rhd.jsonc). Native macOS editions and older disc editions are outside this supported profile. |
+| NAM | **NAM 50, right-hand traffic, with the supported US textures and components below.** Right-hand traffic means vehicles drive on the right. Use the full NAM distribution; NAM Lite does not supply the required network components. [Official NAM download and instructions](https://www.sc4nam.com/download-the-nam/) |
+| NAM DLL | **`NAM.dll`**, installed directly in one of the game's Plugins folders. This file is part of NAM 50 and is required by its controller engine. [NAM DLL requirements](https://www.sc4nam.com/docs/feature-guides/nam-dll/) |
+| Submenus DLL | **`memo.submenus.dll` and `submenu-essentials.dat`**, which enable SCP's nested menu folders. Individual standard submenu DATs are optional. [Submenus download and installation](https://github.com/memo33/submenus-dll#installation) |
+| Resource Loading Hooks | **`SC4ResourceLoadingHooks.dll`, version 2.0.1 or later.** [Official releases](https://github.com/0xC0000054/sc4-resource-loading-hooks/releases) |
+| Microsoft runtime | **Microsoft Visual C++ 2022 or later x86 Redistributable.** The game and its DLLs are 32-bit, so install the **x86** package even on 64-bit Windows. An installed x64 package does not replace x86. [Microsoft downloads](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist) |
+
+The all-pieces installer needs NAM's **High Speed Rail, Underground Rail, Ground Light Rail, and RealHighway** components, including DD RHW-4, MIS, RHW-4, US Road textures, and US RHW-4 textures. It uses the nine installed archives recorded in the [supported profile](../config/profiles/nam50-rhd.jsonc):
+
+```text
+NetworkAddonMod_Controller.dat
+High Speed Rail.dat
+NetworkAddonMod_URail_Puzzle_Plugin.dat
+NetworkAddonMod_GroundLightRail_Plugin.dat
+RealHighway_Core.dat
+RealHighway_DD_RHW-4.dat
+RealHighway_MIS.dat
+RealHighway_RHW-4.dat
+US_Common_RHW-4_Textures.dat
+```
+
+Keep NAM's original `NetworkAddonMod_BaseContent.dat`, `NetworkAddonMod_BaseContent_Textures.dat`, `RealHighway_Props.dat`, and `US_Common_Road.dat` available as well, together with the original game's `SimCity_3.dat` and `SimCity_4.dat`. The installer reads these originals to create four small private dependency captures automatically. You do not download or create the `SCP_…_Capture.dat` files yourself. Keep original archive names and contents: merging archives with DatPacker, keeping duplicate copies, or substituting another game/NAM variant can prevent the expected originals from being identified or verified.
+
+A **resource fingerprint** identifies exact file contents. The installer checks those fingerprints, rather than accepting a game or NAM version label alone. Left-hand traffic, different texture variants, other NAM versions, and other game editions require a separate compatibility audit; changing an expected fingerprint is not a compatibility fix.
+
+The **4 GB patch is optional but recommended for NAM 50**, whose NAM DLL removes the older mandatory-patch requirement. Follow the [NAM Team's explanation](https://www.sc4nam.com/docs/feature-guides/nam-dll/#new-rul2-engine). The finished SCP installer needs no separate Python, Git, Java, Visual Studio, or resource-capture tool. Java 8 or later is needed only if you choose NAM's separate Java-based installer; follow the NAM instructions for that setup.
+
+### 1.2 Install the DLLs and menu files
+
+1. Close SimCity 4. Complete NAM's installation using its own instructions, including the placement of `NAM.dll`.
+2. Open [Microsoft's Visual C++ downloads page](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist), find the latest supported v14 package compatible with Visual Studio 2022 or later, select **X86**, download `vc_redist.x86.exe`, open it, and follow **Install** or **Repair** as offered. Visual Studio itself is not needed.
+3. Follow the [Submenus DLL installation page](https://github.com/memo33/submenus-dll#installation) to obtain `memo.submenus.dll` and `submenu-essentials.dat`. Obtain Resource Loading Hooks **2.0.1 or later** from its [official releases](https://github.com/0xC0000054/sc4-resource-loading-hooks/releases), download its DLL ZIP rather than **Source code**, extract it, and locate `SC4ResourceLoadingHooks.dll`.
+4. In File Explorer, open the existing Plugins folder your game uses. Usually this is `Documents\SimCity 4\Plugins`; redirected Documents folders, including OneDrive, can use another path. Copy `memo.submenus.dll` and `SC4ResourceLoadingHooks.dll` directly into that Plugins folder, alongside `NAM.dll` if NAM uses the same location. Keep one copy of each DLL across the player-data and game Plugins folders; use the authors' update instructions if an older copy already exists. DLLs inside `Dependencies`, `Network Addon Mod`, `zzz_Simons_Custom_Pieces`, or another subfolder do not meet the loading requirement.
+5. Copy `submenu-essentials.dat` into the same Plugins folder for the simplest layout. It may instead be in a subfolder, but it must stay outside SCP's managed `zzz_Simons_Custom_Pieces` folder so SCP updates and Undo do not own it. The DLLs may alternatively be directly inside the game's own Plugins folder. Check both Plugins folders when looking for existing copies.
+
+For example, this is a valid arrangement in the player-data Plugins folder:
+
+```text
+Plugins/
+  NAM.dll
+  memo.submenus.dll
+  SC4ResourceLoadingHooks.dll
+  submenu-essentials.dat
+  Network Addon Mod/
+    ...the supported NAM archives...
+```
+
+SCP currently checks the three submenu dependency filenames and locations, but not `NAM.dll`, DLL versions, the Microsoft runtime, or actual DLL loading. Its game-resource fingerprint checks do not inspect the executable's version. A successful SCP installation therefore does not replace this prerequisite setup. If the game cannot load a DLL, follow the [Submenus troubleshooting instructions](https://github.com/memo33/submenus-dll#troubleshooting) and [Resource Loading Hooks troubleshooting instructions](https://github.com/0xC0000054/sc4-resource-loading-hooks#troubleshooting); the authors describe the DLL log files and runtime checks.
 
 Close SimCity 4 before installing or updating SCP. Keep a backup of any city you intend to use for experimental pieces. The prebuilt installer checks and copies the finished catalogue without generating its models, traffic paths, menus, or controller on your computer. The progress display identifies the current stage.
 
@@ -60,7 +114,7 @@ For a developer source-builder installer, the first button remains **Choose game
 
 ## 4. Install and find the pieces
 
-Before selecting **Install**, copy `memo.submenus.dll` and `SC4ResourceLoadingHooks.dll` directly into either the game's Plugins folder or the player-data Plugins folder. Use Resource Loading Hooks version 2.0.1 or later. Place `submenu-essentials.dat` anywhere under either Plugins folder. These files let the game display the Rail and Highway SCP folders. The installer checks that the files are in the expected locations. [Submenus DLL installation instructions](https://github.com/memo33/submenus-dll#installation)
+Before selecting **Install**, complete the [requirements and DLL placement steps](#1-check-all-requirements). If the installer reports a missing menu dependency, compare the exact filenames and placement with [the Plugins example](#12-install-the-dlls-and-menu-files), and confirm that you selected the Plugins folder the game actually uses.
 
 Check that the selected Plugins folder is correct, then select **Install**. The installer verifies the packaged files, checks the local dependencies and conflicts, backs up the previous SCP installation, and installs the finished pieces, menus, and controller. A failed check stops installation. Select **Open log** to inspect progress or a reported problem. **Cancel** requests a stop at the next checkpoint and becomes unavailable when the final installation transaction begins.
 
@@ -88,7 +142,7 @@ If installation stops, read the reported filename and reason. A resource fingerp
 
 ## 6. What a successful installer check establishes
 
-The [release workflow](AUTOMATIC_RELEASES.md) packages the prebuilt Windows installer on GitHub after the Mac verifies the game assets. A **GUI startup smoke check** briefly opens and closes the application to check that the window can start. The packaged self-test exercises installation and Undo on disposable data. Packaging checks exclude development content from the prebuilt download, enforce a maximum extracted path length, and extract the complete ZIP under a realistic Windows Downloads destination. The extracted executable then runs its self-test and GUI startup check. These checks establish the tested package and destination; they do not explain an earlier unlogged Windows failure. Game observations, public identifier reservations, and redistribution permission remain separate [release requirements](RELEASE.md).
+The [release workflow](AUTOMATIC_RELEASES.md) packages the prebuilt Windows installer on GitHub after the Mac verifies the game assets. A **GUI startup smoke check** briefly opens and closes the application to check that the window can start. The packaged self-test exercises file copying, repeat installation, receipts, and Undo on disposable data with a substitute NAM profile. It calls the transaction functions directly and does not exercise the real Install-button prerequisite checks or prove that the game loads its DLLs. Packaging checks exclude development content from the prebuilt download, enforce a maximum extracted path length, and extract the complete ZIP under a realistic Windows Downloads destination. The extracted executable then runs its self-test and GUI startup check. These checks establish the tested package and destination; they do not establish complete clean-machine readiness or explain an earlier unlogged Windows failure. Game observations, public identifier reservations, and redistribution permission remain separate [release requirements](RELEASE.md).
 
 ## 7. Prepare a prebuilt installer for review
 
